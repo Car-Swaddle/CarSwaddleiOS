@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nCH-qB-5Up">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Select Location View Controller-->
+        <scene sceneID="gUr-ha-CzD">
+            <objects>
+                <viewController id="nCH-qB-5Up" customClass="SelectLocationViewController" customModule="CarSwaddle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kJx-aR-gM7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KC0-A9-beZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nCH-qB-5Up" id="tvK-Sd-UHm"/>
+                                </connections>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92z-6z-ZdC">
+                                <rect key="frame" x="54" y="596" width="267" height="51"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="OzZ-gW-22L"/>
+                                    <constraint firstAttribute="width" constant="267" id="rxL-Kv-e3v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" title="Confirm Location"/>
+                                <connections>
+                                    <action selector="didSelectConfirm" destination="nCH-qB-5Up" eventType="touchUpInside" id="U92-qn-fEQ"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaN-TP-Ia9">
+                                <rect key="frame" x="176" y="333" width="23" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="CIV-DG-w5e"/>
+                                    <constraint firstAttribute="width" constant="23" id="cxy-qk-SVd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iyg-EK-5No" firstAttribute="bottom" secondItem="92z-6z-ZdC" secondAttribute="bottom" constant="20" id="00R-yr-N99"/>
+                            <constraint firstItem="MaN-TP-Ia9" firstAttribute="centerX" secondItem="iyg-EK-5No" secondAttribute="centerX" id="Ajy-aS-0mh"/>
+                            <constraint firstItem="92z-6z-ZdC" firstAttribute="centerX" secondItem="iyg-EK-5No" secondAttribute="centerX" id="MsL-PE-Atd"/>
+                            <constraint firstItem="KC0-A9-beZ" firstAttribute="leading" secondItem="kJx-aR-gM7" secondAttribute="leading" id="P8u-IX-59j"/>
+                            <constraint firstItem="KC0-A9-beZ" firstAttribute="trailing" secondItem="kJx-aR-gM7" secondAttribute="trailing" id="QjH-bO-14S"/>
+                            <constraint firstItem="MaN-TP-Ia9" firstAttribute="top" secondItem="kJx-aR-gM7" secondAttribute="top" constant="333" placeholder="YES" id="hZw-fh-BCu"/>
+                            <constraint firstItem="KC0-A9-beZ" firstAttribute="top" secondItem="kJx-aR-gM7" secondAttribute="top" id="jbS-KI-Jat"/>
+                            <constraint firstItem="KC0-A9-beZ" firstAttribute="bottom" secondItem="kJx-aR-gM7" secondAttribute="bottom" id="zzB-vn-q13"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iyg-EK-5No"/>
+                    </view>
+                    <connections>
+                        <outlet property="centerView" destination="MaN-TP-Ia9" id="24s-yF-oYT"/>
+                        <outlet property="confirmButton" destination="92z-6z-ZdC" id="M62-dB-91Q"/>
+                        <outlet property="mapView" destination="KC0-A9-beZ" id="2eO-0v-ZO4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NXm-oO-1NG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-18.399999999999999" y="79.610194902548727"/>
+        </scene>
+    </scenes>
+</document>

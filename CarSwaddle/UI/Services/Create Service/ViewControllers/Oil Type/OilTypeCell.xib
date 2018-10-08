@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="173" id="9tj-XM-ehJ" customClass="OilTypeCell" customModule="CarSwaddle" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="173"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9tj-XM-ehJ" id="3aZ-Ex-HY1">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="172.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3o-DZ-bZl">
+                        <rect key="frame" x="20" y="76" width="354" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="a3o-DZ-bZl" secondAttribute="trailing" constant="40" id="GOS-ix-3dl"/>
+                    <constraint firstItem="a3o-DZ-bZl" firstAttribute="leading" secondItem="3aZ-Ex-HY1" secondAttribute="leading" constant="20" id="Ut1-Ax-8Om"/>
+                    <constraint firstItem="a3o-DZ-bZl" firstAttribute="centerY" secondItem="3aZ-Ex-HY1" secondAttribute="centerY" id="bhE-p0-iql"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="oilTypeLabel" destination="a3o-DZ-bZl" id="qb7-OC-UdX"/>
+            </connections>
+            <point key="canvasLocation" x="123.2" y="121.88905547226388"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -10,11 +10,70 @@
 		990F436E214252C600E65FC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F436D214252C600E65FC1 /* AppDelegate.swift */; };
 		990F4370214252C600E65FC1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F436F214252C600E65FC1 /* ViewController.swift */; };
 		990F4373214252C600E65FC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 990F4371214252C600E65FC1 /* Main.storyboard */; };
-		990F4376214252C600E65FC1 /* CarSwaddle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 990F4374214252C600E65FC1 /* CarSwaddle.xcdatamodeld */; };
 		990F4378214252C700E65FC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 990F4377214252C700E65FC1 /* Assets.xcassets */; };
 		990F437B214252C700E65FC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 990F4379214252C700E65FC1 /* LaunchScreen.storyboard */; };
 		990F4386214252C700E65FC1 /* CarSwaddleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F4385214252C700E65FC1 /* CarSwaddleTests.swift */; };
-		990F4391214252C700E65FC1 /* CarSwaddleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F4390214252C700E65FC1 /* CarSwaddleUITests.swift */; };
+		99116905215B76B6001E039E /* AddVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99116903215B76B6001E039E /* AddVehicleCell.swift */; };
+		99116906215B76B6001E039E /* AddVehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99116904215B76B6001E039E /* AddVehicleCell.xib */; };
+		991B4040216ADDA400D7644D /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991B403F216ADDA400D7644D /* Store.framework */; };
+		991B404A216B325E00D7644D /* Store.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 991B403F216ADDA400D7644D /* Store.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		991B404B216B325E00D7644D /* Authentication.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 995D0104216AD7C3009B1895 /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		991B404C216B325E00D7644D /* CarSwaddleNetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 995D0102216AD7C3009B1895 /* CarSwaddleNetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		991B404D216B325E00D7644D /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 995D0103216AD7C3009B1895 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		991B404E216B325E00D7644D /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99C8DD7E216AC35900627E8A /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		991B4058216B44B900D7644D /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991B4057216B44B900D7644D /* CarSwaddleUI.framework */; };
+		991B4059216B44F100D7644D /* CarSwaddleUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 991B4057216B44B900D7644D /* CarSwaddleUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		993BA12621585ACA00DB95EF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993BA12521585ACA00DB95EF /* LocationManager.swift */; };
+		99425447215762750075EDCA /* CreateServiceVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99425446215762750075EDCA /* CreateServiceVehicleCell.swift */; };
+		9942544A215762A10075EDCA /* CreateServiceMechanicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99425449215762A10075EDCA /* CreateServiceMechanicCell.swift */; };
+		9942544D215762C50075EDCA /* CreateServicePriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942544C215762C50075EDCA /* CreateServicePriceCell.swift */; };
+		99425450215763070075EDCA /* CreateServiceDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942544F215763070075EDCA /* CreateServiceDateCell.swift */; };
+		994254522157691A0075EDCA /* CreateServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994254512157691A0075EDCA /* CreateServiceCell.swift */; };
+		9942545421576C430075EDCA /* NSManagedObjectFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942545321576C430075EDCA /* NSManagedObjectFetchable.swift */; };
+		99425466215778DD0075EDCA /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99425465215778DD0075EDCA /* Defaults.swift */; };
+		9942546921577B1B0075EDCA /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942546821577B1B0075EDCA /* SelectDateViewController.swift */; };
+		9942546B21577B6C0075EDCA /* SelectMechanicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942546A21577B6C0075EDCA /* SelectMechanicViewController.swift */; };
+		9942546D21577B6E0075EDCA /* SelectVehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942546C21577B6E0075EDCA /* SelectVehicleViewController.swift */; };
+		9942547121577B730075EDCA /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942547021577B730075EDCA /* SelectLocationViewController.swift */; };
+		99425475215781F80075EDCA /* SelectLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99425474215781F80075EDCA /* SelectLocationViewController.storyboard */; };
+		994254792157F7980075EDCA /* CreateServiceMechanicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99425448215762A10075EDCA /* CreateServiceMechanicCell.xib */; };
+		9942547A2157F7AF0075EDCA /* CreateServiceVehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9942543E215762750075EDCA /* CreateServiceVehicleCell.xib */; };
+		9942547B2157F7B30075EDCA /* CreateServicePriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9942544B215762C50075EDCA /* CreateServicePriceCell.xib */; };
+		9942547C2157F7B70075EDCA /* CreateServiceDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9942544E215763070075EDCA /* CreateServiceDateCell.xib */; };
+		9942547D2157F8290075EDCA /* SelectMechanicViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99425476215782060075EDCA /* SelectMechanicViewController.storyboard */; };
+		9942547E2157F8300075EDCA /* SelectVehicleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99425477215782080075EDCA /* SelectVehicleViewController.storyboard */; };
+		9942547F2157F8370075EDCA /* SelectDateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 994254782157820B0075EDCA /* SelectDateViewController.storyboard */; };
+		9943C173215B6C69003C2BE9 /* VehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9943C171215B6C69003C2BE9 /* VehicleCell.swift */; };
+		9943C174215B6C69003C2BE9 /* VehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9943C172215B6C69003C2BE9 /* VehicleCell.xib */; };
+		994CA9F7215206CD00D41F6C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994CA9F6215206CD00D41F6C /* LoginViewController.swift */; };
+		994CA9F9215206E600D41F6C /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 994CA9F8215206E600D41F6C /* LoginViewController.storyboard */; };
+		994CA9FC215208BD00D41F6C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994CA9FB215208BD00D41F6C /* SignUpViewController.swift */; };
+		9955BC0D2154E45C008DAF8E /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC0C2154E45C008DAF8E /* Auth.swift */; };
+		9955BC1A2154E8DC008DAF8E /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC192154E8DC008DAF8E /* UsersViewController.swift */; };
+		9955BC2421555D62008DAF8E /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC2321555D62008DAF8E /* Navigator.swift */; };
+		9955BC272155630C008DAF8E /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC262155630C008DAF8E /* UIViewControllerExtension.swift */; };
+		9955BC29215563F8008DAF8E /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC28215563F8008DAF8E /* UIFontExtension.swift */; };
+		9955BC2B2155650C008DAF8E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC2A2155650C008DAF8E /* ProfileViewController.swift */; };
+		9955BC2D21556527008DAF8E /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9955BC2C21556527008DAF8E /* ProfileViewController.storyboard */; };
+		9955BC2F21556554008DAF8E /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC2E21556554008DAF8E /* ServicesViewController.swift */; };
+		9955BC3121556566008DAF8E /* ServicesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9955BC3021556566008DAF8E /* ServicesViewController.storyboard */; };
+		9955BC3521557305008DAF8E /* CreateServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC3421557305008DAF8E /* CreateServiceViewController.swift */; };
+		9955BC3721557311008DAF8E /* CreateServiceViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9955BC3621557311008DAF8E /* CreateServiceViewController.storyboard */; };
+		9955BC3A215574EF008DAF8E /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC39215574EF008DAF8E /* UIAlertControllerExtension.swift */; };
+		9955BC3E215588DB008DAF8E /* CreateServiceLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC3C215588DB008DAF8E /* CreateServiceLocationCell.swift */; };
+		9955BC3F215588DB008DAF8E /* CreateServiceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9955BC3D215588DB008DAF8E /* CreateServiceLocationCell.xib */; };
+		995B9F242154B4380030A7CA /* GlobalImports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F232154B4380030A7CA /* GlobalImports.swift */; };
+		995D00FE216AD7C3009B1895 /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C8DD7E216AC35900627E8A /* NetworkRequest.framework */; };
+		995D0105216AD7C3009B1895 /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995D0102216AD7C3009B1895 /* CarSwaddleNetworkRequest.framework */; };
+		995D0106216AD7C3009B1895 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995D0103216AD7C3009B1895 /* KeychainAccess.framework */; };
+		995D0107216AD7C3009B1895 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995D0104216AD7C3009B1895 /* Authentication.framework */; };
+		99DED710214B7EBC0061CFE0 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DED70F214B7EBC0061CFE0 /* Store.swift */; };
+		99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FEAFF6215DE3C00009BC07 /* CreateServiceOilTypeCell.swift */; };
+		99FEAFF9215DE3C00009BC07 /* CreateServiceOilTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99FEAFF7215DE3C00009BC07 /* CreateServiceOilTypeCell.xib */; };
+		99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FEB001215DE46A0009BC07 /* SelectOilTypeViewController.swift */; };
+		99FEB004215DE4770009BC07 /* SelectOilTypeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99FEB003215DE4770009BC07 /* SelectOilTypeViewController.storyboard */; };
+		99FEB006215DEECB0009BC07 /* OilTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FEB005215DEECB0009BC07 /* OilTypeCell.swift */; };
+		99FEB008215DEED80009BC07 /* OilTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99FEB007215DEED80009BC07 /* OilTypeCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,12 +93,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		991B4049216B324400D7644D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				991B4059216B44F100D7644D /* CarSwaddleUI.framework in CopyFiles */,
+				991B404A216B325E00D7644D /* Store.framework in CopyFiles */,
+				991B404B216B325E00D7644D /* Authentication.framework in CopyFiles */,
+				991B404C216B325E00D7644D /* CarSwaddleNetworkRequest.framework in CopyFiles */,
+				991B404D216B325E00D7644D /* KeychainAccess.framework in CopyFiles */,
+				991B404E216B325E00D7644D /* NetworkRequest.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		990F436A214252C600E65FC1 /* CarSwaddle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarSwaddle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		990F436D214252C600E65FC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		990F436F214252C600E65FC1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		990F4372214252C600E65FC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		990F4375214252C600E65FC1 /* CarSwaddle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarSwaddle.xcdatamodel; sourceTree = "<group>"; };
 		990F4377214252C700E65FC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		990F437A214252C700E65FC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		990F437C214252C700E65FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,8 +123,62 @@
 		990F4385214252C700E65FC1 /* CarSwaddleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleTests.swift; sourceTree = "<group>"; };
 		990F4387214252C700E65FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		990F438C214252C700E65FC1 /* CarSwaddleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarSwaddleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		990F4390214252C700E65FC1 /* CarSwaddleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleUITests.swift; sourceTree = "<group>"; };
-		990F4392214252C700E65FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99116903215B76B6001E039E /* AddVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleCell.swift; sourceTree = "<group>"; };
+		99116904215B76B6001E039E /* AddVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVehicleCell.xib; sourceTree = "<group>"; };
+		991B403F216ADDA400D7644D /* Store.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Store.framework; path = Carthage/Build/iOS/Store.framework; sourceTree = "<group>"; };
+		991B4057216B44B900D7644D /* CarSwaddleUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleUI.framework; path = Carthage/Build/iOS/CarSwaddleUI.framework; sourceTree = "<group>"; };
+		993BA12521585ACA00DB95EF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9942543E215762750075EDCA /* CreateServiceVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServiceVehicleCell.xib; sourceTree = "<group>"; };
+		99425446215762750075EDCA /* CreateServiceVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceVehicleCell.swift; sourceTree = "<group>"; };
+		99425448215762A10075EDCA /* CreateServiceMechanicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServiceMechanicCell.xib; sourceTree = "<group>"; };
+		99425449215762A10075EDCA /* CreateServiceMechanicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceMechanicCell.swift; sourceTree = "<group>"; };
+		9942544B215762C50075EDCA /* CreateServicePriceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServicePriceCell.xib; sourceTree = "<group>"; };
+		9942544C215762C50075EDCA /* CreateServicePriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServicePriceCell.swift; sourceTree = "<group>"; };
+		9942544E215763070075EDCA /* CreateServiceDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServiceDateCell.xib; sourceTree = "<group>"; };
+		9942544F215763070075EDCA /* CreateServiceDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceDateCell.swift; sourceTree = "<group>"; };
+		994254512157691A0075EDCA /* CreateServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceCell.swift; sourceTree = "<group>"; };
+		9942545321576C430075EDCA /* NSManagedObjectFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectFetchable.swift; sourceTree = "<group>"; };
+		99425465215778DD0075EDCA /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		9942546821577B1B0075EDCA /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
+		9942546A21577B6C0075EDCA /* SelectMechanicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMechanicViewController.swift; sourceTree = "<group>"; };
+		9942546C21577B6E0075EDCA /* SelectVehicleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVehicleViewController.swift; sourceTree = "<group>"; };
+		9942547021577B730075EDCA /* SelectLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
+		99425474215781F80075EDCA /* SelectLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectLocationViewController.storyboard; sourceTree = "<group>"; };
+		99425476215782060075EDCA /* SelectMechanicViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectMechanicViewController.storyboard; sourceTree = "<group>"; };
+		99425477215782080075EDCA /* SelectVehicleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectVehicleViewController.storyboard; sourceTree = "<group>"; };
+		994254782157820B0075EDCA /* SelectDateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectDateViewController.storyboard; sourceTree = "<group>"; };
+		9943C171215B6C69003C2BE9 /* VehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCell.swift; sourceTree = "<group>"; };
+		9943C172215B6C69003C2BE9 /* VehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleCell.xib; sourceTree = "<group>"; };
+		994CA9F6215206CD00D41F6C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		994CA9F8215206E600D41F6C /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		994CA9FB215208BD00D41F6C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		9955BC0C2154E45C008DAF8E /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		9955BC192154E8DC008DAF8E /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		9955BC2321555D62008DAF8E /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		9955BC262155630C008DAF8E /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		9955BC28215563F8008DAF8E /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		9955BC2A2155650C008DAF8E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9955BC2C21556527008DAF8E /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
+		9955BC2E21556554008DAF8E /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		9955BC3021556566008DAF8E /* ServicesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesViewController.storyboard; sourceTree = "<group>"; };
+		9955BC3421557305008DAF8E /* CreateServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceViewController.swift; sourceTree = "<group>"; };
+		9955BC3621557311008DAF8E /* CreateServiceViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateServiceViewController.storyboard; sourceTree = "<group>"; };
+		9955BC39215574EF008DAF8E /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		9955BC3C215588DB008DAF8E /* CreateServiceLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceLocationCell.swift; sourceTree = "<group>"; };
+		9955BC3D215588DB008DAF8E /* CreateServiceLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServiceLocationCell.xib; sourceTree = "<group>"; };
+		995B9F232154B4380030A7CA /* GlobalImports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalImports.swift; sourceTree = "<group>"; };
+		995D0102216AD7C3009B1895 /* CarSwaddleNetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleNetworkRequest.framework; path = Carthage/Build/iOS/CarSwaddleNetworkRequest.framework; sourceTree = "<group>"; };
+		995D0103216AD7C3009B1895 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
+		995D0104216AD7C3009B1895 /* Authentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Authentication.framework; path = Carthage/Build/iOS/Authentication.framework; sourceTree = "<group>"; };
+		99C791C32150C8A8000167CB /* CarSwaddle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarSwaddle-Bridging-Header.h"; sourceTree = "<group>"; };
+		99C8DD7E216AC35900627E8A /* NetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkRequest.framework; path = Carthage/Build/iOS/NetworkRequest.framework; sourceTree = "<group>"; };
+		99DED70F214B7EBC0061CFE0 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		99FEAFF6215DE3C00009BC07 /* CreateServiceOilTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOilTypeCell.swift; sourceTree = "<group>"; };
+		99FEAFF7215DE3C00009BC07 /* CreateServiceOilTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServiceOilTypeCell.xib; sourceTree = "<group>"; };
+		99FEB001215DE46A0009BC07 /* SelectOilTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOilTypeViewController.swift; sourceTree = "<group>"; };
+		99FEB003215DE4770009BC07 /* SelectOilTypeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectOilTypeViewController.storyboard; sourceTree = "<group>"; };
+		99FEB005215DEECB0009BC07 /* OilTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilTypeCell.swift; sourceTree = "<group>"; };
+		99FEB007215DEED80009BC07 /* OilTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OilTypeCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +186,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				991B4058216B44B900D7644D /* CarSwaddleUI.framework in Frameworks */,
+				995D0105216AD7C3009B1895 /* CarSwaddleNetworkRequest.framework in Frameworks */,
+				995D0106216AD7C3009B1895 /* KeychainAccess.framework in Frameworks */,
+				995D0107216AD7C3009B1895 /* Authentication.framework in Frameworks */,
+				991B4040216ADDA400D7644D /* Store.framework in Frameworks */,
+				995D00FE216AD7C3009B1895 /* NetworkRequest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,8 +217,8 @@
 			children = (
 				990F436C214252C600E65FC1 /* CarSwaddle */,
 				990F4384214252C700E65FC1 /* CarSwaddleTests */,
-				990F438F214252C700E65FC1 /* CarSwaddleUITests */,
 				990F436B214252C600E65FC1 /* Products */,
+				99F78F24214BA4E400D1BD28 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +235,14 @@
 		990F436C214252C600E65FC1 /* CarSwaddle */ = {
 			isa = PBXGroup;
 			children = (
-				990F436D214252C600E65FC1 /* AppDelegate.swift */,
-				990F436F214252C600E65FC1 /* ViewController.swift */,
-				990F4371214252C600E65FC1 /* Main.storyboard */,
-				990F4377214252C700E65FC1 /* Assets.xcassets */,
-				990F4379214252C700E65FC1 /* LaunchScreen.storyboard */,
-				990F437C214252C700E65FC1 /* Info.plist */,
-				990F4374214252C600E65FC1 /* CarSwaddle.xcdatamodeld */,
+				9955BC2521556302008DAF8E /* Extensions */,
+				99F78F1A214B9F1D00D1BD28 /* UI */,
+				9955BC0C2154E45C008DAF8E /* Auth.swift */,
+				9991FE1A214B86F900F58F42 /* Launch */,
+				99F78F1B214B9F2E00D1BD28 /* Network */,
+				99F78F19214B9F1700D1BD28 /* Store */,
+				9991FE17214B86D600F58F42 /* Resources */,
+				9991FE18214B86DE00F58F42 /* Support */,
 			);
 			path = CarSwaddle;
 			sourceTree = "<group>";
@@ -119,13 +256,201 @@
 			path = CarSwaddleTests;
 			sourceTree = "<group>";
 		};
-		990F438F214252C700E65FC1 /* CarSwaddleUITests */ = {
+		9942546721577A990075EDCA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				990F4390214252C700E65FC1 /* CarSwaddleUITests.swift */,
-				990F4392214252C700E65FC1 /* Info.plist */,
+				9942547021577B730075EDCA /* SelectLocationViewController.swift */,
+				99425474215781F80075EDCA /* SelectLocationViewController.storyboard */,
+				9942546A21577B6C0075EDCA /* SelectMechanicViewController.swift */,
+				99425476215782060075EDCA /* SelectMechanicViewController.storyboard */,
+				9943C169215B61F4003C2BE9 /* Vehicle */,
+				9942546821577B1B0075EDCA /* SelectDateViewController.swift */,
+				994254782157820B0075EDCA /* SelectDateViewController.storyboard */,
+				99927585215DF2C70032D7F7 /* Oil Type */,
 			);
-			path = CarSwaddleUITests;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9943C169215B61F4003C2BE9 /* Vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				9942546C21577B6E0075EDCA /* SelectVehicleViewController.swift */,
+				99425477215782080075EDCA /* SelectVehicleViewController.storyboard */,
+				9943C171215B6C69003C2BE9 /* VehicleCell.swift */,
+				9943C172215B6C69003C2BE9 /* VehicleCell.xib */,
+				99116903215B76B6001E039E /* AddVehicleCell.swift */,
+				99116904215B76B6001E039E /* AddVehicleCell.xib */,
+			);
+			path = Vehicle;
+			sourceTree = "<group>";
+		};
+		994CA9FA215206EE00D41F6C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				994CA9F6215206CD00D41F6C /* LoginViewController.swift */,
+				994CA9FB215208BD00D41F6C /* SignUpViewController.swift */,
+				994CA9F8215206E600D41F6C /* LoginViewController.storyboard */,
+				9955BC192154E8DC008DAF8E /* UsersViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9955BC2521556302008DAF8E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9955BC262155630C008DAF8E /* UIViewControllerExtension.swift */,
+				9955BC28215563F8008DAF8E /* UIFontExtension.swift */,
+				9955BC39215574EF008DAF8E /* UIAlertControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9955BC3221556ABA008DAF8E /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				9955BC2321555D62008DAF8E /* Navigator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		9955BC33215572E3008DAF8E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9955BC2E21556554008DAF8E /* ServicesViewController.swift */,
+				9955BC3021556566008DAF8E /* ServicesViewController.storyboard */,
+				9955BC3B215587EE008DAF8E /* Create Service */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9955BC382155741B008DAF8E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9955BC2A2155650C008DAF8E /* ProfileViewController.swift */,
+				9955BC2C21556527008DAF8E /* ProfileViewController.storyboard */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		9955BC3B215587EE008DAF8E /* Create Service */ = {
+			isa = PBXGroup;
+			children = (
+				9955BC3421557305008DAF8E /* CreateServiceViewController.swift */,
+				9955BC3621557311008DAF8E /* CreateServiceViewController.storyboard */,
+				9955BC40215588E4008DAF8E /* Cells */,
+				9942546721577A990075EDCA /* ViewControllers */,
+			);
+			path = "Create Service";
+			sourceTree = "<group>";
+		};
+		9955BC40215588E4008DAF8E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				994254512157691A0075EDCA /* CreateServiceCell.swift */,
+				9955BC3C215588DB008DAF8E /* CreateServiceLocationCell.swift */,
+				9955BC3D215588DB008DAF8E /* CreateServiceLocationCell.xib */,
+				99425449215762A10075EDCA /* CreateServiceMechanicCell.swift */,
+				99425448215762A10075EDCA /* CreateServiceMechanicCell.xib */,
+				99425446215762750075EDCA /* CreateServiceVehicleCell.swift */,
+				9942543E215762750075EDCA /* CreateServiceVehicleCell.xib */,
+				9942544C215762C50075EDCA /* CreateServicePriceCell.swift */,
+				9942544B215762C50075EDCA /* CreateServicePriceCell.xib */,
+				9942544F215763070075EDCA /* CreateServiceDateCell.swift */,
+				9942544E215763070075EDCA /* CreateServiceDateCell.xib */,
+				99FEAFF6215DE3C00009BC07 /* CreateServiceOilTypeCell.swift */,
+				99FEAFF7215DE3C00009BC07 /* CreateServiceOilTypeCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9991FE17214B86D600F58F42 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				990F4377214252C700E65FC1 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9991FE18214B86DE00F58F42 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				990F437C214252C700E65FC1 /* Info.plist */,
+				99C791C32150C8A8000167CB /* CarSwaddle-Bridging-Header.h */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		9991FE19214B86E900F58F42 /* Launch UI */ = {
+			isa = PBXGroup;
+			children = (
+				990F4379214252C700E65FC1 /* LaunchScreen.storyboard */,
+			);
+			path = "Launch UI";
+			sourceTree = "<group>";
+		};
+		9991FE1A214B86F900F58F42 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				990F436D214252C600E65FC1 /* AppDelegate.swift */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		99927585215DF2C70032D7F7 /* Oil Type */ = {
+			isa = PBXGroup;
+			children = (
+				99FEB001215DE46A0009BC07 /* SelectOilTypeViewController.swift */,
+				99FEB003215DE4770009BC07 /* SelectOilTypeViewController.storyboard */,
+				99FEB005215DEECB0009BC07 /* OilTypeCell.swift */,
+				99FEB007215DEED80009BC07 /* OilTypeCell.xib */,
+			);
+			path = "Oil Type";
+			sourceTree = "<group>";
+		};
+		99F78F19214B9F1700D1BD28 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				99DED70F214B7EBC0061CFE0 /* Store.swift */,
+				9942545321576C430075EDCA /* NSManagedObjectFetchable.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		99F78F1A214B9F1D00D1BD28 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9991FE19214B86E900F58F42 /* Launch UI */,
+				994CA9FA215206EE00D41F6C /* Login */,
+				9955BC3221556ABA008DAF8E /* Navigation */,
+				990F436F214252C600E65FC1 /* ViewController.swift */,
+				99425465215778DD0075EDCA /* Defaults.swift */,
+				990F4371214252C600E65FC1 /* Main.storyboard */,
+				995B9F232154B4380030A7CA /* GlobalImports.swift */,
+				993BA12521585ACA00DB95EF /* LocationManager.swift */,
+				9955BC33215572E3008DAF8E /* Services */,
+				9955BC382155741B008DAF8E /* Profile */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		99F78F1B214B9F2E00D1BD28 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		99F78F24214BA4E400D1BD28 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				991B4057216B44B900D7644D /* CarSwaddleUI.framework */,
+				991B403F216ADDA400D7644D /* Store.framework */,
+				995D0104216AD7C3009B1895 /* Authentication.framework */,
+				995D0102216AD7C3009B1895 /* CarSwaddleNetworkRequest.framework */,
+				995D0103216AD7C3009B1895 /* KeychainAccess.framework */,
+				99C8DD7E216AC35900627E8A /* NetworkRequest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +463,8 @@
 				990F4366214252C600E65FC1 /* Sources */,
 				990F4367214252C600E65FC1 /* Frameworks */,
 				990F4368214252C600E65FC1 /* Resources */,
+				995AB47C216A902500EBD8C0 /* ShellScript */,
+				991B4049216B324400D7644D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -232,9 +559,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99FEB008215DEED80009BC07 /* OilTypeCell.xib in Resources */,
 				990F437B214252C700E65FC1 /* LaunchScreen.storyboard in Resources */,
+				994CA9F9215206E600D41F6C /* LoginViewController.storyboard in Resources */,
+				9942547C2157F7B70075EDCA /* CreateServiceDateCell.xib in Resources */,
 				990F4378214252C700E65FC1 /* Assets.xcassets in Resources */,
+				9955BC3721557311008DAF8E /* CreateServiceViewController.storyboard in Resources */,
+				99425475215781F80075EDCA /* SelectLocationViewController.storyboard in Resources */,
+				9942547E2157F8300075EDCA /* SelectVehicleViewController.storyboard in Resources */,
+				9955BC3F215588DB008DAF8E /* CreateServiceLocationCell.xib in Resources */,
+				9942547D2157F8290075EDCA /* SelectMechanicViewController.storyboard in Resources */,
+				9955BC3121556566008DAF8E /* ServicesViewController.storyboard in Resources */,
+				99116906215B76B6001E039E /* AddVehicleCell.xib in Resources */,
+				9942547B2157F7B30075EDCA /* CreateServicePriceCell.xib in Resources */,
+				9943C174215B6C69003C2BE9 /* VehicleCell.xib in Resources */,
+				994254792157F7980075EDCA /* CreateServiceMechanicCell.xib in Resources */,
+				9955BC2D21556527008DAF8E /* ProfileViewController.storyboard in Resources */,
+				99FEAFF9215DE3C00009BC07 /* CreateServiceOilTypeCell.xib in Resources */,
+				9942547A2157F7AF0075EDCA /* CreateServiceVehicleCell.xib in Resources */,
 				990F4373214252C600E65FC1 /* Main.storyboard in Resources */,
+				9942547F2157F8370075EDCA /* SelectDateViewController.storyboard in Resources */,
+				99FEB004215DE4770009BC07 /* SelectOilTypeViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,14 +599,76 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		995AB47C216A902500EBD8C0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/NetworkRequest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Authentication.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleNetworkRequest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Store.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleUI.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NetworkRequest.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Authentication.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleNetworkRequest.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Store.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		990F4366214252C600E65FC1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				990F4376214252C600E65FC1 /* CarSwaddle.xcdatamodeld in Sources */,
+				994CA9F7215206CD00D41F6C /* LoginViewController.swift in Sources */,
+				995B9F242154B4380030A7CA /* GlobalImports.swift in Sources */,
+				9942546B21577B6C0075EDCA /* SelectMechanicViewController.swift in Sources */,
+				9955BC272155630C008DAF8E /* UIViewControllerExtension.swift in Sources */,
+				9955BC2F21556554008DAF8E /* ServicesViewController.swift in Sources */,
+				9955BC2421555D62008DAF8E /* Navigator.swift in Sources */,
 				990F4370214252C600E65FC1 /* ViewController.swift in Sources */,
 				990F436E214252C600E65FC1 /* AppDelegate.swift in Sources */,
+				99425447215762750075EDCA /* CreateServiceVehicleCell.swift in Sources */,
+				9942544A215762A10075EDCA /* CreateServiceMechanicCell.swift in Sources */,
+				99FEB006215DEECB0009BC07 /* OilTypeCell.swift in Sources */,
+				99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */,
+				99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */,
+				99116905215B76B6001E039E /* AddVehicleCell.swift in Sources */,
+				9942547121577B730075EDCA /* SelectLocationViewController.swift in Sources */,
+				9955BC2B2155650C008DAF8E /* ProfileViewController.swift in Sources */,
+				9942545421576C430075EDCA /* NSManagedObjectFetchable.swift in Sources */,
+				9955BC3E215588DB008DAF8E /* CreateServiceLocationCell.swift in Sources */,
+				994254522157691A0075EDCA /* CreateServiceCell.swift in Sources */,
+				9955BC3521557305008DAF8E /* CreateServiceViewController.swift in Sources */,
+				9943C173215B6C69003C2BE9 /* VehicleCell.swift in Sources */,
+				9955BC0D2154E45C008DAF8E /* Auth.swift in Sources */,
+				9955BC1A2154E8DC008DAF8E /* UsersViewController.swift in Sources */,
+				9942546D21577B6E0075EDCA /* SelectVehicleViewController.swift in Sources */,
+				99DED710214B7EBC0061CFE0 /* Store.swift in Sources */,
+				9942546921577B1B0075EDCA /* SelectDateViewController.swift in Sources */,
+				994CA9FC215208BD00D41F6C /* SignUpViewController.swift in Sources */,
+				99425466215778DD0075EDCA /* Defaults.swift in Sources */,
+				9942544D215762C50075EDCA /* CreateServicePriceCell.swift in Sources */,
+				993BA12621585ACA00DB95EF /* LocationManager.swift in Sources */,
+				99425450215763070075EDCA /* CreateServiceDateCell.swift in Sources */,
+				9955BC29215563F8008DAF8E /* UIFontExtension.swift in Sources */,
+				9955BC3A215574EF008DAF8E /* UIAlertControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +684,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				990F4391214252C700E65FC1 /* CarSwaddleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +759,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -414,6 +821,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -438,13 +846,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MG7WLQ6J4A;
-				INFOPLIST_FILE = CarSwaddle/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(SRCROOT)/Carthage/Build/iOS/",
+				);
+				INFOPLIST_FILE = CarSwaddle/Support/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"$(SRCROOT)/Carthage/Build/iOS",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CarSwaddle/Support/CarSwaddle-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -456,13 +872,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MG7WLQ6J4A;
-				INFOPLIST_FILE = CarSwaddle/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(SRCROOT)/Carthage/Build/iOS/",
+				);
+				INFOPLIST_FILE = CarSwaddle/Support/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"$(SRCROOT)/Carthage/Build/iOS",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CarSwaddle/Support/CarSwaddle-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -590,19 +1014,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		990F4374214252C600E65FC1 /* CarSwaddle.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				990F4375214252C600E65FC1 /* CarSwaddle.xcdatamodel */,
-			);
-			currentVersion = 990F4375214252C600E65FC1 /* CarSwaddle.xcdatamodel */;
-			path = CarSwaddle.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 990F4362214252C600E65FC1 /* Project object */;
 }
