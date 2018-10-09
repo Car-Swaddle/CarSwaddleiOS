@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9912CD62216C66AE0006FDDF /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CD60216C66AE0006FDDF /* Authentication.framework */; };
+		9912CD63216C66AE0006FDDF /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CD61216C66AE0006FDDF /* NetworkRequest.framework */; };
+		9912CD64216C66BF0006FDDF /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CD61216C66AE0006FDDF /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9912CD65216C66C40006FDDF /* Authentication.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CD60216C66AE0006FDDF /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		991B4069216B557E00D7644D /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99C8DD87216AD59C00627E8A /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		992C53C72150C59B0076949C /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992C53BD2150C59B0076949C /* CarSwaddleNetworkRequest.framework */; };
 		992C53CC2150C59B0076949C /* CarSwaddleNetworkRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C53CB2150C59B0076949C /* CarSwaddleNetworkRequestTests.swift */; };
 		992C53CE2150C59B0076949C /* CarSwaddleNetworkRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 992C53C02150C59B0076949C /* CarSwaddleNetworkRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -16,8 +21,6 @@
 		995B9F2D2154BB180030A7CA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F2C2154BB180030A7CA /* AuthService.swift */; };
 		995B9F2F2154C9050030A7CA /* NetworkRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F2E2154C9050030A7CA /* NetworkRequestError.swift */; };
 		99C791C72150CBA4000167CB /* AutoServiceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C791C62150CBA4000167CB /* AutoServiceService.swift */; };
-		99C8DD81216ACD5400627E8A /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C8DD80216ACD5400627E8A /* NetworkRequest.framework */; };
-		99F36C5E216AD5B300CE4564 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C8DD86216AD59C00627E8A /* Authentication.framework */; };
 		99F36C5F216AD5B300CE4564 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C8DD87216AD59C00627E8A /* KeychainAccess.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +34,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		991B4067216B557000D7644D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9912CD65216C66C40006FDDF /* Authentication.framework in CopyFiles */,
+				9912CD64216C66BF0006FDDF /* NetworkRequest.framework in CopyFiles */,
+				991B4069216B557E00D7644D /* KeychainAccess.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		9912CD60216C66AE0006FDDF /* Authentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Authentication.framework; path = Carthage/Build/iOS/Static/Authentication.framework; sourceTree = "<group>"; };
+		9912CD61216C66AE0006FDDF /* NetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkRequest.framework; path = Carthage/Build/iOS/Static/NetworkRequest.framework; sourceTree = "<group>"; };
 		992C53BD2150C59B0076949C /* CarSwaddleNetworkRequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CarSwaddleNetworkRequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		992C53C02150C59B0076949C /* CarSwaddleNetworkRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarSwaddleNetworkRequest.h; sourceTree = "<group>"; };
 		992C53C12150C59B0076949C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,8 +64,6 @@
 		995B9F2C2154BB180030A7CA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		995B9F2E2154C9050030A7CA /* NetworkRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestError.swift; sourceTree = "<group>"; };
 		99C791C62150CBA4000167CB /* AutoServiceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceService.swift; sourceTree = "<group>"; };
-		99C8DD80216ACD5400627E8A /* NetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkRequest.framework; path = Carthage/Build/iOS/NetworkRequest.framework; sourceTree = "<group>"; };
-		99C8DD86216AD59C00627E8A /* Authentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Authentication.framework; path = Carthage/Build/iOS/Authentication.framework; sourceTree = "<group>"; };
 		99C8DD87216AD59C00627E8A /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,8 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99C8DD81216ACD5400627E8A /* NetworkRequest.framework in Frameworks */,
-				99F36C5E216AD5B300CE4564 /* Authentication.framework in Frameworks */,
+				9912CD62216C66AE0006FDDF /* Authentication.framework in Frameworks */,
+				9912CD63216C66AE0006FDDF /* NetworkRequest.framework in Frameworks */,
 				99F36C5F216AD5B300CE4564 /* KeychainAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,9 +133,9 @@
 		99C791BA2150C5E5000167CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				99C8DD86216AD59C00627E8A /* Authentication.framework */,
+				9912CD60216C66AE0006FDDF /* Authentication.framework */,
+				9912CD61216C66AE0006FDDF /* NetworkRequest.framework */,
 				99C8DD87216AD59C00627E8A /* KeychainAccess.framework */,
-				99C8DD80216ACD5400627E8A /* NetworkRequest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -155,6 +173,7 @@
 				992C53BA2150C59B0076949C /* Frameworks */,
 				992C53BB2150C59B0076949C /* Resources */,
 				99C8DD82216ACD6200627E8A /* ShellScript */,
+				991B4067216B557000D7644D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -246,12 +265,16 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/NetworkRequest.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Authentication.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Static/NetworkRequest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Static/Authentication.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/NetworkRequest.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/Authentication.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -428,6 +451,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
 				);
 				INFOPLIST_FILE = CarSwaddleNetworkRequest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -437,6 +461,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleNetworkRequest;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -461,6 +486,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
 				);
 				INFOPLIST_FILE = CarSwaddleNetworkRequest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -470,6 +496,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleNetworkRequest;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
