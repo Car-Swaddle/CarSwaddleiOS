@@ -25,6 +25,7 @@
 		9912CD72216C69320006FDDF /* CarSwaddleUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CD68216C69250006FDDF /* CarSwaddleUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9912CD73216C69320006FDDF /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CD69216C69250006FDDF /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9912CD74216C69320006FDDF /* Store.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CD6A216C69250006FDDF /* Store.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9912CDD8216C89170006FDDF /* CarSwaddleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CDD7216C89170006FDDF /* CarSwaddleData.framework */; };
 		991B404D216B325E00D7644D /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 995D0103216AD7C3009B1895 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		993BA12621585ACA00DB95EF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993BA12521585ACA00DB95EF /* LocationManager.swift */; };
 		99425447215762750075EDCA /* CreateServiceVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99425446215762750075EDCA /* CreateServiceVehicleCell.swift */; };
@@ -129,6 +130,7 @@
 		9912CD69216C69250006FDDF /* NetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkRequest.framework; path = Carthage/Build/iOS/Static/NetworkRequest.framework; sourceTree = "<group>"; };
 		9912CD6A216C69250006FDDF /* Store.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Store.framework; path = Carthage/Build/iOS/Static/Store.framework; sourceTree = "<group>"; };
 		9912CD9D216C7B010006FDDF /* CarSwaddle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CarSwaddle.entitlements; sourceTree = "<group>"; };
+		9912CDD7216C89170006FDDF /* CarSwaddleData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleData.framework; path = Carthage/Build/iOS/Static/CarSwaddleData.framework; sourceTree = "<group>"; };
 		993BA12521585ACA00DB95EF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9942543E215762750075EDCA /* CreateServiceVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServiceVehicleCell.xib; sourceTree = "<group>"; };
 		99425446215762750075EDCA /* CreateServiceVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceVehicleCell.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			files = (
 				995D0106216AD7C3009B1895 /* KeychainAccess.framework in Frameworks */,
 				9912CD6B216C69250006FDDF /* CarSwaddleNetworkRequest.framework in Frameworks */,
+				9912CDD8216C89170006FDDF /* CarSwaddleData.framework in Frameworks */,
 				9912CD6C216C69250006FDDF /* Authentication.framework in Frameworks */,
 				9912CD6D216C69250006FDDF /* CarSwaddleUI.framework in Frameworks */,
 				9912CD6E216C69250006FDDF /* NetworkRequest.framework in Frameworks */,
@@ -232,7 +235,6 @@
 		990F436C214252C600E65FC1 /* CarSwaddle */ = {
 			isa = PBXGroup;
 			children = (
-				9912CD9D216C7B010006FDDF /* CarSwaddle.entitlements */,
 				9955BC2521556302008DAF8E /* Extensions */,
 				99F78F1A214B9F1D00D1BD28 /* UI */,
 				9955BC0C2154E45C008DAF8E /* Auth.swift */,
@@ -370,6 +372,7 @@
 		9991FE18214B86DE00F58F42 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				9912CD9D216C7B010006FDDF /* CarSwaddle.entitlements */,
 				990F437C214252C700E65FC1 /* Info.plist */,
 				99C791C32150C8A8000167CB /* CarSwaddle-Bridging-Header.h */,
 			);
@@ -439,6 +442,7 @@
 		99F78F24214BA4E400D1BD28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9912CDD7216C89170006FDDF /* CarSwaddleData.framework */,
 				9912CD67216C69250006FDDF /* Authentication.framework */,
 				9912CD66216C69250006FDDF /* CarSwaddleNetworkRequest.framework */,
 				9912CD68216C69250006FDDF /* CarSwaddleUI.framework */,
@@ -618,6 +622,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Static/CarSwaddleNetworkRequest.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Static/Store.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Static/CarSwaddleUI.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Static/CarSwaddleData.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -628,6 +633,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/CarSwaddleNetworkRequest.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/Store.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/CarSwaddleUI.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/CarSwaddleData.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -846,7 +852,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = CarSwaddle/CarSwaddle.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CarSwaddle/Support/CarSwaddle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MG7WLQ6J4A;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -856,7 +862,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
 				);
 				INFOPLIST_FILE = CarSwaddle/Support/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -874,7 +880,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = CarSwaddle/CarSwaddle.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CarSwaddle/Support/CarSwaddle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MG7WLQ6J4A;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -884,7 +890,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
 				);
 				INFOPLIST_FILE = CarSwaddle/Support/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

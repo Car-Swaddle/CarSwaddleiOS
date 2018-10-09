@@ -114,7 +114,7 @@ final class Navigator: NSObject {
     }
     
     lazy private var transition: HorizontalSlideTransition = {
-        return RelativeTransition(delegate: self)
+        return HorizontalSlideTransition(delegate: self)
     }()
     
 }
