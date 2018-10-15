@@ -15,7 +15,7 @@ class UsersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .white
 //        userService.getUsers(offset: 0, limit: 1) { (json, error) in
         userService.getCurrentUser { json, error in
             print(json ?? "")

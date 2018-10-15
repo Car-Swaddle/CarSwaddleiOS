@@ -1,6 +1,9 @@
 {
-  "commitish" : "1.02",
+  "commitish" : "1.085",
   "iOS" : [
-
+    {
+      "name" : "Store",
+      "hash" : "05c19e6bd3223a3f8037d895f0920b2f4c5b7b2c73b4ca057f45fca6396045a2"
+    }
   ]
 }

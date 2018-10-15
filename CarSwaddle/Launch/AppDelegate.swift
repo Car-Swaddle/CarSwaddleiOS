@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let initialViewController = navigator.rootViewController
+        let initialViewController = navigator.initialViewController()
         
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()

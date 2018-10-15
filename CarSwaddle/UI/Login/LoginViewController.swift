@@ -29,17 +29,19 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
             let password = passwordTextField.text else {
                 return
         }
-        loginTask = auth.login(email: email, password: password) { [weak self] error in
-            guard error == nil else {
-                if let networkError = error as? NetworkRequestError {
-                    print("login error: \(networkError)")
+        store.privateContext { [weak self] context in
+            self?.loginTask = self?.auth.login(email: email, password: password, context: context) { error in
+                guard error == nil else {
+                    if let networkError = error as? NetworkRequestError {
+                        print("login error: \(networkError)")
+                    }
+                    return
                 }
-                return
-            }
-            print("logged in")
-            DispatchQueue.main.async {
-                let users = UsersViewController()
-                self?.navigationController?.pushViewController(users, animated: true)
+                print("logged in")
+                DispatchQueue.main.async {
+                    let users = UsersViewController()
+                    self?.navigationController?.pushViewController(users, animated: true)
+                }
             }
         }
     }

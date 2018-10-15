@@ -40,7 +40,7 @@ final class Navigator: NSObject {
     public func initialViewController() -> UIViewController {
         if AuthController().token == nil {
             let signUp = SignUpViewController.viewControllerFromStoryboard()
-            return signUp
+            return signUp.inNavigationController()
         } else {
             return rootViewController
         }

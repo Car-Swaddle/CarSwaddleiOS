@@ -35,16 +35,18 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
             let password = passwordTextField.text else {
                 return
         }
-        loginTask = auth.signUp(email: email, password: password) { [weak self] error in
-            guard error == nil else {
-                if let networkError = error as? NetworkRequestError {
-                    print("login error: \(networkError)")
+        store.privateContext { [weak self] context in
+            self?.loginTask = self?.auth.signUp(email: email, password: password, context: context) { error in
+                guard error == nil else {
+                    if let networkError = error as? NetworkRequestError {
+                        print("login error: \(networkError)")
+                    }
+                    return
                 }
-                return
-            }
-            DispatchQueue.main.async {
-                let users = UsersViewController()
-                self?.navigationController?.pushViewController(users, animated: true)
+                DispatchQueue.main.async {
+                    let users = UsersViewController()
+                    self?.navigationController?.pushViewController(users, animated: true)
+                }
             }
         }
     }

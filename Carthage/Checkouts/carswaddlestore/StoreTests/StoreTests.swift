@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreData
 @testable import Store
 
 class StoreTests: XCTestCase {
@@ -22,8 +23,17 @@ class StoreTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let store = Store(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
+        
+        store.mainContext.persist()
+    
+//        let bundle = Bundle(for: Store.self)
+//        let d = bundle.url(forResource: "NewModel", withExtension: "momd")!
+//
+//        let model = NSManagedObjectModel(contentsOf: d)!
+//
+//        let container = NSPersistentContainer(name: "some name", managedObjectModel: model)
+        
     }
     
     func testPerformanceExample() {

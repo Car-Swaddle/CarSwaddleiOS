@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 @objc(TemplateTimeSpan)
-public class TemplateTimeSpan: NSManagedObject {
+public final class TemplateTimeSpan: NSManagedObject {
+    
 
 }

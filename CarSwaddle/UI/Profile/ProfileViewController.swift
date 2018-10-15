@@ -23,7 +23,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         let title = NSLocalizedString("Logout", comment: "title of button to logout")
         let logoutAction = UIAlertAction(title: title, style: .destructive) { action in
             Auth().logout { error in
-                print("error: \(error)")
+                print("error: \(String(describing: error))")
             }
         }
         

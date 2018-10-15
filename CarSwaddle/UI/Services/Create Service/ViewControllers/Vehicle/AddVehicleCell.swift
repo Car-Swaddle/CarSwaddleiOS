@@ -39,12 +39,10 @@ final class AddVehicleCell: UITableViewCell, NibRegisterable {
         resignFirstResponder()
         guard let name = vehicleNameTextField.text,
             let plateNumber = vehicleLicensePlateTextField.text else { return }
-        let vehicle = Vehicle(name: name, licensePlate: plateNumber, user: User.currentUser(context: store.mainContext)!, context: store.mainContext)
+        _ = Vehicle(name: name, licensePlate: plateNumber, user: User.currentUser(context: store.mainContext)!, context: store.mainContext)
         store.mainContext.persist()
         vehicleNameTextField.text = nil
         vehicleLicensePlateTextField.text = nil
     }
-    
-    
     
 }

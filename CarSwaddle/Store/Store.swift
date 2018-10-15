@@ -10,4 +10,4 @@ import CoreData
 import Store
 
 
-let store = Store()
+let store = Store(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
