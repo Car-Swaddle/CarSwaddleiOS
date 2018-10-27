@@ -21,10 +21,8 @@
 		9912CD70216C69320006FDDF /* Authentication.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CD67216C69250006FDDF /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9912CD72216C69320006FDDF /* CarSwaddleUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CD68216C69250006FDDF /* CarSwaddleUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9912CD73216C69320006FDDF /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CD69216C69250006FDDF /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9912CDD8216C89170006FDDF /* CarSwaddleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CDD7216C89170006FDDF /* CarSwaddleData.framework */; };
 		991375A12171C02700F15BEC /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375A02171C02700F15BEC /* Store.framework */; };
 		991375A22171C03100F15BEC /* Store.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 991375A02171C02700F15BEC /* Store.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		991375A32171C03600F15BEC /* CarSwaddleData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CDD7216C89170006FDDF /* CarSwaddleData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		991375AB2171D81900F15BEC /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375AA2171D81900F15BEC /* CarSwaddleNetworkRequest.framework */; };
 		991375AC2171D82800F15BEC /* CarSwaddleNetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 991375AA2171D81900F15BEC /* CarSwaddleNetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		991B404D216B325E00D7644D /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 995D0103216AD7C3009B1895 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -68,6 +66,8 @@
 		995B9F242154B4380030A7CA /* GlobalImports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F232154B4380030A7CA /* GlobalImports.swift */; };
 		995D0106216AD7C3009B1895 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995D0103216AD7C3009B1895 /* KeychainAccess.framework */; };
 		99DED710214B7EBC0061CFE0 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DED70F214B7EBC0061CFE0 /* Store.swift */; };
+		99F0277921845755005FEFC7 /* CarSwaddleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F0277821845755005FEFC7 /* CarSwaddleData.framework */; };
+		99F0277A2184576D005FEFC7 /* CarSwaddleData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99F0277621845667005FEFC7 /* CarSwaddleData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FEAFF6215DE3C00009BC07 /* CreateServiceOilTypeCell.swift */; };
 		99FEAFF9215DE3C00009BC07 /* CreateServiceOilTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99FEAFF7215DE3C00009BC07 /* CreateServiceOilTypeCell.xib */; };
 		99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FEB001215DE46A0009BC07 /* SelectOilTypeViewController.swift */; };
@@ -100,8 +100,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				99F0277A2184576D005FEFC7 /* CarSwaddleData.framework in CopyFiles */,
 				991375AC2171D82800F15BEC /* CarSwaddleNetworkRequest.framework in CopyFiles */,
-				991375A32171C03600F15BEC /* CarSwaddleData.framework in CopyFiles */,
 				991375A22171C03100F15BEC /* Store.framework in CopyFiles */,
 				9912CD70216C69320006FDDF /* Authentication.framework in CopyFiles */,
 				9912CD72216C69320006FDDF /* CarSwaddleUI.framework in CopyFiles */,
@@ -130,7 +130,6 @@
 		9912CD68216C69250006FDDF /* CarSwaddleUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleUI.framework; path = Carthage/Build/iOS/Static/CarSwaddleUI.framework; sourceTree = "<group>"; };
 		9912CD69216C69250006FDDF /* NetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkRequest.framework; path = Carthage/Build/iOS/Static/NetworkRequest.framework; sourceTree = "<group>"; };
 		9912CD9D216C7B010006FDDF /* CarSwaddle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CarSwaddle.entitlements; sourceTree = "<group>"; };
-		9912CDD7216C89170006FDDF /* CarSwaddleData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleData.framework; path = Carthage/Build/iOS/Static/CarSwaddleData.framework; sourceTree = "<group>"; };
 		991375A02171C02700F15BEC /* Store.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Store.framework; path = Carthage/Build/iOS/Store.framework; sourceTree = "<group>"; };
 		991375AA2171D81900F15BEC /* CarSwaddleNetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleNetworkRequest.framework; path = Carthage/Build/iOS/CarSwaddleNetworkRequest.framework; sourceTree = "<group>"; };
 		993BA12521585ACA00DB95EF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -174,6 +173,8 @@
 		995D0103216AD7C3009B1895 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		99C791C32150C8A8000167CB /* CarSwaddle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarSwaddle-Bridging-Header.h"; sourceTree = "<group>"; };
 		99DED70F214B7EBC0061CFE0 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		99F0277621845667005FEFC7 /* CarSwaddleData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CarSwaddleData.framework; sourceTree = "<group>"; };
+		99F0277821845755005FEFC7 /* CarSwaddleData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleData.framework; path = Carthage/Build/iOS/CarSwaddleData.framework; sourceTree = "<group>"; };
 		99FEAFF6215DE3C00009BC07 /* CreateServiceOilTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOilTypeCell.swift; sourceTree = "<group>"; };
 		99FEAFF7215DE3C00009BC07 /* CreateServiceOilTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServiceOilTypeCell.xib; sourceTree = "<group>"; };
 		99FEB001215DE46A0009BC07 /* SelectOilTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOilTypeViewController.swift; sourceTree = "<group>"; };
@@ -189,9 +190,9 @@
 			files = (
 				995D0106216AD7C3009B1895 /* KeychainAccess.framework in Frameworks */,
 				991375A12171C02700F15BEC /* Store.framework in Frameworks */,
-				9912CDD8216C89170006FDDF /* CarSwaddleData.framework in Frameworks */,
 				9912CD6C216C69250006FDDF /* Authentication.framework in Frameworks */,
 				9912CD6D216C69250006FDDF /* CarSwaddleUI.framework in Frameworks */,
+				99F0277921845755005FEFC7 /* CarSwaddleData.framework in Frameworks */,
 				9912CD6E216C69250006FDDF /* NetworkRequest.framework in Frameworks */,
 				991375AB2171D81900F15BEC /* CarSwaddleNetworkRequest.framework in Frameworks */,
 			);
@@ -444,9 +445,10 @@
 		99F78F24214BA4E400D1BD28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99F0277621845667005FEFC7 /* CarSwaddleData.framework */,
+				99F0277821845755005FEFC7 /* CarSwaddleData.framework */,
 				991375AA2171D81900F15BEC /* CarSwaddleNetworkRequest.framework */,
 				991375A02171C02700F15BEC /* Store.framework */,
-				9912CDD7216C89170006FDDF /* CarSwaddleData.framework */,
 				9912CD67216C69250006FDDF /* Authentication.framework */,
 				9912CD68216C69250006FDDF /* CarSwaddleUI.framework */,
 				9912CD69216C69250006FDDF /* NetworkRequest.framework */,
@@ -624,7 +626,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleNetworkRequest.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Store.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Static/CarSwaddleUI.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Static/CarSwaddleData.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleData.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -635,7 +637,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleNetworkRequest.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Store.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/CarSwaddleUI.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/CarSwaddleData.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleData.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

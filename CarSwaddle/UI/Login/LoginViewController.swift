@@ -39,8 +39,7 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
                 }
                 print("logged in")
                 DispatchQueue.main.async {
-                    let users = UsersViewController()
-                    self?.navigationController?.pushViewController(users, animated: true)
+                    navigator.navigateToLoggedInViewController()
                 }
             }
         }

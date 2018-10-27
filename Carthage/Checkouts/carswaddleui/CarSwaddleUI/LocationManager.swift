@@ -22,8 +22,6 @@ public enum LocationError: Error {
 }
 
 
-public let locationManager = LocationManager()
-
 /// Thin layer around CLLocationManager providing a simpler API and caching.
 final public class LocationManager: NSObject {
     
