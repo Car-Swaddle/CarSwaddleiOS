@@ -164,6 +164,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if __has_feature(modules)
 @import CoreData;
+@import CoreGraphics;
 @import Foundation;
 #endif
 
@@ -234,16 +235,7 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class TemplateTimeSpan;
 @class NSSet;
-
-@interface Mechanic (SWIFT_EXTENSION(Store))
-- (void)addScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
-- (void)removeScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
-- (void)addScheduleTimeSpans:(NSSet * _Nonnull)values;
-- (void)removeScheduleTimeSpans:(NSSet * _Nonnull)values;
-@end
-
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 - (void)addServicesObject:(AutoService * _Nonnull)value;
@@ -252,6 +244,16 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (void)removeServices:(NSSet * _Nonnull)values;
 @end
 
+@class TemplateTimeSpan;
+
+@interface Mechanic (SWIFT_EXTENSION(Store))
+- (void)addScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
+- (void)removeScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
+- (void)addScheduleTimeSpans:(NSSet * _Nonnull)values;
+- (void)removeScheduleTimeSpans:(NSSet * _Nonnull)values;
+@end
+
+@class Region;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
@@ -259,6 +261,7 @@ SWIFT_CLASS_NAMED("Mechanic")
 @property (nonatomic, strong) User * _Nullable user;
 @property (nonatomic, copy) NSSet<TemplateTimeSpan *> * _Nonnull scheduleTimeSpans;
 @property (nonatomic, copy) NSSet<AutoService *> * _Nonnull services;
+@property (nonatomic, strong) Region * _Nullable serviceRegion;
 @end
 
 
@@ -314,6 +317,21 @@ SWIFT_CLASS_NAMED("PricePart")
 @end
 
 
+SWIFT_CLASS_NAMED("Region")
+@interface Region : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface Region (SWIFT_EXTENSION(Store))
+@property (nonatomic) CGFloat latitude;
+@property (nonatomic) CGFloat longitude;
+@property (nonatomic, copy) NSString * _Nonnull identifier;
+@property (nonatomic) double radius;
+@property (nonatomic, strong) Mechanic * _Nullable mechanic;
+@end
+
+
 SWIFT_CLASS_NAMED("TemplateTimeSpan")
 @interface TemplateTimeSpan : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
@@ -337,18 +355,18 @@ SWIFT_CLASS_NAMED("User")
 
 
 @interface User (SWIFT_EXTENSION(Store))
-- (void)addVehiclesObject:(Vehicle * _Nonnull)value;
-- (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
-- (void)addVehicles:(NSSet * _Nonnull)values;
-- (void)removeVehicles:(NSSet * _Nonnull)values;
-@end
-
-
-@interface User (SWIFT_EXTENSION(Store))
 - (void)addServicesObject:(AutoService * _Nonnull)value;
 - (void)removeServicesObject:(AutoService * _Nonnull)value;
 - (void)addServices:(NSSet * _Nonnull)values;
 - (void)removeServices:(NSSet * _Nonnull)values;
+@end
+
+
+@interface User (SWIFT_EXTENSION(Store))
+- (void)addVehiclesObject:(Vehicle * _Nonnull)value;
+- (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
+- (void)addVehicles:(NSSet * _Nonnull)values;
+- (void)removeVehicles:(NSSet * _Nonnull)values;
 @end
 
 
