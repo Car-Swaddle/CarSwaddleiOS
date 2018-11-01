@@ -13,7 +13,7 @@ private let password = "password"
 
 class LoginTests: XCTestCase {
     
-    private let authService = AuthService()
+    private let authService = AuthService(serviceRequest: serviceRequest)
     
     func testLogin() {
         let exp = expectation(description: "\(#function)\(#line)")
@@ -117,7 +117,8 @@ class LoginTests: XCTestCase {
 //    func testMechanicSignUp() {
 //        let exp = expectation(description: "\(#function)\(#line)")
 //
-//        let newEmail = UUID().uuidString
+////        let newEmail = UUID().uuidString
+//        let newEmail = "k"
 //        authService.mechanicSignUp(email: newEmail + "@k.com", password: password) { json, token, error in
 //            XCTAssert(token != nil, "Should have logged in")
 //            XCTAssert(json?["mechanic"] != nil, "Should have mechanic")
