@@ -11,6 +11,8 @@ import CarSwaddleData
 
 final class ProfileViewController: UIViewController, StoryboardInstantiating {
 
+    private let auth = Auth(serviceRequest: serviceRequest)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,8 +23,8 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let title = NSLocalizedString("Logout", comment: "title of button to logout")
-        let logoutAction = UIAlertAction(title: title, style: .destructive) { action in
-            Auth().logout { error in
+        let logoutAction = UIAlertAction(title: title, style: .destructive) { [weak self] action in
+            self?.auth.logout { error in
                 print("error: \(String(describing: error))")
             }
         }

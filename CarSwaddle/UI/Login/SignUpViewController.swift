@@ -17,7 +17,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         return "LoginViewController"
     }
     
-    private let auth = Auth()
+    private let auth = Auth(serviceRequest: serviceRequest)
 
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!

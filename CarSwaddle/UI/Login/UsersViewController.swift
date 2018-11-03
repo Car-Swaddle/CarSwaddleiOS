@@ -11,7 +11,7 @@ import CarSwaddleNetworkRequest
 
 class UsersViewController: UIViewController {
 
-    private let userService = UserService()
+    private let userService = UserService(serviceRequest: serviceRequest)
     
     override func viewDidLoad() {
         super.viewDidLoad()

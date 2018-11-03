@@ -12,7 +12,7 @@ import CarSwaddleNetworkRequest
 
 class ViewController: UIViewController {
     
-    private var service = AutoServiceService()
+    private var service = AutoServiceService(serviceRequest: serviceRequest)
     
     override func viewDidLoad() {
         super.viewDidLoad()
