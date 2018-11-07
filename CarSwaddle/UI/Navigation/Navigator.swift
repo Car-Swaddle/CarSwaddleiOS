@@ -38,11 +38,18 @@ let navigator = Navigator()
 
 final class Navigator: NSObject {
     
+    private var appDelegate: AppDelegate
+    
     public override init() {
         self.appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     }
     
-    private var appDelegate: AppDelegate
+    public func setupWindow() {
+        appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
+        appDelegate.window?.rootViewController = navigator.initialViewController()
+        appDelegate.window?.makeKeyAndVisible()
+        showRequiredScreensIfNeeded()
+    }
     
     public func initialViewController() -> UIViewController {
         if AuthController().token == nil {
@@ -70,8 +77,6 @@ final class Navigator: NSObject {
         tabController.delegate = self
         tabController.view.backgroundColor = .white
         
-        self.tabBarController = tabController
-        
         return tabController
     }()
     
@@ -89,15 +94,28 @@ final class Navigator: NSObject {
         }
     }
     
+    public func navigateToLoggedOutViewController() {
+        guard let window = appDelegate.window,
+            let rootViewController = window.rootViewController else { return }
+        let signUp = SignUpViewController.viewControllerFromStoryboard()
+        let newViewController = signUp.inNavigationController()
+        newViewController.view.frame = rootViewController.view.frame
+        newViewController.view.layoutIfNeeded()
+        
+        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            window.rootViewController = newViewController
+        }) { completed in }
+    }
+    
     private func showRequiredScreensIfNeeded() {
 //        guard let userID = User.currentUserID else { return }
 //        guard let mechanic = Mechanic.fetch(with: userID, in: store.mainContext) else { return }
         // TODO: Uncomment this before release
         //            mechanic.scheduleTimeSpans.count == 0 else { return
-//        let availabilityViewController = AvailabilityViewController.viewControllerFromStoryboard()
+        
 //        appDelegate.window?.rootViewController?.present(availabilityViewController.inNavigationController(), animated: true, completion: nil)
-        let users = UsersViewController()
-        appDelegate.window?.rootViewController?.present(users.inNavigationController(), animated: true, completion: nil)
+//        let users = UsersViewController()
+//        appDelegate.window?.rootViewController?.present(users.inNavigationController(), animated: true, completion: nil)
     }
     
     private lazy var servicesViewController: ServicesViewController = {

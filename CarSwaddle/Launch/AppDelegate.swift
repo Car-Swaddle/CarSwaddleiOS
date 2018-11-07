@@ -18,12 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         store.mainContext.persist()
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        
-        let initialViewController = navigator.initialViewController()
-        
-        window?.rootViewController = initialViewController
-        window?.makeKeyAndVisible()
+        navigator.setupWindow()
         
         return true
     }

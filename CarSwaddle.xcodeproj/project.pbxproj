@@ -64,6 +64,8 @@
 		9955BC3F215588DB008DAF8E /* CreateServiceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9955BC3D215588DB008DAF8E /* CreateServiceLocationCell.xib */; };
 		995B9F242154B4380030A7CA /* GlobalImports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F232154B4380030A7CA /* GlobalImports.swift */; };
 		995D0106216AD7C3009B1895 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995D0103216AD7C3009B1895 /* KeychainAccess.framework */; };
+		997DBC42218EBD210080F42C /* MechanicSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC40218EBD210080F42C /* MechanicSelectCell.swift */; };
+		997DBC43218EBD210080F42C /* MechanicSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC41218EBD210080F42C /* MechanicSelectCell.xib */; };
 		99A2CDAE218DA179003ED903 /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2CDAD218DA179003ED903 /* ServiceRequest.swift */; };
 		99DED710214B7EBC0061CFE0 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DED70F214B7EBC0061CFE0 /* Store.swift */; };
 		99F0277921845755005FEFC7 /* CarSwaddleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F0277821845755005FEFC7 /* CarSwaddleData.framework */; };
@@ -170,6 +172,8 @@
 		9955BC3D215588DB008DAF8E /* CreateServiceLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServiceLocationCell.xib; sourceTree = "<group>"; };
 		995B9F232154B4380030A7CA /* GlobalImports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalImports.swift; sourceTree = "<group>"; };
 		995D0103216AD7C3009B1895 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
+		997DBC40218EBD210080F42C /* MechanicSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicSelectCell.swift; sourceTree = "<group>"; };
+		997DBC41218EBD210080F42C /* MechanicSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MechanicSelectCell.xib; sourceTree = "<group>"; };
 		99A2CDAD218DA179003ED903 /* ServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
 		99C791C32150C8A8000167CB /* CarSwaddle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarSwaddle-Bridging-Header.h"; sourceTree = "<group>"; };
 		99DED70F214B7EBC0061CFE0 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -263,8 +267,7 @@
 			children = (
 				9942547021577B730075EDCA /* SelectLocationViewController.swift */,
 				99425474215781F80075EDCA /* SelectLocationViewController.storyboard */,
-				9942546A21577B6C0075EDCA /* SelectMechanicViewController.swift */,
-				99425476215782060075EDCA /* SelectMechanicViewController.storyboard */,
+				997DBC3F218EA8AA0080F42C /* Mechanic */,
 				9943C169215B61F4003C2BE9 /* Vehicle */,
 				9942546821577B1B0075EDCA /* SelectDateViewController.swift */,
 				994254782157820B0075EDCA /* SelectDateViewController.storyboard */,
@@ -361,6 +364,17 @@
 				99FEAFF7215DE3C00009BC07 /* CreateServiceOilTypeCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		997DBC3F218EA8AA0080F42C /* Mechanic */ = {
+			isa = PBXGroup;
+			children = (
+				9942546A21577B6C0075EDCA /* SelectMechanicViewController.swift */,
+				99425476215782060075EDCA /* SelectMechanicViewController.storyboard */,
+				997DBC40218EBD210080F42C /* MechanicSelectCell.swift */,
+				997DBC41218EBD210080F42C /* MechanicSelectCell.xib */,
+			);
+			path = Mechanic;
 			sourceTree = "<group>";
 		};
 		9991FE17214B86D600F58F42 /* Resources */ = {
@@ -580,6 +594,7 @@
 				994254792157F7980075EDCA /* CreateServiceMechanicCell.xib in Resources */,
 				9955BC2D21556527008DAF8E /* ProfileViewController.storyboard in Resources */,
 				99FEAFF9215DE3C00009BC07 /* CreateServiceOilTypeCell.xib in Resources */,
+				997DBC43218EBD210080F42C /* MechanicSelectCell.xib in Resources */,
 				9942547A2157F7AF0075EDCA /* CreateServiceVehicleCell.xib in Resources */,
 				990F4373214252C600E65FC1 /* Main.storyboard in Resources */,
 				9942547F2157F8370075EDCA /* SelectDateViewController.storyboard in Resources */,
@@ -653,6 +668,7 @@
 				99425447215762750075EDCA /* CreateServiceVehicleCell.swift in Sources */,
 				9942544A215762A10075EDCA /* CreateServiceMechanicCell.swift in Sources */,
 				99FEB006215DEECB0009BC07 /* OilTypeCell.swift in Sources */,
+				997DBC42218EBD210080F42C /* MechanicSelectCell.swift in Sources */,
 				99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */,
 				99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */,
 				99116905215B76B6001E039E /* AddVehicleCell.swift in Sources */,

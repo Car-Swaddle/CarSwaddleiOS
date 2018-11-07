@@ -83,22 +83,18 @@ final class CreateServiceViewController: UIViewController, StoryboardInstantiati
         } else {
             let newAutoService = AutoService.createWithDefaults(context: store.mainContext)
             newAutoService.type = .oilChange
-            let vehicle = AutoService.fetchMostRecentlyUsed(forUserID: User.currentUserID!, in: store.mainContext)?.vehicle ?? Vehicle.fetchFirstVehicle(forUserID: User.currentUserID!, in: store.mainContext)
-            newAutoService.vehicle = vehicle
+            newAutoService.vehicle = self.getVehicle()
             if let user = User.currentUser(context: store.mainContext) {
                 newAutoService.creator = user
-            } else {
-                // TODO: take this out!
-                let newUser = User(context: store.mainContext)
-                let id = "newFakeUser"
-                newUser.identifier = id
-                newUser.firstName = "Rupert"
-                newUser.lastName = "Diplomat"
-                newUser.phoneNumber = "801-960-5212"
-                User.setCurrentUserID(id)
             }
             autoService = newAutoService
         }
+    }
+    
+    private func getVehicle()  -> Vehicle? {
+        let recentlyUsedAutoService = AutoService.fetchMostRecentlyUsed(forUserID: User.currentUserID!, in: store.mainContext)?.vehicle
+        let firstVehicle = Vehicle.fetchFirstVehicle(forUserID: User.currentUserID!, in: store.mainContext)
+        return  recentlyUsedAutoService ?? firstVehicle
     }
     
     private func setupTableView() {
