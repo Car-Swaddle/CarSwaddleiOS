@@ -10,7 +10,16 @@ import Foundation
 import CoreData
 
 @objc(Mechanic)
-public final class Mechanic: NSManagedObject, NSManagedObjectFetchable {
+public final class Mechanic: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
+    
+    public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
+        guard let identifier = json.identifier,
+            let isActive = json["isActive"] as? Bool else { return nil }
+        
+        self.init(context: context)
+        self.identifier = identifier
+        self.isActive = isActive
+    }
 
     public static func currentLoggedInMechanic(in context: NSManagedObjectContext) -> Mechanic? {
         return User.currentUser(context: context)?.mechanic

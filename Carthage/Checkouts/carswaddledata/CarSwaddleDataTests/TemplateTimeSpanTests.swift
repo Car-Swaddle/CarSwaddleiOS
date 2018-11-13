@@ -32,7 +32,7 @@ class TemplateTimeSpanTests: LoginTestCase {
         context.persist()
     }
     
-    func testSavingTemplateTimeSpans() {
+    func testGettingTemplateTimeSpans() {
         let exp = expectation(description: "\(#function)\(#line)")
         let context = store.mainContext
         network.getTimeSpans(in: context) { ids, error in
@@ -42,7 +42,29 @@ class TemplateTimeSpanTests: LoginTestCase {
             XCTAssert(object.duration != 0, "Should have ids")
             XCTAssert(object.identifier != "", "Should have ids")
             XCTAssert(object.startTime != 0, "Should have ids")
-            XCTAssert(object.weekday.rawValue != 0, "Should have ids")
+//            XCTAssert(object.weekday.rawValue != 0, "Should have ids")
+            XCTAssert(ids.count > 0, "Should have ids")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGettingTemplateTimeSpansWithID() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        let context = store.mainContext
+        network.getTimeSpans(ofMechanicWithID: "5c00fe80-e702-11e8-9a16-6dd8a1b37c0f", in: context) { ids, error in
+            
+            guard let id = ids.first, let object = context.object(with: id) as? TemplateTimeSpan else {
+                XCTAssert(false, "No object")
+                exp.fulfill()
+                return
+            }
+            
+            XCTAssert(object.duration != 0, "Should have ids")
+            XCTAssert(object.identifier != "", "Should have ids")
+            XCTAssert(object.startTime != 0, "Should have ids")
+//            XCTAssert(object.weekday.rawValue != 0, "Should have ids")
             XCTAssert(ids.count > 0, "Should have ids")
             exp.fulfill()
         }
@@ -69,7 +91,7 @@ class TemplateTimeSpanTests: LoginTestCase {
             XCTAssert(object.duration != 0, "Should have ids")
             XCTAssert(object.identifier != "", "Should have ids")
             XCTAssert(object.startTime != 0, "Should have ids")
-            XCTAssert(object.weekday.rawValue != 0, "Should have ids")
+//            XCTAssert(object.weekday.rawValue != 0, "Should have ids")
             XCTAssert(ids.count > 0, "Should have ids")
             
             XCTAssert(ids.count == originalCount, "Should have ids")

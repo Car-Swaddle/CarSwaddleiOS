@@ -12,6 +12,25 @@ import CoreData
 
 private let identifierKey: String = "identifier"
 
+
+public protocol JSONInitable {
+    init?(json: JSONObject, context: NSManagedObjectContext)
+    static func fetchOrCreate(json: JSONObject, context: NSManagedObjectContext) -> Self?
+}
+
+extension JSONInitable where Self: NSManagedObjectFetchable, Self: NSManagedObject {
+    
+    public static func fetchOrCreate(json: JSONObject, context: NSManagedObjectContext) -> Self? {
+        if let identifier = json[identifierKey] as? ID {
+            return fetch(with: identifier, in: context) ?? Self(json: json, context: context)
+        } else {
+            return Self(json: json, context: context)
+        }
+    }
+    
+}
+
+
 /// Conform to this protocol to get a simple fetch method that will fetch an
 /// NSManagedObject with an identifier. Identifier can either be a String, Int64, Int
 /// at this time.
@@ -43,7 +62,9 @@ public protocol NSManagedObjectFetchable {
     static func fetchObjects(with identifiers: [ID], sortDescriptors: [NSSortDescriptor]?, in context: NSManagedObjectContext) -> [Self]
     
     static func deleteObjects(in context: NSManagedObjectContext, whileKeeping objects: [Self], fetchLimit: Int)
+    
 }
+
 
 public extension NSManagedObjectFetchable where Self: NSManagedObject {
     
@@ -136,7 +157,7 @@ public extension NSManagedObjectFetchable where Self: NSManagedObject {
     ///   - objectIDs: <#objectIDs description#>
     ///   - context: <#context description#>
     /// - Returns: <#return value description#>
-    static func fetchObjects(with objectIDs: [NSManagedObjectID], in context: NSManagedObjectContext) -> [Self] {
+    public static func fetchObjects(with objectIDs: [NSManagedObjectID], in context: NSManagedObjectContext) -> [Self] {
         let fetchRequest: NSFetchRequest<Self> = NSFetchRequest(entityName: Self.entityName)
         fetchRequest.predicate = NSPredicate(format: "Self in %@", objectIDs)
         
@@ -191,4 +212,12 @@ public extension NSManagedObjectFetchable where Self: NSManagedObject, ID == Int
     static var formatSpecifier: String { return "%d" }
 }
 
+
+extension Dictionary where Key == String, Value == Any {
+    
+    var identifier: String? {
+        return self["id"] as? String
+    }
+    
+}
 

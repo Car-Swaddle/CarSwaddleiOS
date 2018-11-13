@@ -78,10 +78,10 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     }
     
     @objc private func didSelectCancel() {
-        if let location = location {
-            store.mainContext.delete(location)
-            store.mainContext.persist()
-        }
+//        if let location = location {
+//            store.mainContext.delete(location)
+//            store.mainContext.persist()
+//        }
         navigationController?.popViewController(animated: true)
     }
     

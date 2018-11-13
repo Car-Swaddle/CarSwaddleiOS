@@ -11,30 +11,26 @@ import CarSwaddleNetworkRequest
 import CoreData
 
 
-public class TemplateTimeSpanNetwork {
-    
-    public let serviceRequest: Request
-    
-    public init(serviceRequest: Request) {
-        self.serviceRequest = serviceRequest
-    }
+public class TemplateTimeSpanNetwork: Network {
     
     private lazy var availabilityService = AvailabilityService(serviceRequest: serviceRequest)
     
     @discardableResult
-    public func getTimeSpans(in context: NSManagedObjectContext, completion: @escaping (_ timeSpans: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return availabilityService.getAvailability { jsonArray, error in
+    public func getTimeSpans(ofMechanicWithID mechanicID: String? = nil, in context: NSManagedObjectContext, completion: @escaping (_ timeSpans: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return availabilityService.getAvailability(ofMechanicWithID: mechanicID) { jsonArray, error in
             context.perform {
                 var timeSpans: [NSManagedObjectID] = []
                 defer {
-                    completion(timeSpans, error)
+                    DispatchQueue.global().async {
+                        completion(timeSpans, error)
+                    }
                 }
                 
                 let mechanic = Mechanic.currentLoggedInMechanic(in: context)
                 mechanic?.deleteAllCurrentScheduleTimeSpans()
                 
                 for json in jsonArray ?? [] {
-                    guard let span = TemplateTimeSpan(json: json, context: context) else { continue }
+                    guard let span = TemplateTimeSpan.fetchOrCreate(json: json, context: context) else { continue }
                     (try? context.obtainPermanentIDs(for: [span]))
                     timeSpans.append(span.objectID)
                 }
@@ -55,14 +51,16 @@ public class TemplateTimeSpanNetwork {
             context.perform {
                 var timeSpans: [NSManagedObjectID] = []
                 defer {
-                    completion(timeSpans, error)
+                    DispatchQueue.global().async {
+                        completion(timeSpans, error)
+                    }
                 }
                 
                 let mechanic = Mechanic.currentLoggedInMechanic(in: context)
                 mechanic?.deleteAllCurrentScheduleTimeSpans()
                 
                 for json in jsonArray ?? [] {
-                    guard let span = TemplateTimeSpan(json: json, context: context) else { continue }
+                    guard let span = TemplateTimeSpan.fetchOrCreate(json: json, context: context) else { continue }
                     (try? context.obtainPermanentIDs(for: [span]))
                     timeSpans.append(span.objectID)
                 }

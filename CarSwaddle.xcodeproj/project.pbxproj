@@ -66,6 +66,17 @@
 		995D0106216AD7C3009B1895 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995D0103216AD7C3009B1895 /* KeychainAccess.framework */; };
 		997DBC42218EBD210080F42C /* MechanicSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC40218EBD210080F42C /* MechanicSelectCell.swift */; };
 		997DBC43218EBD210080F42C /* MechanicSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC41218EBD210080F42C /* MechanicSelectCell.xib */; };
+		997DBC512197575A0080F42C /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC502197575A0080F42C /* UserInfoViewController.swift */; };
+		997DBC562197580B0080F42C /* UserInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC552197580B0080F42C /* UserInfoViewController.storyboard */; };
+		997DBC622198FBC90080F42C /* lehi.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC612198FBC90080F42C /* lehi.gpx */; };
+		997DBC6621995B320080F42C /* MechanicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC6521995B320080F42C /* MechanicViewController.swift */; };
+		997DBC6821995B3E0080F42C /* MechanicViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC6721995B3E0080F42C /* MechanicViewController.storyboard */; };
+		997DBC6A21995ECE0080F42C /* MechanicDayAvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC6921995ECE0080F42C /* MechanicDayAvailabilityView.swift */; };
+		997DBC6C21995EDA0080F42C /* MechanicDayAvailabilityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC6B21995EDA0080F42C /* MechanicDayAvailabilityView.xib */; };
+		997DBC71219965DB0080F42C /* HourCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC6D2199657E0080F42C /* HourCollectionViewCell.xib */; };
+		997DBC72219965E80080F42C /* HourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC6E2199657F0080F42C /* HourCollectionViewCell.swift */; };
+		997DBC7421997E020080F42C /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC7321997E020080F42C /* TimeIntervalExtension.swift */; };
+		997DBC7621997E370080F42C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC7521997E370080F42C /* DateExtension.swift */; };
 		99A2CDAE218DA179003ED903 /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2CDAD218DA179003ED903 /* ServiceRequest.swift */; };
 		99DED710214B7EBC0061CFE0 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DED70F214B7EBC0061CFE0 /* Store.swift */; };
 		99F0277921845755005FEFC7 /* CarSwaddleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F0277821845755005FEFC7 /* CarSwaddleData.framework */; };
@@ -174,6 +185,17 @@
 		995D0103216AD7C3009B1895 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		997DBC40218EBD210080F42C /* MechanicSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicSelectCell.swift; sourceTree = "<group>"; };
 		997DBC41218EBD210080F42C /* MechanicSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MechanicSelectCell.xib; sourceTree = "<group>"; };
+		997DBC502197575A0080F42C /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		997DBC552197580B0080F42C /* UserInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserInfoViewController.storyboard; sourceTree = "<group>"; };
+		997DBC612198FBC90080F42C /* lehi.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lehi.gpx; sourceTree = "<group>"; };
+		997DBC6521995B320080F42C /* MechanicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicViewController.swift; sourceTree = "<group>"; };
+		997DBC6721995B3E0080F42C /* MechanicViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MechanicViewController.storyboard; sourceTree = "<group>"; };
+		997DBC6921995ECE0080F42C /* MechanicDayAvailabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicDayAvailabilityView.swift; sourceTree = "<group>"; };
+		997DBC6B21995EDA0080F42C /* MechanicDayAvailabilityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MechanicDayAvailabilityView.xib; sourceTree = "<group>"; };
+		997DBC6D2199657E0080F42C /* HourCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourCollectionViewCell.xib; sourceTree = "<group>"; };
+		997DBC6E2199657F0080F42C /* HourCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCollectionViewCell.swift; sourceTree = "<group>"; };
+		997DBC7321997E020080F42C /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
+		997DBC7521997E370080F42C /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		99A2CDAD218DA179003ED903 /* ServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
 		99C791C32150C8A8000167CB /* CarSwaddle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarSwaddle-Bridging-Header.h"; sourceTree = "<group>"; };
 		99DED70F214B7EBC0061CFE0 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -296,6 +318,8 @@
 				994CA9FB215208BD00D41F6C /* SignUpViewController.swift */,
 				994CA9F8215206E600D41F6C /* LoginViewController.storyboard */,
 				9955BC192154E8DC008DAF8E /* UsersViewController.swift */,
+				997DBC502197575A0080F42C /* UserInfoViewController.swift */,
+				997DBC552197580B0080F42C /* UserInfoViewController.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -304,6 +328,8 @@
 			isa = PBXGroup;
 			children = (
 				9955BC28215563F8008DAF8E /* UIFontExtension.swift */,
+				997DBC7321997E020080F42C /* TimeIntervalExtension.swift */,
+				997DBC7521997E370080F42C /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -373,6 +399,12 @@
 				99425476215782060075EDCA /* SelectMechanicViewController.storyboard */,
 				997DBC40218EBD210080F42C /* MechanicSelectCell.swift */,
 				997DBC41218EBD210080F42C /* MechanicSelectCell.xib */,
+				997DBC6521995B320080F42C /* MechanicViewController.swift */,
+				997DBC6721995B3E0080F42C /* MechanicViewController.storyboard */,
+				997DBC6921995ECE0080F42C /* MechanicDayAvailabilityView.swift */,
+				997DBC6B21995EDA0080F42C /* MechanicDayAvailabilityView.xib */,
+				997DBC6E2199657F0080F42C /* HourCollectionViewCell.swift */,
+				997DBC6D2199657E0080F42C /* HourCollectionViewCell.xib */,
 			);
 			path = Mechanic;
 			sourceTree = "<group>";
@@ -380,6 +412,7 @@
 		9991FE17214B86D600F58F42 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				997DBC612198FBC90080F42C /* lehi.gpx */,
 				990F4377214252C700E65FC1 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -579,12 +612,15 @@
 			files = (
 				99FEB008215DEED80009BC07 /* OilTypeCell.xib in Resources */,
 				990F437B214252C700E65FC1 /* LaunchScreen.storyboard in Resources */,
+				997DBC6C21995EDA0080F42C /* MechanicDayAvailabilityView.xib in Resources */,
 				994CA9F9215206E600D41F6C /* LoginViewController.storyboard in Resources */,
 				9942547C2157F7B70075EDCA /* CreateServiceDateCell.xib in Resources */,
 				990F4378214252C700E65FC1 /* Assets.xcassets in Resources */,
 				9955BC3721557311008DAF8E /* CreateServiceViewController.storyboard in Resources */,
+				997DBC6821995B3E0080F42C /* MechanicViewController.storyboard in Resources */,
 				99425475215781F80075EDCA /* SelectLocationViewController.storyboard in Resources */,
 				9942547E2157F8300075EDCA /* SelectVehicleViewController.storyboard in Resources */,
+				997DBC71219965DB0080F42C /* HourCollectionViewCell.xib in Resources */,
 				9955BC3F215588DB008DAF8E /* CreateServiceLocationCell.xib in Resources */,
 				9942547D2157F8290075EDCA /* SelectMechanicViewController.storyboard in Resources */,
 				9955BC3121556566008DAF8E /* ServicesViewController.storyboard in Resources */,
@@ -593,11 +629,13 @@
 				9943C174215B6C69003C2BE9 /* VehicleCell.xib in Resources */,
 				994254792157F7980075EDCA /* CreateServiceMechanicCell.xib in Resources */,
 				9955BC2D21556527008DAF8E /* ProfileViewController.storyboard in Resources */,
+				997DBC622198FBC90080F42C /* lehi.gpx in Resources */,
 				99FEAFF9215DE3C00009BC07 /* CreateServiceOilTypeCell.xib in Resources */,
 				997DBC43218EBD210080F42C /* MechanicSelectCell.xib in Resources */,
 				9942547A2157F7AF0075EDCA /* CreateServiceVehicleCell.xib in Resources */,
 				990F4373214252C600E65FC1 /* Main.storyboard in Resources */,
 				9942547F2157F8370075EDCA /* SelectDateViewController.storyboard in Resources */,
+				997DBC562197580B0080F42C /* UserInfoViewController.storyboard in Resources */,
 				99FEB004215DE4770009BC07 /* SelectOilTypeViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -662,6 +700,7 @@
 				9942546B21577B6C0075EDCA /* SelectMechanicViewController.swift in Sources */,
 				9955BC2F21556554008DAF8E /* ServicesViewController.swift in Sources */,
 				9955BC2421555D62008DAF8E /* Navigator.swift in Sources */,
+				997DBC7621997E370080F42C /* DateExtension.swift in Sources */,
 				990F4370214252C600E65FC1 /* ViewController.swift in Sources */,
 				990F436E214252C600E65FC1 /* AppDelegate.swift in Sources */,
 				99A2CDAE218DA179003ED903 /* ServiceRequest.swift in Sources */,
@@ -673,6 +712,9 @@
 				99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */,
 				99116905215B76B6001E039E /* AddVehicleCell.swift in Sources */,
 				9942547121577B730075EDCA /* SelectLocationViewController.swift in Sources */,
+				997DBC72219965E80080F42C /* HourCollectionViewCell.swift in Sources */,
+				997DBC6A21995ECE0080F42C /* MechanicDayAvailabilityView.swift in Sources */,
+				997DBC512197575A0080F42C /* UserInfoViewController.swift in Sources */,
 				9955BC2B2155650C008DAF8E /* ProfileViewController.swift in Sources */,
 				9942545421576C430075EDCA /* NSManagedObjectFetchable.swift in Sources */,
 				9955BC3E215588DB008DAF8E /* CreateServiceLocationCell.swift in Sources */,
@@ -683,11 +725,13 @@
 				9942546D21577B6E0075EDCA /* SelectVehicleViewController.swift in Sources */,
 				99DED710214B7EBC0061CFE0 /* Store.swift in Sources */,
 				9942546921577B1B0075EDCA /* SelectDateViewController.swift in Sources */,
+				997DBC7421997E020080F42C /* TimeIntervalExtension.swift in Sources */,
 				994CA9FC215208BD00D41F6C /* SignUpViewController.swift in Sources */,
 				99425466215778DD0075EDCA /* Defaults.swift in Sources */,
 				9942544D215762C50075EDCA /* CreateServicePriceCell.swift in Sources */,
 				993BA12621585ACA00DB95EF /* LocationManager.swift in Sources */,
 				99425450215763070075EDCA /* CreateServiceDateCell.swift in Sources */,
+				997DBC6621995B320080F42C /* MechanicViewController.swift in Sources */,
 				9955BC29215563F8008DAF8E /* UIFontExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

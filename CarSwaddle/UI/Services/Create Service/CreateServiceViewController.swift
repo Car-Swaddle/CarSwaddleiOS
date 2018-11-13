@@ -152,7 +152,7 @@ extension CreateServiceViewController: UITableViewDelegate {
             let viewController = SelectLocationViewController.create(delegate: self, autoService: autoService, location: autoService.location)
             navigationController?.show(viewController, sender: self)
         case .mechanic:
-            let viewController = SelectMechanicViewController.viewControllerFromStoryboard()
+            let viewController = SelectMechanicViewController.create(with: autoService.location!.coordinate)
             navigationController?.show(viewController, sender: self)
         case .vehicle:
             let viewController = SelectVehicleViewController.create(autoService: autoService)

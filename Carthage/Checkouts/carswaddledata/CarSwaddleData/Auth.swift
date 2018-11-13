@@ -11,6 +11,13 @@ import CarSwaddleNetworkRequest
 import CoreData
 import Store
 
+extension Notification.Name {
+    static let willLogout = Notification.Name(rawValue: "CarSwaddleData.Auth.willLogout")
+    static let didLogout = Notification.Name(rawValue: "CarSwaddleData.Auth.didLogout")
+    
+    static let didLogin = Notification.Name(rawValue: "CarSwaddleData.Auth.didLogin")
+}
+
 public class Auth {
     
     public let serviceRequest: Request
@@ -71,14 +78,20 @@ public class Auth {
             }
             if let token = token {
                 self?.authentication.setToken(token)
+                NotificationCenter.default.post(name: .didLogin, object: nil)
             }
         }
     }
     
     @discardableResult
     public func logout(completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
+        NotificationCenter.default.post(name: .willLogout, object: nil)
+        let token = authentication.token
         authentication.removeToken()
-        return authService.logout(completion: completion)
+        return authService.logout { error in
+            NotificationCenter.default.post(name: .didLogout, object: ["previousToken": token])
+            completion(error)
+        }
     }
     
     public var isLoggedIn: Bool {

@@ -44,8 +44,8 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
                     return
                 }
                 DispatchQueue.main.async {
-                    let users = UsersViewController()
-                    self?.navigationController?.pushViewController(users, animated: true)
+                    let userInfoViewController = UserInfoViewController.viewControllerFromStoryboard()
+                    self?.navigationController?.pushViewController(userInfoViewController, animated: true)
                 }
             }
         }

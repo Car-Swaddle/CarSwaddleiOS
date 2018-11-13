@@ -23,7 +23,7 @@ final class MechanicSelectCell: UITableViewCell, NibRegisterable {
     }
     
     func configure(with mechanic: Mechanic) {
-        
+        textLabel?.text = mechanic.user?.firstName
     }
     
 }

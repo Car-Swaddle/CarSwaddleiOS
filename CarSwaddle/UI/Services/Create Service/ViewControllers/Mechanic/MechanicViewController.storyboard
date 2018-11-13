@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hsp-6u-Htj">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Mechanic View Controller-->
+        <scene sceneID="pSS-hO-S2o">
+            <objects>
+                <viewController id="Hsp-6u-Htj" customClass="MechanicViewController" customModule="CarSwaddle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3I5-g1-Mh9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BVv-pU-PoV" customClass="MechanicDayAvailabilityViewWrapper" customModule="CarSwaddle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="338" width="375" height="329"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="329" id="Gvz-Ec-hNp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BVv-pU-PoV" firstAttribute="bottom" secondItem="Nxc-9a-yo0" secondAttribute="bottom" id="eBe-yR-czK"/>
+                            <constraint firstItem="BVv-pU-PoV" firstAttribute="trailing" secondItem="Nxc-9a-yo0" secondAttribute="trailing" id="n6f-5B-44A"/>
+                            <constraint firstItem="BVv-pU-PoV" firstAttribute="leading" secondItem="Nxc-9a-yo0" secondAttribute="leading" id="x7Y-JO-L3k"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Nxc-9a-yo0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FPE-0g-X0h"/>
+                    <connections>
+                        <outlet property="mechanicAvailabilityView" destination="BVv-pU-PoV" id="H1J-9N-3DY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HfL-j8-HTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="762" y="161"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Avd-oA-E7T">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W96-Pt-KBk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HC5-gR-DSo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Hsp-6u-Htj" kind="relationship" relationship="rootViewController" id="uIp-g3-t3i"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hfw-wA-Pf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="16.800000000000001" y="160.56971514242881"/>
+        </scene>
+    </scenes>
+</document>

@@ -71,6 +71,17 @@ class AvailabilityTests: CarSwaddleLoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
+    func testGetAvailabilityWithMechanicID() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        availabilityService.getAvailability(ofMechanicWithID: "3f255e10-da81-11e8-bdce-ddcdc692c2d8") { json, error in
+            XCTAssert(json != nil, "Should have gotten json")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
 }
 
 struct Template {
@@ -79,7 +90,7 @@ struct Template {
     let weekDay: Int
     
     var json: JSONObject {
-        return ["startTime":startTime, "duration": duration, "weekDay": weekDay]
+        return ["startTime": startTime, "duration": duration, "weekDay": weekDay]
     }
     
 }
