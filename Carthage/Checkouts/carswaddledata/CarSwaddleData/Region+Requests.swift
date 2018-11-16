@@ -67,7 +67,7 @@ public final class RegionNetwork: Network {
                         completion(regionObjectID, error)
                     }
                 }
-                guard let json = json, let regionID = json["id"] as? String else { return }
+                guard let json = json else { return }
                 let region = Region.fetchOrCreate(json: json, context: context)
                 context.persist()
                 regionObjectID = region?.objectID

@@ -25,13 +25,6 @@ private let calendar = Calendar.current
 
 final class HourCollectionViewCell: UICollectionViewCell, NibRegisterable {
     
-//    private static let dateFormatterForCreation: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "HH:mm:ss"
-//        return formatter
-//    }()
-    
-    
     @IBOutlet private weak var hourLabel: UILabel!
     
     override func awakeFromNib() {
@@ -39,6 +32,7 @@ final class HourCollectionViewCell: UICollectionViewCell, NibRegisterable {
         
         hourLabel.layer.borderColor = UIColor(white: 0.6, alpha: 1.0).cgColor
         hourLabel.layer.cornerRadius = 3.0
+        hourLabel.clipsToBounds = true
     }
     
     func configure(with hour: Int, state: AvailabilityState) {
@@ -52,6 +46,7 @@ final class HourCollectionViewCell: UICollectionViewCell, NibRegisterable {
     
     private func configureLabel(for state: AvailabilityState) {
         hourLabel.layer.borderWidth = self.borderWidth(for: state)
+        hourLabel.layer.borderColor = self.borderColor(for: state).cgColor
         hourLabel.textColor = self.textColor(for: state)
         hourLabel.backgroundColor = self.backgroundColor(for: state)
     }
@@ -62,19 +57,23 @@ final class HourCollectionViewCell: UICollectionViewCell, NibRegisterable {
             return UIColor(white: 0.6, alpha: 1.0)
         case .timeOff:
             return .white
-        case .vacant:
+        case .available:
             return .white
+        case .currentlyScheduled:
+            return UIColor(red: 0.1, green: 0.4, blue: 0.4, alpha: 1.0)
         }
     }
     
     private func textColor(for state: AvailabilityState) -> UIColor {
         switch state {
         case .reserved:
-            return UIColor(white: 0.8, alpha: 1.0)
+            return UIColor(white: 0.0, alpha: 1.0)
         case .timeOff:
             return UIColor(white: 0.8, alpha: 1.0)
-        case .vacant:
-            return UIColor(white: 0.8, alpha: 1.0)
+        case .available:
+            return UIColor(white: 0.0, alpha: 1.0)
+        case .currentlyScheduled:
+            return UIColor(white: 1.0, alpha: 1.0)
         }
     }
     
@@ -82,8 +81,19 @@ final class HourCollectionViewCell: UICollectionViewCell, NibRegisterable {
         switch state {
         case .reserved, .timeOff:
             return 0.0
-        case .vacant:
+        case .available:
+            return 0.0
+        case .currentlyScheduled:
             return 1.0
+        }
+    }
+    
+    private func borderColor(for state: AvailabilityState) -> UIColor {
+        switch state {
+        case .reserved, .timeOff, .available:
+            return .white
+        case .currentlyScheduled:
+            return UIColor(red: 0.4, green: 0.8, blue: 0.7, alpha: 1.0)
         }
     }
     

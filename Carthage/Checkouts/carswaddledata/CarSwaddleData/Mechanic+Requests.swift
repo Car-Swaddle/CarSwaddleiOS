@@ -35,10 +35,10 @@ public final class MechanicNetwork: Network {
                 
                 for json in jsonArray {
                     guard let mechanic = self?.createModel(from: json, in: context) else { continue }
-                    do {
-                        try context.obtainPermanentIDs(for: [mechanic])
-                        mechanicIDs.append(mechanic.objectID)
-                    } catch { print("unable to obtain permanent id") }
+                    if mechanic.objectID.isTemporaryID {
+                        try? context.obtainPermanentIDs(for: [mechanic])
+                    }
+                    mechanicIDs.append(mechanic.objectID)
                 }
                 
                 context.persist()

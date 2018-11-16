@@ -46,7 +46,7 @@ public class Auth {
     @discardableResult
     public func mechanicSignUp(email: String, password: String, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
         return authService.mechanicSignUp(email: email, password: password) { [weak self] json, token, error in
-            self?.complete(json: json, token: token, error: error, context: context, completion: completion)
+            self?.complete(json: json, isActive: true, token: token, error: error, context: context, completion: completion)
         }
     }
     
@@ -57,7 +57,7 @@ public class Auth {
         }
     }
     
-    private func complete(json: JSONObject?, token: String?, error: Error?, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) {
+    private func complete(json: JSONObject?, isActive: Bool? = nil, token: String?, error: Error?, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) {
         context.perform { [weak self] in
             var error: Error?
             defer {
@@ -65,13 +65,15 @@ public class Auth {
             }
             if let json = json, let userJSON = json["user"] as? JSONObject,
                 let userID = userJSON["id"] as? String {
-                let user = User(json: userJSON, context: context)
+                let user = User.fetchOrCreate(json: userJSON, context: context)
                 User.setCurrentUserID(userID)
                 if let mechanicJSON = json["mechanic"] as? JSONObject,
                     let mechanicID = mechanicJSON["id"] as? String {
-                    let mechanic = Mechanic(context: context)
+                    let mechanic = Mechanic.fetch(with: mechanicID, in: context) ?? Mechanic(context: context)
                     mechanic.identifier = mechanicID
-                    mechanic.isActive = true
+                    if let isActive = isActive {
+                        mechanic.isActive = isActive
+                    }
                     mechanic.user = user
                 }
                 context.persist()

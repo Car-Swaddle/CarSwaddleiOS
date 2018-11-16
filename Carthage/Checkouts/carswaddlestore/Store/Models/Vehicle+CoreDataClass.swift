@@ -12,13 +12,21 @@ import CoreData
 private let tempID = "vehicleTempID"
 
 @objc(Vehicle)
-public final  class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
-    
+public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
     
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
         guard let identifier = json.identifier,
             let name = json["name"] as? String,
-            let licensePlate = json["licensePlate"] as? String else { return nil }
+        let userID = json["userID"] as? String,
+        let user = User.fetch(with: userID, in: context) else { return nil }
+        
+        
+        let licensePlate = json["licensePlate"] as? String
+        let vin = json["vin"] as? String
+        
+        if licensePlate == nil && vin == nil {
+            return nil
+        }
         
         self.init(context: context)
         
@@ -26,6 +34,8 @@ public final  class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInit
         self.creationDate = json["creationDate"] as? Date ?? Date()
         self.name = name
         self.licensePlate = licensePlate
+        self.vin = vin
+        self.user = user
     }
     
     public convenience init(name: String, licensePlate: String, user: User, context: NSManagedObjectContext) {

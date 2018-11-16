@@ -91,7 +91,7 @@ public final class TemplateTimeSpan: NSManagedObject, NSManagedObjectFetchable, 
     }
     
     public static func predicate(for weekday: Weekday) -> NSPredicate {
-        return NSPredicate(format: "weekday == %@", weekday.rawValue)
+        return NSPredicate(format: "weekday == %i", weekday.rawValue)
     }
 
 }

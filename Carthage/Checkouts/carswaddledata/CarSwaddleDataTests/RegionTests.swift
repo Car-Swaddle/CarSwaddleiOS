@@ -11,7 +11,7 @@ import XCTest
 import CoreData
 import Store
 
-let testMechanicRadius: Double = 360
+let testMechanicRadius: Double = 5000
 let testMechanicLatitude: Double = 40.38754862123388
 let testMechanicLongitude: Double = -111.82703949226095
 

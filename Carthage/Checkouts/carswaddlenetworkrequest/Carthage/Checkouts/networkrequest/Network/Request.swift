@@ -16,6 +16,7 @@ extension Request {
         case post = "POST"
         case put = "PUT"
         case patch = "PATCH"
+        case delete = "DELETE"
     }
     
 }
@@ -113,7 +114,7 @@ final public class Request {
     ///   - queryItems: queryItems used to specify resource
     ///   - completion: closure called when request returns
     /// - Returns: Data task used to make request
-    public func patch(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data, contentType: ContentType = .applicationJSON) -> URLRequest? {
+    public func patch(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data?, contentType: ContentType = .applicationJSON) -> URLRequest? {
         guard let url = self.url(with: path, queryItems: queryItems, scheme: scheme) else { return nil }
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: timeout)
         request.httpMethod = Method.patch.rawValue
@@ -130,7 +131,7 @@ final public class Request {
     ///   - queryItems: queryItems used to specify resource
     ///   - completion: closure called when request returns
     /// - Returns: Data task used to make request
-    public func put(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data, contentType: ContentType = .applicationJSON) -> URLRequest? {
+    public func put(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data?, contentType: ContentType = .applicationJSON) -> URLRequest? {
         guard let url = self.url(with: path, queryItems: queryItems, scheme: scheme) else { return nil }
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: timeout)
         request.httpMethod = Method.put.rawValue
@@ -149,10 +150,20 @@ final public class Request {
     ///   - body: POST body
     ///   - completion: closure called when request returns
     /// - Returns: Task used to make network request
-    public func post(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data, contentType: ContentType = .applicationJSON) -> URLRequest? {
+    public func post(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data?, contentType: ContentType = .applicationJSON) -> URLRequest? {
         guard let url = self.url(with: path, queryItems: queryItems, scheme: scheme) else { return nil }
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: timeout)
         request.httpMethod = Method.post.rawValue
+        request.setValue(contentType.rawValue, forHTTPHeaderField: ContentType.headerKey)
+        request.httpBody = body
+        
+        return request
+    }
+    
+    public func delete(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data?, contentType: ContentType = .applicationJSON) -> URLRequest? {
+        guard let url = self.url(with: path, queryItems: queryItems, scheme: scheme) else { return nil }
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: timeout)
+        request.httpMethod = Method.delete.rawValue
         request.setValue(contentType.rawValue, forHTTPHeaderField: ContentType.headerKey)
         request.httpBody = body
         

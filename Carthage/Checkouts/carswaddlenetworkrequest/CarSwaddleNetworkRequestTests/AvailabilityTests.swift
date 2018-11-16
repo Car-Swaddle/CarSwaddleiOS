@@ -35,7 +35,7 @@ class AvailabilityTests: CarSwaddleLoginTestCase {
         var templates: [Template] = []
         for weekDay in weekDays {
             for hour in hourOfDay {
-                let template = Template(startTime: Int64(hour * 60), duration: defaultDuration, weekDay: weekDay)
+                let template = Template(startTime: Int64(hour * 3600), duration: defaultDuration, weekDay: weekDay)
                 templates.append(template)
             }
         }
@@ -74,7 +74,7 @@ class AvailabilityTests: CarSwaddleLoginTestCase {
     func testGetAvailabilityWithMechanicID() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        availabilityService.getAvailability(ofMechanicWithID: "3f255e10-da81-11e8-bdce-ddcdc692c2d8") { json, error in
+        availabilityService.getAvailability(ofMechanicWithID: "5c00fe80-e702-11e8-9a16-6dd8a1b37c0f") { json, error in
             XCTAssert(json != nil, "Should have gotten json")
             exp.fulfill()
         }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AutoService" representedClassName="AutoService" syncable="YES">
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
@@ -91,10 +91,10 @@
         <element name="OilChange" positionX="-18" positionY="54" width="128" height="90"/>
         <element name="Price" positionX="-9" positionY="90" width="128" height="90"/>
         <element name="PricePart" positionX="0" positionY="108" width="128" height="90"/>
+        <element name="Region" positionX="-27" positionY="99" width="128" height="120"/>
         <element name="TemplateTimeSpan" positionX="0" positionY="126" width="128" height="120"/>
         <element name="User" positionX="-27" positionY="72" width="128" height="150"/>
         <element name="Vehicle" positionX="-54" positionY="-9" width="128" height="165"/>
         <element name="VehicleDescription" positionX="-27" positionY="90" width="128" height="135"/>
-        <element name="Region" positionX="-27" positionY="99" width="128" height="120"/>
     </elements>
 </model>
