@@ -10,6 +10,10 @@ import UIKit
 import Store
 import CarSwaddleUI
 
+protocol MechanicViewControllerDelegate: AnyObject {
+    func didChangeDate(date: Date?, viewController: MechanicViewController)
+}
+
 final class MechanicViewController: UIViewController, StoryboardInstantiating {
     
     public static func create(mechanic: Mechanic) -> MechanicViewController {
@@ -23,16 +27,17 @@ final class MechanicViewController: UIViewController, StoryboardInstantiating {
             updateMechanicView()
         }
     }
+    
+    weak var delegate: MechanicViewControllerDelegate?
 
     @IBOutlet private weak var mechanicAvailabilityView: MechanicDayAvailabilityViewWrapper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        updateMechanicView()
         
         title = mechanic.user?.displayName
         updateMechanicView()
+        mechanicAvailabilityView.view.delegate = self
     }
     
     private var hasUpdatedMechanicView: Bool = false
@@ -41,6 +46,14 @@ final class MechanicViewController: UIViewController, StoryboardInstantiating {
         guard viewIfLoaded != nil, hasUpdatedMechanicView == false else { return }
         hasUpdatedMechanicView = true
         mechanicAvailabilityView.view.configure(with: mechanic)
+    }
+    
+}
+
+extension MechanicViewController: MechanicDateAvailabilityDelegate {
+    
+    func didChangeDate(date: Date?, view: MechanicDayAvailabilityView) {
+        delegate?.didChangeDate(date: date, viewController: self)
     }
     
 }

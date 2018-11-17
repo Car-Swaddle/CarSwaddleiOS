@@ -9,10 +9,12 @@
 import UIKit
 import Store
 import CoreData
+import CarSwaddleData
 //import CarSwaddleUI
 
 protocol SelectVehicleViewControllerDelegate: class {
     func didSelectVehicle(vehicle: Vehicle, viewController: SelectVehicleViewController)
+    func didDeselectVehicle(viewController: SelectVehicleViewController)
 }
 
 extension SelectVehicleViewController {
@@ -28,22 +30,65 @@ final class SelectVehicleViewController: UIViewController, StoryboardInstantiati
     
     public static func create(autoService: AutoService) -> SelectVehicleViewController {
         let viewController = SelectVehicleViewController.viewControllerFromStoryboard()
-        viewController.selectedVehicle = autoService.vehicle ?? AutoService.fetchMostRecentlyUsed(forUserID: User.currentUserID!, in: store.mainContext)?.vehicle ?? Vehicle.fetchFirstVehicle(forUserID: User.currentUserID!, in: store.mainContext)
+        viewController.selectedVehicle = SelectVehicleViewController.fetchVehicle(with: autoService)
         return viewController
+    }
+    
+    private class func fetchVehicle(with autoService: AutoService) -> Vehicle? {
+        if let previousVehicle = autoService.vehicle {
+            return previousVehicle
+        } else {
+            guard let currentUserID = User.currentUserID else { return nil }
+            if let recentlyUsed = AutoService.fetchMostRecentlyUsed(forUserID: currentUserID, in: store.mainContext)?.vehicle {
+                return recentlyUsed
+            } else if let firstVehicle = Vehicle.fetchFirstVehicle(forUserID: currentUserID, in: store.mainContext) {
+                return firstVehicle
+            }
+            return nil
+        }
     }
     
     weak var delegate: SelectVehicleViewControllerDelegate?
     
+    private var vehicleNetwork: VehicleNetwork = VehicleNetwork(serviceRequest: serviceRequest)
+    
     @IBOutlet private weak var tableView: UITableView!
-    private var vehicles: [Vehicle] = []
+//    private var vehicles: [Vehicle] = []
+    private var vehicles: [Vehicle] {
+        return fetchedResultsController.fetchedObjects ?? []
+    }
     private var selectedVehicle: Vehicle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let userID = User.currentUserID {
-            vehicles = Vehicle.fetchVehicles(forUserID: userID, in: store.mainContext)
-        }
+//        if let userID = User.currentUserID {
+//            vehicles = Vehicle.fetchVehicles(forUserID: userID, in: store.mainContext)
+//        }
         setupTableView()
+        
+        store.privateContext { [weak self] privateContext in
+            
+//            let vehicles = User.currentUser(context: privateContext)?.vehicles
+//
+//            for vehicle in vehicles ?? [] {
+//                privateContext.delete(vehicle)
+//            }
+//            privateContext.persist()
+            
+            
+//            let v = Vehicle.fetchAllObjects(with: [NSSortDescriptor(key: "identifier", ascending: true)], in: privateContext)
+//
+//            for d in v {
+//                privateContext.delete(d)
+//            }
+//            privateContext.persist()
+            
+            self?.vehicleNetwork.requestVehicles(limit: 15, offset: 0, in: privateContext) { vehicleIDs, error in
+                DispatchQueue.main.async {
+                    print("don e")
+                }
+            }
+        }
     }
     
     private func setupTableView() {
@@ -57,7 +102,6 @@ final class SelectVehicleViewController: UIViewController, StoryboardInstantiati
     }()
     
     private func createFetchedResultsController() -> NSFetchedResultsController<Vehicle> {
-        
         let request: NSFetchRequest<Vehicle> = Vehicle.fetchRequestRecentlyCreated(forUserID: User.currentUserID!)
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: store.mainContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -68,6 +112,11 @@ final class SelectVehicleViewController: UIViewController, StoryboardInstantiati
         } catch {
             fatalError("Could not performFetch on FetchedResultsController, error: \(error.localizedDescription)")
         }
+    }
+    
+    private func selectVehicle(_ vehicle: Vehicle) {
+        selectedVehicle = vehicle
+        delegate?.didSelectVehicle(vehicle: vehicle, viewController: self)
     }
     
 }
@@ -98,6 +147,7 @@ extension SelectVehicleViewController: UITableViewDataSource {
             return cell
         case .addVehicle:
             let cell: AddVehicleCell = tableView.dequeueCell()
+            cell.delegate = self
             return cell
         }
     }
@@ -131,17 +181,45 @@ extension SelectVehicleViewController: UITableViewDelegate {
         let section = self.section(forSection: indexPath.section)
         switch section {
         case .vehicles:
-            print("vehicles")
             let vehicle = vehicles[indexPath.row]
-            selectedVehicle = vehicle
-//            tableView.reloadData()
-            delegate?.didSelectVehicle(vehicle: vehicle, viewController: self)
-        case .addVehicle:
-            print("add vehicle")
+            selectVehicle(vehicle)
+        case .addVehicle: break
         }
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        var actions: [UIContextualAction] = []
+        actions.append(deleteAction(indexPath: indexPath))
+        return UISwipeActionsConfiguration(actions: actions)
+    }
+    
+    private func deleteAction(indexPath: IndexPath) -> UIContextualAction {
+        let title = NSLocalizedString("Delete", comment: "Delete a vehicle")
+        let vehicleID = vehicles[indexPath.row].identifier
+        let action = UIContextualAction(style: .destructive, title: title) { [weak self] action, view, handler in
+            guard let _self = self else { return }
+            if let selectedVehicle = self?.selectedVehicle,
+                indexPath.row == self?.vehicles.firstIndex(of: selectedVehicle) {
+                self?.delegate?.didDeselectVehicle(viewController: _self)
+            }
+            store.privateContext { context in
+                self?.vehicleNetwork.deleteVehicle(vehicleID: vehicleID, in: context) { error in
+                    DispatchQueue.main.async {
+                        if self?.selectedVehicle?.identifier == vehicleID {
+                            self?.selectedVehicle = nil
+                        }
+                        print("error: \(error)")
+                        handler(error == nil)
+                    }
+                }
+            }
+        }
+        return action
+    }
+    
 }
+
+
 
 extension SelectVehicleViewController: NSFetchedResultsControllerDelegate {
     
@@ -165,11 +243,33 @@ extension SelectVehicleViewController: NSFetchedResultsControllerDelegate {
             tableView.deleteRows(at: [indexPath], with: .none)
             tableView.insertRows(at: [newIndexPath], with: .none)
         }
-        
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+    }
+    
+}
+
+
+extension SelectVehicleViewController: AddVehicleCellDelegate {
+    
+    func didSelectAdd(name: String, licensePlate: String, cell: AddVehicleCell) {
+        store.privateContext { [weak self] context in
+            self?.vehicleNetwork.createVehicle(name: name, licensePlate: licensePlate, in: context) { [weak self] objectID, error in
+                DispatchQueue.main.async {
+                    self?.tableView.reloadSections(IndexSet(integer: 0), with: .none)
+                }
+//                store.mainContext{ mainContext in
+//                    guard let objectID = objectID,
+//                        let vehicle = mainContext.object(with: objectID) as? Vehicle else { return }
+//                    self?.selectVehicle(vehicle)
+//                    self?.tableView.reloadData()
+//                    let indexPath = IndexPath(row: index, section: 0)
+//                    self?.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+//                }
+            }
+        }
     }
     
 }

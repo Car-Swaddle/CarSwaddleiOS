@@ -21,7 +21,7 @@ public protocol JSONInitable {
 extension JSONInitable where Self: NSManagedObjectFetchable, Self: NSManagedObject {
     
     public static func fetchOrCreate(json: JSONObject, context: NSManagedObjectContext) -> Self? {
-        if let identifier = json[identifierKey] as? ID {
+        if let identifier = json["id"] as? ID {
             return fetch(with: identifier, in: context) ?? Self(json: json, context: context)
         } else {
             return Self(json: json, context: context)

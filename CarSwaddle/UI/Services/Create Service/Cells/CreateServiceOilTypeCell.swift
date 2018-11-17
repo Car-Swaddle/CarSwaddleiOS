@@ -19,7 +19,7 @@ final class CreateServiceOilTypeCell: UITableViewCell, NibRegisterable, AutoServ
     
     func configure(with service: AutoService) {
         textLabel?.text = "Oil type"
-        detailTextLabel?.text = service.oilChange?.oilType.localizedString ?? ""
+        detailTextLabel?.text = service.firstOilChange?.oilType.localizedString ?? ""
     }
     
 }

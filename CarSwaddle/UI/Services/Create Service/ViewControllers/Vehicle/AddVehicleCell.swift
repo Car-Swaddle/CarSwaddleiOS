@@ -10,12 +10,17 @@ import UIKit
 import Store
 //import CarSwaddleUI
 
+protocol AddVehicleCellDelegate: AnyObject {
+    func didSelectAdd(name: String, licensePlate: String, cell: AddVehicleCell)
+}
+
 final class AddVehicleCell: UITableViewCell, NibRegisterable {
 
+    weak var delegate: AddVehicleCellDelegate?
+    
     @IBOutlet private weak var vehicleNameTextField: UITextField!
     @IBOutlet private weak var vehicleLicensePlateTextField: UITextField!
     @IBOutlet private weak var addButton: UIButton!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,13 +41,10 @@ final class AddVehicleCell: UITableViewCell, NibRegisterable {
     }
     
     @IBAction func didSelectAdd(_ textField: UITextField) {
-        resignFirstResponder()
         guard let name = vehicleNameTextField.text,
             let plateNumber = vehicleLicensePlateTextField.text else { return }
-        _ = Vehicle(name: name, licensePlate: plateNumber, user: User.currentUser(context: store.mainContext)!, context: store.mainContext)
-        store.mainContext.persist()
-        vehicleNameTextField.text = nil
-        vehicleLicensePlateTextField.text = nil
+        resignFirstResponder()
+        delegate?.didSelectAdd(name: name, licensePlate: plateNumber, cell: self)
     }
     
 }

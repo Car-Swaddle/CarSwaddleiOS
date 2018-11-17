@@ -17,8 +17,8 @@ public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInita
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
         guard let identifier = json.identifier,
             let name = json["name"] as? String,
-        let userID = json["userID"] as? String,
-        let user = User.fetch(with: userID, in: context) else { return nil }
+            let userID = json["userID"] as? String,
+            let user = User.fetch(with: userID, in: context) else { return nil }
         
         
         let licensePlate = json["licensePlate"] as? String

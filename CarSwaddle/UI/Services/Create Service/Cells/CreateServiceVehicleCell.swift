@@ -24,8 +24,9 @@ class CreateServiceVehicleCell: UITableViewCell, NibRegisterable, AutoServiceCon
                 detailTextLabel?.text = "\(vehicle.name), \(licensePlate)"
             } else {
                 detailTextLabel?.text = "\(vehicle.name)"
-//                detailTextLabel?.text = "\(vehicle.name), \(vehicle.licensePlate)"
             }
+        } else {
+            detailTextLabel?.text = nil
         }
     }
     

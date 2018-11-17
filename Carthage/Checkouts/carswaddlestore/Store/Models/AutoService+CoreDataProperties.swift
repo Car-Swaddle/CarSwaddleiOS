@@ -25,7 +25,8 @@ extension AutoService {
         autoService.status = .created
         
         let oilChange = OilChange.createWithDefaults(context: context)
-        oilChange.autoService = autoService
+        
+        let entity = ServiceEntity(autoService: autoService, oilChange: oilChange, context: context)
         
         return autoService
     }
@@ -36,9 +37,9 @@ extension AutoService {
     @NSManaged public var creationDate: Date
     @NSManaged public var creator: User
     @NSManaged public var mechanic: Mechanic?
-    @NSManaged public var oilChange: OilChange?
     @NSManaged public var location: Location?
     @NSManaged public var price: Price?
     @NSManaged public var vehicle: Vehicle?
+    @NSManaged public var serviceEntities: Set<ServiceEntity>
 
 }

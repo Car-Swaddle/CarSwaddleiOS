@@ -18,7 +18,7 @@ class SelectOilTypeViewController: UIViewController, StoryboardInstantiating {
     
     public static func create(with autoService: AutoService) -> SelectOilTypeViewController {
         let viewController = SelectOilTypeViewController.viewControllerFromStoryboard()
-        viewController.selectedOilType = autoService.oilChange?.oilType ?? OilChange.defaultOilType
+        viewController.selectedOilType = autoService.firstOilChange?.oilType ?? OilChange.defaultOilType
         return viewController
     }
     

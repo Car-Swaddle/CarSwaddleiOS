@@ -32,6 +32,10 @@ final class VehicleCell: UITableViewCell, NibRegisterable {
         if let plateNumber = vehicle.licensePlate {
             detailTextLabel?.text = NSLocalizedString("License plate: \(plateNumber)", comment: "")
         }
+        
+        if let vin = vehicle.vin {
+            detailTextLabel?.text = NSLocalizedString("Vin: \(vin)", comment: "")
+        }
     }
     
 }

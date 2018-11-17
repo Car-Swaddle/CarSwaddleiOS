@@ -13,6 +13,10 @@ import CarSwaddleData
 import CoreData
 
 
+protocol MechanicDateAvailabilityDelegate: AnyObject {
+    func didChangeDate(date: Date?, view: MechanicDayAvailabilityView)
+}
+
 enum AvailabilityState {
     case available
     case reserved
@@ -34,6 +38,8 @@ final class MechanicDayAvailabilityView: UIView, NibInstantiating {
         titleLabel.text = String(format: string, mechanic.user?.displayName ?? "")
         updateSchedule()
     }
+    
+    weak var delegate: MechanicDateAvailabilityDelegate?
     
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -66,6 +72,7 @@ final class MechanicDayAvailabilityView: UIView, NibInstantiating {
     private var scheduledDate: Date? {
         didSet {
             collectionView.reloadData()
+            delegate?.didChangeDate(date: scheduledDate, view: self)
         }
     }
     
@@ -170,8 +177,6 @@ extension MechanicDayAvailabilityView: UICollectionViewDataSource {
 extension MechanicDayAvailabilityView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("didSelect")
-        
         let timeSlot = timeSlots[indexPath.row]
         
         guard self.availabilityState(forTimeSlot: timeSlot) == .available else { return }
