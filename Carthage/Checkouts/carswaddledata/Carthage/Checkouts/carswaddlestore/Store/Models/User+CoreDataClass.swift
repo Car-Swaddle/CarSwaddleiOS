@@ -40,6 +40,18 @@ public final class User: NSManagedObject, NSManagedObjectFetchable, JSONInitable
         return UserDefaults.standard.value(forKey: currentUserIDKey) as? String
     }
     
+    public var displayName: String {
+        var name: String = ""
+        if let firstName = firstName {
+            name += firstName
+            name += " "
+        }
+        if let lastName = lastName {
+            name += lastName
+        }
+        return name
+    }
+    
 }
 
 

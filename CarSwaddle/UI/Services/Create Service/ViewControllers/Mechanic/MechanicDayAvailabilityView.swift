@@ -37,9 +37,12 @@ final class MechanicDayAvailabilityView: UIView, NibInstantiating {
         let string = NSLocalizedString("%@'s availability", comment: "Title of view that displays a mechanics schedule")
         titleLabel.text = String(format: string, mechanic.user?.displayName ?? "")
         updateSchedule()
+        requestAutoServices()
     }
     
     weak var delegate: MechanicDateAvailabilityDelegate?
+    
+    private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -48,7 +51,19 @@ final class MechanicDayAvailabilityView: UIView, NibInstantiating {
     private var mechanic: Mechanic!
     private var availabilityService = TemplateTimeSpanNetwork(serviceRequest: serviceRequest)
     
-    private var timeSlots: [Int] = [0,1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23]
+    private var scheduledAutoServices: [AutoService] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    private var task: URLSessionDataTask? {
+        willSet {
+            task?.cancel()
+        }
+    }
+    
+    private var timeSlots: [Int] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
     private var templateTimeSpans: [TemplateTimeSpan] = [] {
         didSet {
             updateCurrentWeekdayTimeSpans()
@@ -82,6 +97,18 @@ final class MechanicDayAvailabilityView: UIView, NibInstantiating {
         }
     }
     
+    private var startDate: Date {
+        var dateComponents = Calendar.current.dateComponents(in: .current, from: currentCalendarDate)
+        dateComponents.hour = 0
+        return dateComponents.date ?? Date()
+    }
+    
+    private var endDate: Date {
+        var dateComponents = Calendar.current.dateComponents(in: .current, from: currentCalendarDate)
+        dateComponents.hour = 24
+        return dateComponents.date ?? Date()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -93,10 +120,12 @@ final class MechanicDayAvailabilityView: UIView, NibInstantiating {
     
     @IBAction func didTapPrevious() {
         currentCalendarDate = Date(timeInterval: -.day, since: currentCalendarDate)
+        requestAutoServices()
     }
     
     @IBAction func didTapNext() {
         currentCalendarDate = Date(timeInterval: .day, since: currentCalendarDate)
+        requestAutoServices()
     }
     
     private func setupCollectionView() {
@@ -116,10 +145,26 @@ final class MechanicDayAvailabilityView: UIView, NibInstantiating {
         return Weekday(rawValue: Int16(dayOfWeek-1))!
     }
     
+    private func requestAutoServices() {
+        let mechanicID = mechanic.identifier
+        
+        let startDate = self.startDate
+        let endDate = self.endDate
+        
+        store.privateContext { [weak self] privateContext in
+            self?.autoServiceNetwork.getAutoServices(mechanicID: mechanicID, startDate: startDate, endDate: endDate, status: [.inProgress, .completed, .scheduled], in: privateContext) { autoServiceIDs, error in
+                store.mainContext{ mainContext in
+                    let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: mainContext)
+                    self?.scheduledAutoServices = autoServices
+                }
+            }
+        }
+    }
+    
     private func updateSchedule() {
         let mechanicID = mechanic.identifier
         store.privateContext { [weak self] context in
-            self?.availabilityService.getTimeSpans(ofMechanicWithID: mechanicID, in: context) { objectIDs, error in
+            self?.task = self?.availabilityService.getTimeSpans(ofMechanicWithID: mechanicID, in: context) { objectIDs, error in
                 store.mainContext { mainContext in
                     self?.templateTimeSpans = TemplateTimeSpan.fetchObjects(with: objectIDs, in: mainContext)
                 }
@@ -158,18 +203,37 @@ extension MechanicDayAvailabilityView: UICollectionViewDataSource {
             if let scheduledDate = scheduledDate {
                 let scheduledDateComponents = Calendar.current.dateComponents(in: .current, from: scheduledDate)
                 let calendarDateComponents = Calendar.current.dateComponents(in: .current, from: currentCalendarDate)
-                print("scheduled day: \(scheduledDateComponents.day!) hour \(scheduledDateComponents.hour!), cale day: \(calendarDateComponents.day!) hour \(timeSlot)")
-                
                 
                 if scheduledDateComponents.day == calendarDateComponents.day && scheduledDateComponents.hour == timeSlot {
                     return .currentlyScheduled
                 } else {
-                    return .available
+                    if isScheduledForTimeSlot(timeSlot: timeSlot) {
+                        return .reserved
+                    } else {
+                        return .available
+                    }
                 }
             } else {
-                return .available
+                if isScheduledForTimeSlot(timeSlot: timeSlot) {
+                    return .reserved
+                } else {
+                    return .available
+                }
             }
         }
+    }
+    
+    private func isScheduledForTimeSlot(timeSlot: Int) -> Bool {
+        for a in scheduledAutoServices {
+            guard let scheduledDate = a.scheduledDate else { continue }
+            let scheduledDateComponents = Calendar.current.dateComponents(in: .current, from: scheduledDate)
+            let calendarDateComponents = Calendar.current.dateComponents(in: .current, from: currentCalendarDate)
+            
+            if scheduledDateComponents.hour == timeSlot && scheduledDateComponents.day == calendarDateComponents.day {
+                return true
+            }
+        }
+        return false
     }
     
 }

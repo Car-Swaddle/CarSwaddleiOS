@@ -31,7 +31,7 @@ public class UserService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
     }
     
@@ -47,7 +47,7 @@ public class UserService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
     }
     
@@ -79,7 +79,7 @@ public class UserService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
     }
     

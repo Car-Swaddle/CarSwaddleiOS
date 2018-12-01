@@ -22,20 +22,24 @@ public class VehicleNetwork: Network {
     @discardableResult
     public func requestVehicles(limit: Int = 100, offset: Int = 0, in context: NSManagedObjectContext, completion: @escaping (_ vehicleObjectIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
         return vehicleService.getVehicles(limit: limit, offset: offset) { jsonArray, error in
-            var vehicleObjectIDs: [NSManagedObjectID] = []
-            defer {
-                completion(vehicleObjectIDs, error)
-            }
-            
-            for json in jsonArray ?? [] {
-                guard let vehicle = Vehicle.fetchOrCreate(json: json, context: context) else { continue }
-                if vehicle.objectID.isTemporaryID {
-                    try? context.obtainPermanentIDs(for: [vehicle])
+            context.perform {
+                var vehicleObjectIDs: [NSManagedObjectID] = []
+                defer {
+                    DispatchQueue.global().async {
+                        completion(vehicleObjectIDs, error)
+                    }
                 }
-                vehicleObjectIDs.append(vehicle.objectID)
+                
+                for json in jsonArray ?? [] {
+                    guard let vehicle = Vehicle.fetchOrCreate(json: json, context: context) else { continue }
+                    if vehicle.objectID.isTemporaryID {
+                        try? context.obtainPermanentIDs(for: [vehicle])
+                    }
+                    vehicleObjectIDs.append(vehicle.objectID)
+                }
+                
+                context.persist()
             }
-            
-            context.persist()
         }
     }
     
@@ -70,31 +74,35 @@ public class VehicleNetwork: Network {
     @discardableResult
     public func deleteVehicle(vehicleID: String, in context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
         return vehicleService.deleteVehicle(vehicleID: vehicleID) { error in
-            if error == nil {
-                if let vehicle = Vehicle.fetch(with: vehicleID, in: context) {
-                    context.delete(vehicle)
-                    context.persist()
+            context.perform {
+                if error == nil {
+                    if let vehicle = Vehicle.fetch(with: vehicleID, in: context) {
+                        context.delete(vehicle)
+                        context.persist()
+                    }
                 }
+                completion(error)
             }
-            completion(error)
         }
     }
     
     
-    private func complete(json: JSONObject?, error: Error?, in context: NSManagedObjectContext, completion: VehicleCompletion) {
-        var vehicleObjectID: NSManagedObjectID?
-        defer {
-            completion(vehicleObjectID, error)
+    private func complete(json: JSONObject?, error: Error?, in context: NSManagedObjectContext, completion: @escaping VehicleCompletion) {
+        context.perform {
+            var vehicleObjectID: NSManagedObjectID?
+            defer {
+                completion(vehicleObjectID, error)
+            }
+            
+            guard let json = json,
+                let vehicle = Vehicle.fetchOrCreate(json: json, context: context) else {
+                    return
+            }
+            
+            context.persist()
+            
+            vehicleObjectID = vehicle.objectID
         }
-        
-        guard let json = json,
-            let vehicle = Vehicle.fetchOrCreate(json: json, context: context) else {
-                return
-        }
-        
-        context.persist()
-        
-        vehicleObjectID = vehicle.objectID
     }
     
     

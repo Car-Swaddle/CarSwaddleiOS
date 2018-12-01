@@ -31,7 +31,7 @@ final public class AvailabilityService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
     }
     
@@ -53,7 +53,7 @@ final public class AvailabilityService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
     }
     

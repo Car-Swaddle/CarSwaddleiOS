@@ -28,8 +28,6 @@ public final class TemplateTimeSpan: NSManagedObject, NSManagedObjectFetchable, 
         guard let identifier = json["id"] as? String,
             let duration = json["duration"] as? Double,
             let weekdayInt = json["weekDay"] as? Int16,
-            let mechanicID = json["mechanicID"] as? String,
-            let mechanic = Mechanic.fetch(with: mechanicID, in: context),
             let weekday = Weekday(rawValue: weekdayInt),
             let dateString = json["startTime"] as? String,
             let date = TemplateTimeSpan.dateFormatter.date(from: dateString) else { return nil }
@@ -39,7 +37,10 @@ public final class TemplateTimeSpan: NSManagedObject, NSManagedObjectFetchable, 
         self.duration = duration
         self.startTime = Int64(date.secondsSinceMidnight())
         self.weekday = weekday
-        self.mechanic = mechanic
+        if let mechanicID = json["mechanicID"] as? String,
+            let mechanic = Mechanic.fetch(with: mechanicID, in: context) {
+            self.mechanic = mechanic
+        }
     }
     
     

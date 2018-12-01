@@ -30,7 +30,7 @@ final public class VehicleService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
     }
     
@@ -46,7 +46,7 @@ final public class VehicleService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
     }
     
@@ -75,7 +75,7 @@ final public class VehicleService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
     }
     
@@ -98,7 +98,7 @@ final public class VehicleService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
     }
     
@@ -117,7 +117,7 @@ final public class VehicleService: Service {
                     return
             }
             if numberOfDeletedVehicles == 1 {
-                completion(nil)
+                completion(error)
             } else {
                 completion(VehicleServiceError.nothingDeletedError)
             }

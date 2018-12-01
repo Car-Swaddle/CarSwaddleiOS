@@ -102,7 +102,7 @@ final class SelectVehicleViewController: UIViewController, StoryboardInstantiati
     }()
     
     private func createFetchedResultsController() -> NSFetchedResultsController<Vehicle> {
-        let request: NSFetchRequest<Vehicle> = Vehicle.fetchRequestRecentlyCreated(forUserID: User.currentUserID!)
+        let request: NSFetchRequest<Vehicle> = Vehicle.fetchRequestRecentlyCreated(forUserID: User.currentUserID ?? "")
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: store.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self

@@ -45,7 +45,9 @@ public final class UserNetwork: Network {
             context.perform {
                 var userObjectID: NSManagedObjectID?
                 defer {
-                    completion(userObjectID, error)
+                    DispatchQueue.global().async {
+                        completion(userObjectID, error)
+                    }
                 }
                 
                 guard let json = json else { return }

@@ -8,6 +8,7 @@
 
 import UIKit
 import CarSwaddleData
+import Authentication
 
 final class ProfileViewController: UIViewController, StoryboardInstantiating {
 
@@ -24,9 +25,13 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         
         let title = NSLocalizedString("Logout", comment: "title of button to logout")
         let logoutAction = UIAlertAction(title: title, style: .destructive) { [weak self] action in
-            navigator.navigateToLoggedOutViewController()
             self?.auth.logout { error in
-                print("error: \(String(describing: error))")
+                DispatchQueue.main.async {
+                    finishTasksAndInvalidate()
+                    try? store.destroyAllData()
+                    AuthController().removeToken()
+                    navigator.navigateToLoggedOutViewController()
+                }
             }
         }
         
@@ -37,3 +42,4 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     }
     
 }
+

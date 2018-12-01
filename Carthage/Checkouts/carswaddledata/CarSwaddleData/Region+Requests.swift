@@ -11,18 +11,6 @@ import Store
 import CarSwaddleNetworkRequest
 
 
-//extension Region {
-//    
-//    static func region(with json: JSONObject, in context: NSManagedObjectContext) -> Region? {
-//        if let identifier = json.identifier {
-//            return Region.fetch(with: identifier, in: context) ?? Region(json: json, in: context)
-//        } else {
-//            return Region(json: json, in: context)
-//        }
-//    }
-//    
-//}
-
 public final class RegionNetwork: Network {
     
     private lazy var regionService = RegionService(serviceRequest: serviceRequest)

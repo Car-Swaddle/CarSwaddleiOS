@@ -16,10 +16,7 @@ public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInita
     
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
         guard let identifier = json.identifier,
-            let name = json["name"] as? String,
-            let userID = json["userID"] as? String,
-            let user = User.fetch(with: userID, in: context) else { return nil }
-        
+            let name = json["name"] as? String else { return nil }
         
         let licensePlate = json["licensePlate"] as? String
         let vin = json["vin"] as? String
@@ -35,7 +32,10 @@ public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInita
         self.name = name
         self.licensePlate = licensePlate
         self.vin = vin
-        self.user = user
+        if let userID = json["userID"] as? String,
+            let user = User.fetch(with: userID, in: context) {
+            self.user = user
+        }
     }
     
     public convenience init(name: String, licensePlate: String, user: User, context: NSManagedObjectContext) {
@@ -60,6 +60,12 @@ extension Vehicle {
 //        fetchRequest.fetchLimit = 1
 //        return ((try? context.fetch(fetchRequest)) ?? []).first
 //    }
+    
+    public static func defaultVehicle(in context: NSManagedObjectContext) -> Vehicle? {
+        guard let userID = User.currentUserID else { return nil }
+        let recentlyUsedAutoService = AutoService.fetchMostRecentlyUsed(forUserID: userID, in: context)?.vehicle
+        return  recentlyUsedAutoService ?? Vehicle.fetchFirstVehicle(forUserID: userID, in: context)
+    }
     
     public static func fetchVehicles(forUserID userID: String, in context: NSManagedObjectContext) -> [Vehicle] {
         let fetchRequest: NSFetchRequest<Vehicle> = Vehicle.fetchRequestRecentlyCreated(forUserID: userID)

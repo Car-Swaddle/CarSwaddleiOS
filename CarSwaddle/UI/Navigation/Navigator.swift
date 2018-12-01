@@ -64,9 +64,14 @@ final class Navigator: NSObject {
         return tabBarController
     }
     
-    lazy private var tabBarController: UITabBarController = {
-        var viewControllers: [UIViewController] = []
+    
+    private var _tabBarController: UITabBarController?
+    private var tabBarController: UITabBarController {
+        if let _tabBarController = _tabBarController {
+            return _tabBarController
+        }
         
+        var viewControllers: [UIViewController] = []
         for tab in Tab.all {
             let viewController = self.viewController(for: tab)
             viewControllers.append(viewController.inNavigationController())
@@ -77,8 +82,10 @@ final class Navigator: NSObject {
         tabController.delegate = self
         tabController.view.backgroundColor = .white
         
+        self._tabBarController = tabController
+        
         return tabController
-    }()
+    }
     
     public func navigateToLoggedInViewController() {
         guard let window = appDelegate.window,
@@ -104,7 +111,9 @@ final class Navigator: NSObject {
         
         UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
             window.rootViewController = newViewController
-        }) { completed in }
+        }) { [weak self] completed in
+            self?._tabBarController = nil
+        }
     }
     
     private func showRequiredScreensIfNeeded() {

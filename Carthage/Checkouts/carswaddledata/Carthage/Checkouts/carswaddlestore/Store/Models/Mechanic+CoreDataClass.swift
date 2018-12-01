@@ -13,12 +13,11 @@ import CoreData
 public final class Mechanic: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
     
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
-        guard let identifier = json.identifier,
-            let isActive = json["isActive"] as? Bool else { return nil }
+        guard let identifier = json.identifier else { return nil }
         
         self.init(context: context)
         self.identifier = identifier
-        self.isActive = isActive
+        self.isActive = json["isActive"] as? Bool ?? false
     }
 
     public static func currentLoggedInMechanic(in context: NSManagedObjectContext) -> Mechanic? {

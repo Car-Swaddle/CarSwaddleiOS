@@ -11,7 +11,7 @@ import CarSwaddleNetworkRequest
 import CoreData
 
 
-public class TemplateTimeSpanNetwork: Network {
+public final class TemplateTimeSpanNetwork: Network {
     
     private lazy var availabilityService = AvailabilityService(serviceRequest: serviceRequest)
     

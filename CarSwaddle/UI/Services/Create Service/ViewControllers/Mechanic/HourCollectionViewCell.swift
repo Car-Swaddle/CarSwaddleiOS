@@ -54,7 +54,7 @@ final class HourCollectionViewCell: UICollectionViewCell, NibRegisterable {
     private func backgroundColor(for state: AvailabilityState) -> UIColor {
         switch state {
         case .reserved:
-            return UIColor(white: 0.6, alpha: 1.0)
+            return UIColor(white: 0.95, alpha: 1.0)
         case .timeOff:
             return .white
         case .available:
@@ -67,7 +67,7 @@ final class HourCollectionViewCell: UICollectionViewCell, NibRegisterable {
     private func textColor(for state: AvailabilityState) -> UIColor {
         switch state {
         case .reserved:
-            return UIColor(white: 0.0, alpha: 1.0)
+            return UIColor(white: 0.8, alpha: 1.0)
         case .timeOff:
             return UIColor(white: 0.8, alpha: 1.0)
         case .available:

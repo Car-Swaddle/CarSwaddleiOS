@@ -29,6 +29,8 @@
 		997DBC5C21977ED20080F42C /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC5B21977ED20080F42C /* UserTests.swift */; };
 		997DBC7E219E84510080F42C /* Vehicle+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC7D219E84510080F42C /* Vehicle+Requests.swift */; };
 		997DBC80219E8BB70080F42C /* VehicleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC7F219E8BB70080F42C /* VehicleTests.swift */; };
+		997DBC9A21A536BE0080F42C /* AutoServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9921A536BE0080F42C /* AutoServiceTests.swift */; };
+		997DBC9C21A537390080F42C /* AutoService+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9B21A537390080F42C /* AutoService+Request.swift */; };
 		99F026BC217EFCD9005FEFC7 /* TemplateTimeSpan+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F026BB217EFCD9005FEFC7 /* TemplateTimeSpan+Requests.swift */; };
 		99F026BE217F061A005FEFC7 /* TemplateTimeSpanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F026BD217F061A005FEFC7 /* TemplateTimeSpanTests.swift */; };
 		99F026C621802131005FEFC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F026C521802131005FEFC7 /* AppDelegate.swift */; };
@@ -120,6 +122,8 @@
 		997DBC5B21977ED20080F42C /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		997DBC7D219E84510080F42C /* Vehicle+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vehicle+Requests.swift"; sourceTree = "<group>"; };
 		997DBC7F219E8BB70080F42C /* VehicleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTests.swift; sourceTree = "<group>"; };
+		997DBC9921A536BE0080F42C /* AutoServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceTests.swift; sourceTree = "<group>"; };
+		997DBC9B21A537390080F42C /* AutoService+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoService+Request.swift"; sourceTree = "<group>"; };
 		99F026BB217EFCD9005FEFC7 /* TemplateTimeSpan+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TemplateTimeSpan+Requests.swift"; sourceTree = "<group>"; };
 		99F026BD217F061A005FEFC7 /* TemplateTimeSpanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTimeSpanTests.swift; sourceTree = "<group>"; };
 		99F026C321802130005FEFC7 /* CarSwaddleDataHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarSwaddleDataHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				9912CDAF216C81760006FDDF /* CarSwaddleData.h */,
+				997DBC9B21A537390080F42C /* AutoService+Request.swift */,
 				99F026BB217EFCD9005FEFC7 /* TemplateTimeSpan+Requests.swift */,
 				99F02783218580C0005FEFC7 /* Region+Requests.swift */,
 				997DBC48219418830080F42C /* Mechanic+Requests.swift */,
@@ -213,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				9912CDBA216C81760006FDDF /* CarSwaddleDataTests.swift */,
+				997DBC9921A536BE0080F42C /* AutoServiceTests.swift */,
 				99F026BD217F061A005FEFC7 /* TemplateTimeSpanTests.swift */,
 				997DBC7F219E8BB70080F42C /* VehicleTests.swift */,
 				997DBC4E2196B8640080F42C /* MechanicTests.swift */,
@@ -467,6 +473,7 @@
 				997DBC5A21977A310080F42C /* User+Requests.swift in Sources */,
 				9912CDC7216C81AE0006FDDF /* Auth.swift in Sources */,
 				99F02784218580C0005FEFC7 /* Region+Requests.swift in Sources */,
+				997DBC9C21A537390080F42C /* AutoService+Request.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +487,7 @@
 				99F026EC21803F4E005FEFC7 /* LoginTestCase.swift in Sources */,
 				997DBC80219E8BB70080F42C /* VehicleTests.swift in Sources */,
 				9912CDBB216C81760006FDDF /* CarSwaddleDataTests.swift in Sources */,
+				997DBC9A21A536BE0080F42C /* AutoServiceTests.swift in Sources */,
 				99F0278E21858983005FEFC7 /* RegionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

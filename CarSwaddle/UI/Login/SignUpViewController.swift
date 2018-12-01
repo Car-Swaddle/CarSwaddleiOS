@@ -9,6 +9,7 @@
 import UIKit
 import CarSwaddleNetworkRequest
 import CarSwaddleData
+import Authentication
 
 
 final class SignUpViewController: UIViewController, StoryboardInstantiating {
@@ -37,7 +38,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         }
         store.privateContext { [weak self] context in
             self?.loginTask = self?.auth.signUp(email: email, password: password, context: context) { error in
-                guard error == nil else {
+                guard error == nil && AuthController().token != nil else {
                     if let networkError = error as? NetworkRequestError {
                         print("login error: \(networkError)")
                     }

@@ -13,19 +13,41 @@ import CoreData
 @objc(ServiceEntity)
 final public class ServiceEntity: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
     
+    public static let tempID = "tempID"
+    
     public enum EntityType: String, CaseIterable {
-        case oilChange = "OILCHANGE"
+        case oilChange = "OIL_CHANGE"
     }
+    
+    public override func awakeFromInsert() {
+        super.awakeFromInsert()
+        primitiveIdentifier = ServiceEntity.tempID
+    }
+    
+    @NSManaged private var primitiveIdentifier: String
     
     /// Must set actual eneity relationship on your own. It is not set here and does not require it.
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
         guard let id = json.identifier,
-            let autoServiceID = json["autoServiceID"] as? String,
-            let autoService = AutoService.fetch(with: autoServiceID, in: context) else { return nil }
+            let entityTypeString = json["entityType"] as? String,
+            let entityType = EntityType(rawValue: entityTypeString) else { return nil }
         
         self.init(context: context)
         self.identifier = id
-        self.autoService = autoService
+        self.entityType = entityType
+        
+        if let autoServiceID = json["autoServiceID"] as? String,
+            let autoService = AutoService.fetch(with: autoServiceID, in: context) {
+            self.autoService = autoService
+        }
+        
+        switch entityType {
+        case .oilChange:
+            if let oilChangeJSON = json["oilChange"] as? JSONObject,
+                let oilChange = OilChange(json: oilChangeJSON, context: context) {
+                self.oilChange = oilChange
+            }
+        }
     }
     
     
@@ -51,6 +73,35 @@ final public class ServiceEntity: NSManagedObject, NSManagedObjectFetchable, JSO
             didAccessValue(forKey: entityTypeKey)
             return enumValue
         }
+    }
+    
+    public func toJSON(includeIdentifier: Bool = false, includeEntityIdentifier: Bool = false) -> JSONObject {
+        var entityJSON: JSONObject = [:]
+        entityJSON["entityType"] = entityType.rawValue
+        switch entityType {
+        case .oilChange:
+            if let oilChange = oilChange {
+                entityJSON["specificService"] = oilChange.toJSON(includeIdentifier: includeEntityIdentifier)
+            }
+        }
+        
+        if includeIdentifier {
+            entityJSON["identifier"] = identifier
+        }
+        
+        return entityJSON
+    }
+    
+}
+
+public extension Sequence where Iterator.Element == ServiceEntity {
+    
+    public func toJSONArray(includeIdentifiers: Bool = false, includeEntityIdentifiers: Bool = false) -> [JSONObject] {
+        var jsonArray: [JSONObject] = []
+        for entity in self {
+            jsonArray.append(entity.toJSON(includeIdentifier: includeIdentifiers, includeEntityIdentifier: includeEntityIdentifiers))
+        }
+        return jsonArray
     }
     
 }

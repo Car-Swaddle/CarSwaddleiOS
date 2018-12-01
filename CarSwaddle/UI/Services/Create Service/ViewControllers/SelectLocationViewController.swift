@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import Store
 import CoreLocation
-//import CarSwaddleUI
 
 private let losAngeleseCoordinates = CLLocationCoordinate2D(latitude: 34.052235, longitude: -118.243683)
 private let defaultCoordinates = losAngeleseCoordinates
@@ -38,7 +37,7 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     
     private var location: Location? {
         didSet {
-            updateMap()
+            updateMapWithCurrentLocation()
         }
     }
     
@@ -53,6 +52,7 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         setupLocation()
         styleView()
         setupBarButtons()
+        mapView.delegate = self
     }
     
     private var prev: NSLayoutConstraint? {
@@ -87,26 +87,22 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     
     private func setupLocation() {
         if location == nil {
-//            locationManager.currentLocation(cacheOptions: .networkOnly) { [weak self] location, error in
-//                DispatchQueue.main.async {
-//                    guard let _self = self, let coordinate = location?.coordinate else { return }
-//                    self?.location = Location(context: store.mainContext, autoService: _self.autoService, coordinate: coordinate)
-//                    store.mainContext.persist()
-//                }
-//            }
+            locationManager.currentLocationPlacemark { [weak self] placemark, error in
+                DispatchQueue.main.async {
+                    if let placemark = placemark {
+                        self?.setLocation(with: placemark)
+                    }
+                }
+            }
         } else {
-            updateMap()
+            updateMapWithCurrentLocation()
         }
     }
     
-    private func updateMap() {
+    private func updateMapWithCurrentLocation() {
         guard let location = location else { return }
         mapView?.region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1200, longitudinalMeters: 1200)
         mapView?.setCenter(location.coordinate, animated: true)
-//        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1200, longitudinalMeters: 1200)
-//        mapView?.setRegion(region, animated: true)
-//        let rect = MKMapRect(x: 0, y: 0, width: Double(view.frame.width), height: Double(view.frame.height))
-//        mapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: view.safeAreaInsets.top, left: 0, bottom: view.safeAreaInsets.bottom, right: 0), animated: false)
     }
     
     private func styleView() {
@@ -120,17 +116,7 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     @IBAction private func didSelectConfirm() {
         guard let location = location else { return }
         let center = mapView.centerCoordinate
-        location.latitude = center.latitude
-        location.longitude = center.longitude
-        store.mainContext.persist()
-        
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = center
-//        annotation.title = "Point center"
-//
-//        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "hi")
-//        view.addSubview(annotationView)
-//        view.addAnnotation(annotation)
+        setLocation(with: center)
         
         delegate?.didSelect(location: location, viewController: self)
     }
@@ -144,6 +130,25 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
 //        self.location = newLocation
     }
     
+    private func setLocation(with placemark: CLPlacemark) {
+        guard let coordinate = placemark.location?.coordinate else { return }
+        self.setLocation(with: coordinate)
+    }
+    
+    private func setLocation(with placemark: MKUserLocation) {
+        guard let coordinate = placemark.location?.coordinate else { return }
+        self.setLocation(with: coordinate)
+    }
+    
+    private func setLocation(with coordinate: CLLocationCoordinate2D) {
+        if location == nil {
+            location = Location(context: store.mainContext, autoService: autoService, coordinate: coordinate)
+        }
+        location?.latitude = coordinate.latitude
+        location?.longitude = coordinate.longitude
+        store.mainContext.persist()
+    }
+    
     private var didUpdateCurrentUserLocation: Bool = false
     
 }
@@ -151,19 +156,18 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
 extension SelectLocationViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        print("user location")
-        guard didUpdateCurrentUserLocation == false && location == nil else { return }
-        didUpdateCurrentUserLocation = true
-        DispatchQueue.main.async { [weak self] in
-            guard let _self = self, let coordinate = userLocation.location?.coordinate else { return }
-            
-            if _self.location == nil {
-                _self.location = Location(context: store.mainContext, autoService: _self.autoService, coordinate: coordinate)
-            }
-            _self.location?.latitude = coordinate.latitude
-            _self.location?.longitude = coordinate.longitude
-            store.mainContext.persist()
-        }
+//        guard didUpdateCurrentUserLocation == false && location == nil else { return }
+//        didUpdateCurrentUserLocation = true
+//        DispatchQueue.main.async { [weak self] in
+//            guard let _self = self else { return }
+//            _self.setLocation(with: userLocation)
+//            if _self.location == nil {
+//                _self.location = Location(context: store.mainContext, autoService: _self.autoService, coordinate: coordinate)
+//            }
+//            _self.location?.latitude = coordinate.latitude
+//            _self.location?.longitude = coordinate.longitude
+//            store.mainContext.persist()
+//        }
     }
     
 }

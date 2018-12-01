@@ -25,6 +25,7 @@
 		997DBC58219773E90080F42C /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC57219773E90080F42C /* UserTests.swift */; };
 		997DBC7A219D70540080F42C /* VehicleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC79219D70540080F42C /* VehicleService.swift */; };
 		997DBC7C219D77750080F42C /* VehicleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC7B219D77750080F42C /* VehicleTests.swift */; };
+		997DBC9821A3F3DB0080F42C /* AutoServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9721A3F3DB0080F42C /* AutoServiceTests.swift */; };
 		99C791C72150CBA4000167CB /* AutoServiceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C791C62150CBA4000167CB /* AutoServiceService.swift */; };
 		99F02697217B9FB8005FEFC7 /* AvailabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F02696217B9FB8005FEFC7 /* AvailabilityService.swift */; };
 		99F02699217BA048005FEFC7 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F02698217BA048005FEFC7 /* Service.swift */; };
@@ -93,6 +94,7 @@
 		997DBC57219773E90080F42C /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		997DBC79219D70540080F42C /* VehicleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleService.swift; sourceTree = "<group>"; };
 		997DBC7B219D77750080F42C /* VehicleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTests.swift; sourceTree = "<group>"; };
+		997DBC9721A3F3DB0080F42C /* AutoServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceTests.swift; sourceTree = "<group>"; };
 		99C791C62150CBA4000167CB /* AutoServiceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceService.swift; sourceTree = "<group>"; };
 		99C8DD87216AD59C00627E8A /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		99F02696217B9FB8005FEFC7 /* AvailabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityService.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		992C53CA2150C59B0076949C /* CarSwaddleNetworkRequestTests */ = {
 			isa = PBXGroup;
 			children = (
+				997DBC9721A3F3DB0080F42C /* AutoServiceTests.swift */,
 				992C53CB2150C59B0076949C /* CarSwaddleLoginTestCase.swift */,
 				99F026A0217BD01B005FEFC7 /* AvailabilityTests.swift */,
 				99F0278121852BE4005FEFC7 /* RegionServiceTests.swift */,
@@ -434,6 +437,7 @@
 				99F026A1217BD01B005FEFC7 /* AvailabilityTests.swift in Sources */,
 				997DBC7C219D77750080F42C /* VehicleTests.swift in Sources */,
 				99F0269F217BAB3B005FEFC7 /* LoginTests.swift in Sources */,
+				997DBC9821A3F3DB0080F42C /* AutoServiceTests.swift in Sources */,
 				99F0278221852BE4005FEFC7 /* RegionServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

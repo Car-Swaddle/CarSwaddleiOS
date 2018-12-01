@@ -30,7 +30,7 @@ final public class MechanicService: Service {
                     completion(nil, error)
                     return
             }
-            completion(jsonArray, nil)
+            completion(jsonArray, error)
         }
     }
     

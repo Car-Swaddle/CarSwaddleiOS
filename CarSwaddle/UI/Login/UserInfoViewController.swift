@@ -40,6 +40,7 @@ final class UserInfoViewController: UIViewController, StoryboardInstantiating {
         updateUser { [weak self] error in
             DispatchQueue.main.async {
                 self?.navigationItem.rightBarButtonItem = previousButton
+                navigator.navigateToLoggedInViewController()
             }
         }
     }

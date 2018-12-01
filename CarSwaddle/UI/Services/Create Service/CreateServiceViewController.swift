@@ -8,7 +8,8 @@
 
 import UIKit
 import Store
-//import CarSwaddleUI
+import CoreData
+import CarSwaddleData
 
 extension CreateServiceViewController {
     
@@ -46,6 +47,8 @@ extension CreateServiceViewController {
 
 final class CreateServiceViewController: UIViewController, StoryboardInstantiating {
     
+    private let autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
+    
     static func create(autoServiceID: String?) -> CreateServiceViewController {
         let viewController = CreateServiceViewController.viewControllerFromStoryboard()
         viewController.autoServiceID = autoServiceID
@@ -71,23 +74,15 @@ final class CreateServiceViewController: UIViewController, StoryboardInstantiati
     }
     
     private func fulfillAutoService() {
+        guard autoService == nil else { return }
         if let identifier = autoServiceID {
             guard let fetchedService  = AutoService.fetch(with: identifier, in: store.mainContext) else { return }
             autoService = fetchedService
         } else {
             let context = store.mainContext
             let newAutoService = AutoService.createWithDefaults(context: context)
-            let oilChange = OilChange(context: context)
-            oilChange.identifier = OilChange.tempID
-            oilChange.oilType = OilChange.defaultOilType
-            let newServiceEntity = ServiceEntity(autoService: newAutoService, oilChange: oilChange, context: context)
-            newAutoService.serviceEntities.insert(newServiceEntity)
-            newAutoService.vehicle = getVehicle()
-            if let user = User.currentUser(context: store.mainContext) {
-                newAutoService.creator = user
-            }
-            autoService = newAutoService
             context.persist()
+            autoService = newAutoService
         }
     }
     
@@ -113,12 +108,20 @@ final class CreateServiceViewController: UIViewController, StoryboardInstantiati
     }
     
     @IBAction private func didTapRequest() {
-        print("Request!")
-        guard let service = try? autoService.toJSON() else {
-            print("invalid json")
-            return
+        guard autoService.canConvertToJSON else { return }
+        let objectID = autoService.objectID
+        store.privateContext { [weak self] context in
+            guard let privateAutoService = context.object(with: objectID) as? AutoService else { return }
+            self?.autoServiceNetwork.createAutoService(autoService: privateAutoService, in: context) { newAutoService, error in
+                DispatchQueue.main.async {
+                    if error == nil {
+                        self?.dismiss(animated: true, completion: nil)
+                    } else {
+                        // show error
+                    }
+                }
+            }
         }
-        print("autoService: \(service))")
     }
     
 }
@@ -224,112 +227,10 @@ extension CreateServiceViewController: SelectVehicleViewControllerDelegate {
     
 }
 
-
-struct StoreError: Error {
-    let rawValue: String
-    
-    static let invalidJSON = StoreError(rawValue: "invalidJSON")
-    
-}
-
 extension AutoService {
     
-    func toJSON() throws -> JSONObject {
-        var json: JSONObject = [:]
-        
-//        json["locationID"] = location.identifier
-        
-//        if let locationID = location?.identifier {
-//            json["locationID"] = location.identifier
-//        } else {
-        if let location = location {
-            json["location"] = location.toJSON
-        } else {
-            throw StoreError.invalidJSON
-        }
-//        }
-        
-        if let mechanic = mechanic {
-            json["mechanicID"] = mechanic.identifier
-        } else {
-            throw StoreError.invalidJSON
-        }
-        
-        if let scheduledDate = scheduledDate {
-            json["scheduledDate"] = scheduledDate
-        } else {
-            throw StoreError.invalidJSON
-        }
-        
-        let jsonArray = serviceEntities.toJSONArray
-        if jsonArray.count > 0 {
-            json["serviceEntities"] = serviceEntities.toJSONArray
-        } else {
-            throw StoreError.invalidJSON
-        }
-        
-        return json
-    }
-    
-    var firstOilChange: OilChange? {
-        return serviceEntities.first(where: { entity -> Bool in
-            return entity.entityType == .oilChange
-        })?.oilChange
-    }
-    
-}
-
-extension Sequence where Iterator.Element == ServiceEntity {
-    
-    var toJSONArray: [JSONObject] {
-        var jsonArray: [JSONObject] = []
-        for entity in self {
-            jsonArray.append(entity.toJSON)
-        }
-        return jsonArray
-    }
-    
-}
-
-extension ServiceEntity {
-    
-    var toJSON: JSONObject {
-        var entityJSON: JSONObject = [:]
-        switch entityType {
-        case .oilChange:
-            if let oilChange = oilChange {
-                entityJSON = oilChange.toJSON()
-            }
-        }
-        return entityJSON
-    }
-    
-}
-
-extension OilChange {
-    
-    func toJSON(includeID: Bool = false) -> JSONObject {
-        var json: JSONObject = [:]
-        json["oilType"] = oilType.rawValue
-        if includeID {
-            json["identifier"] = identifier
-        }
-        return json
-    }
-    
-}
-
-
-extension Location {
-    
-    var toJSON: JSONObject {
-        var json: JSONObject = [:]
-        
-        json["latitude"] = latitude
-        json["longitude"] = longitude
-//        json["identifier"] = identifier
-        
-        return json
+    var canConvertToJSON: Bool {
+        return (try? toJSON()) != nil
     }
     
 }
