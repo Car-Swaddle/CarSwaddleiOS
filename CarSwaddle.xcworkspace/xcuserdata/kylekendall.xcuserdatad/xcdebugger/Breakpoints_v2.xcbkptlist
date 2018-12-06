@@ -36,28 +36,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddle/UI/Navigation/Navigator.swift"
-            timestampString = "565332285.450907"
+            timestampString = "565782250.283426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
             endingLineNumber = "55"
             landmarkName = "initialViewController()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CarSwaddle/UI/Services/Create Service/CreateServiceViewController.swift"
-            timestampString = "565332285.451568"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "didTapRequest()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
