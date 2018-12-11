@@ -34,9 +34,7 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
     private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     
     private var autoServices: [AutoService] = [] {
-        didSet {
-            tableView.reloadData()
-        }
+        didSet { tableView.reloadData() }
     }
     
     override func viewDidLoad() {
@@ -97,7 +95,7 @@ extension ServicesViewController: UITableViewDataSource {
 extension ServicesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected row")
+        
     }
     
 }

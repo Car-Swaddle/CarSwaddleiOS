@@ -83,11 +83,7 @@ final class SelectVehicleViewController: UIViewController, StoryboardInstantiati
 //            }
 //            privateContext.persist()
             
-            self?.vehicleNetwork.requestVehicles(limit: 15, offset: 0, in: privateContext) { vehicleIDs, error in
-                DispatchQueue.main.async {
-                    print("don e")
-                }
-            }
+            self?.vehicleNetwork.requestVehicles(limit: 15, offset: 0, in: privateContext) { vehicleIDs, error in }
         }
     }
     
@@ -208,7 +204,6 @@ extension SelectVehicleViewController: UITableViewDelegate {
                         if self?.selectedVehicle?.identifier == vehicleID {
                             self?.selectedVehicle = nil
                         }
-                        print("error: \(error)")
                         handler(error == nil)
                     }
                 }

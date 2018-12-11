@@ -49,6 +49,10 @@ final class Navigator: NSObject {
         appDelegate.window?.rootViewController = navigator.initialViewController()
         appDelegate.window?.makeKeyAndVisible()
         showRequiredScreensIfNeeded()
+        
+//        if AuthController().token != nil {
+//            pushNotificationController.requestPermission()
+//        }
     }
     
     public func initialViewController() -> UIViewController {
@@ -97,6 +101,7 @@ final class Navigator: NSObject {
         UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
             window.rootViewController = newViewController
         }) { completed in
+            pushNotificationController.requestPermission()
             self.showRequiredScreensIfNeeded()
         }
     }
@@ -112,34 +117,52 @@ final class Navigator: NSObject {
         UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
             window.rootViewController = newViewController
         }) { [weak self] completed in
-            self?._tabBarController = nil
+            self?.removeUI()
         }
     }
     
+    private func removeUI() {
+        _tabBarController = nil
+        _servicesViewController = nil
+        _profileViewController = nil
+    }
+    
     private func showRequiredScreensIfNeeded() {
-//        guard let userID = User.currentUserID else { return }
-//        guard let mechanic = Mechanic.fetch(with: userID, in: store.mainContext) else { return }
-        // TODO: Uncomment this before release
-        //            mechanic.scheduleTimeSpans.count == 0 else { return
+        guard let userID = User.currentUserID else { return }
+        guard let mechanic = Mechanic.fetch(with: userID, in: store.mainContext) else { return }
+//         TODO: Uncomment this before release
+//                    mechanic.scheduleTimeSpans.count == 0 else { return
         
 //        appDelegate.window?.rootViewController?.present(availabilityViewController.inNavigationController(), animated: true, completion: nil)
 //        let users = UsersViewController()
 //        appDelegate.window?.rootViewController?.present(users.inNavigationController(), animated: true, completion: nil)
     }
     
-    private lazy var servicesViewController: ServicesViewController = {
+    private var _servicesViewController: ServicesViewController?
+    private var servicesViewController: ServicesViewController {
+        if let _servicesViewController = _servicesViewController {
+            return _servicesViewController
+        }
+        
         let servicesViewController = ServicesViewController.viewControllerFromStoryboard()
         let title = NSLocalizedString("Services", comment: "Title of tab item.")
         servicesViewController.tabBarItem = UITabBarItem(title: title, image: nil, selectedImage: nil)
+        _servicesViewController = servicesViewController
         return servicesViewController
-    }()
+    }
     
-    private lazy var profileViewController: ProfileViewController = {
+    private var _profileViewController: ProfileViewController?
+    private var profileViewController: ProfileViewController {
+        if let _profileViewController = _profileViewController {
+            return _profileViewController
+        }
+        
         let profileViewController = ProfileViewController.viewControllerFromStoryboard()
         let title = NSLocalizedString("Profile", comment: "Title of tab item.")
         profileViewController.tabBarItem = UITabBarItem(title: title, image: nil, selectedImage: nil)
+        _profileViewController = profileViewController
         return profileViewController
-    }()
+    }
     
     private func viewController(for tab: Tab) -> UIViewController {
         switch tab {
@@ -179,7 +202,6 @@ extension Navigator: UITabBarControllerDelegate {
     private static let didChangeTabEvent = "Did Change Tab"
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        print("changed tab")
 //        guard let tab = self.tab(from: viewController) else { return }
 //        trackEvent(with: Navigator.didChangeTabEvent, attributes: ["Screen": tab.name])
     }

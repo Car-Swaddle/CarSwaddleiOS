@@ -23,7 +23,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
-    private var loginTask: URLSessionDataTask?
+    private var signUpTask: URLSessionDataTask?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
                 return
         }
         store.privateContext { [weak self] context in
-            self?.loginTask = self?.auth.signUp(email: email, password: password, context: context) { error in
+            self?.signUpTask = self?.auth.signUp(email: email, password: password, context: context) { error in
                 guard error == nil && AuthController().token != nil else {
                     if let networkError = error as? NetworkRequestError {
                         print("login error: \(networkError)")

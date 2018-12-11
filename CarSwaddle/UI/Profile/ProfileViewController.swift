@@ -27,10 +27,13 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         let logoutAction = UIAlertAction(title: title, style: .destructive) { [weak self] action in
             self?.auth.logout { error in
                 DispatchQueue.main.async {
-                    finishTasksAndInvalidate()
-                    try? store.destroyAllData()
-                    AuthController().removeToken()
-                    navigator.navigateToLoggedOutViewController()
+                    finishTasksAndInvalidate {
+                        try? store.destroyAllData()
+                        AuthController().removeToken()
+                        DispatchQueue.main.async {
+                            navigator.navigateToLoggedOutViewController()
+                        }
+                    }
                 }
             }
         }

@@ -53,7 +53,7 @@ final class UserInfoViewController: UIViewController, StoryboardInstantiating {
         }
         
         store.privateContext { [weak self] context in
-            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, in: context) { userObjectID, error in
+            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, in: context) { userObjectID, error in
                 completion(error)
             }
         }

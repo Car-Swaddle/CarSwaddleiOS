@@ -17,16 +17,12 @@ private let dateFormatter: DateFormatter = {
 }()
 
 final class AutoServiceCell: UITableViewCell, NibRegisterable {
-
     
-    
-    @IBOutlet weak var scheduledDateLabel: UILabel!
-    @IBOutlet weak var mechanicLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var vehicleLabel: UILabel!
-    @IBOutlet weak var serviceTypeLabel: UILabel!
-    
-//    private let locationManager: LocationManager
+    @IBOutlet private weak var scheduledDateLabel: UILabel!
+    @IBOutlet private weak var mechanicLabel: UILabel!
+    @IBOutlet private weak var locationLabel: UILabel!
+    @IBOutlet private weak var vehicleLabel: UILabel!
+    @IBOutlet private weak var serviceTypeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +31,7 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
         scheduledDateLabel.text = ""
         mechanicLabel.text = ""
         locationLabel.text = ""
@@ -43,7 +40,6 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
     }
     
     func configure(with autoService: AutoService) {
-        print("autoService: \(autoService)")
         if let date = autoService.scheduledDate {
             scheduledDateLabel.text = dateFormatter.string(from: date)
         }
@@ -52,13 +48,6 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         locationLabel.text = autoService.location?.streetAddress ?? "location"
         vehicleLabel.text = autoService.vehicle?.name
         serviceTypeLabel.text = autoService.serviceEntities.first?.entityType.localizedString
-        
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        
     }
     
 }
