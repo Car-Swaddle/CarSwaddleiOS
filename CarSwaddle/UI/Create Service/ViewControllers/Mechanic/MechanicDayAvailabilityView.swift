@@ -152,7 +152,7 @@ final class MechanicDayAvailabilityView: UIView, NibInstantiating {
         let endDate = self.endDate
         
         store.privateContext { [weak self] privateContext in
-            self?.autoServiceNetwork.getAutoServices(mechanicID: mechanicID, startDate: startDate, endDate: endDate, status: [.inProgress, .completed, .scheduled], in: privateContext) { autoServiceIDs, error in
+            self?.autoServiceNetwork.getAutoServices(mechanicID: mechanicID, startDate: startDate, endDate: endDate, filterStatus: [.inProgress, .completed, .scheduled], in: privateContext) { autoServiceIDs, error in
                 store.mainContext{ mainContext in
                     let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: mainContext)
                     self?.scheduledAutoServices = autoServices
