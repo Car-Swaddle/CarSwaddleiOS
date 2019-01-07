@@ -10,6 +10,7 @@ import UIKit
 import Store
 import CoreData
 import CarSwaddleData
+import Stripe
 
 extension CreateServiceViewController {
     
@@ -19,27 +20,6 @@ extension CreateServiceViewController {
         case vehicle
         case oilType
         case price
-        
-        func cell(from tableView: UITableView) -> CreateServiceCell {
-            switch self {
-            case .location:
-                let cell: CreateServiceLocationCell = tableView.dequeueCell()
-                return cell
-            case .mechanic:
-                let cell: CreateServiceMechanicCell = tableView.dequeueCell()
-                return cell
-            case .vehicle:
-                let cell: CreateServiceVehicleCell = tableView.dequeueCell()
-                return cell
-            case .oilType:
-                let cell: CreateServiceOilTypeCell = tableView.dequeueCell()
-                return cell
-            case .price:
-                let cell: CreateServicePriceCell = tableView.dequeueCell()
-                return cell
-            }
-        }
-        
     }
     
 }
@@ -48,6 +28,14 @@ extension CreateServiceViewController {
 final class CreateServiceViewController: UIViewController, StoryboardInstantiating {
     
     private let autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
+    private let priceNetwork: PriceNetwork = PriceNetwork(serviceRequest: serviceRequest)
+    
+    private lazy var paymentContext: STPPaymentContext = {
+        let paymentContext = STPPaymentContext(customerContext: STPCustomerContext(keyProvider: stripe))
+        paymentContext.delegate = self
+        paymentContext.hostViewController = self
+        return paymentContext
+    }()
     
     static func create(autoServiceID: String?) -> CreateServiceViewController {
         let viewController = CreateServiceViewController.viewControllerFromStoryboard()
@@ -58,6 +46,7 @@ final class CreateServiceViewController: UIViewController, StoryboardInstantiati
     private var autoServiceID: String? {
         didSet {
             fulfillAutoService()
+            updatePrice()
         }
     }
     
@@ -108,7 +97,25 @@ final class CreateServiceViewController: UIViewController, StoryboardInstantiati
     }
     
     @IBAction private func didTapRequest() {
-        guard autoService.canConvertToJSON else { return }
+        guard autoService.canConvertToJSON,
+            let price = autoService.price else { return }
+        
+        var summaryItems: [PKPaymentSummaryItem] = []
+        
+        for pricePart in price.parts {
+            guard pricePart.isPartOfSubtotal == true else { continue }
+            summaryItems.append(pricePart.paymentSummaryItem)
+        }
+        summaryItems.append(PKPaymentSummaryItem(label: NSLocalizedString("Car Swaddle", comment: "Name of company"), amount: price.totalDollarValue))
+        
+        paymentContext.paymentSummaryItems = summaryItems
+        
+        paymentContext.requestPayment()
+    }
+    
+    
+    
+    private func createAutoService() {
         let objectID = autoService.objectID
         store.privateContext { [weak self] context in
             guard let privateAutoService = context.object(with: objectID) as? AutoService else { return }
@@ -124,28 +131,79 @@ final class CreateServiceViewController: UIViewController, StoryboardInstantiati
         }
     }
     
+    private var loadingPrice: Bool = false
+    
+    private func updatePrice() {
+        guard let mechanicID = autoService.mechanic?.identifier,
+            let oilType = autoService.firstOilChange?.oilType,
+            let location = autoService.location else { return }
+        
+        let coordinate = location.coordinate
+        loadingPrice = true
+        store.privateContext { [weak self] privateContext in
+            self?.priceNetwork.requestPrice(mechanicID: mechanicID, oilType: oilType, location: coordinate, in: privateContext) { priceObjectID, error in
+                DispatchQueue.main.async {
+                    guard let _self = self else { return }
+                    if let priceObjectID = priceObjectID,
+                        let price = store.mainContext.object(with: priceObjectID) as? Price {
+                        price.autoService = _self.autoService
+                        store.mainContext.persist()
+                    }
+                    _self.loadingPrice = false
+                    _self.tableView.reloadRows(at: [_self.indexPath(from: .price)], with: .none)
+                }
+            }
+        }
+    }
+    
 }
 
 extension CreateServiceViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = self.row(from: indexPath)
-        let cell = row.cell(from: tableView)
+        let cell = self.cell(with: row)
         
         cell.configure(with: autoService)
         return cell
+    }
+    
+    private func indexPath(from row: Row) -> IndexPath {
+        guard let indexRow = rows.firstIndex(of: row) else { fatalError("Should have \(row) in rows") }
+        return IndexPath(row: indexRow, section: 0)
     }
     
     private func row(from indexPath: IndexPath) -> Row {
         return rows[indexPath.row]
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 72
+    private func cell(with row: Row) -> CreateServiceCell {
+        switch row {
+        case .location:
+            let cell: CreateServiceLocationCell = tableView.dequeueCell()
+            return cell
+        case .mechanic:
+            let cell: CreateServiceMechanicCell = tableView.dequeueCell()
+            return cell
+        case .vehicle:
+            let cell: CreateServiceVehicleCell = tableView.dequeueCell()
+            return cell
+        case .oilType:
+            let cell: CreateServiceOilTypeCell = tableView.dequeueCell()
+            return cell
+        case .price:
+            let cell: CreateServicePriceCell = tableView.dequeueCell()
+            return cell
+        }
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 72
+//    }
     
 }
 
@@ -183,6 +241,7 @@ extension CreateServiceViewController: SelectLocationViewControllerDelegate {
         self.autoService.location = location
         store.mainContext.persist()
         navigationController?.popViewController(animated: true)
+        updatePrice()
     }
     
 }
@@ -194,6 +253,7 @@ extension CreateServiceViewController: SelectMechanicDelegate {
         autoService.scheduledDate = date
         store.mainContext.persist()
         navigationController?.popViewController(animated: true)
+        updatePrice()
     }
     
 }
@@ -206,6 +266,7 @@ extension CreateServiceViewController: SelectOilTypeViewControllerDelegate {
         let indexPath = IndexPath(row: rows.index(of: .oilType) ?? 0, section: 0)
         tableView.reloadRows(at: [indexPath], with: .none)
         navigationController?.popViewController(animated: true)
+        updatePrice()
     }
     
 }
@@ -217,15 +278,72 @@ extension CreateServiceViewController: SelectVehicleViewControllerDelegate {
         store.mainContext.persist()
         tableView.reloadData()
         navigationController?.popViewController(animated: true)
+        updatePrice()
     }
     
     func didDeselectVehicle(viewController: SelectVehicleViewController) {
         autoService.vehicle = nil
         store.mainContext.persist()
         tableView.reloadData()
+        updatePrice()
     }
     
 }
+
+extension CreateServiceViewController: STPPaymentContextDelegate {
+    
+    func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
+        print("context changed")
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
+        print("failed to load")
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
+        // TODO: Call backend and create charge
+        print("create paymet result")
+        print("paymentResult: \(paymentResult)")
+        print("paymentContext: \(paymentContext)")
+        completion(nil)
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
+        print("finished UI")
+        
+        switch status {
+        case .error:
+            print("error")
+            if let error = error {
+                print("\(error)")
+            }
+        case .success:
+            print("success")
+            createAutoService()
+        case .userCancellation:
+            print("user cancelled")
+        }
+    }
+    
+}
+
+
+extension PricePart {
+    
+    var paymentSummaryItem: PKPaymentSummaryItem {
+        return PKPaymentSummaryItem(pricePart: self)
+    }
+    
+}
+
+extension PKPaymentSummaryItem {
+    
+    convenience init(pricePart: PricePart) {
+        self.init(label: pricePart.key, amount: pricePart.dollarValue)
+    }
+    
+}
+
 
 extension AutoService {
     

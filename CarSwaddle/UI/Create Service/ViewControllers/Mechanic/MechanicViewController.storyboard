@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BVv-pU-PoV" customClass="MechanicDayAvailabilityViewWrapper" customModule="CarSwaddle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="338" width="375" height="329"/>
+                                <rect key="frame" x="0.0" y="325" width="375" height="342"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="329" id="Gvz-Ec-hNp"/>
+                                    <constraint firstAttribute="height" constant="342" id="Gvz-Ec-hNp"/>
                                 </constraints>
                             </view>
                         </subviews>

@@ -9,6 +9,7 @@
 import UIKit
 import Store
 import CarSwaddleUI
+import CarSwaddleData
 
 protocol MechanicViewControllerDelegate: AnyObject {
     func didChangeDate(date: Date?, viewController: MechanicViewController)
@@ -29,6 +30,8 @@ final class MechanicViewController: UIViewController, StoryboardInstantiating {
     }
     
     weak var delegate: MechanicViewControllerDelegate?
+    
+    private var mechanicService: MechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
 
     @IBOutlet private weak var mechanicAvailabilityView: MechanicDayAvailabilityViewWrapper!
     
@@ -38,6 +41,20 @@ final class MechanicViewController: UIViewController, StoryboardInstantiating {
         title = mechanic.user?.displayName
         updateMechanicView()
         mechanicAvailabilityView.view.delegate = self
+        updateStats { [weak self] in
+            self?.updateMechanicView()
+        }
+    }
+    
+    private func updateStats(completion: @escaping () -> Void) {
+        let mechanicID = mechanic.identifier
+        store.privateContext { [weak self] privateContext in
+            self?.mechanicService.getStats(mechanicID: mechanicID, in: privateContext) { mechanicID, error in
+                DispatchQueue.main.async {
+                    completion()
+                }
+            }
+        }
     }
     
     private var hasUpdatedMechanicView: Bool = false

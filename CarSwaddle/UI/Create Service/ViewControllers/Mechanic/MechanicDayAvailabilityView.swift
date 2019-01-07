@@ -11,6 +11,7 @@ import Store
 import CarSwaddleUI
 import CarSwaddleData
 import CoreData
+import Cosmos
 
 
 protocol MechanicDateAvailabilityDelegate: AnyObject {
@@ -30,37 +31,47 @@ private let dateFormatter: DateFormatter = {
     return d
 }()
 
+private let averageRatingFormatter: NumberFormatter = {
+    let formatter = NumberFormatter()
+    formatter.maximumFractionDigits = 1
+    formatter.minimumFractionDigits = 1
+    return formatter
+}()
+
 final class MechanicDayAvailabilityView: UIView, NibInstantiating {
     
     public func configure(with mechanic: Mechanic) {
         self.mechanic = mechanic
-        let string = NSLocalizedString("%@'s availability", comment: "Title of view that displays a mechanics schedule")
-        titleLabel.text = String(format: string, mechanic.user?.displayName ?? "")
+//        let string = NSLocalizedString("%@", comment: "Title of view that displays a mechanics schedule")
+//        titleLabel.text = String(format: string, mechanic.user?.displayName ?? "")
+        titleLabel.text = mechanic.user?.displayName
         updateSchedule()
         requestAutoServices()
+        updateStats { [weak self] in
+            self?.updateStatsView()
+        }
     }
     
     weak var delegate: MechanicDateAvailabilityDelegate?
     
     private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
+    private var mechanicNetwork: MechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
     
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var statsLabel: UILabel!
     @IBOutlet private weak var dayLabel: UILabel!
+    @IBOutlet private weak var mechanicDescriptionStackView: UIStackView!
     
     private var mechanic: Mechanic!
     private var availabilityService = TemplateTimeSpanNetwork(serviceRequest: serviceRequest)
     
     private var scheduledAutoServices: [AutoService] = [] {
-        didSet {
-            collectionView.reloadData()
-        }
+        didSet { collectionView.reloadData() }
     }
     
     private var task: URLSessionDataTask? {
-        willSet {
-            task?.cancel()
-        }
+        willSet { task?.cancel() }
     }
     
     private var timeSlots: [Int] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
@@ -109,21 +120,54 @@ final class MechanicDayAvailabilityView: UIView, NibInstantiating {
         return dateComponents.date ?? Date()
     }
     
+    
+    @IBOutlet private weak var starRatingView: CosmosView!
+    @IBOutlet private weak var averageRatingLabel: UILabel!
+    
+//    lazy private var starRatingView: CosmosView = {
+//        var settings = CosmosSettings()
+//
+//        let starRatingView = CosmosView(settings: settings)
+//        starRatingView.translatesAutoresizingMaskIntoConstraints = false
+//        starRatingView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//        starRatingView.widthAnchor.constraint(equalToConstant: 130).isActive = true
+//
+//        starRatingView.rating = 0.0
+//
+//        return starRatingView
+//    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        currentCalendarDate = Date(timeIntervalSinceNow: .day)
+        starRatingView.settings.fillMode = .precise
         
+        currentCalendarDate = Date(timeIntervalSinceNow: .day)
         setupCollectionView()
+//        mechanicDescriptionStackView.addArrangedSubview(starRatingView)
+    }
+    
+    private func updateStats(completion: @escaping () -> Void = { }) {
+        guard let mechanicID = mechanic?.identifier else {
+            completion()
+            return
+        }
+        store.privateContext { [weak self] context in
+            self?.mechanicNetwork.getStats(mechanicID: mechanicID, in: context) { mechanicObjectID, error in
+                DispatchQueue.main.async {
+                    completion()
+                }
+            }
+        }
     }
     
     
-    @IBAction func didTapPrevious() {
+    @IBAction private func didTapPrevious() {
         currentCalendarDate = Date(timeInterval: -.day, since: currentCalendarDate)
         requestAutoServices()
     }
     
-    @IBAction func didTapNext() {
+    @IBAction private func didTapNext() {
         currentCalendarDate = Date(timeInterval: .day, since: currentCalendarDate)
         requestAutoServices()
     }
@@ -150,7 +194,6 @@ final class MechanicDayAvailabilityView: UIView, NibInstantiating {
         
         let startDate = self.startDate
         let endDate = self.endDate
-        
         store.privateContext { [weak self] privateContext in
             self?.autoServiceNetwork.getAutoServices(mechanicID: mechanicID, startDate: startDate, endDate: endDate, filterStatus: [.inProgress, .completed, .scheduled], in: privateContext) { autoServiceIDs, error in
                 store.mainContext{ mainContext in
@@ -175,6 +218,26 @@ final class MechanicDayAvailabilityView: UIView, NibInstantiating {
     private func fetchTimeSpans(for weekday: Weekday) -> [TemplateTimeSpan] {
         guard let mechanicID = mechanic?.identifier else { return [] }
         return TemplateTimeSpan.fetch(with: weekday, mechanicID: mechanicID, in: store.mainContext)
+    }
+    
+    private func updateStatsView() {
+//        statsLabel.text = statsText
+        let averageRating = mechanic?.stats?.averageRating ?? 0.0
+        starRatingView.rating = averageRating
+        let number = NSNumber(value: averageRating)
+        averageRatingLabel.text = averageRatingFormatter.string(from: number)
+        let formatString = NSLocalizedString("%i ratings", comment: "rating")
+        statsLabel.text = String(format: formatString, mechanic.stats?.numberOfRatings ?? 0)
+    }
+    
+    private var statsText: String? {
+        return nil
+//        guard let stats = mechanic?.stats else { return nil }
+//        let formatString = NSLocalizedString("%@⭐️ %i reviews, %i services completed", comment: "Rating text")
+//        let formatString = NSLocalizedString("MechanicDayAvailabilityView.Stats", comment: "Stats text")
+//        guard let formattedAverage = numberFormatter.string(from: NSNumber(value: stats.averageRating)) else { return nil }
+//        return String(format: formatString, formattedAverage, stats.numberOfRatings, stats.autoServicesProvided)
+        
     }
     
 }
@@ -262,32 +325,3 @@ final class MechanicDayAvailabilityViewWrapper: UIView {
     }
     
 }
-
-
-
-
-
-//extension TemplateTimeSpan {
-//
-//    static func fetch(with weekday: Weekday, mechanicID: String, in context: NSManagedObjectContext) -> [TemplateTimeSpan] {
-//        let fetchRequest: NSFetchRequest<TemplateTimeSpan> = TemplateTimeSpan.fetchRequest()
-//
-//        let mechanicPredicate = TemplateTimeSpan.predicate(forMechanicID: mechanicID)
-//        let weekdayPredicate = TemplateTimeSpan.predicate(for: weekday)
-//        let predicates: [NSPredicate] = [mechanicPredicate, weekdayPredicate]
-//        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-//        fetchRequest.predicate = compoundPredicate
-//
-//        return (try? context.fetch(fetchRequest)) ?? []
-//    }
-//
-//    static func predicate(forMechanicID mechanicID: String) -> NSPredicate {
-//        return NSPredicate(format: "%K == %@", #keyPath(TemplateTimeSpan.mechanic.identifier), mechanicID)
-//    }
-//
-//    static func predicate(for weekday: Weekday) -> NSPredicate {
-//        return NSPredicate(format: "weekday == %i", weekday.rawValue)
-//    }
-//
-//}
-

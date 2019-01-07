@@ -46,6 +46,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
                 }
                 DispatchQueue.main.async {
                     let userInfoViewController = UserInfoViewController.viewControllerFromStoryboard()
+                    userInfoViewController.delegate = self
                     self?.navigationController?.pushViewController(userInfoViewController, animated: true)
                 }
             }
@@ -56,4 +57,12 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         
     }
 
+}
+
+extension SignUpViewController: UserInfoViewControllerDelegate {
+    
+    func didChangeName(userInfoViewController: UserInfoViewController) {
+        navigator.navigateToLoggedInViewController()
+    }
+    
 }

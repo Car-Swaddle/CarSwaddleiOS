@@ -17,10 +17,17 @@ struct UserInfoError: Error {
     static let noInput = UserInfoError(rawValue: "noInput")
 }
 
+protocol UserInfoViewControllerDelegate: AnyObject {
+    func didChangeName(userInfoViewController: UserInfoViewController)
+}
+
 final class UserInfoViewController: UIViewController, StoryboardInstantiating {
 
+    weak var delegate: UserInfoViewControllerDelegate?
+    
     @IBOutlet private weak var firstNameTextField: UITextField!
     @IBOutlet private weak var lastNameTextField: UITextField!
+    @IBOutlet private weak var phoneNumberTextField: UITextField!
     
     private let userNetwork = UserNetwork(serviceRequest: serviceRequest)
     
@@ -30,6 +37,8 @@ final class UserInfoViewController: UIViewController, StoryboardInstantiating {
         let currentUser = User.currentUser(context: store.mainContext)
         firstNameTextField.text = currentUser?.firstName
         lastNameTextField.text = currentUser?.lastName
+        
+        phoneNumberTextField.text = currentUser?.phoneNumber
     }
     
     
@@ -40,20 +49,23 @@ final class UserInfoViewController: UIViewController, StoryboardInstantiating {
         updateUser { [weak self] error in
             DispatchQueue.main.async {
                 self?.navigationItem.rightBarButtonItem = previousButton
-                navigator.navigateToLoggedInViewController()
+                if let _self = self {
+                    self?.delegate?.didChangeName(userInfoViewController: _self)
+                }
             }
         }
     }
     
     private func updateUser(completion: @escaping (_ error: Error?) -> Void) {
         guard let firstName = firstNameTextField.text,
-            let lastName = lastNameTextField.text else {
+            let lastName = lastNameTextField.text,
+            let phoneNumber = phoneNumberTextField.text else {
                 completion(UserInfoError.noInput)
                 return
         }
         
         store.privateContext { [weak self] context in
-            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, in: context) { userObjectID, error in
+            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, token: nil, in: context) { userObjectID, error in
                 completion(error)
             }
         }
