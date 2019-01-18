@@ -13,16 +13,18 @@ import Authentication
 
 class LoginViewController: UIViewController, StoryboardInstantiating {
     
-    private let auth = Auth(serviceRequest: serviceRequest)
+    private let auth: Auth = Auth(serviceRequest: serviceRequest)
 
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var testServerSwitch: UISwitch!
     private var loginTask: URLSessionDataTask?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        testServerSwitch.setOn(useLocalServer, animated: false)
     }
     
     @IBAction private func didTapLogin() {
@@ -50,5 +52,11 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
         navigationController?.pushViewController(user, animated: true)
     }
     
+    
+    
+    @IBAction func didSwitch(_ testServerSwitch: UISwitch) {
+        _serviceRequest = nil
+        useLocalServer = testServerSwitch.isOn
+    }
     
 }

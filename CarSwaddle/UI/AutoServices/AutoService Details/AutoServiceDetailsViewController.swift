@@ -134,13 +134,13 @@ extension AutoServiceDetailsViewController: ReviewCellProtocol {
     
     private func createRatingAlert() -> CustomAlertController {
         let title = NSLocalizedString("Rate your mechanic", comment: "Title of alert when user is rating their mechanic")
-        //        let message = NSLocalizedString("", comment: "Message of alert when user is rating their mechanic")
         let content = CustomAlertContentView.view(withTitle: title, message: nil)
         
         content.addCustomView { [weak self] customView in
             customView.heightAnchor.constraint(equalToConstant: 35).isActive = true
             
             let starRatingView = CosmosView(settings: .default)
+            starRatingView.rating = 5.0
             starRatingView.translatesAutoresizingMaskIntoConstraints = false
             
             
@@ -150,8 +150,6 @@ extension AutoServiceDetailsViewController: ReviewCellProtocol {
             
             starRatingView.centerXAnchor.constraint(equalTo: customView.centerXAnchor).isActive = true
             starRatingView.widthAnchor.constraint(equalToConstant: 120).isActive = true
-            
-//            starRatingView.backgroundColor = .red
             
             self?.starRatingView = starRatingView
         }
@@ -172,6 +170,8 @@ extension AutoServiceDetailsViewController: ReviewCellProtocol {
             textView.layer.cornerRadius = 8.0
             
             textView.font = UIFont.appFont(size: 16)
+            
+            textView.becomeFirstResponder()
             
             self?.ratingTextView = textView
         }

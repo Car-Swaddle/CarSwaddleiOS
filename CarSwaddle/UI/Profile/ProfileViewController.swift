@@ -73,7 +73,10 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     }
     
     private func logoutServer(completion: @escaping () -> Void) {
-        auth.logout { error in
+        auth.logout(deviceToken: pushNotificationController.getDeviceToken()) { error in
+            if error == nil {
+                pushNotificationController.deleteDeviceToken()
+            }
             DispatchQueue.main.async {
                 completion()
             }
@@ -83,6 +86,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     private func logoutLocally(completion: @escaping () -> Void) {
         finishTasksAndInvalidate {
             try? store.destroyAllData()
+            try? profileImageStore.destroy()
             AuthController().removeToken()
             DispatchQueue.main.async {
                 completion()
@@ -173,7 +177,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         guard let image = info[.originalImage] as? UIImage else { return }
         let orientedImage = UIImage.imageWithCorrectedOrientation(image)
-        guard let imageData = orientedImage.pngData() else {
+        guard let imageData = orientedImage.resized(toWidth: 300 * UIScreen.main.scale)?.pngData() else {
             return
         }
         guard let url = try? profileImageStore.storeFile(data: imageData, fileName: User.currentUserID ?? "profileImage") else {
@@ -188,23 +192,6 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                 }
             }
         }
-    }
-    
-}
-
-
-extension UIImage {
-    
-    public static func imageWithCorrectedOrientation(_ image: UIImage) -> UIImage {
-        if image.imageOrientation == .up { return image }
-        
-        UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale);
-        let rect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
-        image.draw(in: rect)
-        
-        guard let normalizedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() else { return image }
-        UIGraphicsEndImageContext()
-        return normalizedImage
     }
     
 }

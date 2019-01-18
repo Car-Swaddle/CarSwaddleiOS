@@ -12,6 +12,11 @@ public typealias JSONObject = [String: Any]
 
 private let modelFileExtension = "momd"
 
+
+private let privateContextQueue = DispatchQueue(label: "privateContextQueue", qos: .background)
+
+private let importQueue = DispatchQueue(label: "importQueue", qos: .background)
+
 public class Store {
     
     public let bundle: Bundle
@@ -26,8 +31,7 @@ public class Store {
     
     public func destroyAllData() throws {
         guard let url = persistentContainer.persistentStoreCoordinator.persistentStores.first?.url else {
-            // TODO: throw
-            return
+            throw StoreError.noPathToPersistentStore
         }
         try persistentContainer.persistentStoreCoordinator.destroyPersistentStore(at: url, ofType: NSSQLiteStoreType, options: nil)
         _persistentContainer = nil
@@ -99,16 +103,31 @@ public class Store {
     }
     
     public func privateContext(_ closure: @escaping (NSManagedObjectContext)->()) {
-        persistentContainer.performBackgroundTask { context in
-            closure(context)
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            privateContextQueue.async {
+                guard let context = self?.createPrivateContext() else { return }
+                context.performAndWait {
+                    closure(context)
+                }
+            }
         }
     }
     
     public func privateContextAndWait(_ closure: @escaping (NSManagedObjectContext)->()) {
-        let context = persistentContainer.newBackgroundContext()
-        context.performAndWait {
-            closure(context)
+        dispatchPrecondition(condition: DispatchPredicate.notOnQueue(privateContextQueue))
+        privateContextQueue.sync {
+            let context = self.createPrivateContext()
+            context.performAndWait {
+                closure(context)
+            }
         }
+    }
+    
+    private func createPrivateContext() -> NSManagedObjectContext {
+        let context = persistentContainer.newBackgroundContext()
+        context.automaticallyMergesChangesFromParent = true
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        return context
     }
     
 }
@@ -123,6 +142,14 @@ public extension NSManagedObjectContext {
         } catch {
             let nserror = error as NSError
             print("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
+    public func performOnImportQueue(_ closure: @escaping () -> Void) {
+        importQueue.async {
+            self.performAndWait {
+                closure()
+            }
         }
     }
     

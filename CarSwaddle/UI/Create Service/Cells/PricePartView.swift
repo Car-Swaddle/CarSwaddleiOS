@@ -31,7 +31,7 @@ final class PricePartView: UIView, NibInstantiating {
 public extension PricePart {
     
     var dollarValue: NSDecimalNumber {
-        return value.dividing(by: 100)
+        return NSDecimalNumber(value: Float(value) / 100.0)
     }
     
 }
@@ -39,7 +39,7 @@ public extension PricePart {
 public extension Price {
     
     var totalDollarValue: NSDecimalNumber {
-        return totalPrice.dividing(by: 100)
+        return NSDecimalNumber(value: Float(totalPrice) / 100.0)
     }
     
 }

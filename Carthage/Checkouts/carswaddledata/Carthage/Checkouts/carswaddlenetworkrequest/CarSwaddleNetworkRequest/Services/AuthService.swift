@@ -10,6 +10,7 @@ import Foundation
 
 extension NetworkRequest.Request.Endpoint {
     fileprivate static let login = Request.Endpoint(rawValue: "/login")
+    fileprivate static let logout = Request.Endpoint(rawValue: "/logout")
     fileprivate static let signup = Request.Endpoint(rawValue: "/signup")
 }
 
@@ -17,7 +18,7 @@ public class AuthService: Service {
     
     @discardableResult
     public func signUp(email: String, password: String, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        let task = authTask(email: email, password: password, isMechanic: true, endpoint: .signup) { [weak self] data, error in
+        let task = authTask(email: email, password: password, isMechanic: false, endpoint: .signup) { [weak self] data, error in
             self?.complete(data: data, error: error, completion: completion)
         }
         task?.resume()
@@ -43,19 +44,27 @@ public class AuthService: Service {
     }
     
     @discardableResult
-    public func mechanicLogin(email: String, password: String, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        let task = authTask(email: email, password: password, isMechanic: true, endpoint: .login) { [weak self] data, error in
-            self?.complete(data: data, error: error, completion: completion)
+    public func logout(deviceToken: String?, completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
+        var json: JSONObject = [:]
+        if let deviceToken = deviceToken {
+            json["deviceToken"] = deviceToken
+        }
+        guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])),
+            let urlRequest = serviceRequest.post(with: .logout, body: body) else { return nil }
+        let task = self.sendWithAuthentication(urlRequest: urlRequest) { data, error in
+            completion(error)
         }
         task?.resume()
         return task
     }
     
     @discardableResult
-    public func logout(completion: (_ error: Error?) -> Void) -> URLSessionDataTask? {
-        // TODO: Logout on server
-        completion(nil)
-        return nil
+    public func mechanicLogin(email: String, password: String, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        let task = authTask(email: email, password: password, isMechanic: true, endpoint: .login) { [weak self] data, error in
+            self?.complete(data: data, error: error, completion: completion)
+        }
+        task?.resume()
+        return task
     }
     
     private func complete(data: Data?, error: Error?, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) {

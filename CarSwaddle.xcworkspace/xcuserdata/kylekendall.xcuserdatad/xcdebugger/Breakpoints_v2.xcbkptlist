@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddle/PushNotificationController.swift"
-            timestampString = "566114217.614892"
+            timestampString = "569320748.751785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "userNotificationCenter(_:openSettingsFor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddle/PushNotificationController.swift"
-            timestampString = "566114217.6153589"
+            timestampString = "569320748.751845"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -67,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CarSwaddle/PushNotificationController.swift"
-            timestampString = "566114217.6156631"
+            filePath = "CarSwaddle/UI/Login/LoginViewController.swift"
+            timestampString = "569320748.751979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "didReceiveRemoteNotification(userInfo:fetchCompletionHandler:)"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "didTapLogin()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,94 +83,62 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CarSwaddle/UI/AutoServices/AutoService Details/AutoServiceDetailsViewController.swift"
-            timestampString = "568508261.498366"
+            filePath = "CarSwaddle/UI/Login/LoginViewController.swift"
+            timestampString = "569320748.7520241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "rateAction"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CarSwaddle/UI/AutoServices/AutoService Details/AutoServiceDetailsViewController.swift"
-            timestampString = "568508261.49845"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "rateAction"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CarSwaddle/UI/Profile/ProfileViewController.swift"
-            timestampString = "568508261.4985059"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CarSwaddle/UI/Profile/ProfileViewController.swift"
-            timestampString = "568508261.498891"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "didTapLogin()"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.NSManagedObjectID&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__C.NSManagedObjectContext) -&gt; () in CarSwaddle.ProfileViewController.imagePickerController(_: __C.UIImagePickerController, didFinishPickingMediaWithInfo: Swift.Dictionary&lt;__C.UIImagePickerControllerInfoKey, Any&gt;) -&gt; ()"
+                  symbolName = "CarSwaddle.LoginViewController.(didTapLogin in _0BCF1123C23CC718043E499C413FB8FD)() -&gt; ()"
                   moduleName = "CarSwaddle"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kylekendall/Projects/carswaddle/CarSwaddle/UI/Profile/ProfileViewController.swift"
-                  timestampString = "568508261.880704"
+                  urlString = "file:///Users/kylekendall/Projects/carswaddle/CarSwaddle/UI/Login/LoginViewController.swift"
+                  timestampString = "569320748.906576"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "186"
-                  endingLineNumber = "186"
-                  offsetFromSymbolStart = "52">
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "804">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.NSManagedObjectContext) -&gt; () in closure #1 (Swift.Optional&lt;__C.NSManagedObjectID&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__C.NSManagedObjectContext) -&gt; () in CarSwaddle.ProfileViewController.imagePickerController(_: __C.UIImagePickerController, didFinishPickingMediaWithInfo: Swift.Dictionary&lt;__C.UIImagePickerControllerInfoKey, Any&gt;) -&gt; ()"
+                  symbolName = "closure #1 (__C.NSManagedObjectContext) -&gt; () in CarSwaddle.LoginViewController.(didTapLogin in _0BCF1123C23CC718043E499C413FB8FD)() -&gt; ()"
                   moduleName = "CarSwaddle"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kylekendall/Projects/carswaddle/CarSwaddle/UI/Profile/ProfileViewController.swift"
-                  timestampString = "568508261.882295"
+                  urlString = "file:///Users/kylekendall/Projects/carswaddle/CarSwaddle/UI/Login/LoginViewController.swift"
+                  timestampString = "569320748.908666"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "184"
-                  endingLineNumber = "184"
-                  offsetFromSymbolStart = "48">
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "44">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarSwaddle/UI/Create Service/ViewControllers/Mechanic/MechanicDayAvailabilityView.swift"
+            timestampString = "569321391.163361"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "updateStats(completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

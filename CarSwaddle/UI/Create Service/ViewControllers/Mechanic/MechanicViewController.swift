@@ -28,6 +28,7 @@ final class MechanicViewController: UIViewController, StoryboardInstantiating {
             updateMechanicView()
         }
     }
+    @IBOutlet weak var mechanicImageView: MechanicImageView!
     
     weak var delegate: MechanicViewControllerDelegate?
     
@@ -40,6 +41,7 @@ final class MechanicViewController: UIViewController, StoryboardInstantiating {
         
         title = mechanic.user?.displayName
         updateMechanicView()
+        mechanicImageView.configure(withMechanicID: mechanic.identifier)
         mechanicAvailabilityView.view.delegate = self
         updateStats { [weak self] in
             self?.updateMechanicView()

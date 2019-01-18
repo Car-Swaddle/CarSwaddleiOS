@@ -106,23 +106,26 @@ final class CreateServiceViewController: UIViewController, StoryboardInstantiati
             guard pricePart.isPartOfSubtotal == true else { continue }
             summaryItems.append(pricePart.paymentSummaryItem)
         }
-        summaryItems.append(PKPaymentSummaryItem(label: NSLocalizedString("Car Swaddle", comment: "Name of company"), amount: price.totalDollarValue))
+        let label = NSLocalizedString("Car Swaddle", comment: "Name of company")
+        let amount = price.totalDollarValue
+        let item = PKPaymentSummaryItem(label: label, amount: amount)
+        summaryItems.append(item)
         
         paymentContext.paymentSummaryItems = summaryItems
-        
         paymentContext.requestPayment()
     }
     
     
     
-    private func createAutoService() {
+    private func createAutoService(sourceID: String, completion: @escaping (_ autoServiceObjectID: NSManagedObjectID?) -> Void) {
         let objectID = autoService.objectID
         store.privateContext { [weak self] context in
             guard let privateAutoService = context.object(with: objectID) as? AutoService else { return }
-            self?.autoServiceNetwork.createAutoService(autoService: privateAutoService, in: context) { newAutoService, error in
+            self?.autoServiceNetwork.createAutoService(autoService: privateAutoService, sourceID: sourceID, in: context) { newAutoService, error in
                 DispatchQueue.main.async {
                     if error == nil {
-                        self?.dismiss(animated: true, completion: nil)
+//                        self?.dismiss(animated: true, completion: nil)
+                        completion(newAutoService)
                     } else {
                         // show error
                     }
@@ -301,11 +304,16 @@ extension CreateServiceViewController: STPPaymentContextDelegate {
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
-        // TODO: Call backend and create charge
         print("create paymet result")
         print("paymentResult: \(paymentResult)")
         print("paymentContext: \(paymentContext)")
-        completion(nil)
+        let sourceID = paymentResult.source.stripeID
+        createAutoService(sourceID: sourceID) { [weak self] autoServiceObjectID in
+            self?.dismiss(animated: true) {
+                self?.dismiss(animated: true, completion: nil)
+            }
+            completion(nil)
+        }
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
@@ -319,7 +327,6 @@ extension CreateServiceViewController: STPPaymentContextDelegate {
             }
         case .success:
             print("success")
-            createAutoService()
         case .userCancellation:
             print("user cancelled")
         }

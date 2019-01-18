@@ -38,6 +38,7 @@
 		9942547B2157F7B30075EDCA /* CreateServicePriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9942544B215762C50075EDCA /* CreateServicePriceCell.xib */; };
 		9942547D2157F8290075EDCA /* SelectMechanicViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99425476215782060075EDCA /* SelectMechanicViewController.storyboard */; };
 		9942547E2157F8300075EDCA /* SelectVehicleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99425477215782080075EDCA /* SelectVehicleViewController.storyboard */; };
+		9943BCE521EF226400D553F6 /* MechanicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9943BCE421EF226400D553F6 /* MechanicImageView.swift */; };
 		9943C173215B6C69003C2BE9 /* VehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9943C171215B6C69003C2BE9 /* VehicleCell.swift */; };
 		9943C174215B6C69003C2BE9 /* VehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9943C172215B6C69003C2BE9 /* VehicleCell.xib */; };
 		994CA9F7215206CD00D41F6C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994CA9F6215206CD00D41F6C /* LoginViewController.swift */; };
@@ -173,6 +174,7 @@
 		99425474215781F80075EDCA /* SelectLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectLocationViewController.storyboard; sourceTree = "<group>"; };
 		99425476215782060075EDCA /* SelectMechanicViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectMechanicViewController.storyboard; sourceTree = "<group>"; };
 		99425477215782080075EDCA /* SelectVehicleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectVehicleViewController.storyboard; sourceTree = "<group>"; };
+		9943BCE421EF226400D553F6 /* MechanicImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicImageView.swift; sourceTree = "<group>"; };
 		9943C171215B6C69003C2BE9 /* VehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCell.swift; sourceTree = "<group>"; };
 		9943C172215B6C69003C2BE9 /* VehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleCell.xib; sourceTree = "<group>"; };
 		994CA9F6215206CD00D41F6C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */,
 				99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */,
 				99E66DA721E2963A00C6E3E1 /* UserImageView.swift */,
+				9943BCE421EF226400D553F6 /* MechanicImageView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				9942547121577B730075EDCA /* SelectLocationViewController.swift in Sources */,
 				997DBC72219965E80080F42C /* HourCollectionViewCell.swift in Sources */,
 				997DBC6A21995ECE0080F42C /* MechanicDayAvailabilityView.swift in Sources */,
+				9943BCE521EF226400D553F6 /* MechanicImageView.swift in Sources */,
 				998D3AF021DDCF6A003DD717 /* TableViewCell.swift in Sources */,
 				997DBC512197575A0080F42C /* UserInfoViewController.swift in Sources */,
 				997DBCA121B79E620080F42C /* AutoServiceCell.swift in Sources */,

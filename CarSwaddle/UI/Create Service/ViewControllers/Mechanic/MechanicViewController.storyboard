@@ -24,11 +24,20 @@
                                     <constraint firstAttribute="height" constant="342" id="Gvz-Ec-hNp"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jl3-fw-2ml" customClass="MechanicImageView" customModule="CarSwaddle" customModuleProvider="target">
+                                <rect key="frame" x="123.5" y="133" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="OBD-5x-CFc"/>
+                                    <constraint firstAttribute="width" secondItem="Jl3-fw-2ml" secondAttribute="height" multiplier="1:1" id="bA5-Kb-ZyH"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Jl3-fw-2ml" firstAttribute="centerX" secondItem="Nxc-9a-yo0" secondAttribute="centerX" id="FeH-Ys-7up"/>
                             <constraint firstItem="BVv-pU-PoV" firstAttribute="bottom" secondItem="Nxc-9a-yo0" secondAttribute="bottom" id="eBe-yR-czK"/>
                             <constraint firstItem="BVv-pU-PoV" firstAttribute="trailing" secondItem="Nxc-9a-yo0" secondAttribute="trailing" id="n6f-5B-44A"/>
+                            <constraint firstItem="Jl3-fw-2ml" firstAttribute="top" secondItem="Nxc-9a-yo0" secondAttribute="top" constant="69" id="wY4-S0-GVq"/>
                             <constraint firstItem="BVv-pU-PoV" firstAttribute="leading" secondItem="Nxc-9a-yo0" secondAttribute="leading" id="x7Y-JO-L3k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nxc-9a-yo0"/>
@@ -36,11 +45,12 @@
                     <navigationItem key="navigationItem" id="FPE-0g-X0h"/>
                     <connections>
                         <outlet property="mechanicAvailabilityView" destination="BVv-pU-PoV" id="H1J-9N-3DY"/>
+                        <outlet property="mechanicImageView" destination="Jl3-fw-2ml" id="QI9-Ja-2AZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HfL-j8-HTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="762" y="161"/>
+            <point key="canvasLocation" x="760.79999999999995" y="160.56971514242881"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Avd-oA-E7T">

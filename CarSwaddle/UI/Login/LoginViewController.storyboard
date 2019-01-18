@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,15 +46,37 @@
                                     <action selector="didTapForgotPassword" destination="aHk-nT-EjF" eventType="touchUpInside" id="mVA-Sk-Btd"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9qW-e0-tBe">
+                                <rect key="frame" x="99" y="616" width="177" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="768" text="use local server" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmR-2g-BC6">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xw2-xh-Q5e">
+                                        <rect key="frame" x="128" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="didSwitch:" destination="aHk-nT-EjF" eventType="valueChanged" id="dc7-pI-AHx"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="xcD-d8-S20"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eRT-xV-M0r" firstAttribute="centerX" secondItem="y1f-Ro-vw0" secondAttribute="centerX" id="9PL-8V-jSW"/>
                             <constraint firstItem="gLd-z1-USp" firstAttribute="top" secondItem="y1f-Ro-vw0" secondAttribute="top" constant="127" id="9fj-vV-955"/>
                             <constraint firstItem="yjR-UW-Yqw" firstAttribute="top" secondItem="Q8A-92-jzb" secondAttribute="bottom" constant="37" id="CvV-GK-8fz"/>
+                            <constraint firstItem="y1f-Ro-vw0" firstAttribute="bottom" secondItem="9qW-e0-tBe" secondAttribute="bottom" constant="20" id="JyP-9S-Yy7"/>
                             <constraint firstItem="Q8A-92-jzb" firstAttribute="centerX" secondItem="y1f-Ro-vw0" secondAttribute="centerX" id="M6J-ji-pmv"/>
                             <constraint firstItem="Q8A-92-jzb" firstAttribute="width" secondItem="gLd-z1-USp" secondAttribute="width" id="Mpi-4P-YJC"/>
                             <constraint firstItem="eRT-xV-M0r" firstAttribute="top" secondItem="yjR-UW-Yqw" secondAttribute="bottom" constant="8" id="NVF-ki-k0r"/>
+                            <constraint firstItem="9qW-e0-tBe" firstAttribute="centerX" secondItem="Fzl-49-fzJ" secondAttribute="centerX" id="Uls-d5-Uff"/>
                             <constraint firstItem="Q8A-92-jzb" firstAttribute="top" secondItem="gLd-z1-USp" secondAttribute="bottom" constant="8" id="Zan-uC-xY8"/>
                             <constraint firstItem="gLd-z1-USp" firstAttribute="centerX" secondItem="y1f-Ro-vw0" secondAttribute="centerX" id="eIW-r8-ubi"/>
                             <constraint firstItem="yjR-UW-Yqw" firstAttribute="centerX" secondItem="y1f-Ro-vw0" secondAttribute="centerX" id="h3W-aj-KIP"/>
@@ -64,6 +86,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="gLd-z1-USp" id="28q-Zi-Ixa"/>
                         <outlet property="passwordTextField" destination="Q8A-92-jzb" id="Dqw-r4-nTl"/>
+                        <outlet property="testServerSwitch" destination="Xw2-xh-Q5e" id="npr-4m-RlI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="83W-96-JLR" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -48,11 +48,12 @@ final class Navigator: NSObject {
         appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
         appDelegate.window?.rootViewController = navigator.initialViewController()
         appDelegate.window?.makeKeyAndVisible()
-        showRequiredScreensIfNeeded()
         
-//        if AuthController().token != nil {
+        
+        if AuthController().token != nil {
 //            pushNotificationController.requestPermission()
-//        }
+            showRequiredScreensIfNeeded()
+        }
     }
     
     public func initialViewController() -> UIViewController {
