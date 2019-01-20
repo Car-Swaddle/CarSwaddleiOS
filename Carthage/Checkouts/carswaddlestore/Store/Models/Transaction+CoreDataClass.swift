@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-typealias TransactionValues = (identifier: String, amount: Int, availableOn: Date, created: Date, currency: String, transactionDescription: String?, exchangeRate: NSNumber?, fee: Int, net: Int, source: String, status: String, type: String, balanceTransactionID: String?)
+typealias TransactionValues = (identifier: String, amount: Int, availableOn: Date, created: Date, currency: String, transactionDescription: String?, exchangeRate: NSNumber?, fee: Int, net: Int, source: String, status: String, type: String)
 
 @objc(Transaction)
 final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
@@ -66,14 +66,13 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
         let createdDate = Date(timeIntervalSince1970: TimeInterval(createdInt))
         
         let transactionDescription = json["transaction_description"] as? String
-        let balanceTransactionID = json["balance_transaction"] as? String
         
         var exchangeRateNumber: NSNumber?
         if let exchangeRateFloat = json["exchange_rate"] as? Float {
             exchangeRateNumber = NSNumber(value: exchangeRateFloat)
         }
         
-        return (identifier, amount, avilableOnDate, createdDate, currency, transactionDescription, exchangeRateNumber, fee, net, source, status, type, balanceTransactionID)
+        return (identifier, amount, avilableOnDate, createdDate, currency, transactionDescription, exchangeRateNumber, fee, net, source, status, type)
     }
     
     private func configure(with values: TransactionValues, in context: NSManagedObjectContext) {
@@ -89,7 +88,6 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
         self.type = values.type
         self.transactionDescription = values.transactionDescription
         self.exchangeRate = values.exchangeRate
-        self.balanceTransactionID = values.balanceTransactionID
     }
     
     public static var createdSortDescriptor: NSSortDescriptor {

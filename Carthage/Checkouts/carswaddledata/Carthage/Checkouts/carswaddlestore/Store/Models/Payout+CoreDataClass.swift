@@ -25,7 +25,8 @@ typealias PayoutValues = (
     statementDescriptor: String?,
     failureMessage: String?,
     failureCode: String?,
-    failureBalanceTransaction: String?
+    failureBalanceTransaction: String?,
+    balanceTransactionID: String?
 )
 
 
@@ -112,10 +113,12 @@ final public class Payout: NSManagedObject, JSONInitable, NSManagedObjectFetchab
         let failureCode = json["failure_code"] as? String
         let failureBalanceTransaction = json["failure_balance_transaction"] as? String
         
+        let balanceTransactionID = json["balance_transaction"] as? String
+        
         let arrivalDate = Date(timeIntervalSince1970: TimeInterval(arrivalInt))
         let createdDate = Date(timeIntervalSince1970: TimeInterval(createdInt))
         
-        return (identifier: identifier, amount: amount, arrivalDate: arrivalDate, created: createdDate, currency: currency, payoutDescription: payoutDescription, destination: destination, type: type, status: status, method: method, sourceType: sourceType, statementDescriptor: statementDescriptor, failureMessage: failureMessage, failureCode: failureCode, failureBalanceTransaction: failureBalanceTransaction)
+        return (identifier: identifier, amount: amount, arrivalDate: arrivalDate, created: createdDate, currency: currency, payoutDescription: payoutDescription, destination: destination, type: type, status: status, method: method, sourceType: sourceType, statementDescriptor: statementDescriptor, failureMessage: failureMessage, failureCode: failureCode, failureBalanceTransaction: failureBalanceTransaction, balanceTransactionID)
     }
     
     private func configure(with values: PayoutValues, in context: NSManagedObjectContext) {
@@ -134,6 +137,7 @@ final public class Payout: NSManagedObject, JSONInitable, NSManagedObjectFetchab
         failureMessage = values.failureMessage
         failureCode = values.failureCode
         failureBalanceTransaction = values.failureBalanceTransaction
+        balanceTransactionID = values.balanceTransactionID
     }
     
 }

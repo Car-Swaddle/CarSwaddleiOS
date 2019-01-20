@@ -1,6 +1,9 @@
 {
-  "commitish" : "1.05",
+  "commitish" : "1.06",
   "iOS" : [
-
+    {
+      "name" : "Authentication",
+      "hash" : "cf5fe2d24f1ba7f73d4a1404316aef1d6ae42a2cdfeef1983307828f57373e76"
+    }
   ]
 }

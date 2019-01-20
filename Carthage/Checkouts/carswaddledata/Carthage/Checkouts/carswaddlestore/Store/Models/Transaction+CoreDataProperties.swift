@@ -30,7 +30,6 @@ extension Transaction {
     @NSManaged public var type: String
     @NSManaged public var mechanic: Mechanic?
     @NSManaged public var payout: Payout?
-    @NSManaged public var balanceTransactionID: String?
 
 }
 
