@@ -14,7 +14,6 @@
 		99C8DD85216AD03E00627E8A /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C8DD84216AD03D00627E8A /* KeychainAccess.framework */; };
 		99D5D9E921F5D80500E6A511 /* KeychainAccess.framework in Resources */ = {isa = PBXBuildFile; fileRef = 99C8DD84216AD03D00627E8A /* KeychainAccess.framework */; };
 		99D5D9EA21F5D82000E6A511 /* Authentication.framework in Resources */ = {isa = PBXBuildFile; fileRef = 995B9F3A2154D6670030A7CA /* Authentication.framework */; };
-		99D5D9FA21F634B700E6A511 /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99C8DD84216AD03D00627E8A /* KeychainAccess.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +33,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				99D5D9FA21F634B700E6A511 /* KeychainAccess.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

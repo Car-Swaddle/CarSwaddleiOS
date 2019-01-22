@@ -8,6 +8,7 @@
 
 import UIKit
 import CarSwaddleData
+import CarSwaddleNetworkRequest
 import Authentication
 import CarSwaddleUI
 import Store
@@ -26,7 +27,11 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     private let userNetwork = UserNetwork(serviceRequest: serviceRequest)
     private var imagePicker: UIImagePickerController?
     
-    private var user: User? = User.currentUser(context: store.mainContext)
+    private var user: User? = User.currentUser(context: store.mainContext) {
+        didSet {
+            reloadData()
+        }
+    }
     
     private lazy var headerView: ProfileHeaderView = {
         let view = ProfileHeaderView.viewFromNib()
@@ -35,15 +40,29 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         return view
     }()
     
+    lazy private var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(ProfileViewController.didRefresh), for: .valueChanged)
+        return refresh
+    }()
+    
+    @objc private func didRefresh() {
+        requestData { [weak self] in
+            self?.refreshControl.endRefreshing()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
         setupTableView()
+        requestData()
     }
     
     private func setupTableView() {
         tableView.register(TextCell.self)
+        tableView.refreshControl = refreshControl
         tableView.tableHeaderView = headerView
         if let user = self.user {
             headerView.configure(with: user)
@@ -92,6 +111,27 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
                 completion()
             }
         }
+    }
+    
+    private func requestData(completion: @escaping () -> Void = {  }) {
+        store.privateContext { [weak self] privateContext in
+            self?.userNetwork.requestCurrentUser(in: privateContext) { userObjectID, error in
+                DispatchQueue.main.async {
+                    self?.reloadData()
+                    completion()
+                }
+            }
+        }
+    }
+    
+    private func reloadData() {
+        tableView.reloadData()
+        updateHeader()
+    }
+    
+    private func updateHeader() {
+        guard let user = self.user else { return }
+        headerView.configure(with: user)    
     }
     
 }
@@ -177,12 +217,13 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         guard let image = info[.originalImage] as? UIImage else { return }
         let orientedImage = UIImage.imageWithCorrectedOrientation(image)
-        guard let imageData = orientedImage.resized(toWidth: 300 * UIScreen.main.scale)?.pngData() else {
+        guard let imageData = orientedImage.resized(toWidth: 300 * UIScreen.main.scale)?.jpegData(compressionQuality: 1.0) else {
             return
         }
         guard let url = try? profileImageStore.storeFile(data: imageData, fileName: User.currentUserID ?? "profileImage") else {
             return
         }
+        updateHeader()
         store.privateContext { [weak self] privateContext in
             self?.userNetwork.setProfileImage(fileURL: url, in: privateContext) { userObjectID, error in
                 store.mainContext { mainContext in

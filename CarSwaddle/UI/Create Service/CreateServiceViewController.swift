@@ -300,7 +300,7 @@ extension CreateServiceViewController: STPPaymentContextDelegate {
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
-        print("failed to load")
+        print("failed to load: \(error)")
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
