@@ -46,6 +46,16 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
     
     private var rows: [Row] = Row.allCases
     
+    lazy private var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(AutoServiceDetailsViewController.didRefresh), for: .valueChanged)
+        return refresh
+    }()
+    
+    @objc private func didRefresh() {
+        
+    }
+    
     @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -59,7 +69,6 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         tableView.register(TableViewCell.self)
         tableView.register(ReviewCell.self)
     }
-    
     
 }
 
@@ -141,8 +150,8 @@ extension AutoServiceDetailsViewController: ReviewCellProtocol {
             
             let starRatingView = CosmosView(settings: .default)
             starRatingView.rating = 5.0
+            starRatingView.settings.updateOnTouch = true
             starRatingView.translatesAutoresizingMaskIntoConstraints = false
-            
             
             customView.addSubview(starRatingView)
             starRatingView.topAnchor.constraint(equalTo: customView.topAnchor).isActive = true

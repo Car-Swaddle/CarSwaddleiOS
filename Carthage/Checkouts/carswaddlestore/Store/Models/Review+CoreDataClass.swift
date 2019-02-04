@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 
-typealias ReviewValues = (identifier: String, rating: CGFloat, text: String?, reviewerID: String, revieweeID: String, mechanicID: String?, userID: String?, autoServiceIDFromUser: String?, autoServiceIDFromMechanic: String?)
+typealias ReviewValues = (identifier: String, rating: CGFloat, text: String?, reviewerID: String, revieweeID: String, mechanicID: String?, userID: String?, autoServiceIDFromUser: String?, autoServiceIDFromMechanic: String?, creationDate: Date)
 
 @objc(Review)
 final public class Review: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
@@ -32,7 +32,9 @@ final public class Review: NSManagedObject, NSManagedObjectFetchable, JSONInitab
         guard let identifier = json["id"] as? String,
             let reviewerID = json["reviewerID"] as? String,
             let revieweeID = json["revieweeID"] as? String,
-            let rating = json["rating"] as? CGFloat else { return nil }
+            let rating = json["rating"] as? CGFloat,
+            let creationDateString = json["createdAt"] as? String,
+            let creationDate = serverDateFormatter.date(from: creationDateString) else { return nil }
         
         let text = json["text"] as? String
         
@@ -41,7 +43,7 @@ final public class Review: NSManagedObject, NSManagedObjectFetchable, JSONInitab
         let autoServiceIDFromMechanic = json["autoServiceIDFromMechanic"] as? String
         let autoServiceIDFromUser = json["autoServiceIDFromUser"] as? String
         
-        return (identifier, rating, text, reviewerID, revieweeID, mechanicID, userID, autoServiceIDFromMechanic, autoServiceIDFromUser)
+        return (identifier, rating, text, reviewerID, revieweeID, mechanicID, userID, autoServiceIDFromMechanic, autoServiceIDFromUser, creationDate)
     }
     
     private func configure(with values: ReviewValues, in context: NSManagedObjectContext) {
@@ -50,6 +52,7 @@ final public class Review: NSManagedObject, NSManagedObjectFetchable, JSONInitab
         self.text = values.text
         self.reviewerID = values.reviewerID
         self.revieweeID = values.revieweeID
+        self.creationDate = values.creationDate
         
         if let mechanicID = values.mechanicID {
             self.mechanic = Mechanic.fetch(with: mechanicID, in: context)
@@ -63,6 +66,19 @@ final public class Review: NSManagedObject, NSManagedObjectFetchable, JSONInitab
         if let autoServiceIDFromUser = values.autoServiceIDFromUser {
             self.autoServiceFromUser = AutoService.fetch(with: autoServiceIDFromUser, in: context)
         }
+    }
+    
+    public static var creationDateSortDescriptor: NSSortDescriptor {
+        return NSSortDescriptor(key: #keyPath(Review.creationDate), ascending: true)
+    }
+    
+    public static func predicateForCurrentMechanic() -> NSPredicate? {
+        guard let mechanicID = Mechanic.currentMechanicID else { return nil }
+        return Review.predicate(for: mechanicID)
+    }
+    
+    public static func predicate(for mechanicID: String) -> NSPredicate {
+        return NSPredicate(format: "%K == %@", #keyPath(Review.revieweeID), mechanicID)
     }
     
 }

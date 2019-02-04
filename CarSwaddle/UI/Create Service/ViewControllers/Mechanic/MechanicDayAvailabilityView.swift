@@ -35,6 +35,7 @@ private let averageRatingFormatter: NumberFormatter = {
     let formatter = NumberFormatter()
     formatter.maximumFractionDigits = 1
     formatter.minimumFractionDigits = 1
+    formatter.minimumSignificantDigits = 1
     return formatter
 }()
 

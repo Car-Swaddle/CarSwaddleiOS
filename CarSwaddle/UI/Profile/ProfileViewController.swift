@@ -93,9 +93,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     
     private func logoutServer(completion: @escaping () -> Void) {
         auth.logout(deviceToken: pushNotificationController.getDeviceToken()) { error in
-            if error == nil {
-                pushNotificationController.deleteDeviceToken()
-            }
+            pushNotificationController.deleteDeviceToken()
             DispatchQueue.main.async {
                 completion()
             }
@@ -131,7 +129,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     
     private func updateHeader() {
         guard let user = self.user else { return }
-        headerView.configure(with: user)    
+        headerView.configure(with: user)
     }
     
 }

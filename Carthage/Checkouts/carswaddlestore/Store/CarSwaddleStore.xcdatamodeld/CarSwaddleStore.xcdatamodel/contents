@@ -61,6 +61,7 @@
         <relationship name="stats" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Stats" inverseName="mechanic" inverseEntity="Stats" syncable="YES"/>
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="mechanic" inverseEntity="Transaction" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="mechanic" inverseEntity="User" syncable="YES"/>
+        <relationship name="verification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Verification" inverseName="mechanic" inverseEntity="Verification" syncable="YES"/>
     </entity>
     <entity name="OilChange" representedClassName="OilChange" syncable="YES">
         <attribute name="identifier" attributeType="String" syncable="YES"/>
@@ -106,6 +107,7 @@
         <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="serviceRegion" inverseEntity="Mechanic" syncable="YES"/>
     </entity>
     <entity name="Review" representedClassName="Review" syncable="YES">
+        <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="rating" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="revieweeID" attributeType="String" syncable="YES"/>
@@ -153,6 +155,7 @@
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="averageRating" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="isEmailVerified" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
@@ -184,25 +187,37 @@
         <attribute name="year" attributeType="String" syncable="YES"/>
         <relationship name="vehicle" maxCount="1" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="vehicleDescription" inverseEntity="Vehicle" syncable="YES"/>
     </entity>
+    <entity name="Verification" representedClassName="Verification" syncable="YES">
+        <attribute name="disabledReason" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dueByDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="fields" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="VerificationField" inverseName="verification" inverseEntity="VerificationField" syncable="YES"/>
+        <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="verification" inverseEntity="Mechanic" syncable="YES"/>
+    </entity>
+    <entity name="VerificationField" representedClassName="VerificationField" syncable="YES">
+        <attribute name="value" attributeType="String" syncable="YES"/>
+        <relationship name="verification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Verification" inverseName="fields" inverseEntity="Verification" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Address" positionX="-27" positionY="99" width="128" height="150"/>
         <element name="Amount" positionX="-18" positionY="144" width="128" height="120"/>
         <element name="AutoService" positionX="-63" positionY="-18" width="128" height="240"/>
         <element name="Balance" positionX="-27" positionY="135" width="128" height="105"/>
         <element name="Location" positionX="-36" positionY="27" width="128" height="120"/>
-        <element name="Mechanic" positionX="-27" positionY="99" width="128" height="285"/>
+        <element name="Mechanic" positionX="-27" positionY="99" width="128" height="300"/>
         <element name="OilChange" positionX="-18" positionY="54" width="128" height="90"/>
         <element name="Payout" positionX="-27" positionY="135" width="128" height="315"/>
         <element name="Price" positionX="-9" positionY="90" width="128" height="105"/>
         <element name="PricePart" positionX="0" positionY="108" width="128" height="90"/>
         <element name="Region" positionX="-27" positionY="99" width="128" height="120"/>
-        <element name="Review" positionX="-27" positionY="108" width="128" height="180"/>
+        <element name="Review" positionX="-27" positionY="108" width="128" height="195"/>
         <element name="ServiceEntity" positionX="-27" positionY="99" width="128" height="105"/>
         <element name="Stats" positionX="-18" positionY="126" width="128" height="105"/>
         <element name="TemplateTimeSpan" positionX="0" positionY="126" width="128" height="120"/>
         <element name="Transaction" positionX="-9" positionY="153" width="128" height="255"/>
-        <element name="User" positionX="-27" positionY="72" width="128" height="240"/>
+        <element name="User" positionX="-27" positionY="72" width="128" height="255"/>
         <element name="Vehicle" positionX="-54" positionY="-9" width="128" height="165"/>
         <element name="VehicleDescription" positionX="-27" positionY="90" width="128" height="135"/>
+        <element name="Verification" positionX="-27" positionY="135" width="128" height="105"/>
+        <element name="VerificationField" positionX="-18" positionY="144" width="128" height="75"/>
     </elements>
 </model>

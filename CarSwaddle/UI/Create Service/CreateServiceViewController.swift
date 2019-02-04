@@ -350,12 +350,3 @@ extension PKPaymentSummaryItem {
     }
     
 }
-
-
-extension AutoService {
-    
-    var canConvertToJSON: Bool {
-        return (try? toJSON()) != nil
-    }
-    
-}

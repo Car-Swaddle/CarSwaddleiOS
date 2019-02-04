@@ -76,20 +76,3 @@ extension MechanicViewController: MechanicDateAvailabilityDelegate {
     }
     
 }
-
-
-extension User {
-    
-    public var displayName: String {
-        var name: String = ""
-        if let firstName = firstName {
-            name += firstName
-            name += " "
-        }
-        if let lastName = lastName {
-            name += lastName
-        }
-        return name
-    }
-    
-}

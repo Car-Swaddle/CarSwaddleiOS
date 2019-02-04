@@ -18,13 +18,18 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var testServerSwitch: UISwitch!
     private var loginTask: URLSessionDataTask?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        testServerSwitch.setOn(useLocalServer, animated: false)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.didTapScreen))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func didTapScreen() {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
     @IBAction private func didTapLogin() {
@@ -50,13 +55,6 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
     @IBAction private func didTapForgotPassword() {
         let user = UsersViewController()
         navigationController?.pushViewController(user, animated: true)
-    }
-    
-    
-    
-    @IBAction func didSwitch(_ testServerSwitch: UISwitch) {
-        _serviceRequest = nil
-        useLocalServer = testServerSwitch.isOn
     }
     
 }
