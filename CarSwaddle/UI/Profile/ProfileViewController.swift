@@ -36,7 +36,8 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     private lazy var headerView: ProfileHeaderView = {
         let view = ProfileHeaderView.viewFromNib()
         view.delegate = self
-        view.frame = CGRect(x: 0, y: 0, width: 100, height: 130)
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        view.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
         return view
     }()
     
