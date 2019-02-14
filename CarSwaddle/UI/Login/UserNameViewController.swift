@@ -17,17 +17,12 @@ struct UserInfoError: Error {
     static let noInput = UserInfoError(rawValue: "noInput")
 }
 
-protocol UserInfoViewControllerDelegate: AnyObject {
-    func didChangeName(userInfoViewController: UserInfoViewController)
-}
-
-final class UserInfoViewController: UIViewController, StoryboardInstantiating {
-
-    weak var delegate: UserInfoViewControllerDelegate?
+final class UserNameViewController: UIViewController, StoryboardInstantiating, NavigationDelegating {
+    
+    weak var navigationDelegate: NavigationDelegate?
     
     @IBOutlet private weak var firstNameTextField: UITextField!
     @IBOutlet private weak var lastNameTextField: UITextField!
-    @IBOutlet private weak var phoneNumberTextField: UITextField!
     
     private let userNetwork = UserNetwork(serviceRequest: serviceRequest)
     
@@ -37,8 +32,6 @@ final class UserInfoViewController: UIViewController, StoryboardInstantiating {
         let currentUser = User.currentUser(context: store.mainContext)
         firstNameTextField.text = currentUser?.firstName
         lastNameTextField.text = currentUser?.lastName
-        
-        phoneNumberTextField.text = currentUser?.phoneNumber
     }
     
     
@@ -50,7 +43,8 @@ final class UserInfoViewController: UIViewController, StoryboardInstantiating {
             DispatchQueue.main.async {
                 self?.navigationItem.rightBarButtonItem = previousButton
                 if let _self = self {
-                    self?.delegate?.didChangeName(userInfoViewController: _self)
+                    self?.navigationDelegate?.didFinish(navigationDelegatingViewController: _self)
+//                    self?.delegate?.didChangeName(userInfoViewController: _self)
                 }
             }
         }
@@ -58,14 +52,13 @@ final class UserInfoViewController: UIViewController, StoryboardInstantiating {
     
     private func updateUser(completion: @escaping (_ error: Error?) -> Void) {
         guard let firstName = firstNameTextField.text,
-            let lastName = lastNameTextField.text,
-            let phoneNumber = phoneNumberTextField.text else {
+            let lastName = lastNameTextField.text else {
                 completion(UserInfoError.noInput)
                 return
         }
         
         store.privateContext { [weak self] context in
-            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, token: nil, in: context) { userObjectID, error in
+            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, in: context) { userObjectID, error in
                 completion(error)
             }
         }

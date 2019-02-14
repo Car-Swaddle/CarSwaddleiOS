@@ -152,15 +152,37 @@ final class Navigator: NSObject, TweakViewControllerDelegate {
     }
     
     private func showRequiredScreensIfNeeded() {
-        guard let userID = User.currentUserID else { return }
-        guard let mechanic = Mechanic.fetch(with: userID, in: store.mainContext) else { return }
-//         TODO: Uncomment this before release
-//                    mechanic.scheduleTimeSpans.count == 0 else { return
+        let viewControllers = requiredViewControllers()
+        guard viewControllers.count > 0 else { return }
         
-//        appDelegate.window?.rootViewController?.present(availabilityViewController.inNavigationController(), animated: true, completion: nil)
-//        let users = UsersViewController()
-//        appDelegate.window?.rootViewController?.present(users.inNavigationController(), animated: true, completion: nil)
+        let navigationDelegateViewController = NavigationDelegateViewController(navigationDelegatingViewControllers: viewControllers)
+        navigationDelegateViewController.externalDelegate = self
+        appDelegate.window?.rootViewController?.present(navigationDelegateViewController, animated: true, completion: nil)
     }
+    
+    private func requiredViewControllers() -> [NavigationDelegatingViewController] {
+        var viewControllers: [NavigationDelegatingViewController] = []
+        
+        let currentUser = User.currentUser(context: store.mainContext)
+        
+        if currentUser?.firstName == nil || currentUser?.lastName == nil {
+            let name = UserNameViewController.viewControllerFromStoryboard()
+            viewControllers.append(name)
+        }
+        
+        if currentUser?.phoneNumber == nil {
+            let phoneNumber = PhoneNumberViewController.viewControllerFromStoryboard()
+            viewControllers.append(phoneNumber)
+        }
+        
+        if currentUser?.isPhoneNumberVerified == false {
+            let verify = VerifyPhoneNumberViewController()
+            viewControllers.append(verify)
+        }
+        
+        return viewControllers
+    }
+    
     
     private var _servicesViewController: ServicesViewController?
     private var servicesViewController: ServicesViewController {
@@ -242,6 +264,21 @@ extension Navigator: HorizontalSlideTransitionDelegate {
         guard let fromTab = self.tab(from: fromViewController),
             let toTab = self.tab(from: toViewController) else { return .left }
         return fromTab.rawValue < toTab.rawValue ? .left : .right
+    }
+    
+}
+
+
+extension Navigator: NavigationDelegateViewControllerDelegate {
+    
+    func didFinishLastViewController(_ navigationDelegateViewController: NavigationDelegateViewController) {
+        appDelegate.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        navigateToLoggedInViewController()
+    }
+    
+    func didSelectLogout(_ navigationDelegateViewController: NavigationDelegateViewController) {
+        appDelegate.window?.endEditing(true)
+        logout.logout()
     }
     
 }

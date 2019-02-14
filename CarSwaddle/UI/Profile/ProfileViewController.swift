@@ -163,18 +163,22 @@ extension ProfileViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let row = rows[indexPath.row]
         switch row {
-        case .name, .phoneNumber:
-            let viewController = UserInfoViewController.viewControllerFromStoryboard()
-            viewController.delegate = self
+        case .name:
+            let viewController = UserNameViewController.viewControllerFromStoryboard()
+            viewController.navigationDelegate = self
+            show(viewController, sender: self)
+        case .phoneNumber:
+            let viewController = PhoneNumberViewController.viewControllerFromStoryboard()
+            viewController.navigationDelegate = self
             show(viewController, sender: self)
         }
     }
     
 }
 
-extension ProfileViewController: UserInfoViewControllerDelegate {
+extension ProfileViewController: NavigationDelegate {
     
-    func didChangeName(userInfoViewController: UserInfoViewController) {
+    func didFinish(navigationDelegatingViewController: NavigationDelegatingViewController) {
         tableView.reloadData()
         navigationController?.popToViewController(self, animated: true)
     }
