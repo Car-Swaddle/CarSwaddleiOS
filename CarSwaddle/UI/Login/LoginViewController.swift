@@ -15,8 +15,11 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
     
     private let auth: Auth = Auth(serviceRequest: serviceRequest)
 
+    @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
+    
+    @IBOutlet private weak var spinner: UIActivityIndicatorView!
     
     private var loginTask: URLSessionDataTask?
     
@@ -25,6 +28,27 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.didTapScreen))
         view.addGestureRecognizer(tap)
+        emailTextField.addTarget(self, action: #selector(LoginViewController.didChangeTextField(_:)), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(LoginViewController.didChangeTextField(_:)), for: .editingChanged)
+        
+        spinner.isHiddenInStackView = true
+        
+        updateLoginEnabledness()
+    }
+    
+    @objc private func didChangeTextField(_ textField: UITextField) {
+        updateLoginEnabledness()
+    }
+    
+    private func updateLoginEnabledness() {
+        loginButton.isEnabled = loginIsAllowed
+    }
+    
+    private var loginIsAllowed: Bool {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            return false
+        }
+        return email.isValidEmail && password.isValidPassword
     }
     
     @objc private func didTapScreen() {
@@ -33,15 +57,29 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
     }
     
     @IBAction private func didTapLogin() {
-        guard let email = emailTextField.text,
+        guard loginIsAllowed,
+            let email = emailTextField.text,
             let password = passwordTextField.text else {
+                updateLoginEnabledness()
                 return
         }
+        
+        spinner.isHiddenInStackView = false
+        spinner.startAnimating()
+        
+        loginButton.isHiddenInStackView = true
+        
         store.privateContext { [weak self] context in
             self?.loginTask = self?.auth.login(email: email, password: password, context: context) { error in
                 guard error == nil && AuthController().token != nil else {
                     if let networkError = error as? NetworkRequestError {
                         print("login error: \(networkError)")
+                    }
+                    DispatchQueue.main.async {
+                        self?.spinner.isHiddenInStackView = true
+                        self?.spinner.stopAnimating()
+                        
+                        self?.loginButton.isHiddenInStackView = false
                     }
                     return
                 }
