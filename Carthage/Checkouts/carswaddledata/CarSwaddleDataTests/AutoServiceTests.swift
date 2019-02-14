@@ -33,11 +33,6 @@ class AutoServiceTests: LoginTestCase {
         return dateComponents.date ?? Date()
     }
     
-    override func setUp() {
-        super.setUp()
-        try? store.destroyAllData()
-    }
-    
     func testCreateAutoService() {
         
         let exp = expectation(description: "\(#function)\(#line)")
@@ -59,8 +54,8 @@ class AutoServiceTests: LoginTestCase {
         let autoService = createAutoService(scheduledDate: scheduledDate, in: context)
         
         autoServiceNetwork.createAutoService(autoService: autoService, sourceID: "", in: context) { newAutoService, error in
-            self.autoServiceNetwork.getAutoServices(mechanicID: defaultMechanicID, startDate: self.startDate, endDate: self.endDate, filterStatus: [.inProgress, .scheduled, .completed], in: context) { autoServiceIDs, error in
-                context.perform {
+            self.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: self.startDate, endDate: self.endDate, filterStatus: [.inProgress, .scheduled, .completed], in: context) { autoServiceIDs, error in
+                context.performOnImportQueue {
                     let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: context)
                     
                     XCTAssert(autoServices.count > 0, "Should have auto services")
@@ -86,6 +81,22 @@ class AutoServiceTests: LoginTestCase {
         }
         
         waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGetAutoServicesCurrentMechanicID() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        store.privateContext { pCtx in
+            self.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: self.startDate, endDate: self.endDate, filterStatus: [.scheduled, .canceled, .inProgress, .completed], in: pCtx) { autoServiceIDs, error in
+                store.mainContext { mCtx in
+                    let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: mCtx)
+                    
+                    XCTAssert(autoServices.count > 0, "Should have auto services")
+                    exp.fulfill()
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 3340, handler: nil)
     }
     
     func testUpdateAutoServiceStatus() {
@@ -289,7 +300,6 @@ private func createAutoService(scheduledDate: Date = Date(), in context: NSManag
     let autoService = AutoService(context: context)
     
     let location = Location(context: context)
-//    location.identifier = "9849c390-eb67-11e8-8d83-876032d55422"
     location.latitude = 40.89
     location.longitude = 23.3525
     
@@ -317,6 +327,8 @@ private func createAutoService(scheduledDate: Date = Date(), in context: NSManag
     vehicle.identifier = "ae222ef0-febd-11e8-9811-059afcb3ba5e"
     vehicle.licensePlate = "123 HYG"
     vehicle.name = "That name"
+    
+    // ["location": ["longitude": -111.85325441868542, "latitude": 40.368154170677535], "vehicleID": "b5e59000-306d-11e9-a7ff-670dac1fb827", "serviceEntities": [["specificService": ["oilType": "CONVENTIONAL"], "entityType": "OIL_CHANGE"]], "mechanicID": "cf268610-2e5f-11e9-937b-f1869ab0c925", "priceID": "ed2c5740-306f-11e9-a7ff-670dac1fb827", "status": "scheduled", "scheduledDate": "2019-02-15T07:00:00.000-0700"]
     
     autoService.vehicle = vehicle
     autoService.status = .inProgress

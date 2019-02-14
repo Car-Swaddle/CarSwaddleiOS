@@ -116,19 +116,14 @@ final class CreateServiceViewController: UIViewController, StoryboardInstantiati
     }
     
     
-    
-    private func createAutoService(sourceID: String, completion: @escaping (_ autoServiceObjectID: NSManagedObjectID?) -> Void) {
+    private func createAutoService(sourceID: String, completion: @escaping (_ autoServiceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) {
+        autoService.managedObjectContext?.persist()
         let objectID = autoService.objectID
         store.privateContext { [weak self] context in
             guard let privateAutoService = context.object(with: objectID) as? AutoService else { return }
             self?.autoServiceNetwork.createAutoService(autoService: privateAutoService, sourceID: sourceID, in: context) { newAutoService, error in
                 DispatchQueue.main.async {
-                    if error == nil {
-//                        self?.dismiss(animated: true, completion: nil)
-                        completion(newAutoService)
-                    } else {
-                        // show error
-                    }
+                    completion(newAutoService, error)
                 }
             }
         }
@@ -308,11 +303,15 @@ extension CreateServiceViewController: STPPaymentContextDelegate {
         print("paymentResult: \(paymentResult)")
         print("paymentContext: \(paymentContext)")
         let sourceID = paymentResult.source.stripeID
-        createAutoService(sourceID: sourceID) { [weak self] autoServiceObjectID in
-            self?.dismiss(animated: true) {
-                self?.dismiss(animated: true, completion: nil)
+        createAutoService(sourceID: sourceID) { [weak self] autoServiceObjectID, error in
+            if let error = error {
+                completion(error)
+            } else {
+                self?.dismiss(animated: true) {
+                    self?.dismiss(animated: true, completion: nil)
+                }
+                completion(nil)
             }
-            completion(nil)
         }
     }
     

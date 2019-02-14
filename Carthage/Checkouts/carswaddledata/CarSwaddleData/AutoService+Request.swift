@@ -18,6 +18,11 @@ private let serverDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+
+enum AutoServiceError: Error {
+    case unableToGetJSON
+}
+
 public final class AutoServiceNetwork: Network {
     
     private var autoServiceService: AutoServiceService
@@ -29,7 +34,10 @@ public final class AutoServiceNetwork: Network {
     
     @discardableResult
     public func createAutoService(autoService originalAutoService: AutoService, sourceID: String, in context: NSManagedObjectContext, completion: @escaping (_ autoServiceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        guard let json = try? originalAutoService.toJSON() else { return nil }
+        guard let json = try? originalAutoService.toJSON() else {
+            completion(nil, AutoServiceError.unableToGetJSON)
+            return nil
+        }
         return autoServiceService.createAutoService(autoServiceJSON: json, sourceID: sourceID) { [weak self] autoServiceJSON, error in
             self?.complete(originalAutoService: originalAutoService, error: error, autoServiceJSON: autoServiceJSON, in: context, completion: completion)
         }
@@ -108,7 +116,7 @@ public final class AutoServiceNetwork: Network {
     }
     
     private func complete(originalAutoService: AutoService?, error: Error?, autoServiceJSON: JSONObject?, in context: NSManagedObjectContext, completion: @escaping (_ autoService: NSManagedObjectID?, _ error: Error?) -> Void) {
-        context.perform {
+        context.performOnImportQueue {
             var newAutoServiceObjectID: NSManagedObjectID?
             defer {
                 DispatchQueue.global().async {
@@ -128,7 +136,7 @@ public final class AutoServiceNetwork: Network {
     }
     
     private func complete(error: Error?, jsonArray: [JSONObject]?, in context: NSManagedObjectContext, completion: @escaping (_ autoServices: [NSManagedObjectID], _ error: Error?) -> Void) {
-        context.perform {
+        context.performOnImportQueue {
             var autoServiceIDs: [NSManagedObjectID] = []
             defer {
                 DispatchQueue.global().async {
@@ -139,7 +147,11 @@ public final class AutoServiceNetwork: Network {
             for json in jsonArray ?? [] {
                 guard let autoService = AutoService.fetchOrCreate(json: json, context: context) else { continue }
                 if autoService.objectID.isTemporaryID {
-                    try? context.obtainPermanentIDs(for: [autoService])
+                    do {
+                        try context.obtainPermanentIDs(for: [autoService])
+                    } catch {
+                        print(error)
+                    }
                 }
                 autoServiceIDs.append(autoService.objectID)
             }
