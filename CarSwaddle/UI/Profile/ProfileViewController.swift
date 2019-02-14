@@ -64,6 +64,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         tableView.register(TextCell.self)
         tableView.refreshControl = refreshControl
         tableView.tableHeaderView = headerView
+        tableView.tableFooterView = UIView()
         if let user = self.user {
             headerView.configure(with: user)
         }

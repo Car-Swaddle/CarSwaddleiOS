@@ -36,7 +36,7 @@ extension Navigator {
 
 let navigator = Navigator()
 
-final class Navigator: NSObject, TweakViewControllerDelegate {
+final class Navigator: NSObject {
     
     private var appDelegate: AppDelegate
     
@@ -52,6 +52,7 @@ final class Navigator: NSObject, TweakViewControllerDelegate {
         #if DEBUG
         let tripleTap = UITapGestureRecognizer(target: self, action: #selector(Navigator.didTripleTap))
         tripleTap.numberOfTapsRequired = 3
+        tripleTap.numberOfTouchesRequired = 2
         appDelegate.window?.addGestureRecognizer(tripleTap)
         #endif
         
@@ -73,25 +74,6 @@ final class Navigator: NSObject, TweakViewControllerDelegate {
     public var loggedInViewController: UIViewController {
         return tabBarController
     }
-    
-    #if DEBUG
-    
-    @objc private func didTripleTap() {
-        let allTweaks = Tweak.all
-        let tweakViewController = TweakViewController.create(with: allTweaks, delegate: self)
-        let navigationController = tweakViewController.inNavigationController()
-        
-        appDelegate.window?.rootViewController?.present(navigationController, animated: true, completion: nil)
-    }
-    
-    func didDismiss(requiresAppReset: Bool, tweakViewController: TweakViewController) {
-        if requiresAppReset {
-            logout.logout()
-        }
-    }
-    
-    #endif
-    
     
     private var _tabBarController: UITabBarController?
     private var tabBarController: UITabBarController {
@@ -242,6 +224,25 @@ final class Navigator: NSObject, TweakViewControllerDelegate {
     
 }
 
+#if DEBUG
+extension Navigator: TweakViewControllerDelegate {
+    
+    @objc private func didTripleTap() {
+        let allTweaks = Tweak.all
+        let tweakViewController = TweakViewController.create(with: allTweaks, delegate: self)
+        let navigationController = tweakViewController.inNavigationController()
+        
+        appDelegate.window?.rootViewController?.present(navigationController, animated: true, completion: nil)
+    }
+    
+    func didDismiss(requiresAppReset: Bool, tweakViewController: TweakViewController) {
+        if requiresAppReset {
+            logout.logout()
+        }
+    }
+    
+}
+#endif
 
 extension Navigator: UITabBarControllerDelegate {
     
