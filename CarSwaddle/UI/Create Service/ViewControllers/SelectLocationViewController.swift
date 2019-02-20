@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 import Store
 import CoreLocation
+import Contacts
+import AddressBook
 
 private let losAngeleseCoordinates = CLLocationCoordinate2D(latitude: 34.052235, longitude: -118.243683)
 private let defaultCoordinates = losAngeleseCoordinates
@@ -115,10 +117,21 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     
     @IBAction private func didSelectConfirm() {
         guard let location = location else { return }
+        
         let center = mapView.centerCoordinate
         setLocation(with: center)
         
-        delegate?.didSelect(location: location, viewController: self)
+        let locationObjectID = location.objectID
+        
+        locationManager.placemark(from: location.clLocation) { [weak self] placemark, error in
+            store.mainContext { mainContext in
+                guard let self = self,
+                    let fetchedLocation = mainContext.object(with: locationObjectID) as? Location else { return }
+                fetchedLocation.streetAddress = placemark?.localizedAddress
+                mainContext.persist()
+                self.delegate?.didSelect(location: fetchedLocation, viewController: self)
+            }
+        }
     }
     
     private func updateLocation() {
@@ -149,7 +162,7 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         store.mainContext.persist()
     }
     
-    private var didUpdateCurrentUserLocation: Bool = false
+//    private var didUpdateCurrentUserLocation: Bool = false
     
 }
 
@@ -171,3 +184,29 @@ extension SelectLocationViewController: MKMapViewDelegate {
     }
     
 }
+
+
+
+public extension Location {
+    
+    public var clLocation: CLLocation {
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
+    
+}
+
+
+public extension CLPlacemark {
+    
+    /// Address from a placemark
+    public var localizedAddress: String? {
+        let address = CNMutablePostalAddress()
+        address.state = administrativeArea ?? ""
+        address.city = locality ?? ""
+        address.postalCode = postalCode ?? ""
+        address.street = String(format: "%@ %@", thoroughfare ?? "", subThoroughfare ?? "")
+        return CNPostalAddressFormatter.string(from: address, style: .mailingAddress)
+    }
+    
+}
+

@@ -21,10 +21,9 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     private let auth = Auth(serviceRequest: serviceRequest)
 
     @IBOutlet private weak var signupButton: UIButton!
+    @IBOutlet private weak var spinner: UIActivityIndicatorView!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
-    
-    @IBOutlet private weak var spinner: UIActivityIndicatorView!
     
     private var signUpTask: URLSessionDataTask?
     
@@ -99,6 +98,15 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         
     }
 
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        updateSignUpEnabledness()
+        return true
+    }
+    
 }
 
 

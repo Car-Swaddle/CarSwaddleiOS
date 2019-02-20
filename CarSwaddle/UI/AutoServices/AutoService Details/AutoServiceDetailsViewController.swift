@@ -178,7 +178,7 @@ extension AutoServiceDetailsViewController: ReviewCellProtocol {
             textView.layer.borderWidth = 1
             textView.layer.cornerRadius = 8.0
             
-            textView.font = UIFont.appFont(size: 16)
+//            textView.font = UIFont.appFont(size: 16)
             
             textView.becomeFirstResponder()
             

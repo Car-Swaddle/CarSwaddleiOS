@@ -96,3 +96,13 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
     }
     
 }
+
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        updateLoginEnabledness()
+        return true
+    }
+    
+}

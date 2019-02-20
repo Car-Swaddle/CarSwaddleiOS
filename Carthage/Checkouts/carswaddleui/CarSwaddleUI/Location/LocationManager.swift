@@ -109,15 +109,8 @@ final public class LocationManager: NSObject {
             }
             
             let reverseGeocode = {
-                self?.geocoder.reverseGeocodeLocation(location) { placemarks, error in
-                    var completionPlacemark: CLPlacemark?
-                    defer {
-                        self?.lastFetchedPlacemark = completionPlacemark
-                        completion(completionPlacemark, error)
-                    }
-                    guard let placemark = placemarks?.first else { return }
-                    completionPlacemark = placemark
-                    self?.reverseGeocodeLocationCache[location] = placemark
+                self?.placemark(from: location) { placemark, error in
+                    completion(placemark, error)
                 }
             }
             
@@ -137,6 +130,19 @@ final public class LocationManager: NSObject {
                     reverseGeocode()
                 }
             }
+        }
+    }
+    
+    public func placemark(from location: CLLocation, completion: @escaping ((_ placemark: CLPlacemark?, _ error: Error?) -> Void)) {
+        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
+            var completionPlacemark: CLPlacemark?
+            defer {
+                self?.lastFetchedPlacemark = completionPlacemark
+                completion(completionPlacemark, error)
+            }
+            guard let placemark = placemarks?.first else { return }
+            completionPlacemark = placemark
+            self?.reverseGeocodeLocationCache[location] = placemark
         }
     }
     
