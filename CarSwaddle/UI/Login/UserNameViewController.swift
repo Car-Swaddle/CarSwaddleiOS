@@ -51,14 +51,14 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
     }
     
     private func updateUser(completion: @escaping (_ error: Error?) -> Void) {
-        guard let firstName = firstNameTextField.text,
-            let lastName = lastNameTextField.text else {
+        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
                 completion(UserInfoError.noInput)
                 return
         }
         
         store.privateContext { [weak self] context in
-            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, in: context) { userObjectID, error in
+            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, timeZone: nil, in: context) { userObjectID, error in
                 completion(error)
             }
         }

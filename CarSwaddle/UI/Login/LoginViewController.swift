@@ -14,6 +14,7 @@ import Authentication
 class LoginViewController: UIViewController, StoryboardInstantiating {
     
     private let auth: Auth = Auth(serviceRequest: serviceRequest)
+    private var userNetwork: UserNetwork = UserNetwork(serviceRequest: serviceRequest)
 
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var emailTextField: UITextField!
@@ -69,22 +70,30 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
         
         loginButton.isHiddenInStackView = true
         
-        store.privateContext { [weak self] context in
-            self?.loginTask = self?.auth.login(email: email, password: password, context: context) { error in
-                guard error == nil && AuthController().token != nil else {
-                    if let networkError = error as? NetworkRequestError {
-                        print("login error: \(networkError)")
-                    }
-                    DispatchQueue.main.async {
-                        self?.spinner.isHiddenInStackView = true
-                        self?.spinner.stopAnimating()
-                        
-                        self?.loginButton.isHiddenInStackView = false
-                    }
-                    return
+        login(email: email, password: password) { [weak self] error in
+            guard error == nil && AuthController().token != nil else {
+                if let networkError = error as? NetworkRequestError {
+                    print("login error: \(networkError)")
                 }
                 DispatchQueue.main.async {
-                    navigator.navigateToLoggedInViewController()
+                    self?.spinner.isHiddenInStackView = true
+                    self?.spinner.stopAnimating()
+                    
+                    self?.loginButton.isHiddenInStackView = false
+                }
+                return
+            }
+            DispatchQueue.main.async {
+                navigator.navigateToLoggedInViewController()
+            }
+        }
+    }
+    
+    private func login(email: String, password: String, completion: @escaping (_ error: Error?) -> Void) {
+        store.privateContext { [weak self] context in
+            self?.loginTask = self?.auth.login(email: email, password: password, context: context) { error in
+                self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: nil, token: nil, timeZone: TimeZone.current.identifier, in: context) { userObjectID, userError in
+                    completion(error)
                 }
             }
         }

@@ -32,11 +32,12 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
         
         navigationItem.rightBarButtonItem = spinner
         
-        guard let phoneNumber = phoneNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), phoneNumber.count > 3 else {
+        guard let phoneNumber = phoneNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            phoneNumber.count > 3 else {
             return
         }
         store.privateContext { [weak self] context in
-            self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: phoneNumber, token: nil, in: context) { userObjectID, error in
+            self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: phoneNumber, token: nil, timeZone: nil, in: context) { userObjectID, error in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
                     if error == nil {

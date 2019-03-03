@@ -223,6 +223,8 @@ SWIFT_CLASS_NAMED("Amount")
 SWIFT_CLASS_NAMED("AutoService")
 @interface AutoService : NSManagedObject
 - (void)awakeFromInsert;
+/// Bool value for data base usage. Reflects value found in <code>status</code>.
+@property (nonatomic, readonly) BOOL isCanceled;
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -525,6 +527,8 @@ SWIFT_CLASS_NAMED("Transaction")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+
 @class NSNumber;
 @class TransactionMetadata;
 
@@ -596,18 +600,18 @@ SWIFT_CLASS_NAMED("User")
 
 
 @interface User (SWIFT_EXTENSION(Store))
-- (void)addServicesObject:(AutoService * _Nonnull)value;
-- (void)removeServicesObject:(AutoService * _Nonnull)value;
-- (void)addServices:(NSSet * _Nonnull)values;
-- (void)removeServices:(NSSet * _Nonnull)values;
-@end
-
-
-@interface User (SWIFT_EXTENSION(Store))
 - (void)addVehiclesObject:(Vehicle * _Nonnull)value;
 - (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
 - (void)addVehicles:(NSSet * _Nonnull)values;
 - (void)removeVehicles:(NSSet * _Nonnull)values;
+@end
+
+
+@interface User (SWIFT_EXTENSION(Store))
+- (void)addServicesObject:(AutoService * _Nonnull)value;
+- (void)removeServicesObject:(AutoService * _Nonnull)value;
+- (void)addServices:(NSSet * _Nonnull)values;
+- (void)removeServices:(NSSet * _Nonnull)values;
 @end
 
 
@@ -626,6 +630,7 @@ SWIFT_CLASS_NAMED("User")
 @property (nonatomic) BOOL isPhoneNumberVerified;
 @property (nonatomic) BOOL isEmailVerified;
 @property (nonatomic, copy) NSString * _Nullable pushDeviceToken;
+@property (nonatomic, copy) NSString * _Nullable timeZone;
 @end
 
 
