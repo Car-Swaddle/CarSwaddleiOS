@@ -106,9 +106,9 @@ final class CreateServiceViewController: UIViewController, StoryboardInstantiati
             guard pricePart.isPartOfSubtotal == true else { continue }
             summaryItems.append(pricePart.paymentSummaryItem)
         }
-        let label = NSLocalizedString("Car Swaddle", comment: "Name of company")
+        
         let amount = price.totalDollarValue
-        let item = PKPaymentSummaryItem(label: label, amount: amount)
+        let item = PKPaymentSummaryItem(label: "Car Swaddle", amount: amount)
         summaryItems.append(item)
         
         paymentContext.paymentSummaryItems = summaryItems

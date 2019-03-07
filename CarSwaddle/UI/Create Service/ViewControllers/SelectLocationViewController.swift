@@ -169,6 +169,12 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
 extension SelectLocationViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        
+        if location == nil {
+            setLocation(with: userLocation)
+            updateMapWithCurrentLocation()
+        }
+        
 //        guard didUpdateCurrentUserLocation == false && location == nil else { return }
 //        didUpdateCurrentUserLocation = true
 //        DispatchQueue.main.async { [weak self] in
