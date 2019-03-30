@@ -120,12 +120,12 @@ public extension String {
         "9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" +
         "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
     
-    public var isValidEmail: Bool {
+    var isValidEmail: Bool {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", String.validateEmailRegex)
         return emailTest.evaluate(with: self)
     }
     
-    public var isValidPassword: Bool {
+    var isValidPassword: Bool {
         return self.count > 3
     }
     

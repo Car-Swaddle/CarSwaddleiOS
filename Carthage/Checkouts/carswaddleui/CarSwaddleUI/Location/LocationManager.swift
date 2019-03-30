@@ -9,6 +9,7 @@
 import CoreLocation
 import Contacts
 import UIKit
+import MapKit
 
 
 extension Notification.Name {
@@ -88,6 +89,12 @@ final public class LocationManager: NSObject {
         fetchLocationTasks.append(task)
     }
     
+    public func placemarks(fromAddress address: String, completion: @escaping (_ placemarks: [CLPlacemark]?, _ error: Error?) -> Void) {
+        geocoder.geocodeAddressString(address) { placemarks, error in
+            completion(placemarks, error)
+        }
+    }
+    
     /**
      Gets the user's current address
      
@@ -146,11 +153,82 @@ final public class LocationManager: NSObject {
         }
     }
     
+    private func requestRouteRequest(_ routeRequest: RouteRequest, finish: @escaping () -> Void) {
+        
+        routeRequest.wasCanceled = { [weak self] in
+            self?.geocoder.cancelGeocode()
+            routeRequest.directions?.cancel()
+        }
+        
+        if routeRequest.isCanceled {
+            routeRequest.completion(nil, nil)
+            finish()
+        }
+        
+        placemark(from: routeRequest.sourceLocation) { [weak self] destinationPlacemark, error in
+            guard let destinationPlacemark = destinationPlacemark, self != nil, !routeRequest.isCanceled else {
+                routeRequest.completion(nil, error)
+                finish()
+                return
+            }
+            self?.placemark(from: routeRequest.destinationLocation) { sourcePlacemark, error in
+                guard let sourcePlacemark = sourcePlacemark, self != nil, !routeRequest.isCanceled else {
+                    routeRequest.completion(nil, error)
+                    finish()
+                    return
+                }
+                let directions = self?.requestDirections(sourcePlacemark: sourcePlacemark, destinationPlacemark: destinationPlacemark) { directions, error in
+                    routeRequest.completion(directions?.routes.first, error)
+                    finish()
+                }
+                routeRequest.directions = directions
+            }
+        }
+    }
+    
+    @discardableResult
+    public func requestDirections(sourcePlacemark: CLPlacemark, destinationPlacemark: CLPlacemark, completion: @escaping (_ route: MKDirections.Response?, _ error: Error?) -> Void) -> MKDirections {
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: MKPlacemark(placemark: sourcePlacemark))
+        request.destination = MKMapItem(placemark: MKPlacemark(placemark: destinationPlacemark))
+        request.transportType = .automobile
+        request.requestsAlternateRoutes = false
+        let directions = MKDirections(request: request)
+        directions.calculate { directions, error in
+            completion(directions, error)
+        }
+        return directions
+    }
+    
+    public func queueRouteRequest(routeRequest: RouteRequest) {
+        if routeRequests.count == 0 {
+            routeRequests.insert(routeRequest, at: 0)
+            startRouteRequest(routeRequest: routeRequest) { }
+        } else {
+            routeRequests.insert(routeRequest, at: 0)
+        }
+    }
+    
+    private func startRouteRequest(routeRequest: RouteRequest, finish: @escaping () -> Void) {
+        requestRouteRequest(routeRequest) { [weak self] in
+            if self?.routeRequests.isEmpty == false {
+                self?.routeRequests.removeLast()
+            }
+            guard let self = self, let nextRouteRequest = self.routeRequests.last else {
+                finish()
+                return
+            }
+            self.startRouteRequest(routeRequest: nextRouteRequest) { }
+        }
+    }
+    
+    private var routeRequests: [RouteRequest] = []
+    
     public func cachedPlacemark(for location: CLLocation) -> CLPlacemark? {
         return reverseGeocodeLocationCache[location]
     }
     
-    private let geocoder = CLGeocoder()
+    public let geocoder = CLGeocoder()
     private var fetchLocationTasks: [UIBackgroundTaskIdentifier] = []
     private let coreLocationManager = CLLocationManager()
     private var locationCompletions: [((CLLocation?, Error?) -> Void)] = []
@@ -182,6 +260,29 @@ final public class LocationManager: NSObject {
         } else {
             return nil
         }
+    }
+    
+}
+
+public class RouteRequest {
+    
+    public init(sourceLocation: CLLocation, destinationLocation: CLLocation, completion: @escaping (_ route: MKRoute?, _ error: Error?) -> Void) {
+        self.sourceLocation = sourceLocation
+        self.destinationLocation = destinationLocation
+        self.completion = completion
+    }
+    
+    public var sourceLocation: CLLocation
+    public var destinationLocation: CLLocation
+    public var completion: (_ route: MKRoute?, _ error: Error?) -> Void
+    
+    fileprivate var directions: MKDirections?
+    fileprivate var wasCanceled: () -> Void = {}
+    fileprivate var isCanceled: Bool = false
+    
+    public func cancel() {
+        isCanceled = true
+        wasCanceled()
     }
     
 }
@@ -288,6 +389,8 @@ extension CLAuthorizationStatus {
             return false
         case .authorizedAlways, .authorizedWhenInUse:
             return true
+        @unknown default:
+            fatalError("unkown presentation style")
         }
     }
     

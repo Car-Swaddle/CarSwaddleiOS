@@ -242,16 +242,24 @@ extension CreateServiceViewController: SelectLocationViewControllerDelegate {
         updatePrice()
     }
     
+    func willBeDismissed(viewController: SelectLocationViewController) {
+        
+    }
+    
 }
 
 extension CreateServiceViewController: SelectMechanicDelegate {
     
-    func didSaveMechanic(mechanic: Mechanic, date: Date, viewController: SelectMechanicViewController) {
+    func didSaveMechanic(mechanic: Mechanic, date: Date, viewController: UIViewController) {
         self.autoService.mechanic = mechanic
         autoService.scheduledDate = date
         store.mainContext.persist()
         navigationController?.popViewController(animated: true)
         updatePrice()
+    }
+    
+    func willBeDismissed(viewController: UIViewController) {
+        
     }
     
 }
@@ -261,10 +269,14 @@ extension CreateServiceViewController: SelectOilTypeViewControllerDelegate {
     func didChangeOilType(oilType: OilType, viewController: SelectOilTypeViewController) {
         autoService.firstOilChange?.oilType = oilType
         store.mainContext.persist()
-        let indexPath = IndexPath(row: rows.index(of: .oilType) ?? 0, section: 0)
+        let indexPath = IndexPath(row: rows.firstIndex(of: .oilType) ?? 0, section: 0)
         tableView.reloadRows(at: [indexPath], with: .none)
         navigationController?.popViewController(animated: true)
         updatePrice()
+    }
+    
+    func willBeDismissed(viewController: SelectOilTypeViewController) {
+        
     }
     
 }
@@ -284,6 +296,10 @@ extension CreateServiceViewController: SelectVehicleViewControllerDelegate {
         store.mainContext.persist()
         tableView.reloadData()
         updatePrice()
+    }
+ 
+    func willBeDismissed(viewController: SelectVehicleViewController) {
+        
     }
     
 }
@@ -328,6 +344,8 @@ extension CreateServiceViewController: STPPaymentContextDelegate {
             print("success")
         case .userCancellation:
             print("user cancelled")
+        @unknown default:
+            fatalError("unkown case")
         }
     }
     

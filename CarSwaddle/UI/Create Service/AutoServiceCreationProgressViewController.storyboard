@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aqn-OU-K3H">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Auto Service Creation Progress View Controller-->
+        <scene sceneID="do7-3k-gUy">
+            <objects>
+                <viewController id="aqn-OU-K3H" customClass="AutoServiceCreationProgressViewController" customModule="CarSwaddle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uct-HR-Oxk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6cE-Ud-mcn">
+                                <rect key="frame" x="16" y="16" width="343" height="21"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwC-Fj-RCE">
+                                        <rect key="frame" x="0.0" y="0.0" width="114.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mechanic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0D-Nq-pAh">
+                                        <rect key="frame" x="114.5" y="0.0" width="114" height="21"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaS-KC-fYj">
+                                        <rect key="frame" x="228.5" y="0.0" width="114.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fw9-cd-tLw" customClass="RoundView" customModule="CarSwaddle" customModuleProvider="target">
+                                <rect key="frame" x="55.5" y="57" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Fw9-cd-tLw" secondAttribute="height" multiplier="1:1" id="57X-Ch-R4h"/>
+                                    <constraint firstAttribute="height" constant="35" id="g24-32-mfL"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaL-Fc-mWE" customClass="RoundView" customModule="CarSwaddle" customModuleProvider="target">
+                                <rect key="frame" x="170" y="57" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="3ty-nQ-xDp"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOC-8b-OwI" customClass="RoundView" customModule="CarSwaddle" customModuleProvider="target">
+                                <rect key="frame" x="284.5" y="57" width="35" height="35"/>
+                                <color key="backgroundColor" red="0.6307218309859155" green="0.58877090669014087" blue="0.52068661971830987" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="xl4-pk-py0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AaL-Fc-mWE" firstAttribute="top" secondItem="L0D-Nq-pAh" secondAttribute="bottom" constant="20" id="8Og-Dl-dhD"/>
+                            <constraint firstItem="Fw9-cd-tLw" firstAttribute="centerX" secondItem="PwC-Fj-RCE" secondAttribute="centerX" id="B9H-0i-b27"/>
+                            <constraint firstItem="AaL-Fc-mWE" firstAttribute="centerX" secondItem="L0D-Nq-pAh" secondAttribute="centerX" id="DZ3-km-9gU"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="EOC-8b-OwI" secondAttribute="bottom" constant="28" id="ESQ-Qa-FXb"/>
+                            <constraint firstItem="EOC-8b-OwI" firstAttribute="top" secondItem="eaS-KC-fYj" secondAttribute="bottom" constant="20" id="KzF-3n-SDt"/>
+                            <constraint firstItem="EOC-8b-OwI" firstAttribute="centerX" secondItem="eaS-KC-fYj" secondAttribute="centerX" id="LZ0-sO-RXK"/>
+                            <constraint firstItem="6cE-Ud-mcn" firstAttribute="leading" secondItem="uct-HR-Oxk" secondAttribute="leading" constant="16" id="elC-I2-VeE"/>
+                            <constraint firstAttribute="trailing" secondItem="6cE-Ud-mcn" secondAttribute="trailing" constant="16" id="hL0-tc-LGW"/>
+                            <constraint firstItem="EOC-8b-OwI" firstAttribute="width" secondItem="EOC-8b-OwI" secondAttribute="height" multiplier="1:1" id="ic9-QM-LyA"/>
+                            <constraint firstItem="6cE-Ud-mcn" firstAttribute="top" secondItem="uct-HR-Oxk" secondAttribute="top" constant="16" id="s6r-ud-agv"/>
+                            <constraint firstItem="AaL-Fc-mWE" firstAttribute="width" secondItem="AaL-Fc-mWE" secondAttribute="height" multiplier="1:1" id="sOf-oi-8Ih"/>
+                            <constraint firstItem="Fw9-cd-tLw" firstAttribute="top" secondItem="PwC-Fj-RCE" secondAttribute="bottom" constant="20" id="weP-zU-Xoz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aEa-TK-BAS"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="120"/>
+                    <connections>
+                        <outlet property="detailsCircle" destination="EOC-8b-OwI" id="ton-g5-0kF"/>
+                        <outlet property="detailsLabel" destination="eaS-KC-fYj" id="ChQ-8I-eIr"/>
+                        <outlet property="locationCircle" destination="Fw9-cd-tLw" id="DFV-PI-KS9"/>
+                        <outlet property="locationLabel" destination="PwC-Fj-RCE" id="H3A-AA-Oob"/>
+                        <outlet property="mechanicCircle" destination="AaL-Fc-mWE" id="0CQ-a8-R8H"/>
+                        <outlet property="mechanicLabel" destination="L0D-Nq-pAh" id="80h-3X-YPR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZq-U2-1KO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="56.799999999999997" y="113.3433283358321"/>
+        </scene>
+    </scenes>
+</document>

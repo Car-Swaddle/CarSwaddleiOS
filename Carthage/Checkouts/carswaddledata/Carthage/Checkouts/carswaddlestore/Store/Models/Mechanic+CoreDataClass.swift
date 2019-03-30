@@ -59,6 +59,9 @@ public final class Mechanic: NSManagedObject, NSManagedObjectFetchable, JSONInit
         }
         
         identityDocumentID = json["identityDocumentID"] as? String
+        identityDocumentBackID = json["identityDocumentBackID"] as? String
+        hasSetAvailability = json["hasSetAvailability"] as? Bool ?? false
+        hasSetServiceRegion = json["hasSetServiceRegion"] as? Bool ?? false
     }
     
     public static func setCurrentMechanicID(_ identifier: String) {

@@ -12,6 +12,7 @@ import Store
 
 protocol SelectOilTypeViewControllerDelegate: class {
     func didChangeOilType(oilType: OilType, viewController: SelectOilTypeViewController)
+    func willBeDismissed(viewController: SelectOilTypeViewController)
 }
 
 class SelectOilTypeViewController: UIViewController, StoryboardInstantiating {
@@ -30,7 +31,7 @@ class SelectOilTypeViewController: UIViewController, StoryboardInstantiating {
         didSet {
             var indexPaths: [IndexPath] = []
             if let oldValue = oldValue {
-                let oldIndex = oilTypes.index(of: oldValue) ?? 0
+                let oldIndex = oilTypes.firstIndex(of: oldValue) ?? 0
                 let oldIndexPath = IndexPath(row: oldIndex, section: 0)
                 indexPaths.append(oldIndexPath)
             }
@@ -41,7 +42,7 @@ class SelectOilTypeViewController: UIViewController, StoryboardInstantiating {
     }
     
     private var selectedIndex: Int {
-        return oilTypes.index(of: selectedOilType) ?? 0
+        return oilTypes.firstIndex(of: selectedOilType) ?? 0
     }
     
     @IBOutlet private weak var tableView: UITableView!
@@ -49,6 +50,13 @@ class SelectOilTypeViewController: UIViewController, StoryboardInstantiating {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+    }
+    
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            delegate?.willBeDismissed(viewController: self)
+        }
     }
     
     private func setupTableView() {

@@ -12,13 +12,17 @@ import Store
 import CoreLocation
 import Contacts
 import AddressBook
+import CarSwaddleUI
 
 private let losAngeleseCoordinates = CLLocationCoordinate2D(latitude: 34.052235, longitude: -118.243683)
 private let defaultCoordinates = losAngeleseCoordinates
 
+private let closeupSpanWidth: CLLocationDistance = 800
+private let farSpanWidth: CLLocationDistance = 12000
 
 protocol SelectLocationViewControllerDelegate: class {
     func didSelect(location: Location, viewController: SelectLocationViewController)
+    func willBeDismissed(viewController: SelectLocationViewController)
 }
 
 /// Start with position set or current location
@@ -46,37 +50,88 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     private var autoService: AutoService!
     
     @IBOutlet private weak var mapView: MKMapView!
-    @IBOutlet private weak var confirmButton: UIButton!
+    @IBOutlet private weak var confirmButton: ActionButton!
+    @IBOutlet private weak var centerView: UIImageView!
+    
+    private lazy var contentAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: confirmButton)
+    private lazy var locationSearchResultsViewController = LocationSearchResultsViewController.viewControllerFromStoryboard()
+    
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = NSLocalizedString("Oil change location", comment: "Placeholder where oil chage will take place")
+        return searchBar
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.promptUserForLocationAccess()
         setupLocation()
-        styleView()
+        
         setupBarButtons()
         mapView.delegate = self
+        centerView.layer.shadowOpacity = 0.45
+        centerView.layer.shadowColor = UIColor.black.cgColor
+        centerView.layer.shadowRadius = 4
+        centerView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        
+        centerView.image = #imageLiteral(resourceName: "pin").withRenderingMode(.alwaysTemplate)
+        
+        contentAdjuster.positionActionButton()
+        
+//        let searchController = UISearchController(searchResultsController: vc)
+//        searchController.delegate = self
+//
+//        searchController.searchResultsUpdater = self
+////        navigationItem.titleView = searchController.searchBar
+//        navigationItem.searchController = searchController
+//        searchController.hidesNavigationBarDuringPresentation = false
+//        searchController.dimsBackgroundDuringPresentation = false
+        
+        navigationItem.titleView = searchBar
+        
+//        definesPresentationContext = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.view.setNeedsLayout()
+        navigationController?.view.layoutIfNeeded()
     }
     
     private var prev: NSLayoutConstraint? {
         didSet {
-            if let prev = prev {
-                centerView.removeConstraint(prev)
-            }
+//            if let prev = prev {
+//                centerView.removeConstraint(prev)
+//            }
         }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         styleView()
-        let theView: UIView = self.view
-        let constant = ((theView.frame.height+(theView.safeAreaInsets.top/2))/2) - (centerView.frame.height/2)
+//        let theView: UIView = self.view
+//        let constant = ((theView.frame.height+(theView.safeAreaInsets.top/2))/2) - (centerView.frame.height/2)
         
-        prev = centerView.topAnchor.constraint(equalTo: theView.topAnchor, constant: constant)
-        prev?.isActive = true
+//        prev = centerView.topAnchor.constraint(equalTo: theView.topAnchor, constant: constant)
+//        prev?.isActive = true
+    }
+    
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            delegate?.willBeDismissed(viewController: self)
+        }
     }
     
     private func setupBarButtons() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: "Title of cancel button"), style: .plain, target: self, action: #selector(SelectLocationViewController.didSelectCancel))
+        navigationItem.leftBarButtonItem = dismissBarButton
+    }
+    
+    private var dismissBarButton: UIBarButtonItem {
+        return UIBarButtonItem(title: NSLocalizedString("Dismiss", comment: "Title of cancel button"), style: .plain, target: self, action: #selector(SelectLocationViewController.didSelectCancel))
     }
     
     @objc private func didSelectCancel() {
@@ -84,7 +139,8 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
 //            store.mainContext.delete(location)
 //            store.mainContext.persist()
 //        }
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     private func setupLocation() {
@@ -103,17 +159,15 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     
     private func updateMapWithCurrentLocation() {
         guard let location = location else { return }
-        mapView?.region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1200, longitudinalMeters: 1200)
+        mapView?.region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: closeupSpanWidth, longitudinalMeters: closeupSpanWidth)
         mapView?.setCenter(location.coordinate, animated: true)
     }
     
     private func styleView() {
-        confirmButton.layer.borderColor = UIColor.gray.cgColor
-        confirmButton.layer.borderWidth = 1/UIScreen.main.scale
-        confirmButton.layer.cornerRadius = confirmButton.frame.height/2
+//        confirmButton.layer.borderColor = UIColor.gray.cgColor
+//        confirmButton.layer.borderWidth = UIView.hairlineLength // 1/UIScreen.main.scale
+//        confirmButton.layer.cornerRadius = confirmButton.frame.height/2
     }
-    
-    @IBOutlet private weak var centerView: UIView!
     
     @IBAction private func didSelectConfirm() {
         guard let location = location else { return }
@@ -153,6 +207,17 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         self.setLocation(with: coordinate)
     }
     
+    @IBAction private func textFieldDidChange(_ textField: UITextField) {
+        searchCompleter.cancel()
+        searchCompleter.queryFragment = textField.text ?? ""
+    }
+    
+    private lazy var searchCompleter: MKLocalSearchCompleter = {
+        let completer = MKLocalSearchCompleter()
+        completer.delegate = self
+        return completer
+    }()
+    
     private func setLocation(with coordinate: CLLocationCoordinate2D) {
         if location == nil {
             location = Location(context: store.mainContext, autoService: autoService, coordinate: coordinate)
@@ -189,13 +254,149 @@ extension SelectLocationViewController: MKMapViewDelegate {
 //        }
     }
     
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        print("changed")
+    }
+    
+}
+
+
+extension SelectLocationViewController: MKLocalSearchCompleterDelegate {
+    
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        locationSearchResultsViewController.results = completer.results
+//        print("updated")
+//
+//        print(completer.results)
+//
+//        completer.results.forEach { print("title: \($0.title), subtitle: \($0.subtitle)") }
+//
+//        if let address = completer.results.first?.addressDescription {
+//            locationManager.placemarks(fromAddress: address) { [weak self] placemarks, error in
+//                DispatchQueue.main.async {
+//                    let coordinate: CLLocationCoordinate2D = placemarks?.first?.location?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+//                    self?.mapView.setCenter(coordinate, animated: true)
+//                }
+//            }
+//        }
+    }
+    
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+        print("failed")
+    }
+    
+}
+
+extension SelectLocationViewController: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, LocationSearchResultsDelegate {
+    
+    func willPresentSearchController(_ searchController: UISearchController) {
+//        navigationItem.setLeftBarButton(nil, animated: true)
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+//        navigationItem.setLeftBarButton(dismissBarButton, animated: true)
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        print("update results")
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        navigationItem.setLeftBarButton(nil, animated: true)
+        searchBar.setShowsCancelButton(true, animated: true)
+        if locationSearchResultsViewController.parent == nil {
+            addLocationSearchResultsViewController()
+        }
+        
+        locationSearchResultsViewController.results = []
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if locationSearchResultsViewController.parent == nil {
+            addLocationSearchResultsViewController()
+        }
+        searchCompleter.queryFragment = searchBar.text ?? ""
+        if searchBar.text?.isEmpty == true {
+            locationSearchResultsViewController.results = []
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        navigationItem.setLeftBarButton(dismissBarButton, animated: true)
+        removeLocationSearchResultsViewController()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    private func addLocationSearchResultsViewController() {
+        addChild(locationSearchResultsViewController)
+        view.addSubview(locationSearchResultsViewController.view)
+        locationSearchResultsViewController.view.pinFrameToSuperViewBounds()
+        locationSearchResultsViewController.didMove(toParent: self)
+        locationSearchResultsViewController.delegate = self
+    }
+    
+    private func removeLocationSearchResultsViewController() {
+        locationSearchResultsViewController.willMove(toParent: nil)
+        locationSearchResultsViewController.view.removeFromSuperview()
+        locationSearchResultsViewController.removeFromParent()
+    }
+    
+    func didSelect(result: MKLocalSearchCompletion, viewController: LocationSearchResultsViewController) {
+        searchBar.text = result.title
+        searchBar.resignFirstResponder()
+        removeLocationSearchResultsViewController()
+        requestLocationSearchCoordinates(address: result.addressDescription) { [weak self] finalCoordinate in
+            guard let self = self else { return }
+            if let finalCoordinate = finalCoordinate {
+                let midpoint = self.mapView.centerCoordinate.midpoint(to: finalCoordinate)
+                UIView.animate(withDuration: 0.55, delay: 0.0, options: [.curveEaseOut], animations: {
+                    var region = MKCoordinateRegion(center: midpoint, latitudinalMeters: self.mapView.latitudinalMeters * 12, longitudinalMeters: self.mapView.longitudinalMeters * 12)
+                    region.span.latitudeDelta = min(134, region.span.latitudeDelta)
+                    region.span.longitudeDelta = min(130, region.span.latitudeDelta)
+                    self.mapView.region = region
+                }, completion: { isFinished in
+                    UIView.animate(withDuration: 0.55, delay: 0.0, options: [.curveEaseInOut], animations: {
+                        let region = MKCoordinateRegion(center: finalCoordinate, latitudinalMeters: closeupSpanWidth, longitudinalMeters: closeupSpanWidth)
+                        self.mapView.region = region
+                    }, completion: { isFinished in })
+                })
+            }
+        }
+    }
+    
+    func didTapView(_ viewController: LocationSearchResultsViewController) {
+        searchBar.resignFirstResponder()
+    }
+    
+    private func requestLocationSearchCoordinates(address: String, completion: @escaping (_ coordinate: CLLocationCoordinate2D?) -> Void) {
+        locationManager.placemarks(fromAddress: address) { placemarks, error in
+            DispatchQueue.main.async {
+                let coordinate = placemarks?.first?.location?.coordinate
+                completion(coordinate)
+            }
+        }
+    }
+    
 }
 
 
 
+public extension MKLocalSearchCompletion {
+    
+    var addressDescription: String {
+        return "\(title) \(subtitle)"
+    }
+    
+}
+
+
 public extension Location {
     
-    public var clLocation: CLLocation {
+    var clLocation: CLLocation {
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     
@@ -205,7 +406,7 @@ public extension Location {
 public extension CLPlacemark {
     
     /// Address from a placemark
-    public var localizedAddress: String? {
+    var localizedAddress: String? {
         let address = CNMutablePostalAddress()
         address.state = administrativeArea ?? ""
         address.city = locality ?? ""
@@ -216,3 +417,37 @@ public extension CLPlacemark {
     
 }
 
+public extension MKMapView {
+    
+    var longitudinalMeters: CLLocationDistance {
+        let deltaLongitude = region.span.longitudeDelta
+        let latitudeCircumference = 40075160 * cos(region.center.latitude * Double.pi / 180);
+        return deltaLongitude * latitudeCircumference / 360
+    }
+    
+    var latitudinalMeters: CLLocationDistance {
+        let deltaLatitude = region.span.latitudeDelta
+        return deltaLatitude * 40008000 / 360
+    }
+    
+}
+
+
+extension CLLocationCoordinate2D {
+    
+    func midpoint(to location: CLLocationCoordinate2D) -> CLLocationCoordinate2D {
+        
+        let lon1 = longitude * Double.pi / 180
+        let lon2 = location.longitude * Double.pi / 180
+        let lat1 = latitude * Double.pi / 180
+        let lat2 = location.latitude * Double.pi / 180
+        let dLon = lon2 - lon1
+        let x = cos(lat2) * cos(dLon)
+        let y = cos(lat2) * sin(dLon)
+        
+        let lat3 = atan2( sin(lat1) + sin(lat2), sqrt((cos(lat1) + x) * (cos(lat1) + x) + y * y) )
+        let lon3 = lon1 + atan2(y, cos(lat1) + x)
+        
+        return CLLocationCoordinate2DMake(lat3 * 180 / Double.pi, lon3 * 180 / Double.pi)
+    }
+}

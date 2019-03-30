@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nCH-qB-5Up">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nCH-qB-5Up">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,13 +24,10 @@
                                     <outlet property="delegate" destination="nCH-qB-5Up" id="tvK-Sd-UHm"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92z-6z-ZdC">
-                                <rect key="frame" x="54" y="596" width="267" height="51"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92z-6z-ZdC" customClass="ActionButton" customModule="CarSwaddleUI">
+                                <rect key="frame" x="109" y="626" width="157" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="OzZ-gW-22L"/>
-                                    <constraint firstAttribute="width" constant="267" id="rxL-Kv-e3v"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Confirm Location"/>
@@ -38,30 +35,28 @@
                                     <action selector="didSelectConfirm" destination="nCH-qB-5Up" eventType="touchUpInside" id="U92-qn-fEQ"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaN-TP-Ia9">
-                                <rect key="frame" x="176" y="333" width="23" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="ocA-f1-QAr">
+                                <rect key="frame" x="174" y="316.5" width="27" height="27"/>
+                                <color key="tintColor" name="viewBackgroundColor1"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="CIV-DG-w5e"/>
-                                    <constraint firstAttribute="width" constant="23" id="cxy-qk-SVd"/>
+                                    <constraint firstAttribute="height" constant="27" id="lJq-kf-Pkm"/>
+                                    <constraint firstAttribute="width" secondItem="ocA-f1-QAr" secondAttribute="height" multiplier="1:1" id="lct-v2-fWy"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="iyg-EK-5No" firstAttribute="bottom" secondItem="92z-6z-ZdC" secondAttribute="bottom" constant="20" id="00R-yr-N99"/>
-                            <constraint firstItem="MaN-TP-Ia9" firstAttribute="centerX" secondItem="iyg-EK-5No" secondAttribute="centerX" id="Ajy-aS-0mh"/>
-                            <constraint firstItem="92z-6z-ZdC" firstAttribute="centerX" secondItem="iyg-EK-5No" secondAttribute="centerX" id="MsL-PE-Atd"/>
                             <constraint firstItem="KC0-A9-beZ" firstAttribute="leading" secondItem="kJx-aR-gM7" secondAttribute="leading" id="P8u-IX-59j"/>
                             <constraint firstItem="KC0-A9-beZ" firstAttribute="trailing" secondItem="kJx-aR-gM7" secondAttribute="trailing" id="QjH-bO-14S"/>
-                            <constraint firstItem="MaN-TP-Ia9" firstAttribute="top" secondItem="kJx-aR-gM7" secondAttribute="top" constant="333" placeholder="YES" id="hZw-fh-BCu"/>
+                            <constraint firstItem="ocA-f1-QAr" firstAttribute="bottom" secondItem="iyg-EK-5No" secondAttribute="centerY" id="aCw-Jv-9bH"/>
                             <constraint firstItem="KC0-A9-beZ" firstAttribute="top" secondItem="kJx-aR-gM7" secondAttribute="top" id="jbS-KI-Jat"/>
+                            <constraint firstItem="ocA-f1-QAr" firstAttribute="centerX" secondItem="kJx-aR-gM7" secondAttribute="centerX" id="uph-Ng-cRl"/>
                             <constraint firstItem="KC0-A9-beZ" firstAttribute="bottom" secondItem="kJx-aR-gM7" secondAttribute="bottom" id="zzB-vn-q13"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iyg-EK-5No"/>
                     </view>
                     <connections>
-                        <outlet property="centerView" destination="MaN-TP-Ia9" id="24s-yF-oYT"/>
+                        <outlet property="centerView" destination="ocA-f1-QAr" id="fSH-ii-1Or"/>
                         <outlet property="confirmButton" destination="92z-6z-ZdC" id="M62-dB-91Q"/>
                         <outlet property="mapView" destination="KC0-A9-beZ" id="2eO-0v-ZO4"/>
                     </connections>
@@ -71,4 +66,10 @@
             <point key="canvasLocation" x="-18.399999999999999" y="79.610194902548727"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pin" width="13" height="13"/>
+        <namedColor name="viewBackgroundColor1">
+            <color red="0.27058823529411763" green="0.38039215686274508" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

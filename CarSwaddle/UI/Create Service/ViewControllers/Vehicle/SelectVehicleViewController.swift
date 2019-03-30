@@ -15,6 +15,7 @@ import CarSwaddleData
 protocol SelectVehicleViewControllerDelegate: class {
     func didSelectVehicle(vehicle: Vehicle, viewController: SelectVehicleViewController)
     func didDeselectVehicle(viewController: SelectVehicleViewController)
+    func willBeDismissed(viewController: SelectVehicleViewController)
 }
 
 extension SelectVehicleViewController {
@@ -84,6 +85,13 @@ final class SelectVehicleViewController: UIViewController, StoryboardInstantiati
 //            privateContext.persist()
             
             self?.vehicleNetwork.requestVehicles(limit: 15, offset: 0, in: privateContext) { vehicleIDs, error in }
+        }
+    }
+    
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            delegate?.willBeDismissed(viewController: self)
         }
     }
     
@@ -237,6 +245,8 @@ extension SelectVehicleViewController: NSFetchedResultsControllerDelegate {
             guard let indexPath = indexPath, let newIndexPath = newIndexPath else { return }
             tableView.deleteRows(at: [indexPath], with: .none)
             tableView.insertRows(at: [newIndexPath], with: .none)
+        @unknown default:
+            fatalError("new type")
         }
     }
     

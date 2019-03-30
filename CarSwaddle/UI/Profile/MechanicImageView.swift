@@ -15,7 +15,7 @@ final class MechanicImageView: UIImageView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        image = UIImage.from(color: .gray3)
+        setDefaultImage()
         layer.cornerRadius = 8
         layer.masksToBounds = true
         contentMode = .scaleAspectFill
@@ -27,13 +27,22 @@ final class MechanicImageView: UIImageView {
         if let userImage = profileImageStore.getImage(forMechanicWithID: mechanicID) {
             image = userImage
         } else {
+            setDefaultImage()
             mechanicNetwork.getProfileImage(mechanicID: mechanicID) { [weak self] fileURL, error in
                 guard self?.mechanicID == mechanicID else { return }
                 DispatchQueue.main.async {
-                    self?.image = profileImageStore.getImage(forMechanicWithID: mechanicID)
+                    if let image = profileImageStore.getImage(forMechanicWithID: mechanicID) {
+                        self?.image = image
+                    } else {
+                        self?.setDefaultImage()
+                    }
                 }
             }
         }
+    }
+    
+    private func setDefaultImage() {
+        image = UIImage.from(color: .gray3)
     }
     
 }

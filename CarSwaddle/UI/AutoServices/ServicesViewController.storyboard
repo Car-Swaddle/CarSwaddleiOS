@@ -21,6 +21,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6WY-gt-1wC" customClass="ActionButton" customModule="CarSwaddleUI">
+                                <rect key="frame" x="118" y="603" width="140" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Request oil change"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -31,14 +36,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MzW-wa-qbe"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yIx-UF-vdP">
-                        <barButtonItem key="rightBarButtonItem" title="Create" id="oxP-6i-PbD">
-                            <connections>
-                                <action selector="didTapCreate" destination="s1m-Td-dhe" id="Xpu-E4-AdQ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="yIx-UF-vdP"/>
                     <connections>
+                        <outlet property="actionButton" destination="6WY-gt-1wC" id="1B4-68-uIj"/>
                         <outlet property="tableView" destination="vnc-oc-k6a" id="fot-zN-NpM"/>
                     </connections>
                 </viewController>

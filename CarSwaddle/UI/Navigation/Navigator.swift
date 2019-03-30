@@ -57,9 +57,57 @@ final class Navigator: NSObject {
         #endif
         
         if AuthController().token != nil {
-//            pushNotificationController.requestPermission()
+            //            pushNotificationController.requestPermission()
             showRequiredScreensIfNeeded()
         }
+        
+        setupAppearance()
+    }
+    
+    private func setupAppearance() {
+        let appearance = ActionButton.appearance()
+        
+        appearance.defaultBackgroundColor = .secondary
+        appearance.defaultTitleFont = UIFont.appFont(type: .semiBold, size: 20)
+        
+        tabBarController.view.layoutIfNeeded()
+        ContentInsetAdjuster.defaultBottomOffset = tabBarController.tabBar.bounds.height
+        
+        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 20) as Any]
+        UINavigationBar.appearance().titleTextAttributes = attributes
+        UINavigationBar.appearance().barTintColor = .veryLightGray
+        UINavigationBar.appearance().isTranslucent = false
+        UITextField.appearance().tintColor = .secondary
+        
+        let selectedTabBarAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.appFont(type: .semiBold, size: 10) as Any,
+            .foregroundColor: UIColor.viewBackgroundColor1
+        ]
+        UITabBarItem.appearance().setTitleTextAttributes(selectedTabBarAttributes, for: .selected)
+        
+        let normalTabBarAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.appFont(type: .regular, size: 10) as Any,
+            .foregroundColor: UIColor.lightGray
+        ]
+        UITabBarItem.appearance().setTitleTextAttributes(normalTabBarAttributes, for: .normal)
+        UITabBar.appearance().tintColor = .secondary
+        
+        UISwitch.appearance().tintColor = .secondary
+        UISwitch.appearance().onTintColor = .secondary
+        UINavigationBar.appearance().tintColor = .viewBackgroundColor1
+        
+        let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 17) as Any]
+        
+        for state in [UIControl.State.normal, .highlighted, .selected, .disabled, .focused, .reserved] {
+            UIBarButtonItem.appearance().setTitleTextAttributes(barButtonTextAttributes, for: state)
+        }
+        
+        UITableViewCell.appearance().textLabel?.font = UIFont.appFont(type: .regular, size: 14)
+        
+//        UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).tintColor = .secondary
+        UISearchBar.appearance().tintColor = .viewBackgroundColor1
+        let textFieldAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
+        textFieldAppearance.defaultTextAttributes = [.font: UIFont.appFont(type: .regular, size: 17) as Any]
     }
     
     public func initialViewController() -> UIViewController {
@@ -76,7 +124,7 @@ final class Navigator: NSObject {
     }
     
     private var _tabBarController: UITabBarController?
-    private var tabBarController: UITabBarController {
+    public var tabBarController: UITabBarController {
         if let _tabBarController = _tabBarController {
             return _tabBarController
         }
@@ -174,7 +222,9 @@ final class Navigator: NSObject {
         
         let servicesViewController = ServicesViewController.viewControllerFromStoryboard()
         let title = NSLocalizedString("Services", comment: "Title of tab item.")
-        servicesViewController.tabBarItem = UITabBarItem(title: title, image: nil, selectedImage: nil)
+        let image = #imageLiteral(resourceName: "car")
+        let selectedImage = #imageLiteral(resourceName: "car")
+        servicesViewController.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
         _servicesViewController = servicesViewController
         return servicesViewController
     }
@@ -187,7 +237,9 @@ final class Navigator: NSObject {
         
         let profileViewController = ProfileViewController.viewControllerFromStoryboard()
         let title = NSLocalizedString("Profile", comment: "Title of tab item.")
-        profileViewController.tabBarItem = UITabBarItem(title: title, image: nil, selectedImage: nil)
+        let image = #imageLiteral(resourceName: "user")
+        let selectedImage = #imageLiteral(resourceName: "user")
+        profileViewController.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
         _profileViewController = profileViewController
         return profileViewController
     }
@@ -249,8 +301,8 @@ extension Navigator: UITabBarControllerDelegate {
     private static let didChangeTabEvent = "Did Change Tab"
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-//        guard let tab = self.tab(from: viewController) else { return }
-//        trackEvent(with: Navigator.didChangeTabEvent, attributes: ["Screen": tab.name])
+        //        guard let tab = self.tab(from: viewController) else { return }
+        //        trackEvent(with: Navigator.didChangeTabEvent, attributes: ["Screen": tab.name])
     }
     
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {

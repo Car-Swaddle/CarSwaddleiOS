@@ -15,7 +15,7 @@ public let appleMerchantIdentifier: String = "merchant.com.carswaddle"
 
 let stripe = StripeClient()
 
-final class StripeClient: NSObject, STPEphemeralKeyProvider {
+final class StripeClient: NSObject, STPCustomerEphemeralKeyProvider {
     
     private let stripeService = StripeService(serviceRequest: serviceRequest)
     

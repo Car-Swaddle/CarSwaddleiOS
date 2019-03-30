@@ -12,7 +12,8 @@ import Store
 import CoreLocation
 
 protocol SelectMechanicDelegate: AnyObject {
-    func didSaveMechanic(mechanic: Mechanic, date: Date, viewController: SelectMechanicViewController)
+    func didSaveMechanic(mechanic: Mechanic, date: Date, viewController: UIViewController)
+    func willBeDismissed(viewController: UIViewController)
 }
 
 final class SelectMechanicViewController: UIViewController, StoryboardInstantiating {
@@ -67,6 +68,13 @@ final class SelectMechanicViewController: UIViewController, StoryboardInstantiat
         mechanicPageViewController.didMove(toParent: self)
         
         updateMechanics()
+    }
+    
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            delegate?.willBeDismissed(viewController: self)
+        }
     }
     
     private func updateMechanics() {

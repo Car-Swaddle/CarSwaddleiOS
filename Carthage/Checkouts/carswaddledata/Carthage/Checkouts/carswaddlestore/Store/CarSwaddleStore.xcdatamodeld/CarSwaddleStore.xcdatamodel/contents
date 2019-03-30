@@ -5,6 +5,7 @@
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="line1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="line2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postalCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="address" inverseEntity="Mechanic" syncable="YES"/>
@@ -40,6 +41,21 @@
         <relationship name="pending" maxCount="1" deletionRule="Cascade" destinationEntity="Amount" inverseName="balanceForPending" inverseEntity="Amount" syncable="YES"/>
         <relationship name="reserved" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Amount" inverseName="balanceForReserved" inverseEntity="Amount" syncable="YES"/>
     </entity>
+    <entity name="BankAccount" representedClassName="BankAccount" syncable="YES">
+        <attribute name="accountHolderName" attributeType="String" syncable="YES"/>
+        <attribute name="accountHolderType" attributeType="String" syncable="YES"/>
+        <attribute name="accountID" attributeType="String" syncable="YES"/>
+        <attribute name="bankName" attributeType="String" syncable="YES"/>
+        <attribute name="country" attributeType="String" syncable="YES"/>
+        <attribute name="currency" attributeType="String" syncable="YES"/>
+        <attribute name="defaultForCurrency" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fingerprint" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" attributeType="String" syncable="YES"/>
+        <attribute name="last4" attributeType="String" syncable="YES"/>
+        <attribute name="routingNumber" attributeType="String" syncable="YES"/>
+        <attribute name="status" attributeType="String" syncable="YES"/>
+        <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="bankAccount" inverseEntity="Mechanic" syncable="YES"/>
+    </entity>
     <entity name="Location" representedClassName="Location" syncable="YES">
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
@@ -49,13 +65,17 @@
     </entity>
     <entity name="Mechanic" representedClassName="Mechanic" syncable="YES">
         <attribute name="dateOfBirth" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="hasSetAvailability" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="hasSetServiceRegion" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
+        <attribute name="identityDocumentBackID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identityDocumentID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isActive" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="profileImageID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pushDeviceToken" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="mechanic" inverseEntity="Address" syncable="YES"/>
         <relationship name="balance" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Balance" inverseName="mechanic" inverseEntity="Balance" syncable="YES"/>
+        <relationship name="bankAccount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BankAccount" inverseName="mechanic" inverseEntity="BankAccount" syncable="YES"/>
         <relationship name="payouts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Payout" inverseName="mechanic" inverseEntity="Payout" syncable="YES"/>
         <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="mechanic" inverseEntity="Review" syncable="YES"/>
         <relationship name="scheduleTimeSpans" toMany="YES" deletionRule="Cascade" destinationEntity="TemplateTimeSpan" inverseName="mechanic" inverseEntity="TemplateTimeSpan" syncable="YES"/>
@@ -148,6 +168,7 @@
         <relationship name="mechanic" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="scheduleTimeSpans" inverseEntity="Mechanic" syncable="YES"/>
     </entity>
     <entity name="Transaction" representedClassName="Transaction" syncable="YES">
+        <attribute name="adjustedAvailableOnDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="amount" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="availableOn" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="created" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -220,20 +241,25 @@
     <entity name="Verification" representedClassName="Verification" syncable="YES">
         <attribute name="disabledReason" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dueByDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="fields" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="VerificationField" inverseName="verification" inverseEntity="VerificationField" syncable="YES"/>
+        <relationship name="currentlyDue" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="VerificationField" inverseName="verificationCurrentlyDue" inverseEntity="VerificationField" syncable="YES"/>
+        <relationship name="eventuallyDue" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="VerificationField" inverseName="verificationEventuallDue" inverseEntity="VerificationField" syncable="YES"/>
         <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="verification" inverseEntity="Mechanic" syncable="YES"/>
+        <relationship name="pastDue" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="VerificationField" inverseName="verificationPastDue" inverseEntity="VerificationField" syncable="YES"/>
     </entity>
     <entity name="VerificationField" representedClassName="VerificationField" syncable="YES">
         <attribute name="value" attributeType="String" syncable="YES"/>
-        <relationship name="verification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Verification" inverseName="fields" inverseEntity="Verification" syncable="YES"/>
+        <relationship name="verificationCurrentlyDue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Verification" inverseName="currentlyDue" inverseEntity="Verification" syncable="YES"/>
+        <relationship name="verificationEventuallDue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Verification" inverseName="eventuallyDue" inverseEntity="Verification" syncable="YES"/>
+        <relationship name="verificationPastDue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Verification" inverseName="pastDue" inverseEntity="Verification" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Address" positionX="-27" positionY="99" width="128" height="150"/>
+        <element name="Address" positionX="-27" positionY="99" width="128" height="165"/>
         <element name="Amount" positionX="-18" positionY="144" width="128" height="120"/>
         <element name="AutoService" positionX="-63" positionY="-18" width="128" height="285"/>
         <element name="Balance" positionX="-27" positionY="135" width="128" height="105"/>
+        <element name="BankAccount" positionX="-27" positionY="135" width="128" height="240"/>
         <element name="Location" positionX="-36" positionY="27" width="128" height="120"/>
-        <element name="Mechanic" positionX="-27" positionY="99" width="128" height="315"/>
+        <element name="Mechanic" positionX="-27" positionY="99" width="128" height="375"/>
         <element name="OilChange" positionX="-18" positionY="54" width="128" height="90"/>
         <element name="Payout" positionX="-27" positionY="135" width="128" height="315"/>
         <element name="Price" positionX="-9" positionY="90" width="128" height="105"/>
@@ -244,13 +270,13 @@
         <element name="Stats" positionX="-18" positionY="126" width="128" height="105"/>
         <element name="TaxInfo" positionX="-18" positionY="144" width="128" height="105"/>
         <element name="TemplateTimeSpan" positionX="0" positionY="126" width="128" height="120"/>
-        <element name="Transaction" positionX="-9" positionY="153" width="128" height="270"/>
+        <element name="Transaction" positionX="-9" positionY="153" width="128" height="285"/>
         <element name="TransactionMetadata" positionX="-27" positionY="135" width="128" height="195"/>
         <element name="TransactionReceipt" positionX="-18" positionY="144" width="128" height="105"/>
         <element name="User" positionX="-27" positionY="72" width="128" height="270"/>
         <element name="Vehicle" positionX="-54" positionY="-9" width="128" height="165"/>
         <element name="VehicleDescription" positionX="-27" positionY="90" width="128" height="135"/>
-        <element name="Verification" positionX="-27" positionY="135" width="128" height="105"/>
-        <element name="VerificationField" positionX="-18" positionY="144" width="128" height="75"/>
+        <element name="Verification" positionX="-27" positionY="135" width="128" height="135"/>
+        <element name="VerificationField" positionX="-18" positionY="144" width="128" height="105"/>
     </elements>
 </model>

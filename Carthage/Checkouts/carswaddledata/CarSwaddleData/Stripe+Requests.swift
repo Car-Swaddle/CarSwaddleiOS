@@ -200,9 +200,33 @@ final public class StripeNetwork: Network {
     }
     
     @discardableResult
-    public func requestPayoutsPendingForBalance(in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func requestPayoutsPending(in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
         return requestPayouts(status: .pending, limit: 300, in: context) { objectIDs, lastID, hasMore, error in
             completion(objectIDs, error)
+        }
+    }
+    
+    @discardableResult
+    public func requestPayoutsInTransit(in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return requestPayouts(status: .inTransit, limit: 300, in: context) { objectIDs, lastID, hasMore, error in
+            completion(objectIDs, error)
+        }
+    }
+    
+    @discardableResult
+    public func requestBankAccount(in context: NSManagedObjectContext, completion: @escaping (_ bankAccountObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return stripeService.getBankAccount { json, error in
+            context.performOnImportQueue {
+                var objectID: NSManagedObjectID?
+                defer {
+                    completion(objectID, error)
+                }
+                guard let json = json else { return }
+                
+                guard let bankAccount = BankAccount.fetchOrCreate(json: json, context: context) else { return }
+                context.persist()
+                objectID = bankAccount.objectID
+            }
         }
     }
     

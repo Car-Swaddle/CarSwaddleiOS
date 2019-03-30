@@ -3,4 +3,5 @@ git "git@bitbucket.org:kkendall33/carswaddledata.git" "master"
 github "stripe/stripe-ios"
 github "evgenyneu/Cosmos" ~> 18.0
 github "airbnb/lottie-ios" "master"
+github "WenchaoD/FSCalendar"
 
