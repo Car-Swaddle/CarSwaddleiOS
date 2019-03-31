@@ -39,7 +39,13 @@ final class SelectMechanicProfileCell: UITableViewCell, NibRegisterable {
             guard let index = mechanics.firstIndexDistance(of: selectedMechanic) else {
                 return
             }
-            collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+            
+            let indexPath = IndexPath(item: index, section: 0)
+            if collectionView.indexPathsForSelectedItems?.contains(indexPath) == false {
+                collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+            }
+            
+//            collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
         }
     }
     
@@ -59,11 +65,11 @@ final class SelectMechanicProfileCell: UITableViewCell, NibRegisterable {
         collectionView.register(MechanicProfileCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.decelerationRate = UIScrollView.DecelerationRate(rawValue: 0.2)
         collectionView.focusedFlowLayout?.itemSize = CGSize(width: 230, height: 303)
         collectionView.focusedFlowLayout?.shrinkFactor = 0.3
         collectionView.focusedFlowLayout?.minimumLineSpacing = 0
         collectionView.clipsToBounds = false
+        collectionView.allowsMultipleSelection = false
         
 //        collectionView.selecte
     }
@@ -84,7 +90,9 @@ extension SelectMechanicProfileCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MechanicProfileCell = collectionView.dequeueCell(for: indexPath)
-        cell.configure(with: mechanics[indexPath.item])
+        let mechanic = mechanics[indexPath.item]
+        cell.configure(with: mechanic)
+        cell.isSelected = mechanic == selectedMechanic
         return cell
     }
     
@@ -95,6 +103,12 @@ extension SelectMechanicProfileCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedMechanic = mechanics[indexPath.item]
         delegate?.didSelect(mechanic: mechanics[indexPath.item], cell: self)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // Prevents stutter
+        collectionView.setContentOffset(targetContentOffset.pointee, animated: true)
     }
     
 }

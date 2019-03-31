@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OQy-ui-Xpl">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Select Auto Service Details View Controller-->
+        <scene sceneID="doa-x0-3vT">
+            <objects>
+                <viewController id="OQy-ui-Xpl" customClass="SelectAutoServiceDetailsViewController" customModule="CarSwaddle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b8J-eb-ZtS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gGC-An-5Bk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="OQy-ui-Xpl" id="XNU-PM-hz1"/>
+                                    <outlet property="delegate" destination="OQy-ui-Xpl" id="u2t-xl-dxJ"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1q-9E-Mp0" customClass="ActionButton" customModule="CarSwaddleUI">
+                                <rect key="frame" x="100" y="781" width="214" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pay"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="top" secondItem="gGC-An-5Bk" secondAttribute="top" id="IXb-dy-ajf"/>
+                            <constraint firstItem="gGC-An-5Bk" firstAttribute="leading" secondItem="b8J-eb-ZtS" secondAttribute="leading" id="T73-rZ-feh"/>
+                            <constraint firstItem="gGC-An-5Bk" firstAttribute="bottom" secondItem="b8J-eb-ZtS" secondAttribute="bottom" id="lJl-PW-oFe"/>
+                            <constraint firstAttribute="trailing" secondItem="gGC-An-5Bk" secondAttribute="trailing" id="uaM-Fe-nML"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q7e-Nu-Xwz"/>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="y1q-9E-Mp0" id="oed-AJ-6wt"/>
+                        <outlet property="tableView" destination="gGC-An-5Bk" id="gyQ-8j-RkX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pNm-qM-zQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5.7971014492753632" y="148.66071428571428"/>
+        </scene>
+    </scenes>
+</document>

@@ -15,6 +15,22 @@
 		990F4386214252C700E65FC1 /* CarSwaddleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F4385214252C700E65FC1 /* CarSwaddleTests.swift */; };
 		99116905215B76B6001E039E /* AddVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99116903215B76B6001E039E /* AddVehicleCell.swift */; };
 		99116906215B76B6001E039E /* AddVehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99116904215B76B6001E039E /* AddVehicleCell.xib */; };
+		991AFC92224FF01500AD6614 /* TimeSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AFC90224FF01500AD6614 /* TimeSlotCollectionViewCell.swift */; };
+		991AFC93224FF01500AD6614 /* TimeSlotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991AFC91224FF01500AD6614 /* TimeSlotCollectionViewCell.xib */; };
+		991AFC9522506AD200AD6614 /* HourDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AFC9422506AD200AD6614 /* HourDisplayView.swift */; };
+		991AFC9722506AE100AD6614 /* HourDisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991AFC9622506AE100AD6614 /* HourDisplayView.xib */; };
+		991AFC9A2250AE0000AD6614 /* SelectAutoServiceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AFC992250AE0000AD6614 /* SelectAutoServiceDetailsViewController.swift */; };
+		991AFC9C2250AE0B00AD6614 /* SelectAutoServiceDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 991AFC9B2250AE0B00AD6614 /* SelectAutoServiceDetailsViewController.storyboard */; };
+		991AFC9F2250AFCA00AD6614 /* SelectVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AFC9D2250AFCA00AD6614 /* SelectVehicleCell.swift */; };
+		991AFCA02250AFCA00AD6614 /* SelectVehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991AFC9E2250AFCA00AD6614 /* SelectVehicleCell.xib */; };
+		991AFCA32250AFDE00AD6614 /* SelectOilTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AFCA12250AFDE00AD6614 /* SelectOilTypeCell.swift */; };
+		991AFCA42250AFDE00AD6614 /* SelectOilTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991AFCA22250AFDE00AD6614 /* SelectOilTypeCell.xib */; };
+		991AFCA72250B2BC00AD6614 /* VehicleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AFCA52250B2BC00AD6614 /* VehicleCollectionViewCell.swift */; };
+		991AFCA82250B2BC00AD6614 /* VehicleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991AFCA62250B2BC00AD6614 /* VehicleCollectionViewCell.xib */; };
+		991AFCAB2250B2C700AD6614 /* OilTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AFCA92250B2C700AD6614 /* OilTypeCollectionViewCell.swift */; };
+		991AFCAC2250B2C700AD6614 /* OilTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991AFCAA2250B2C700AD6614 /* OilTypeCollectionViewCell.xib */; };
+		991AFCB12250B38400AD6614 /* AddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AFCAF2250B38400AD6614 /* AddCollectionViewCell.swift */; };
+		991AFCB22250B38400AD6614 /* AddCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991AFCB02250B38400AD6614 /* AddCollectionViewCell.xib */; };
 		991C9FC52213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991C9FC42213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift */; };
 		991C9FC72215485D004B9C15 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991C9FC62215485D004B9C15 /* PhoneNumberViewController.swift */; };
 		991C9FC92215486A004B9C15 /* PhoneNumberViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 991C9FC82215486A004B9C15 /* PhoneNumberViewController.storyboard */; };
@@ -155,8 +171,8 @@
 		99E2E7E5224D569B006DC577 /* LocationSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E2E7E3224D569B006DC577 /* LocationSearchCell.xib */; };
 		99E66D2721DE20FC00C6E3E1 /* localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 99E66D2621DE20FC00C6E3E1 /* localizable.stringsdict */; };
 		99E66D2921DE88BA00C6E3E1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99E66D2821DE88BA00C6E3E1 /* Localizable.strings */; };
-		99E66DA421E294A600C6E3E1 /* ProfileHeaderViewdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA321E294A600C6E3E1 /* ProfileHeaderViewdf.swift */; };
-		99E66DA621E294AE00C6E3E1 /* ProfileHeaderViewdf.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DA521E294AE00C6E3E1 /* ProfileHeaderViewdf.xib */; };
+		99E66DA421E294A600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */; };
+		99E66DA621E294AE00C6E3E1 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */; };
 		99E66DA821E2963A00C6E3E1 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA721E2963A00C6E3E1 /* UserImageView.swift */; };
 		99F220262246933500020024 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F220252246933500020024 /* FontExtension.swift */; };
 		99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FEAFF6215DE3C00009BC07 /* CreateServiceOilTypeCell.swift */; };
@@ -201,6 +217,22 @@
 		9912CD9D216C7B010006FDDF /* CarSwaddle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CarSwaddle.entitlements; sourceTree = "<group>"; };
 		991375A02171C02700F15BEC /* Store.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Store.framework; path = Carthage/Build/iOS/Store.framework; sourceTree = "<group>"; };
 		991375AA2171D81900F15BEC /* CarSwaddleNetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleNetworkRequest.framework; path = Carthage/Build/iOS/CarSwaddleNetworkRequest.framework; sourceTree = "<group>"; };
+		991AFC90224FF01500AD6614 /* TimeSlotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotCollectionViewCell.swift; sourceTree = "<group>"; };
+		991AFC91224FF01500AD6614 /* TimeSlotCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeSlotCollectionViewCell.xib; sourceTree = "<group>"; };
+		991AFC9422506AD200AD6614 /* HourDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourDisplayView.swift; sourceTree = "<group>"; };
+		991AFC9622506AE100AD6614 /* HourDisplayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourDisplayView.xib; sourceTree = "<group>"; };
+		991AFC992250AE0000AD6614 /* SelectAutoServiceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAutoServiceDetailsViewController.swift; sourceTree = "<group>"; };
+		991AFC9B2250AE0B00AD6614 /* SelectAutoServiceDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectAutoServiceDetailsViewController.storyboard; sourceTree = "<group>"; };
+		991AFC9D2250AFCA00AD6614 /* SelectVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVehicleCell.swift; sourceTree = "<group>"; };
+		991AFC9E2250AFCA00AD6614 /* SelectVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectVehicleCell.xib; sourceTree = "<group>"; };
+		991AFCA12250AFDE00AD6614 /* SelectOilTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOilTypeCell.swift; sourceTree = "<group>"; };
+		991AFCA22250AFDE00AD6614 /* SelectOilTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectOilTypeCell.xib; sourceTree = "<group>"; };
+		991AFCA52250B2BC00AD6614 /* VehicleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCollectionViewCell.swift; sourceTree = "<group>"; };
+		991AFCA62250B2BC00AD6614 /* VehicleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleCollectionViewCell.xib; sourceTree = "<group>"; };
+		991AFCA92250B2C700AD6614 /* OilTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		991AFCAA2250B2C700AD6614 /* OilTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OilTypeCollectionViewCell.xib; sourceTree = "<group>"; };
+		991AFCAF2250B38400AD6614 /* AddCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionViewCell.swift; sourceTree = "<group>"; };
+		991AFCB02250B38400AD6614 /* AddCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCollectionViewCell.xib; sourceTree = "<group>"; };
 		991C9FC42213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneNumberViewController.swift; sourceTree = "<group>"; };
 		991C9FC62215485D004B9C15 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
 		991C9FC82215486A004B9C15 /* PhoneNumberViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhoneNumberViewController.storyboard; sourceTree = "<group>"; };
@@ -339,8 +371,8 @@
 		99E2E7E3224D569B006DC577 /* LocationSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationSearchCell.xib; sourceTree = "<group>"; };
 		99E66D2621DE20FC00C6E3E1 /* localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = localizable.stringsdict; sourceTree = "<group>"; };
 		99E66D2821DE88BA00C6E3E1 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		99E66DA321E294A600C6E3E1 /* ProfileHeaderViewdf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewdf.swift; sourceTree = "<group>"; };
-		99E66DA521E294AE00C6E3E1 /* ProfileHeaderViewdf.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderViewdf.xib; sourceTree = "<group>"; };
+		99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		99E66DA721E2963A00C6E3E1 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
 		99F0277821845755005FEFC7 /* CarSwaddleData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleData.framework; path = Carthage/Build/iOS/CarSwaddleData.framework; sourceTree = "<group>"; };
 		99F220252246933500020024 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
@@ -435,6 +467,41 @@
 			path = CarSwaddleTests;
 			sourceTree = "<group>";
 		};
+		991AFC982250ADE100AD6614 /* AutoService Details ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				991AFC992250AE0000AD6614 /* SelectAutoServiceDetailsViewController.swift */,
+				991AFC9B2250AE0B00AD6614 /* SelectAutoServiceDetailsViewController.storyboard */,
+				991AFCAF2250B38400AD6614 /* AddCollectionViewCell.swift */,
+				991AFCB02250B38400AD6614 /* AddCollectionViewCell.xib */,
+				991AFCAD2250B2D100AD6614 /* Vehicles */,
+				991AFCAE2250B2DB00AD6614 /* OilType */,
+			);
+			path = "AutoService Details ViewController";
+			sourceTree = "<group>";
+		};
+		991AFCAD2250B2D100AD6614 /* Vehicles */ = {
+			isa = PBXGroup;
+			children = (
+				991AFC9D2250AFCA00AD6614 /* SelectVehicleCell.swift */,
+				991AFC9E2250AFCA00AD6614 /* SelectVehicleCell.xib */,
+				991AFCA52250B2BC00AD6614 /* VehicleCollectionViewCell.swift */,
+				991AFCA62250B2BC00AD6614 /* VehicleCollectionViewCell.xib */,
+			);
+			path = Vehicles;
+			sourceTree = "<group>";
+		};
+		991AFCAE2250B2DB00AD6614 /* OilType */ = {
+			isa = PBXGroup;
+			children = (
+				991AFCA12250AFDE00AD6614 /* SelectOilTypeCell.swift */,
+				991AFCA22250AFDE00AD6614 /* SelectOilTypeCell.xib */,
+				991AFCA92250B2C700AD6614 /* OilTypeCollectionViewCell.swift */,
+				991AFCAA2250B2C700AD6614 /* OilTypeCollectionViewCell.xib */,
+			);
+			path = OilType;
+			sourceTree = "<group>";
+		};
 		992BFDCD22056B04006B64CC /* Tweaks */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +519,7 @@
 				99E2E7E0224D36D2006DC577 /* LocationSearchResultsViewController.storyboard */,
 				99E2E7E2224D569B006DC577 /* LocationSearchCell.swift */,
 				99E2E7E3224D569B006DC577 /* LocationSearchCell.xib */,
+				991AFC982250ADE100AD6614 /* AutoService Details ViewController */,
 				997DBC3F218EA8AA0080F42C /* Mechanic */,
 				9943C169215B61F4003C2BE9 /* Vehicle */,
 				99927585215DF2C70032D7F7 /* Oil Type */,
@@ -525,8 +593,8 @@
 			children = (
 				9955BC2A2155650C008DAF8E /* ProfileViewController.swift */,
 				9955BC2C21556527008DAF8E /* ProfileViewController.storyboard */,
-				99E66DA321E294A600C6E3E1 /* ProfileHeaderViewdf.swift */,
-				99E66DA521E294AE00C6E3E1 /* ProfileHeaderViewdf.xib */,
+				99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */,
+				99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */,
 				99E66DA721E2963A00C6E3E1 /* UserImageView.swift */,
 				9943BCE421EF226400D553F6 /* MechanicImageView.swift */,
 			);
@@ -672,6 +740,10 @@
 				99A0AEFC224EC2800001FDC6 /* SelectMechanicDayCell.xib */,
 				99A0AEFF224EC2A30001FDC6 /* SelectMechanicHourCell.swift */,
 				99A0AF00224EC2A30001FDC6 /* SelectMechanicHourCell.xib */,
+				991AFC90224FF01500AD6614 /* TimeSlotCollectionViewCell.swift */,
+				991AFC91224FF01500AD6614 /* TimeSlotCollectionViewCell.xib */,
+				991AFC9422506AD200AD6614 /* HourDisplayView.swift */,
+				991AFC9622506AE100AD6614 /* HourDisplayView.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -913,7 +985,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				99DC262B2246ECC2009E0A15 /* Montserrat-ExtraBold.otf in Resources */,
+				991AFC9722506AE100AD6614 /* HourDisplayView.xib in Resources */,
+				991AFCB22250B38400AD6614 /* AddCollectionViewCell.xib in Resources */,
 				99A0AF15224EEA760001FDC6 /* FocusedCollectionViewCell.xib in Resources */,
+				991AFCAC2250B2C700AD6614 /* OilTypeCollectionViewCell.xib in Resources */,
 				99E66D2721DE20FC00C6E3E1 /* localizable.stringsdict in Resources */,
 				998D3AE921DDCC52003DD717 /* AutoServiceDetailsViewController.storyboard in Resources */,
 				998D3AF121DDCF6A003DD717 /* TableViewCell.xib in Resources */,
@@ -921,11 +996,13 @@
 				99A0AF0B224ECDC50001FDC6 /* MechanicProfileCell.xib in Resources */,
 				997DBCA221B79E620080F42C /* AutoServiceCell.xib in Resources */,
 				99DC26272246ECC2009E0A15 /* Montserrat-Black.otf in Resources */,
+				991AFCA02250AFCA00AD6614 /* SelectVehicleCell.xib in Resources */,
 				99DC26462246ECC2009E0A15 /* MontserratAlternates-Regular.otf in Resources */,
 				99FEB008215DEED80009BC07 /* OilTypeCell.xib in Resources */,
 				99DC26392246ECC2009E0A15 /* MontserratAlternates-Black.otf in Resources */,
 				99DC26442246ECC2009E0A15 /* MontserratAlternates-Medium.otf in Resources */,
 				990F437B214252C700E65FC1 /* LaunchScreen.storyboard in Resources */,
+				991AFCA42250AFDE00AD6614 /* SelectOilTypeCell.xib in Resources */,
 				997DBC6C21995EDA0080F42C /* MechanicDayAvailabilityView.xib in Resources */,
 				994CA9F9215206E600D41F6C /* LoginViewController.storyboard in Resources */,
 				990F4378214252C700E65FC1 /* Assets.xcassets in Resources */,
@@ -968,7 +1045,9 @@
 				994254792157F7980075EDCA /* CreateServiceMechanicCell.xib in Resources */,
 				99DC262C2246ECC2009E0A15 /* Montserrat-ExtraBoldItalic.otf in Resources */,
 				99DC26372246ECC2009E0A15 /* Montserrat-Thin.otf in Resources */,
-				99E66DA621E294AE00C6E3E1 /* ProfileHeaderViewdf.xib in Resources */,
+				99E66DA621E294AE00C6E3E1 /* ProfileHeaderView.xib in Resources */,
+				991AFCA82250B2BC00AD6614 /* VehicleCollectionViewCell.xib in Resources */,
+				991AFC93224FF01500AD6614 /* TimeSlotCollectionViewCell.xib in Resources */,
 				99DC26342246ECC2009E0A15 /* Montserrat-Regular.otf in Resources */,
 				99DC26312246ECC2009E0A15 /* Montserrat-LightItalic.otf in Resources */,
 				99DC26362246ECC2009E0A15 /* Montserrat-SemiBoldItalic.otf in Resources */,
@@ -993,6 +1072,7 @@
 				99DC26482246ECC2009E0A15 /* MontserratAlternates-SemiBoldItalic.otf in Resources */,
 				99FEB004215DE4770009BC07 /* SelectOilTypeViewController.storyboard in Resources */,
 				99A0AF02224EC2A30001FDC6 /* SelectMechanicHourCell.xib in Resources */,
+				991AFC9C2250AE0B00AD6614 /* SelectAutoServiceDetailsViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1065,9 +1145,11 @@
 				992BFDD122056B8B006B64CC /* Logout.swift in Sources */,
 				995B9F242154B4380030A7CA /* GlobalImports.swift in Sources */,
 				99E2E7DF224D36C3006DC577 /* LocationSearchResultsViewController.swift in Sources */,
+				991AFCB12250B38400AD6614 /* AddCollectionViewCell.swift in Sources */,
 				9942546B21577B6C0075EDCA /* SelectMechanicViewController.swift in Sources */,
 				998D3AE721DDCC49003DD717 /* AutoServiceDetailsViewController.swift in Sources */,
 				9955BC2F21556554008DAF8E /* ServicesViewController.swift in Sources */,
+				991AFC9522506AD200AD6614 /* HourDisplayView.swift in Sources */,
 				99A0AF0E224EE06E0001FDC6 /* MechanicProfileHeaderView.swift in Sources */,
 				9955BC2421555D62008DAF8E /* Navigator.swift in Sources */,
 				997DBC7621997E370080F42C /* DateExtension.swift in Sources */,
@@ -1081,17 +1163,21 @@
 				99A0AF11224EE9390001FDC6 /* FocusedCollectionView.swift in Sources */,
 				9942544A215762A10075EDCA /* CreateServiceMechanicCell.swift in Sources */,
 				998D3AEC21DDCF5C003DD717 /* ReviewCell.swift in Sources */,
+				991AFCA72250B2BC00AD6614 /* VehicleCollectionViewCell.swift in Sources */,
 				99DC25FC2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift in Sources */,
 				99FEB006215DEECB0009BC07 /* OilTypeCell.swift in Sources */,
 				997DBC42218EBD210080F42C /* MechanicSelectCell.swift in Sources */,
-				99E66DA421E294A600C6E3E1 /* ProfileHeaderViewdf.swift in Sources */,
+				99E66DA421E294A600C6E3E1 /* ProfileHeaderView.swift in Sources */,
 				99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */,
 				99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */,
 				99116905215B76B6001E039E /* AddVehicleCell.swift in Sources */,
 				9942547121577B730075EDCA /* SelectLocationViewController.swift in Sources */,
 				991C9FC52213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift in Sources */,
 				997DBC72219965E80080F42C /* HourCollectionViewCell.swift in Sources */,
+				991AFCAB2250B2C700AD6614 /* OilTypeCollectionViewCell.swift in Sources */,
+				991AFCA32250AFDE00AD6614 /* SelectOilTypeCell.swift in Sources */,
 				997DBC6A21995ECE0080F42C /* MechanicDayAvailabilityView.swift in Sources */,
+				991AFC9A2250AE0000AD6614 /* SelectAutoServiceDetailsViewController.swift in Sources */,
 				9943BCE521EF226400D553F6 /* MechanicImageView.swift in Sources */,
 				99A0AEFD224EC2800001FDC6 /* SelectMechanicDayCell.swift in Sources */,
 				998D3AF021DDCF6A003DD717 /* TableViewCell.swift in Sources */,
@@ -1111,6 +1197,7 @@
 				9943C173215B6C69003C2BE9 /* VehicleCell.swift in Sources */,
 				9955BC1A2154E8DC008DAF8E /* UsersViewController.swift in Sources */,
 				991C9FC72215485D004B9C15 /* PhoneNumberViewController.swift in Sources */,
+				991AFC9F2250AFCA00AD6614 /* SelectVehicleCell.swift in Sources */,
 				9942546D21577B6E0075EDCA /* SelectVehicleViewController.swift in Sources */,
 				99DED710214B7EBC0061CFE0 /* Store.swift in Sources */,
 				99A0AEF9224EC24D0001FDC6 /* SelectMechanicProfileCell.swift in Sources */,
@@ -1122,6 +1209,7 @@
 				99DC25FA2246C2A0009E0A15 /* AutoServiceCreation.swift in Sources */,
 				99DC26002246DA17009E0A15 /* RoundView.swift in Sources */,
 				993BA12621585ACA00DB95EF /* LocationManager.swift in Sources */,
+				991AFC92224FF01500AD6614 /* TimeSlotCollectionViewCell.swift in Sources */,
 				997DBC6621995B320080F42C /* MechanicViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

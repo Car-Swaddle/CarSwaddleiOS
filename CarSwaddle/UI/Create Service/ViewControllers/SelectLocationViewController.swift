@@ -265,20 +265,6 @@ extension SelectLocationViewController: MKLocalSearchCompleterDelegate {
     
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         locationSearchResultsViewController.results = completer.results
-//        print("updated")
-//
-//        print(completer.results)
-//
-//        completer.results.forEach { print("title: \($0.title), subtitle: \($0.subtitle)") }
-//
-//        if let address = completer.results.first?.addressDescription {
-//            locationManager.placemarks(fromAddress: address) { [weak self] placemarks, error in
-//                DispatchQueue.main.async {
-//                    let coordinate: CLLocationCoordinate2D = placemarks?.first?.location?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
-//                    self?.mapView.setCenter(coordinate, animated: true)
-//                }
-//            }
-//        }
     }
     
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {

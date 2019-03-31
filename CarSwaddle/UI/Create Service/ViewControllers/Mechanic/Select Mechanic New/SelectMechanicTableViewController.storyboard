@@ -25,6 +25,11 @@
                                     <outlet property="delegate" destination="bu6-u9-KTX" id="KGn-gH-Cuo"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sK-bI-pWn" customClass="ActionButton" customModule="CarSwaddleUI">
+                                <rect key="frame" x="126" y="779" width="182" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Confirm Mechanic"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -36,12 +41,13 @@
                         <viewLayoutGuide key="safeArea" id="Ira-nw-jhF"/>
                     </view>
                     <connections>
+                        <outlet property="actionButton" destination="1sK-bI-pWn" id="o15-Kq-508"/>
                         <outlet property="tableView" destination="q7y-aI-l5n" id="1QU-Bs-nSh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Du1-be-5Fn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="128" y="157"/>
+            <point key="canvasLocation" x="127.53623188405798" y="156.69642857142856"/>
         </scene>
     </scenes>
 </document>

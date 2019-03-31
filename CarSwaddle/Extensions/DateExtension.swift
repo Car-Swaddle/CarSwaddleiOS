@@ -56,5 +56,21 @@ extension Date {
         return Calendar.current.date(byAdding: components, to: startOfMonth)!
     }
     
+    static func with(secondsFromMidnight: Int) -> Date {
+        let date = Date()
+        let cal = Calendar(identifier: .gregorian)
+        let seconds = secondsFromMidnight % 60
+        let minutes = (secondsFromMidnight / 60) % 60
+        let hours = secondsFromMidnight / (60*60)
+        return cal.date(bySettingHour: hours, minute: minutes, second: seconds, of: date)!
+    }
+    
+    var timeIntervalSinceMidnight: TimeInterval {
+        return self.timeIntervalSince(startOfDay)
+    }
+    
+    var secondsSinceMidnight: Int {
+        return Int(timeIntervalSinceMidnight)
+    }
     
 }

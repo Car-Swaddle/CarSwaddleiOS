@@ -66,14 +66,44 @@ extension AutoServiceCreation: SelectMechanicDelegate {
         print("mechanic")
         progressViewController.currentState = .details
         
-        let vehicleSelect: SelectVehicleViewController = SelectVehicleViewController.create(autoService: autoService)
-        vehicleSelect.delegate = self
-        pocketController.show(vehicleSelect, sender: self)
+        autoService.mechanic = mechanic
+        autoService.scheduledDate = date
+        
+//        let vehicleSelect: SelectVehicleViewController = SelectVehicleViewController.create(autoService: autoService)
+//        vehicleSelect.delegate = self
+        let detailsSelect = SelectAutoServiceDetailsViewController.viewControllerFromStoryboard()
+        detailsSelect.delegate = self
+        pocketController.show(detailsSelect, sender: self)
     }
     
     func willBeDismissed(viewController: UIViewController) {
         progressViewController.currentState = .location
     }
+    
+}
+
+extension AutoServiceCreation: SelectAutoServiceDetailsViewControllerDelegate {
+    
+//    func didSelectVehicle(vehicle: Vehicle, viewController: SelectVehicleViewController) {
+    
+        
+//        let selectOilType: SelectOilTypeViewController = SelectOilTypeViewController.create(with: autoService)
+//        selectOilType.delegate = self
+        
+//        pocketController.show(selectOilType, sender: self)
+//    }
+    
+    func didSelect(vehicle: Vehicle, oilType: OilType, viewController: SelectAutoServiceDetailsViewController) {
+        progressViewController.currentState = .payment
+    }
+    
+    func willBeDismissed(viewController: SelectAutoServiceDetailsViewController) {
+        progressViewController.currentState = .mechanic
+    }
+    
+//    func willBeDismissed(viewController: SelectVehicleViewController) {
+//        progressViewController.currentState = .mechanic
+//    }
     
 }
 

@@ -43,6 +43,8 @@ public class FocusedCellCollectionViewLayout: UICollectionViewFlowLayout {
         let horizontalInsets = (collectionView.frame.width - collectionView.adjustedContentInset.right - collectionView.adjustedContentInset.left - itemSize.width) / 2
         sectionInset = UIEdgeInsets(top: verticalInsets, left: horizontalInsets, bottom: verticalInsets, right: horizontalInsets)
         
+        collectionView.decelerationRate = UIScrollView.DecelerationRate(rawValue: 0.2)
+        
         updateActiveDistance()
         
         super.prepare()
@@ -125,6 +127,10 @@ extension UICollectionView {
     
     public var focusedFlowLayout: FocusedCellCollectionViewLayout? {
         return (collectionViewLayout as? FocusedCellCollectionViewLayout)
+    }
+    
+    public var flowLayout: UICollectionViewFlowLayout? {
+        return (collectionViewLayout as? UICollectionViewFlowLayout)
     }
     
 }

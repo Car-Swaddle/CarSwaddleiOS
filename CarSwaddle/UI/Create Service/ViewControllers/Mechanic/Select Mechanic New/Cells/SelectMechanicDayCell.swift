@@ -17,9 +17,13 @@ let monthYearDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+
+
 final class SelectMechanicDayCell: UITableViewCell, NibRegisterable {
 
     var updateHeight: () -> Void = { }
+    
+    var didSelectDay: (_ dayDate: Date) -> Void = { _ in }
     
     @IBOutlet private weak var weekViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var weekView: FSCalendar!
@@ -32,6 +36,7 @@ final class SelectMechanicDayCell: UITableViewCell, NibRegisterable {
     private var dayDate: Date = Date().dateByAdding(days: 1).startOfDay {
         didSet {
             updateDateLabel()
+            didSelectDay(dayDate)
         }
     }
     
@@ -50,17 +55,15 @@ final class SelectMechanicDayCell: UITableViewCell, NibRegisterable {
         dateLabel.font = UIFont.appFont(type: .semiBold, size: 15)
         
         weekView.select(dayDate)
-        
-//        weekView.addHairlineView(toSide: .bottom, color: UIColor(white: 0.6, alpha: 1.0), size: UIView.hairlineLength)
     }
     
-    func configure(with mechanic: Mechanic) {
-        
-    }
-    
-    func configureForEmpty() {
-        
-    }
+//    func configure(with mechanic: Mechanic) {
+//        
+//    }
+//
+//    func configureForEmpty() {
+//
+//    }
     
     private func updateDateLabel() {
         dateLabel.text = monthYearDateFormatter.string(from: dayDate)

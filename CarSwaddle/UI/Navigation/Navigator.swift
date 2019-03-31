@@ -65,10 +65,11 @@ final class Navigator: NSObject {
     }
     
     private func setupAppearance() {
-        let appearance = ActionButton.appearance()
+        let actionButton = ActionButton.appearance()
         
-        appearance.defaultBackgroundColor = .secondary
-        appearance.defaultTitleFont = UIFont.appFont(type: .semiBold, size: 20)
+        actionButton.defaultBackgroundColor = .secondary
+        actionButton.defaultTitleFont = UIFont.appFont(type: .semiBold, size: 20)
+        actionButton.setTitleColor(.gray3, for: .disabled)
         
         tabBarController.view.layoutIfNeeded()
         ContentInsetAdjuster.defaultBottomOffset = tabBarController.tabBar.bounds.height
@@ -108,6 +109,8 @@ final class Navigator: NSObject {
         UISearchBar.appearance().tintColor = .viewBackgroundColor1
         let textFieldAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         textFieldAppearance.defaultTextAttributes = [.font: UIFont.appFont(type: .regular, size: 17) as Any]
+        
+        
     }
     
     public func initialViewController() -> UIViewController {

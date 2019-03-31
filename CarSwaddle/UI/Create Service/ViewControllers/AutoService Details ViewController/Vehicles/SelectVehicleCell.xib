@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="228" id="KGk-i7-Jjw" customClass="SelectVehicleCell" customModule="CarSwaddle" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="389" height="228"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="389" height="227.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" verticalCompressionResistancePriority="800" text="What vehicle is this for?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88Q-yh-heI">
+                        <rect key="frame" x="16" y="24" width="357" height="42.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="UgL-4l-4AM" customClass="FocusedCollectionView" customModule="CarSwaddle" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="82.5" width="389" height="129"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="129" id="cNN-in-cAn"/>
+                        </constraints>
+                        <collectionViewLayout key="collectionViewLayout" id="GJc-sv-Mqr" customClass="FocusedCellCollectionViewLayout" customModule="CarSwaddle" customModuleProvider="target"/>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="88Q-yh-heI" secondAttribute="trailing" constant="16" id="4oR-B4-rxe"/>
+                    <constraint firstAttribute="bottom" secondItem="UgL-4l-4AM" secondAttribute="bottom" constant="16" id="IXk-CW-GFi"/>
+                    <constraint firstItem="88Q-yh-heI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="LpR-5F-byq"/>
+                    <constraint firstItem="UgL-4l-4AM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="TE3-ag-3kN"/>
+                    <constraint firstItem="88Q-yh-heI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="erH-4J-FUR"/>
+                    <constraint firstAttribute="trailing" secondItem="UgL-4l-4AM" secondAttribute="trailing" id="nbV-36-m82"/>
+                    <constraint firstItem="UgL-4l-4AM" firstAttribute="top" secondItem="88Q-yh-heI" secondAttribute="bottom" constant="16" id="qM5-XB-xO7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="collectionView" destination="UgL-4l-4AM" id="xqs-yb-1CJ"/>
+                <outlet property="headerLabel" destination="88Q-yh-heI" id="TY4-lo-kgL"/>
+            </connections>
+            <point key="canvasLocation" x="187.68115942028987" y="181.47321428571428"/>
+        </tableViewCell>
+    </objects>
+</document>
