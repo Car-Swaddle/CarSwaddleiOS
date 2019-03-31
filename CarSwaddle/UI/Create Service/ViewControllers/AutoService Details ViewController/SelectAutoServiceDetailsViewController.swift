@@ -54,7 +54,7 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
     }
     
     private var isPayButtonEnabled: Bool {
-        return 
+        return true
     }
     
 }
