@@ -32,12 +32,15 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
     }
     
     private var rows: [Row] = Row.allCases
+    private var vehicleNetwork = VehicleNetwork(serviceRequest: serviceRequest)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupTableView()
         insetAdjuster.positionActionButton()
+        
+        requestVehicles()
     }
     
     private func setupTableView() {
@@ -57,6 +60,17 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
         return true
     }
     
+    private func requestVehicles(completion: @escaping () -> Void = {}) {
+        store.privateContext { [weak self] privateContext in
+            self?.vehicleNetwork.requestVehicles(limit: 10, offset: 0, in: privateContext) { vehicles, error in
+                store.mainContext { mainContext in
+                    self?.tableView.reloadData()
+                    completion()
+                }
+            }
+        }
+    }
+    
 }
 
 
@@ -71,6 +85,7 @@ extension SelectAutoServiceDetailsViewController: UITableViewDataSource {
         switch row {
         case .vehicle:
             let cell: SelectVehicleCell = tableView.dequeueCell()
+            cell.delegate = self
             return cell
         case .oilType:
             let cell: SelectOilTypeCell = tableView.dequeueCell()
@@ -88,3 +103,19 @@ extension SelectAutoServiceDetailsViewController: UITableViewDelegate {
     
 }
 
+
+extension SelectAutoServiceDetailsViewController: SelectVehicleCellDelegate, AddVehicleViewControllerDelegate {
+    
+    func didSelectAdd(cell: SelectVehicleCell) {
+        let addVehicleViewController = AddVehicleViewController.viewControllerFromStoryboard()
+        let navigationController = addVehicleViewController.inNavigationController()
+        addVehicleViewController.delegate = self
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    func didCreateVehicle(vehicle: Vehicle, viewController: AddVehicleViewController) {
+        requestVehicles()
+        tableView.reloadData()
+    }
+    
+}

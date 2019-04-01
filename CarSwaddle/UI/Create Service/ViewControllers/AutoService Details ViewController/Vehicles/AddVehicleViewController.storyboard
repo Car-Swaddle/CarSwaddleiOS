@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BnZ-xs-Zzc">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add a vehicle-->
+        <scene sceneID="pZH-Wn-kH7">
+            <objects>
+                <viewController id="BnZ-xs-Zzc" customClass="AddVehicleViewController" customModule="CarSwaddle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W8E-qa-YcA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ynd-eh-yFg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BnZ-xs-Zzc" id="e6Y-6A-f8D"/>
+                                    <outlet property="delegate" destination="BnZ-xs-Zzc" id="oS4-Zd-dO9"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAL-vl-Cmq" customClass="ActionButton" customModule="CarSwaddleUI">
+                                <rect key="frame" x="164" y="803" width="87" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save Vehicle"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ynd-eh-yFg" secondAttribute="trailing" id="052-3O-eAe"/>
+                            <constraint firstAttribute="bottom" secondItem="Ynd-eh-yFg" secondAttribute="bottom" id="KMk-Cs-2wF"/>
+                            <constraint firstItem="Ynd-eh-yFg" firstAttribute="top" secondItem="W8E-qa-YcA" secondAttribute="top" id="SaL-Is-ds8"/>
+                            <constraint firstItem="Ynd-eh-yFg" firstAttribute="leading" secondItem="W8E-qa-YcA" secondAttribute="leading" id="hqR-Z0-mAO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CGX-qr-UNE"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add a vehicle" id="Y4b-hj-GQC">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="TfM-MF-bsu">
+                            <connections>
+                                <action selector="didTapCancel:" destination="BnZ-xs-Zzc" id="fia-0c-Cnd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="actionButton" destination="rAL-vl-Cmq" id="koA-LR-UVT"/>
+                        <outlet property="tableView" destination="Ynd-eh-yFg" id="xrV-48-3Fg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kzS-QY-CA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="908.69565217391312" y="158.70535714285714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PqW-61-cXh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ab4-ji-VH1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LSc-pd-8xM">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BnZ-xs-Zzc" kind="relationship" relationship="rootViewController" id="Jo8-zX-KVa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wsa-cL-Qdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="165" y="159"/>
+        </scene>
+    </scenes>
+</document>

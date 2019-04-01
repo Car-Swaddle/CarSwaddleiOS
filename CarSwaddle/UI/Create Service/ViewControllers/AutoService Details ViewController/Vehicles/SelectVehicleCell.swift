@@ -11,7 +11,14 @@ import CarSwaddleUI
 import Store
 import CarSwaddleData
 
+
+protocol SelectVehicleCellDelegate: AnyObject {
+    func didSelectAdd(cell: SelectVehicleCell)
+}
+
 class SelectVehicleCell: UITableViewCell, NibRegisterable {
+    
+    weak var delegate: SelectVehicleCellDelegate?
     
     @IBOutlet private weak var headerLabel: UILabel!
     @IBOutlet private weak var collectionView: FocusedCollectionView!
@@ -32,9 +39,14 @@ class SelectVehicleCell: UITableViewCell, NibRegisterable {
         vehicles = Array(User.currentUser(context: store.mainContext)?.vehicles ?? [])
         selectFirstVehicleIfPossible()
         
-        requestVehicles()
-        
         collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        vehicles = Array(User.currentUser(context: store.mainContext)?.vehicles ?? [])
+        selectFirstVehicleIfPossible()
     }
     
     private func selectFirstVehicleIfPossible() {
@@ -44,7 +56,7 @@ class SelectVehicleCell: UITableViewCell, NibRegisterable {
     }
     
     private func setupCollectionView() {
-        collectionView.focusedFlowLayout?.itemSize = CGSize(width: 115, height: 115)
+        collectionView.focusedFlowLayout?.itemSize = CGSize(width: 165, height: 115)
         collectionView.dataSource = self
         collectionView.focusedDelegate = self
         
@@ -54,17 +66,6 @@ class SelectVehicleCell: UITableViewCell, NibRegisterable {
         collectionView.focusedFlowLayout?.shrinkFactor = 0.3
         collectionView.focusedFlowLayout?.minimumLineSpacing = 15
         collectionView.clipsToBounds = false
-    }
-    
-    private func requestVehicles() {
-        store.privateContext { [weak self] privateContext in
-            self?.vehicleNetwork.requestVehicles(limit: 10, offset: 0, in: privateContext) { vehicles, error in
-                store.mainContext { mainContext in
-                    self?.vehicles = Vehicle.fetchObjects(with: vehicles, in: mainContext)
-                    self?.selectFirstVehicleIfPossible()
-                }
-            }
-        }
     }
     
 }
@@ -98,6 +99,7 @@ extension SelectVehicleCell: FocusedCollectionViewDelegate {
     func didSelectItem(at indexPath: IndexPath, collectionView: FocusedCollectionView) {
         if isAddIndexPath(indexPath) {
             print("add vehicle")
+            delegate?.didSelectAdd(cell: self)
         } else {
             print("selected vehicle")
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
