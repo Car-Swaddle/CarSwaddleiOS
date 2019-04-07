@@ -124,7 +124,6 @@ final class SelectMechanicTableViewController: UIViewController, StoryboardInsta
             self?.mechanicNetwork.getNearestMechanics(limit: 10, coordinate: location, maxDistance: 1_000_000, in: context) { mechanicIDs, error in
                 store.mainContext { mainContext in
                     self?.mechanics = Mechanic.fetchObjects(with: mechanicIDs, in: mainContext)
-                    // Update saved enabledness
                 }
             }
         }

@@ -14,6 +14,7 @@ import CarSwaddleData
 
 protocol SelectVehicleCellDelegate: AnyObject {
     func didSelectAdd(cell: SelectVehicleCell)
+    func didSelectVehicle(vehicle: Vehicle, cell: SelectVehicleCell)
 }
 
 class SelectVehicleCell: UITableViewCell, NibRegisterable {
@@ -23,7 +24,7 @@ class SelectVehicleCell: UITableViewCell, NibRegisterable {
     @IBOutlet private weak var headerLabel: UILabel!
     @IBOutlet private weak var collectionView: FocusedCollectionView!
     
-    private var vehicles: [Vehicle] = [] {
+    var vehicles: [Vehicle] = [] {
         didSet {
             collectionView.reloadData()
         }
@@ -39,7 +40,10 @@ class SelectVehicleCell: UITableViewCell, NibRegisterable {
         vehicles = Array(User.currentUser(context: store.mainContext)?.vehicles ?? [])
         selectFirstVehicleIfPossible()
         
-        collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+        if vehicles.count > 0 {
+            collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+            delegate?.didSelectVehicle(vehicle: vehicles[0], cell: self)
+        }
     }
     
     override func prepareForReuse() {
@@ -102,6 +106,7 @@ extension SelectVehicleCell: FocusedCollectionViewDelegate {
             delegate?.didSelectAdd(cell: self)
         } else {
             print("selected vehicle")
+            delegate?.didSelectVehicle(vehicle: vehicles[indexPath.item], cell: self)
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
         

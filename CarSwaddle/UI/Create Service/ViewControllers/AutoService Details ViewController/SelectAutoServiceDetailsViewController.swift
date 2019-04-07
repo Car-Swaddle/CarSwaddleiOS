@@ -26,6 +26,18 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
     
     private lazy var insetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: tableView, actionButton: actionButton)
     
+    private var selectedOilType: OilType? {
+        didSet {
+            
+        }
+    }
+    
+    private var selectedVehicle: Vehicle? {
+        didSet {
+            
+        }
+    }
+    
     private enum Row: CaseIterable {
         case vehicle
         case oilType
@@ -41,6 +53,14 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
         insetAdjuster.positionActionButton()
         
         requestVehicles()
+        
+        actionButton.addTarget(self, action: #selector(SelectAutoServiceDetailsViewController.didSelectPay), for: .touchUpInside)
+    }
+    
+    @objc private func didSelectPay() {
+        guard let vehicle = selectedVehicle,
+            let oilType = selectedOilType else { return }
+        delegate?.didSelect(vehicle: vehicle, oilType: oilType, viewController: self)
     }
     
     private func setupTableView() {
@@ -86,9 +106,12 @@ extension SelectAutoServiceDetailsViewController: UITableViewDataSource {
         case .vehicle:
             let cell: SelectVehicleCell = tableView.dequeueCell()
             cell.delegate = self
+            selectedVehicle = cell.vehicles.first
             return cell
         case .oilType:
             let cell: SelectOilTypeCell = tableView.dequeueCell()
+            cell.delegate = self
+            selectedOilType = cell.oilTypes.first
             return cell
         }
     }
@@ -104,7 +127,15 @@ extension SelectAutoServiceDetailsViewController: UITableViewDelegate {
 }
 
 
-extension SelectAutoServiceDetailsViewController: SelectVehicleCellDelegate, AddVehicleViewControllerDelegate {
+extension SelectAutoServiceDetailsViewController: SelectVehicleCellDelegate, AddVehicleViewControllerDelegate, SelectOilTypeDelegate {
+    
+    func didSelectOilType(oilType: OilType, cell: SelectOilTypeCell) {
+        selectedOilType = oilType
+    }
+    
+    func didSelectVehicle(vehicle: Vehicle, cell: SelectVehicleCell) {
+        selectedVehicle = vehicle
+    }
     
     func didSelectAdd(cell: SelectVehicleCell) {
         let addVehicleViewController = AddVehicleViewController.viewControllerFromStoryboard()

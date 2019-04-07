@@ -35,6 +35,8 @@
 		991AFCB62251453100AD6614 /* AddVehicleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 991AFCB52251453100AD6614 /* AddVehicleViewController.storyboard */; };
 		991AFCB92251D7C900AD6614 /* TextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AFCB72251D7C800AD6614 /* TextInputCell.swift */; };
 		991AFCBA2251D7C900AD6614 /* TextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991AFCB82251D7C900AD6614 /* TextInputCell.xib */; };
+		991AFCBC2259297300AD6614 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AFCBB2259297300AD6614 /* PriceView.swift */; };
+		991AFCBE2259299A00AD6614 /* PriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991AFCBD2259299A00AD6614 /* PriceView.xib */; };
 		991C9FC52213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991C9FC42213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift */; };
 		991C9FC72215485D004B9C15 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991C9FC62215485D004B9C15 /* PhoneNumberViewController.swift */; };
 		991C9FC92215486A004B9C15 /* PhoneNumberViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 991C9FC82215486A004B9C15 /* PhoneNumberViewController.storyboard */; };
@@ -241,6 +243,8 @@
 		991AFCB52251453100AD6614 /* AddVehicleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddVehicleViewController.storyboard; sourceTree = "<group>"; };
 		991AFCB72251D7C800AD6614 /* TextInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputCell.swift; sourceTree = "<group>"; };
 		991AFCB82251D7C900AD6614 /* TextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextInputCell.xib; sourceTree = "<group>"; };
+		991AFCBB2259297300AD6614 /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
+		991AFCBD2259299A00AD6614 /* PriceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceView.xib; sourceTree = "<group>"; };
 		991C9FC42213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneNumberViewController.swift; sourceTree = "<group>"; };
 		991C9FC62215485D004B9C15 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
 		991C9FC82215486A004B9C15 /* PhoneNumberViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhoneNumberViewController.storyboard; sourceTree = "<group>"; };
@@ -482,6 +486,8 @@
 				991AFC9B2250AE0B00AD6614 /* SelectAutoServiceDetailsViewController.storyboard */,
 				991AFCAF2250B38400AD6614 /* AddCollectionViewCell.swift */,
 				991AFCB02250B38400AD6614 /* AddCollectionViewCell.xib */,
+				991AFCBB2259297300AD6614 /* PriceView.swift */,
+				991AFCBD2259299A00AD6614 /* PriceView.xib */,
 				991AFCAD2250B2D100AD6614 /* Vehicles */,
 				991AFCAE2250B2DB00AD6614 /* OilType */,
 			);
@@ -1008,6 +1014,7 @@
 				99A0AF0B224ECDC50001FDC6 /* MechanicProfileCell.xib in Resources */,
 				997DBCA221B79E620080F42C /* AutoServiceCell.xib in Resources */,
 				99DC26272246ECC2009E0A15 /* Montserrat-Black.otf in Resources */,
+				991AFCBE2259299A00AD6614 /* PriceView.xib in Resources */,
 				991AFCA02250AFCA00AD6614 /* SelectVehicleCell.xib in Resources */,
 				99DC26462246ECC2009E0A15 /* MontserratAlternates-Regular.otf in Resources */,
 				99FEB008215DEED80009BC07 /* OilTypeCell.xib in Resources */,
@@ -1182,6 +1189,7 @@
 				99FEB006215DEECB0009BC07 /* OilTypeCell.swift in Sources */,
 				997DBC42218EBD210080F42C /* MechanicSelectCell.swift in Sources */,
 				99E66DA421E294A600C6E3E1 /* ProfileHeaderView.swift in Sources */,
+				991AFCBC2259297300AD6614 /* PriceView.swift in Sources */,
 				99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */,
 				99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */,
 				99116905215B76B6001E039E /* AddVehicleCell.swift in Sources */,

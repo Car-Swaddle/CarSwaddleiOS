@@ -109,8 +109,6 @@ final class Navigator: NSObject {
         UISearchBar.appearance().tintColor = .viewBackgroundColor1
         let textFieldAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         textFieldAppearance.defaultTextAttributes = [.font: UIFont.appFont(type: .regular, size: 17) as Any]
-        
-        
     }
     
     public func initialViewController() -> UIViewController {

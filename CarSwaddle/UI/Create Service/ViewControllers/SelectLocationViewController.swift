@@ -60,12 +60,22 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         let searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.showsCancelButton = false
-        searchBar.placeholder = NSLocalizedString("Oil change location", comment: "Placeholder where oil chage will take place")
+        let placeholder = NSLocalizedString("Search Location", comment: "Placeholder text")
+        searchBar.placeholder = placeholder
+//        searchBar.tintColor = .viewBackgroundColor1
+//        searchBar.setTextFieldBackgroundColor(color: .gray4)
+//        searchBar.textField?.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+////        searchBar.tintColor = .green
+//        searchBar.setImage(#imageLiteral(resourceName: "search"), for: .search, state: .normal)
+//        searchBar.barTintColor = .white
+//        searchBar.textField?.tintColor = .white
+//        searchBar.textField?.textColor = .blue
         return searchBar
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         locationManager.promptUserForLocationAccess()
         setupLocation()
         
@@ -80,18 +90,7 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         
         contentAdjuster.positionActionButton()
         
-//        let searchController = UISearchController(searchResultsController: vc)
-//        searchController.delegate = self
-//
-//        searchController.searchResultsUpdater = self
-////        navigationItem.titleView = searchController.searchBar
-//        navigationItem.searchController = searchController
-//        searchController.hidesNavigationBarDuringPresentation = false
-//        searchController.dimsBackgroundDuringPresentation = false
-        
         navigationItem.titleView = searchBar
-        
-//        definesPresentationContext = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -436,4 +435,35 @@ extension CLLocationCoordinate2D {
         
         return CLLocationCoordinate2DMake(lat3 * 180 / Double.pi, lon3 * 180 / Double.pi)
     }
+}
+
+
+extension UIView {
+    
+    public func firstView<T>(of type: T.Type) -> T? {
+        let subviews = self.subviews.flatMap { $0.subviews }
+        guard let element = (subviews.filter { $0 is T }).first as? T else { return nil }
+        return element
+    }
+    
+}
+
+
+extension UISearchBar {
+    
+    public var textField: UITextField? {
+        return firstView(of: UITextField.self)
+    }
+    
+    public func setTextFieldBackgroundColor(color: UIColor) {
+        guard let textField = firstView(of: UITextField.self) else { return }
+        switch searchBarStyle {
+        case .minimal:
+            textField.layer.backgroundColor = color.cgColor
+        case .prominent, .default:
+            textField.backgroundColor = color
+        @unknown default: break
+        }
+    }
+    
 }

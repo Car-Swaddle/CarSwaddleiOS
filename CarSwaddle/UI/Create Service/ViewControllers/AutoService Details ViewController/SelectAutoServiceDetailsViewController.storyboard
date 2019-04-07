@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Select Auto Service Details View Controller-->
+        <!--Select Details-->
         <scene sceneID="doa-x0-3vT">
             <objects>
-                <viewController id="OQy-ui-Xpl" customClass="SelectAutoServiceDetailsViewController" customModule="CarSwaddle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Select Details" id="OQy-ui-Xpl" customClass="SelectAutoServiceDetailsViewController" customModule="CarSwaddle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b8J-eb-ZtS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

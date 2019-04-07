@@ -10,13 +10,18 @@ import UIKit
 import CarSwaddleData
 import Store
 
+protocol SelectOilTypeDelegate: AnyObject {
+    func didSelectOilType(oilType: OilType, cell: SelectOilTypeCell)
+}
 
 class SelectOilTypeCell: UITableViewCell, NibRegisterable {
 
+    weak var delegate: SelectOilTypeDelegate?
+    
     @IBOutlet private weak var headerLabel: UILabel!
     @IBOutlet private weak var collectionView: FocusedCollectionView!
     
-    private var oilTypes: [OilType] = OilType.allCases
+    var oilTypes: [OilType] = OilType.allCases
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +30,8 @@ class SelectOilTypeCell: UITableViewCell, NibRegisterable {
         
         setupCollectionView()
         
-        collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+        let selectedIndexPath = IndexPath(item: 0, section: 0)
+        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .centeredHorizontally)
     }
     
     private func setupCollectionView() {
@@ -59,6 +65,7 @@ extension SelectOilTypeCell: UICollectionViewDataSource {
 extension SelectOilTypeCell: FocusedCollectionViewDelegate {
     
     func didSelectItem(at indexPath: IndexPath, collectionView: FocusedCollectionView) {
+        delegate?.didSelectOilType(oilType: oilTypes[indexPath.row], cell: self)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     

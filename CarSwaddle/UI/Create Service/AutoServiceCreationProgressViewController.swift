@@ -8,8 +8,21 @@
 
 import UIKit
 import CarSwaddleUI
+import Store
+import CarSwaddleData
+
+protocol AutoServiceCreationProgressDelegate: AnyObject {
+    func updateHeight(newHeight: CGFloat)
+}
+
+private let normalHeight: CGFloat = 120
+private let priceHeight: CGFloat = 200
 
 class AutoServiceCreationProgressViewController: UIViewController, StoryboardInstantiating {
+    
+    weak var delegate: AutoServiceCreationProgressDelegate?
+    
+//    var autoService: AutoService?
 
     enum State {
         case location
@@ -32,6 +45,11 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
     @IBOutlet private weak var mechanicCircle: RoundView!
     @IBOutlet private weak var detailsCircle: RoundView!
     
+    lazy var priceView: PriceView = {
+        let priceView = PriceView.viewFromNib()
+        return priceView
+    }()
+    
     private let completedColor: UIColor = .secondary
     private let currentlySelectedColor: UIColor = .appRed
     private let notCompletedColor: UIColor = .gray3
@@ -47,23 +65,76 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
     }
     
     private func updateViewForCurrentState() {
+        locationCircle.backgroundColor = locationCircleColor
+        mechanicCircle.backgroundColor = mechanicCircleColor
+        detailsCircle.backgroundColor = detailsCircleColor
+        
+        delegate?.updateHeight(newHeight: heightForCurrentState)
+        
+        updateForPriceView()
+    }
+    
+    private func updateForPriceView() {
+        switch currentState {
+        case .location, .mechanic:
+            priceView.removeFromSuperview()
+        case .payment, .details:
+            if priceView.superview == nil {
+                view.addSubview(priceView)
+                priceView.pinFrameToSuperViewBounds()
+            }
+        }
+    }
+    
+    private var locationCircleColor: UIColor {
         switch currentState {
         case .location:
-            locationCircle.backgroundColor = currentlySelectedColor
-            mechanicCircle.backgroundColor = notCompletedColor
-            detailsCircle.backgroundColor = notCompletedColor
+            return currentlySelectedColor
         case .mechanic:
-            locationCircle.backgroundColor = completedColor
-            mechanicCircle.backgroundColor = currentlySelectedColor
-            detailsCircle.backgroundColor = notCompletedColor
+            return completedColor
         case .details:
-            locationCircle.backgroundColor = completedColor
-            mechanicCircle.backgroundColor = completedColor
-            detailsCircle.backgroundColor = currentlySelectedColor
+            return completedColor
         case .payment:
-            locationCircle.backgroundColor = completedColor
-            mechanicCircle.backgroundColor = completedColor
-            detailsCircle.backgroundColor = completedColor
+            return completedColor
+        }
+    }
+    
+    private var mechanicCircleColor: UIColor {
+        switch currentState {
+        case .location:
+            return notCompletedColor
+        case .mechanic:
+            return currentlySelectedColor
+        case .details:
+            return completedColor
+        case .payment:
+            return completedColor
+        }
+    }
+    
+    private var detailsCircleColor: UIColor {
+        switch currentState {
+        case .location:
+            return notCompletedColor
+        case .mechanic:
+            return notCompletedColor
+        case .details:
+            return currentlySelectedColor
+        case .payment:
+            return completedColor
+        }
+    }
+    
+    private var heightForCurrentState: CGFloat {
+        switch currentState {
+        case .location:
+            return normalHeight
+        case .payment:
+            return priceHeight
+        case .details:
+            return 160
+        case .mechanic:
+            return 160
         }
     }
     

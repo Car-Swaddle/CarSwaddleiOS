@@ -8,6 +8,7 @@
 
 import CarSwaddleUI
 import Store
+import CarSwaddleData
 
 final class AutoServiceCreation {
     
@@ -22,13 +23,29 @@ final class AutoServiceCreation {
         store.mainContext.persist()
         
         let pocketController = PocketController(rootViewController: selectLocationViewController, bottomViewController: progressViewController)
+        pocketController.view.backgroundColor = UIColor(red255: 249, green255: 245, blue255: 237)
         pocketController.bottomViewControllerHeight = 120
+        
+//        progressViewController.autoService = autoService
         
         self.pocketController = pocketController
     }
     
+    private var priceNetwork: PriceNetwork = PriceNetwork(serviceRequest: serviceRequest)
+    private var loadingPrice: Bool = false
+    
+    private var price: Price? {
+        didSet {
+//            if let autoService = autoService {
+//                priceView.configure(with: autoService)
+//            }
+            progressViewController.priceView.configure(with: autoService)
+        }
+    }
+    
     private lazy var progressViewController: AutoServiceCreationProgressViewController = {
         let progressViewController = AutoServiceCreationProgressViewController.viewControllerFromStoryboard()
+        progressViewController.delegate = self
         return progressViewController
     }()
     
@@ -37,17 +54,38 @@ final class AutoServiceCreation {
         return selectLocationViewController
     }()
     
+    private func updatePrice() {
+        guard let mechanicID = autoService.mechanic?.identifier,
+            let oilType = autoService.firstOilChange?.oilType,
+            let coordinate = autoService.location?.coordinate else { return }
+        loadingPrice = true
+        store.privateContext { [weak self] privateContext in
+            self?.priceNetwork.requestPrice(mechanicID: mechanicID, oilType: oilType, location: coordinate, in: privateContext) { priceObjectID, error in
+                DispatchQueue.main.async {
+                    guard let self = self else { return }
+                    if let priceObjectID = priceObjectID,
+                        let price = store.mainContext.object(with: priceObjectID) as? Price {
+                        price.autoService = self.autoService
+                        store.mainContext.persist()
+                        self.price = price
+                    }
+                    self.loadingPrice = false
+                }
+            }
+        }
+    }
+    
 }
 
 extension AutoServiceCreation: SelectLocationViewControllerDelegate {
     
     func didSelect(location: Location, viewController: SelectLocationViewController) {
         
-        progressViewController.currentState = .mechanic
-        
         autoService.location = location
 //        let selectMechanic = SelectMechanicViewController.create(with: location.coordinate)
 //        selectMechanic.delegate = self
+        
+        progressViewController.currentState = .mechanic
         
         let selectMechanic = SelectMechanicTableViewController.create(with: location.coordinate)
         selectMechanic.delegate = self
@@ -60,17 +98,31 @@ extension AutoServiceCreation: SelectLocationViewControllerDelegate {
     
 }
 
+extension AutoServiceCreation: AutoServiceCreationProgressDelegate {
+    
+    func updateHeight(newHeight: CGFloat) {
+        self.pocketController?.bottomViewControllerHeight = newHeight + pocketController.safeAreaInsetsMinusAdditional.bottom
+        UIView.animate(withDuration: 0.25) {
+            self.pocketController?.view.layoutIfNeeded()
+        }
+//        pocketController?.view.layoutIfNeeded()
+//        pocketController?.viewControllers.last?.view?.layoutIfNeeded()
+    }
+    
+}
+
 extension AutoServiceCreation: SelectMechanicDelegate {
     
     func didSaveMechanic(mechanic: Mechanic, date: Date, viewController: UIViewController) {
         print("mechanic")
+        
         progressViewController.currentState = .details
         
         autoService.mechanic = mechanic
         autoService.scheduledDate = date
         
-//        let vehicleSelect: SelectVehicleViewController = SelectVehicleViewController.create(autoService: autoService)
-//        vehicleSelect.delegate = self
+        updatePrice()
+        
         let detailsSelect = SelectAutoServiceDetailsViewController.viewControllerFromStoryboard()
         detailsSelect.delegate = self
         pocketController.show(detailsSelect, sender: self)
@@ -94,7 +146,10 @@ extension AutoServiceCreation: SelectAutoServiceDetailsViewControllerDelegate {
 //    }
     
     func didSelect(vehicle: Vehicle, oilType: OilType, viewController: SelectAutoServiceDetailsViewController) {
+        print("didSelect")
         progressViewController.currentState = .payment
+        
+        
     }
     
     func willBeDismissed(viewController: SelectAutoServiceDetailsViewController) {
