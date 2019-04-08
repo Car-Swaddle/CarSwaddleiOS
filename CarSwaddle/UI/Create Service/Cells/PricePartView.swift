@@ -28,6 +28,11 @@ final class PricePartView: UIView, NibInstantiating {
         partPriceLabel.text = currencyFormatter.string(from: pricePart.dollarValue)
     }
     
+    func configure(with price: Price) {
+        partDescriptionLabel.text = NSLocalizedString("Total", comment: "total price")
+        partPriceLabel.text = currencyFormatter.string(from: price.totalDollarValue)
+    }
+    
 }
 
 public extension PricePart {

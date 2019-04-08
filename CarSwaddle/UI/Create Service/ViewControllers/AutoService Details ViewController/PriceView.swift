@@ -22,13 +22,23 @@ final class PriceView: UIView, NibInstantiating {
     
     func configure(with service: AutoService) {
         for arrangedSubview in priceStackView.arrangedSubviews {
-//            if arrangedSubview != totalPriceStackView {
-                priceStackView.removeArrangedSubview(arrangedSubview)
-//            }
+            priceStackView.removeArrangedSubview(arrangedSubview)
         }
         
+//        let subtotals = (service.price?.parts ?? []).sorted { lp, rp -> Bool in
+//            if lp.isPartOfSubtotal != rp.isPartOfSubtotal {
+//                return lp.isPartOfSubtotal && !rp.isPartOfSubtotal
+//            } else if lp.isPartOfSubtotal {
+//                return true
+//            } else {
+//                return false
+//            }
+//        }
+        
+        let sortedPriceParts = service.price?.parts ?? []
+        
         var nonSubtotalIndex = 0
-        for pricePart in service.price?.parts ?? [] {
+        for pricePart in sortedPriceParts {
             if pricePart.isPartOfSubtotal == false {
                 let pricePartView = PricePartView.viewFromNib()
                 pricePartView.configure(with: pricePart)
@@ -37,8 +47,12 @@ final class PriceView: UIView, NibInstantiating {
             }
         }
         
+        let separatorView1 = self.separatorView()
+        priceStackView.addArrangedSubview(separatorView1)
+        nonSubtotalIndex += 1
+        
         var subtotalIndex = 0
-        for pricePart in service.price?.parts ?? [] {
+        for pricePart in sortedPriceParts {
             if pricePart.isPartOfSubtotal == true {
                 let pricePartView = PricePartView.viewFromNib()
                 pricePartView.configure(with: pricePart)
@@ -47,11 +61,25 @@ final class PriceView: UIView, NibInstantiating {
             }
         }
         
+        let separatorView2 = self.separatorView()
+        priceStackView.addArrangedSubview(separatorView2)
+        nonSubtotalIndex += 1
+        
         if let price = service.price {
 //            totalPriceLabel.text = currencyFormatter.string(from: price.totalDollarValue)
+            let pricePartView = PricePartView.viewFromNib()
+            pricePartView.configure(with: price)
+            priceStackView.addArrangedSubview(pricePartView)
         } else {
 //            totalPriceLabel.text = nil
         }
+    }
+    
+    private func separatorView() -> UIView {
+        let view = UIView()
+        view.heightAnchor.constraint(equalToConstant: UIView.hairlineLength).isActive = true
+        view.backgroundColor = .gray3
+        return view
     }
     
 }

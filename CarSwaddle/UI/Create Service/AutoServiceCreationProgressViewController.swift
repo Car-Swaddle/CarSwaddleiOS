@@ -45,7 +45,7 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
     @IBOutlet private weak var mechanicCircle: RoundView!
     @IBOutlet private weak var detailsCircle: RoundView!
     
-    lazy var priceView: PriceView = {
+    private lazy var priceView: PriceView = {
         let priceView = PriceView.viewFromNib()
         return priceView
     }()
@@ -62,6 +62,13 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
         detailsLabel.font = UIFont.appFont(type: .regular, size: 17)
         
         updateViewForCurrentState()
+    }
+    
+    func configure(with autoService: AutoService) {
+        priceView.configure(with: autoService)
+//        priceView.layoutIfNeeded()
+//        let size = priceView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))
+        delegate?.updateHeight(newHeight: 230)
     }
     
     private func updateViewForCurrentState() {
@@ -81,7 +88,11 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
         case .payment, .details:
             if priceView.superview == nil {
                 view.addSubview(priceView)
-                priceView.pinFrameToSuperViewBounds()
+//                priceView.pinFrameToSuperViewBounds()
+                priceView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+                priceView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+                priceView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+                priceView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
             }
         }
     }

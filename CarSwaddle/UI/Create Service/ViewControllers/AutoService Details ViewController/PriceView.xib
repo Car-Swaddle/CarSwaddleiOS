@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="351" height="107"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5wf-FA-pIK">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="5wf-FA-pIK">
                     <rect key="frame" x="16" y="16" width="319" height="75"/>
                 </stackView>
             </subviews>

@@ -9,18 +9,22 @@
 import CarSwaddleUI
 import Store
 import CarSwaddleData
+import Stripe
+import CoreData
 
-final class AutoServiceCreation {
+final class AutoServiceCreation: NSObject {
     
     public var pocketController: PocketController!
     
     private var autoService: AutoService
     
-    init() {
+    override init() {
         assert(Thread.isMainThread, "Must be on main")
         
         self.autoService = AutoService.createWithDefaults(context: store.mainContext)
         store.mainContext.persist()
+        
+        super.init()
         
         let pocketController = PocketController(rootViewController: selectLocationViewController, bottomViewController: progressViewController)
         pocketController.view.backgroundColor = UIColor(red255: 249, green255: 245, blue255: 237)
@@ -28,18 +32,27 @@ final class AutoServiceCreation {
         
 //        progressViewController.autoService = autoService
         
+        paymentContext.hostViewController = pocketController
+        
         self.pocketController = pocketController
     }
     
     private var priceNetwork: PriceNetwork = PriceNetwork(serviceRequest: serviceRequest)
     private var loadingPrice: Bool = false
+    private let autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
+    
+    private lazy var paymentContext: STPPaymentContext = {
+        let paymentContext = STPPaymentContext(customerContext: STPCustomerContext(keyProvider: stripe))
+        paymentContext.delegate = self
+        return paymentContext
+    }()
     
     private var price: Price? {
         didSet {
 //            if let autoService = autoService {
 //                priceView.configure(with: autoService)
 //            }
-            progressViewController.priceView.configure(with: autoService)
+            progressViewController.configure(with: autoService)
         }
     }
     
@@ -72,6 +85,88 @@ final class AutoServiceCreation {
                     self.loadingPrice = false
                 }
             }
+        }
+    }
+    
+    private func createAutoService(sourceID: String, completion: @escaping (_ autoServiceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) {
+        autoService.managedObjectContext?.persist()
+        let objectID = autoService.objectID
+        store.privateContext { [weak self] context in
+            guard let privateAutoService = context.object(with: objectID) as? AutoService else { return }
+            self?.autoServiceNetwork.createAutoService(autoService: privateAutoService, sourceID: sourceID, in: context) { newAutoService, error in
+                DispatchQueue.main.async {
+                    completion(newAutoService, error)
+                }
+            }
+        }
+    }
+    
+    private func payForAutoService() {
+        guard autoService.canConvertToJSON,
+            let price = autoService.price else { return }
+        
+        var summaryItems: [PKPaymentSummaryItem] = []
+        
+        for pricePart in price.parts {
+            guard pricePart.isPartOfSubtotal == true else { continue }
+            summaryItems.append(pricePart.paymentSummaryItem)
+        }
+        
+        let amount = price.totalDollarValue
+        let item = PKPaymentSummaryItem(label: "Car Swaddle", amount: amount)
+        summaryItems.append(item)
+        
+        paymentContext.paymentSummaryItems = summaryItems
+        paymentContext.requestPayment()
+    }
+    
+}
+
+extension AutoServiceCreation: STPPaymentContextDelegate {
+    
+    func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
+        print("context changed")
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
+        print("failed to load: \(error)")
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
+        print("create paymet result")
+        print("paymentResult: \(paymentResult)")
+        print("paymentContext: \(paymentContext)")
+        let sourceID = paymentResult.source.stripeID
+        createAutoService(sourceID: sourceID) { [weak self] autoServiceObjectID, error in
+            if let error = error {
+                completion(error)
+            } else {
+//                self?.dismiss(animated: true) {
+//                    self?.dismiss(animated: true, completion: nil)
+//                }
+                self?.pocketController.dismiss(animated: true) {
+                    self?.pocketController.dismiss(animated: true, completion: nil)
+                }
+                completion(nil)
+            }
+        }
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
+        print("finished UI")
+        
+        switch status {
+        case .error:
+            print("error")
+            if let error = error {
+                print("\(error)")
+            }
+        case .success:
+            print("success")
+        case .userCancellation:
+            print("user cancelled")
+        @unknown default:
+            fatalError("unkown case")
         }
     }
     
@@ -148,8 +243,10 @@ extension AutoServiceCreation: SelectAutoServiceDetailsViewControllerDelegate {
     func didSelect(vehicle: Vehicle, oilType: OilType, viewController: SelectAutoServiceDetailsViewController) {
         print("didSelect")
         progressViewController.currentState = .payment
+        self.autoService.vehicle = vehicle
+        self.autoService.firstOilChange?.oilType = oilType
         
-        
+        payForAutoService()
     }
     
     func willBeDismissed(viewController: SelectAutoServiceDetailsViewController) {

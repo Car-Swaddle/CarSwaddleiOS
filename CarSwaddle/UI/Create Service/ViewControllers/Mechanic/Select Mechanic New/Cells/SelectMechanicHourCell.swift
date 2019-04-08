@@ -105,7 +105,7 @@ final class SelectMechanicHourCell: UITableViewCell, NibRegisterable {
         for autoService in scheduledAutoServices {
             guard let scheduledDate = autoService.scheduledDate else { continue }
             let startTime = scheduledDate.secondsSinceMidnight
-            timeSlotDict[startTime] = false
+            timeSlotDict.removeValue(forKey: startTime)
         }
         
         self.startTimes = timeSlotDict.keys.sorted { (lhs, rhs) -> Bool in
