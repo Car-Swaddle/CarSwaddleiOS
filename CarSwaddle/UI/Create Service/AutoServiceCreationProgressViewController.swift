@@ -16,14 +16,12 @@ protocol AutoServiceCreationProgressDelegate: AnyObject {
 }
 
 private let normalHeight: CGFloat = 120
-private let priceHeight: CGFloat = 200
+private let priceHeight: CGFloat = 210
 
 class AutoServiceCreationProgressViewController: UIViewController, StoryboardInstantiating {
     
     weak var delegate: AutoServiceCreationProgressDelegate?
     
-//    var autoService: AutoService?
-
     enum State {
         case location
         case mechanic
@@ -41,12 +39,14 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
     @IBOutlet private weak var mechanicLabel: UILabel!
     @IBOutlet private weak var detailsLabel: UILabel!
     
-    @IBOutlet private weak var locationCircle: RoundView!
-    @IBOutlet private weak var mechanicCircle: RoundView!
-    @IBOutlet private weak var detailsCircle: RoundView!
+    @IBOutlet private weak var locationCircle: AutoServiceProgressCircleView!
+    @IBOutlet private weak var mechanicCircle: AutoServiceProgressCircleView!
+    @IBOutlet private weak var detailsCircle: AutoServiceProgressCircleView!
     
     private lazy var priceView: PriceView = {
         let priceView = PriceView.viewFromNib()
+        priceView.translatesAutoresizingMaskIntoConstraints = false
+        priceView.backgroundColor = .white
         return priceView
     }()
     
@@ -62,77 +62,83 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
         detailsLabel.font = UIFont.appFont(type: .regular, size: 17)
         
         updateViewForCurrentState()
+        
+        delegate?.updateHeight(newHeight: heightForCurrentState)
+    }
+    
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        delegate?.updateHeight(newHeight: heightForCurrentState)
     }
     
     func configure(with autoService: AutoService) {
         priceView.configure(with: autoService)
-//        priceView.layoutIfNeeded()
-//        let size = priceView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))
-        delegate?.updateHeight(newHeight: 230)
     }
     
     private func updateViewForCurrentState() {
-        locationCircle.backgroundColor = locationCircleColor
-        mechanicCircle.backgroundColor = mechanicCircleColor
-        detailsCircle.backgroundColor = detailsCircleColor
+        locationCircle.status = locationStatus
+        mechanicCircle.status = mechanicStatus
+        detailsCircle.status = detailsStatus
         
         delegate?.updateHeight(newHeight: heightForCurrentState)
         
-        updateForPriceView()
+        updatePriceViewForCurrentState()
     }
     
-    private func updateForPriceView() {
+    private func updatePriceViewForCurrentState() {
         switch currentState {
         case .location, .mechanic:
-            priceView.removeFromSuperview()
+//            priceView.removeConstraints(priceView.constraints)
+//            priceView.removeFromSuperview()
+            priceView.isHiddenInStackView = true
         case .payment, .details:
+            priceView.isHiddenInStackView = false
             if priceView.superview == nil {
                 view.addSubview(priceView)
-//                priceView.pinFrameToSuperViewBounds()
-                priceView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-                priceView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-                priceView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-                priceView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+                priceView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+                priceView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16).isActive = true
+                priceView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
+                priceView.bottomAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16).isActive = true
             }
         }
     }
     
-    private var locationCircleColor: UIColor {
+    private var locationStatus: AutoServiceProgressCircleView.Status {
         switch currentState {
         case .location:
-            return currentlySelectedColor
+            return .current
         case .mechanic:
-            return completedColor
+            return .complete
         case .details:
-            return completedColor
+            return .complete
         case .payment:
-            return completedColor
+            return .complete
         }
     }
     
-    private var mechanicCircleColor: UIColor {
+    private var mechanicStatus: AutoServiceProgressCircleView.Status {
         switch currentState {
         case .location:
-            return notCompletedColor
+            return .incomplete
         case .mechanic:
-            return currentlySelectedColor
+            return .current
         case .details:
-            return completedColor
+            return .complete
         case .payment:
-            return completedColor
+            return .complete
         }
     }
     
-    private var detailsCircleColor: UIColor {
+    private var detailsStatus: AutoServiceProgressCircleView.Status {
         switch currentState {
         case .location:
-            return notCompletedColor
+            return .incomplete
         case .mechanic:
-            return notCompletedColor
+            return .incomplete
         case .details:
-            return currentlySelectedColor
+            return .current
         case .payment:
-            return completedColor
+            return .complete
         }
     }
     
@@ -143,10 +149,46 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
         case .payment:
             return priceHeight
         case .details:
-            return 160
+            return priceHeight
         case .mechanic:
-            return 160
+            return normalHeight
         }
+    }
+    
+}
+
+
+
+extension UIView {
+    
+    @IBInspectable
+    var shadowOpacity: Float {
+        get { return layer.shadowOpacity }
+        set { layer.shadowOpacity = newValue }
+    }
+    
+    @IBInspectable
+    var shadowColor: UIColor? {
+        get {
+            if let shadowColor = layer.shadowColor {
+                return UIColor(cgColor: shadowColor)
+            } else {
+                return nil
+            }
+        }
+        set { layer.shadowColor = newValue?.cgColor }
+    }
+    
+    @IBInspectable
+    var shadowOffset: CGSize {
+        get { return layer.shadowOffset }
+        set { layer.shadowOffset = newValue }
+    }
+    
+    @IBInspectable
+    var shadowRadius: CGFloat {
+        get { return layer.shadowRadius }
+        set { layer.shadowRadius = newValue }
     }
     
 }

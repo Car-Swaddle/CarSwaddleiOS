@@ -16,15 +16,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="5wf-FA-pIK">
-                    <rect key="frame" x="16" y="16" width="319" height="75"/>
+                    <rect key="frame" x="0.0" y="0.0" width="351" height="107"/>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="5wf-FA-pIK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="2yJ-xN-3UC"/>
-                <constraint firstAttribute="bottom" secondItem="5wf-FA-pIK" secondAttribute="bottom" constant="16" id="8jh-fB-kXQ"/>
-                <constraint firstItem="5wf-FA-pIK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="qg7-Qq-jCt"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5wf-FA-pIK" secondAttribute="trailing" constant="16" id="x26-9y-tuI"/>
+                <constraint firstItem="5wf-FA-pIK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="2yJ-xN-3UC"/>
+                <constraint firstAttribute="bottom" secondItem="5wf-FA-pIK" secondAttribute="bottom" id="8jh-fB-kXQ"/>
+                <constraint firstItem="5wf-FA-pIK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qg7-Qq-jCt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5wf-FA-pIK" secondAttribute="trailing" id="x26-9y-tuI"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

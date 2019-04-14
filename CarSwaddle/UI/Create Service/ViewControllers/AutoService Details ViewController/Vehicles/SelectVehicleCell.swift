@@ -10,6 +10,7 @@ import UIKit
 import CarSwaddleUI
 import Store
 import CarSwaddleData
+import CoreData
 
 
 protocol SelectVehicleCellDelegate: AnyObject {
@@ -24,6 +25,24 @@ class SelectVehicleCell: UITableViewCell, NibRegisterable {
     @IBOutlet private weak var headerLabel: UILabel!
     @IBOutlet private weak var collectionView: FocusedCollectionView!
     
+    func reloadVehiclesLocally() {
+        vehicles = Vehicle.fetchVehiclesForCurrentUser(in: store.mainContext)
+    }
+    
+    var selectedVehicle: Vehicle? {
+        didSet {
+            reloadVehiclesLocally()
+            if let selectedVehicle = selectedVehicle,
+                let index = vehicles.firstIndex(of: selectedVehicle) {
+                let intIndex = vehicles.startIndex.distance(to: index)
+                let indexPath = IndexPath(item: intIndex, section: 0)
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+            } else if let previousIndex = collectionView.indexPathsForSelectedItems?.first {
+                collectionView.deselectItem(at: previousIndex, animated: true)
+            }
+        }
+    }
+    
     var vehicles: [Vehicle] = [] {
         didSet {
             collectionView.reloadData()
@@ -36,26 +55,22 @@ class SelectVehicleCell: UITableViewCell, NibRegisterable {
         super.awakeFromNib()
         
         selectionStyle = .none
+        reloadVehiclesLocally()
         setupCollectionView()
-        vehicles = Array(User.currentUser(context: store.mainContext)?.vehicles ?? [])
         selectFirstVehicleIfPossible()
-        
-        if vehicles.count > 0 {
-            collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
-            delegate?.didSelectVehicle(vehicle: vehicles[0], cell: self)
-        }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        vehicles = Array(User.currentUser(context: store.mainContext)?.vehicles ?? [])
+        reloadVehiclesLocally()
         selectFirstVehicleIfPossible()
     }
     
     private func selectFirstVehicleIfPossible() {
         if vehicles.count > 0 {
             collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+            delegate?.didSelectVehicle(vehicle: vehicles[0], cell: self)
         }
     }
     
@@ -109,9 +124,18 @@ extension SelectVehicleCell: FocusedCollectionViewDelegate {
             delegate?.didSelectVehicle(vehicle: vehicles[indexPath.item], cell: self)
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
-        
     }
     
 }
 
 
+
+
+extension Vehicle {
+    
+    public static func fetchVehiclesForCurrentUser(in context: NSManagedObjectContext) -> [Vehicle] {
+        guard let userID = User.currentUserID else { return [] }
+        return Vehicle.fetchVehicles(forUserID: userID, in: context)
+    }
+    
+}

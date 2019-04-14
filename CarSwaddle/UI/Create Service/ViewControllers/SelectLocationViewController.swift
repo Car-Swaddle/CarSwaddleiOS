@@ -13,6 +13,7 @@ import CoreLocation
 import Contacts
 import AddressBook
 import CarSwaddleUI
+import Firebase
 
 private let losAngeleseCoordinates = CLLocationCoordinate2D(latitude: 34.052235, longitude: -118.243683)
 private let defaultCoordinates = losAngeleseCoordinates
@@ -62,14 +63,6 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         searchBar.showsCancelButton = false
         let placeholder = NSLocalizedString("Search Location", comment: "Placeholder text")
         searchBar.placeholder = placeholder
-//        searchBar.tintColor = .viewBackgroundColor1
-//        searchBar.setTextFieldBackgroundColor(color: .gray4)
-//        searchBar.textField?.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-////        searchBar.tintColor = .green
-//        searchBar.setImage(#imageLiteral(resourceName: "search"), for: .search, state: .normal)
-//        searchBar.barTintColor = .white
-//        searchBar.textField?.tintColor = .white
-//        searchBar.textField?.textColor = .blue
         return searchBar
     }()
     
@@ -185,6 +178,19 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
                 self.delegate?.didSelect(location: fetchedLocation, viewController: self)
             }
         }
+        
+        var logParameters: [String: Any] = [AnalyticsParameterCheckoutOption:"selectLocation", AnalyticsParameterCheckoutStep: "1"]
+        let userLocationKey = "userLocation"
+        
+        if let userLocation = mapView.userLocation.location {
+            let oilChangeLocation = CLLocation(latitude: center.latitude, longitude: center.longitude)
+            let distanceDiff = userLocation.distance(from: oilChangeLocation)
+            logParameters["oilChangeDistanceToCurrentUserLocation"] = distanceDiff
+            logParameters[userLocationKey] = true
+        } else {
+            logParameters[userLocationKey] = false
+        }
+        Analytics.logEvent(AnalyticsEventSetCheckoutOption, parameters: logParameters)
     }
     
     private func updateLocation() {
@@ -351,6 +357,10 @@ extension SelectLocationViewController: UISearchControllerDelegate, UISearchResu
                 })
             }
         }
+        
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterCheckoutStep: "location"
+        ])
     }
     
     func didTapView(_ viewController: LocationSearchResultsViewController) {

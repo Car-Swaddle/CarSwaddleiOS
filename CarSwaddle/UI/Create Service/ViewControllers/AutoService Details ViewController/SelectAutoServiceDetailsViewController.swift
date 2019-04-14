@@ -10,10 +10,12 @@ import UIKit
 import CarSwaddleUI
 import CarSwaddleData
 import Store
+import Firebase
 
 
 protocol SelectAutoServiceDetailsViewControllerDelegate: class {
     func didSelect(vehicle: Vehicle, oilType: OilType, viewController: SelectAutoServiceDetailsViewController)
+    func didChangeOilType(oilType: OilType, viewController: SelectAutoServiceDetailsViewController)
     func willBeDismissed(viewController: SelectAutoServiceDetailsViewController)
 }
 
@@ -28,13 +30,16 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
     
     private var selectedOilType: OilType? {
         didSet {
-            
+//            tableView.reloadData()
         }
     }
     
     private var selectedVehicle: Vehicle? {
         didSet {
-            
+            let cell = tableView.visibleCells.first { cell -> Bool in
+                return cell is SelectVehicleCell
+            } as? SelectVehicleCell
+            cell?.selectedVehicle = selectedVehicle
         }
     }
     
@@ -52,15 +57,28 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
         setupTableView()
         insetAdjuster.positionActionButton()
         
-        requestVehicles()
+        requestVehicles { [weak self] in
+            guard let currentUserID = User.currentUserID else { return }
+            store.mainContext { mainContext in
+                self?.selectedVehicle = Vehicle.fetchVehicles(forUserID: currentUserID, in: mainContext).first
+                self?.tableView.reloadData()
+            }
+        }
         
         actionButton.addTarget(self, action: #selector(SelectAutoServiceDetailsViewController.didSelectPay), for: .touchUpInside)
+        
+        selectedOilType = .conventional
     }
     
     @objc private func didSelectPay() {
         guard let vehicle = selectedVehicle,
             let oilType = selectedOilType else { return }
         delegate?.didSelect(vehicle: vehicle, oilType: oilType, viewController: self)
+        
+        Analytics.logEvent(AnalyticsEventSetCheckoutOption, parameters: [
+            AnalyticsParameterCheckoutOption: "selectVehicleAndOilChange",
+            AnalyticsParameterCheckoutStep: "3",
+        ])
     }
     
     private func setupTableView() {
@@ -83,8 +101,7 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
     private func requestVehicles(completion: @escaping () -> Void = {}) {
         store.privateContext { [weak self] privateContext in
             self?.vehicleNetwork.requestVehicles(limit: 10, offset: 0, in: privateContext) { vehicles, error in
-                store.mainContext { mainContext in
-                    self?.tableView.reloadData()
+                DispatchQueue.main.async {
                     completion()
                 }
             }
@@ -106,12 +123,11 @@ extension SelectAutoServiceDetailsViewController: UITableViewDataSource {
         case .vehicle:
             let cell: SelectVehicleCell = tableView.dequeueCell()
             cell.delegate = self
-            selectedVehicle = cell.vehicles.first
+//            cell.selectedVehicle = selectedVehicle
             return cell
         case .oilType:
             let cell: SelectOilTypeCell = tableView.dequeueCell()
             cell.delegate = self
-            selectedOilType = cell.oilTypes.first
             return cell
         }
     }
@@ -131,10 +147,19 @@ extension SelectAutoServiceDetailsViewController: SelectVehicleCellDelegate, Add
     
     func didSelectOilType(oilType: OilType, cell: SelectOilTypeCell) {
         selectedOilType = oilType
+        delegate?.didChangeOilType(oilType: oilType, viewController: self)
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterContentType: "oilType",
+            "oilType": oilType.localizedString
+        ])
     }
     
     func didSelectVehicle(vehicle: Vehicle, cell: SelectVehicleCell) {
         selectedVehicle = vehicle
+        Analytics.logEvent(AnalyticsEventSetCheckoutOption, parameters: [
+            AnalyticsParameterContentType: "vehicle",
+            "vehicle": vehicle.name
+        ])
     }
     
     func didSelectAdd(cell: SelectVehicleCell) {
@@ -142,11 +167,27 @@ extension SelectAutoServiceDetailsViewController: SelectVehicleCellDelegate, Add
         let navigationController = addVehicleViewController.inNavigationController()
         addVehicleViewController.delegate = self
         present(navigationController, animated: true, completion: nil)
+        
+        Analytics.logEvent("didSelectCreateVehicle", parameters: nil)
     }
     
     func didCreateVehicle(vehicle: Vehicle, viewController: AddVehicleViewController) {
-        requestVehicles()
-        tableView.reloadData()
+//        requestVehicles { [weak self] in
+//            self?.selectedVehicle = vehicle
+//            self?.tableView.reloadData()
+//        }
+        
+        let cell = tableView.visibleCells.first { cell -> Bool in
+            return cell is SelectVehicleCell
+        } as? SelectVehicleCell
+//        cell?.reloadVehiclesLocally()
+        
+//        tableView.reloadData()
+        selectedVehicle = vehicle
+        
+        Analytics.logEvent("createdNewVehicle", parameters: [
+            "vehicleName": vehicle.name
+        ])
     }
     
 }

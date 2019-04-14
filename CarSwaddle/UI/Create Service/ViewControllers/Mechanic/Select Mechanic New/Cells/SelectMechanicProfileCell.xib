@@ -5,10 +5,14 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
         <array key="Montserrat-SemiBold.otf">
             <string>Montserrat-SemiBold</string>
         </array>
@@ -37,11 +41,32 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="beH-Gi-AsG">
+                        <rect key="frame" x="16" y="180" width="322" height="119.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bummer! There are no mechanics in your area" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2h-KF-qtI">
+                                <rect key="frame" x="0.0" y="0.0" width="322" height="49"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are working on getting mechanics to your area and we have been alerted of this." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Byq-aX-XxP">
+                                <rect key="frame" x="0.0" y="57" width="322" height="62.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                <color key="textColor" name="textColor3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="beH-Gi-AsG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="150-th-iNJ"/>
                     <constraint firstAttribute="trailing" secondItem="89z-RI-hkY" secondAttribute="trailing" constant="16" id="3T6-db-5NA"/>
+                    <constraint firstItem="beH-Gi-AsG" firstAttribute="centerX" secondItem="I8Y-BB-9vD" secondAttribute="centerX" id="B0v-CO-SkQ"/>
                     <constraint firstItem="I8Y-BB-9vD" firstAttribute="top" secondItem="89z-RI-hkY" secondAttribute="bottom" constant="8" id="DcM-rq-5Cx"/>
                     <constraint firstItem="I8Y-BB-9vD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XJq-hB-us6"/>
+                    <constraint firstItem="beH-Gi-AsG" firstAttribute="centerY" secondItem="I8Y-BB-9vD" secondAttribute="centerY" id="ckz-9x-sRQ"/>
+                    <constraint firstAttribute="trailing" secondItem="beH-Gi-AsG" secondAttribute="trailing" constant="16" id="dNu-Uh-6Kk"/>
                     <constraint firstItem="89z-RI-hkY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="gB4-vM-kQt"/>
                     <constraint firstItem="89z-RI-hkY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="l0P-Id-kAh"/>
                     <constraint firstAttribute="bottom" secondItem="I8Y-BB-9vD" secondAttribute="bottom" constant="4" id="q1e-dB-HPp"/>
@@ -51,9 +76,17 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="I8Y-BB-9vD" id="U6n-Eq-MLt"/>
+                <outlet property="noMechanicsStackView" destination="beH-Gi-AsG" id="22d-Z9-byX"/>
+                <outlet property="noMechanicsSubtitleLabel" destination="Byq-aX-XxP" id="Llb-Ov-W2Q"/>
+                <outlet property="noMechanicsTitleLabel" destination="S2h-KF-qtI" id="QL4-Rb-gPS"/>
                 <outlet property="selectMechanicLabel" destination="89z-RI-hkY" id="WVP-0G-c28"/>
             </connections>
             <point key="canvasLocation" x="136.23188405797103" y="198.21428571428569"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="textColor3">
+            <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
 </document>

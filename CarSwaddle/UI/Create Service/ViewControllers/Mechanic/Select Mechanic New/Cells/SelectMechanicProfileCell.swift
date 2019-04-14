@@ -18,9 +18,16 @@ final class SelectMechanicProfileCell: UITableViewCell, NibRegisterable {
     
     weak var delegate: SelectMechanicProfileCellDelegate?
     
+    var hasFetchedMechanics: Bool = false {
+        didSet {
+            updateShowNoMechanicsLabel()
+        }
+    }
+    
     var mechanics: [Mechanic] = [] {
         didSet {
             collectionView.reloadData()
+            updateShowNoMechanicsLabel()
         }
     }
     
@@ -44,13 +51,18 @@ final class SelectMechanicProfileCell: UITableViewCell, NibRegisterable {
             if collectionView.indexPathsForSelectedItems?.contains(indexPath) == false {
                 collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
             }
-            
-//            collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
         }
     }
     
     @IBOutlet private weak var selectMechanicLabel: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var noMechanicsTitleLabel: UILabel!
+    @IBOutlet private weak var noMechanicsSubtitleLabel: UILabel!
+    @IBOutlet private weak var noMechanicsStackView: UIStackView!
+    
+    private var showsNoMechanicsLabel: Bool {
+        return hasFetchedMechanics && mechanics.count == 0
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,7 +70,14 @@ final class SelectMechanicProfileCell: UITableViewCell, NibRegisterable {
         selectionStyle = .none
         
         selectMechanicLabel.font = UIFont.appFont(type: .semiBold, size: 17)
+        noMechanicsTitleLabel.font = UIFont.appFont(type: .semiBold, size: 20)
+        noMechanicsSubtitleLabel.font = UIFont.appFont(type: .regular, size: 17)
+        
         setupCollectionView()
+    }
+    
+    private func updateShowNoMechanicsLabel() {
+        noMechanicsStackView.isHiddenInStackView = !showsNoMechanicsLabel
     }
     
     private func setupCollectionView() {
@@ -70,14 +89,6 @@ final class SelectMechanicProfileCell: UITableViewCell, NibRegisterable {
         collectionView.focusedFlowLayout?.minimumLineSpacing = 0
         collectionView.clipsToBounds = false
         collectionView.allowsMultipleSelection = false
-        
-//        collectionView.selecte
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        
     }
     
 }

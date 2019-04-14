@@ -74,3 +74,21 @@ extension Date {
     }
     
 }
+
+
+
+extension TimeInterval {
+    
+    public var days: Int {
+        return Int(self.hours / 24)
+    }
+    
+    public var minutes: Int {
+        return Int(self / 60.0)
+    }
+    
+    public var hours: Int {
+        return self.minutes / Int(60.0)
+    }
+    
+}

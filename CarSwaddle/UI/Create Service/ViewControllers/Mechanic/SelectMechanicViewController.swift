@@ -10,6 +10,13 @@ import UIKit
 import CarSwaddleData
 import Store
 import CoreLocation
+import Firebase
+
+let yearMonthDayDateFormatter: DateFormatter = {
+    let yearMonthDayDateFormatter = DateFormatter()
+    yearMonthDayDateFormatter.dateFormat = "yyyy-MM-dd"
+    return yearMonthDayDateFormatter
+}()
 
 protocol SelectMechanicDelegate: AnyObject {
     func didSaveMechanic(mechanic: Mechanic, date: Date, viewController: UIViewController)
@@ -80,10 +87,16 @@ final class SelectMechanicViewController: UIViewController, StoryboardInstantiat
     private func updateMechanics() {
         guard let location = self.location else { return }
         store.privateContext { [weak self] context in
-            self?.mechanicNetwork.getNearestMechanics(limit: 10, coordinate: location, maxDistance: 1_000_000, in: context) { mechanicIDs, error in
+            self?.mechanicNetwork.getNearestMechanics(limit: 10, coordinate: location, maxDistance: 1_000_000, in: context) { mechanicObjectIDs, error in
                 store.mainContext { mainContext in
-                    self?.mechanics = Mechanic.fetchObjects(with: mechanicIDs, in: mainContext)
+                    let mechanics = Mechanic.fetchObjects(with: mechanicObjectIDs, in: mainContext)
+                    self?.mechanics = mechanics
+                    let mechanicIDs = mechanics.map { $0.identifier }
                     self?.updateSaveEnabledness()
+                    Analytics.logEvent(AnalyticsEventViewItem, parameters: [
+                        AnalyticsParameterItemList: mechanicIDs,
+                        "numberOfItems": mechanicIDs.count
+                    ])
                 }
             }
         }
@@ -92,6 +105,13 @@ final class SelectMechanicViewController: UIViewController, StoryboardInstantiat
     @IBAction func didSelectSave() {
         guard let mechanic = currentSelectedMechanic, let scheduledDate = scheduledDate else { return }
         delegate?.didSaveMechanic(mechanic: mechanic, date: scheduledDate, viewController: self)
+        
+        Analytics.logEvent(AnalyticsEventSetCheckoutOption, parameters: [
+            AnalyticsParameterCheckoutOption: "selectMechanicDayAndTime",
+            AnalyticsParameterCheckoutStep: "2",
+            AnalyticsParameterStartDate: yearMonthDayDateFormatter.string(from: scheduledDate),
+            "daysFromCurrentDate": scheduledDate.timeIntervalSinceNow.days
+        ])
     }
     
     private func updateSaveEnabledness() {

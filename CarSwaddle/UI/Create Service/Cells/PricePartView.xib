@@ -28,16 +28,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="322" height="58"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Oil filter" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54Z-jV-Iaz">
-                            <rect key="frame" x="0.0" y="0.0" width="100" height="58"/>
+                            <rect key="frame" x="0.0" y="0.0" width="111" height="58"/>
                             <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="d4n-dK-jor"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="111" id="d4n-dK-jor"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                             <color key="textColor" name="textColor3"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15.45$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0j5-gA-5Ky">
-                            <rect key="frame" x="116" y="0.0" width="206" height="58"/>
+                            <rect key="frame" x="127" y="0.0" width="195" height="58"/>
                             <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

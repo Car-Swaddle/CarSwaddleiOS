@@ -11,6 +11,7 @@ import Store
 import MapKit
 import CarSwaddleData
 import CarSwaddleUI
+import Firebase
 
 //
 //protocol SelectMechanicTableViewControllerDelegate: class {
@@ -69,6 +70,13 @@ final class SelectMechanicTableViewController: UIViewController, StoryboardInsta
         }
     }
     
+    private var hasFetchedMechanics = false {
+        didSet {
+            let mechanicsCell = tableView.firstCell(of: SelectMechanicProfileCell.self)
+            mechanicsCell?.hasFetchedMechanics = hasFetchedMechanics
+        }
+    }
+    
     private let mechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
     private var location: CLLocationCoordinate2D!
     private var mechanics: [Mechanic] = [] {
@@ -124,6 +132,14 @@ final class SelectMechanicTableViewController: UIViewController, StoryboardInsta
             self?.mechanicNetwork.getNearestMechanics(limit: 10, coordinate: location, maxDistance: 1_000_000, in: context) { mechanicIDs, error in
                 store.mainContext { mainContext in
                     self?.mechanics = Mechanic.fetchObjects(with: mechanicIDs, in: mainContext)
+                    self?.hasFetchedMechanics = true
+                    if let mechanics = self?.mechanics, mechanics.count > 0 {
+                        Analytics.logEvent("noMechanicsInArea", parameters: [
+                            AnalyticsParameterLocation: location,
+                            "latitude": location.latitude,
+                            "longitude": location.longitude
+                        ])
+                    }
                 }
             }
         }
@@ -156,6 +172,7 @@ extension SelectMechanicTableViewController: UITableViewDataSource {
             if cell.selectedMechanic == nil {
                 cell.selectedMechanic = mechanics.first
             }
+            cell.hasFetchedMechanics = hasFetchedMechanics
             cell.delegate = self
             return cell
         case .selectMechanicDay:
@@ -222,6 +239,20 @@ extension SelectMechanicTableViewController: SelectMechanicProfileCellDelegate {
     func didSelect(mechanic: Mechanic, cell: SelectMechanicProfileCell) {
         print("selected mech")
         selectedMechanic = mechanic
+    }
+    
+}
+
+
+
+
+extension UITableView {
+    
+    public func firstCell<T>(of type: T.Type) -> T? {
+        let cell = visibleCells.first { cell -> Bool in
+            return cell is T
+        } as? T
+        return cell
     }
     
 }

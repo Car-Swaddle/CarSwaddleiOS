@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aqn-OU-K3H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aqn-OU-K3H">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,65 +24,124 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6cE-Ud-mcn">
-                                <rect key="frame" x="16" y="16" width="343" height="21"/>
+                                <rect key="frame" x="16" y="62" width="343" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwC-Fj-RCE">
-                                        <rect key="frame" x="0.0" y="0.0" width="114.5" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="114.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mechanic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0D-Nq-pAh">
-                                        <rect key="frame" x="114.5" y="0.0" width="114" height="21"/>
+                                        <rect key="frame" x="114.5" y="0.0" width="114" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaS-KC-fYj">
-                                        <rect key="frame" x="228.5" y="0.0" width="114.5" height="21"/>
+                                        <rect key="frame" x="228.5" y="0.0" width="114.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fw9-cd-tLw" customClass="RoundView" customModule="CarSwaddle" customModuleProvider="target">
-                                <rect key="frame" x="55.5" y="57" width="35" height="35"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEz-Bv-09V">
+                                <rect key="frame" x="73" y="32.5" width="229" height="1"/>
+                                <color key="backgroundColor" name="textColor3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="RdT-ne-LLu"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fw9-cd-tLw" customClass="AutoServiceProgressCircleView" customModule="CarSwaddle" customModuleProvider="target">
+                                <rect key="frame" x="60" y="20" width="26" height="26"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Fw9-cd-tLw" secondAttribute="height" multiplier="1:1" id="57X-Ch-R4h"/>
-                                    <constraint firstAttribute="height" constant="35" id="g24-32-mfL"/>
+                                    <constraint firstAttribute="height" constant="26" id="g24-32-mfL"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="1"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ibStatus">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="2" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaL-Fc-mWE" customClass="RoundView" customModule="CarSwaddle" customModuleProvider="target">
-                                <rect key="frame" x="170" y="57" width="35" height="35"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaL-Fc-mWE" customClass="AutoServiceProgressCircleView" customModule="CarSwaddle" customModuleProvider="target">
+                                <rect key="frame" x="174.5" y="20" width="26" height="26"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="3ty-nQ-xDp"/>
-                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="2"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ibStatus">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="2" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOC-8b-OwI" customClass="RoundView" customModule="CarSwaddle" customModuleProvider="target">
-                                <rect key="frame" x="284.5" y="57" width="35" height="35"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOC-8b-OwI" customClass="AutoServiceProgressCircleView" customModule="CarSwaddle" customModuleProvider="target">
+                                <rect key="frame" x="289" y="20" width="26" height="26"/>
                                 <color key="backgroundColor" red="0.6307218309859155" green="0.58877090669014087" blue="0.52068661971830987" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="xl4-pk-py0"/>
-                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="3"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ibStatus">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="2" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="AaL-Fc-mWE" firstAttribute="top" secondItem="L0D-Nq-pAh" secondAttribute="bottom" constant="20" id="8Og-Dl-dhD"/>
+                            <constraint firstItem="JEz-Bv-09V" firstAttribute="leading" secondItem="Fw9-cd-tLw" secondAttribute="centerX" id="9pK-KD-egb"/>
                             <constraint firstItem="Fw9-cd-tLw" firstAttribute="centerX" secondItem="PwC-Fj-RCE" secondAttribute="centerX" id="B9H-0i-b27"/>
                             <constraint firstItem="AaL-Fc-mWE" firstAttribute="centerX" secondItem="L0D-Nq-pAh" secondAttribute="centerX" id="DZ3-km-9gU"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="EOC-8b-OwI" secondAttribute="bottom" constant="28" id="ESQ-Qa-FXb"/>
-                            <constraint firstItem="EOC-8b-OwI" firstAttribute="top" secondItem="eaS-KC-fYj" secondAttribute="bottom" constant="20" id="KzF-3n-SDt"/>
+                            <constraint firstItem="6cE-Ud-mcn" firstAttribute="top" secondItem="Fw9-cd-tLw" secondAttribute="bottom" constant="16" id="F1S-Us-ySG"/>
+                            <constraint firstItem="JEz-Bv-09V" firstAttribute="trailing" secondItem="EOC-8b-OwI" secondAttribute="centerX" id="FLL-kj-IXZ"/>
+                            <constraint firstItem="Fw9-cd-tLw" firstAttribute="top" secondItem="aEa-TK-BAS" secondAttribute="top" constant="20" id="L7L-Fg-QXb"/>
                             <constraint firstItem="EOC-8b-OwI" firstAttribute="centerX" secondItem="eaS-KC-fYj" secondAttribute="centerX" id="LZ0-sO-RXK"/>
+                            <constraint firstItem="AaL-Fc-mWE" firstAttribute="top" secondItem="Fw9-cd-tLw" secondAttribute="top" id="c0V-R9-kf6"/>
                             <constraint firstItem="6cE-Ud-mcn" firstAttribute="leading" secondItem="uct-HR-Oxk" secondAttribute="leading" constant="16" id="elC-I2-VeE"/>
+                            <constraint firstItem="EOC-8b-OwI" firstAttribute="height" secondItem="Fw9-cd-tLw" secondAttribute="height" id="hE0-2Q-A3H"/>
                             <constraint firstAttribute="trailing" secondItem="6cE-Ud-mcn" secondAttribute="trailing" constant="16" id="hL0-tc-LGW"/>
+                            <constraint firstItem="EOC-8b-OwI" firstAttribute="top" secondItem="Fw9-cd-tLw" secondAttribute="top" id="hag-dc-A5t"/>
                             <constraint firstItem="EOC-8b-OwI" firstAttribute="width" secondItem="EOC-8b-OwI" secondAttribute="height" multiplier="1:1" id="ic9-QM-LyA"/>
-                            <constraint firstItem="6cE-Ud-mcn" firstAttribute="top" secondItem="uct-HR-Oxk" secondAttribute="top" constant="16" id="s6r-ud-agv"/>
+                            <constraint firstItem="JEz-Bv-09V" firstAttribute="centerY" secondItem="Fw9-cd-tLw" secondAttribute="centerY" id="jSi-dm-DxC"/>
+                            <constraint firstItem="AaL-Fc-mWE" firstAttribute="height" secondItem="Fw9-cd-tLw" secondAttribute="height" id="qXI-Rc-IuJ"/>
                             <constraint firstItem="AaL-Fc-mWE" firstAttribute="width" secondItem="AaL-Fc-mWE" secondAttribute="height" multiplier="1:1" id="sOf-oi-8Ih"/>
-                            <constraint firstItem="Fw9-cd-tLw" firstAttribute="top" secondItem="PwC-Fj-RCE" secondAttribute="bottom" constant="20" id="weP-zU-Xoz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aEa-TK-BAS"/>
                     </view>
@@ -103,4 +163,9 @@
             <point key="canvasLocation" x="56.799999999999997" y="113.3433283358321"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="textColor3">
+            <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
 </document>

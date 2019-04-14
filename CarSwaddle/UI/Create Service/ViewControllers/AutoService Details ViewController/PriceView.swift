@@ -18,6 +18,7 @@ final class PriceView: UIView, NibInstantiating {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        backgroundColor = .white
     }
     
     func configure(with service: AutoService) {

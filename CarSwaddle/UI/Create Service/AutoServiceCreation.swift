@@ -11,6 +11,7 @@ import Store
 import CarSwaddleData
 import Stripe
 import CoreData
+import Firebase
 
 final class AutoServiceCreation: NSObject {
     
@@ -49,9 +50,6 @@ final class AutoServiceCreation: NSObject {
     
     private var price: Price? {
         didSet {
-//            if let autoService = autoService {
-//                priceView.configure(with: autoService)
-//            }
             progressViewController.configure(with: autoService)
         }
     }
@@ -118,6 +116,14 @@ final class AutoServiceCreation: NSObject {
         
         paymentContext.paymentSummaryItems = summaryItems
         paymentContext.requestPayment()
+        
+        Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [
+            AnalyticsParameterPrice: amount,
+            AnalyticsParameterStartDate: autoService.scheduledDate ?? Date(),
+            AnalyticsParameterCurrency: "USD",
+            AnalyticsParameterContentType: "oilChange",
+            AnalyticsParameterCheckoutOption: "requestPayment"
+        ])
     }
     
 }
@@ -130,6 +136,9 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
     
     func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
         print("failed to load: \(error)")
+        Analytics.logEvent(AnalyticsEventCheckoutProgress, parameters: [
+            AnalyticsParameterCheckoutOption: "failedPayment"
+        ])
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
@@ -141,9 +150,6 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
             if let error = error {
                 completion(error)
             } else {
-//                self?.dismiss(animated: true) {
-//                    self?.dismiss(animated: true, completion: nil)
-//                }
                 self?.pocketController.dismiss(animated: true) {
                     self?.pocketController.dismiss(animated: true, completion: nil)
                 }
@@ -158,13 +164,22 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
         switch status {
         case .error:
             print("error")
+            var params: [String: Any] = [AnalyticsParameterCheckoutOption: "systemErrorPayment"]
             if let error = error {
                 print("\(error)")
+                params["errorMessage"] = error.localizedDescription
             }
+            Analytics.logEvent(AnalyticsEventCheckoutProgress, parameters: params)
         case .success:
             print("success")
+            Analytics.logEvent(AnalyticsEventCheckoutProgress, parameters: [
+                AnalyticsParameterCheckoutOption: "successfullyPaid"
+            ])
         case .userCancellation:
             print("user cancelled")
+            Analytics.logEvent(AnalyticsEventCheckoutProgress, parameters: [
+                AnalyticsParameterCheckoutOption: "userCanceledPayment"
+            ])
         @unknown default:
             fatalError("unkown case")
         }
@@ -175,11 +190,7 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
 extension AutoServiceCreation: SelectLocationViewControllerDelegate {
     
     func didSelect(location: Location, viewController: SelectLocationViewController) {
-        
         autoService.location = location
-//        let selectMechanic = SelectMechanicViewController.create(with: location.coordinate)
-//        selectMechanic.delegate = self
-        
         progressViewController.currentState = .mechanic
         
         let selectMechanic = SelectMechanicTableViewController.create(with: location.coordinate)
@@ -197,11 +208,9 @@ extension AutoServiceCreation: AutoServiceCreationProgressDelegate {
     
     func updateHeight(newHeight: CGFloat) {
         self.pocketController?.bottomViewControllerHeight = newHeight + pocketController.safeAreaInsetsMinusAdditional.bottom
-        UIView.animate(withDuration: 0.25) {
-            self.pocketController?.view.layoutIfNeeded()
-        }
-//        pocketController?.view.layoutIfNeeded()
-//        pocketController?.viewControllers.last?.view?.layoutIfNeeded()
+//        UIView.animate(withDuration: 0.25) {
+//            self.pocketController?.view.layoutIfNeeded()
+//        }
     }
     
 }
@@ -215,6 +224,7 @@ extension AutoServiceCreation: SelectMechanicDelegate {
         
         autoService.mechanic = mechanic
         autoService.scheduledDate = date
+        autoService.firstOilChange?.oilType = .conventional
         
         updatePrice()
         
@@ -231,14 +241,10 @@ extension AutoServiceCreation: SelectMechanicDelegate {
 
 extension AutoServiceCreation: SelectAutoServiceDetailsViewControllerDelegate {
     
-//    func didSelectVehicle(vehicle: Vehicle, viewController: SelectVehicleViewController) {
-    
-        
-//        let selectOilType: SelectOilTypeViewController = SelectOilTypeViewController.create(with: autoService)
-//        selectOilType.delegate = self
-        
-//        pocketController.show(selectOilType, sender: self)
-//    }
+    func didChangeOilType(oilType: OilType, viewController: SelectAutoServiceDetailsViewController) {
+        autoService.firstOilChange?.oilType = oilType
+        updatePrice()
+    }
     
     func didSelect(vehicle: Vehicle, oilType: OilType, viewController: SelectAutoServiceDetailsViewController) {
         print("didSelect")
@@ -251,44 +257,6 @@ extension AutoServiceCreation: SelectAutoServiceDetailsViewControllerDelegate {
     
     func willBeDismissed(viewController: SelectAutoServiceDetailsViewController) {
         progressViewController.currentState = .mechanic
-    }
-    
-//    func willBeDismissed(viewController: SelectVehicleViewController) {
-//        progressViewController.currentState = .mechanic
-//    }
-    
-}
-
-extension AutoServiceCreation: SelectVehicleViewControllerDelegate {
-    
-    func didSelectVehicle(vehicle: Vehicle, viewController: SelectVehicleViewController) {
-        progressViewController.currentState = .payment
-        
-        let selectOilType: SelectOilTypeViewController = SelectOilTypeViewController.create(with: autoService)
-        selectOilType.delegate = self
-        
-        pocketController.show(selectOilType, sender: self)
-    }
-    
-    func didDeselectVehicle(viewController: SelectVehicleViewController) {
-        
-    }
-    
-    func willBeDismissed(viewController: SelectVehicleViewController) {
-        progressViewController.currentState = .mechanic
-    }
-    
-}
-
-extension AutoServiceCreation: SelectOilTypeViewControllerDelegate {
-    
-    func didChangeOilType(oilType: OilType, viewController: SelectOilTypeViewController) {
-        print("oil type")
-        // show price
-    }
-    
-    func willBeDismissed(viewController: SelectOilTypeViewController) {
-        progressViewController.currentState = .details
     }
     
 }
