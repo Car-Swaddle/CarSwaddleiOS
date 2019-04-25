@@ -114,7 +114,10 @@ final class Navigator: NSObject {
     public func initialViewController() -> UIViewController {
         if AuthController().token == nil {
             let signUp = SignUpViewController.viewControllerFromStoryboard()
-            return signUp.inNavigationController()
+            let navigationController = signUp.inNavigationController()
+            navigationController.navigationBar.barStyle = .black
+            navigationController.navigationBar.isHidden = true
+            return navigationController
         } else {
             return loggedInViewController
         }
@@ -166,6 +169,8 @@ final class Navigator: NSObject {
             let rootViewController = window.rootViewController else { return }
         let signUp = SignUpViewController.viewControllerFromStoryboard()
         let newViewController = signUp.inNavigationController()
+        newViewController.navigationBar.barStyle = .black
+        newViewController.navigationBar.isHidden = true
         newViewController.view.frame = rootViewController.view.frame
         newViewController.view.layoutIfNeeded()
         

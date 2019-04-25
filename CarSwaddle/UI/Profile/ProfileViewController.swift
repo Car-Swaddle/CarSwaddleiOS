@@ -64,11 +64,11 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     private func setupTableView() {
         tableView.register(TextCell.self)
         tableView.refreshControl = refreshControl
-        tableView.tableHeaderView = headerView
+//        tableView.tableHeaderView = headerView
         tableView.tableFooterView = UIView()
-        if let user = self.user {
-            headerView.configure(with: user)
-        }
+//        if let user = self.user {
+//            headerView.configure(with: user)
+//        }
     }
     
     @IBAction private func didSelectOptions() {
@@ -117,7 +117,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         store.privateContext { [weak self] privateContext in
             self?.userNetwork.requestCurrentUser(in: privateContext) { userObjectID, error in
                 DispatchQueue.main.async {
-                    self?.reloadData()
+                    self?.user = User.currentUser(context: store.mainContext)
                     completion()
                 }
             }
@@ -126,13 +126,13 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     
     private func reloadData() {
         tableView.reloadData()
-        updateHeader()
+//        updateHeader()
     }
     
-    private func updateHeader() {
-        guard let user = self.user else { return }
-        headerView.configure(with: user)
-    }
+//    private func updateHeader() {
+//        guard let user = self.user else { return }
+//        headerView.configure(with: user)
+//    }
     
 }
 
@@ -227,7 +227,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         guard let url = try? profileImageStore.storeFile(data: imageData, fileName: User.currentUserID ?? "profileImage") else {
             return
         }
-        updateHeader()
+//        updateHeader()
         store.privateContext { [weak self] privateContext in
             self?.userNetwork.setProfileImage(fileURL: url, in: privateContext) { userObjectID, error in
                 store.mainContext { mainContext in

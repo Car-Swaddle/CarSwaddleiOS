@@ -19,9 +19,8 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
-    
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
-    
+    @IBOutlet private weak var backgroundImageView: UIImageView!
     private var loginTask: URLSessionDataTask?
     
     override func viewDidLoad() {
@@ -29,12 +28,30 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.didTapScreen))
         view.addGestureRecognizer(tap)
+        
         emailTextField.addTarget(self, action: #selector(LoginViewController.didChangeTextField(_:)), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(LoginViewController.didChangeTextField(_:)), for: .editingChanged)
+        
+        let tintColor = UIColor.textColor2
+        
+        let placeholderAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: tintColor, .font: UIFont.appFont(type: .semiBold, size: 15) as Any]
+        emailTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Email", comment: "placeholder text"), attributes: placeholderAttributes)
+        emailTextField.textColor = .white
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Password", comment: "placeholder text"), attributes: placeholderAttributes)
+        passwordTextField.textColor = .white
+        
+        loginButton.setTitleColor(.white, for: .normal)
+        
+        emailTextField.tintColor = .white
+        passwordTextField.tintColor = .white
+        
+        emailTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
+        passwordTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
         
         spinner.isHiddenInStackView = true
         
         updateLoginEnabledness()
+        backgroundImageView.image = backgroundImage
     }
     
     @objc private func didChangeTextField(_ textField: UITextField) {
@@ -58,6 +75,10 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
     }
     
     @IBAction private func didTapLogin() {
+        loginIfAllowed()
+    }
+    
+    private func loginIfAllowed() {
         guard loginIsAllowed,
             let email = emailTextField.text,
             let password = passwordTextField.text else {
@@ -99,15 +120,35 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
         }
     }
     
+    @IBAction private func didTapBack() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction private func didTapForgotPassword() {
-        let user = UsersViewController()
-        navigationController?.pushViewController(user, animated: true)
+//        let user = UsersViewController()
+//        navigationController?.pushViewController(user, animated: true)
+    }
+    
+    private var backgroundImage: UIImage? {
+        let top = GradientPoint(location: 1.0, color: UIColor.secondary.color(adjustedBy255Points: 15))
+        let middle = GradientPoint(location: 0.6, color: UIColor.secondary.color(adjustedBy255Points: 0))
+        let bottom = GradientPoint(location: 0.0, color: UIColor.secondary.color(adjustedBy255Points: -15))
+        return UIImage(size: view.bounds.size, gradientPoints: [top, middle, bottom])
     }
     
 }
 
 
 extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            loginIfAllowed()
+        }
+        return true
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         updateLoginEnabledness()

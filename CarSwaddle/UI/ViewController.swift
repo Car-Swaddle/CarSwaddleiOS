@@ -19,7 +19,6 @@ class ViewController: UIViewController {
         
         let vc = SignUpViewController.viewControllerFromStoryboard()
         
-        
         navigationController?.pushViewController(vc.inNavigationController(), animated: false)
         
 //        let user = User(context: store.mainContext)

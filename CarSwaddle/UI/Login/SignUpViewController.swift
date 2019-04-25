@@ -10,7 +10,13 @@ import UIKit
 import CarSwaddleNetworkRequest
 import CarSwaddleData
 import Authentication
+import SafariServices
 
+
+private let stripeAgreementURLString = "https://stripe.com/us/connect-account/legal"
+// TODO: Change this to CarSwaddle's service agreement
+private let carSwaddleAgreementURLString = "https://carswaddle.net/terms-of-use/"
+private let carSwaddlePrivacyPolicyURLString = "https://carswaddle.net/privacy-policy/"
 
 final class SignUpViewController: UIViewController, StoryboardInstantiating {
     
@@ -19,11 +25,19 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     }
     
     private let auth = Auth(serviceRequest: serviceRequest)
+    
+    public static let stripeAgreementURL: URL! = URL(string: stripeAgreementURLString)!
+    public static let carSwaddleAgreementURL: URL! = URL(string: carSwaddleAgreementURLString)!
+    public static let carSwaddlePrivacyURL: URL! = URL(string: carSwaddlePrivacyPolicyURLString)!
 
     @IBOutlet private weak var signupButton: UIButton!
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var agreementTextView: UITextView!
+    
+    @IBOutlet weak var agreementTextViewHeightConstraint: NSLayoutConstraint!
     
     private var signUpTask: URLSessionDataTask?
     
@@ -38,6 +52,75 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         
         spinner.isHiddenInStackView = true
         updateSignUpEnabledness()
+        
+        let tintColor = UIColor.textColor2
+        
+        let placeholderAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: tintColor, .font: UIFont.appFont(type: .semiBold, size: 15) as Any]
+        emailTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Email", comment: "placeholder text"), attributes: placeholderAttributes)
+        emailTextField.textColor = .white
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Password", comment: "placeholder text"), attributes: placeholderAttributes)
+        passwordTextField.textColor = .white
+        
+        signupButton.setTitleColor(.white, for: .normal)
+        
+        passwordTextField.tintColor = .white
+        emailTextField.tintColor = .white
+        
+        backgroundImageView.image = backgroundImage
+        
+        emailTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
+        passwordTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
+        
+        agreementTextViewHeightConstraint.constant = agreementTextView.contentSize.height
+        
+        setupAgreementTextView()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    private func setupAgreementTextView() {
+        let tintColor = UIColor.textColor2
+        
+        let termsOfUseText = "Car Swaddle Terms of Use Agreement"
+        let privacyPolicyText = "Car Swaddle Privacy Policy"
+        let stripeText = "Stripe Connected Account Agreement"
+        
+        let text = "By registering your account, you agree to the \(termsOfUseText), the \(privacyPolicyText) and the \(stripeText)."
+        
+        let carSwaddleAgreementRange = (text as NSString).range(of: termsOfUseText)
+        let privacyPolicyRange = (text as NSString).range(of: privacyPolicyText)
+        let connectAgreementRange = (text as NSString).range(of: stripeText)
+        
+        let attributedText = NSMutableAttributedString(string: text, attributes: [.foregroundColor: tintColor, .font: UIFont.appFont(type: .regular, size: 13) as Any])
+        
+        attributedText.addAttributes(linkAttributes(with: SignUpViewController.stripeAgreementURL), range: connectAgreementRange)
+        attributedText.addAttributes(linkAttributes(with: SignUpViewController.carSwaddleAgreementURL), range: carSwaddleAgreementRange)
+        attributedText.addAttributes(linkAttributes(with: SignUpViewController.carSwaddlePrivacyURL), range: privacyPolicyRange)
+        
+        let textViewLinkAttributes: [NSAttributedString.Key : Any] = [
+            .foregroundColor: UIColor.textColor2,
+            .underlineColor: UIColor.textColor2,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .font: UIFont.appFont(type: .regular, size: 13) as Any
+        ]
+        
+        agreementTextView.textAlignment = .center
+        agreementTextView.linkTextAttributes = textViewLinkAttributes
+        agreementTextView.isSelectable = true
+        
+        agreementTextView.attributedText = attributedText.copy() as? NSAttributedString
+        agreementTextView.delegate = self
+        
+        agreementTextViewHeightConstraint.constant = agreementTextView.contentSize.height
+    }
+    
+    private func linkAttributes(with url: URL) -> [NSAttributedString.Key: Any] {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .link: url
+        ]
+        return attributes
     }
     
     @objc private func didChangeTextField(_ textField: UITextField) {
@@ -60,7 +143,26 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         passwordTextField.resignFirstResponder()
     }
     
+    private var safariConfiguration: SFSafariViewController.Configuration {
+        let configuration = SFSafariViewController.Configuration()
+        configuration.entersReaderIfAvailable = true
+        return configuration
+    }
+    
+    private func showSafari(with url: URL) {
+        let stripeSafariViewController = SFSafariViewController(url: url, configuration: safariConfiguration)
+        present(stripeSafariViewController, animated: true, completion: nil)
+    }
+    
     @IBAction private func didTapSignUp() {
+        signUpIfAllowed()
+    }
+    
+    @IBAction private func didTapGoToLogin() {
+        
+    }
+    
+    private func signUpIfAllowed() {
         guard signUpIsAllowed,
             let email = emailTextField.text,
             let password = passwordTextField.text else {
@@ -94,17 +196,42 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         }
     }
     
-    @IBAction private func didTapGoToLogin() {
-        
+    private var backgroundImage: UIImage? {
+        let top = GradientPoint(location: 1.0, color: UIColor.secondary.color(adjustedBy255Points: 15))
+        let middle = GradientPoint(location: 0.6, color: UIColor.secondary.color(adjustedBy255Points: 0))
+        let bottom = GradientPoint(location: 0.0, color: UIColor.secondary.color(adjustedBy255Points: -15))
+        return UIImage(size: view.bounds.size, gradientPoints: [top, middle, bottom])
     }
 
 }
 
 extension SignUpViewController: UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            signUpIfAllowed()
+        }
+        return true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         updateSignUpEnabledness()
         return true
+    }
+    
+}
+
+extension SignUpViewController: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        if SignUpViewController.stripeAgreementURL == URL || SignUpViewController.carSwaddleAgreementURL == URL || SignUpViewController.carSwaddlePrivacyURL == URL {
+            showSafari(with: URL)
+        }
+        
+        return false
     }
     
 }

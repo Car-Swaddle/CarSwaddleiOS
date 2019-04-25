@@ -28,6 +28,8 @@ final class VerifyPhoneNumberViewController: UIViewController, NavigationDelegat
         oneTimeViewController.view.pinFrameToSuperViewBounds()
         oneTimeViewController.didMove(toParent: self)
         
+        _ = oneTimeViewController.oneTimeCodeEntryView.becomeFirstResponder()
+        
         sendSMSVerification()
     }
     
