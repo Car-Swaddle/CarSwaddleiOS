@@ -31,10 +31,10 @@ protocol SelectLocationViewControllerDelegate: class {
 ///
 final class SelectLocationViewController: UIViewController, StoryboardInstantiating {
     
-    static func create(delegate: SelectLocationViewControllerDelegate, autoService: AutoService, location: Location?) -> SelectLocationViewController {
+    static func create(delegate: SelectLocationViewControllerDelegate, autoService: AutoService) -> SelectLocationViewController {
         let viewController = SelectLocationViewController.viewControllerFromStoryboard()
         viewController.autoService = autoService
-        viewController.location = location
+//        viewController.location = location
         viewController.delegate = delegate
 //        viewController.updateLocation()
         return viewController
@@ -42,11 +42,11 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     
     weak var delegate: SelectLocationViewControllerDelegate?
     
-    private var location: Location? {
-        didSet {
-            updateMapWithCurrentLocation()
-        }
-    }
+//    private var location: Location? {
+//        didSet {
+//            updateMapWithCurrentLocation()
+//        }
+//    }
     
     private var autoService: AutoService!
     
@@ -70,10 +70,13 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         super.viewDidLoad()
         
         locationManager.promptUserForLocationAccess()
-        setupLocation()
+        
+        centerOnUserCurrentLocation()
         
         setupBarButtons()
+        
         mapView.delegate = self
+        
         centerView.layer.shadowOpacity = 0.45
         centerView.layer.shadowColor = UIColor.black.cgColor
         centerView.layer.shadowRadius = 4
@@ -135,8 +138,8 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         dismiss(animated: true, completion: nil)
     }
     
-    private func setupLocation() {
-        if location == nil {
+    private func centerOnUserCurrentLocation() {
+//        if location == nil {
             locationManager.currentLocationPlacemark { [weak self] placemark, error in
                 DispatchQueue.main.async {
                     if let placemark = placemark {
@@ -144,16 +147,16 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
                     }
                 }
             }
-        } else {
-            updateMapWithCurrentLocation()
-        }
+//        } else {
+//            updateMapWithCurrentLocation()
+//        }
     }
     
-    private func updateMapWithCurrentLocation() {
-        guard let location = location else { return }
-        mapView?.region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: closeupSpanWidth, longitudinalMeters: closeupSpanWidth)
-        mapView?.setCenter(location.coordinate, animated: true)
-    }
+//    private func updateMapWithCurrentLocation() {
+////        guard let location = location else { return }
+//        mapView?.region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: closeupSpanWidth, longitudinalMeters: closeupSpanWidth)
+//        mapView?.setCenter(location.coordinate, animated: true)
+//    }
     
     private func styleView() {
 //        confirmButton.layer.borderColor = UIColor.gray.cgColor
@@ -162,10 +165,13 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     }
     
     @IBAction private func didSelectConfirm() {
-        guard let location = location else { return }
+//        guard let location = location else { return }
         
         let center = mapView.centerCoordinate
-        setLocation(with: center)
+//        setLocation(with: center)
+        
+        let location = Location(context: store.mainContext, autoService: autoService, coordinate: center)
+        store.mainContext.persist()
         
         let locationObjectID = location.objectID
         
@@ -206,7 +212,7 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         guard let coordinate = placemark.location?.coordinate else { return }
         self.setLocation(with: coordinate)
     }
-    
+
     private func setLocation(with placemark: MKUserLocation) {
         guard let coordinate = placemark.location?.coordinate else { return }
         self.setLocation(with: coordinate)
@@ -224,15 +230,9 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     }()
     
     private func setLocation(with coordinate: CLLocationCoordinate2D) {
-        if location == nil {
-            location = Location(context: store.mainContext, autoService: autoService, coordinate: coordinate)
-        }
-        location?.latitude = coordinate.latitude
-        location?.longitude = coordinate.longitude
-        store.mainContext.persist()
+        mapView?.region = MKCoordinateRegion(center: coordinate, latitudinalMeters: closeupSpanWidth, longitudinalMeters: closeupSpanWidth)
+        mapView?.setCenter(coordinate, animated: true)
     }
-    
-//    private var didUpdateCurrentUserLocation: Bool = false
     
 }
 
@@ -240,10 +240,10 @@ extension SelectLocationViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         
-        if location == nil {
-            setLocation(with: userLocation)
-            updateMapWithCurrentLocation()
-        }
+//        if location == nil {
+//            setLocation(with: userLocation)
+//            updateMapWithCurrentLocation()
+//        }
         
 //        guard didUpdateCurrentUserLocation == false && location == nil else { return }
 //        didUpdateCurrentUserLocation = true
@@ -259,9 +259,19 @@ extension SelectLocationViewController: MKMapViewDelegate {
 //        }
     }
     
-    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        print("changed")
-    }
+//    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+//        print("changed")
+////        if location == nil {
+////
+////        }
+////        location
+//
+////        location?.coordinate = CLLocationCoordinate2D(latitude: <#T##CLLocationDegrees#>, longitude: <#T##CLLocationDegrees#>)
+//    }
+    
+//    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+//        print("changed region")
+//    }
     
 }
 

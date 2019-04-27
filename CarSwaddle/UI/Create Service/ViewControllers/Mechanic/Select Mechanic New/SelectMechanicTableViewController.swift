@@ -133,11 +133,9 @@ final class SelectMechanicTableViewController: UIViewController, StoryboardInsta
                 store.mainContext { mainContext in
                     self?.mechanics = Mechanic.fetchObjects(with: mechanicIDs, in: mainContext)
                     self?.hasFetchedMechanics = true
-                    if let mechanics = self?.mechanics, mechanics.count > 0 {
+                    if let mechanics = self?.mechanics, mechanics.count == 0 {
                         Analytics.logEvent("noMechanicsInArea", parameters: [
-                            AnalyticsParameterLocation: location,
-                            "latitude": location.latitude,
-                            "longitude": location.longitude
+                            "locationString": location.localizedString,
                         ])
                     }
                 }
@@ -253,6 +251,16 @@ extension UITableView {
             return cell is T
         } as? T
         return cell
+    }
+    
+}
+
+
+
+extension CLLocationCoordinate2D {
+    
+    public var localizedString: String {
+        return "\(latitude), \(longitude)"
     }
     
 }

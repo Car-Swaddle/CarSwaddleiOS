@@ -59,7 +59,7 @@ final class AutoServiceCreation: NSObject {
     }()
     
     private lazy var selectLocationViewController: SelectLocationViewController = {
-        let selectLocationViewController = SelectLocationViewController.create(delegate: self, autoService: autoService, location: nil)
+        let selectLocationViewController = SelectLocationViewController.create(delegate: self, autoService: autoService)
         return selectLocationViewController
     }()
     
