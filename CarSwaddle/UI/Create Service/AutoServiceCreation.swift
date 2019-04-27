@@ -31,8 +31,6 @@ final class AutoServiceCreation: NSObject {
         pocketController.view.backgroundColor = UIColor(red255: 249, green255: 245, blue255: 237)
         pocketController.bottomViewControllerHeight = 120
         
-//        progressViewController.autoService = autoService
-        
         paymentContext.hostViewController = pocketController
         
         self.pocketController = pocketController

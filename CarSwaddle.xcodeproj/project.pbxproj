@@ -117,6 +117,9 @@
 		99A0AF15224EEA760001FDC6 /* FocusedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A0AF13224EEA760001FDC6 /* FocusedCollectionViewCell.xib */; };
 		99A0AF17224F53DE0001FDC6 /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99A0AF16224F53DD0001FDC6 /* FSCalendar.framework */; };
 		99A2CDAE218DA179003ED903 /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2CDAD218DA179003ED903 /* ServiceRequest.swift */; };
+		99AEE1C722740D2500938462 /* LabeledInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1C522740D2400938462 /* LabeledInfoCell.swift */; };
+		99AEE1C822740D2500938462 /* LabeledInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99AEE1C622740D2400938462 /* LabeledInfoCell.xib */; };
+		99AEE1CA2274154C00938462 /* LabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1C92274154C00938462 /* LabeledTextField.swift */; };
 		99D5D99121F43C1600E6A511 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03D821F429BA00546C58 /* Authentication.framework */; };
 		99D5D99321F43C1600E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375AA2171D81900F15BEC /* CarSwaddleNetworkRequest.framework */; };
 		99D5D99421F43C1600E6A511 /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03D921F429BA00546C58 /* CarSwaddleUI.framework */; };
@@ -341,6 +344,9 @@
 		99A0AF13224EEA760001FDC6 /* FocusedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusedCollectionViewCell.xib; sourceTree = "<group>"; };
 		99A0AF16224F53DD0001FDC6 /* FSCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSCalendar.framework; path = Carthage/Build/iOS/FSCalendar.framework; sourceTree = "<group>"; };
 		99A2CDAD218DA179003ED903 /* ServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
+		99AEE1C522740D2400938462 /* LabeledInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledInfoCell.swift; sourceTree = "<group>"; };
+		99AEE1C622740D2400938462 /* LabeledInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledInfoCell.xib; sourceTree = "<group>"; };
+		99AEE1C92274154C00938462 /* LabeledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextField.swift; sourceTree = "<group>"; };
 		99BC8D022245F3A000B732E7 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
 		99BC8D032245F3A200B732E7 /* Montserrat-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.otf"; sourceTree = "<group>"; };
 		99BC8D042245F3A300B732E7 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -489,6 +495,7 @@
 				997DBCA721BA605A0080F42C /* PushNotificationController.swift */,
 				997714C621CCF5BC00E54F5B /* Stripe.swift */,
 				992BFDD022056B8B006B64CC /* Logout.swift */,
+				99AEE1C92274154C00938462 /* LabeledTextField.swift */,
 				9955BC2521556302008DAF8E /* Extensions */,
 				99F78F1A214B9F1D00D1BD28 /* UI */,
 				9991FE1A214B86F900F58F42 /* Launch */,
@@ -644,6 +651,8 @@
 				99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */,
 				99E66DA721E2963A00C6E3E1 /* UserImageView.swift */,
 				9943BCE421EF226400D553F6 /* MechanicImageView.swift */,
+				99AEE1C522740D2400938462 /* LabeledInfoCell.swift */,
+				99AEE1C622740D2400938462 /* LabeledInfoCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1066,6 +1075,7 @@
 				990F4378214252C700E65FC1 /* Assets.xcassets in Resources */,
 				99DC263C2246ECC2009E0A15 /* MontserratAlternates-BoldItalic.otf in Resources */,
 				9955BC3721557311008DAF8E /* CreateServiceViewController.storyboard in Resources */,
+				99AEE1C822740D2500938462 /* LabeledInfoCell.xib in Resources */,
 				99DC26422246ECC2009E0A15 /* MontserratAlternates-Light.otf in Resources */,
 				997DBC6821995B3E0080F42C /* MechanicViewController.storyboard in Resources */,
 				99A0AEFA224EC24D0001FDC6 /* SelectMechanicProfileCell.xib in Resources */,
@@ -1201,6 +1211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				994CA9F7215206CD00D41F6C /* LoginViewController.swift in Sources */,
+				99AEE1C722740D2500938462 /* LabeledInfoCell.swift in Sources */,
 				99E2E7E4224D569B006DC577 /* LocationSearchCell.swift in Sources */,
 				99DC264D22474A75009E0A15 /* UIColorExtension.swift in Sources */,
 				992BFDD122056B8B006B64CC /* Logout.swift in Sources */,
@@ -1209,6 +1220,7 @@
 				991AFCB12250B38400AD6614 /* AddCollectionViewCell.swift in Sources */,
 				9942546B21577B6C0075EDCA /* SelectMechanicViewController.swift in Sources */,
 				998D3AE721DDCC49003DD717 /* AutoServiceDetailsViewController.swift in Sources */,
+				99AEE1CA2274154C00938462 /* LabeledTextField.swift in Sources */,
 				9955BC2F21556554008DAF8E /* ServicesViewController.swift in Sources */,
 				991AFC9522506AD200AD6614 /* HourDisplayView.swift in Sources */,
 				99A0AF0E224EE06E0001FDC6 /* MechanicProfileHeaderView.swift in Sources */,

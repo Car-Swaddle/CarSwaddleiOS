@@ -21,8 +21,11 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
     
     weak var navigationDelegate: NavigationDelegate?
     
-    @IBOutlet private weak var firstNameTextField: UITextField!
-    @IBOutlet private weak var lastNameTextField: UITextField!
+//    @IBOutlet private weak var firstNameTextField: UITextField!
+//    @IBOutlet private weak var lastNameTextField: UITextField!
+    
+    @IBOutlet private weak var firstNameLabeledTextField: LabeledTextField!
+    @IBOutlet private weak var lastNameLabeledTextField: LabeledTextField!
     
     private let userNetwork = UserNetwork(serviceRequest: serviceRequest)
     
@@ -30,12 +33,30 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
         super.viewDidLoad()
 
         let currentUser = User.currentUser(context: store.mainContext)
-        firstNameTextField.text = currentUser?.firstName
-        lastNameTextField.text = currentUser?.lastName
+        firstNameLabeledTextField.textField.text = currentUser?.firstName
+        lastNameLabeledTextField.textField.text = currentUser?.lastName
+        
+        firstNameLabeledTextField.textField.delegate = self
+        lastNameLabeledTextField.textField.delegate = self
+        
+        firstNameLabeledTextField.updateLabelFontForCurrentText()
+        lastNameLabeledTextField.updateLabelFontForCurrentText()
+        
+        configureTextField(firstNameLabeledTextField.textField)
+        firstNameLabeledTextField.textField.textContentType = .givenName
+        configureTextField(lastNameLabeledTextField.textField)
+        lastNameLabeledTextField.textField.textContentType = .familyName
+    }
+    
+    private func configureTextField(_ textField: UITextField) {
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .words
+        textField.keyboardType = .default
+        textField.spellCheckingType = .no
     }
     
     
-    @IBAction func didTapSave() {
+    @IBAction private func didTapSave() {
         let previousButton = navigationItem.rightBarButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem.activityBarButtonItem(with: .gray)
         
@@ -51,8 +72,8 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
     }
     
     private func updateUser(completion: @escaping (_ error: Error?) -> Void) {
-        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
+        guard let firstName = firstNameLabeledTextField.textField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            let lastName = lastNameLabeledTextField.textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
                 completion(UserInfoError.noInput)
                 return
         }
@@ -62,6 +83,16 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
                 completion(error)
             }
         }
+    }
+    
+}
+
+extension UserNameViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        firstNameLabeledTextField.updateLabelFontForCurrentText()
+        lastNameLabeledTextField.updateLabelFontForCurrentText()
+        return true
     }
     
 }

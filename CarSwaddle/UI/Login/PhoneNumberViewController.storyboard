@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gkd-TG-Hxd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gkd-TG-Hxd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Phone Number View Controller-->
+        <!--Edit Phone Number-->
         <scene sceneID="CPG-WP-AwF">
             <objects>
                 <viewController id="Gkd-TG-Hxd" customClass="PhoneNumberViewController" customModule="CarSwaddle" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,22 +18,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BDS-hE-5go">
-                                <rect key="frame" x="16" y="86" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" smartDashesType="yes" smartInsertDeleteType="yes" smartQuotesType="no" textContentType="tel"/>
-                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0L-9W-AlB" customClass="LabeledTextField" customModule="CarSwaddle" customModuleProvider="target">
+                                <rect key="frame" x="16" y="80" width="343" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="cnk-jP-USs"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Phone number"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="labelTextColor">
+                                        <color key="value" name="textColor3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yz2-sf-a26" firstAttribute="trailing" secondItem="BDS-hE-5go" secondAttribute="trailing" constant="16" id="naJ-q5-sWm"/>
-                            <constraint firstItem="BDS-hE-5go" firstAttribute="top" secondItem="yz2-sf-a26" secondAttribute="top" constant="22" id="shM-FN-yD4"/>
-                            <constraint firstItem="BDS-hE-5go" firstAttribute="leading" secondItem="yz2-sf-a26" secondAttribute="leading" constant="16" id="ulS-X2-ECF"/>
+                            <constraint firstItem="yz2-sf-a26" firstAttribute="trailing" secondItem="c0L-9W-AlB" secondAttribute="trailing" constant="16" id="Ffr-ij-IDW"/>
+                            <constraint firstItem="c0L-9W-AlB" firstAttribute="top" secondItem="yz2-sf-a26" secondAttribute="top" constant="16" id="KW6-hD-082"/>
+                            <constraint firstItem="c0L-9W-AlB" firstAttribute="leading" secondItem="yz2-sf-a26" secondAttribute="leading" constant="16" id="Otm-kz-u1f"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yz2-sf-a26"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ws3-1u-dIz">
+                    <navigationItem key="navigationItem" title="Edit Phone Number" id="ws3-1u-dIz">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="6GG-Yr-fuT">
                             <connections>
                                 <action selector="didTapSave:" destination="Gkd-TG-Hxd" id="38b-43-Dz1"/>
@@ -40,7 +48,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="phoneNumberTextField" destination="BDS-hE-5go" id="dMe-0m-Etr"/>
+                        <outlet property="phoneNumberLabeledTextField" destination="c0L-9W-AlB" id="2ha-kx-QhX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdI-vF-tgq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -66,4 +74,9 @@
             <point key="canvasLocation" x="37.600000000000001" y="176.76161919040482"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="textColor3">
+            <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
 </document>

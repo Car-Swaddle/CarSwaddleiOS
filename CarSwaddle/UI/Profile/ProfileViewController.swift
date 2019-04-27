@@ -63,12 +63,9 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     
     private func setupTableView() {
         tableView.register(TextCell.self)
+        tableView.register(LabeledInfoCell.self)
         tableView.refreshControl = refreshControl
-//        tableView.tableHeaderView = headerView
         tableView.tableFooterView = UIView()
-//        if let user = self.user {
-//            headerView.configure(with: user)
-//        }
     }
     
     @IBAction private func didSelectOptions() {
@@ -126,13 +123,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     
     private func reloadData() {
         tableView.reloadData()
-//        updateHeader()
     }
-    
-//    private func updateHeader() {
-//        guard let user = self.user else { return }
-//        headerView.configure(with: user)
-//    }
     
 }
 
@@ -147,12 +138,14 @@ extension ProfileViewController: UITableViewDataSource {
         let row = rows[indexPath.row]
         switch row {
         case .name:
-            let cell: TextCell = tableView.dequeueCell()
-            cell.textLabel?.text = user?.displayName
+            let cell: LabeledInfoCell = tableView.dequeueCell()
+            cell.valueText = user?.displayName
+            cell.descriptionText = NSLocalizedString("Name", comment: "Name of the user")
             return cell
         case .phoneNumber:
-            let cell: TextCell = tableView.dequeueCell()
-            cell.textLabel?.text = user?.phoneNumber
+            let cell: LabeledInfoCell = tableView.dequeueCell()
+            cell.valueText = user?.phoneNumber
+            cell.descriptionText = NSLocalizedString("Phone number", comment: "Phone number of user")
             return cell
         }
     }

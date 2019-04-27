@@ -13,16 +13,21 @@ import Store
 final class PhoneNumberViewController: UIViewController, StoryboardInstantiating, NavigationDelegating {
 
     weak var navigationDelegate: NavigationDelegate?
-    
-    @IBOutlet private weak var phoneNumberTextField: UITextField!
+    @IBOutlet private weak var phoneNumberLabeledTextField: LabeledTextField!
     
     private var userNetwork: UserNetwork = UserNetwork(serviceRequest: serviceRequest)
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        phoneNumberTextField.text = User.currentUser(context: store.mainContext)?.phoneNumber
+        phoneNumberLabeledTextField.textField.text = User.currentUser(context: store.mainContext)?.phoneNumber
+        phoneNumberLabeledTextField.updateLabelFontForCurrentText()
+        
+        phoneNumberLabeledTextField.textField.autocorrectionType = .no
+        phoneNumberLabeledTextField.textField.autocapitalizationType = .none
+        phoneNumberLabeledTextField.textField.keyboardType = .phonePad
+        phoneNumberLabeledTextField.textField.spellCheckingType = .no
+        phoneNumberLabeledTextField.textField.textContentType = .telephoneNumber
     }
     
     
@@ -32,7 +37,7 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
         
         navigationItem.rightBarButtonItem = spinner
         
-        guard let phoneNumber = phoneNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+        guard let phoneNumber = phoneNumberLabeledTextField.textField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             phoneNumber.count > 3 else {
             return
         }
@@ -47,6 +52,15 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
                 }
             }
         }
+    }
+    
+}
+
+extension PhoneNumberViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        phoneNumberLabeledTextField.updateLabelFontForCurrentText()
+        return true
     }
     
 }
