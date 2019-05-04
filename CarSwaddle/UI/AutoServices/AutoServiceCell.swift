@@ -16,25 +16,42 @@ private let dateFormatter: DateFormatter = {
     return formatter
 }()
 
+private let selectedColor: UIColor = .gray2
+private let unselectedColor: UIColor = .white
+
 final class AutoServiceCell: UITableViewCell, NibRegisterable {
     
-    @IBOutlet private weak var scheduledDateLabel: UILabel!
     @IBOutlet private weak var mechanicLabel: UILabel!
     @IBOutlet private weak var locationLabel: UILabel!
     @IBOutlet private weak var vehicleLabel: UILabel!
     @IBOutlet private weak var serviceTypeLabel: UILabel!
-    
     @IBOutlet private weak var notesLabel: UILabel!
+    
+    @IBOutlet private weak var mechanicNameStackView: UIStackView!
+    @IBOutlet private weak var locationStackView: UIStackView!
+    @IBOutlet private weak var vehicleStackView: UIStackView!
+    @IBOutlet private weak var serviceTypeStackView: UIStackView!
+    @IBOutlet private weak var notesStackView: UIStackView!
+    @IBOutlet private weak var serviceContentView: UIView!
+    
+    @IBOutlet private weak var dateCardViewWrapper: DateCardViewWrapper!
+    
+    @IBOutlet private var dateCardViewHeightConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        serviceTypeStackView.isHiddenInStackView = true
+        notesStackView.isHiddenInStackView = true
+        backgroundColor = ServicesViewController.tableBackgroundColor
+        contentView.backgroundColor = ServicesViewController.tableBackgroundColor
+        
+        selectionStyle = .none
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        scheduledDateLabel.text = ""
         mechanicLabel.text = ""
         locationLabel.text = ""
         vehicleLabel.text = ""
@@ -44,7 +61,7 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
     
     func configure(with autoService: AutoService) {
         if let date = autoService.scheduledDate {
-            scheduledDateLabel.text = dateFormatter.string(from: date)
+            dateCardViewWrapper.view.configure(with: date)
         }
         
         mechanicLabel.text = autoService.mechanic?.user?.displayName
@@ -54,5 +71,37 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         notesLabel.text = autoService.notes
     }
     
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        updateHighlight(animated: animated)
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        updateHighlight(animated: animated)
+    }
+    
+    private func updateHighlight(animated: Bool) {
+        let color = isHighlighted || isSelected ? selectedColor : unselectedColor
+        let updateColor = { self.serviceContentView.backgroundColor = color }
+        if animated {
+            UIView.animate(withDuration: 0.25) {
+                updateColor()
+            }
+        } else {
+            updateColor()
+        }
+    }
+    
 }
 
+
+
+public extension Vehicle {
+    
+    var localizedDescription: String {
+        let vehicleFormatString = NSLocalizedString("%@ • %@", comment: "Vehicle format string: 'vehicle name' • 'license plate number'")
+        return String(format: vehicleFormatString, name, licensePlate ?? "")
+    }
+    
+}

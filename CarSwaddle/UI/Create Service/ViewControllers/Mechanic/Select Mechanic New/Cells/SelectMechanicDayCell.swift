@@ -119,7 +119,7 @@ extension SelectMechanicDayCell: FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         if Calendar.current.isDateInToday(date) {
-            return .red1
+            return .appRed
         } else if !isAvailableDate(date) {
             return .gray3
         } else {

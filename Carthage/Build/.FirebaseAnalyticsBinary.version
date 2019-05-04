@@ -15,16 +15,16 @@
       "hash" : "a8669248da9519e9955e00448e518e1ca6becb32689eedddde237e19ad1136ae"
     },
     {
+      "name" : "nanopb",
+      "hash" : "92cafd16bf77b741e9d8206f7c7d47946122c9643a5d2e11ccf5dc940b303c6e"
+    },
+    {
       "name" : "FirebaseAnalytics",
       "hash" : "fa37cdc2f76f64489ea0b4f17f864e7bcc398b825a54b78d4b9cd75acbfeb2d5"
     },
     {
       "name" : "FIRAnalyticsConnector",
       "hash" : "d917f31b4a5d4c6124fe67dd01fb57bdc65d24e1dcabe0cfeec1b231f75591ce"
-    },
-    {
-      "name" : "nanopb",
-      "hash" : "92cafd16bf77b741e9d8206f7c7d47946122c9643a5d2e11ccf5dc940b303c6e"
     },
     {
       "name" : "FirebaseCore",

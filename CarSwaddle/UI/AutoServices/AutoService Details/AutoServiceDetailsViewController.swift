@@ -32,6 +32,8 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
     private var starRatingView: CosmosView?
     private var ratingTextView: UITextView?
     
+    private lazy var contentInsetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: tableView, actionButton: nil)
+    
     private enum Row: CaseIterable {
         case mechanic
         case date
@@ -62,12 +64,15 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         super.viewDidLoad()
 
         setupTableView()
+        _ = contentInsetAdjuster
     }
     
     private func setupTableView() {
         tableView.tableFooterView = UIView()
         tableView.register(TableViewCell.self)
         tableView.register(ReviewCell.self)
+        tableView.register(NotesTableViewCell.self)
+        tableView.register(AutoServiceVehicleCell.self)
     }
     
 }
@@ -97,8 +102,10 @@ extension AutoServiceDetailsViewController: UITableViewDataSource {
             cell.textLabel?.text = "location"
             return cell
         case .vehicle:
-            let cell: TableViewCell = tableView.dequeueCell()
-            cell.textLabel?.text = autoService.vehicle?.name
+            let cell: AutoServiceVehicleCell = tableView.dequeueCell()
+            if let autoService = autoService {
+                cell.configure(with: autoService)
+            }
             return cell
         case .oilType:
             let cell: TableViewCell = tableView.dequeueCell()
@@ -118,8 +125,8 @@ extension AutoServiceDetailsViewController: UITableViewDataSource {
             cell.configure(with: autoService)
             return cell
         case .notes:
-            let cell: TableViewCell = tableView.dequeueCell()
-            cell.textLabel?.text = autoService.notes
+            let cell: NotesTableViewCell = tableView.dequeueCell()
+            cell.configure(with: autoService)
             return cell
         }
     }

@@ -13,12 +13,20 @@ class TextInputCell: UITableViewCell, NibRegisterable {
     
     @IBOutlet weak var labeledTextField: LabeledTextField!
     
+    var textDidChange: () -> Void = {}
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         labeledTextField.textFieldFont = UIFont.appFont(type: .regular, size: 17)
         
         selectionStyle = .none
+        
+        labeledTextField.textField.addTarget(self, action: #selector((TextInputCell.textChanged)), for: .editingChanged)
+    }
+    
+    @objc private func textChanged() {
+        textDidChange()
     }
     
 }

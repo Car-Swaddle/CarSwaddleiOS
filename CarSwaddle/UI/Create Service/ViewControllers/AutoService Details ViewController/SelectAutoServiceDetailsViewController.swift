@@ -177,9 +177,9 @@ extension SelectAutoServiceDetailsViewController: SelectVehicleCellDelegate, Add
 //            self?.tableView.reloadData()
 //        }
         
-        let cell = tableView.visibleCells.first { cell -> Bool in
-            return cell is SelectVehicleCell
-        } as? SelectVehicleCell
+//        let cell = tableView.visibleCells.first { cell -> Bool in
+//            return cell is SelectVehicleCell
+//        } as? SelectVehicleCell
 //        cell?.reloadVehiclesLocally()
         
 //        tableView.reloadData()

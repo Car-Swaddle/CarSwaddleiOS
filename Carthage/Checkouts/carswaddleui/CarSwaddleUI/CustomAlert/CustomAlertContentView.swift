@@ -3,8 +3,8 @@ import UIKit
 //import Lottie
 
 
-private let defaultTitleTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.blue4, .font: UIFont.systemFont(ofSize: 17, weight: .medium)]
-private let defaultMessageTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray5Alpha, .font: UIFont.systemFont(ofSize: 14)]
+private let defaultTitleTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: #colorLiteral(red: 0.4470588235, green: 0.6901960784, blue: 0.8431372549, alpha: 1), .font: UIFont.systemFont(ofSize: 17, weight: .medium)]
+private let defaultMessageTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6), .font: UIFont.systemFont(ofSize: 14)]
 
 private let buttonTitleFont = UIFont.systemFont(ofSize: 15, weight: .medium)
 private let buttonContentInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
@@ -180,7 +180,7 @@ public final class CustomAlertContentView: UIView, NibInstantiating {
         
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = .gray4
+        label.textColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 1)
         label.numberOfLines = 2
         label.textAlignment = .right
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -374,11 +374,11 @@ public final class CustomAlertContentView: UIView, NibInstantiating {
     }
     
     private func configureButtonForDefault(_ button: UIButton) {
-        button.setTitleColor(.blue5, for: .normal)
-        button.setTitleColor(.blue6, for: .highlighted)
+        button.setTitleColor(#colorLiteral(red: 0.3058823529, green: 0.5490196078, blue: 0.7294117647, alpha: 1), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.1921568627, green: 0.4078431373, blue: 0.6078431373, alpha: 1), for: .highlighted)
         
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.gray2Alpha.cgColor
+        button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
         
         let background = UIColor(white255: 244)
         
@@ -388,11 +388,11 @@ public final class CustomAlertContentView: UIView, NibInstantiating {
     
     private func configureButtonForPreferred(_ button: UIButton) {
         button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.gray3, for: .highlighted)
+        button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1), for: .highlighted)
         
         button.layer.borderWidth = 0
         
-        let backgroundColor: UIColor = .aqua4
+        let backgroundColor: UIColor = #colorLiteral(red: 0.4117647059, green: 0.7450980392, blue: 0.6588235294, alpha: 1)
         
         button.setBackgroundImage(UIImage.from(color: backgroundColor), for: .normal)
         button.setBackgroundImage(UIImage.from(color: backgroundColor.color(adjustedBy: -0.1)), for: .highlighted)

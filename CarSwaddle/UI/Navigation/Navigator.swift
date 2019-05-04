@@ -71,9 +71,6 @@ final class Navigator: NSObject {
         actionButton.defaultTitleFont = UIFont.appFont(type: .semiBold, size: 20)
         actionButton.setTitleColor(.gray3, for: .disabled)
         
-        tabBarController.view.layoutIfNeeded()
-        ContentInsetAdjuster.defaultBottomOffset = tabBarController.tabBar.bounds.height
-        
         let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 20) as Any]
         UINavigationBar.appearance().titleTextAttributes = attributes
         UINavigationBar.appearance().barTintColor = .veryLightGray
@@ -145,6 +142,9 @@ final class Navigator: NSObject {
         tabController.view.backgroundColor = .white
         
         self._tabBarController = tabController
+        
+        tabController.view.layoutIfNeeded()
+        ContentInsetAdjuster.defaultBottomOffset = tabController.tabBar.bounds.height
         
         return tabController
     }

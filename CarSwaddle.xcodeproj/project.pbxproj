@@ -99,6 +99,10 @@
 		998D3AED21DDCF5C003DD717 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998D3AEB21DDCF5C003DD717 /* ReviewCell.xib */; };
 		998D3AF021DDCF6A003DD717 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AEE21DDCF6A003DD717 /* TableViewCell.swift */; };
 		998D3AF121DDCF6A003DD717 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998D3AEF21DDCF6A003DD717 /* TableViewCell.xib */; };
+		99985FF4227C0B1E00113536 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99985FF2227C0B1E00113536 /* HeaderCell.swift */; };
+		99985FF5227C0B1E00113536 /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99985FF3227C0B1E00113536 /* HeaderCell.xib */; };
+		99985FF6227C158F00113536 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 99985FF8227C158F00113536 /* Localizable.stringsdict */; };
+		99985FF9227C159200113536 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99985FFB227C159200113536 /* Localizable.strings */; };
 		99A0AEF4224EC1D40001FDC6 /* SelectMechanicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0AEF3224EC1D40001FDC6 /* SelectMechanicTableViewController.swift */; };
 		99A0AEF6224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A0AEF5224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard */; };
 		99A0AEF9224EC24D0001FDC6 /* SelectMechanicProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0AEF7224EC24D0001FDC6 /* SelectMechanicProfileCell.swift */; };
@@ -120,6 +124,8 @@
 		99AEE1C722740D2500938462 /* LabeledInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1C522740D2400938462 /* LabeledInfoCell.swift */; };
 		99AEE1C822740D2500938462 /* LabeledInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99AEE1C622740D2400938462 /* LabeledInfoCell.xib */; };
 		99AEE1CA2274154C00938462 /* LabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1C92274154C00938462 /* LabeledTextField.swift */; };
+		99AEE1CC2277D7CB00938462 /* DateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1CB2277D7CB00938462 /* DateCardView.swift */; };
+		99AEE1CE2277D7E400938462 /* DateCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99AEE1CD2277D7E400938462 /* DateCardView.xib */; };
 		99D5D99121F43C1600E6A511 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03D821F429BA00546C58 /* Authentication.framework */; };
 		99D5D99321F43C1600E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375AA2171D81900F15BEC /* CarSwaddleNetworkRequest.framework */; };
 		99D5D99421F43C1600E6A511 /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03D921F429BA00546C58 /* CarSwaddleUI.framework */; };
@@ -130,7 +136,6 @@
 		99D5D9E521F5CD9700E6A511 /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375A02171C02700F15BEC /* Store.framework */; };
 		99D5D9E721F5CD9700E6A511 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995D0103216AD7C3009B1895 /* KeychainAccess.framework */; };
 		99D5DA4721FD15EC00E6A511 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D5DA4621FD15EC00E6A511 /* AuthenticationServices.framework */; };
-		99D5DA4921FD302100E6A511 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D5DA4821FD302100E6A511 /* CloudKit.framework */; };
 		99DC25FA2246C2A0009E0A15 /* AutoServiceCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25F92246C2A0009E0A15 /* AutoServiceCreation.swift */; };
 		99DC25FC2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25FB2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift */; };
 		99DC25FE2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DC25FD2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard */; };
@@ -178,6 +183,12 @@
 		99E2E7E1224D36D2006DC577 /* LocationSearchResultsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E2E7E0224D36D2006DC577 /* LocationSearchResultsViewController.storyboard */; };
 		99E2E7E4224D569B006DC577 /* LocationSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E2E7E2224D569B006DC577 /* LocationSearchCell.swift */; };
 		99E2E7E5224D569B006DC577 /* LocationSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E2E7E3224D569B006DC577 /* LocationSearchCell.xib */; };
+		99E48161227AB7B60040B882 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4815F227AB7B60040B882 /* NotesTableViewCell.swift */; };
+		99E48164227ABBB60040B882 /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E48163227ABB630040B882 /* NotesTableViewCell.xib */; };
+		99E48167227AC5780040B882 /* AutoServiceVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E48166227AC5780040B882 /* AutoServiceVehicleCell.swift */; };
+		99E48168227AC5880040B882 /* AutoServiceVehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E48165227AC5770040B882 /* AutoServiceVehicleCell.xib */; };
+		99E4816A227BFB1E0040B882 /* ServiceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E48169227BFB1E0040B882 /* ServiceHeaderView.swift */; };
+		99E4816C227BFB390040B882 /* ServiceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E4816B227BFB390040B882 /* ServiceHeaderView.xib */; };
 		99E4CED92261CA760007F6F8 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED02261CA750007F6F8 /* FirebaseInstanceID.framework */; };
 		99E4CEDA2261CA760007F6F8 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED12261CA750007F6F8 /* FIRAnalyticsConnector.framework */; };
 		99E4CEDB2261CA760007F6F8 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED22261CA750007F6F8 /* FirebaseCoreDiagnostics.framework */; };
@@ -188,8 +199,6 @@
 		99E4CEE02261CA760007F6F8 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED72261CA760007F6F8 /* FirebaseCore.framework */; };
 		99E4CEE12261CA760007F6F8 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED82261CA760007F6F8 /* GoogleUtilities.framework */; };
 		99E4CEE32261CB900007F6F8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99E4CEE22261CB900007F6F8 /* GoogleService-Info.plist */; };
-		99E66D2721DE20FC00C6E3E1 /* localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 99E66D2621DE20FC00C6E3E1 /* localizable.stringsdict */; };
-		99E66D2921DE88BA00C6E3E1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99E66D2821DE88BA00C6E3E1 /* Localizable.strings */; };
 		99E66DA421E294A600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */; };
 		99E66DA621E294AE00C6E3E1 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */; };
 		99E66DA821E2963A00C6E3E1 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA721E2963A00C6E3E1 /* UserImageView.swift */; };
@@ -326,6 +335,10 @@
 		998D3AEE21DDCF6A003DD717 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		998D3AEF21DDCF6A003DD717 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		998D3AF321DDD6CE003DD717 /* Cosmos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cosmos.framework; path = Carthage/Build/iOS/Cosmos.framework; sourceTree = "<group>"; };
+		99985FF2227C0B1E00113536 /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		99985FF3227C0B1E00113536 /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
+		99985FF7227C158F00113536 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		99985FFA227C159200113536 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		99A0AEF3224EC1D40001FDC6 /* SelectMechanicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMechanicTableViewController.swift; sourceTree = "<group>"; };
 		99A0AEF5224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectMechanicTableViewController.storyboard; sourceTree = "<group>"; };
 		99A0AEF7224EC24D0001FDC6 /* SelectMechanicProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMechanicProfileCell.swift; sourceTree = "<group>"; };
@@ -347,6 +360,8 @@
 		99AEE1C522740D2400938462 /* LabeledInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledInfoCell.swift; sourceTree = "<group>"; };
 		99AEE1C622740D2400938462 /* LabeledInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledInfoCell.xib; sourceTree = "<group>"; };
 		99AEE1C92274154C00938462 /* LabeledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextField.swift; sourceTree = "<group>"; };
+		99AEE1CB2277D7CB00938462 /* DateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateCardView.swift; path = CarSwaddle/UI/DateCardView.swift; sourceTree = SOURCE_ROOT; };
+		99AEE1CD2277D7E400938462 /* DateCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCardView.xib; sourceTree = "<group>"; };
 		99BC8D022245F3A000B732E7 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
 		99BC8D032245F3A200B732E7 /* Montserrat-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.otf"; sourceTree = "<group>"; };
 		99BC8D042245F3A300B732E7 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -385,7 +400,6 @@
 		99BC8D252245F3D900B732E7 /* Montserrat-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.otf"; sourceTree = "<group>"; };
 		99C791C32150C8A8000167CB /* CarSwaddle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarSwaddle-Bridging-Header.h"; sourceTree = "<group>"; };
 		99D5DA4621FD15EC00E6A511 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
-		99D5DA4821FD302100E6A511 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		99DC25F92246C2A0009E0A15 /* AutoServiceCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCreation.swift; sourceTree = "<group>"; };
 		99DC25FB2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCreationProgressViewController.swift; sourceTree = "<group>"; };
 		99DC25FD2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoServiceCreationProgressViewController.storyboard; sourceTree = "<group>"; };
@@ -397,6 +411,12 @@
 		99E2E7E0224D36D2006DC577 /* LocationSearchResultsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationSearchResultsViewController.storyboard; sourceTree = "<group>"; };
 		99E2E7E2224D569B006DC577 /* LocationSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchCell.swift; sourceTree = "<group>"; };
 		99E2E7E3224D569B006DC577 /* LocationSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationSearchCell.xib; sourceTree = "<group>"; };
+		99E4815F227AB7B60040B882 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		99E48163227ABB630040B882 /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
+		99E48165227AC5770040B882 /* AutoServiceVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceVehicleCell.xib; sourceTree = "<group>"; };
+		99E48166227AC5780040B882 /* AutoServiceVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceVehicleCell.swift; sourceTree = "<group>"; };
+		99E48169227BFB1E0040B882 /* ServiceHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHeaderView.swift; sourceTree = "<group>"; };
+		99E4816B227BFB390040B882 /* ServiceHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceHeaderView.xib; sourceTree = "<group>"; };
 		99E4CED02261CA750007F6F8 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = SOURCE_ROOT; };
 		99E4CED12261CA750007F6F8 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FIRAnalyticsConnector.framework; sourceTree = SOURCE_ROOT; };
 		99E4CED22261CA750007F6F8 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = SOURCE_ROOT; };
@@ -407,8 +427,6 @@
 		99E4CED72261CA760007F6F8 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = SOURCE_ROOT; };
 		99E4CED82261CA760007F6F8 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = SOURCE_ROOT; };
 		99E4CEE22261CB900007F6F8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		99E66D2621DE20FC00C6E3E1 /* localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = localizable.stringsdict; sourceTree = "<group>"; };
-		99E66D2821DE88BA00C6E3E1 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		99E66DA721E2963A00C6E3E1 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
@@ -438,7 +456,6 @@
 				99D5D9E721F5CD9700E6A511 /* KeychainAccess.framework in Frameworks */,
 				99D5D99321F43C1600E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */,
 				99D5DA4721FD15EC00E6A511 /* AuthenticationServices.framework in Frameworks */,
-				99D5DA4921FD302100E6A511 /* CloudKit.framework in Frameworks */,
 				99E4CEDF2261CA760007F6F8 /* Firebase.framework in Frameworks */,
 				99D5D9E521F5CD9700E6A511 /* Store.framework in Frameworks */,
 				99E4CEDC2261CA760007F6F8 /* nanopb.framework in Frameworks */,
@@ -637,6 +654,12 @@
 				9955BC3021556566008DAF8E /* ServicesViewController.storyboard */,
 				997DBC9F21B79E620080F42C /* AutoServiceCell.swift */,
 				997DBCA021B79E620080F42C /* AutoServiceCell.xib */,
+				99AEE1CB2277D7CB00938462 /* DateCardView.swift */,
+				99AEE1CD2277D7E400938462 /* DateCardView.xib */,
+				99E48169227BFB1E0040B882 /* ServiceHeaderView.swift */,
+				99E4816B227BFB390040B882 /* ServiceHeaderView.xib */,
+				99985FF2227C0B1E00113536 /* HeaderCell.swift */,
+				99985FF3227C0B1E00113536 /* HeaderCell.xib */,
 				998D3AF221DDCFA6003DD717 /* AutoService Details */,
 			);
 			path = AutoServices;
@@ -719,6 +742,10 @@
 				998D3AEB21DDCF5C003DD717 /* ReviewCell.xib */,
 				998D3AEE21DDCF6A003DD717 /* TableViewCell.swift */,
 				998D3AEF21DDCF6A003DD717 /* TableViewCell.xib */,
+				99E4815F227AB7B60040B882 /* NotesTableViewCell.swift */,
+				99E48163227ABB630040B882 /* NotesTableViewCell.xib */,
+				99E48166227AC5780040B882 /* AutoServiceVehicleCell.swift */,
+				99E48165227AC5770040B882 /* AutoServiceVehicleCell.xib */,
 			);
 			path = "AutoService Details";
 			sourceTree = "<group>";
@@ -730,8 +757,8 @@
 				99BC8D002245F37E00B732E7 /* Fonts */,
 				997DBC612198FBC90080F42C /* lehi.gpx */,
 				990F4377214252C700E65FC1 /* Assets.xcassets */,
-				99E66D2621DE20FC00C6E3E1 /* localizable.stringsdict */,
-				99E66D2821DE88BA00C6E3E1 /* Localizable.strings */,
+				99985FF8227C158F00113536 /* Localizable.stringsdict */,
+				99985FFB227C159200113536 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -907,7 +934,6 @@
 				99E4CED82261CA760007F6F8 /* GoogleUtilities.framework */,
 				99E4CED32261CA750007F6F8 /* nanopb.framework */,
 				99A0AF16224F53DD0001FDC6 /* FSCalendar.framework */,
-				99D5DA4821FD302100E6A511 /* CloudKit.framework */,
 				99D5DA4621FD15EC00E6A511 /* AuthenticationServices.framework */,
 				998D03D821F429BA00546C58 /* Authentication.framework */,
 				998D03D921F429BA00546C58 /* CarSwaddleUI.framework */,
@@ -996,13 +1022,13 @@
 								enabled = 1;
 							};
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.AutoFillCredentialProvider = {
 								enabled = 1;
 							};
 							com.apple.Keychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -1011,7 +1037,7 @@
 								enabled = 1;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -1053,9 +1079,10 @@
 				99DC262B2246ECC2009E0A15 /* Montserrat-ExtraBold.otf in Resources */,
 				991AFC9722506AE100AD6614 /* HourDisplayView.xib in Resources */,
 				991AFCB22250B38400AD6614 /* AddCollectionViewCell.xib in Resources */,
+				99AEE1CE2277D7E400938462 /* DateCardView.xib in Resources */,
 				99A0AF15224EEA760001FDC6 /* FocusedCollectionViewCell.xib in Resources */,
 				991AFCAC2250B2C700AD6614 /* OilTypeCollectionViewCell.xib in Resources */,
-				99E66D2721DE20FC00C6E3E1 /* localizable.stringsdict in Resources */,
+				99985FF6227C158F00113536 /* Localizable.stringsdict in Resources */,
 				998D3AE921DDCC52003DD717 /* AutoServiceDetailsViewController.storyboard in Resources */,
 				998D3AF121DDCF6A003DD717 /* TableViewCell.xib in Resources */,
 				99DC263E2246ECC2009E0A15 /* MontserratAlternates-ExtraBoldItalic.otf in Resources */,
@@ -1063,6 +1090,7 @@
 				997DBCA221B79E620080F42C /* AutoServiceCell.xib in Resources */,
 				99DC26272246ECC2009E0A15 /* Montserrat-Black.otf in Resources */,
 				991AFCBE2259299A00AD6614 /* PriceView.xib in Resources */,
+				99E48168227AC5880040B882 /* AutoServiceVehicleCell.xib in Resources */,
 				991AFCA02250AFCA00AD6614 /* SelectVehicleCell.xib in Resources */,
 				99DC26462246ECC2009E0A15 /* MontserratAlternates-Regular.otf in Resources */,
 				99FEB008215DEED80009BC07 /* OilTypeCell.xib in Resources */,
@@ -1081,15 +1109,17 @@
 				99A0AEFA224EC24D0001FDC6 /* SelectMechanicProfileCell.xib in Resources */,
 				99425475215781F80075EDCA /* SelectLocationViewController.storyboard in Resources */,
 				99DC263F2246ECC2009E0A15 /* MontserratAlternates-ExtraLight.otf in Resources */,
+				99E4816C227BFB390040B882 /* ServiceHeaderView.xib in Resources */,
 				9942547E2157F8300075EDCA /* SelectVehicleViewController.storyboard in Resources */,
 				99E2E7E1224D36D2006DC577 /* LocationSearchResultsViewController.storyboard in Resources */,
 				99A0AEFE224EC2800001FDC6 /* SelectMechanicDayCell.xib in Resources */,
-				99E66D2921DE88BA00C6E3E1 /* Localizable.strings in Resources */,
+				99985FF9227C159200113536 /* Localizable.strings in Resources */,
 				99DC26382246ECC2009E0A15 /* Montserrat-ThinItalic.otf in Resources */,
 				997DBC71219965DB0080F42C /* HourCollectionViewCell.xib in Resources */,
 				9955BC3F215588DB008DAF8E /* CreateServiceLocationCell.xib in Resources */,
 				99DC26432246ECC2009E0A15 /* MontserratAlternates-LightItalic.otf in Resources */,
 				99DC263A2246ECC2009E0A15 /* MontserratAlternates-BlackItalic.otf in Resources */,
+				99985FF5227C0B1E00113536 /* HeaderCell.xib in Resources */,
 				99DC26282246ECC2009E0A15 /* Montserrat-BlackItalic.otf in Resources */,
 				998D3AED21DDCF5C003DD717 /* ReviewCell.xib in Resources */,
 				9942547D2157F8290075EDCA /* SelectMechanicViewController.storyboard in Resources */,
@@ -1132,6 +1162,7 @@
 				997DBC43218EBD210080F42C /* MechanicSelectCell.xib in Resources */,
 				9942547A2157F7AF0075EDCA /* CreateServiceVehicleCell.xib in Resources */,
 				99DC26292246ECC2009E0A15 /* Montserrat-Bold.otf in Resources */,
+				99E48164227ABBB60040B882 /* NotesTableViewCell.xib in Resources */,
 				99DC26322246ECC2009E0A15 /* Montserrat-Medium.otf in Resources */,
 				990F4373214252C600E65FC1 /* Main.storyboard in Resources */,
 				99DC263B2246ECC2009E0A15 /* MontserratAlternates-Bold.otf in Resources */,
@@ -1210,6 +1241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99985FF4227C0B1E00113536 /* HeaderCell.swift in Sources */,
 				994CA9F7215206CD00D41F6C /* LoginViewController.swift in Sources */,
 				99AEE1C722740D2500938462 /* LabeledInfoCell.swift in Sources */,
 				99E2E7E4224D569B006DC577 /* LocationSearchCell.swift in Sources */,
@@ -1230,10 +1262,12 @@
 				990F4370214252C600E65FC1 /* ViewController.swift in Sources */,
 				99E66DA821E2963A00C6E3E1 /* UserImageView.swift in Sources */,
 				990F436E214252C600E65FC1 /* AppDelegate.swift in Sources */,
+				99E48161227AB7B60040B882 /* NotesTableViewCell.swift in Sources */,
 				99A2CDAE218DA179003ED903 /* ServiceRequest.swift in Sources */,
 				99425447215762750075EDCA /* CreateServiceVehicleCell.swift in Sources */,
 				99A0AEF4224EC1D40001FDC6 /* SelectMechanicTableViewController.swift in Sources */,
 				99A0AF11224EE9390001FDC6 /* FocusedCollectionView.swift in Sources */,
+				99AEE1CC2277D7CB00938462 /* DateCardView.swift in Sources */,
 				9942544A215762A10075EDCA /* CreateServiceMechanicCell.swift in Sources */,
 				998D3AEC21DDCF5C003DD717 /* ReviewCell.swift in Sources */,
 				991AFCA72250B2BC00AD6614 /* VehicleCollectionViewCell.swift in Sources */,
@@ -1241,6 +1275,7 @@
 				99FEB006215DEECB0009BC07 /* OilTypeCell.swift in Sources */,
 				997DBC42218EBD210080F42C /* MechanicSelectCell.swift in Sources */,
 				99E66DA421E294A600C6E3E1 /* ProfileHeaderView.swift in Sources */,
+				99E48167227AC5780040B882 /* AutoServiceVehicleCell.swift in Sources */,
 				991AFCBC2259297300AD6614 /* PriceView.swift in Sources */,
 				99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */,
 				99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */,
@@ -1287,6 +1322,7 @@
 				993BA12621585ACA00DB95EF /* LocationManager.swift in Sources */,
 				991AFC92224FF01500AD6614 /* TimeSlotCollectionViewCell.swift in Sources */,
 				997DBC6621995B320080F42C /* MechanicViewController.swift in Sources */,
+				99E4816A227BFB1E0040B882 /* ServiceHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1337,6 +1373,22 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		99985FF8227C158F00113536 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99985FF7227C158F00113536 /* en */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
+		99985FFB227C159200113536 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99985FFA227C159200113536 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1344,6 +1396,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1406,6 +1459,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1465,7 +1519,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddle/Support/CarSwaddle.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MG7WLQ6J4A;
+				DEVELOPMENT_TEAM = 977533WLK8;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1482,7 +1536,7 @@
 					"$(SRCROOT)/Carthage/Build/iOS",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CarSwaddle/Support/CarSwaddle-Bridging-Header.h";
@@ -1498,7 +1552,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddle/Support/CarSwaddle.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MG7WLQ6J4A;
+				DEVELOPMENT_TEAM = 977533WLK8;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1515,7 +1569,7 @@
 					"$(SRCROOT)/Carthage/Build/iOS",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CarSwaddle/Support/CarSwaddle-Bridging-Header.h";

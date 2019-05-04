@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Hello %@, you have %d upcoming appointments</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Hello %@, you have %#@APPOINTMENTS@</string>
+		<key>APPOINTMENTS</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>%d upcoming appointments</string>
+			<key>one</key>
+			<string>%d upcoming appointment</string>
+			<key>other</key>
+			<string>%d upcoming appointments</string>
+		</dict>
+	</dict>
+	<key>%@ avg. from %d ratings</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%@ avg. from %#@RATINGS@</string>
+		<key>RATINGS</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>%d ratings</string>
+			<key>one</key>
+			<string>%d rating</string>
+			<key>other</key>
+			<string>%d ratings</string>
+		</dict>
+	</dict>
+	<key>%d services completed</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@SERVICE@ completed</string>
+		<key>SERVICE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>%d services</string>
+			<key>one</key>
+			<string>%d service</string>
+			<key>other</key>
+			<string>%d services</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -40,9 +40,12 @@ class AddVehicleViewController: UIViewController, StoryboardInstantiating {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        tableView.dataSource = nil
+//        tableView.delegate = nil
+        
         setupTableView()
         actionButton.addTarget(self, action: #selector(AddVehicleViewController.didTapSave), for: .touchUpInside)
-        
+
         insetAdjuster.includeTabBarInKeyboardCalculation = false
         insetAdjuster.showActionButtonAboveKeyboard = true
         insetAdjuster.positionActionButton()
@@ -99,18 +102,20 @@ extension AddVehicleViewController: UITableViewDataSource {
             cell.labeledTextField.textField.placeholder = NSLocalizedString("e.g., Ford Explorer 1996", comment: "Example of a ame of the vehicle")
             cell.labeledTextField.labelText = NSLocalizedString("Vehicle name", comment: "Name of the vehicle")
             cell.labeledTextField.textField.autocapitalizationType = .words
-            
-            vehicleNameTextField = cell.labeledTextField.textField
+            cell.textDidChange = { [weak self] in
+                self?.vehicleName = cell.labeledTextField.textField.text
+            }
         case .licensePlate:
             cell.labeledTextField.textField.placeholder = NSLocalizedString("e.g., 2GAT123", comment: "Example of a license plate")
             cell.labeledTextField.labelText = NSLocalizedString("License plate", comment: "License plate of a vehicle")
             cell.labeledTextField.textField.autocapitalizationType = .allCharacters
-            licensePlateTextField = cell.labeledTextField.textField
+            cell.textDidChange = { [weak self] in
+                self?.licensePlate = cell.labeledTextField.textField.text
+            }
         }
         
         cell.labeledTextField.labelTextExistsFont = UIFont.appFont(type: .regular, size: 15)
         cell.labeledTextField.labelTextNotExistsFont = UIFont.appFont(type: .semiBold, size: 15)
-        cell.labeledTextField.textField.addTarget(self, action: #selector((AddVehicleViewController.textDidChange(_:))), for: .editingChanged)
         cell.labeledTextField.textField.autocorrectionType = .no
         cell.labeledTextField.textField.spellCheckingType = .no
         

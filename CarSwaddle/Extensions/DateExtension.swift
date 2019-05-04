@@ -19,6 +19,10 @@ extension Date {
         return Calendar.current.date(byAdding: .day, value: -1, to: self, wrappingComponents: false)!
     }
     
+    func dateByAdding(hours: Int) -> Date {
+        return Calendar.current.date(byAdding: .hour, value: hours, to: self, wrappingComponents: false)!
+    }
+    
     func dateByAdding(years: Int) -> Date {
         return Calendar.current.date(byAdding: .year, value: years, to: self, wrappingComponents: false)!
     }
@@ -31,6 +35,10 @@ extension Date {
     /// 1 = Sunday, 2 = Monday, 3 = Tuesday, 4 = Wednesday, 5 = Thursday, 6 = Friday, 7 = Saturday
     var dayOfWeek: Int? {
         return Calendar.current.dateComponents([.weekday], from: self).weekday
+    }
+    
+    var dayOfMonth: Int? {
+        return Calendar.current.dateComponents([.day], from: self).day
     }
     
     var startOfDay: Date {

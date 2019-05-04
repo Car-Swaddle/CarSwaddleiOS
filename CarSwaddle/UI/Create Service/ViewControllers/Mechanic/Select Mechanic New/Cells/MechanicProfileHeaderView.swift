@@ -24,8 +24,8 @@ let ratingFormatter: NumberFormatter = {
     return numberFormatter
 }()
 
-private let formatServicesString = NSLocalizedString("%i services completed", comment: "Auto services provided.")
-private let formatAveragesString = NSLocalizedString("%@ avg. from %i ratings", comment: "Ratings report")
+private let formatServicesString = NSLocalizedString("%d services completed", comment: "Auto services provided.")
+private let formatAveragesString = NSLocalizedString("%@ avg. from %d ratings", comment: "Ratings report")
 
 protocol MechanicProfileHeaderViewDelegate: AnyObject {
     func didSelectCamera(headerView: MechanicProfileHeaderView)
@@ -74,16 +74,6 @@ final class MechanicProfileHeaderView: UIView, NibInstantiating {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        editImageButton.backgroundColor = .white
-//        editImageButton.layer.cornerRadius = 11
-//        editImageButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
-//        editImageButton.titleLabel?.font = UIFont.appFont(type: .semiBold, size: 17)
-//
-//        editImageButton.layer.shadowOpacity = 0.2
-//        editImageButton.layer.shadowRadius = 2
-//        editImageButton.layer.shadowColor = UIColor.black.cgColor
-//        editImageButton.layer.shadowOffset = CGSize(width: 2, height: 2)
-        
         editImageButton.isHiddenInStackView = true
         
         starRatingView.settings.fillMode = .precise
@@ -91,9 +81,6 @@ final class MechanicProfileHeaderView: UIView, NibInstantiating {
         ratingsLabel.font = UIFont.appFont(type: .regular, size: 17)
         servicesProvidedLabel.font = UIFont.appFont(type: .regular, size: 17)
         
-//        pulseAnimationView.animation = Animation.named("circle-pulse")
-//        pulseAnimationView.animationSpeed = 0.7
-//        pulseAnimationView.loopMode = .loop
         pulseAnimationView.isHiddenInStackView = true
     }
     
@@ -135,8 +122,6 @@ final class MechanicProfileHeaderView: UIView, NibInstantiating {
         self.starRatingView.rating = averageRating
         
         let numberOfRatings = stats.numberOfRatings
-//        let averageRatingString = ratingFormatter.string(from: NSNumber(value: averageRating)) ?? ""
-//        ratingsLabel.text = String(format: formatAveragesString, averageRatingString, numberOfRatings)
         ratingsLabel.attributedText = starRatingAttributedString(withAverage: averageRating, numberOfRatings: numberOfRatings)
         
         servicesProvidedLabel.attributedText = self.attributedString(forNumberOfServices: stats.autoServicesProvided)

@@ -10,7 +10,7 @@ import Stripe
 import CarSwaddleNetworkRequest
 
 public let stripePublishableKey: String = "pk_test_93FPMcPQ4mSaWfjtMWlkGvDr00ytb8KnDJ"
-public let appleMerchantIdentifier: String = "merchant.com.carswaddle"
+public let appleMerchantIdentifier: String = "merchant.com.carswaddle.carswaddle"
 
 
 let stripe = StripeClient()

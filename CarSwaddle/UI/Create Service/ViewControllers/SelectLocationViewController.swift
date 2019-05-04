@@ -57,6 +57,8 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     private lazy var contentAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: confirmButton)
     private lazy var locationSearchResultsViewController = LocationSearchResultsViewController.viewControllerFromStoryboard()
     
+    private var didUpdateToUserLocation: Bool = false
+    
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.delegate = self
@@ -71,7 +73,7 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         
         locationManager.promptUserForLocationAccess()
         
-        centerOnUserCurrentLocation()
+//        centerOnUserCurrentLocation()
         
         setupBarButtons()
         
@@ -138,19 +140,19 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         dismiss(animated: true, completion: nil)
     }
     
-    private func centerOnUserCurrentLocation() {
-//        if location == nil {
-            locationManager.currentLocationPlacemark { [weak self] placemark, error in
-                DispatchQueue.main.async {
-                    if let placemark = placemark {
-                        self?.setLocation(with: placemark)
-                    }
-                }
-            }
-//        } else {
-//            updateMapWithCurrentLocation()
-//        }
-    }
+//    private func centerOnUserCurrentLocation() {
+////        if location == nil {
+////            locationManager.currentLocationPlacemark { [weak self] placemark, error in
+////                DispatchQueue.main.async {
+////                    if let placemark = placemark {
+////                        self?.setLocation(with: placemark)
+////                    }
+////                }
+////            }
+////        } else {
+////            updateMapWithCurrentLocation()
+////        }
+//    }
     
 //    private func updateMapWithCurrentLocation() {
 ////        guard let location = location else { return }
@@ -239,7 +241,10 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
 extension SelectLocationViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        
+        if didUpdateToUserLocation == false {
+            didUpdateToUserLocation = true
+            setLocation(with: userLocation.coordinate)
+        }
 //        if location == nil {
 //            setLocation(with: userLocation)
 //            updateMapWithCurrentLocation()
