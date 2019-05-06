@@ -103,6 +103,15 @@
 		99985FF5227C0B1E00113536 /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99985FF3227C0B1E00113536 /* HeaderCell.xib */; };
 		99985FF6227C158F00113536 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 99985FF8227C158F00113536 /* Localizable.stringsdict */; };
 		99985FF9227C159200113536 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99985FFB227C159200113536 /* Localizable.strings */; };
+		99986000227E29BB00113536 /* AutoServiceLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99985FFF227E29BB00113536 /* AutoServiceLocationCell.swift */; };
+		99986001227E29C400113536 /* AutoServiceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99985FFE227E29BB00113536 /* AutoServiceLocationCell.xib */; };
+		99986003227E2A0900113536 /* CLLocationDistanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99986002227E2A0900113536 /* CLLocationDistanceExtension.swift */; };
+		99986006227E314900113536 /* AutoServiceDetailsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99986004227E314900113536 /* AutoServiceDetailsHeaderCell.swift */; };
+		99986007227E314900113536 /* AutoServiceDetailsHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99986005227E314900113536 /* AutoServiceDetailsHeaderCell.xib */; };
+		99986009227E39E200113536 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99986008227E39E200113536 /* PillView.swift */; };
+		9998600B227F5A6200113536 /* GoogleService-Info-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9998600A227F5A6200113536 /* GoogleService-Info-3.plist */; };
+		9998600D227F5F6100113536 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9998600C227F5F6100113536 /* GoogleService-Info.plist */; };
+		9998600F227F6E9D00113536 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9998600E227F6E9D00113536 /* CircleButton.swift */; };
 		99A0AEF4224EC1D40001FDC6 /* SelectMechanicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0AEF3224EC1D40001FDC6 /* SelectMechanicTableViewController.swift */; };
 		99A0AEF6224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A0AEF5224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard */; };
 		99A0AEF9224EC24D0001FDC6 /* SelectMechanicProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0AEF7224EC24D0001FDC6 /* SelectMechanicProfileCell.swift */; };
@@ -198,7 +207,6 @@
 		99E4CEDF2261CA760007F6F8 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED62261CA760007F6F8 /* Firebase.framework */; };
 		99E4CEE02261CA760007F6F8 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED72261CA760007F6F8 /* FirebaseCore.framework */; };
 		99E4CEE12261CA760007F6F8 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED82261CA760007F6F8 /* GoogleUtilities.framework */; };
-		99E4CEE32261CB900007F6F8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99E4CEE22261CB900007F6F8 /* GoogleService-Info.plist */; };
 		99E66DA421E294A600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */; };
 		99E66DA621E294AE00C6E3E1 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */; };
 		99E66DA821E2963A00C6E3E1 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA721E2963A00C6E3E1 /* UserImageView.swift */; };
@@ -339,6 +347,15 @@
 		99985FF3227C0B1E00113536 /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
 		99985FF7227C158F00113536 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		99985FFA227C159200113536 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		99985FFE227E29BB00113536 /* AutoServiceLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceLocationCell.xib; sourceTree = "<group>"; };
+		99985FFF227E29BB00113536 /* AutoServiceLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceLocationCell.swift; sourceTree = "<group>"; };
+		99986002227E2A0900113536 /* CLLocationDistanceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationDistanceExtension.swift; sourceTree = "<group>"; };
+		99986004227E314900113536 /* AutoServiceDetailsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceDetailsHeaderCell.swift; sourceTree = "<group>"; };
+		99986005227E314900113536 /* AutoServiceDetailsHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceDetailsHeaderCell.xib; sourceTree = "<group>"; };
+		99986008227E39E200113536 /* PillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
+		9998600A227F5A6200113536 /* GoogleService-Info-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-3.plist"; sourceTree = "<group>"; };
+		9998600C227F5F6100113536 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9998600E227F6E9D00113536 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		99A0AEF3224EC1D40001FDC6 /* SelectMechanicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMechanicTableViewController.swift; sourceTree = "<group>"; };
 		99A0AEF5224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectMechanicTableViewController.storyboard; sourceTree = "<group>"; };
 		99A0AEF7224EC24D0001FDC6 /* SelectMechanicProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMechanicProfileCell.swift; sourceTree = "<group>"; };
@@ -426,7 +443,6 @@
 		99E4CED62261CA760007F6F8 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = SOURCE_ROOT; };
 		99E4CED72261CA760007F6F8 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = SOURCE_ROOT; };
 		99E4CED82261CA760007F6F8 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = SOURCE_ROOT; };
-		99E4CEE22261CB900007F6F8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		99E66DA721E2963A00C6E3E1 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
@@ -635,6 +651,7 @@
 				997DBC7321997E020080F42C /* TimeIntervalExtension.swift */,
 				997DBC7521997E370080F42C /* DateExtension.swift */,
 				99F220252246933500020024 /* FontExtension.swift */,
+				99986002227E2A0900113536 /* CLLocationDistanceExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -746,6 +763,12 @@
 				99E48163227ABB630040B882 /* NotesTableViewCell.xib */,
 				99E48166227AC5780040B882 /* AutoServiceVehicleCell.swift */,
 				99E48165227AC5770040B882 /* AutoServiceVehicleCell.xib */,
+				99985FFF227E29BB00113536 /* AutoServiceLocationCell.swift */,
+				99985FFE227E29BB00113536 /* AutoServiceLocationCell.xib */,
+				99986004227E314900113536 /* AutoServiceDetailsHeaderCell.swift */,
+				99986005227E314900113536 /* AutoServiceDetailsHeaderCell.xib */,
+				9998600E227F6E9D00113536 /* CircleButton.swift */,
+				99986008227E39E200113536 /* PillView.swift */,
 			);
 			path = "AutoService Details";
 			sourceTree = "<group>";
@@ -753,7 +776,8 @@
 		9991FE17214B86D600F58F42 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				99E4CEE22261CB900007F6F8 /* GoogleService-Info.plist */,
+				9998600A227F5A6200113536 /* GoogleService-Info-3.plist */,
+				9998600C227F5F6100113536 /* GoogleService-Info.plist */,
 				99BC8D002245F37E00B732E7 /* Fonts */,
 				997DBC612198FBC90080F42C /* lehi.gpx */,
 				990F4377214252C700E65FC1 /* Assets.xcassets */,
@@ -1102,11 +1126,13 @@
 				994CA9F9215206E600D41F6C /* LoginViewController.storyboard in Resources */,
 				990F4378214252C700E65FC1 /* Assets.xcassets in Resources */,
 				99DC263C2246ECC2009E0A15 /* MontserratAlternates-BoldItalic.otf in Resources */,
+				9998600B227F5A6200113536 /* GoogleService-Info-3.plist in Resources */,
 				9955BC3721557311008DAF8E /* CreateServiceViewController.storyboard in Resources */,
 				99AEE1C822740D2500938462 /* LabeledInfoCell.xib in Resources */,
 				99DC26422246ECC2009E0A15 /* MontserratAlternates-Light.otf in Resources */,
 				997DBC6821995B3E0080F42C /* MechanicViewController.storyboard in Resources */,
 				99A0AEFA224EC24D0001FDC6 /* SelectMechanicProfileCell.xib in Resources */,
+				9998600D227F5F6100113536 /* GoogleService-Info.plist in Resources */,
 				99425475215781F80075EDCA /* SelectLocationViewController.storyboard in Resources */,
 				99DC263F2246ECC2009E0A15 /* MontserratAlternates-ExtraLight.otf in Resources */,
 				99E4816C227BFB390040B882 /* ServiceHeaderView.xib in Resources */,
@@ -1126,6 +1152,7 @@
 				9955BC3121556566008DAF8E /* ServicesViewController.storyboard in Resources */,
 				99DC262A2246ECC2009E0A15 /* Montserrat-BoldItalic.otf in Resources */,
 				997714C521CCE35800E54F5B /* PricePartView.xib in Resources */,
+				99986007227E314900113536 /* AutoServiceDetailsHeaderCell.xib in Resources */,
 				99DC262E2246ECC2009E0A15 /* Montserrat-ExtraLightItalic.otf in Resources */,
 				99A0AEF6224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard in Resources */,
 				99DC26402246ECC2009E0A15 /* MontserratAlternates-ExtraLightItalic.otf in Resources */,
@@ -1158,11 +1185,11 @@
 				99FEAFF9215DE3C00009BC07 /* CreateServiceOilTypeCell.xib in Resources */,
 				99DC262D2246ECC2009E0A15 /* Montserrat-ExtraLight.otf in Resources */,
 				991AFCB62251453100AD6614 /* AddVehicleViewController.storyboard in Resources */,
-				99E4CEE32261CB900007F6F8 /* GoogleService-Info.plist in Resources */,
 				997DBC43218EBD210080F42C /* MechanicSelectCell.xib in Resources */,
 				9942547A2157F7AF0075EDCA /* CreateServiceVehicleCell.xib in Resources */,
 				99DC26292246ECC2009E0A15 /* Montserrat-Bold.otf in Resources */,
 				99E48164227ABBB60040B882 /* NotesTableViewCell.xib in Resources */,
+				99986001227E29C400113536 /* AutoServiceLocationCell.xib in Resources */,
 				99DC26322246ECC2009E0A15 /* Montserrat-Medium.otf in Resources */,
 				990F4373214252C600E65FC1 /* Main.storyboard in Resources */,
 				99DC263B2246ECC2009E0A15 /* MontserratAlternates-Bold.otf in Resources */,
@@ -1304,6 +1331,7 @@
 				9955BC3521557305008DAF8E /* CreateServiceViewController.swift in Sources */,
 				99A0AF0A224ECDC50001FDC6 /* MechanicProfileCell.swift in Sources */,
 				997DBCA821BA605A0080F42C /* PushNotificationController.swift in Sources */,
+				99986000227E29BB00113536 /* AutoServiceLocationCell.swift in Sources */,
 				99A0AF01224EC2A30001FDC6 /* SelectMechanicHourCell.swift in Sources */,
 				9943C173215B6C69003C2BE9 /* VehicleCell.swift in Sources */,
 				9955BC1A2154E8DC008DAF8E /* UsersViewController.swift in Sources */,
@@ -1312,14 +1340,18 @@
 				9942546D21577B6E0075EDCA /* SelectVehicleViewController.swift in Sources */,
 				99DED710214B7EBC0061CFE0 /* Store.swift in Sources */,
 				99A0AEF9224EC24D0001FDC6 /* SelectMechanicProfileCell.swift in Sources */,
+				99986006227E314900113536 /* AutoServiceDetailsHeaderCell.swift in Sources */,
 				997DBC7421997E020080F42C /* TimeIntervalExtension.swift in Sources */,
 				994CA9FC215208BD00D41F6C /* SignUpViewController.swift in Sources */,
+				99986009227E39E200113536 /* PillView.swift in Sources */,
 				99425466215778DD0075EDCA /* Defaults.swift in Sources */,
 				99A0AF07224EC4880001FDC6 /* FocusedCellCollectionViewLayout.swift in Sources */,
+				9998600F227F6E9D00113536 /* CircleButton.swift in Sources */,
 				9942544D215762C50075EDCA /* CreateServicePriceCell.swift in Sources */,
 				99DC25FA2246C2A0009E0A15 /* AutoServiceCreation.swift in Sources */,
 				99DC26002246DA17009E0A15 /* RoundView.swift in Sources */,
 				993BA12621585ACA00DB95EF /* LocationManager.swift in Sources */,
+				99986003227E2A0900113536 /* CLLocationDistanceExtension.swift in Sources */,
 				991AFC92224FF01500AD6614 /* TimeSlotCollectionViewCell.swift in Sources */,
 				997DBC6621995B320080F42C /* MechanicViewController.swift in Sources */,
 				99E4816A227BFB1E0040B882 /* ServiceHeaderView.swift in Sources */,

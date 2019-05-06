@@ -30,7 +30,18 @@ final class VerifyPhoneNumberViewController: UIViewController, NavigationDelegat
         
         _ = oneTimeViewController.oneTimeCodeEntryView.becomeFirstResponder()
         
+        oneTimeViewController.resendCodeButton.titleLabel?.font = UIFont.appFont(type: .semiBold, size: 17)
+        oneTimeViewController.resendCodeButton.tintColor = .viewBackgroundColor1
+        
+        oneTimeViewController.updatePhoneNumberButton.titleLabel?.font = UIFont.appFont(type: .semiBold, size: 17)
+        oneTimeViewController.updatePhoneNumberButton.tintColor = .viewBackgroundColor1
+        
+        oneTimeViewController.verifyPhoneNumberTitleLabel.font = UIFont.appFont(type: .semiBold, size: 17)
+        oneTimeViewController.verifyPhoneNumberDescriptionLabel.font = UIFont.appFont(type: .regular, size: 15)
+        
         sendSMSVerification()
+        
+        title = NSLocalizedString("Verify Phone number", comment: "Title of screen for verifying the user's phone number")
     }
     
     private lazy var oneTimeViewController: OneTimeCodeViewController = {
@@ -53,14 +64,48 @@ final class VerifyPhoneNumberViewController: UIViewController, NavigationDelegat
                         self.navigationDelegate?.didFinish(navigationDelegatingViewController: self)
                     }
                 } else {
-                    print("it no worky")
+                    DispatchQueue.main.async {
+                        self.showErrorAlert()
+                    }
                 }
             }
         }
     }
     
+    private func showErrorAlert() {
+        let title = NSLocalizedString("Looks like something isn't right", comment: "Error title")
+        let message = NSLocalizedString("The code you entered doesn't match the code we sent. Please type the code again.\n\nIs %@ not your phone number? Tap `Update phone number` to update.", comment: "Error title")
+        
+        let formattedMessage = String(format: message, User.currentUser(context: store.mainContext)?.phoneNumber ?? "")
+        let alert = UIAlertController(title: title, message: formattedMessage, preferredStyle: .alert)
+        
+        alert.addOkayAction { [weak self] action in
+            self?.oneTimeViewController.oneTimeCodeEntryView.setText("")
+            _ = self?.oneTimeViewController.oneTimeCodeEntryView.becomeFirstResponder()
+        }
+        
+        let tryAgainTitle = NSLocalizedString("Update phone number", comment: "button title that will show a screen to update their phone number")
+        let updatePhoneNumberAction = UIAlertAction(title: tryAgainTitle, style: .default) { [weak self] action in
+            self?.showUpdatePhoneNumber()
+        }
+        
+        alert.addAction(updatePhoneNumberAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     func didSelectResendVerificationCode(viewController: OneTimeCodeViewController) {
         sendSMSVerification()
+    }
+    
+    func didSelectUpdatePhoneNumberButton(viewController: OneTimeCodeViewController) {
+        showUpdatePhoneNumber()
+    }
+    
+    private func showUpdatePhoneNumber() {
+        let phoneNumber = PhoneNumberViewController.viewControllerFromStoryboard()
+        phoneNumber.navigationDelegate = self
+        show(phoneNumber, sender: self)
     }
     
     private func sendSMSVerification() {
@@ -71,6 +116,15 @@ final class VerifyPhoneNumberViewController: UIViewController, NavigationDelegat
                 print("error resending")
             }
         }
+    }
+    
+}
+
+extension VerifyPhoneNumberViewController: NavigationDelegate {
+    
+    func didFinish(navigationDelegatingViewController: NavigationDelegatingViewController) {
+        let verify = VerifyPhoneNumberViewController()
+        show(verify, sender: self)
     }
     
 }

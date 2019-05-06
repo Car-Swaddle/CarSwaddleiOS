@@ -50,7 +50,7 @@ final class NotesTableViewCell: UITableViewCell, NibRegisterable {
         self.autoService = autoService
         notesTextView.text = autoService.notes
         
-        hairlineView?.isHidden = autoService.status == .canceled
+        hairlineView?.isHidden = autoService.status != .canceled
     }
     
 }

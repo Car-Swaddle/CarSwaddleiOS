@@ -35,15 +35,10 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
     private lazy var contentInsetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: tableView, actionButton: nil)
     
     private enum Row: CaseIterable {
-        case mechanic
-        case date
-        case location
+        case header
         case vehicle
-        case oilType
-        case serviceType
-        case status
+        case location
         case notes
-        case review
     }
     
     private var rows: [Row] = Row.allCases
@@ -55,7 +50,9 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
     }()
     
     @objc private func didRefresh() {
-        
+        requestData { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     @IBOutlet private weak var tableView: UITableView!
@@ -65,6 +62,8 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
 
         setupTableView()
         _ = contentInsetAdjuster
+        
+        requestData()
     }
     
     private func setupTableView() {
@@ -73,6 +72,23 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         tableView.register(ReviewCell.self)
         tableView.register(NotesTableViewCell.self)
         tableView.register(AutoServiceVehicleCell.self)
+        tableView.register(AutoServiceLocationCell.self)
+        tableView.register(AutoServiceDetailsHeaderCell.self)
+        tableView.refreshControl = refreshControl
+    }
+    
+    private func requestData(completion: @escaping () -> Void = {}) {
+        let autoServiceID = autoService.identifier
+        store.privateContext { [weak self] privateContext in
+            self?.autoServiceNetwork.getAutoServiceDetails(autoServiceID: autoServiceID, in: privateContext) { autoServiceObjectID, error in
+                DispatchQueue.main.async {
+                    if self?.refreshControl.isRefreshing == true {
+                        self?.refreshControl.endRefreshing()
+                    }
+                    completion()
+                }
+            }
+        }
     }
     
 }
@@ -87,19 +103,16 @@ extension AutoServiceDetailsViewController: UITableViewDataSource {
         let row = rows[indexPath.row]
         
         switch row {
-        case .mechanic:
-            let cell: TableViewCell = tableView.dequeueCell()
-            cell.textLabel?.text = autoService.mechanic?.user?.displayName
-            return cell
-        case .date:
-            let cell: TableViewCell = tableView.dequeueCell()
-            if let date = autoService.scheduledDate {
-                cell.textLabel?.text = dateFormatter.string(from: date)
-            }
+        case .header:
+            let cell: AutoServiceDetailsHeaderCell = tableView.dequeueCell()
+            cell.configure(with: autoService)
+            cell.delegate = self
             return cell
         case .location:
-            let cell: TableViewCell = tableView.dequeueCell()
-            cell.textLabel?.text = "location"
+            let cell: AutoServiceLocationCell = tableView.dequeueCell()
+            if let location = autoService.location {
+                cell.configure(with: location)
+            }
             return cell
         case .vehicle:
             let cell: AutoServiceVehicleCell = tableView.dequeueCell()
@@ -107,26 +120,12 @@ extension AutoServiceDetailsViewController: UITableViewDataSource {
                 cell.configure(with: autoService)
             }
             return cell
-        case .oilType:
-            let cell: TableViewCell = tableView.dequeueCell()
-            cell.textLabel?.text = autoService.firstOilChange?.oilType.localizedString
-            return cell
-        case .serviceType:
-            let cell: TableViewCell = tableView.dequeueCell()
-            cell.textLabel?.text = "Oil Change"
-            return cell
-        case .status:
-            let cell: TableViewCell = tableView.dequeueCell()
-            cell.textLabel?.text = autoService.status.rawValue
-            return cell
-        case .review:
-            let cell: ReviewCell = tableView.dequeueCell()
-            cell.delegate = self
-            cell.configure(with: autoService)
-            return cell
         case .notes:
             let cell: NotesTableViewCell = tableView.dequeueCell()
             cell.configure(with: autoService)
+            cell.didBeginEditing = { [weak self] in
+                self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
             return cell
         }
     }
@@ -141,9 +140,26 @@ extension AutoServiceDetailsViewController: UITableViewDelegate {
     
 }
 
+extension AutoServiceDetailsViewController: AutoServiceDetailsHeaderCellDelegate {
+    
+    func present(viewController: UIViewController, cell: AutoServiceDetailsHeaderCell) {
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    func dismissMessageComposeViewController(cell: AutoServiceDetailsHeaderCell) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func didTapReview(cell: AutoServiceDetailsHeaderCell) {
+        didSelectRate()
+    }
+    
+}
+
 extension AutoServiceDetailsViewController: ReviewCellProtocol {
     
     func didSelectRate() {
+        guard autoService.reviewFromUser == nil else { return }
         let alert = createRatingAlert()
         present(alert, animated: true, completion: nil)
     }
@@ -151,12 +167,13 @@ extension AutoServiceDetailsViewController: ReviewCellProtocol {
     private func createRatingAlert() -> CustomAlertController {
         let title = NSLocalizedString("Rate your mechanic", comment: "Title of alert when user is rating their mechanic")
         let content = CustomAlertContentView.view(withTitle: title, message: nil)
+        content.attributedTitleText = NSAttributedString(string: title, attributes: [.foregroundColor: UIColor.gray5, .font: UIFont.appFont(type: .semiBold, size: 17) as UIFont])
         
         content.addCustomView { [weak self] customView in
             customView.heightAnchor.constraint(equalToConstant: 35).isActive = true
             
             let starRatingView = CosmosView(settings: .default)
-            starRatingView.rating = 5.0
+            starRatingView.rating =  5.0
             starRatingView.settings.updateOnTouch = true
             starRatingView.translatesAutoresizingMaskIntoConstraints = false
             
@@ -166,6 +183,9 @@ extension AutoServiceDetailsViewController: ReviewCellProtocol {
             
             starRatingView.centerXAnchor.constraint(equalTo: customView.centerXAnchor).isActive = true
             starRatingView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+            
+            starRatingView.settings.filledImage = #imageLiteral(resourceName: "star_filled_same_color_border")
+            starRatingView.settings.emptyImage = #imageLiteral(resourceName: "star_inactive_gray_border")
             
             self?.starRatingView = starRatingView
         }
@@ -181,11 +201,12 @@ extension AutoServiceDetailsViewController: ReviewCellProtocol {
             textView.bottomAnchor.constraint(equalTo: customView.bottomAnchor).isActive = true
             textView.leadingAnchor.constraint(equalTo: customView.leadingAnchor).isActive = true
             textView.trailingAnchor.constraint(equalTo: customView.trailingAnchor).isActive = true
-            textView.layer.borderColor = UIColor.gray4.cgColor
+            textView.layer.borderColor = UIColor.gray2.cgColor
             textView.layer.borderWidth = 1
             textView.layer.cornerRadius = 8.0
             
-//            textView.font = UIFont.appFont(size: 16)
+            textView.font = UIFont.appFont(type: .regular, size: 17)
+            textView.tintColor = .viewBackgroundColor1
             
             textView.becomeFirstResponder()
             
@@ -198,12 +219,45 @@ extension AutoServiceDetailsViewController: ReviewCellProtocol {
         
         content.preferredAction = rateAction
         
+        if let button = content.preferredButton {
+            button.titleLabel?.font = UIFont.appFont(type: .regular, size: 17)
+            
+            button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+            button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .highlighted)
+            
+            button.layer.borderWidth = 1
+            button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
+            
+            let background: UIColor = .secondary
+            
+            button.setBackgroundImage(UIImage.from(color: background), for: .normal)
+            button.setBackgroundImage(UIImage.from(color: background.color(adjustedBy255Points: -40)), for: .highlighted)
+        }
+        
+        content.normalButtons.forEach {
+            configureNormalActionButton($0)
+        }
+        
         let alert = CustomAlertController.viewController(contentView: content)
         return alert
     }
     
+    private func configureNormalActionButton(_ button: UIButton) {
+        button.titleLabel?.font = UIFont.appFont(type: .regular, size: 17)
+        button.setTitleColor(.secondary, for: .normal)
+        button.setTitleColor(.viewBackgroundColor1, for: .highlighted)
+        
+        button.layer.borderWidth = 1
+        button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
+        
+        let background = UIColor(white255: 244)
+        
+        button.setBackgroundImage(UIImage.from(color: background), for: .normal)
+        button.setBackgroundImage(UIImage.from(color: background.color(adjustedBy255Points: -40)), for: .highlighted)
+    }
+    
     private var rateAction: CustomAlertAction {
-        let rateTitle = NSLocalizedString("RATE", comment: "Button title when selected confirms rate of user to mechanic")
+        let rateTitle = NSLocalizedString("Rate", comment: "Button title when selected confirms rate of user to mechanic")
         let autoServiceID = autoService.identifier
         return CustomAlertAction(title: rateTitle) { [weak self] alert in
             guard let rating = self?.starRatingView?.rating,
@@ -214,15 +268,23 @@ extension AutoServiceDetailsViewController: ReviewCellProtocol {
                     "text": text
                     ]
                 ]
-                self?.autoServiceNetwork.updateAutoService(autoServiceID: autoServiceID, json: json, in: context) { objectID, error in
+                self?.autoServiceNetwork.updateAutoService(autoServiceID: autoServiceID, json: json, in: context) { [weak self]  objectID, error in
                     if error == nil {
                         print("success!")
+                        DispatchQueue.main.async {
+                            self?.reloadCell(row: .header)
+                        }
                     } else {
                         print("No success")
                     }
                 }
             }
         }
+    }
+    
+    private func reloadCell(row: Row) {
+        guard let index = rows.firstIndex(of: row) else { return }
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
     }
     
 }

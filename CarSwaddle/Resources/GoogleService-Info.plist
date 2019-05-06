@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>347911426066-vg8a92ss4dfg9ittb1dkqvssll8gda3r.apps.googleusercontent.com</string>
+	<string>1089255662484-du5dbld08hpittdtarcqovv1nrpehbcv.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.347911426066-vg8a92ss4dfg9ittb1dkqvssll8gda3r</string>
+	<string>com.googleusercontent.apps.1089255662484-du5dbld08hpittdtarcqovv1nrpehbcv</string>
 	<key>API_KEY</key>
-	<string>AIzaSyB0ICFO0NquawhymPLkaA1nBoR2pualvnk</string>
+	<string>AIzaSyDZE-0MbaW9cS7Qu0byawsDDMzve0yiS5I</string>
 	<key>GCM_SENDER_ID</key>
-	<string>347911426066</string>
+	<string>1089255662484</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.carswaddle.carswaddle</string>
 	<key>PROJECT_ID</key>
-	<string>car-swaddle</string>
+	<string>car-swaddle-56a01</string>
 	<key>STORAGE_BUCKET</key>
-	<string>car-swaddle.appspot.com</string>
+	<string>car-swaddle-56a01.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:347911426066:ios:68a43982dff4b673</string>
+	<string>1:1089255662484:ios:2b875f81a24ead72</string>
 	<key>DATABASE_URL</key>
-	<string>https://car-swaddle.firebaseio.com</string>
+	<string>https://car-swaddle-56a01.firebaseio.com</string>
 </dict>
 </plist>

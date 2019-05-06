@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="204" id="KGk-i7-Jjw" customClass="AutoServiceDetailsHeaderCell" customModule="CarSwaddle" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="392" height="204"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="392" height="203.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abb-Of-fgB" customClass="DateCardViewWrapper" customModule="CarSwaddle" customModuleProvider="target">
+                        <rect key="frame" x="16" y="16" width="115" height="115"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Abb-Of-fgB" secondAttribute="height" multiplier="1:1" id="NsX-Jl-jRZ"/>
+                            <constraint firstAttribute="height" constant="115" id="fm3-Vw-5I5"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JGx-Il-ngT">
+                        <rect key="frame" x="139" y="16" width="237" height="136"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IOV-Bl-ROD">
+                                <rect key="frame" x="0.0" y="0.0" width="184" height="136"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rupert Bobert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEw-O6-ZgZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="123.5" height="50"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwk-ia-XlY" customClass="PillView" customModule="CarSwaddle" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="58" width="109.5" height="50"/>
+                                        <color key="backgroundColor" name="secondary"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Scheduled"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y30-oa-yMV" customClass="CosmosView" customModule="Cosmos">
+                                        <rect key="frame" x="0.0" y="116" width="120" height="20"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="6uT-rM-zHb"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                <real key="value" value="2.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="star_filled_no_border"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star_inactive_gray_border"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="115" id="dDN-tA-mwE"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="X0l-NQ-DI2">
+                                <rect key="frame" x="192" y="0.0" width="45" height="98"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdE-JO-6OQ" customClass="CircleButton" customModule="CarSwaddle" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="QdE-JO-6OQ" secondAttribute="height" multiplier="1:1" id="deD-hb-8c2"/>
+                                            <constraint firstAttribute="height" constant="45" id="g2v-5u-84X"/>
+                                        </constraints>
+                                        <state key="normal" image="phone"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTapCall" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lMI-Q9-51z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sf8-gQ-ba0" customClass="CircleButton" customModule="CarSwaddle" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="53" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Sf8-gQ-ba0" secondAttribute="height" multiplier="1:1" id="87Z-mm-cwT"/>
+                                            <constraint firstAttribute="height" constant="45" id="HLq-kG-yGf"/>
+                                        </constraints>
+                                        <state key="normal" image="sms-bubble"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTapSMS" destination="KGk-i7-Jjw" eventType="touchUpInside" id="b30-RX-VVt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="QdE-JO-6OQ" firstAttribute="width" secondItem="QdE-JO-6OQ" secondAttribute="height" multiplier="1:1" id="OpS-fz-aZb"/>
+                                    <constraint firstItem="Sf8-gQ-ba0" firstAttribute="width" secondItem="Sf8-gQ-ba0" secondAttribute="height" multiplier="1:1" id="hLE-7F-bQT"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="He did a good job" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdr-1G-AbN">
+                        <rect key="frame" x="16" y="173.5" width="360" height="18.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                        <color key="textColor" name="textColor3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JGx-Il-ngT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="1ya-7a-MG8"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Abb-Of-fgB" secondAttribute="bottom" constant="16" id="6du-wg-wZP"/>
+                    <constraint firstItem="Zdr-1G-AbN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Abb-Of-fgB" secondAttribute="bottom" constant="8" id="6h4-YY-rtp"/>
+                    <constraint firstItem="Abb-Of-fgB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Bwn-Wc-tjB"/>
+                    <constraint firstItem="JGx-Il-ngT" firstAttribute="leading" secondItem="Abb-Of-fgB" secondAttribute="trailing" constant="8" id="QCU-CF-XDw"/>
+                    <constraint firstItem="Zdr-1G-AbN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JGx-Il-ngT" secondAttribute="bottom" constant="8" id="Sd6-ET-A5x"/>
+                    <constraint firstAttribute="trailing" secondItem="JGx-Il-ngT" secondAttribute="trailing" constant="16" id="Tsk-My-F7M"/>
+                    <constraint firstAttribute="trailing" secondItem="Zdr-1G-AbN" secondAttribute="trailing" constant="16" id="eJ1-oD-1eA"/>
+                    <constraint firstItem="Zdr-1G-AbN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="emj-9R-nwS"/>
+                    <constraint firstItem="Abb-Of-fgB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="luY-B2-fzb"/>
+                    <constraint firstAttribute="bottom" secondItem="Zdr-1G-AbN" secondAttribute="bottom" constant="11.5" id="tQ6-0l-scD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="autoServiceStatePillView" destination="Cwk-ia-XlY" id="ow5-Ai-DeN"/>
+                <outlet property="cosmosView" destination="y30-oa-yMV" id="VFx-q0-hub"/>
+                <outlet property="dateCardViewWrapper" destination="Abb-Of-fgB" id="iHd-R6-2TB"/>
+                <outlet property="mechanicNameLabel" destination="xEw-O6-ZgZ" id="180-5z-IzH"/>
+                <outlet property="reviewLabel" destination="Zdr-1G-AbN" id="JP4-ux-HUn"/>
+            </connections>
+            <point key="canvasLocation" x="221.73913043478262" y="150.66964285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="phone" width="25" height="25"/>
+        <image name="sms-bubble" width="500" height="500"/>
+        <image name="star_filled_no_border" width="19" height="18"/>
+        <image name="star_inactive_gray_border" width="19" height="18"/>
+        <namedColor name="secondary">
+            <color red="0.047058823529411764" green="0.46274509803921571" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textColor3">
+            <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

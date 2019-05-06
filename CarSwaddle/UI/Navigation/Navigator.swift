@@ -106,6 +106,12 @@ final class Navigator: NSObject {
         UISearchBar.appearance().tintColor = .viewBackgroundColor1
         let textFieldAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         textFieldAppearance.defaultTextAttributes = [.font: UIFont.appFont(type: .regular, size: 17) as Any]
+        
+        CustomAlertAction.cancelTitle = NSLocalizedString("Cancel", comment: "Cancel button title")
+        
+        LabeledTextField.defaultTextFieldFont = UIFont.appFont(type: .regular, size: 17)
+        LabeledTextField.defaultLabelNotExistsFont = UIFont.appFont(type: .semiBold, size: 17)
+        LabeledTextField.defaultLabelFont = UIFont.appFont(type: .regular, size: 17)
     }
     
     public func initialViewController() -> UIViewController {

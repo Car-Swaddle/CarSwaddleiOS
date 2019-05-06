@@ -28,21 +28,21 @@
                         <rect key="frame" x="16" y="16" width="374" height="196.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="800" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="800" translatesAutoresizingMaskIntoConstraints="NO" id="M1Q-wy-bTY" customClass="DateCardViewWrapper" customModule="CarSwaddle" customModuleProvider="target">
-                                <rect key="frame" x="20" y="16" width="125" height="125"/>
+                                <rect key="frame" x="20" y="16" width="115" height="115"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="M1Q-wy-bTY" secondAttribute="height" multiplier="1:1" id="rkH-3a-qqU"/>
-                                    <constraint firstAttribute="height" constant="125" id="vyG-5Z-hkz"/>
+                                    <constraint firstAttribute="height" constant="115" id="vyG-5Z-hkz"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YgU-u6-BNz">
-                                <rect key="frame" x="161" y="20" width="193" height="160.5"/>
+                                <rect key="frame" x="151" y="20" width="203" height="160.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Del-6e-uuX">
-                                        <rect key="frame" x="0.0" y="0.0" width="193" height="145"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="203" height="145"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="42D-hL-1s5">
-                                                <rect key="frame" x="0.0" y="0.0" width="193" height="21"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="203" height="21"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="fuU-7L-Ud0">
                                                         <rect key="frame" x="0.0" y="1.5" width="18" height="18"/>
@@ -53,7 +53,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mechanic name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Waf-bx-wND">
-                                                        <rect key="frame" x="22" y="0.0" width="171" height="21"/>
+                                                        <rect key="frame" x="22" y="0.0" width="181" height="21"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Mu8-78-qdH">
-                                                <rect key="frame" x="0.0" y="31" width="193" height="21"/>
+                                                <rect key="frame" x="0.0" y="31" width="203" height="21"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="fSe-h5-Pkm">
                                                         <rect key="frame" x="0.0" y="1.5" width="18" height="18"/>
@@ -72,7 +72,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKJ-sa-Wvz">
-                                                        <rect key="frame" x="22" y="0.0" width="171" height="21"/>
+                                                        <rect key="frame" x="22" y="0.0" width="181" height="21"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9HP-TC-WHa">
-                                                <rect key="frame" x="0.0" y="62" width="193" height="21"/>
+                                                <rect key="frame" x="0.0" y="62" width="203" height="21"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car" translatesAutoresizingMaskIntoConstraints="NO" id="H5n-nb-uRv">
                                                         <rect key="frame" x="0.0" y="1.5" width="18" height="18"/>
@@ -91,13 +91,13 @@
                                                         </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1Xi-2g-fpy">
-                                                        <rect key="frame" x="22" y="0.0" width="171" height="21"/>
+                                                        <rect key="frame" x="22" y="0.0" width="181" height="21"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="nrQ-D9-6fW">
-                                                                <rect key="frame" x="0.0" y="0.0" width="171" height="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="181" height="21"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hR4-Mt-kq7">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="171" height="21"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="181" height="21"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -109,7 +109,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Gcp-WX-YKu">
-                                                <rect key="frame" x="0.0" y="93" width="193" height="21"/>
+                                                <rect key="frame" x="0.0" y="93" width="203" height="21"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="engine-oil" translatesAutoresizingMaskIntoConstraints="NO" id="LNW-nK-Krl">
                                                         <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
@@ -119,7 +119,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrg-fn-ZK8">
-                                                        <rect key="frame" x="22" y="0.0" width="171" height="21"/>
+                                                        <rect key="frame" x="22" y="0.0" width="181" height="21"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -130,7 +130,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="07T-Ch-ZIC">
-                                                <rect key="frame" x="0.0" y="124" width="193" height="21"/>
+                                                <rect key="frame" x="0.0" y="124" width="203" height="21"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="note" translatesAutoresizingMaskIntoConstraints="NO" id="a9T-hZ-ccP">
                                                         <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
@@ -140,7 +140,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notes" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcE-Jq-skf">
-                                                        <rect key="frame" x="22" y="0.0" width="171" height="21"/>
+                                                        <rect key="frame" x="22" y="0.0" width="181" height="21"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>

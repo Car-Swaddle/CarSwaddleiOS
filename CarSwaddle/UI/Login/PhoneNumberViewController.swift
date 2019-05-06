@@ -20,6 +20,7 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        phoneNumberLabeledTextField.textField.font = UIFont.appFont(type: .regular, size: 17)
         phoneNumberLabeledTextField.textField.text = User.currentUser(context: store.mainContext)?.phoneNumber
         phoneNumberLabeledTextField.updateLabelFontForCurrentText()
         
@@ -28,6 +29,8 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
         phoneNumberLabeledTextField.textField.keyboardType = .phonePad
         phoneNumberLabeledTextField.textField.spellCheckingType = .no
         phoneNumberLabeledTextField.textField.textContentType = .telephoneNumber
+        
+        phoneNumberLabeledTextField.textField.becomeFirstResponder()
     }
     
     

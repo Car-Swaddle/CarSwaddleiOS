@@ -1,9 +1,9 @@
 {
-  "commitish" : "40ec4e9033dea3696615211223b774d645ce80ce",
+  "commitish" : "a69212d15780eed9805fbd0be83cac31173a85d4",
   "iOS" : [
     {
       "name" : "CarSwaddleUI",
-      "hash" : "10c06c714eb99835d5e03bd111a78e6ad0d6de4a6310cbdd19ad6bcdd7f9372d"
+      "hash" : "ddccb43d72ae0b73e85e28fa9e6b24eb54bae7d5050e6ad1f89a973b5e1b33fa"
     }
   ]
 }

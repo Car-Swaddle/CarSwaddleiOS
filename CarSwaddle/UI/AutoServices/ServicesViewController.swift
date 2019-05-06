@@ -118,10 +118,18 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
     private func createFetchedResultsController() -> NSFetchedResultsController<AutoService> {
         let fetchRequest: NSFetchRequest<AutoService> = AutoService.fetchRequest()
         fetchRequest.sortDescriptors = [AutoService.scheduledDateAscendingSortDescriptor]
-        let currentUserPredicate = AutoService.predicate(forUserID: User.currentUserID!)
+        
         let inAutoServiceIDsPredicate = AutoService.predicate(includingAutoServiceIDs: autoServiceIDs)
         let pastPredicate = AutoService.predicateFinishedBeforeNow()
-        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [currentUserPredicate, inAutoServiceIDsPredicate, pastPredicate])
+        
+        var predicates: [NSPredicate] = [inAutoServiceIDsPredicate, pastPredicate]
+        
+        if let userID = User.currentUserID {
+            let currentUserPredicate = AutoService.predicate(forUserID: userID)
+            predicates.append(currentUserPredicate)
+        }
+        
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         try! fetchedResultsController.performFetch()
@@ -133,10 +141,18 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
     private func createUpcomingFetchedResultsController() -> NSFetchedResultsController<AutoService> {
         let fetchRequest: NSFetchRequest<AutoService> = AutoService.fetchRequest()
         fetchRequest.sortDescriptors = [AutoService.scheduledDateDescendingSortDescriptor]
-        let currentUserPredicate = AutoService.predicate(forUserID: User.currentUserID!)
+        
         let inAutoServiceIDsPredicate = AutoService.predicate(includingAutoServiceIDs: autoServiceIDs)
         let upcomingPredicate = AutoService.predicateFinishedAfterNow()
-        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [currentUserPredicate, inAutoServiceIDsPredicate, upcomingPredicate])
+        
+        var predicates: [NSPredicate] = [inAutoServiceIDsPredicate, upcomingPredicate]
+        
+        if let userID = User.currentUserID {
+            let currentUserPredicate = AutoService.predicate(forUserID: userID)
+            predicates.append(currentUserPredicate)
+        }
+        
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         try! fetchedResultsController.performFetch()
@@ -285,11 +301,11 @@ public extension AutoService {
     }
     
     static func predicateFinishedBeforeNow() -> NSPredicate {
-        return AutoService.predicateScheduled(before: Date().dateByAdding(hours: 1))
+        return AutoService.predicateScheduled(before: Date().dateByAdding(hours: -1))
     }
     
     static func predicateFinishedAfterNow() -> NSPredicate {
-        return AutoService.predicateScheduled(after: Date().dateByAdding(hours: 1))
+        return AutoService.predicateScheduled(after: Date().dateByAdding(hours: -1))
     }
     
 }

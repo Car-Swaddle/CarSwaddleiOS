@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Edit Phone Number-->
+        <!--Phone Number-->
         <scene sceneID="CPG-WP-AwF">
             <objects>
                 <viewController id="Gkd-TG-Hxd" customClass="PhoneNumberViewController" customModule="CarSwaddle" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0L-9W-AlB" customClass="LabeledTextField" customModule="CarSwaddle" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0L-9W-AlB" customClass="LabeledTextField" customModule="CarSwaddleUI">
                                 <rect key="frame" x="16" y="80" width="343" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -40,7 +40,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yz2-sf-a26"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Phone Number" id="ws3-1u-dIz">
+                    <navigationItem key="navigationItem" title="Phone Number" id="ws3-1u-dIz">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="6GG-Yr-fuT">
                             <connections>
                                 <action selector="didTapSave:" destination="Gkd-TG-Hxd" id="38b-43-Dz1"/>

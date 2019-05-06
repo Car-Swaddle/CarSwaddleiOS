@@ -398,6 +398,7 @@ SWIFT_CLASS("_TtC12CarSwaddleUI25OneTimeCodeViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified verifyPhoneNumberTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified verifyPhoneNumberDescriptionLabel;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified resendCodeButton;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified updatePhoneNumberButton;
 @property (nonatomic, weak) IBOutlet OneTimeCodeEntryView * _Null_unspecified oneTimeCodeEntryView;
 - (void)viewDidLoad;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;

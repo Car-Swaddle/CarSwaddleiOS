@@ -107,6 +107,12 @@ final class SelectMechanicTableViewController: UIViewController, StoryboardInsta
         updateActionButtonEnabled()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        tableView.flashScrollIndicators()
+    }
+    
     override func willMove(toParent parent: UIViewController?) {
         super.willMove(toParent: parent)
         if parent == nil {
@@ -175,11 +181,6 @@ extension SelectMechanicTableViewController: UITableViewDataSource {
             return cell
         case .selectMechanicDay:
             let cell: SelectMechanicDayCell = tableView.dequeueCell()
-//            if let mechanic = selectedMechanic {
-//                cell.configure(with: mechanic)
-//            } else {
-//                cell.configureForEmpty()
-//            }
             cell.updateHeight = { [weak self] in
                 guard let self = self else { return }
                 tableView.performBatchUpdates({

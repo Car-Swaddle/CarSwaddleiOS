@@ -118,6 +118,17 @@ public final class CustomAlertContentView: UIView, NibInstantiating {
         }
     }
     
+    public var normalButtons: [UIButton]  {
+        var normalButtons: [UIButton] = []
+        for key in actionsButtons.keys {
+            guard key != preferredAction else { continue }
+            if let button = actionsButtons[key] {
+                normalButtons.append(button)
+            }
+        }
+        return normalButtons
+    }
+    
     /// Call this to add a lottie animation. If called twice it will only take the last lottie animation.
     ///
     /// - Parameters:
@@ -249,6 +260,11 @@ public final class CustomAlertContentView: UIView, NibInstantiating {
             }
             // if the button doesn't exist yet, it will be configured correctly when it is added.
         }
+    }
+    
+    public var preferredButton: UIButton? {
+        guard let preferredAction = preferredAction else { return nil }
+        return actionsButtons[preferredAction]
     }
     
     // MARK: - Internal
