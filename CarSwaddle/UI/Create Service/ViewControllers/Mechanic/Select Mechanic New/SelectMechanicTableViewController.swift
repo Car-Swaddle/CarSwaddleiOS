@@ -65,6 +65,11 @@ final class SelectMechanicTableViewController: UIViewController, StoryboardInsta
     private var rows: [Row] = Row.allCases
     private var selectedMechanic: Mechanic? {
         didSet {
+            if let dayIndex = rows.firstIndex(of: .selectMechanicDay), oldValue != nil {
+                let distance = rows.distance(from: 0, to: dayIndex)
+                let indexPath = IndexPath(row: distance, section: 0)
+                tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            }
             selectedStartTime = nil
             tableView.reloadData()
         }
