@@ -22,6 +22,10 @@ class SelectVehicleCell: UITableViewCell, NibRegisterable {
     
     weak var delegate: SelectVehicleCellDelegate?
     
+    var addVehicleCell: AddCollectionViewCell? {
+        return collectionView.firstCell(of: AddCollectionViewCell.self)
+    }
+    
     @IBOutlet private weak var headerLabel: UILabel!
     @IBOutlet private weak var collectionView: FocusedCollectionView!
     
@@ -99,6 +103,7 @@ extension SelectVehicleCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if isAddIndexPath(indexPath) {
             let cell: AddCollectionViewCell = collectionView.dequeueCell(for: indexPath)
+            cell.showGuideLabel = vehicles.count == 0
             return cell
         } else {
             let cell: VehicleCollectionViewCell = collectionView.dequeueCell(for: indexPath)

@@ -72,13 +72,24 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
     
     @objc private func didSelectPay() {
         guard let vehicle = selectedVehicle,
-            let oilType = selectedOilType else { return }
+            let oilType = selectedOilType else {
+                higlightAddVehicleCell()
+                return
+        }
         delegate?.didSelect(vehicle: vehicle, oilType: oilType, viewController: self)
         
         Analytics.logEvent(AnalyticsEventSetCheckoutOption, parameters: [
             AnalyticsParameterCheckoutOption: "selectVehicleAndOilChange",
             AnalyticsParameterCheckoutStep: "3",
         ])
+    }
+    
+    private func higlightAddVehicleCell() {
+        selectVehicleCell?.addVehicleCell?.nudge()
+    }
+    
+    private var selectVehicleCell: SelectVehicleCell? {
+        return tableView.firstCell(of: SelectVehicleCell.self)
     }
     
     private func setupTableView() {
@@ -123,7 +134,6 @@ extension SelectAutoServiceDetailsViewController: UITableViewDataSource {
         case .vehicle:
             let cell: SelectVehicleCell = tableView.dequeueCell()
             cell.delegate = self
-//            cell.selectedVehicle = selectedVehicle
             return cell
         case .oilType:
             let cell: SelectOilTypeCell = tableView.dequeueCell()
@@ -172,17 +182,6 @@ extension SelectAutoServiceDetailsViewController: SelectVehicleCellDelegate, Add
     }
     
     func didCreateVehicle(vehicle: Vehicle, viewController: AddVehicleViewController) {
-//        requestVehicles { [weak self] in
-//            self?.selectedVehicle = vehicle
-//            self?.tableView.reloadData()
-//        }
-        
-//        let cell = tableView.visibleCells.first { cell -> Bool in
-//            return cell is SelectVehicleCell
-//        } as? SelectVehicleCell
-//        cell?.reloadVehiclesLocally()
-        
-//        tableView.reloadData()
         selectedVehicle = vehicle
         
         Analytics.logEvent("createdNewVehicle", parameters: [

@@ -38,6 +38,8 @@ final class FocusedCollectionView: UICollectionView {
 extension FocusedCollectionView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let generator = UISelectionFeedbackGenerator()
+        generator.selectionChanged()
         focusedDelegate?.didSelectItem(at: indexPath, collectionView: self)
     }
     

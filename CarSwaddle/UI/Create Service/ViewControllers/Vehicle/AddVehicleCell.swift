@@ -32,15 +32,15 @@ final class AddVehicleCell: UITableViewCell, NibRegisterable {
         return vehicleNameTextField.text?.isEmpty == false && vehicleLicensePlateTextField.text?.isEmpty == false
     }
     
-    @IBAction func nameTextDidChange(_ textField: UITextField) {
+    @IBAction private func nameTextDidChange(_ textField: UITextField) {
         addButton.isEnabled = isAddButtonEnabled
     }
     
-    @IBAction func licensePlateTextDidChange(_ textField: UITextField) {
+    @IBAction private func licensePlateTextDidChange(_ textField: UITextField) {
         addButton.isEnabled = isAddButtonEnabled
     }
     
-    @IBAction func didSelectAdd(_ textField: UITextField) {
+    @IBAction private func didSelectAdd(_ textField: UITextField) {
         guard let name = vehicleNameTextField.text,
             let plateNumber = vehicleLicensePlateTextField.text else { return }
         resignFirstResponder()

@@ -184,6 +184,8 @@ class HourStackView: UIStackView {
     
     var selectedStartTime: Int? {
         didSet {
+            let generator = UISelectionFeedbackGenerator()
+            generator.selectionChanged()
             updateForSelectedStartTime()
         }
     }
@@ -304,6 +306,8 @@ class HourCollectionView: DynamicCollectionView, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let generator = UISelectionFeedbackGenerator()
+        generator.selectionChanged()
         hourDelegate?.didSelectCell()
     }
     

@@ -65,10 +65,8 @@ final class SelectMechanicTableViewController: UIViewController, StoryboardInsta
     private var rows: [Row] = Row.allCases
     private var selectedMechanic: Mechanic? {
         didSet {
-            if let dayIndex = rows.firstIndex(of: .selectMechanicDay), oldValue != nil {
-                let distance = rows.distance(from: 0, to: dayIndex)
-                let indexPath = IndexPath(row: distance, section: 0)
-                tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            if oldValue != nil {
+                scroll(to: .selectMechanicHour)
             }
             selectedStartTime = nil
             tableView.reloadData()
@@ -155,13 +153,24 @@ final class SelectMechanicTableViewController: UIViewController, StoryboardInsta
     }
     
     @objc private func didSelectConfirmMechanic() {
-        guard let selectedMechanic = selectedMechanic,
-            let startTime = selectedStartTime,
+        guard let selectedMechanic = selectedMechanic else {
+            scroll(to: .selectMechanic)
+            return
+        }
+        guard let startTime = selectedStartTime,
             let scheduledDate = Calendar.current.date(bySettingHour: startTime.secondsToHours, minute: startTime.secondsToMinutes % 60, second: startTime % 60, of: dayDate) else {
+                scroll(to: .selectMechanicHour)
             return
         }
         
         delegate?.didSaveMechanic(mechanic: selectedMechanic, date: scheduledDate, viewController: self)
+    }
+    
+    private func scroll(to row: Row) {
+        guard let rowIndex = rows.firstIndex(of: row) else { return }
+        let distance = rows.distance(from: 0, to: rowIndex)
+        let indexPath = IndexPath(row: distance, section: 0)
+        tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
     
 }
@@ -256,6 +265,17 @@ extension UITableView {
         let cell = visibleCells.first { cell -> Bool in
             return cell is T
         } as? T
+        return cell
+    }
+    
+}
+
+extension UICollectionView {
+    
+    public func firstCell<T>(of type: T.Type) -> T? {
+        let cell = visibleCells.first { cell -> Bool in
+            return cell is T
+            } as? T
         return cell
     }
     

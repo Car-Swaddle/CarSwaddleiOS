@@ -85,12 +85,16 @@ extension SelectMechanicDayCell: FSCalendarDelegate {
             if isAvailableDate(newDate)  {
                 dayDate = newDate
                 weekView.select(newDate)
+                let generator = UISelectionFeedbackGenerator()
+                generator.selectionChanged()
             }
         }
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         dayDate = date
+        let generator = UISelectionFeedbackGenerator()
+        generator.selectionChanged()
     }
     
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
