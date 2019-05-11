@@ -65,6 +65,9 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         searchBar.showsCancelButton = false
         let placeholder = NSLocalizedString("Search Location", comment: "Placeholder text")
         searchBar.placeholder = placeholder
+        searchBar.textField?.borderColor = .viewBackgroundColor1
+        searchBar.textField?.borderWidth = UIView.hairlineLength
+        searchBar.textField?.cornerRadius = 7
         return searchBar
     }()
     

@@ -33,7 +33,6 @@ class FocusedCollectionViewCell: UICollectionViewCell {
         selectedImageView.image = #imageLiteral(resourceName: "checkmark").withRenderingMode(.alwaysTemplate)
         selectedImageView.translatesAutoresizingMaskIntoConstraints = false
         selectedImageView.tintColor = .white
-//        return imageView
         
         view.addSubview(selectedImageView)
         
@@ -96,8 +95,8 @@ class FocusedCollectionViewCell: UICollectionViewCell {
     }
 
     private func configureForSelected() {
-        contentView.layer.borderWidth = 3
-        contentView.layer.borderColor = UIColor.viewBackgroundColor1.cgColor
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.secondary.cgColor
         selectedView.isHiddenInStackView = false
     }
     

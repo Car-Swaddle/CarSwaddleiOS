@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Montserrat-Bold.otf">
+            <string>Montserrat-Bold</string>
+        </array>
         <array key="Montserrat-Regular.otf">
             <string>Montserrat-Regular</string>
         </array>
@@ -33,19 +36,19 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JGx-Il-ngT">
-                        <rect key="frame" x="139" y="16" width="237" height="136"/>
+                        <rect key="frame" x="147" y="16" width="229" height="136"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IOV-Bl-ROD">
-                                <rect key="frame" x="0.0" y="0.0" width="184" height="136"/>
+                                <rect key="frame" x="0.0" y="0.0" width="176" height="136"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rupert Bobert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEw-O6-ZgZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="123.5" height="50"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwk-ia-XlY" customClass="PillView" customModule="CarSwaddle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="58" width="109.5" height="50"/>
+                                        <rect key="frame" x="0.0" y="58" width="119.5" height="50"/>
                                         <color key="backgroundColor" name="secondary"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="Scheduled"/>
@@ -75,7 +78,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="X0l-NQ-DI2">
-                                <rect key="frame" x="192" y="0.0" width="45" height="98"/>
+                                <rect key="frame" x="184" y="0.0" width="45" height="98"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdE-JO-6OQ" customClass="CircleButton" customModule="CarSwaddle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
@@ -83,6 +86,7 @@
                                             <constraint firstAttribute="width" secondItem="QdE-JO-6OQ" secondAttribute="height" multiplier="1:1" id="deD-hb-8c2"/>
                                             <constraint firstAttribute="height" constant="45" id="g2v-5u-84X"/>
                                         </constraints>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                         <state key="normal" image="phone"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
@@ -129,7 +133,7 @@
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Abb-Of-fgB" secondAttribute="bottom" constant="16" id="6du-wg-wZP"/>
                     <constraint firstItem="Zdr-1G-AbN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Abb-Of-fgB" secondAttribute="bottom" constant="8" id="6h4-YY-rtp"/>
                     <constraint firstItem="Abb-Of-fgB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Bwn-Wc-tjB"/>
-                    <constraint firstItem="JGx-Il-ngT" firstAttribute="leading" secondItem="Abb-Of-fgB" secondAttribute="trailing" constant="8" id="QCU-CF-XDw"/>
+                    <constraint firstItem="JGx-Il-ngT" firstAttribute="leading" secondItem="Abb-Of-fgB" secondAttribute="trailing" constant="16" id="QCU-CF-XDw"/>
                     <constraint firstItem="Zdr-1G-AbN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JGx-Il-ngT" secondAttribute="bottom" constant="8" id="Sd6-ET-A5x"/>
                     <constraint firstAttribute="trailing" secondItem="JGx-Il-ngT" secondAttribute="trailing" constant="16" id="Tsk-My-F7M"/>
                     <constraint firstAttribute="trailing" secondItem="Zdr-1G-AbN" secondAttribute="trailing" constant="16" id="eJ1-oD-1eA"/>
@@ -155,7 +159,7 @@
         <image name="star_filled_no_border" width="19" height="18"/>
         <image name="star_inactive_gray_border" width="19" height="18"/>
         <namedColor name="secondary">
-            <color red="0.047058823529411764" green="0.46274509803921571" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.30196078431372547" green="0.4823529411764706" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textColor3">
             <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

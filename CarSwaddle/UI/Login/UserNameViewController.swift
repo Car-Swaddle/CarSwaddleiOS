@@ -39,6 +39,9 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
         firstNameLabeledTextField.textField.delegate = self
         lastNameLabeledTextField.textField.delegate = self
         
+        firstNameLabeledTextField.labelTextExistsFont = UIFont.appFont(type: .regular, size: 15)
+        lastNameLabeledTextField.labelTextExistsFont = UIFont.appFont(type: .regular, size: 15)
+        
         firstNameLabeledTextField.updateLabelFontForCurrentText()
         lastNameLabeledTextField.updateLabelFontForCurrentText()
         

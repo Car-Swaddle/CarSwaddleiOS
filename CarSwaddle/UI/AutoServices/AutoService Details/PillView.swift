@@ -8,6 +8,9 @@
 
 import UIKit
 
+private let defaultVerticalInset: CGFloat = 10
+private let defaultHorizontalInset: CGFloat = 13
+
 @IBDesignable
 final class PillView: UIView {
     
@@ -70,7 +73,7 @@ final class PillView: UIView {
     }
     
     
-    public var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) {
+    public var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: defaultVerticalInset, left: defaultHorizontalInset, bottom: defaultVerticalInset, right: defaultHorizontalInset) {
         didSet { updateInsets() }
     }
     

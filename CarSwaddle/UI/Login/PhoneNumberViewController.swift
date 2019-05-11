@@ -20,8 +20,9 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        phoneNumberLabeledTextField.textField.font = UIFont.appFont(type: .regular, size: 17)
         phoneNumberLabeledTextField.textField.text = User.currentUser(context: store.mainContext)?.phoneNumber
+        phoneNumberLabeledTextField.labelTextExistsFont = UIFont.appFont(type: .regular, size: 15)
+        phoneNumberLabeledTextField.labelTextNotExistsFont = UIFont.appFont(type: .semiBold, size: 15)
         phoneNumberLabeledTextField.updateLabelFontForCurrentText()
         
         phoneNumberLabeledTextField.textField.autocorrectionType = .no

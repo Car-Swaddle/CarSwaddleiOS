@@ -34,6 +34,7 @@ final class AutoServiceDetailsHeaderCell: UITableViewCell, NibRegisterable {
         super.awakeFromNib()
         
         selectionStyle = .none
+        mechanicNameLabel.font = UIFont.appFont(type: .semiBold, size: 19)
     }
 
     func configure(with autoService: AutoService) {

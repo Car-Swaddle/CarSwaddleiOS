@@ -68,6 +68,7 @@ final class Navigator: NSObject {
         let actionButton = ActionButton.appearance()
         
         actionButton.defaultBackgroundColor = .secondary
+        actionButton.disabledBackgroundColor = UIColor.secondary.color(adjustedBy255Points: -40)
         actionButton.defaultTitleFont = UIFont.appFont(type: .semiBold, size: 20)
         actionButton.setTitleColor(.gray3, for: .disabled)
         
@@ -79,7 +80,7 @@ final class Navigator: NSObject {
         
         let selectedTabBarAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.appFont(type: .semiBold, size: 10) as Any,
-            .foregroundColor: UIColor.viewBackgroundColor1
+            .foregroundColor: UIColor.secondary
         ]
         UITabBarItem.appearance().setTitleTextAttributes(selectedTabBarAttributes, for: .selected)
         
@@ -92,7 +93,7 @@ final class Navigator: NSObject {
         
         UISwitch.appearance().tintColor = .secondary
         UISwitch.appearance().onTintColor = .secondary
-        UINavigationBar.appearance().tintColor = .viewBackgroundColor1
+        UINavigationBar.appearance().tintColor = .secondary
         
         let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 17) as Any]
         
@@ -103,7 +104,7 @@ final class Navigator: NSObject {
         UITableViewCell.appearance().textLabel?.font = UIFont.appFont(type: .regular, size: 14)
         
 //        UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).tintColor = .secondary
-        UISearchBar.appearance().tintColor = .viewBackgroundColor1
+        UISearchBar.appearance().tintColor = .secondary
         let textFieldAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         textFieldAppearance.defaultTextAttributes = [.font: UIFont.appFont(type: .regular, size: 17) as Any]
         
@@ -112,6 +113,9 @@ final class Navigator: NSObject {
         LabeledTextField.defaultTextFieldFont = UIFont.appFont(type: .regular, size: 17)
         LabeledTextField.defaultLabelNotExistsFont = UIFont.appFont(type: .semiBold, size: 17)
         LabeledTextField.defaultLabelFont = UIFont.appFont(type: .regular, size: 17)
+        
+        let labeledTextFieldAppearance = LabeledTextField.appearance()
+        labeledTextFieldAppearance.underlineColor = .secondary
     }
     
     public func initialViewController() -> UIViewController {

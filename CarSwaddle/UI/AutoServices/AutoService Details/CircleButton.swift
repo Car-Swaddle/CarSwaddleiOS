@@ -9,7 +9,7 @@
 import UIKit
 
 
-private let inset: CGFloat = 7
+private let inset: CGFloat = 10
 
 @IBDesignable
 class CircleButton: UIButton {
