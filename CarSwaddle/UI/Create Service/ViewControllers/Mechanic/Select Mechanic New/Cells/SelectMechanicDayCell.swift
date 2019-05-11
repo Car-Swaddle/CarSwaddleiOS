@@ -55,15 +55,8 @@ final class SelectMechanicDayCell: UITableViewCell, NibRegisterable {
         dateLabel.font = UIFont.appFont(type: .semiBold, size: 15)
         
         weekView.select(dayDate)
+        updateDateLabel()
     }
-    
-//    func configure(with mechanic: Mechanic) {
-//        
-//    }
-//
-//    func configureForEmpty() {
-//
-//    }
     
     private func updateDateLabel() {
         dateLabel.text = monthYearDateFormatter.string(from: dayDate)

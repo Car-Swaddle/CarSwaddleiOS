@@ -68,7 +68,7 @@ final class Navigator: NSObject {
         let actionButton = ActionButton.appearance()
         
         actionButton.defaultBackgroundColor = .secondary
-        actionButton.disabledBackgroundColor = UIColor.secondary.color(adjustedBy255Points: -40)
+        actionButton.disabledBackgroundColor = UIColor.secondary.color(adjustedBy255Points: -70).withAlphaComponent(0.9)
         actionButton.defaultTitleFont = UIFont.appFont(type: .semiBold, size: 20)
         actionButton.setTitleColor(.gray3, for: .disabled)
         
