@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let defaultVerticalInset: CGFloat = 10
+private let defaultVerticalInset: CGFloat = 8
 private let defaultHorizontalInset: CGFloat = 13
 
 @IBDesignable
@@ -30,6 +30,7 @@ final class PillView: UIView {
         label.font = UIFont.appFont(type: .semiBold, size: 17)
         label.textColor = .white
         label.textAlignment = .center
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
     

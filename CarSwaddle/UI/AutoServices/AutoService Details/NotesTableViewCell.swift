@@ -15,16 +15,20 @@ final class NotesTableViewCell: UITableViewCell, NibRegisterable {
     
     var didBeginEditing: () -> () = {}
     
+    var showHairlineView: Bool = true {
+        didSet {
+            hairlineView?.isHidden = !showHairlineView
+        }
+    }
+    
     @IBOutlet private weak var notesLabel: UILabel!
     @IBOutlet private weak var notesTextView: UITextView!
     
     @IBOutlet private weak var notesContentView: UIView!
+    
     private var autoService: AutoService?
-    
     private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
-    
     private var timer: Timer?
-    
     private var hairlineView: UIView?
     
     override func awakeFromNib() {

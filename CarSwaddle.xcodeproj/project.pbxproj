@@ -112,6 +112,8 @@
 		9998600B227F5A6200113536 /* GoogleService-Info-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9998600A227F5A6200113536 /* GoogleService-Info-3.plist */; };
 		9998600D227F5F6100113536 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9998600C227F5F6100113536 /* GoogleService-Info.plist */; };
 		9998600F227F6E9D00113536 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9998600E227F6E9D00113536 /* CircleButton.swift */; };
+		999861432289270C00113536 /* CancelAutoServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999861422289270C00113536 /* CancelAutoServiceCell.swift */; };
+		999861442289271D00113536 /* CancelAutoServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999861412289270B00113536 /* CancelAutoServiceCell.xib */; };
 		99A0AEF4224EC1D40001FDC6 /* SelectMechanicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0AEF3224EC1D40001FDC6 /* SelectMechanicTableViewController.swift */; };
 		99A0AEF6224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A0AEF5224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard */; };
 		99A0AEF9224EC24D0001FDC6 /* SelectMechanicProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0AEF7224EC24D0001FDC6 /* SelectMechanicProfileCell.swift */; };
@@ -356,6 +358,8 @@
 		9998600A227F5A6200113536 /* GoogleService-Info-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-3.plist"; sourceTree = "<group>"; };
 		9998600C227F5F6100113536 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9998600E227F6E9D00113536 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		999861412289270B00113536 /* CancelAutoServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelAutoServiceCell.xib; sourceTree = "<group>"; };
+		999861422289270C00113536 /* CancelAutoServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelAutoServiceCell.swift; sourceTree = "<group>"; };
 		99A0AEF3224EC1D40001FDC6 /* SelectMechanicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMechanicTableViewController.swift; sourceTree = "<group>"; };
 		99A0AEF5224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectMechanicTableViewController.storyboard; sourceTree = "<group>"; };
 		99A0AEF7224EC24D0001FDC6 /* SelectMechanicProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMechanicProfileCell.swift; sourceTree = "<group>"; };
@@ -765,6 +769,8 @@
 				99E48165227AC5770040B882 /* AutoServiceVehicleCell.xib */,
 				99985FFF227E29BB00113536 /* AutoServiceLocationCell.swift */,
 				99985FFE227E29BB00113536 /* AutoServiceLocationCell.xib */,
+				999861422289270C00113536 /* CancelAutoServiceCell.swift */,
+				999861412289270B00113536 /* CancelAutoServiceCell.xib */,
 				99986004227E314900113536 /* AutoServiceDetailsHeaderCell.swift */,
 				99986005227E314900113536 /* AutoServiceDetailsHeaderCell.xib */,
 				9998600E227F6E9D00113536 /* CircleButton.swift */,
@@ -1184,6 +1190,7 @@
 				99DC26332246ECC2009E0A15 /* Montserrat-MediumItalic.otf in Resources */,
 				99FEAFF9215DE3C00009BC07 /* CreateServiceOilTypeCell.xib in Resources */,
 				99DC262D2246ECC2009E0A15 /* Montserrat-ExtraLight.otf in Resources */,
+				999861442289271D00113536 /* CancelAutoServiceCell.xib in Resources */,
 				991AFCB62251453100AD6614 /* AddVehicleViewController.storyboard in Resources */,
 				997DBC43218EBD210080F42C /* MechanicSelectCell.xib in Resources */,
 				9942547A2157F7AF0075EDCA /* CreateServiceVehicleCell.xib in Resources */,
@@ -1322,6 +1329,7 @@
 				991AFCB42251452700AD6614 /* AddVehicleViewController.swift in Sources */,
 				99F220262246933500020024 /* FontExtension.swift in Sources */,
 				997714C321CCE2C700E54F5B /* PricePartView.swift in Sources */,
+				999861432289270C00113536 /* CancelAutoServiceCell.swift in Sources */,
 				9955BC2B2155650C008DAF8E /* ProfileViewController.swift in Sources */,
 				992BFDCF22056B10006B64CC /* TweakValues.swift in Sources */,
 				991AFCB92251D7C900AD6614 /* TextInputCell.swift in Sources */,

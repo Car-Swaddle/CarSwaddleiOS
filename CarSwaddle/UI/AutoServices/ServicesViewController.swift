@@ -121,6 +121,7 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
         
         let inAutoServiceIDsPredicate = AutoService.predicate(includingAutoServiceIDs: autoServiceIDs)
         let pastPredicate = AutoService.predicateFinishedBeforeNow()
+        let isCanceledPredicate = AutoService.predicateIsCancelled()
         
         var predicates: [NSPredicate] = [inAutoServiceIDsPredicate, pastPredicate]
         
@@ -129,7 +130,9 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
             predicates.append(currentUserPredicate)
         }
         
-        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        let andPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        
+        fetchRequest.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [andPredicate, isCanceledPredicate])
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         try! fetchedResultsController.performFetch()
@@ -144,8 +147,9 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
         
         let inAutoServiceIDsPredicate = AutoService.predicate(includingAutoServiceIDs: autoServiceIDs)
         let upcomingPredicate = AutoService.predicateFinishedAfterNow()
+        let isNotCanceledPredicate = AutoService.predicateIsNotCancelled()
         
-        var predicates: [NSPredicate] = [inAutoServiceIDsPredicate, upcomingPredicate]
+        var predicates: [NSPredicate] = [inAutoServiceIDsPredicate, upcomingPredicate, isNotCanceledPredicate]
         
         if let userID = User.currentUserID {
             let currentUserPredicate = AutoService.predicate(forUserID: userID)
@@ -245,6 +249,7 @@ extension ServicesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        guard indexPath.row != 0 else { return }
         let autoService = self.autoService(at: indexPath)
         
         let viewController = AutoServiceDetailsViewController.create(with: autoService)
@@ -295,6 +300,15 @@ public extension AutoService {
     static func predicateScheduled(before date: Date) -> NSPredicate {
         return NSPredicate(format: "%K < %@", #keyPath(AutoService.scheduledDate), date as NSDate)
     }
+    
+    static func predicateIsCancelled() -> NSPredicate {
+        return NSPredicate(format: "%K == %@", #keyPath(AutoService.isCanceled), NSNumber(value: true))
+    }
+    
+    static func predicateIsNotCancelled() -> NSPredicate {
+        return NSPredicate(format: "%K == %@", #keyPath(AutoService.isCanceled), NSNumber(value: false))
+    }
+    
     
     static func predicateScheduled(after date: Date) -> NSPredicate {
         return NSPredicate(format: "%K > %@", #keyPath(AutoService.scheduledDate), date as NSDate)

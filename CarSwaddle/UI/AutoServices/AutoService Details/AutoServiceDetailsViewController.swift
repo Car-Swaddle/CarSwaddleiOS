@@ -26,7 +26,11 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         return viewController
     }
     
-    private var autoService: AutoService!
+    private var autoService: AutoService! {
+        didSet {
+            self.rows = createRows()
+        }
+    }
     
     private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     private var starRatingView: CosmosView?
@@ -39,9 +43,20 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         case vehicle
         case location
         case notes
+        case cancel
     }
     
-    private var rows: [Row] = Row.allCases
+    private func createRows() -> [Row] {
+        var cases: [Row] = [.header, .vehicle, .location, .notes]
+        if autoService.status.isCancellable {
+            cases.append(.cancel)
+        }
+        return cases
+    }
+    
+    private lazy var rows: [Row] = {
+        return createRows()
+    }()
     
     lazy private var refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl()
@@ -74,6 +89,7 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         tableView.register(AutoServiceVehicleCell.self)
         tableView.register(AutoServiceLocationCell.self)
         tableView.register(AutoServiceDetailsHeaderCell.self)
+        tableView.register(CancelAutoServiceCell.self)
         tableView.refreshControl = refreshControl
     }
     
@@ -86,6 +102,42 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
                         self?.refreshControl.endRefreshing()
                     }
                     completion()
+                }
+            }
+        }
+    }
+    
+    private func cancelAlert() -> UIAlertController {
+        let title = NSLocalizedString("Are you sure you want to cancel this Autoservice?", comment: "Alert")
+        let message = NSLocalizedString("If you cancel this Autoservice, the funds already placed in your account will be removed and the customer will receive their funds back.", comment: "Alert")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        let actionTitle = NSLocalizedString("Cancel auto service", comment: "Action title")
+        let cancelAutoServiceAction = UIAlertAction(title: actionTitle, style: .destructive) { [weak self] action in
+            self?.cancelAutoService()
+        }
+        
+        alert.addAction(cancelAutoServiceAction)
+        
+        let backTitle = NSLocalizedString("Dismiss", comment: "Action title cancel")
+        let backAction = UIAlertAction(title: backTitle, style: .cancel)
+        
+        alert.addAction(backAction)
+        
+        return alert
+    }
+    
+    private func cancelAutoService() {
+        guard let autoServiceID = autoService?.identifier else { return }
+        store.privateContext { [weak self] privateContext in
+            self?.autoServiceNetwork.updateAutoService(autoServiceID: autoServiceID, status: .canceled, in: privateContext) { autoServiceObjectID, error in
+                guard let autoServiceObjectID = autoServiceObjectID, error == nil else { return }
+                store.mainContext { mainContext in
+                    self?.autoService = mainContext.object(with: autoServiceObjectID) as? AutoService
+                    if self?.refreshControl.isRefreshing == true {
+                        self?.refreshControl.endRefreshing()
+                    }
+                    self?.tableView.reloadData()
                 }
             }
         }
@@ -126,6 +178,10 @@ extension AutoServiceDetailsViewController: UITableViewDataSource {
             cell.didBeginEditing = { [weak self] in
                 self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
+            cell.showHairlineView = autoService.status.isCancellable
+            return cell
+        case .cancel:
+            let cell: CancelAutoServiceCell = tableView.dequeueCell()
             return cell
         }
     }
@@ -136,6 +192,13 @@ extension AutoServiceDetailsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        switch rows[indexPath.row] {
+        case .cancel:
+            let alert = self.cancelAlert()
+            present(alert, animated: true, completion: nil)
+        default:
+            break
+        }
     }
     
 }
@@ -285,6 +348,16 @@ extension AutoServiceDetailsViewController: ReviewCellProtocol {
     private func reloadCell(row: Row) {
         guard let index = rows.firstIndex(of: row) else { return }
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+    }
+    
+}
+
+
+
+extension AutoService.Status {
+    
+    var isCancellable: Bool {
+        return self == .scheduled
     }
     
 }

@@ -17,14 +17,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HourDisplayView" customModule="CarSwaddle" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="114" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="125" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvm-Hf-4rN">
-                    <rect key="frame" x="4" y="4" width="106" height="36"/>
+                    <rect key="frame" x="4" y="4" width="117" height="36"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0y-Sj-zIG">
-                            <rect key="frame" x="6" y="2" width="94" height="32"/>
+                            <rect key="frame" x="10" y="2" width="97" height="32"/>
                             <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -34,8 +34,8 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="S0y-Sj-zIG" secondAttribute="bottom" constant="2" id="LGR-ab-X4m"/>
                         <constraint firstItem="S0y-Sj-zIG" firstAttribute="top" secondItem="jvm-Hf-4rN" secondAttribute="top" constant="2" id="V9I-DK-3VE"/>
-                        <constraint firstItem="S0y-Sj-zIG" firstAttribute="leading" secondItem="jvm-Hf-4rN" secondAttribute="leading" constant="6" id="ZHp-f2-opy"/>
-                        <constraint firstAttribute="trailing" secondItem="S0y-Sj-zIG" secondAttribute="trailing" constant="6" id="e7n-jA-qyl"/>
+                        <constraint firstItem="S0y-Sj-zIG" firstAttribute="leading" secondItem="jvm-Hf-4rN" secondAttribute="leading" constant="10" id="ZHp-f2-opy"/>
+                        <constraint firstAttribute="trailing" secondItem="S0y-Sj-zIG" secondAttribute="trailing" constant="10" id="e7n-jA-qyl"/>
                         <constraint firstItem="S0y-Sj-zIG" firstAttribute="centerY" secondItem="jvm-Hf-4rN" secondAttribute="centerY" id="kYW-FT-EkT"/>
                         <constraint firstAttribute="height" constant="36" id="wBa-Ca-exR"/>
                         <constraint firstItem="S0y-Sj-zIG" firstAttribute="centerX" secondItem="jvm-Hf-4rN" secondAttribute="centerX" id="x7W-E0-wur"/>
@@ -57,7 +57,7 @@
                 <outlet property="hourContentView" destination="jvm-Hf-4rN" id="9ga-NO-kuP"/>
                 <outlet property="hourLabel" destination="S0y-Sj-zIG" id="dvC-pp-X1D"/>
             </connections>
-            <point key="canvasLocation" x="-79.710144927536234" y="360.26785714285711"/>
+            <point key="canvasLocation" x="-71.739130434782609" y="360.26785714285711"/>
         </view>
     </objects>
 </document>

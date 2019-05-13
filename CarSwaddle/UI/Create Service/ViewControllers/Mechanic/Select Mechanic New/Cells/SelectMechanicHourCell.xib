@@ -34,13 +34,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TXa-9v-NCN">
-                        <rect key="frame" x="16" y="61" width="341" height="182.5"/>
+                        <rect key="frame" x="8" y="61" width="357" height="182.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="avz-Iy-Nw1" customClass="HourStackView" customModule="CarSwaddle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="341" height="141"/>
+                                <rect key="frame" x="0.0" y="0.0" width="357" height="141"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No times available, please select another day" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7U-v1-zVF">
-                                <rect key="frame" x="0.0" y="141" width="341" height="41.5"/>
+                                <rect key="frame" x="0.0" y="141" width="357" height="41.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" name="textColor3"/>
                                 <nil key="highlightedColor"/>
@@ -50,9 +50,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="TXa-9v-NCN" firstAttribute="top" secondItem="Jb3-xh-0kA" secondAttribute="bottom" constant="16" id="8cm-mz-Xui"/>
-                    <constraint firstItem="TXa-9v-NCN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="91K-Vj-mb9"/>
+                    <constraint firstItem="TXa-9v-NCN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="91K-Vj-mb9"/>
                     <constraint firstAttribute="trailing" secondItem="Jb3-xh-0kA" secondAttribute="trailing" constant="16" id="9ny-sD-Szl"/>
-                    <constraint firstAttribute="trailing" secondItem="TXa-9v-NCN" secondAttribute="trailing" constant="16" id="Uy3-4n-UUM"/>
+                    <constraint firstAttribute="trailing" secondItem="TXa-9v-NCN" secondAttribute="trailing" constant="8" id="Uy3-4n-UUM"/>
                     <constraint firstItem="Jb3-xh-0kA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="WJl-J0-hKQ"/>
                     <constraint firstItem="Jb3-xh-0kA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="j0k-rP-yJH"/>
                     <constraint firstAttribute="bottom" secondItem="TXa-9v-NCN" secondAttribute="bottom" constant="16" id="v0X-jV-82S"/>

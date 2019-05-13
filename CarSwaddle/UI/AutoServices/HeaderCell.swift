@@ -22,6 +22,8 @@ class HeaderCell: UITableViewCell, NibRegisterable {
         
         contentView.addSubview(headerView)
         headerView.pinFrameToSuperViewBounds()
+        
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

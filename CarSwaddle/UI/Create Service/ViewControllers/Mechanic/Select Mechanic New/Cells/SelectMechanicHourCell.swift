@@ -10,6 +10,14 @@ import CarSwaddleUI
 import Store
 import CarSwaddleData
 
+
+let hourThing: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MM-dd HH:mm z"
+    dateFormatter.timeZone = TimeZone.current
+    return dateFormatter
+}()
+
 final class SelectMechanicHourCell: UITableViewCell, NibRegisterable {
 
     func configure(with dayDate: Date?, mechanicID: String?, selectedStartTime: Int?) {

@@ -36,10 +36,10 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JGx-Il-ngT">
-                        <rect key="frame" x="147" y="16" width="229" height="136"/>
+                        <rect key="frame" x="147" y="16" width="229" height="166"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IOV-Bl-ROD">
-                                <rect key="frame" x="0.0" y="0.0" width="176" height="136"/>
+                                <rect key="frame" x="0.0" y="0.0" width="176" height="166"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rupert Bobert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEw-O6-ZgZ">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
@@ -47,7 +47,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwk-ia-XlY" customClass="PillView" customModule="CarSwaddle" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" verticalCompressionResistancePriority="900" translatesAutoresizingMaskIntoConstraints="NO" id="Cwk-ia-XlY" customClass="PillView" customModule="CarSwaddle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="58" width="119.5" height="50"/>
                                         <color key="backgroundColor" name="secondary"/>
                                         <userDefinedRuntimeAttributes>
@@ -55,11 +55,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y30-oa-yMV" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="0.0" y="116" width="120" height="20"/>
+                                        <rect key="frame" x="0.0" y="116" width="120" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="6uT-rM-zHb"/>
-                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="rating">
                                                 <real key="value" value="2.5"/>
@@ -73,9 +70,6 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="115" id="dDN-tA-mwE"/>
-                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="X0l-NQ-DI2">
                                 <rect key="frame" x="184" y="0.0" width="45" height="98"/>
@@ -122,7 +116,7 @@
                         </subviews>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="He did a good job" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdr-1G-AbN">
-                        <rect key="frame" x="16" y="173.5" width="360" height="18.5"/>
+                        <rect key="frame" x="16" y="190" width="360" height="2"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                         <color key="textColor" name="textColor3"/>
                         <nil key="highlightedColor"/>
