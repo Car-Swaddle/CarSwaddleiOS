@@ -24,6 +24,7 @@ final class PriceView: UIView, NibInstantiating {
     func configure(with service: AutoService) {
         for arrangedSubview in priceStackView.arrangedSubviews {
             priceStackView.removeArrangedSubview(arrangedSubview)
+            arrangedSubview.removeFromSuperview()
         }
         
 //        let subtotals = (service.price?.parts ?? []).sorted { lp, rp -> Bool in
@@ -36,30 +37,58 @@ final class PriceView: UIView, NibInstantiating {
 //            }
 //        }
         
-        let sortedPriceParts = service.price?.parts ?? []
+        let priceParts = service.price?.parts ?? []
         
         var nonSubtotalIndex = 0
-        for pricePart in sortedPriceParts {
+//        for pricePart in sortedPriceParts {
+//            if pricePart.isPartOfSubtotal == false {
+//                let pricePartView = PricePartView.viewFromNib()
+//                pricePartView.configure(with: pricePart)
+//                priceStackView.insertArrangedSubview(pricePartView, at: nonSubtotalIndex)
+//                nonSubtotalIndex += 1
+//            }
+//        }
+        
+        var subtotalPriceParts: [PricePart] = []
+        var totalPriceParts: [PricePart] = []
+        
+        for pricePart in priceParts {
             if pricePart.isPartOfSubtotal == false {
-                let pricePartView = PricePartView.viewFromNib()
-                pricePartView.configure(with: pricePart)
-                priceStackView.insertArrangedSubview(pricePartView, at: nonSubtotalIndex)
-                nonSubtotalIndex += 1
+                subtotalPriceParts.append(pricePart)
+            } else {
+                totalPriceParts.append(pricePart)
             }
         }
+        
+        subtotalPriceParts = subtotalPriceParts.sorted(by: { (lhs, rhs) -> Bool in
+            print("lhs: \(lhs), rhs: \(rhs)")
+            return lhs.key < rhs.key
+        })
+        
+        for pricePart in subtotalPriceParts {
+            let pricePartView = PricePartView.viewFromNib()
+            pricePartView.configure(with: pricePart)
+            priceStackView.insertArrangedSubview(pricePartView, at: nonSubtotalIndex)
+            nonSubtotalIndex += 1
+        }
+        
+        
         
         let separatorView1 = self.separatorView()
         priceStackView.addArrangedSubview(separatorView1)
         nonSubtotalIndex += 1
         
+        totalPriceParts = totalPriceParts.sorted(by: { (lhs, rhs) -> Bool in
+            print("lhs: \(lhs), rhs: \(rhs)")
+            return lhs.key < rhs.key
+        })
+        
         var subtotalIndex = 0
-        for pricePart in sortedPriceParts {
-            if pricePart.isPartOfSubtotal == true {
-                let pricePartView = PricePartView.viewFromNib()
-                pricePartView.configure(with: pricePart)
-                priceStackView.insertArrangedSubview(pricePartView, at: subtotalIndex+nonSubtotalIndex)
-                subtotalIndex += 1
-            }
+        for pricePart in totalPriceParts {
+            let pricePartView = PricePartView.viewFromNib()
+            pricePartView.configure(with: pricePart)
+            priceStackView.insertArrangedSubview(pricePartView, at: subtotalIndex+nonSubtotalIndex)
+            subtotalIndex += 1
         }
         
         let separatorView2 = self.separatorView()

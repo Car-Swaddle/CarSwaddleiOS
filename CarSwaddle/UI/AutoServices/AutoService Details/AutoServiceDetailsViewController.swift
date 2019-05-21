@@ -12,6 +12,9 @@ import Store
 import CarSwaddleData
 import Cosmos
 
+private let cancelRefundMessage = NSLocalizedString("If you cancel this auto service, the funds already placed in your account will be removed and the customer will receive their funds back.", comment: "Alert")
+private let cancelNoRefundMessage = NSLocalizedString("Because the auto service is less than 24 hours away. Your funds will not be refunded to you should you cancel this auto service.", comment: "Alert")
+
 private let dateFormatter: DateFormatter = {
     let d = DateFormatter()
     d.dateFormat = "MMM d, hha"
@@ -108,8 +111,14 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
     }
     
     private func cancelAlert() -> UIAlertController {
-        let title = NSLocalizedString("Are you sure you want to cancel this Autoservice?", comment: "Alert")
-        let message = NSLocalizedString("If you cancel this Autoservice, the funds already placed in your account will be removed and the customer will receive their funds back.", comment: "Alert")
+        let title = NSLocalizedString("Are you sure you want to cancel this auto service?", comment: "Alert")
+        let message: String
+        if let scheduledDate = autoService.scheduledDate, scheduledDate > Date().dateByAdding(hours: 24) {
+            message = cancelRefundMessage
+        } else {
+            message = cancelNoRefundMessage
+        }
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         let actionTitle = NSLocalizedString("Cancel auto service", comment: "Action title")
