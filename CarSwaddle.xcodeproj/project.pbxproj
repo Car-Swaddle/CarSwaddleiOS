@@ -93,6 +93,11 @@
 		997DBCA121B79E620080F42C /* AutoServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9F21B79E620080F42C /* AutoServiceCell.swift */; };
 		997DBCA221B79E620080F42C /* AutoServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBCA021B79E620080F42C /* AutoServiceCell.xib */; };
 		997DBCA821BA605A0080F42C /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBCA721BA605A0080F42C /* PushNotificationController.swift */; };
+		998984D7229D0E6700E4B25A /* UserActivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984D6229D0E6700E4B25A /* UserActivityHandler.swift */; };
+		998984DC229D0FBD00E4B25A /* EnterNewPasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998984D8229D0FBC00E4B25A /* EnterNewPasswordViewController.storyboard */; };
+		998984DE229D0FBD00E4B25A /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984DA229D0FBD00E4B25A /* ForgotPasswordViewController.swift */; };
+		998984DF229D0FBD00E4B25A /* EnterNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984DB229D0FBD00E4B25A /* EnterNewPasswordViewController.swift */; };
+		998984E0229D153F00E4B25A /* ForgotPasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998984D9229D0FBC00E4B25A /* ForgotPasswordViewController.storyboard */; };
 		998D3AE721DDCC49003DD717 /* AutoServiceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AE621DDCC48003DD717 /* AutoServiceDetailsViewController.swift */; };
 		998D3AE921DDCC52003DD717 /* AutoServiceDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998D3AE821DDCC52003DD717 /* AutoServiceDetailsViewController.storyboard */; };
 		998D3AEC21DDCF5C003DD717 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AEA21DDCF5C003DD717 /* ReviewCell.swift */; };
@@ -335,6 +340,11 @@
 		997DBC9F21B79E620080F42C /* AutoServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCell.swift; sourceTree = "<group>"; };
 		997DBCA021B79E620080F42C /* AutoServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceCell.xib; sourceTree = "<group>"; };
 		997DBCA721BA605A0080F42C /* PushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
+		998984D6229D0E6700E4B25A /* UserActivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityHandler.swift; sourceTree = "<group>"; };
+		998984D8229D0FBC00E4B25A /* EnterNewPasswordViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EnterNewPasswordViewController.storyboard; sourceTree = "<group>"; };
+		998984D9229D0FBC00E4B25A /* ForgotPasswordViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ForgotPasswordViewController.storyboard; sourceTree = "<group>"; };
+		998984DA229D0FBD00E4B25A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		998984DB229D0FBD00E4B25A /* EnterNewPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterNewPasswordViewController.swift; sourceTree = "<group>"; };
 		998D03D721F429BA00546C58 /* NetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkRequest.framework; path = Carthage/Build/iOS/NetworkRequest.framework; sourceTree = "<group>"; };
 		998D03D821F429BA00546C58 /* Authentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Authentication.framework; path = Carthage/Build/iOS/Authentication.framework; sourceTree = "<group>"; };
 		998D03D921F429BA00546C58 /* CarSwaddleUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleUI.framework; path = Carthage/Build/iOS/CarSwaddleUI.framework; sourceTree = "<group>"; };
@@ -529,10 +539,11 @@
 			isa = PBXGroup;
 			children = (
 				99A2CDAD218DA179003ED903 /* ServiceRequest.swift */,
-				997DBCA721BA605A0080F42C /* PushNotificationController.swift */,
 				997714C621CCF5BC00E54F5B /* Stripe.swift */,
 				992BFDD022056B8B006B64CC /* Logout.swift */,
 				99AEE1C92274154C00938462 /* LabeledTextField.swift */,
+				998984D5229D0E5100E4B25A /* User Activity Handler */,
+				998984D4229D0E4400E4B25A /* Push Notifications */,
 				9955BC2521556302008DAF8E /* Extensions */,
 				99F78F1A214B9F1D00D1BD28 /* UI */,
 				9991FE1A214B86F900F58F42 /* Launch */,
@@ -634,6 +645,10 @@
 		994CA9FA215206EE00D41F6C /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				998984D8229D0FBC00E4B25A /* EnterNewPasswordViewController.storyboard */,
+				998984DB229D0FBD00E4B25A /* EnterNewPasswordViewController.swift */,
+				998984D9229D0FBC00E4B25A /* ForgotPasswordViewController.storyboard */,
+				998984DA229D0FBD00E4B25A /* ForgotPasswordViewController.swift */,
 				994CA9F6215206CD00D41F6C /* LoginViewController.swift */,
 				994CA9FB215208BD00D41F6C /* SignUpViewController.swift */,
 				994CA9F8215206E600D41F6C /* LoginViewController.storyboard */,
@@ -752,6 +767,22 @@
 				99A0AF03224EC2B60001FDC6 /* Select Mechanic New */,
 			);
 			path = Mechanic;
+			sourceTree = "<group>";
+		};
+		998984D4229D0E4400E4B25A /* Push Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				997DBCA721BA605A0080F42C /* PushNotificationController.swift */,
+			);
+			path = "Push Notifications";
+			sourceTree = "<group>";
+		};
+		998984D5229D0E5100E4B25A /* User Activity Handler */ = {
+			isa = PBXGroup;
+			children = (
+				998984D6229D0E6700E4B25A /* UserActivityHandler.swift */,
+			);
+			path = "User Activity Handler";
 			sourceTree = "<group>";
 		};
 		998D3AF221DDCFA6003DD717 /* AutoService Details */ = {
@@ -1108,6 +1139,7 @@
 			files = (
 				99DC262B2246ECC2009E0A15 /* Montserrat-ExtraBold.otf in Resources */,
 				991AFC9722506AE100AD6614 /* HourDisplayView.xib in Resources */,
+				998984E0229D153F00E4B25A /* ForgotPasswordViewController.storyboard in Resources */,
 				991AFCB22250B38400AD6614 /* AddCollectionViewCell.xib in Resources */,
 				99AEE1CE2277D7E400938462 /* DateCardView.xib in Resources */,
 				99A0AF15224EEA760001FDC6 /* FocusedCollectionViewCell.xib in Resources */,
@@ -1164,6 +1196,7 @@
 				99DC26402246ECC2009E0A15 /* MontserratAlternates-ExtraLightItalic.otf in Resources */,
 				99DC263D2246ECC2009E0A15 /* MontserratAlternates-ExtraBold.otf in Resources */,
 				99116906215B76B6001E039E /* AddVehicleCell.xib in Resources */,
+				998984DC229D0FBD00E4B25A /* EnterNewPasswordViewController.storyboard in Resources */,
 				99DC26472246ECC2009E0A15 /* MontserratAlternates-SemiBold.otf in Resources */,
 				99DC262F2246ECC2009E0A15 /* Montserrat-Italic.otf in Resources */,
 				99DC26412246ECC2009E0A15 /* MontserratAlternates-Italic.otf in Resources */,
@@ -1293,6 +1326,7 @@
 				9955BC2421555D62008DAF8E /* Navigator.swift in Sources */,
 				997DBC7621997E370080F42C /* DateExtension.swift in Sources */,
 				997714C721CCF5BC00E54F5B /* Stripe.swift in Sources */,
+				998984D7229D0E6700E4B25A /* UserActivityHandler.swift in Sources */,
 				990F4370214252C600E65FC1 /* ViewController.swift in Sources */,
 				99E66DA821E2963A00C6E3E1 /* UserImageView.swift in Sources */,
 				990F436E214252C600E65FC1 /* AppDelegate.swift in Sources */,
@@ -1351,6 +1385,7 @@
 				99986006227E314900113536 /* AutoServiceDetailsHeaderCell.swift in Sources */,
 				997DBC7421997E020080F42C /* TimeIntervalExtension.swift in Sources */,
 				994CA9FC215208BD00D41F6C /* SignUpViewController.swift in Sources */,
+				998984DF229D0FBD00E4B25A /* EnterNewPasswordViewController.swift in Sources */,
 				99986009227E39E200113536 /* PillView.swift in Sources */,
 				99425466215778DD0075EDCA /* Defaults.swift in Sources */,
 				99A0AF07224EC4880001FDC6 /* FocusedCellCollectionViewLayout.swift in Sources */,
@@ -1360,6 +1395,7 @@
 				99DC26002246DA17009E0A15 /* RoundView.swift in Sources */,
 				993BA12621585ACA00DB95EF /* LocationManager.swift in Sources */,
 				99986003227E2A0900113536 /* CLLocationDistanceExtension.swift in Sources */,
+				998984DE229D0FBD00E4B25A /* ForgotPasswordViewController.swift in Sources */,
 				991AFC92224FF01500AD6614 /* TimeSlotCollectionViewCell.swift in Sources */,
 				997DBC6621995B320080F42C /* MechanicViewController.swift in Sources */,
 				99E4816A227BFB1E0040B882 /* ServiceHeaderView.swift in Sources */,

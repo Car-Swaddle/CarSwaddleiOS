@@ -125,15 +125,16 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
     }
     
     @IBAction private func didTapForgotPassword() {
-//        let user = UsersViewController()
-//        navigationController?.pushViewController(user, animated: true)
+        let forgotPassword = ForgotPasswordViewController.viewControllerFromStoryboard()
+        forgotPassword.previousEmailAddress = emailTextField.text
+        present(forgotPassword.inNavigationController(), animated: true, completion: nil)
     }
     
+    
+    
     private var backgroundImage: UIImage? {
-        let top = GradientPoint(location: 1.0, color: UIColor.secondary.color(adjustedBy255Points: 15))
-        let middle = GradientPoint(location: 0.6, color: UIColor.secondary.color(adjustedBy255Points: 0))
-        let bottom = GradientPoint(location: 0.0, color: UIColor.secondary.color(adjustedBy255Points: -15))
-        return UIImage(size: view.bounds.size, gradientPoints: [top, middle, bottom])
+        let gradientPoints = SignUpViewController.gradientPoints
+        return UIImage(size: view.bounds.size, gradientPoints: gradientPoints)
     }
     
 }

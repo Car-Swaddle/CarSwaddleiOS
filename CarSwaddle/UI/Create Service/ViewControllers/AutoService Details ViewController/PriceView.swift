@@ -12,8 +12,6 @@ import Store
 final class PriceView: UIView, NibInstantiating {
     
     @IBOutlet private weak var priceStackView: UIStackView!
-//    @IBOutlet private weak var totalPriceStackView: UIStackView!
-//    @IBOutlet private weak var totalPriceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,28 +25,9 @@ final class PriceView: UIView, NibInstantiating {
             arrangedSubview.removeFromSuperview()
         }
         
-//        let subtotals = (service.price?.parts ?? []).sorted { lp, rp -> Bool in
-//            if lp.isPartOfSubtotal != rp.isPartOfSubtotal {
-//                return lp.isPartOfSubtotal && !rp.isPartOfSubtotal
-//            } else if lp.isPartOfSubtotal {
-//                return true
-//            } else {
-//                return false
-//            }
-//        }
-        
         let priceParts = service.price?.parts ?? []
         
         var nonSubtotalIndex = 0
-//        for pricePart in sortedPriceParts {
-//            if pricePart.isPartOfSubtotal == false {
-//                let pricePartView = PricePartView.viewFromNib()
-//                pricePartView.configure(with: pricePart)
-//                priceStackView.insertArrangedSubview(pricePartView, at: nonSubtotalIndex)
-//                nonSubtotalIndex += 1
-//            }
-//        }
-        
         var subtotalPriceParts: [PricePart] = []
         var totalPriceParts: [PricePart] = []
         
@@ -60,9 +39,13 @@ final class PriceView: UIView, NibInstantiating {
             }
         }
         
-        subtotalPriceParts = subtotalPriceParts.sorted(by: { (lhs, rhs) -> Bool in
-            print("lhs: \(lhs), rhs: \(rhs)")
-            return lhs.key < rhs.key
+        subtotalPriceParts = subtotalPriceParts.sorted(by: { lhs, rhs in
+            if lhs.key == PricePart.distanceKey {
+                return true
+            } else if lhs.key == PricePart.oilChangeKey && rhs.key != PricePart.distanceKey {
+                return true
+            }
+            return false
         })
         
         for pricePart in subtotalPriceParts {
@@ -72,15 +55,19 @@ final class PriceView: UIView, NibInstantiating {
             nonSubtotalIndex += 1
         }
         
-        
-        
         let separatorView1 = self.separatorView()
         priceStackView.addArrangedSubview(separatorView1)
         nonSubtotalIndex += 1
         
-        totalPriceParts = totalPriceParts.sorted(by: { (lhs, rhs) -> Bool in
-            print("lhs: \(lhs), rhs: \(rhs)")
-            return lhs.key < rhs.key
+        totalPriceParts = totalPriceParts.sorted(by: { lhs, rhs in
+            if lhs.key == PricePart.subtotalKey {
+                return true
+            } else if lhs.key == PricePart.bookingFeeKey && rhs.key != PricePart.subtotalKey {
+                return true
+            } else if lhs.key == PricePart.processingFeeKey && rhs.key != PricePart.subtotalKey && rhs.key != PricePart.bookingFeeKey {
+                return true
+            }
+            return false
         })
         
         var subtotalIndex = 0
@@ -96,12 +83,9 @@ final class PriceView: UIView, NibInstantiating {
         nonSubtotalIndex += 1
         
         if let price = service.price {
-//            totalPriceLabel.text = currencyFormatter.string(from: price.totalDollarValue)
             let pricePartView = PricePartView.viewFromNib()
             pricePartView.configure(with: price)
             priceStackView.addArrangedSubview(pricePartView)
-        } else {
-//            totalPriceLabel.text = nil
         }
     }
     

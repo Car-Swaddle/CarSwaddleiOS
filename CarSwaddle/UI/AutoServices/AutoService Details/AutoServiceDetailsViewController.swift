@@ -12,8 +12,8 @@ import Store
 import CarSwaddleData
 import Cosmos
 
-private let cancelRefundMessage = NSLocalizedString("If you cancel this auto service, the funds already placed in your account will be removed and the customer will receive their funds back.", comment: "Alert")
-private let cancelNoRefundMessage = NSLocalizedString("Because the auto service is less than 24 hours away. Your funds will not be refunded to you should you cancel this auto service.", comment: "Alert")
+private let cancelRefundMessage = NSLocalizedString("If you cancel this auto service your funds will refunded and your mechanic will be notified.", comment: "Alert")
+private let cancelNoRefundMessage = NSLocalizedString("Because the auto service is less than 24 hours away. Your funds will not be refunded to you should you cancel this auto service. Your mechanic will be notified of the cancellation", comment: "Alert")
 
 private let dateFormatter: DateFormatter = {
     let d = DateFormatter()

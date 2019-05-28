@@ -29,6 +29,12 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     public static let stripeAgreementURL: URL! = URL(string: stripeAgreementURLString)!
     public static let carSwaddleAgreementURL: URL! = URL(string: carSwaddleAgreementURLString)!
     public static let carSwaddlePrivacyURL: URL! = URL(string: carSwaddlePrivacyPolicyURLString)!
+    
+    public static let gradientPoints: [GradientPoint] = [
+        GradientPoint(location: 1.0, color: UIColor.secondary.color(adjustedBy255Points: -45)),
+        GradientPoint(location: 0.6, color: UIColor.secondary.color(adjustedBy255Points: -30)),
+        GradientPoint(location: 0.0, color: UIColor.secondary.color(adjustedBy255Points: -15))
+    ]
 
     @IBOutlet private weak var signupButton: UIButton!
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
@@ -197,10 +203,8 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     }
     
     private var backgroundImage: UIImage? {
-        let top = GradientPoint(location: 1.0, color: UIColor.secondary.color(adjustedBy255Points: 15))
-        let middle = GradientPoint(location: 0.6, color: UIColor.secondary.color(adjustedBy255Points: 0))
-        let bottom = GradientPoint(location: 0.0, color: UIColor.secondary.color(adjustedBy255Points: -15))
-        return UIImage(size: view.bounds.size, gradientPoints: [top, middle, bottom])
+        let gradientPoints = SignUpViewController.gradientPoints
+        return UIImage(size: view.bounds.size, gradientPoints: gradientPoints)
     }
 
 }

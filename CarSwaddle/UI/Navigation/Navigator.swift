@@ -110,9 +110,9 @@ final class Navigator: NSObject {
         
         CustomAlertAction.cancelTitle = NSLocalizedString("Cancel", comment: "Cancel button title")
         
-        LabeledTextField.defaultTextFieldFont = UIFont.appFont(type: .regular, size: 17)
-        LabeledTextField.defaultLabelNotExistsFont = UIFont.appFont(type: .semiBold, size: 17)
-        LabeledTextField.defaultLabelFont = UIFont.appFont(type: .regular, size: 17)
+        LabeledTextField.defaultTextFieldFont = UIFont.appFont(type: .regular, size: 15)
+        LabeledTextField.defaultLabelNotExistsFont = UIFont.appFont(type: .semiBold, size: 15)
+        LabeledTextField.defaultLabelFont = UIFont.appFont(type: .regular, size: 15)
         
         let labeledTextFieldAppearance = LabeledTextField.appearance()
         labeledTextFieldAppearance.underlineColor = .secondary
@@ -203,7 +203,12 @@ final class Navigator: NSObject {
         
         let navigationDelegateViewController = NavigationDelegateViewController(navigationDelegatingViewControllers: viewControllers)
         navigationDelegateViewController.externalDelegate = self
-        appDelegate.window?.rootViewController?.present(navigationDelegateViewController, animated: true, completion: nil)
+        presentAtRoot(viewController: navigationDelegateViewController)
+//        appDelegate.window?.rootViewController?.present(navigationDelegateViewController, animated: true, completion: nil)
+    }
+    
+    private func presentAtRoot(viewController: UIViewController) {
+        appDelegate.window?.rootViewController?.present(viewController, animated: true, completion: nil)
     }
     
     private func requiredViewControllers() -> [NavigationDelegatingViewController] {
@@ -229,6 +234,10 @@ final class Navigator: NSObject {
         return viewControllers
     }
     
+    func showEnterNewPasswordScreen(resetToken: String) {
+        let enterPassword = EnterNewPasswordViewController.create(resetToken: resetToken)
+        presentAtRoot(viewController: enterPassword.inNavigationController())
+    }
     
     private var _servicesViewController: ServicesViewController?
     private var servicesViewController: ServicesViewController {
@@ -299,8 +308,9 @@ extension Navigator: TweakViewControllerDelegate {
         let allTweaks = Tweak.all
         let tweakViewController = TweakViewController.create(with: allTweaks, delegate: self)
         let navigationController = tweakViewController.inNavigationController()
-        
-        appDelegate.window?.rootViewController?.present(navigationController, animated: true, completion: nil)
+
+        presentAtRoot(viewController: navigationController)
+//        appDelegate.window?.rootViewController?.present(navigationController, animated: true, completion: nil)
     }
     
     func didDismiss(requiresAppReset: Bool, tweakViewController: TweakViewController) {

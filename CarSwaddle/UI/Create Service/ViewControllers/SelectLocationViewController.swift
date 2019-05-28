@@ -170,16 +170,14 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     }
     
     @IBAction private func didSelectConfirm() {
-//        guard let location = location else { return }
+        
+        confirmButton.isLoading = true
         
         let center = mapView.centerCoordinate
-//        setLocation(with: center)
-        
         let location = Location(context: store.mainContext, autoService: autoService, coordinate: center)
         store.mainContext.persist()
         
         let locationObjectID = location.objectID
-        
         locationManager.placemark(from: location.clLocation) { [weak self] placemark, error in
             store.mainContext { mainContext in
                 guard let self = self,
@@ -187,6 +185,7 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
                 fetchedLocation.streetAddress = placemark?.localizedAddress
                 mainContext.persist()
                 self.delegate?.didSelect(location: fetchedLocation, viewController: self)
+                self.confirmButton.isLoading = false
             }
         }
         
