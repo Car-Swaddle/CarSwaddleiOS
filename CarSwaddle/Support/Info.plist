@@ -28,6 +28,8 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>msg-macbook.local</key>
+			<true/>
 			<key>127.0.0.1</key>
 			<true/>
 			<key>169.254.184.119</key>

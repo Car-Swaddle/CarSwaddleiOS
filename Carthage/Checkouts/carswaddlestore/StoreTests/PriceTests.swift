@@ -54,14 +54,16 @@ private let price6PricePartJSON: [String: Any] = [
 ]
 
 private let invoicePriceJSON: [String: Any] = [
-    "oilChange": 5600,
-    "distance": 196,
-    "bookingFee": 580,
-    "processingFee": 226,
-    "subtotal": 5796,
-    "taxes": 471,
-    "total": 7073,
-    "id": "b75f2150-9ef2-11e9-9729-e1444a210d28"
+    "prices": [
+        "oilChange": 4500,
+        "distance": 1600,
+        "bookingFee": 480,
+        "processingFee": 480,
+        "bookingFeeDiscount": 0,
+        "subtotal": 6580,
+        "taxes": 230,
+        "total": 6820
+    ]
 ]
 
 

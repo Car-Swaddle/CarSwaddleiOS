@@ -11,8 +11,10 @@ import CarSwaddleUI
 
 #if targetEnvironment(simulator)
 private let localDomain = "127.0.0.1"
+private let marksLocalDomain = "127.0.0.1"
 #else
 private let localDomain = "Kyles-MacBook-Pro.local"
+private let marksLocalDomain = "msg-macbook.local"
 #endif
 
 private let productionDomain = "www.carswaddle.com"
@@ -23,7 +25,7 @@ private let domainUserDefaultsKey = "domain"
 
 extension Tweak {
     
-    private static let domainOptions = Tweak.Options.string(values: [localDomain, productionDomain, stagingDomain, productionHerokuDomain])
+    private static let domainOptions = Tweak.Options.string(values: [localDomain, marksLocalDomain, productionDomain, stagingDomain, productionHerokuDomain])
     static let domain: Tweak = {
         let valueDidChange: (_ tweak: Tweak) -> Void = { tweak in
             _serviceRequest = nil

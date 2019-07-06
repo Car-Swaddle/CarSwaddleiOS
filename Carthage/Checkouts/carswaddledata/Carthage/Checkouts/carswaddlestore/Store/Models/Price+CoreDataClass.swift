@@ -26,16 +26,19 @@ public final class Price: NSManagedObject, NSManagedObjectFetchable, JSONInitabl
     }
     
     private static func values(from json: JSONObject) -> PriceValues? {
-        guard let id = json.identifier,
-            let totalPrice = json["total"] as? Int,
-            let processingFee = json["processingFee"] as? Int,
-            let bookingFee = json["bookingFee"] as? Int,
-            let distance = json["distance"] as? Int,
-            let oilChange = json["oilChange"] as? Int,
-            let taxes = json["taxes"] as? Int,
-            let subtotal = json["subtotal"] as? Int else { return nil }
+        guard let priceJSON = json["prices"] as? JSONObject else { return nil}
+        guard let totalPrice = priceJSON["total"] as? Int,
+            let processingFee = priceJSON["processingFee"] as? Int,
+            let bookingFee = priceJSON["bookingFee"] as? Int,
+            let distance = priceJSON["distance"] as? Int,
+            let oilChange = priceJSON["oilChange"] as? Int,
+            let taxes = priceJSON["taxes"] as? Int,
+            let subtotal = priceJSON["subtotal"] as? Int else { return nil }
         
-        return (id, totalPrice, taxes, subtotal, processingFee, bookingFee, distance, oilChange, json["couponDiscount"] as? Int)
+        /// Generate id every time. Should change
+        let uuid = UUID().uuidString
+        
+        return (uuid, totalPrice, taxes, subtotal, processingFee, bookingFee, distance, oilChange, priceJSON["couponDiscount"] as? Int)
     }
     
     private func configure(from values: PriceValues, json: JSONObject)  {
