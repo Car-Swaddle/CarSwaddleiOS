@@ -25,6 +25,7 @@ extension CreateServiceViewController {
 }
 
 
+@available(*, deprecated, message: "Old ViewController")
 final class CreateServiceViewController: UIViewController, StoryboardInstantiating {
     
     private let autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
@@ -102,10 +103,10 @@ final class CreateServiceViewController: UIViewController, StoryboardInstantiati
         
         var summaryItems: [PKPaymentSummaryItem] = []
         
-        for pricePart in price.parts {
-            guard pricePart.isPartOfSubtotal == true else { continue }
-            summaryItems.append(pricePart.paymentSummaryItem)
-        }
+//        for pricePart in price.parts {
+//            guard pricePart.isPartOfSubtotal == true else { continue }
+//            summaryItems.append(pricePart.paymentSummaryItem)
+//        }
         
         let amount = price.totalDollarValue
         let item = PKPaymentSummaryItem(label: "Car Swaddle", amount: amount)
@@ -139,7 +140,7 @@ final class CreateServiceViewController: UIViewController, StoryboardInstantiati
         let coordinate = location.coordinate
         loadingPrice = true
         store.privateContext { [weak self] privateContext in
-            self?.priceNetwork.requestPrice(mechanicID: mechanicID, oilType: oilType, location: coordinate, in: privateContext) { priceObjectID, error in
+            self?.priceNetwork.requestPrice(mechanicID: mechanicID, oilType: oilType, location: coordinate, couponCode: nil, in: privateContext) { priceObjectID, error in
                 DispatchQueue.main.async {
                     guard let _self = self else { return }
                     if let priceObjectID = priceObjectID,
@@ -352,18 +353,18 @@ extension CreateServiceViewController: STPPaymentContextDelegate {
 }
 
 
-extension PricePart {
-    
-    var paymentSummaryItem: PKPaymentSummaryItem {
-        return PKPaymentSummaryItem(pricePart: self)
-    }
-    
-}
-
-extension PKPaymentSummaryItem {
-    
-    convenience init(pricePart: PricePart) {
-        self.init(label: pricePart.key, amount: pricePart.dollarValue)
-    }
-    
-}
+//extension PricePart {
+//
+//    var paymentSummaryItem: PKPaymentSummaryItem {
+//        return PKPaymentSummaryItem(pricePart: self)
+//    }
+//
+//}
+//
+//extension PKPaymentSummaryItem {
+//
+//    convenience init(pricePart: PricePart) {
+//        self.init(label: pricePart.key, amount: pricePart.dollarValue)
+//    }
+//
+//}

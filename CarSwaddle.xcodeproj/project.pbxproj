@@ -151,7 +151,6 @@
 		99D5D9E121F5CD9700E6A511 /* CarSwaddleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F0277821845755005FEFC7 /* CarSwaddleData.framework */; };
 		99D5D9E521F5CD9700E6A511 /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375A02171C02700F15BEC /* Store.framework */; };
 		99D5D9E721F5CD9700E6A511 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995D0103216AD7C3009B1895 /* KeychainAccess.framework */; };
-		99D5DA4721FD15EC00E6A511 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D5DA4621FD15EC00E6A511 /* AuthenticationServices.framework */; };
 		99DC25FA2246C2A0009E0A15 /* AutoServiceCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25F92246C2A0009E0A15 /* AutoServiceCreation.swift */; };
 		99DC25FC2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25FB2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift */; };
 		99DC25FE2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DC25FD2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard */; };
@@ -430,7 +429,6 @@
 		99BC8D242245F3D700B732E7 /* Montserrat-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.otf"; sourceTree = "<group>"; };
 		99BC8D252245F3D900B732E7 /* Montserrat-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.otf"; sourceTree = "<group>"; };
 		99C791C32150C8A8000167CB /* CarSwaddle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarSwaddle-Bridging-Header.h"; sourceTree = "<group>"; };
-		99D5DA4621FD15EC00E6A511 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		99DC25F92246C2A0009E0A15 /* AutoServiceCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCreation.swift; sourceTree = "<group>"; };
 		99DC25FB2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCreationProgressViewController.swift; sourceTree = "<group>"; };
 		99DC25FD2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoServiceCreationProgressViewController.storyboard; sourceTree = "<group>"; };
@@ -485,7 +483,6 @@
 				99E4CED92261CA760007F6F8 /* FirebaseInstanceID.framework in Frameworks */,
 				99D5D9E721F5CD9700E6A511 /* KeychainAccess.framework in Frameworks */,
 				99D5D99321F43C1600E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */,
-				99D5DA4721FD15EC00E6A511 /* AuthenticationServices.framework in Frameworks */,
 				99E4CEDF2261CA760007F6F8 /* Firebase.framework in Frameworks */,
 				99D5D9E521F5CD9700E6A511 /* Store.framework in Frameworks */,
 				99E4CEDC2261CA760007F6F8 /* nanopb.framework in Frameworks */,
@@ -995,7 +992,6 @@
 				99E4CED82261CA760007F6F8 /* GoogleUtilities.framework */,
 				99E4CED32261CA750007F6F8 /* nanopb.framework */,
 				99A0AF16224F53DD0001FDC6 /* FSCalendar.framework */,
-				99D5DA4621FD15EC00E6A511 /* AuthenticationServices.framework */,
 				998D03D821F429BA00546C58 /* Authentication.framework */,
 				998D03D921F429BA00546C58 /* CarSwaddleUI.framework */,
 				998D03D721F429BA00546C58 /* NetworkRequest.framework */,
@@ -1086,7 +1082,7 @@
 								enabled = 0;
 							};
 							com.apple.AutoFillCredentialProvider = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Keychain = {
 								enabled = 0;

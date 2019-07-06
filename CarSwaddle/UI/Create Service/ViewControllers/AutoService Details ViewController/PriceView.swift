@@ -9,6 +9,22 @@
 import UIKit
 import Store
 
+
+//private let Label = NSLocalizedString("Labor", comment: "Price part key")
+private let oilFilterLabel = NSLocalizedString("Oil filter", comment: "Price part key")
+private let travelLabel = NSLocalizedString("Travel", comment: "Price part key")
+//private let Label = NSLocalizedString("Oil", comment: "Price part key")
+private let subtotalLabel = NSLocalizedString("Subtotal", comment: "Price part key")
+private let bookingFeeLabel = NSLocalizedString("Booking fee", comment: "Price part key")
+private let processingFeeLabel = NSLocalizedString("Processing fee", comment: "Price part key")
+//private let Label = NSLocalizedString("Oil change high mileage", comment: "Price part key")
+private let oilChangeLabel = NSLocalizedString("Oil change", comment: "Price part key")
+private let taxesLabel = NSLocalizedString("Taxes", comment: "Price part key")
+//private let Label = NSLocalizedString("Synthetic oil change", comment: "Price part key")
+//private let Label = NSLocalizedString("Conventional oil change", comment: "Price part key")
+//private let Label = NSLocalizedString("Blend oil change", comment: "Price part key")
+
+
 final class PriceView: UIView, NibInstantiating {
     
     @IBOutlet private weak var priceStackView: UIStackView!
@@ -25,68 +41,19 @@ final class PriceView: UIView, NibInstantiating {
             arrangedSubview.removeFromSuperview()
         }
         
-        let priceParts = service.price?.parts ?? []
+        guard let price = service.price else { return }
         
-        var nonSubtotalIndex = 0
-        var subtotalPriceParts: [PricePart] = []
-        var totalPriceParts: [PricePart] = []
+        addPricePartView(label: oilChangeLabel, cents: price.oilChangeCost)
+        addPricePartView(label: travelLabel, cents: price.distanceCost)
+        addSeparatorView()
+        addPricePartView(label: subtotalLabel, cents: price.subtotal)
+        addPricePartView(label: processingFeeLabel, cents: price.processingFee + price.bookingFee)
+        addPricePartView(label: taxesLabel, cents: price.taxes)
+        addSeparatorView()
         
-        for pricePart in priceParts {
-            if pricePart.isPartOfSubtotal == false {
-                subtotalPriceParts.append(pricePart)
-            } else {
-                totalPriceParts.append(pricePart)
-            }
-        }
-        
-        subtotalPriceParts = subtotalPriceParts.sorted(by: { lhs, rhs in
-            if lhs.key == PricePart.distanceKey {
-                return true
-            } else if lhs.key == PricePart.oilChangeKey && rhs.key != PricePart.distanceKey {
-                return true
-            }
-            return false
-        })
-        
-        for pricePart in subtotalPriceParts {
-            let pricePartView = PricePartView.viewFromNib()
-            pricePartView.configure(with: pricePart)
-            priceStackView.insertArrangedSubview(pricePartView, at: nonSubtotalIndex)
-            nonSubtotalIndex += 1
-        }
-        
-        let separatorView1 = self.separatorView()
-        priceStackView.addArrangedSubview(separatorView1)
-        nonSubtotalIndex += 1
-        
-        totalPriceParts = totalPriceParts.sorted(by: { lhs, rhs in
-            if lhs.key == PricePart.subtotalKey {
-                return true
-            } else if lhs.key == PricePart.bookingFeeKey && rhs.key != PricePart.subtotalKey {
-                return true
-            } else if lhs.key == PricePart.processingFeeKey && rhs.key != PricePart.subtotalKey && rhs.key != PricePart.bookingFeeKey {
-                return true
-            }
-            return false
-        })
-        
-        var subtotalIndex = 0
-        for pricePart in totalPriceParts {
-            let pricePartView = PricePartView.viewFromNib()
-            pricePartView.configure(with: pricePart)
-            priceStackView.insertArrangedSubview(pricePartView, at: subtotalIndex+nonSubtotalIndex)
-            subtotalIndex += 1
-        }
-        
-        let separatorView2 = self.separatorView()
-        priceStackView.addArrangedSubview(separatorView2)
-        nonSubtotalIndex += 1
-        
-        if let price = service.price {
-            let pricePartView = PricePartView.viewFromNib()
-            pricePartView.configure(with: price)
-            priceStackView.addArrangedSubview(pricePartView)
-        }
+        let pricePartView = PricePartView.viewFromNib()
+        pricePartView.configure(with: price)
+        priceStackView.addArrangedSubview(pricePartView)
     }
     
     private func separatorView() -> UIView {
@@ -94,6 +61,16 @@ final class PriceView: UIView, NibInstantiating {
         view.heightAnchor.constraint(equalToConstant: UIView.hairlineLength).isActive = true
         view.backgroundColor = .gray3
         return view
+    }
+    
+    private func addSeparatorView() {
+        priceStackView.addArrangedSubview(separatorView())
+    }
+    
+    private func addPricePartView(label: String, cents: Int) {
+        let pricePartView = PricePartView.viewFromNib()
+        pricePartView.configure(label: label, numberOfCents: cents)
+        priceStackView.addArrangedSubview(pricePartView)
     }
     
 }

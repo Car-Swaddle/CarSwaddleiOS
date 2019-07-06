@@ -22,10 +22,10 @@ final class PricePartView: UIView, NibInstantiating {
         partDescriptionLabel.font = UIFont.appFont(type: .regular, size: 15)
         partPriceLabel.font = UIFont.appFont(type: .semiBold, size: 17)
     }
-        
-    func configure(with pricePart: PricePart) {
-        partDescriptionLabel.text = pricePart.localizedKey ?? pricePart.key
-        partPriceLabel.text = currencyFormatter.string(from: pricePart.dollarValue)
+    
+    func configure(label: String, numberOfCents: Int) {
+        partDescriptionLabel.text = label
+        partPriceLabel.text = currencyFormatter.string(from: numberOfCents.centsToDollars)
     }
     
     func configure(with price: Price) {
@@ -35,18 +35,19 @@ final class PricePartView: UIView, NibInstantiating {
     
 }
 
-public extension PricePart {
-    
-    var dollarValue: NSDecimalNumber {
-        return NSDecimalNumber(value: Float(value) / 100.0)
-    }
-    
-}
 
 public extension Price {
     
     var totalDollarValue: NSDecimalNumber {
-        return NSDecimalNumber(value: Float(totalPrice) / 100.0)
+        return total.centsToDollars
+    }
+    
+}
+
+public extension Int {
+    
+    var centsToDollars: NSDecimalNumber {
+        return NSDecimalNumber(value: Float(self) / 100.0)
     }
     
 }

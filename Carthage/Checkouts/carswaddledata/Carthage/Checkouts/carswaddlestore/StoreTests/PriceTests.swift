@@ -19,16 +19,8 @@ class PriceTests: XCTestCase {
     }
     
     func testCreatePrice() {
-//        let price = Price(json: price4PricePartJSON, context: store.mainContext)
-        let price = Price.fetchOrCreate(json: price4PricePartJSON, context: store.mainContext)
+        let price = Price.fetchOrCreate(json: invoicePriceJSON, context: store.mainContext)
         XCTAssert(price != nil, "Should have price")
-        XCTAssert(price?.parts.count == 4, "Should have 4 price parts")
-        
-        store.mainContext.persist()
-        
-        let price2 = Price.fetchOrCreate(json: price6PricePartJSON, context: store.mainContext)
-        XCTAssert(price2 != nil, "Should have price")
-        XCTAssert(price2?.parts.count == 6, "Should have 6 price parts")
         
         store.mainContext.persist()
     }
@@ -59,6 +51,17 @@ private let price6PricePartJSON: [String: Any] = [
         ["key": "bookingFee", "value": "5"],
         ["key": "processingFee", "value": "1.34"],
     ]
+]
+
+private let invoicePriceJSON: [String: Any] = [
+    "oilChange": 5600,
+    "distance": 196,
+    "bookingFee": 580,
+    "processingFee": 226,
+    "subtotal": 5796,
+    "taxes": 471,
+    "total": 7073,
+    "id": "b75f2150-9ef2-11e9-9729-e1444a210d28"
 ]
 
 

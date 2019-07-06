@@ -17,9 +17,12 @@ extension NetworkRequest.Request.Endpoint {
 final public class PriceService: Service {
     
     @discardableResult
-    public func getPrice(mechanicID: String, oilType: String, location: CLLocationCoordinate2D, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+    public func getPrice(mechanicID: String, oilType: String, location: CLLocationCoordinate2D, couponCode: String?, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
         let locationJSON: JSONObject = ["latitude": location.latitude, "longitude": location.longitude]
-        let json: JSONObject = ["mechanicID": mechanicID, "oilType": oilType, "location": locationJSON]
+        var json: JSONObject = ["mechanicID": mechanicID, "oilType": oilType, "location": locationJSON]
+        if let couponCode = couponCode {
+            json["coupon"] = couponCode
+        }
         guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])),
             let urlRequest = serviceRequest.post(with: .price, body: body, contentType: .applicationJSON) else { return nil }
         return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
@@ -28,8 +31,11 @@ final public class PriceService: Service {
     }
     
     @discardableResult
-    public func getPrice(mechanicID: String, oilType: String, locationID: String, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
-        let json: JSONObject = ["mechanicID": mechanicID, "oilType": oilType, "locationID": locationID]
+    public func getPrice(mechanicID: String, oilType: String, locationID: String, couponCode: String?, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        var json: JSONObject = ["mechanicID": mechanicID, "oilType": oilType, "locationID": locationID]
+        if let couponCode = couponCode {
+            json["coupon"] = couponCode
+        }
         guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])),
             let urlRequest = serviceRequest.post(with: .price, body: body, contentType: .applicationJSON) else { return nil }
         return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in

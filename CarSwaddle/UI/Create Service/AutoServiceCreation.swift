@@ -69,7 +69,7 @@ final class AutoServiceCreation: NSObject {
             let coordinate = autoService.location?.coordinate else { return }
         loadingPrice = true
         store.privateContext { [weak self] privateContext in
-            self?.priceNetwork.requestPrice(mechanicID: mechanicID, oilType: oilType, location: coordinate, in: privateContext) { priceObjectID, error in
+            self?.priceNetwork.requestPrice(mechanicID: mechanicID, oilType: oilType, location: coordinate, couponCode: nil, in: privateContext) { priceObjectID, error in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
                     if let priceObjectID = priceObjectID,
@@ -101,22 +101,11 @@ final class AutoServiceCreation: NSObject {
         guard autoService.canConvertToJSON,
             let price = autoService.price else { return }
         
-        var summaryItems: [PKPaymentSummaryItem] = []
-        
-        for pricePart in price.parts {
-            guard pricePart.isPartOfSubtotal == true else { continue }
-            summaryItems.append(pricePart.paymentSummaryItem)
-        }
-        
-        let amount = price.totalDollarValue
-        let item = PKPaymentSummaryItem(label: "Car Swaddle", amount: amount)
-        summaryItems.append(item)
-        
-        paymentContext.paymentSummaryItems = summaryItems
+        paymentContext.paymentSummaryItems = price.summaryItems
         paymentContext.requestPayment()
         
         Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [
-            AnalyticsParameterPrice: amount,
+            AnalyticsParameterPrice: price.totalDollarValue,
             AnalyticsParameterStartDate: autoService.scheduledDate ?? Date(),
             AnalyticsParameterCurrency: "USD",
             AnalyticsParameterContentType: "oilChange",
@@ -258,3 +247,45 @@ extension AutoServiceCreation: SelectAutoServiceDetailsViewControllerDelegate {
     }
     
 }
+
+
+
+extension Price {
+    
+    var summaryItems: [PKPaymentSummaryItem] {
+        var items: [PKPaymentSummaryItem] = []
+        
+//        {
+//            "oilChange": 5600,
+//            "distance": 196,
+//            "bookingFee": 580,
+//            "processingFee": 226,
+//            "subtotal": 5796,
+//            "taxes": 471,
+//            "total": 7073,
+//            "id": "b75f2150-9ef2-11e9-9729-e1444a210d28"
+//        }
+        
+        items.append(PKPaymentSummaryItem(label: NSLocalizedString("Subtotal", comment: "Line item of subtotal"), amount: subtotal.centsToDollars))
+        items.append(PKPaymentSummaryItem(label: NSLocalizedString("Sales tax", comment: "Line item of sales tax"), amount: taxes.centsToDollars))
+        items.append(PKPaymentSummaryItem(label: NSLocalizedString("Booking fees", comment: "Line item of booking and processing fees"), amount: (bookingFee + processingFee).centsToDollars))
+        
+        let amount = totalDollarValue
+        let item = PKPaymentSummaryItem(label: "Car Swaddle, Inc.", amount: amount)
+        items.append(item)
+        
+        return items
+    }
+    
+}
+
+
+extension Int {
+    
+    var decimalNumber: NSDecimalNumber {
+        return NSDecimalNumber(integerLiteral: self)
+    }
+    
+}
+
+

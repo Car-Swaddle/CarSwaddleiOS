@@ -36,25 +36,25 @@ class CreateServicePriceCell: UITableViewCell, NibRegisterable, AutoServiceConfi
             }
         }
         
-        var nonSubtotalIndex = 0
-        for pricePart in service.price?.parts ?? [] {
-            if pricePart.isPartOfSubtotal == false {
-                let pricePartView = PricePartView.viewFromNib()
-                pricePartView.configure(with: pricePart)
-                priceStackView.insertArrangedSubview(pricePartView, at: nonSubtotalIndex)
-                nonSubtotalIndex += 1
-            }
-        }
-        
-        var subtotalIndex = 0
-        for pricePart in service.price?.parts ?? [] {
-            if pricePart.isPartOfSubtotal == true {
-                let pricePartView = PricePartView.viewFromNib()
-                pricePartView.configure(with: pricePart)
-                priceStackView.insertArrangedSubview(pricePartView, at: subtotalIndex+nonSubtotalIndex)
-                subtotalIndex += 1
-            }
-        }
+//        var nonSubtotalIndex = 0
+//        for pricePart in service.price?.parts ?? [] {
+//            if pricePart.isPartOfSubtotal == false {
+//                let pricePartView = PricePartView.viewFromNib()
+//                pricePartView.configure(with: pricePart)
+//                priceStackView.insertArrangedSubview(pricePartView, at: nonSubtotalIndex)
+//                nonSubtotalIndex += 1
+//            }
+//        }
+//
+//        var subtotalIndex = 0
+//        for pricePart in service.price?.parts ?? [] {
+//            if pricePart.isPartOfSubtotal == true {
+//                let pricePartView = PricePartView.viewFromNib()
+//                pricePartView.configure(with: pricePart)
+//                priceStackView.insertArrangedSubview(pricePartView, at: subtotalIndex+nonSubtotalIndex)
+//                subtotalIndex += 1
+//            }
+//        }
         
         if let price = service.price {
             totalPriceLabel.text = currencyFormatter.string(from: price.totalDollarValue)

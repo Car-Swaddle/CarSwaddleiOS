@@ -16,7 +16,7 @@ import Store
 public var currentMechanicID: String = ""
 public var currentUserID: String = ""
 
-private let email = "mechanic@carswaddle.com"
+private let email = "kyle@carswaddle.com"
 private let password = "password"
 
 class LoginTestCase: XCTestCase {
