@@ -216,6 +216,8 @@
 		99E66DA421E294A600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */; };
 		99E66DA621E294AE00C6E3E1 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */; };
 		99E66DA821E2963A00C6E3E1 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA721E2963A00C6E3E1 /* UserImageView.swift */; };
+		99F08C6022D98E9100317EEA /* PaymentMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F08C5E22D98E9100317EEA /* PaymentMethodCell.swift */; };
+		99F08C6122D98E9100317EEA /* PaymentMethodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F08C5F22D98E9100317EEA /* PaymentMethodCell.xib */; };
 		99F220262246933500020024 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F220252246933500020024 /* FontExtension.swift */; };
 		99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FEAFF6215DE3C00009BC07 /* CreateServiceOilTypeCell.swift */; };
 		99FEAFF9215DE3C00009BC07 /* CreateServiceOilTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99FEAFF7215DE3C00009BC07 /* CreateServiceOilTypeCell.xib */; };
@@ -459,6 +461,8 @@
 		99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		99E66DA721E2963A00C6E3E1 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
 		99F0277821845755005FEFC7 /* CarSwaddleData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleData.framework; path = Carthage/Build/iOS/CarSwaddleData.framework; sourceTree = "<group>"; };
+		99F08C5E22D98E9100317EEA /* PaymentMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCell.swift; sourceTree = "<group>"; };
+		99F08C5F22D98E9100317EEA /* PaymentMethodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentMethodCell.xib; sourceTree = "<group>"; };
 		99F220252246933500020024 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		99FEAFF6215DE3C00009BC07 /* CreateServiceOilTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOilTypeCell.swift; sourceTree = "<group>"; };
 		99FEAFF7215DE3C00009BC07 /* CreateServiceOilTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServiceOilTypeCell.xib; sourceTree = "<group>"; };
@@ -569,6 +573,7 @@
 				991AFCB02250B38400AD6614 /* AddCollectionViewCell.xib */,
 				991AFCBB2259297300AD6614 /* PriceView.swift */,
 				991AFCBD2259299A00AD6614 /* PriceView.xib */,
+				99F08C5D22D98E3F00317EEA /* PaymentMethod */,
 				991AFCAD2250B2D100AD6614 /* Vehicles */,
 				991AFCAE2250B2DB00AD6614 /* OilType */,
 			);
@@ -952,6 +957,15 @@
 			path = Montserrat;
 			sourceTree = "<group>";
 		};
+		99F08C5D22D98E3F00317EEA /* PaymentMethod */ = {
+			isa = PBXGroup;
+			children = (
+				99F08C5E22D98E9100317EEA /* PaymentMethodCell.swift */,
+				99F08C5F22D98E9100317EEA /* PaymentMethodCell.xib */,
+			);
+			path = PaymentMethod;
+			sourceTree = "<group>";
+		};
 		99F78F19214B9F1700D1BD28 /* Store */ = {
 			isa = PBXGroup;
 			children = (
@@ -1134,6 +1148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99DC262B2246ECC2009E0A15 /* Montserrat-ExtraBold.otf in Resources */,
+				99F08C6122D98E9100317EEA /* PaymentMethodCell.xib in Resources */,
 				991AFC9722506AE100AD6614 /* HourDisplayView.xib in Resources */,
 				998984E0229D153F00E4B25A /* ForgotPasswordViewController.storyboard in Resources */,
 				991AFCB22250B38400AD6614 /* AddCollectionViewCell.xib in Resources */,
@@ -1357,6 +1372,7 @@
 				997DBC512197575A0080F42C /* UserNameViewController.swift in Sources */,
 				997DBCA121B79E620080F42C /* AutoServiceCell.swift in Sources */,
 				991AFCB42251452700AD6614 /* AddVehicleViewController.swift in Sources */,
+				99F08C6022D98E9100317EEA /* PaymentMethodCell.swift in Sources */,
 				99F220262246933500020024 /* FontExtension.swift in Sources */,
 				997714C321CCE2C700E54F5B /* PricePartView.swift in Sources */,
 				999861432289270C00113536 /* CancelAutoServiceCell.swift in Sources */,

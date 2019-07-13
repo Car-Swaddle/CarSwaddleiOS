@@ -40,6 +40,8 @@ final class AutoServiceCreation: NSObject {
     private var loadingPrice: Bool = false
     private let autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     
+    private weak var payViewController: SelectAutoServiceDetailsViewController?
+    
     private lazy var paymentContext: STPPaymentContext = {
         let paymentContext = STPPaymentContext(customerContext: STPCustomerContext(keyProvider: stripe))
         paymentContext.delegate = self
@@ -63,14 +65,21 @@ final class AutoServiceCreation: NSObject {
         return selectLocationViewController
     }()
     
-    private func updatePrice() {
+    private func updatePrice(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         guard let mechanicID = autoService.mechanic?.identifier,
             let oilType = autoService.firstOilChange?.oilType,
             let coordinate = autoService.location?.coordinate else { return }
         loadingPrice = true
+        
+        payViewController?.isUpdatingPrice = true
+        
         store.privateContext { [weak self] privateContext in
             self?.priceNetwork.requestPrice(mechanicID: mechanicID, oilType: oilType, location: coordinate, couponCode: nil, in: privateContext) { priceObjectID, error in
                 DispatchQueue.main.async {
+                    defer {
+                        completion(error)
+                        self?.payViewController?.isUpdatingPrice = false
+                    }
                     guard let self = self else { return }
                     if let priceObjectID = priceObjectID,
                         let price = store.mainContext.object(with: priceObjectID) as? Price {
@@ -103,6 +112,7 @@ final class AutoServiceCreation: NSObject {
         
         paymentContext.paymentSummaryItems = price.summaryItems
         paymentContext.requestPayment()
+//        paymentContext.presentPaymentOptionsViewController()
         
         Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [
             AnalyticsParameterPrice: price.totalDollarValue,
@@ -119,6 +129,8 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
     
     func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
         print("context changed")
+        payViewController?.isUpdatingPrice = paymentContext.loading
+        payViewController?.didUpdatePaymentContext()
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
@@ -133,7 +145,9 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
         print("paymentResult: \(paymentResult)")
         print("paymentContext: \(paymentContext)")
         let sourceID = paymentResult.source.stripeID
+        payViewController?.isUpdatingPrice = true
         createAutoService(sourceID: sourceID) { [weak self] autoServiceObjectID, error in
+            self?.payViewController?.isUpdatingPrice = false
             if let error = error {
                 completion(error)
             } else {
@@ -217,6 +231,9 @@ extension AutoServiceCreation: SelectMechanicDelegate {
         
         let detailsSelect = SelectAutoServiceDetailsViewController.viewControllerFromStoryboard()
         detailsSelect.delegate = self
+        detailsSelect.isUpdatingPrice = true
+        detailsSelect.paymentContext = paymentContext
+        payViewController = detailsSelect
         pocketController.show(detailsSelect, sender: self)
     }
     

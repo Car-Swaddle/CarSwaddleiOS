@@ -10,6 +10,7 @@ import UIKit
 import CarSwaddleUI
 import CarSwaddleData
 import Store
+import Stripe
 import Firebase
 
 
@@ -22,9 +23,18 @@ protocol SelectAutoServiceDetailsViewControllerDelegate: class {
 class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstantiating {
     
     weak var delegate: SelectAutoServiceDetailsViewControllerDelegate?
+    var isUpdatingPrice: Bool = false {
+        didSet {
+            assert(Thread.isMainThread, "Must be on main")
+            guard viewIfLoaded != nil else { return }
+            actionButton.isLoading = isUpdatingPrice
+        }
+    }
     
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private weak var actionButton: ActionButton!
+    
+    weak var paymentContext: STPPaymentContext?
     
     private lazy var insetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: tableView, actionButton: actionButton)
     
@@ -32,6 +42,10 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
         didSet {
 //            tableView.reloadData()
         }
+    }
+    
+    func didUpdatePaymentContext() {
+        tableView.reloadData()
     }
     
     private var selectedVehicle: Vehicle? {
@@ -46,6 +60,7 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
     private enum Row: CaseIterable {
         case vehicle
         case oilType
+        case paymentMethod
     }
     
     private var rows: [Row] = Row.allCases
@@ -68,6 +83,8 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
         actionButton.addTarget(self, action: #selector(SelectAutoServiceDetailsViewController.didSelectPay), for: .touchUpInside)
         
         selectedOilType = .conventional
+        
+        actionButton.isLoading = isUpdatingPrice
     }
     
     @objc private func didSelectPay() {
@@ -95,6 +112,7 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
     private func setupTableView() {
         tableView.register(SelectVehicleCell.self)
         tableView.register(SelectOilTypeCell.self)
+        tableView.register(PaymentMethodCell.self)
         tableView.tableFooterView = UIView()
     }
     
@@ -139,6 +157,11 @@ extension SelectAutoServiceDetailsViewController: UITableViewDataSource {
             let cell: SelectOilTypeCell = tableView.dequeueCell()
             cell.delegate = self
             return cell
+        case .paymentMethod:
+            let cell: PaymentMethodCell = tableView.dequeueCell()
+            
+            cell.configure(with: paymentContext?.selectedPaymentOption)
+            return cell
         }
     }
     
@@ -147,7 +170,14 @@ extension SelectAutoServiceDetailsViewController: UITableViewDataSource {
 extension SelectAutoServiceDetailsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let row = rows[indexPath.item]
+        switch row {
+        case .vehicle, .oilType:
+            break
+        case .paymentMethod:
+            tableView.deselectRow(at: indexPath, animated: true)
+            paymentContext?.presentPaymentOptionsViewController()
+        }
     }
     
 }
