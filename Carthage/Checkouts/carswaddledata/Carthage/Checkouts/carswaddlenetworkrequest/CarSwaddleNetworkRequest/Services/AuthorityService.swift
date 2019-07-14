@@ -23,6 +23,7 @@ extension NetworkRequest.Request.Endpoint {
     fileprivate static let authorities = Request.Endpoint(rawValue: "/api/authorities")
     fileprivate static let authorityRequests = Request.Endpoint(rawValue: "/api/authorityRequests")
     fileprivate static let currentUserAuthorities = Request.Endpoint(rawValue: "/api/authorities/user")
+    fileprivate static let authorityTypes = Request.Endpoint(rawValue: "/api/authorities/types")
 }
 
 final public class AuthorityService: Service {
@@ -134,6 +135,19 @@ final public class AuthorityService: Service {
         }
         return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
             self?.completeWithJSON(data: data, error: error, completion: completion)
+        }
+    }
+    
+    @discardableResult
+    public func getAuthorityTypes(completion: @escaping StringArrayCompletion) -> URLSessionDataTask? {
+        guard let urlRequest = serviceRequest.get(with: .authorityTypes) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { data, error in
+            guard let data = data,
+                let stringArray = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String] else {
+                    completion(nil, error)
+                    return
+            }
+            completion(stringArray, error)
         }
     }
     

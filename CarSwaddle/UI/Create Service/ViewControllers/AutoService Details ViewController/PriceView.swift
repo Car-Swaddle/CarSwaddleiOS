@@ -19,7 +19,7 @@ private let bookingFeeLabel = NSLocalizedString("Booking fee", comment: "Price p
 private let processingFeeLabel = NSLocalizedString("Processing fee", comment: "Price part key")
 //private let Label = NSLocalizedString("Oil change high mileage", comment: "Price part key")
 private let oilChangeLabel = NSLocalizedString("Oil change", comment: "Price part key")
-private let taxesLabel = NSLocalizedString("Taxes", comment: "Price part key")
+private let taxesLabel = NSLocalizedString("Sales Tax", comment: "Price part key")
 //private let Label = NSLocalizedString("Synthetic oil change", comment: "Price part key")
 //private let Label = NSLocalizedString("Conventional oil change", comment: "Price part key")
 //private let Label = NSLocalizedString("Blend oil change", comment: "Price part key")
@@ -32,7 +32,7 @@ final class PriceView: UIView, NibInstantiating {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backgroundColor = .white
+        backgroundColor = .clear
     }
     
     func configure(with service: AutoService) {

@@ -326,6 +326,7 @@ SWIFT_CLASS_NAMED("AutoService")
 @property (nonatomic, strong) Review * _Nullable reviewFromMechanic;
 @property (nonatomic, copy) NSSet<ServiceEntity *> * _Nonnull serviceEntities;
 @property (nonatomic, copy) NSString * _Nullable balanceTransactionID;
+@property (nonatomic, copy) NSString * _Nullable couponID;
 @end
 
 
@@ -1126,6 +1127,7 @@ SWIFT_CLASS_NAMED("AutoService")
 @property (nonatomic, strong) Review * _Nullable reviewFromMechanic;
 @property (nonatomic, copy) NSSet<ServiceEntity *> * _Nonnull serviceEntities;
 @property (nonatomic, copy) NSString * _Nullable balanceTransactionID;
+@property (nonatomic, copy) NSString * _Nullable couponID;
 @end
 
 

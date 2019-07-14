@@ -12,7 +12,7 @@ import CoreData
 
 public extension AutoService {
     
-    public enum Status: String {
+    enum Status: String {
         case scheduled
         case canceled
         case inProgress
@@ -41,7 +41,7 @@ let serverDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
-typealias AutoServiceValues = (identifier: String, scheduledDate: Date, status: AutoService.Status, userID: String, mechanicID: String, balanceTransactionID: String)
+typealias AutoServiceValues = (identifier: String, scheduledDate: Date, status: AutoService.Status, userID: String, mechanicID: String, balanceTransactionID: String, couponID: String?)
 
 @objc(AutoService)
 public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
@@ -66,7 +66,8 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
             let userID = json["userID"] as? String,
             let balanceTransactionID = json["balanceTransactionID"] as? String,
             let mechanicID = json["mechanicID"] as? String else { return nil }
-        return (id, scheduledDate, status, userID, mechanicID, balanceTransactionID)
+        let couponID = json["couponID"] as? String
+        return (id, scheduledDate, status, userID, mechanicID, balanceTransactionID, couponID)
     }
     
     private func configure(with values: AutoServiceValues, json: JSONObject) {
@@ -75,6 +76,7 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
         self.status = values.status
         self.notes = json["notes"] as? String
         self.balanceTransactionID = values.balanceTransactionID
+        self.couponID = values.couponID
         
         guard let context = managedObjectContext else { return }
         
@@ -230,6 +232,7 @@ extension AutoService {
         
         json["status"] = status.rawValue
         json["notes"] = notes
+        json["couponID"] = couponID
         
         return json
     }

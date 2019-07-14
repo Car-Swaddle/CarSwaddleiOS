@@ -69,8 +69,8 @@ class CarSwaddleLoginTestCase: XCTestCase {
 
 
 #if targetEnvironment(simulator)
-//private let domain = "127.0.0.1"
-private let domain = "192.168.1.184"
+private let domain = "127.0.0.1"
+//private let domain = "192.168.1.184"
 #else
 private let domain = "Kyles-MacBook-Pro.local"
 #endif

@@ -21,6 +21,7 @@ final class PricePartView: UIView, NibInstantiating {
         
         partDescriptionLabel.font = UIFont.appFont(type: .regular, size: 15)
         partPriceLabel.font = UIFont.appFont(type: .semiBold, size: 17)
+        backgroundColor = .clear
     }
     
     func configure(label: String, numberOfCents: Int) {

@@ -109,12 +109,14 @@ extension Authority {
 
 extension Authority {
     
-    public enum Name: String {
-        case createCoupons = "createCarSwaddleCoupon"
-        case readAuthorities = "readAuthorities"
-        case editAuthorities = "editAuthorities"
-        case readMechanics = "readMechanics"
-        case editMechanics = "editMechanics"
+    public struct Name: Equatable {
+        
+        public let rawValue: String
+        
+        public init(rawValue: String) {
+            self.rawValue = rawValue
+        }
+        
     }
     
 }

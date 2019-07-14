@@ -13,6 +13,9 @@ import Stripe
 import CoreData
 import Firebase
 
+private let errorWithPaymentTitle = NSLocalizedString("Car Swaddle was unable to process your payment", comment: "")
+private let errorWithPaymentMessage = NSLocalizedString("Please try again with another payment method", comment: "")
+
 final class AutoServiceCreation: NSObject {
     
     public var pocketController: PocketController!
@@ -71,14 +74,18 @@ final class AutoServiceCreation: NSObject {
             let coordinate = autoService.location?.coordinate else { return }
         loadingPrice = true
         
+//        let couponCode = payViewController?.couponCode
+        let couponCode = autoService.couponID
+        
         payViewController?.isUpdatingPrice = true
         
         store.privateContext { [weak self] privateContext in
-            self?.priceNetwork.requestPrice(mechanicID: mechanicID, oilType: oilType, location: coordinate, couponCode: nil, in: privateContext) { priceObjectID, error in
+            self?.priceNetwork.requestPrice(mechanicID: mechanicID, oilType: oilType, location: coordinate, couponCode: couponCode, in: privateContext) { priceObjectID, error in
                 DispatchQueue.main.async {
                     defer {
                         completion(error)
                         self?.payViewController?.isUpdatingPrice = false
+                        self?.payViewController?.isRedeemingCoupon = false
                     }
                     guard let self = self else { return }
                     if let priceObjectID = priceObjectID,
@@ -86,6 +93,21 @@ final class AutoServiceCreation: NSObject {
                         price.autoService = self.autoService
                         store.mainContext.persist()
                         self.price = price
+                        
+                        let couponState: RedeemCouponCell.CouponRedemptionState
+                        if couponCode == nil || couponCode?.isEmpty == true {
+                            couponState = .none
+                        } else {
+                            if price.couponDiscount != nil || price.bookingFeeDiscount != nil {
+                                couponState = .success
+                            } else {
+                                couponState = .failure
+                            }
+                        }
+                        self.payViewController?.couponRedemptionState = couponState
+                        
+                    } else {
+                        self.payViewController?.couponRedemptionState = .none
                     }
                     self.loadingPrice = false
                 }
@@ -164,7 +186,9 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
         
         switch status {
         case .error:
-            print("error")
+            print("error: \(String(describing: error))")
+            let alert = errorAlertController(title: errorWithPaymentTitle, message: errorWithPaymentMessage)
+            paymentContext.hostViewController?.present(alert, animated: true, completion: nil)
             var params: [String: Any] = [AnalyticsParameterCheckoutOption: "systemErrorPayment"]
             if let error = error {
                 print("\(error)")
@@ -184,6 +208,12 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
         @unknown default:
             fatalError("unkown case")
         }
+    }
+    
+    private func errorAlertController(title: String, message: String) -> CustomAlertController {
+        let alert = CustomAlertContentView.view(withTitle: title, message: message)
+        alert.addOkayAction()
+        return CustomAlertController.viewController(contentView: alert)
     }
     
 }
@@ -247,6 +277,7 @@ extension AutoServiceCreation: SelectAutoServiceDetailsViewControllerDelegate {
     
     func didChangeOilType(oilType: OilType, viewController: SelectAutoServiceDetailsViewController) {
         autoService.firstOilChange?.oilType = oilType
+        autoService.managedObjectContext?.persist()
         updatePrice()
     }
     
@@ -255,12 +286,20 @@ extension AutoServiceCreation: SelectAutoServiceDetailsViewControllerDelegate {
         progressViewController.currentState = .payment
         self.autoService.vehicle = vehicle
         self.autoService.firstOilChange?.oilType = oilType
+        autoService.managedObjectContext?.persist()
         
         payForAutoService()
     }
     
     func willBeDismissed(viewController: SelectAutoServiceDetailsViewController) {
         progressViewController.currentState = .mechanic
+    }
+    
+    func didSetCouponCode(couponCode: String?, viewController: SelectAutoServiceDetailsViewController) {
+        autoService.couponID = couponCode
+        autoService.managedObjectContext?.persist()
+        payViewController?.isRedeemingCoupon = true
+        updatePrice()
     }
     
 }

@@ -88,6 +88,17 @@ class AuthorityTests: CarSwaddleLoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
+    func testGetAuthorityTypes() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        authorityService.getAuthorityTypes { stringArray, error in
+            XCTAssert(stringArray?.count != 0 && error == nil, "Should get values")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
     
 }
 

@@ -18,16 +18,30 @@ protocol SelectAutoServiceDetailsViewControllerDelegate: class {
     func didSelect(vehicle: Vehicle, oilType: OilType, viewController: SelectAutoServiceDetailsViewController)
     func didChangeOilType(oilType: OilType, viewController: SelectAutoServiceDetailsViewController)
     func willBeDismissed(viewController: SelectAutoServiceDetailsViewController)
+    func didSetCouponCode(couponCode: String?, viewController: SelectAutoServiceDetailsViewController)
 }
 
 class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstantiating {
     
     weak var delegate: SelectAutoServiceDetailsViewControllerDelegate?
+    
     var isUpdatingPrice: Bool = false {
         didSet {
             assert(Thread.isMainThread, "Must be on main")
             guard viewIfLoaded != nil else { return }
             actionButton.isLoading = isUpdatingPrice
+        }
+    }
+    
+    var isRedeemingCoupon: Bool = false {
+        didSet {
+            tableView.firstCell(of: RedeemCouponCell.self)?.isRedeemingCoupon = isRedeemingCoupon
+        }
+    }
+    
+    var couponRedemptionState: RedeemCouponCell.CouponRedemptionState = .none {
+        didSet {
+            tableView.firstCell(of: RedeemCouponCell.self)?.couponRedemptionState = couponRedemptionState
         }
     }
     
@@ -61,6 +75,7 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
         case vehicle
         case oilType
         case paymentMethod
+        case redeemCoupon
     }
     
     private var rows: [Row] = Row.allCases
@@ -113,6 +128,7 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
         tableView.register(SelectVehicleCell.self)
         tableView.register(SelectOilTypeCell.self)
         tableView.register(PaymentMethodCell.self)
+        tableView.register(RedeemCouponCell.self)
         tableView.tableFooterView = UIView()
     }
     
@@ -121,10 +137,6 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
         if parent == nil {
             delegate?.willBeDismissed(viewController: self)
         }
-    }
-    
-    private var isPayButtonEnabled: Bool {
-        return true
     }
     
     private func requestVehicles(completion: @escaping () -> Void = {}) {
@@ -159,8 +171,19 @@ extension SelectAutoServiceDetailsViewController: UITableViewDataSource {
             return cell
         case .paymentMethod:
             let cell: PaymentMethodCell = tableView.dequeueCell()
-            
             cell.configure(with: paymentContext?.selectedPaymentOption)
+            return cell
+        case .redeemCoupon:
+            let cell: RedeemCouponCell = tableView.dequeueCell()
+            cell.isRedeemingCoupon = isRedeemingCoupon
+            cell.didTapRedeemCoupon = { [weak self] coupon in
+                guard let self = self else { return }
+                self.delegate?.didSetCouponCode(couponCode: coupon, viewController: self)
+            }
+            cell.didUpdateHeight = { [weak self] in
+                self?.tableView.beginUpdates()
+                self?.tableView.endUpdates()
+            }
             return cell
         }
     }
@@ -172,7 +195,7 @@ extension SelectAutoServiceDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = rows[indexPath.item]
         switch row {
-        case .vehicle, .oilType:
+        case .vehicle, .oilType, .redeemCoupon:
             break
         case .paymentMethod:
             tableView.deselectRow(at: indexPath, animated: true)

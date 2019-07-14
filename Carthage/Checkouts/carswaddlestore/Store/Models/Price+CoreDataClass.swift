@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-typealias PriceValues = (identifier: String, totalPrice: Int, taxes: Int, subtotal: Int, processingFee: Int, bookingFee: Int, distance: Int, oilChange: Int, couponDiscount: Int?)
+typealias PriceValues = (identifier: String, totalPrice: Int, taxes: Int, subtotal: Int, processingFee: Int, bookingFee: Int, distance: Int, oilChange: Int, couponDiscount: Int?, bookingFeeDiscount: Int?)
 
 @objc(Price)
 public final class Price: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
@@ -38,7 +38,7 @@ public final class Price: NSManagedObject, NSManagedObjectFetchable, JSONInitabl
         /// Generate id every time. Should change
         let uuid = UUID().uuidString
         
-        return (uuid, totalPrice, taxes, subtotal, processingFee, bookingFee, distance, oilChange, priceJSON["couponDiscount"] as? Int)
+        return (uuid, totalPrice, taxes, subtotal, processingFee, bookingFee, distance, oilChange, priceJSON["couponDiscount"] as? Int, priceJSON["bookingFeeDiscount"] as? Int)
     }
     
     private func configure(from values: PriceValues, json: JSONObject)  {
@@ -50,6 +50,7 @@ public final class Price: NSManagedObject, NSManagedObjectFetchable, JSONInitabl
         self.distanceCost = values.distance
         self.oilChangeCost = values.oilChange
         self.subtotal = values.subtotal
+        self.bookingFeeDiscount = values.bookingFeeDiscount
         
         guard let context = managedObjectContext else { return }
         
@@ -83,6 +84,29 @@ public final class Price: NSManagedObject, NSManagedObjectFetchable, JSONInitabl
             didAccessValue(forKey: couponDiscountKey)
             
             return value?.intValue
+        }
+    }
+    
+    private let bookingFeeDiscountKey = "bookingFeeDiscount"
+    
+    @NSManaged private var primitiveBookingFeeDiscount: NSNumber?
+    
+    public var bookingFeeDiscount: Int? {
+        set {
+            willChangeValue(forKey: bookingFeeDiscountKey)
+            if let bookingFeeDiscount = newValue {
+                primitiveBookingFeeDiscount = NSNumber(value: bookingFeeDiscount)
+            } else {
+                primitiveBookingFeeDiscount = nil
+            }
+            didChangeValue(forKey: bookingFeeDiscountKey)
+        }
+        get {
+            willAccessValue(forKey: bookingFeeDiscountKey)
+            let value = primitiveBookingFeeDiscount?.intValue
+            didAccessValue(forKey: bookingFeeDiscountKey)
+            
+            return value
         }
     }
     

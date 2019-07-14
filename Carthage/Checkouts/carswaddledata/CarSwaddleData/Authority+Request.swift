@@ -25,7 +25,9 @@ final public class AuthorityNetwork: Network {
             context.performOnImportQueue {
                 var authorityObjectIDs: [NSManagedObjectID] = []
                 defer {
-                    completion(authorityObjectIDs , error)
+                    DispatchQueue.global().async {
+                        completion(authorityObjectIDs, error)
+                    }
                 }
                 for authorityJSON in jsonArray ?? [] {
                     guard let authority = Authority.fetchOrCreate(json: authorityJSON, context: context) else { continue }
@@ -45,7 +47,9 @@ final public class AuthorityNetwork: Network {
             context.performOnImportQueue {
                 var authorityRequestObjectIDs: [NSManagedObjectID] = []
                 defer {
-                    completion(authorityRequestObjectIDs , error)
+                    DispatchQueue.global().async {
+                        completion(authorityRequestObjectIDs , error)
+                    }
                 }
                 for authorityRequestJSON in jsonArray ?? [] {
                     guard let authorityRequest = AuthorityRequest.fetchOrCreate(json: authorityRequestJSON, context: context) else { continue }
@@ -65,7 +69,9 @@ final public class AuthorityNetwork: Network {
             context.performOnImportQueue {
                 var authorityRequestObjectID: NSManagedObjectID?
                 defer {
-                    completion(authorityRequestObjectID , error)
+                    DispatchQueue.global().async {
+                        completion(authorityRequestObjectID , error)
+                    }
                 }
                 guard let json = json,
                     let authorityRequest = AuthorityRequest.fetchOrCreate(json: json, context: context) else { return }
@@ -81,7 +87,9 @@ final public class AuthorityNetwork: Network {
             context.performOnImportQueue {
                 var authorityConfirmationObjectID: NSManagedObjectID?
                 defer {
-                    completion(authorityConfirmationObjectID , error)
+                    DispatchQueue.global().async {
+                        completion(authorityConfirmationObjectID , error)
+                    }
                 }
                 guard let json = json,
                     let authorityConfirmation = AuthorityConfirmation.fetchOrCreate(json: json, context: context) else { return }
@@ -97,7 +105,9 @@ final public class AuthorityNetwork: Network {
             context.performOnImportQueue {
                 var authorityConfirmationObjectID: NSManagedObjectID?
                 defer {
-                    completion(authorityConfirmationObjectID, error)
+                    DispatchQueue.global().async {
+                        completion(authorityConfirmationObjectID, error)
+                    }
                 }
                 guard let json = json,
                     let authorityConfirmation = AuthorityConfirmation.fetchOrCreate(json: json, context: context) else { return }
@@ -113,7 +123,9 @@ final public class AuthorityNetwork: Network {
             context.performOnImportQueue {
                 var authorityObjectIDs: [NSManagedObjectID] = []
                 defer {
-                    completion(authorityObjectIDs , error)
+                    DispatchQueue.global().async {
+                        completion(authorityObjectIDs , error)
+                    }
                 }
                 for authorityJSON in jsonArray ?? [] {
                     guard let authority = Authority.fetchOrCreate(json: authorityJSON, context: context) else { continue }
@@ -124,6 +136,17 @@ final public class AuthorityNetwork: Network {
                 }
                 context.persist()
             }
+        }
+    }
+    
+    @discardableResult
+    public func getAuthorityTypes(completion: @escaping (_ authorityObjectIDs: [Authority.Name], _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return authorityService.getAuthorityTypes { authorityTypes, error in
+            var authorityNames: [Authority.Name] = []
+            for type in authorityTypes ?? [] {
+                authorityNames.append(Authority.Name(rawValue: type))
+            }
+            completion(authorityNames, error)
         }
     }
     
