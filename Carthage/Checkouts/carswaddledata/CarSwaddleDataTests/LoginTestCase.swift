@@ -65,7 +65,8 @@ class LoginTestCase: XCTestCase {
 
 
 #if targetEnvironment(simulator)
-private let localDomain = "192.168.1.184"
+//private let localDomain = "192.168.1.184"
+private let localDomain = "127.0.0.1"
 #else
 private let localDomain = "Kyles-MacBook-Pro.local"
 #endif

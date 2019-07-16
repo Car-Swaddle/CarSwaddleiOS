@@ -36,6 +36,7 @@ extension User {
     @NSManaged public var authorities: Set<Authority>
     @NSManaged public var authorityRequests: Set<AuthorityRequest>
     @NSManaged public var authorityConfirmations: Set<AuthorityConfirmation>
+    @NSManaged public var coupons: Set<Coupon>
     
 }
 

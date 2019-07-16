@@ -68,7 +68,7 @@
                   moduleName = "CarSwaddleDataTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kylekendall/Projects/carswaddledata/CarSwaddleDataTests/AuthTestCase.swift"
-                  timestampString = "584146059.542102"
+                  timestampString = "584863052.46031"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
@@ -83,7 +83,7 @@
                   moduleName = "CarSwaddleDataTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kylekendall/Projects/carswaddledata/CarSwaddleDataTests/AuthTestCase.swift"
-                  timestampString = "584146059.5435669"
+                  timestampString = "584863052.462198"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
@@ -148,7 +148,7 @@
                   moduleName = "CarSwaddleDataTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kylekendall/Projects/carswaddledata/CarSwaddleDataTests/MechanicTests.swift"
-                  timestampString = "584146059.551088"
+                  timestampString = "584863052.47104"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "298"
@@ -163,7 +163,7 @@
                   moduleName = "CarSwaddleDataTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kylekendall/Projects/carswaddledata/CarSwaddleDataTests/MechanicTests.swift"
-                  timestampString = "584146059.552618"
+                  timestampString = "584863052.472746"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "299"
@@ -244,7 +244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddleDataTests/AuthorityTests.swift"
-            timestampString = "583481675.661803"
+            timestampString = "584863051.515767"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -282,6 +282,118 @@
             startingLineNumber = "77"
             endingLineNumber = "77"
             landmarkName = "completeMechanic(json:error:in:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarSwaddleDataTests/CouponTests.swift"
+            timestampString = "584863051.5159431"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "testGetCoupons()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarSwaddleData/Coupon+Request.swift"
+            timestampString = "584863051.516382"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "getCoupons(limit:offset:in:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CarSwaddleData.CouponNetwork.getCoupons(limit: Swift.Optional&lt;Swift.Int&gt;, offset: Swift.Optional&lt;Swift.Int&gt;, in: __C.NSManagedObjectContext, completion: (Swift.Array&lt;__C.NSManagedObjectID&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;__C.NSURLSessionDataTask&gt;"
+                  moduleName = "CarSwaddleData"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kylekendall/Projects/carswaddledata/CarSwaddleData/Coupon+Request.swift"
+                  timestampString = "584863052.665514"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "117">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CarSwaddleData.CouponNetwork.getCoupons(limit: Swift.Optional&lt;Swift.Int&gt;, offset: Swift.Optional&lt;Swift.Int&gt;, in: __C.NSManagedObjectContext, completion: (Swift.Array&lt;__C.NSManagedObjectID&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;__C.NSURLSessionDataTask&gt;"
+                  moduleName = "CarSwaddleData"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kylekendall/Projects/carswaddledata/CarSwaddleData/Coupon+Request.swift"
+                  timestampString = "584863052.66819"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "202">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarSwaddleData/Coupon+Request.swift"
+            timestampString = "584863051.516454"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getCoupons(limit:offset:in:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarSwaddleDataTests/CouponTests.swift"
+            timestampString = "584863051.516541"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "testGetCoupons()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarSwaddleData/Coupon+Request.swift"
+            timestampString = "584863066.4476089"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "getCoupons(limit:offset:in:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -64,6 +64,10 @@ final class RedeemCouponCell: UITableViewCell, NibRegisterable {
         updateUIForCurrentCouponRedemptionState()
         
         selectionStyle = .none
+        
+        titleLabel.font = UIFont.appFont(type: .semiBold, size: 17)
+        couponCodeTextField.font = UIFont.appFont(type: .regular, size: 17)
+        couponRedemptionStateLabel.font = UIFont.appFont(type: .regular, size: 15)
     }
     
     private func updateUIForCurrentCouponRedemptionState() {

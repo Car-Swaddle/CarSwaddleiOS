@@ -40,16 +40,16 @@
                                 <rect key="frame" x="0.0" y="37" width="370" height="50.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hsi-fp-Zos">
-                                        <rect key="frame" x="0.0" y="0.0" width="370" height="25.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="370" height="28"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="259" verticalHuggingPriority="253" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="754" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Coupon Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5cK-Pp-CLa">
-                                                <rect key="frame" x="0.0" y="2.5" width="244" height="21"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="259" verticalHuggingPriority="253" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="754" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Coupon Code" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5cK-Pp-CLa">
+                                                <rect key="frame" x="0.0" y="3.5" width="244" height="21"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="600" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="spv-Ws-cNN">
-                                                <rect key="frame" x="252" y="2.5" width="90" height="21"/>
+                                                <rect key="frame" x="252" y="3.5" width="90" height="21"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                                 <state key="normal" title="Redeem">
@@ -60,13 +60,13 @@
                                                 </connections>
                                             </button>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="R3J-2T-QN1">
-                                                <rect key="frame" x="350" y="3" width="20" height="20"/>
+                                                <rect key="frame" x="350" y="4" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" verticalCompressionResistancePriority="800" text="Successfully redeemed coupon!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6T-QG-SGl">
-                                        <rect key="frame" x="0.0" y="29.5" width="370" height="21"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="32" width="370" height="18.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="green1"/>
                                         <nil key="highlightedColor"/>
                                     </label>

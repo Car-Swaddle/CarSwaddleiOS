@@ -38,7 +38,7 @@ public final class Price: NSManagedObject, NSManagedObjectFetchable, JSONInitabl
         /// Generate id every time. Should change
         let uuid = UUID().uuidString
         
-        return (uuid, totalPrice, taxes, subtotal, processingFee, bookingFee, distance, oilChange, priceJSON["couponDiscount"] as? Int, priceJSON["bookingFeeDiscount"] as? Int)
+        return (uuid, totalPrice, taxes, subtotal, processingFee, bookingFee, distance, oilChange, priceJSON["discount"] as? Int, priceJSON["bookingFeeDiscount"] as? Int)
     }
     
     private func configure(from values: PriceValues, json: JSONObject)  {
@@ -51,6 +51,7 @@ public final class Price: NSManagedObject, NSManagedObjectFetchable, JSONInitabl
         self.oilChangeCost = values.oilChange
         self.subtotal = values.subtotal
         self.bookingFeeDiscount = values.bookingFeeDiscount
+        self.couponDiscount = values.couponDiscount
         
         guard let context = managedObjectContext else { return }
         

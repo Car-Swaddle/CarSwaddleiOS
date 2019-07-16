@@ -81,6 +81,9 @@
 		99F0278C21858611005FEFC7 /* Region+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278A21858611005FEFC7 /* Region+CoreDataProperties.swift */; };
 		99F0279021859E29005FEFC7 /* RegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278F21859E29005FEFC7 /* RegionTests.swift */; };
 		99F027A0218AE51B005FEFC7 /* PrimitiveExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0279F218AE51B005FEFC7 /* PrimitiveExtensions.swift */; };
+		99F08C6D22DBDBAD00317EEA /* Coupon+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F08C6B22DBDBAD00317EEA /* Coupon+CoreDataClass.swift */; };
+		99F08C6E22DBDBAD00317EEA /* Coupon+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F08C6C22DBDBAD00317EEA /* Coupon+CoreDataProperties.swift */; };
+		99F08C7022DBE65100317EEA /* CouponTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F08C6F22DBE65100317EEA /* CouponTests.swift */; };
 		99F696B92210E8330021A719 /* TaxInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696B72210E8330021A719 /* TaxInfo+CoreDataClass.swift */; };
 		99F696BA2210E8330021A719 /* TaxInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696B82210E8330021A719 /* TaxInfo+CoreDataProperties.swift */; };
 		99F7D61D21EC042C00D6B524 /* Payout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7D61B21EC042C00D6B524 /* Payout+CoreDataClass.swift */; };
@@ -175,6 +178,9 @@
 		99F0278A21858611005FEFC7 /* Region+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Region+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		99F0278F21859E29005FEFC7 /* RegionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTests.swift; sourceTree = "<group>"; };
 		99F0279F218AE51B005FEFC7 /* PrimitiveExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitiveExtensions.swift; sourceTree = "<group>"; };
+		99F08C6B22DBDBAD00317EEA /* Coupon+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coupon+CoreDataClass.swift"; sourceTree = "<group>"; };
+		99F08C6C22DBDBAD00317EEA /* Coupon+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coupon+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		99F08C6F22DBE65100317EEA /* CouponTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponTests.swift; sourceTree = "<group>"; };
 		99F696B72210E8330021A719 /* TaxInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaxInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		99F696B82210E8330021A719 /* TaxInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaxInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		99F78F2D214BA53600D1BD28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -213,6 +219,8 @@
 		9991FE1C214B873F00F58F42 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				99F08C6B22DBDBAD00317EEA /* Coupon+CoreDataClass.swift */,
+				99F08C6C22DBDBAD00317EEA /* Coupon+CoreDataProperties.swift */,
 				9989854A22AC4E3B00E4B25A /* Authority+CoreDataClass.swift */,
 				9989854B22AC4E3B00E4B25A /* Authority+CoreDataProperties.swift */,
 				9989854C22AC4E3B00E4B25A /* AuthorityConfirmation+CoreDataClass.swift */,
@@ -331,6 +339,7 @@
 				99675CAB21E9E137003C9D70 /* StripeTests.swift */,
 				99B3FA892202ED5100D9887F /* VerificationTests.swift */,
 				992BFDDC22093AB8006B64CC /* TransactionTests.swift */,
+				99F08C6F22DBE65100317EEA /* CouponTests.swift */,
 				99DED72B214B80D40061CFE0 /* Info.plist */,
 				999C8D3D218C247300058FE7 /* NSManagedObjectFetchableTests.swift */,
 			);
@@ -455,6 +464,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99F08C6D22DBDBAD00317EEA /* Coupon+CoreDataClass.swift in Sources */,
 				991B403B216ADC5D00D7644D /* TemplateTimeSpan+CoreDataClass.swift in Sources */,
 				997DBC83219FF4FC0080F42C /* ServiceEntity+CoreDataClass.swift in Sources */,
 				991B4031216ADC5D00D7644D /* Location+CoreDataClass.swift in Sources */,
@@ -463,6 +473,7 @@
 				99F0278C21858611005FEFC7 /* Region+CoreDataProperties.swift in Sources */,
 				992BFDDA2208020E006B64CC /* TransactionMetadata+CoreDataClass.swift in Sources */,
 				99A3A87921D22871009A1AD9 /* Address+CoreDataClass.swift in Sources */,
+				99F08C6E22DBDBAD00317EEA /* Coupon+CoreDataProperties.swift in Sources */,
 				992BFDD82208020E006B64CC /* TransactionReceipt+CoreDataClass.swift in Sources */,
 				997DBC84219FF4FC0080F42C /* ServiceEntity+CoreDataProperties.swift in Sources */,
 				99675CB821EB0059003C9D70 /* Transaction+CoreDataProperties.swift in Sources */,
@@ -530,6 +541,7 @@
 				999C8D3E218C247300058FE7 /* NSManagedObjectFetchableTests.swift in Sources */,
 				992BFDDD22093AB8006B64CC /* TransactionTests.swift in Sources */,
 				99B3FA8A2202ED5100D9887F /* VerificationTests.swift in Sources */,
+				99F08C7022DBE65100317EEA /* CouponTests.swift in Sources */,
 				997DBCA421B8FD180080F42C /* UserTests.swift in Sources */,
 				99DED72A214B80D40061CFE0 /* StoreTests.swift in Sources */,
 				99F027882185820F005FEFC7 /* DateExtensionTests.swift in Sources */,

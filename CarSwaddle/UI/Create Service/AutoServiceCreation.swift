@@ -98,6 +98,7 @@ final class AutoServiceCreation: NSObject {
                         if couponCode == nil || couponCode?.isEmpty == true {
                             couponState = .none
                         } else {
+                            print(price)
                             if price.couponDiscount != nil || price.bookingFeeDiscount != nil {
                                 couponState = .success
                             } else {
@@ -325,6 +326,10 @@ extension Price {
         items.append(PKPaymentSummaryItem(label: NSLocalizedString("Subtotal", comment: "Line item of subtotal"), amount: subtotal.centsToDollars))
         items.append(PKPaymentSummaryItem(label: NSLocalizedString("Sales tax", comment: "Line item of sales tax"), amount: taxes.centsToDollars))
         items.append(PKPaymentSummaryItem(label: NSLocalizedString("Booking fees", comment: "Line item of booking and processing fees"), amount: (bookingFee + processingFee).centsToDollars))
+        
+        if let discount = totalDiscount {
+            items.append(PKPaymentSummaryItem(label: NSLocalizedString("Discount", comment: "Line item of the discount"), amount: discount.centsToDollars))
+        }
         
         let amount = totalDollarValue
         let item = PKPaymentSummaryItem(label: "Car Swaddle, Inc.", amount: amount)

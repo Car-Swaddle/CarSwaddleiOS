@@ -19,11 +19,12 @@ private let bookingFeeLabel = NSLocalizedString("Booking fee", comment: "Price p
 private let processingFeeLabel = NSLocalizedString("Processing fee", comment: "Price part key")
 //private let Label = NSLocalizedString("Oil change high mileage", comment: "Price part key")
 private let oilChangeLabel = NSLocalizedString("Oil change", comment: "Price part key")
-private let taxesLabel = NSLocalizedString("Sales Tax", comment: "Price part key")
+private let taxesLabel = NSLocalizedString("Sales tax", comment: "Price part key")
+private let discountLabel = NSLocalizedString("Coupon", comment: "Price part key")
+//private let bookingFeeDiscountLabel = NSLocalizedString("Booking fee discount", comment: "Price part key")
 //private let Label = NSLocalizedString("Synthetic oil change", comment: "Price part key")
 //private let Label = NSLocalizedString("Conventional oil change", comment: "Price part key")
 //private let Label = NSLocalizedString("Blend oil change", comment: "Price part key")
-
 
 final class PriceView: UIView, NibInstantiating {
     
@@ -49,6 +50,10 @@ final class PriceView: UIView, NibInstantiating {
         addPricePartView(label: subtotalLabel, cents: price.subtotal)
         addPricePartView(label: processingFeeLabel, cents: price.processingFee + price.bookingFee)
         addPricePartView(label: taxesLabel, cents: price.taxes)
+        
+        if let discount = price.totalDiscount {
+            addPricePartView(label: discountLabel, cents: discount)
+        }
         addSeparatorView()
         
         let pricePartView = PricePartView.viewFromNib()
@@ -71,6 +76,28 @@ final class PriceView: UIView, NibInstantiating {
         let pricePartView = PricePartView.viewFromNib()
         pricePartView.configure(label: label, numberOfCents: cents)
         priceStackView.addArrangedSubview(pricePartView)
+    }
+    
+}
+
+
+extension Price {
+    
+    var totalDiscount: Int? {
+        guard couponDiscount != nil || bookingFeeDiscount != nil else { return nil }
+        
+        var discount = 0
+        
+        
+        if let couponDiscount = couponDiscount {
+            discount += couponDiscount
+        }
+        
+        if let bookingFeeDiscount = bookingFeeDiscount {
+            discount += bookingFeeDiscount
+        }
+        
+        return discount
     }
     
 }

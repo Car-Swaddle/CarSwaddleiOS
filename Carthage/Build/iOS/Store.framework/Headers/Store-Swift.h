@@ -311,6 +311,7 @@ SWIFT_CLASS_NAMED("AutoService")
 @class Vehicle;
 @class Review;
 @class ServiceEntity;
+@class Coupon;
 
 @interface AutoService (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
@@ -327,6 +328,7 @@ SWIFT_CLASS_NAMED("AutoService")
 @property (nonatomic, copy) NSSet<ServiceEntity *> * _Nonnull serviceEntities;
 @property (nonatomic, copy) NSString * _Nullable balanceTransactionID;
 @property (nonatomic, copy) NSString * _Nullable couponID;
+@property (nonatomic, strong) Coupon * _Nullable coupon;
 @end
 
 
@@ -367,6 +369,28 @@ SWIFT_CLASS_NAMED("BankAccount")
 @end
 
 
+SWIFT_CLASS_NAMED("Coupon")
+@interface Coupon : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface Coupon (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nonnull identifier;
+@property (nonatomic, copy) NSDate * _Nonnull creationDate;
+@property (nonatomic, copy) NSString * _Nonnull createdByUserID;
+@property (nonatomic, copy) NSString * _Nullable createdByMechanicID;
+@property (nonatomic) BOOL discountBookingFee;
+@property (nonatomic) BOOL isCorporate;
+@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, copy) NSDate * _Nonnull redeemBy;
+@property (nonatomic) NSInteger redemptions;
+@property (nonatomic, copy) NSDate * _Nonnull updatedAt;
+@property (nonatomic, strong) User * _Nullable user;
+@property (nonatomic, copy) NSSet<AutoService *> * _Nonnull autoservices;
+@end
+
+
 SWIFT_CLASS_NAMED("Location")
 @interface Location : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
@@ -387,16 +411,7 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class TemplateTimeSpan;
 @class NSSet;
-
-@interface Mechanic (SWIFT_EXTENSION(Store))
-- (void)addScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
-- (void)removeScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
-- (void)addScheduleTimeSpans:(NSSet * _Nonnull)values;
-- (void)removeScheduleTimeSpans:(NSSet * _Nonnull)values;
-@end
-
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 - (void)addServicesObject:(AutoService * _Nonnull)value;
@@ -412,6 +427,15 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (void)removeTransactionsObject:(Transaction * _Nonnull)value;
 - (void)addTransactions:(NSSet * _Nonnull)values;
 - (void)removeTransactions:(NSSet * _Nonnull)values;
+@end
+
+@class TemplateTimeSpan;
+
+@interface Mechanic (SWIFT_EXTENSION(Store))
+- (void)addScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
+- (void)removeScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
+- (void)addScheduleTimeSpans:(NSSet * _Nonnull)values;
+- (void)removeScheduleTimeSpans:(NSSet * _Nonnull)values;
 @end
 
 @class Region;
@@ -686,18 +710,18 @@ SWIFT_CLASS_NAMED("User")
 
 
 @interface User (SWIFT_EXTENSION(Store))
-- (void)addVehiclesObject:(Vehicle * _Nonnull)value;
-- (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
-- (void)addVehicles:(NSSet * _Nonnull)values;
-- (void)removeVehicles:(NSSet * _Nonnull)values;
-@end
-
-
-@interface User (SWIFT_EXTENSION(Store))
 - (void)addServicesObject:(AutoService * _Nonnull)value;
 - (void)removeServicesObject:(AutoService * _Nonnull)value;
 - (void)addServices:(NSSet * _Nonnull)values;
 - (void)removeServices:(NSSet * _Nonnull)values;
+@end
+
+
+@interface User (SWIFT_EXTENSION(Store))
+- (void)addVehiclesObject:(Vehicle * _Nonnull)value;
+- (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
+- (void)addVehicles:(NSSet * _Nonnull)values;
+- (void)removeVehicles:(NSSet * _Nonnull)values;
 @end
 
 
@@ -720,6 +744,7 @@ SWIFT_CLASS_NAMED("User")
 @property (nonatomic, copy) NSSet<Authority *> * _Nonnull authorities;
 @property (nonatomic, copy) NSSet<AuthorityRequest *> * _Nonnull authorityRequests;
 @property (nonatomic, copy) NSSet<AuthorityConfirmation *> * _Nonnull authorityConfirmations;
+@property (nonatomic, copy) NSSet<Coupon *> * _Nonnull coupons;
 @end
 
 
@@ -1112,6 +1137,7 @@ SWIFT_CLASS_NAMED("AutoService")
 @class Vehicle;
 @class Review;
 @class ServiceEntity;
+@class Coupon;
 
 @interface AutoService (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
@@ -1128,6 +1154,7 @@ SWIFT_CLASS_NAMED("AutoService")
 @property (nonatomic, copy) NSSet<ServiceEntity *> * _Nonnull serviceEntities;
 @property (nonatomic, copy) NSString * _Nullable balanceTransactionID;
 @property (nonatomic, copy) NSString * _Nullable couponID;
+@property (nonatomic, strong) Coupon * _Nullable coupon;
 @end
 
 
@@ -1168,6 +1195,28 @@ SWIFT_CLASS_NAMED("BankAccount")
 @end
 
 
+SWIFT_CLASS_NAMED("Coupon")
+@interface Coupon : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface Coupon (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nonnull identifier;
+@property (nonatomic, copy) NSDate * _Nonnull creationDate;
+@property (nonatomic, copy) NSString * _Nonnull createdByUserID;
+@property (nonatomic, copy) NSString * _Nullable createdByMechanicID;
+@property (nonatomic) BOOL discountBookingFee;
+@property (nonatomic) BOOL isCorporate;
+@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, copy) NSDate * _Nonnull redeemBy;
+@property (nonatomic) NSInteger redemptions;
+@property (nonatomic, copy) NSDate * _Nonnull updatedAt;
+@property (nonatomic, strong) User * _Nullable user;
+@property (nonatomic, copy) NSSet<AutoService *> * _Nonnull autoservices;
+@end
+
+
 SWIFT_CLASS_NAMED("Location")
 @interface Location : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
@@ -1188,16 +1237,7 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class TemplateTimeSpan;
 @class NSSet;
-
-@interface Mechanic (SWIFT_EXTENSION(Store))
-- (void)addScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
-- (void)removeScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
-- (void)addScheduleTimeSpans:(NSSet * _Nonnull)values;
-- (void)removeScheduleTimeSpans:(NSSet * _Nonnull)values;
-@end
-
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 - (void)addServicesObject:(AutoService * _Nonnull)value;
@@ -1213,6 +1253,15 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (void)removeTransactionsObject:(Transaction * _Nonnull)value;
 - (void)addTransactions:(NSSet * _Nonnull)values;
 - (void)removeTransactions:(NSSet * _Nonnull)values;
+@end
+
+@class TemplateTimeSpan;
+
+@interface Mechanic (SWIFT_EXTENSION(Store))
+- (void)addScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
+- (void)removeScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
+- (void)addScheduleTimeSpans:(NSSet * _Nonnull)values;
+- (void)removeScheduleTimeSpans:(NSSet * _Nonnull)values;
 @end
 
 @class Region;
@@ -1487,18 +1536,18 @@ SWIFT_CLASS_NAMED("User")
 
 
 @interface User (SWIFT_EXTENSION(Store))
-- (void)addVehiclesObject:(Vehicle * _Nonnull)value;
-- (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
-- (void)addVehicles:(NSSet * _Nonnull)values;
-- (void)removeVehicles:(NSSet * _Nonnull)values;
-@end
-
-
-@interface User (SWIFT_EXTENSION(Store))
 - (void)addServicesObject:(AutoService * _Nonnull)value;
 - (void)removeServicesObject:(AutoService * _Nonnull)value;
 - (void)addServices:(NSSet * _Nonnull)values;
 - (void)removeServices:(NSSet * _Nonnull)values;
+@end
+
+
+@interface User (SWIFT_EXTENSION(Store))
+- (void)addVehiclesObject:(Vehicle * _Nonnull)value;
+- (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
+- (void)addVehicles:(NSSet * _Nonnull)values;
+- (void)removeVehicles:(NSSet * _Nonnull)values;
 @end
 
 
@@ -1521,6 +1570,7 @@ SWIFT_CLASS_NAMED("User")
 @property (nonatomic, copy) NSSet<Authority *> * _Nonnull authorities;
 @property (nonatomic, copy) NSSet<AuthorityRequest *> * _Nonnull authorityRequests;
 @property (nonatomic, copy) NSSet<AuthorityConfirmation *> * _Nonnull authorityConfirmations;
+@property (nonatomic, copy) NSSet<Coupon *> * _Nonnull coupons;
 @end
 
 

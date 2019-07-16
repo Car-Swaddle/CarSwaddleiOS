@@ -130,6 +130,7 @@ class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstan
         tableView.register(PaymentMethodCell.self)
         tableView.register(RedeemCouponCell.self)
         tableView.tableFooterView = UIView()
+        tableView.keyboardDismissMode = .interactive
     }
     
     override func willMove(toParent parent: UIViewController?) {

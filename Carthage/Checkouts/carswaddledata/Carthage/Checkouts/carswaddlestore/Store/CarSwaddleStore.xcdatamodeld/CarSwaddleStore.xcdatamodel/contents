@@ -61,6 +61,7 @@
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scheduledDate" optional="YES" attributeType="Date" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="status" attributeType="String" syncable="YES"/>
+        <relationship name="coupon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coupon" inverseName="autoservices" inverseEntity="Coupon" syncable="YES"/>
         <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="services" inverseEntity="User" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Location" inverseName="autoService" inverseEntity="Location" syncable="YES"/>
         <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="services" inverseEntity="Mechanic" syncable="YES"/>
@@ -91,6 +92,23 @@
         <attribute name="routingNumber" attributeType="String" syncable="YES"/>
         <attribute name="status" attributeType="String" syncable="YES"/>
         <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="bankAccount" inverseEntity="Mechanic" syncable="YES"/>
+    </entity>
+    <entity name="Coupon" representedClassName="Coupon" syncable="YES">
+        <attribute name="amountOff" optional="YES" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="autoServiceID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdByUserID" attributeType="String" syncable="YES"/>
+        <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="discountBookingFee" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="identifier" attributeType="String" syncable="YES"/>
+        <attribute name="isCorporate" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="maxRedemptions" optional="YES" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="percentOff" optional="YES" attributeType="Float" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="redeemBy" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="redemptions" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="updatedAt" attributeType="Date" syncable="YES"/>
+        <relationship name="autoservices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AutoService" inverseName="coupon" inverseEntity="AutoService" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="coupons" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Location" representedClassName="Location" syncable="YES">
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
@@ -258,6 +276,7 @@
         <relationship name="authorities" toMany="YES" deletionRule="Cascade" destinationEntity="Authority" inverseName="user" inverseEntity="Authority" syncable="YES"/>
         <relationship name="authorityConfirmations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AuthorityConfirmation" inverseName="confirmer" inverseEntity="AuthorityConfirmation" syncable="YES"/>
         <relationship name="authorityRequests" toMany="YES" deletionRule="Cascade" destinationEntity="AuthorityRequest" inverseName="requester" inverseEntity="AuthorityRequest" syncable="YES"/>
+        <relationship name="coupons" toMany="YES" deletionRule="Nullify" destinationEntity="Coupon" inverseName="user" inverseEntity="Coupon" syncable="YES"/>
         <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="user" inverseEntity="Mechanic" syncable="YES"/>
         <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="user" inverseEntity="Review" syncable="YES"/>
         <relationship name="services" toMany="YES" deletionRule="Nullify" destinationEntity="AutoService" inverseName="creator" inverseEntity="AutoService" syncable="YES"/>
@@ -301,7 +320,7 @@
         <element name="Authority" positionX="-27" positionY="135" width="128" height="180"/>
         <element name="AuthorityConfirmation" positionX="-9" positionY="153" width="128" height="180"/>
         <element name="AuthorityRequest" positionX="-18" positionY="144" width="128" height="210"/>
-        <element name="AutoService" positionX="-63" positionY="-18" width="128" height="300"/>
+        <element name="AutoService" positionX="-63" positionY="-18" width="128" height="315"/>
         <element name="Balance" positionX="-27" positionY="135" width="128" height="105"/>
         <element name="BankAccount" positionX="-27" positionY="135" width="128" height="240"/>
         <element name="Location" positionX="-36" positionY="27" width="128" height="120"/>
@@ -318,10 +337,11 @@
         <element name="Transaction" positionX="-9" positionY="153" width="128" height="285"/>
         <element name="TransactionMetadata" positionX="-27" positionY="135" width="128" height="195"/>
         <element name="TransactionReceipt" positionX="-18" positionY="144" width="128" height="105"/>
-        <element name="User" positionX="-27" positionY="72" width="128" height="315"/>
+        <element name="User" positionX="-27" positionY="72" width="128" height="330"/>
         <element name="Vehicle" positionX="-54" positionY="-9" width="128" height="165"/>
         <element name="VehicleDescription" positionX="-27" positionY="90" width="128" height="135"/>
         <element name="Verification" positionX="-27" positionY="135" width="128" height="135"/>
         <element name="VerificationField" positionX="-18" positionY="144" width="128" height="105"/>
+        <element name="Coupon" positionX="-27" positionY="135" width="128" height="270"/>
     </elements>
 </model>
