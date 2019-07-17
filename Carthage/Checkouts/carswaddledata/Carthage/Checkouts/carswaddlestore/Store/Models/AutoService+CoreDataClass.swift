@@ -41,7 +41,7 @@ let serverDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
-typealias AutoServiceValues = (identifier: String, scheduledDate: Date, status: AutoService.Status, userID: String, mechanicID: String, balanceTransactionID: String, couponID: String?)
+typealias AutoServiceValues = (identifier: String, scheduledDate: Date, status: AutoService.Status, userID: String, mechanicID: String, balanceTransactionID: String?, transferID: String?, chargeID: String?, couponID: String?)
 
 @objc(AutoService)
 public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
@@ -64,10 +64,12 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
             let statusString = json["status"] as? String,
             let status = AutoService.Status(rawValue: statusString),
             let userID = json["userID"] as? String,
-            let balanceTransactionID = json["balanceTransactionID"] as? String,
             let mechanicID = json["mechanicID"] as? String else { return nil }
         let couponID = json["couponID"] as? String
-        return (id, scheduledDate, status, userID, mechanicID, balanceTransactionID, couponID)
+        let balanceTransactionID = json["balanceTransactionID"] as? String
+        let transferID = json["transferID"] as? String
+        let chargeID = json["chargeID"] as? String
+        return (id, scheduledDate, status, userID, mechanicID, balanceTransactionID, transferID, chargeID, couponID)
     }
     
     private func configure(with values: AutoServiceValues, json: JSONObject) {
@@ -77,6 +79,8 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
         self.notes = json["notes"] as? String
         self.balanceTransactionID = values.balanceTransactionID
         self.couponID = values.couponID
+        self.transferID = values.transferID
+        self.chargeID = values.chargeID
         
         guard let context = managedObjectContext else { return }
         

@@ -8,16 +8,21 @@
 
 import UIKit
 import CarSwaddleUI
+import CarSwaddleNetworkRequest
 
 private let successfullyRedeemedString = NSLocalizedString("Successfully redeemed coupon!", comment: "")
-private let failedToRedeemString = NSLocalizedString("Invalid coupon code", comment: "")
+private let incorrectErrorMessage = NSLocalizedString("This coupon code is invalid", comment: "")
+private let expiredErrorMessage = NSLocalizedString("This coupon code is expired", comment: "")
+private let depletedRedemptionsErrorMessage = NSLocalizedString("This coupon code has already been redeemed", comment: "")
+private let incorrectMechanicErrorMessage = NSLocalizedString("This coupon code is only valid for another mechanic", comment: "")
+private let failedToRedeemString = NSLocalizedString("This coupon code is invalid", comment: "")
 
 final class RedeemCouponCell: UITableViewCell, NibRegisterable {
     
     enum CouponRedemptionState {
         case none
         case success
-        case failure
+        case failure(priceError: PriceError?)
     }
 
     var didTapRedeemCoupon: (_ code: String?) -> Void = { _ in }
@@ -80,10 +85,10 @@ final class RedeemCouponCell: UITableViewCell, NibRegisterable {
             couponRedemptionStateLabel.isHidden = false
             couponRedemptionStateLabel.textColor = .appGreen
             couponRedemptionStateLabel.text = successfullyRedeemedString
-        case .failure:
+        case .failure(let priceError):
             couponRedemptionStateLabel.isHidden = false
             couponRedemptionStateLabel.textColor = .appRed
-            couponRedemptionStateLabel.text = failedToRedeemString
+            couponRedemptionStateLabel.text = priceError?.localizableString ?? failedToRedeemString
         }
         
         didUpdateHeight()
@@ -99,3 +104,24 @@ final class RedeemCouponCell: UITableViewCell, NibRegisterable {
     }
     
 }
+
+
+extension PriceError {
+    
+    var localizableString: String {
+        switch self {
+        case .couponCodeNotFound:
+            return failedToRedeemString
+        case .depletedRedemptions:
+            return depletedRedemptionsErrorMessage
+        case .expired:
+            return expiredErrorMessage
+        case .invalidCouponCode:
+            return incorrectErrorMessage
+        case .invalidMechanic:
+            return incorrectMechanicErrorMessage
+        }
+    }
+    
+}
+

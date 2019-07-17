@@ -12,6 +12,7 @@ import CarSwaddleData
 import Stripe
 import CoreData
 import Firebase
+import CarSwaddleNetworkRequest
 
 private let errorWithPaymentTitle = NSLocalizedString("Car Swaddle was unable to process your payment", comment: "")
 private let errorWithPaymentMessage = NSLocalizedString("Please try again with another payment method", comment: "")
@@ -74,7 +75,6 @@ final class AutoServiceCreation: NSObject {
             let coordinate = autoService.location?.coordinate else { return }
         loadingPrice = true
         
-//        let couponCode = payViewController?.couponCode
         let couponCode = autoService.couponID
         
         payViewController?.isUpdatingPrice = true
@@ -98,17 +98,22 @@ final class AutoServiceCreation: NSObject {
                         if couponCode == nil || couponCode?.isEmpty == true {
                             couponState = .none
                         } else {
-                            print(price)
                             if price.couponDiscount != nil || price.bookingFeeDiscount != nil {
                                 couponState = .success
                             } else {
-                                couponState = .failure
+                                couponState = .failure(priceError: nil)
                             }
                         }
                         self.payViewController?.couponRedemptionState = couponState
                         
+                    } else if let priceError = error as? PriceError {
+                        self.payViewController?.couponRedemptionState = .failure(priceError: priceError)
                     } else {
-                        self.payViewController?.couponRedemptionState = .none
+                        if couponCode == nil || couponCode?.isEmpty == true {
+                            self.payViewController?.couponRedemptionState = .none
+                        } else {
+                            self.payViewController?.couponRedemptionState = .failure(priceError: nil)
+                        }
                     }
                     self.loadingPrice = false
                 }

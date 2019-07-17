@@ -21,7 +21,7 @@ protocol SelectAutoServiceDetailsViewControllerDelegate: class {
     func didSetCouponCode(couponCode: String?, viewController: SelectAutoServiceDetailsViewController)
 }
 
-class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstantiating {
+final class SelectAutoServiceDetailsViewController: UIViewController, StoryboardInstantiating {
     
     weak var delegate: SelectAutoServiceDetailsViewControllerDelegate?
     

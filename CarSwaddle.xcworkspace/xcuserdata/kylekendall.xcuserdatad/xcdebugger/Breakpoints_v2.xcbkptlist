@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddle/UI/Navigation/Navigator.swift"
-            timestampString = "583139214.2221299"
+            timestampString = "585037303.478916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "showEnterNewPasswordScreen(resetToken:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -52,7 +52,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddle/UI/Create Service/CreateServiceViewController.swift"
-            timestampString = "584952263.661913"
+            timestampString = "585037303.479326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"

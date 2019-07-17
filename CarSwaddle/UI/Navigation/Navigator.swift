@@ -10,6 +10,7 @@ import UIKit
 import Authentication
 import CarSwaddleUI
 import Store
+import Stripe
 
 extension Navigator {
     
@@ -113,6 +114,9 @@ final class Navigator: NSObject {
         LabeledTextField.defaultTextFieldFont = UIFont.appFont(type: .regular, size: 15)
         LabeledTextField.defaultLabelNotExistsFont = UIFont.appFont(type: .semiBold, size: 15)
         LabeledTextField.defaultLabelFont = UIFont.appFont(type: .regular, size: 15)
+        
+        STPTheme.default().font = UIFont.appFont(type: .regular, size: 19)
+        STPTheme.default().emphasisFont = UIFont.appFont(type: .semiBold, size: 19)
         
         let labeledTextFieldAppearance = LabeledTextField.appearance()
         labeledTextFieldAppearance.underlineColor = .secondary

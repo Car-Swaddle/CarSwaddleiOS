@@ -13,6 +13,13 @@ extension NetworkRequest.Request.Endpoint {
     fileprivate static let price = Request.Endpoint(rawValue: "/api/price")
 }
 
+public enum PriceError: String, Error {
+    case invalidCouponCode = "INCORRECT_CODE"
+    case expired = "EXPIRED"
+    case invalidMechanic = "INCORRECT_MECHANIC"
+    case depletedRedemptions = "DEPLETED_REDEMPTIONS"
+    case couponCodeNotFound = "OTHER"
+}
 
 final public class PriceService: Service {
     
@@ -26,7 +33,7 @@ final public class PriceService: Service {
         guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])),
             let urlRequest = serviceRequest.post(with: .price, body: body, contentType: .applicationJSON) else { return nil }
         return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
-            self?.completeWithJSON(data: data, error: error, completion: completion)
+            self?.completeWithPriceJSON(data: data, error: error, completion: completion)
         }
     }
     
@@ -39,8 +46,21 @@ final public class PriceService: Service {
         guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])),
             let urlRequest = serviceRequest.post(with: .price, body: body, contentType: .applicationJSON) else { return nil }
         return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
-            self?.completeWithJSON(data: data, error: error, completion: completion)
+            self?.completeWithPriceJSON(data: data, error: error, completion: completion)
         }
+    }
+    
+    func completeWithPriceJSON(data: Data?, error: Error?, completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) {
+        var error = error
+        guard let data = data,
+            let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
+                completion(nil, error)
+                return
+        }
+        if error != nil, let errorCode = json["code"] as? String, let priceError = PriceError(rawValue: errorCode) {
+            error = priceError
+        }
+        completion(json, error)
     }
     
 }
