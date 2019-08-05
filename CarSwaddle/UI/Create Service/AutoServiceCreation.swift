@@ -172,7 +172,7 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
         print("create paymet result")
         print("paymentResult: \(paymentResult)")
         print("paymentContext: \(paymentContext)")
-        let sourceID = paymentResult.source.stripeID
+        let sourceID = paymentResult.paymentMethod.stripeId
         payViewController?.isUpdatingPrice = true
         createAutoService(sourceID: sourceID) { [weak self] autoServiceObjectID, error in
             self?.payViewController?.isUpdatingPrice = false

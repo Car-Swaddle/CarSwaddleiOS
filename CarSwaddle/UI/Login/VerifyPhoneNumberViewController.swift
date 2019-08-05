@@ -77,20 +77,21 @@ final class VerifyPhoneNumberViewController: UIViewController, NavigationDelegat
         let message = NSLocalizedString("The code you entered doesn't match the code we sent. Please type the code again.\n\nIs %@ not your phone number? Tap `Update phone number` to update.", comment: "Error title")
         
         let formattedMessage = String(format: message, User.currentUser(context: store.mainContext)?.phoneNumber ?? "")
-        let alert = UIAlertController(title: title, message: formattedMessage, preferredStyle: .alert)
+        let alertContent = CustomAlertContentView.view(withTitle: title, message: formattedMessage)
         
-        alert.addOkayAction { [weak self] action in
+        alertContent.addOkayAction { [weak self] action in
             self?.oneTimeViewController.oneTimeCodeEntryView.setText("")
             _ = self?.oneTimeViewController.oneTimeCodeEntryView.becomeFirstResponder()
         }
         
         let tryAgainTitle = NSLocalizedString("Update phone number", comment: "button title that will show a screen to update their phone number")
-        let updatePhoneNumberAction = UIAlertAction(title: tryAgainTitle, style: .default) { [weak self] action in
+        let updatePhoneNumberAction = CustomAlertAction(title: tryAgainTitle) { [weak self] action in
             self?.showUpdatePhoneNumber()
         }
         
-        alert.addAction(updatePhoneNumberAction)
+        alertContent.addAction(updatePhoneNumberAction)
         
+        let alert = CustomAlertController.viewController(contentView: alertContent)
         present(alert, animated: true, completion: nil)
     }
     

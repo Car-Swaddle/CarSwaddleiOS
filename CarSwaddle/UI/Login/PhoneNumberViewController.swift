@@ -15,6 +15,10 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
     weak var navigationDelegate: NavigationDelegate?
     @IBOutlet private weak var phoneNumberLabeledTextField: LabeledTextField!
     
+    @IBOutlet private weak var saveButton: ActionButton!
+    
+    private lazy var contentAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: saveButton)
+    
     private var userNetwork: UserNetwork = UserNetwork(serviceRequest: serviceRequest)
     
     override func viewDidLoad() {
@@ -32,14 +36,15 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
         phoneNumberLabeledTextField.textField.textContentType = .telephoneNumber
         
         phoneNumberLabeledTextField.textField.becomeFirstResponder()
+        
+        contentAdjuster.showActionButtonAboveKeyboard = true
+        contentAdjuster.includeTabBarInKeyboardCalculation = true
+        contentAdjuster.positionActionButton()
     }
     
     
-    @IBAction func didTapSave(_ sender: UIBarButtonItem) {
-        let previousButton = navigationItem.rightBarButtonItem
-        let spinner = UIBarButtonItem.activityBarButtonItem(with: .gray)
-        
-        navigationItem.rightBarButtonItem = spinner
+    @IBAction private func didTapSave() {
+        saveButton.isLoading = true
         
         guard let phoneNumber = phoneNumberLabeledTextField.textField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             phoneNumber.count > 3 else {
@@ -52,7 +57,8 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
                     if error == nil {
                         self.navigationDelegate?.didFinish(navigationDelegatingViewController: self)
                     }
-                    self.navigationItem.rightBarButtonItem = previousButton
+//                    self.navigationItem.rightBarButtonItem = previousButton
+                    self.saveButton.isLoading = false
                 }
             }
         }

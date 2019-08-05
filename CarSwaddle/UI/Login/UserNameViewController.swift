@@ -19,13 +19,16 @@ struct UserInfoError: Error {
 
 final class UserNameViewController: UIViewController, StoryboardInstantiating, NavigationDelegating {
     
-    weak var navigationDelegate: NavigationDelegate?
+    static let editNameTitle = NSLocalizedString("Edit Name", comment: "Title for a screen that allows the user to edit their name in our system")
+    static let yourNameTitle = NSLocalizedString("Your Name", comment: "Title for a screen that allows the user to edit their name in our system")
     
-//    @IBOutlet private weak var firstNameTextField: UITextField!
-//    @IBOutlet private weak var lastNameTextField: UITextField!
+    weak var navigationDelegate: NavigationDelegate?
     
     @IBOutlet private weak var firstNameLabeledTextField: LabeledTextField!
     @IBOutlet private weak var lastNameLabeledTextField: LabeledTextField!
+    @IBOutlet private weak var saveButton: ActionButton!
+    
+    private lazy var contentAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: saveButton)
     
     private let userNetwork = UserNetwork(serviceRequest: serviceRequest)
     
@@ -49,6 +52,9 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
         firstNameLabeledTextField.textField.textContentType = .givenName
         configureTextField(lastNameLabeledTextField.textField)
         lastNameLabeledTextField.textField.textContentType = .familyName
+        
+        contentAdjuster.showActionButtonAboveKeyboard = true
+        contentAdjuster.positionActionButton()
     }
     
     private func configureTextField(_ textField: UITextField) {
@@ -58,17 +64,14 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
         textField.spellCheckingType = .no
     }
     
-    
     @IBAction private func didTapSave() {
-        let previousButton = navigationItem.rightBarButtonItem
-        navigationItem.rightBarButtonItem = UIBarButtonItem.activityBarButtonItem(with: .gray)
+        saveButton.isLoading = true
         
         updateUser { [weak self] error in
             DispatchQueue.main.async {
-                self?.navigationItem.rightBarButtonItem = previousButton
+                self?.saveButton.isLoading = false
                 if let _self = self {
                     self?.navigationDelegate?.didFinish(navigationDelegatingViewController: _self)
-//                    self?.delegate?.didChangeName(userInfoViewController: _self)
                 }
             }
         }

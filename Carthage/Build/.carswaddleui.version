@@ -3,7 +3,7 @@
   "iOS" : [
     {
       "name" : "CarSwaddleUI",
-      "hash" : "5b126e16be7542c4b121aa611f2abed8d8f882117a7b4ba79f5fd18c19eeca6e",
+      "hash" : "3333acaf545a72f29a4bba6eabede07203197051a23efd35f0f6c70b24d36c0c",
       "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
     }
   ]

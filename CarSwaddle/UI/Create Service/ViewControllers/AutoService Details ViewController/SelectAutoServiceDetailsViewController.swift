@@ -185,6 +185,10 @@ extension SelectAutoServiceDetailsViewController: UITableViewDataSource {
                 self?.tableView.beginUpdates()
                 self?.tableView.endUpdates()
             }
+//            cell.didSelectReturn = { [weak self] in
+//                guard let self = self else { return }
+//                self.delegate?.didSetCouponCode(couponCode: coupon, viewController: self)
+//            }
             return cell
         }
     }

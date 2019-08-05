@@ -27,6 +27,7 @@ final class RedeemCouponCell: UITableViewCell, NibRegisterable {
 
     var didTapRedeemCoupon: (_ code: String?) -> Void = { _ in }
     var didUpdateHeight: () -> Void = {}
+//    var didSelectReturn: () -> Void = {}
     
     var isRedeemingCoupon: Bool = false {
         didSet {
@@ -73,6 +74,8 @@ final class RedeemCouponCell: UITableViewCell, NibRegisterable {
         titleLabel.font = UIFont.appFont(type: .semiBold, size: 17)
         couponCodeTextField.font = UIFont.appFont(type: .regular, size: 17)
         couponRedemptionStateLabel.font = UIFont.appFont(type: .regular, size: 15)
+        
+        couponCodeTextField.delegate = self
     }
     
     private func updateUIForCurrentCouponRedemptionState() {
@@ -101,6 +104,17 @@ final class RedeemCouponCell: UITableViewCell, NibRegisterable {
     
     @IBAction private func tapRedeem() {
         didTapRedeemCoupon(couponCodeTextField.text)
+    }
+    
+}
+
+
+extension RedeemCouponCell: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        didTapRedeemCoupon(textField.text)
+        textField.resignFirstResponder()
+        return true
     }
     
 }

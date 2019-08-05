@@ -7,6 +7,7 @@
 //
 
 import CarSwaddleData
+import Store
 
 final class MechanicImageView: UIImageView {
     
@@ -24,17 +25,19 @@ final class MechanicImageView: UIImageView {
     public func configure(withMechanicID mechanicID: String) {
         self.mechanicID = mechanicID
         
-        if let userImage = profileImageStore.getImage(forMechanicWithID: mechanicID) {
+        if let userImage = profileImageStore.getImage(forMechanicWithID: mechanicID, in: store.mainContext) {
             image = userImage
         } else {
             setDefaultImage()
-            mechanicNetwork.getProfileImage(mechanicID: mechanicID) { [weak self] fileURL, error in
-                guard self?.mechanicID == mechanicID else { return }
-                DispatchQueue.main.async {
-                    if let image = profileImageStore.getImage(forMechanicWithID: mechanicID) {
-                        self?.image = image
-                    } else {
-                        self?.setDefaultImage()
+            store.privateContext { [weak self] privateContext in
+                self?.mechanicNetwork.getProfileImage(mechanicID: mechanicID, in: privateContext) { fileURL, error in
+                    guard self?.mechanicID == mechanicID else { return }
+                    DispatchQueue.main.async {
+                        if let image = profileImageStore.getImage(forMechanicWithID: mechanicID, in: store.mainContext) {
+                            self?.image = image
+                        } else {
+                            self?.setDefaultImage()
+                        }
                     }
                 }
             }

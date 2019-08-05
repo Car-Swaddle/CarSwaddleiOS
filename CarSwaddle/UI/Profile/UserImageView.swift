@@ -27,13 +27,15 @@ final class UserImageView: UIImageView {
     public func configure(withUserID userID: String) {
         self.userID = userID
         
-        if let userImage = profileImageStore.getImage(forUserWithID: userID) {
+        if let userImage = profileImageStore.getImage(forUserWithID: userID, in: store.mainContext) {
             image = userImage
         } else {
-            userNetwork.getProfileImage(userID: userID) { [weak self] url, error in
-                guard self?.userID == userID, url != nil else { return }
-                DispatchQueue.main.async {
-                    self?.image = profileImageStore.getImage(forUserWithID: userID)
+            store.privateContext { [weak self] privateContext in
+                self?.userNetwork.getProfileImage(userID: userID, in: privateContext) { url, error in
+                    guard self?.userID == userID, url != nil else { return }
+                    DispatchQueue.main.async {
+                        self?.image = profileImageStore.getImage(forUserWithID: userID, in: store.mainContext)
+                    }
                 }
             }
         }

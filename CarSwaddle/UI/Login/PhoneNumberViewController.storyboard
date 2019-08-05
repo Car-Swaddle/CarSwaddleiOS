@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,10 +26,18 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Phone number"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="labelTextColor">
-                                        <color key="value" name="textColor3"/>
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sr5-26-pLZ" customClass="ActionButton" customModule="CarSwaddleUI">
+                                <rect key="frame" x="170" y="600" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="didTapSave" destination="Gkd-TG-Hxd" eventType="touchUpInside" id="WHK-Oa-Lv8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -40,15 +47,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yz2-sf-a26"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Phone Number" id="ws3-1u-dIz">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="6GG-Yr-fuT">
-                            <connections>
-                                <action selector="didTapSave:" destination="Gkd-TG-Hxd" id="38b-43-Dz1"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Phone Number" id="ws3-1u-dIz"/>
                     <connections>
                         <outlet property="phoneNumberLabeledTextField" destination="c0L-9W-AlB" id="2ha-kx-QhX"/>
+                        <outlet property="saveButton" destination="sr5-26-pLZ" id="Ndf-28-tQv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdI-vF-tgq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -74,9 +76,4 @@
             <point key="canvasLocation" x="37.600000000000001" y="176.76161919040482"/>
         </scene>
     </scenes>
-    <resources>
-        <namedColor name="textColor3">
-            <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </namedColor>
-    </resources>
 </document>

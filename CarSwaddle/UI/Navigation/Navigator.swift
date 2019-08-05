@@ -118,6 +118,8 @@ final class Navigator: NSObject {
         STPTheme.default().font = UIFont.appFont(type: .regular, size: 19)
         STPTheme.default().emphasisFont = UIFont.appFont(type: .semiBold, size: 19)
         
+        ContentInsetAdjuster.defaultBottomOffset = tabBarController.tabBar.bounds.height
+        
         let labeledTextFieldAppearance = LabeledTextField.appearance()
         labeledTextFieldAppearance.underlineColor = .secondary
     }

@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,7 +27,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="First Name"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="textFieldPlaceholder" value="First Name"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="labelTextColor">
-                                        <color key="value" name="textColor3"/>
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -42,10 +41,18 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Last Name"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="textFieldPlaceholder" value="Last Name"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="labelTextColor">
-                                        <color key="value" name="textColor3"/>
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyV-zv-rGS" customClass="ActionButton" customModule="CarSwaddleUI">
+                                <rect key="frame" x="170" y="608" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="didTapSave" destination="33s-1F-fL2" eventType="touchUpInside" id="7Tb-OF-nsb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -58,16 +65,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="foG-jL-lad"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Name" id="ia4-df-D1s">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="bmw-gq-gWl">
-                            <connections>
-                                <action selector="didTapSave" destination="33s-1F-fL2" id="S22-ek-UU2"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Edit Name" id="ia4-df-D1s"/>
                     <connections>
                         <outlet property="firstNameLabeledTextField" destination="zUI-jD-dFU" id="0Cz-14-NEw"/>
                         <outlet property="lastNameLabeledTextField" destination="pzY-KQ-wyP" id="bhL-VJ-9W2"/>
+                        <outlet property="saveButton" destination="hyV-zv-rGS" id="EyJ-3V-yu0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1D1-Bc-mZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -93,9 +95,4 @@
             <point key="canvasLocation" x="-32.799999999999997" y="150.67466266866569"/>
         </scene>
     </scenes>
-    <resources>
-        <namedColor name="textColor3">
-            <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </namedColor>
-    </resources>
 </document>

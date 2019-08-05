@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>5</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -28,8 +28,6 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>msg-macbook.local</key>
-			<true/>
 			<key>127.0.0.1</key>
 			<true/>
 			<key>169.254.184.119</key>
@@ -39,6 +37,8 @@
 			<key>199.192.98.106</key>
 			<true/>
 			<key>Kyles-MacBook-Pro.local</key>
+			<true/>
+			<key>msg-macbook.local</key>
 			<true/>
 		</dict>
 	</dict>

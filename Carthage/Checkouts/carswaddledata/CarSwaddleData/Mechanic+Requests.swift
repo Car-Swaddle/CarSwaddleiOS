@@ -123,13 +123,12 @@ public final class MechanicNetwork: Network {
                     }
                 }
                 
-                if let mechanicID = Mechanic.currentLoggedInMechanic(in: context)?.identifier {
-                    _ = try? profileImageStore.storeFile(url: fileURL, mechanicID: mechanicID)
-                }
-                
                 guard let currentMechanic = Mechanic.currentLoggedInMechanic(in: context), error == nil else { return }
                 currentMechanic.profileImageID = json?["profileImageID"] as? String
                 context.persist()
+                if let mechanicID = Mechanic.currentLoggedInMechanic(in: context)?.identifier {
+                    _ = try? profileImageStore.storeFile(at: fileURL, mechanicID: mechanicID, in: context)
+                }
                 mechanicObjectID = currentMechanic.objectID
             }
         }
@@ -156,17 +155,21 @@ public final class MechanicNetwork: Network {
     
     
     @discardableResult
-    public func getProfileImage(mechanicID: String, completion: @escaping (_ fileURL: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
+    public func getProfileImage(mechanicID: String, in context: NSManagedObjectContext, completion: @escaping (_ fileURL: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
         return fileService.getMechanicProfileImage(mechanicID: mechanicID) { url, responseError in
-            var completionError: Error? = responseError
-            var permanentURL: URL?
-            defer {
-                completion(permanentURL, completionError)
+            context.performAndWait {
+                var completionError: Error? = responseError
+                var permanentURL: URL?
+                defer {
+                    completion(permanentURL, completionError)
+                }
+                guard let url = url else { return }
+                do {
+                    permanentURL = try profileImageStore.storeFile(at: url, mechanicID: mechanicID, in: context)
+                } catch {
+                    completionError = error
+                }
             }
-            guard let url = url else { return }
-            do {
-                permanentURL = try profileImageStore.storeFile(url: url, mechanicID: mechanicID)
-            } catch { completionError = error }
         }
     }
     
