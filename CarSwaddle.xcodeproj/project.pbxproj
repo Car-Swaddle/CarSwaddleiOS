@@ -77,6 +77,8 @@
 		997714C321CCE2C700E54F5B /* PricePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714C221CCE2C700E54F5B /* PricePartView.swift */; };
 		997714C521CCE35800E54F5B /* PricePartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997714C421CCE35800E54F5B /* PricePartView.xib */; };
 		997714C721CCF5BC00E54F5B /* Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714C621CCF5BC00E54F5B /* Stripe.swift */; };
+		997BFC0522F950EF0023F445 /* RemoteNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BFC0422F950EF0023F445 /* RemoteNotification.swift */; };
+		997BFC0722F963330023F445 /* RateAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BFC0622F963330023F445 /* RateAlertController.swift */; };
 		997DBC42218EBD210080F42C /* MechanicSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC40218EBD210080F42C /* MechanicSelectCell.swift */; };
 		997DBC43218EBD210080F42C /* MechanicSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC41218EBD210080F42C /* MechanicSelectCell.xib */; };
 		997DBC512197575A0080F42C /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC502197575A0080F42C /* UserNameViewController.swift */; };
@@ -327,6 +329,8 @@
 		997714C421CCE35800E54F5B /* PricePartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PricePartView.xib; sourceTree = "<group>"; };
 		997714C621CCF5BC00E54F5B /* Stripe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stripe.swift; sourceTree = "<group>"; };
 		997714CC21CE435F00E54F5B /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
+		997BFC0422F950EF0023F445 /* RemoteNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotification.swift; sourceTree = "<group>"; };
+		997BFC0622F963330023F445 /* RateAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateAlertController.swift; sourceTree = "<group>"; };
 		997DBC40218EBD210080F42C /* MechanicSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicSelectCell.swift; sourceTree = "<group>"; };
 		997DBC41218EBD210080F42C /* MechanicSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MechanicSelectCell.xib; sourceTree = "<group>"; };
 		997DBC502197575A0080F42C /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
@@ -780,6 +784,7 @@
 			isa = PBXGroup;
 			children = (
 				997DBCA721BA605A0080F42C /* PushNotificationController.swift */,
+				997BFC0422F950EF0023F445 /* RemoteNotification.swift */,
 			);
 			path = "Push Notifications";
 			sourceTree = "<group>";
@@ -1000,6 +1005,7 @@
 				990F4371214252C600E65FC1 /* Main.storyboard */,
 				995B9F232154B4380030A7CA /* GlobalImports.swift */,
 				993BA12521585ACA00DB95EF /* LocationManager.swift */,
+				997BFC0622F963330023F445 /* RateAlertController.swift */,
 				9955BC3B215587EE008DAF8E /* Create Service */,
 				9955BC33215572E3008DAF8E /* AutoServices */,
 				9955BC382155741B008DAF8E /* Profile */,
@@ -1364,6 +1370,7 @@
 				99A0AEF4224EC1D40001FDC6 /* SelectMechanicTableViewController.swift in Sources */,
 				99A0AF11224EE9390001FDC6 /* FocusedCollectionView.swift in Sources */,
 				99AEE1CC2277D7CB00938462 /* DateCardView.swift in Sources */,
+				997BFC0722F963330023F445 /* RateAlertController.swift in Sources */,
 				9942544A215762A10075EDCA /* CreateServiceMechanicCell.swift in Sources */,
 				998D3AEC21DDCF5C003DD717 /* ReviewCell.swift in Sources */,
 				991AFCA72250B2BC00AD6614 /* VehicleCollectionViewCell.swift in Sources */,
@@ -1402,6 +1409,7 @@
 				994254522157691A0075EDCA /* CreateServiceCell.swift in Sources */,
 				9955BC3521557305008DAF8E /* CreateServiceViewController.swift in Sources */,
 				99A0AF0A224ECDC50001FDC6 /* MechanicProfileCell.swift in Sources */,
+				997BFC0522F950EF0023F445 /* RemoteNotification.swift in Sources */,
 				997DBCA821BA605A0080F42C /* PushNotificationController.swift in Sources */,
 				99986000227E29BB00113536 /* AutoServiceLocationCell.swift in Sources */,
 				99A0AF01224EC2A30001FDC6 /* SelectMechanicHourCell.swift in Sources */,

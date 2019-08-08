@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     private func setupLibraries() {
+        FirebaseConfiguration.shared.setLoggerLevel(.min)
         FirebaseApp.configure()
         STPPaymentConfiguration.shared().publishableKey = stripePublishableKey
         STPPaymentConfiguration.shared().appleMerchantIdentifier = appleMerchantIdentifier

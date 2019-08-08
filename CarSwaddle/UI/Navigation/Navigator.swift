@@ -9,6 +9,7 @@
 import UIKit
 import Authentication
 import CarSwaddleUI
+import CarSwaddleData
 import Store
 import Stripe
 
@@ -57,12 +58,62 @@ final class Navigator: NSObject {
         appDelegate.window?.addGestureRecognizer(tripleTap)
         #endif
         
-        if AuthController().token != nil {
-            //            pushNotificationController.requestPermission()
+        if isLoggedIn {
+            pushNotificationController.requestPermission()
             showRequiredScreensIfNeeded()
         }
         
         setupAppearance()
+    }
+    
+    private var ratingController: RatingController = RatingController()
+    
+    private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
+    
+    public func showRatingAlertFor(autoServiceID: String) {
+        guard isLoggedIn else { return }
+        let alert = ratingController.createRatingAlert(forAutoServiceID: autoServiceID)
+        appDelegate.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+    
+    public func showAutoService(autoServiceID: String) {
+        guard isLoggedIn else { return }
+        store.privateContext { [weak self] privateContext in
+            self?.autoServiceNetwork.getAutoServiceDetails(autoServiceID: autoServiceID, in: privateContext) { autoServiceObjectID, error in
+                store.mainContext { mainContext in
+                    guard let self = self else { return }
+                    guard let autoService = AutoService.fetch(with: autoServiceID, in: store.mainContext) else { return }
+                    let viewController = self.viewController(for: .services)
+                    self.dismissToViewController(viewController) { success in
+                        self.tabBarController.selectedIndex = Tab.services.rawValue
+                        if let navigationController = viewController.navigationController {
+                            let viewController = AutoServiceDetailsViewController.create(with: autoService)
+                            navigationController.show(viewController, sender: self)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func dismissToViewController(_ rootViewController: UIViewController, completion: @escaping (_ success: Bool) -> Void) {
+        if let presentedViewController = rootViewController.presentedViewController {
+            presentedViewController.dismiss(animated: true) {
+                if let navigationController = presentedViewController as? UINavigationController {
+                    navigationController.popToRootViewController(animated: true) {
+                        completion(true)
+                    }
+                } else {
+                    completion(true)
+                }
+            }
+        } else if let navigationController = rootViewController.navigationController {
+            navigationController.popToRootViewController(animated: true) {
+                completion(true)
+            }
+        } else {
+            completion(false)
+        }
     }
     
     private func setupAppearance() {
@@ -125,15 +176,19 @@ final class Navigator: NSObject {
     }
     
     public func initialViewController() -> UIViewController {
-        if AuthController().token == nil {
+        if isLoggedIn {
+            return loggedInViewController
+        } else {
             let signUp = SignUpViewController.viewControllerFromStoryboard()
             let navigationController = signUp.inNavigationController()
             navigationController.navigationBar.barStyle = .black
             navigationController.navigationBar.isHidden = true
             return navigationController
-        } else {
-            return loggedInViewController
         }
+    }
+    
+    public var isLoggedIn: Bool {
+        return AuthController().token != nil
     }
     
     public var loggedInViewController: UIViewController {
@@ -364,6 +419,39 @@ extension Navigator: NavigationDelegateViewControllerDelegate {
     func didSelectLogout(_ navigationDelegateViewController: NavigationDelegateViewController) {
         appDelegate.window?.endEditing(true)
         logout.logout()
+    }
+    
+}
+
+
+
+extension UINavigationController {
+    
+    public func popToRootViewController(animated: Bool, completion: @escaping () -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            completion()
+        }
+        popToRootViewController(animated: animated)
+        CATransaction.commit()
+    }
+    
+    public func popViewController(animated: Bool, completion: @escaping () -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            completion()
+        }
+        popViewController(animated: animated)
+        CATransaction.commit()
+    }
+    
+    public func popToViewController(viewController: UIViewController, animated: Bool, completion: @escaping () -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            completion()
+        }
+        popToViewController(viewController, animated: animated)
+        CATransaction.commit()
     }
     
 }

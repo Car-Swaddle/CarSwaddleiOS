@@ -70,6 +70,22 @@ public class PushNotificationController: NSObject {
         UserDefaults.standard.setValue(deviceToken, forKey: deviceTokenKey)
     }
     
+    private func handleInteraction(interactionInfo: [AnyHashable: Any]) {
+        guard let remoteNotification = RemoteNotification(userInfo: interactionInfo) else {
+            return
+        }
+        switch remoteNotification {
+        case .mechanicRating(let rating):
+            navigator.showRatingAlertFor(autoServiceID: rating.autoServiceID)
+        case .reminder(let reminder):
+            navigator.showAutoService(autoServiceID: reminder.autoServiceID)
+        case .userDidRate(let userDidRate):
+            navigator.showAutoService(autoServiceID: userDidRate.autoServiceID)
+        case .autoServiceWasUpdated(let autoServiceWasUpdated):
+            navigator.showAutoService(autoServiceID: autoServiceWasUpdated.autoServiceID)
+        }
+    }
+    
 }
 
 extension PushNotificationController: UNUserNotificationCenterDelegate {
@@ -80,6 +96,9 @@ extension PushNotificationController: UNUserNotificationCenterDelegate {
     
     public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("did receive response")
+        completionHandler()
+        let userInfo = response.notification.request.content.userInfo
+        handleInteraction(interactionInfo: userInfo)
         completionHandler()
     }
     
