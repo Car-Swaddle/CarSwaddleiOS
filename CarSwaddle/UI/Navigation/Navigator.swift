@@ -84,7 +84,7 @@ final class Navigator: NSObject {
                     guard let self = self else { return }
                     guard let autoService = AutoService.fetch(with: autoServiceID, in: store.mainContext) else { return }
                     let viewController = self.viewController(for: .services)
-                    self.dismissToViewController(viewController) { success in
+                    UIViewController.dismissToViewController(viewController) { success in
                         self.tabBarController.selectedIndex = Tab.services.rawValue
                         if let navigationController = viewController.navigationController {
                             let viewController = AutoServiceDetailsViewController.create(with: autoService)
@@ -93,26 +93,6 @@ final class Navigator: NSObject {
                     }
                 }
             }
-        }
-    }
-    
-    private func dismissToViewController(_ rootViewController: UIViewController, completion: @escaping (_ success: Bool) -> Void) {
-        if let presentedViewController = rootViewController.presentedViewController {
-            presentedViewController.dismiss(animated: true) {
-                if let navigationController = presentedViewController as? UINavigationController {
-                    navigationController.popToRootViewController(animated: true) {
-                        completion(true)
-                    }
-                } else {
-                    completion(true)
-                }
-            }
-        } else if let navigationController = rootViewController.navigationController {
-            navigationController.popToRootViewController(animated: true) {
-                completion(true)
-            }
-        } else {
-            completion(false)
         }
     }
     
@@ -452,6 +432,31 @@ extension UINavigationController {
         }
         popToViewController(viewController, animated: animated)
         CATransaction.commit()
+    }
+    
+}
+
+
+public extension UIViewController {
+    
+    static func dismissToViewController(_ rootViewController: UIViewController, completion: @escaping (_ success: Bool) -> Void) {
+        if let presentedViewController = rootViewController.presentedViewController {
+            presentedViewController.dismiss(animated: true) {
+                if let navigationController = presentedViewController as? UINavigationController {
+                    navigationController.popToRootViewController(animated: true) {
+                        completion(true)
+                    }
+                } else {
+                    completion(true)
+                }
+            }
+        } else if let navigationController = rootViewController.navigationController {
+            navigationController.popToRootViewController(animated: true) {
+                completion(true)
+            }
+        } else {
+            completion(false)
+        }
     }
     
 }

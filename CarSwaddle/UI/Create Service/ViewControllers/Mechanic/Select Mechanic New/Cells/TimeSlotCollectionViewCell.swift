@@ -27,7 +27,7 @@ class TimeSlotCollectionViewCell: UICollectionViewCell, NibRegisterable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        timeLabel.font = UIFont.appFont(type: .semiBold, size: 17)
+        timeLabel.font = UIFont.appFont(type: .semiBold, size: 15, scaleFont: false)
     }
     
     override func layoutSubviews() {

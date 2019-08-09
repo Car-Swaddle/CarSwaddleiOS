@@ -24,7 +24,7 @@ class HourDisplayView: UIView, NibInstantiating {
     private func setup() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(HourDisplayView.tap))
         addGestureRecognizer(tap)
-        hourLabel.font = UIFont.appFont(type: .semiBold, size: 15)
+        hourLabel.font = UIFont.appFont(type: .semiBold, size: 14, scaleFont: false)
         styleAsUnselected()
         style()
         clipsToBounds = false
@@ -53,8 +53,6 @@ class HourDisplayView: UIView, NibInstantiating {
     
     func styleAsSelected() {
         hourContentView.backgroundColor = .secondary
-//        hourContentView.layer.borderColor = UIColor.white.cgColor
-//        hourContentView.layer.borderWidth = 1.0
         hourLabel.textColor = .white
     }
     
