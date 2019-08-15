@@ -11,7 +11,7 @@ import Stripe
 import CarSwaddleUI
 
 
-private let noPaymentMethoSelected = NSLocalizedString("Select Payment Method", comment: "Select how to pay for auto service")
+private let noPaymentMethodSelected = NSLocalizedString("Select Payment Method", comment: "Select how to pay for auto service")
 
 class PaymentMethodCell: UITableViewCell, NibRegisterable {
     
@@ -25,7 +25,7 @@ class PaymentMethodCell: UITableViewCell, NibRegisterable {
         
         titleLabel.font = UIFont.appFont(type: .semiBold, size: 17)
         paymentMethodLabel.font = UIFont.appFont(type: .regular, size: 17)
-        paymentMethodLabel.text = noPaymentMethoSelected
+        paymentMethodLabel.text = noPaymentMethodSelected
         paymentMethodImageView.tintColor = .gray4
     }
     
@@ -34,8 +34,8 @@ class PaymentMethodCell: UITableViewCell, NibRegisterable {
             paymentMethodLabel.text = paymentMethod.label
             paymentMethodImageView.image = paymentMethod.templateImage
         } else {
-            paymentMethodLabel.text = noPaymentMethoSelected
-            paymentMethodLabel.text = noPaymentMethoSelected
+            paymentMethodLabel.text = noPaymentMethodSelected
+            paymentMethodLabel.text = noPaymentMethodSelected
             paymentMethodImageView.image = nil
         }
     }

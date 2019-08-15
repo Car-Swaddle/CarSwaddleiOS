@@ -64,7 +64,7 @@ final class AutoServiceDetailsHeaderCell: UITableViewCell, NibRegisterable {
     }
     
     private var phoneNumber: String? {
-        return autoService?.creator?.phoneNumber
+        return autoService?.mechanic?.user?.phoneNumber
     }
     
     @IBAction private func didTapSMS() {
