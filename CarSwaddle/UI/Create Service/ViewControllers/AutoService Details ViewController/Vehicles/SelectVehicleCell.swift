@@ -68,11 +68,11 @@ class SelectVehicleCell: UITableViewCell, NibRegisterable {
         super.prepareForReuse()
         
         reloadVehiclesLocally()
-        selectFirstVehicleIfPossible()
+//        selectFirstVehicleIfPossible()
     }
     
     private func selectFirstVehicleIfPossible() {
-        if vehicles.count > 0 {
+        if vehicles.count > 0 && selectedVehicle == nil {
             collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
             delegate?.didSelectVehicle(vehicle: vehicles[0], cell: self)
         }

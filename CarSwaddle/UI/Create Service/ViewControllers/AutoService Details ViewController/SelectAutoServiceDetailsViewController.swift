@@ -64,9 +64,7 @@ final class SelectAutoServiceDetailsViewController: UIViewController, Storyboard
     
     private var selectedVehicle: Vehicle? {
         didSet {
-            let cell = tableView.visibleCells.first { cell -> Bool in
-                return cell is SelectVehicleCell
-            } as? SelectVehicleCell
+            let cell = tableView.firstCell(of: SelectVehicleCell.self)
             cell?.selectedVehicle = selectedVehicle
         }
     }
@@ -165,10 +163,12 @@ extension SelectAutoServiceDetailsViewController: UITableViewDataSource {
         case .vehicle:
             let cell: SelectVehicleCell = tableView.dequeueCell()
             cell.delegate = self
+            cell.selectedVehicle = selectedVehicle
             return cell
         case .oilType:
             let cell: SelectOilTypeCell = tableView.dequeueCell()
             cell.delegate = self
+            cell.selectedOilType = selectedOilType
             return cell
         case .paymentMethod:
             let cell: PaymentMethodCell = tableView.dequeueCell()

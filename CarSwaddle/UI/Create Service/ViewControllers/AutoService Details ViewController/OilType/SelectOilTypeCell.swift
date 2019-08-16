@@ -18,6 +18,23 @@ class SelectOilTypeCell: UITableViewCell, NibRegisterable {
 
     weak var delegate: SelectOilTypeDelegate?
     
+    var selectedOilType: OilType? {
+        didSet {
+            if let oilType = selectedOilType {
+                var index = 0
+                for (i, value) in oilTypes.enumerated() {
+                    if oilType == value {
+                        index = i
+                        break
+                    }
+                }
+                
+                let indexPath = IndexPath(row: index, section: 0)
+                collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            }
+        }
+    }
+    
     @IBOutlet private weak var headerLabel: UILabel!
     @IBOutlet private weak var collectionView: FocusedCollectionView!
     
@@ -65,8 +82,9 @@ extension SelectOilTypeCell: UICollectionViewDataSource {
 extension SelectOilTypeCell: FocusedCollectionViewDelegate {
     
     func didSelectItem(at indexPath: IndexPath, collectionView: FocusedCollectionView) {
-        delegate?.didSelectOilType(oilType: oilTypes[indexPath.row], cell: self)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        let newOilType = oilTypes[indexPath.row]
+        selectedOilType = newOilType
+        delegate?.didSelectOilType(oilType: newOilType, cell: self)
     }
     
 }
