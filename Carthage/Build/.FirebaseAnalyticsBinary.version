@@ -8,7 +8,7 @@
   "tvOS" : [
 
   ],
-  "commitish" : "6.5.0",
+  "commitish" : "6.7.0",
   "iOS" : [
     {
       "name" : "Firebase",
@@ -16,31 +16,43 @@
     },
     {
       "name" : "nanopb",
-      "hash" : "c63191ec089e595439d20c27a2bacdb7653538e6cd8f1df840ab268f76fce9b9"
+      "hash" : "9e8309e7f49514fb9a38e8b243cc9bbdfd49d4081f3e82a1de76fcb20c0e8087"
+    },
+    {
+      "name" : "GoogleDataTransportCCTSupport",
+      "hash" : "b622ef7596826a4b941118d42e229bd1ccbe6a39b028ecc0e1720ea3eb89c1ef"
     },
     {
       "name" : "FirebaseAnalytics",
-      "hash" : "cfa26b9517ac34ca9b106a74fc1bd703567f95d9af7d0ee633325ad63335a88d"
+      "hash" : "48edb4e473eaeee2fa818dba9b9afb7b5f027d8cee18c71394896783521529c2"
     },
     {
       "name" : "FIRAnalyticsConnector",
-      "hash" : "fe1ddd2a7da10b031c2b0c16abc4f15b13f6e54c04fae8fda3220aec72bbebbd"
+      "hash" : "66093ccc9722cf00aeb9161b8154d51aaceac797624d6bdbd9ea65f031985692"
     },
     {
-      "name" : "FirebaseCore",
-      "hash" : "f6782eae73af9d098591f5ae07fa36e38521c594cf713185e66a24ab26b16bd3"
+      "name" : "GoogleDataTransport",
+      "hash" : "18e92f57229ee3669a7d96d04dc62053d8d20e78f8ce416e52574e11055bf568"
+    },
+    {
+      "name" : "FirebaseCoreDiagnostics",
+      "hash" : "79b718db0e6750bb54185e3aa0c7153ea16077437523fce20947424783863ba5"
     },
     {
       "name" : "GoogleUtilities",
-      "hash" : "8872f15435cb03492e8d150d43e17b0c27c556acec62b74cf03488d4737446f8"
+      "hash" : "a092f1290f431e5bc1862a086ae988e422f72df94ccd2b2151f3154fdc6a5ee2"
+    },
+    {
+      "name" : "FirebaseCore",
+      "hash" : "f429be65ad2dd5c9483d4a87c162255cdd1af357318eb73b0be02a821da29be4"
     },
     {
       "name" : "FirebaseInstanceID",
-      "hash" : "b39e8a44b60dc6c5aab037fd80d6d8fd8d53d136c99a8cd2a206bb86ef06220a"
+      "hash" : "b9d26a4da3f8e766a96ed5eac9468a6142ec9b258ee7c1dd459a2096a3fc7cce"
     },
     {
       "name" : "GoogleAppMeasurement",
-      "hash" : "e9c5b91093eee540b48c90958187965a5290b9f96bc12f58b85ccfddcd4bb33e"
+      "hash" : "c77f8b17ecd16ef0f85c9ce4b3ef44a617d9ce0035080a9cf6e017f10271b361"
     }
   ]
 }

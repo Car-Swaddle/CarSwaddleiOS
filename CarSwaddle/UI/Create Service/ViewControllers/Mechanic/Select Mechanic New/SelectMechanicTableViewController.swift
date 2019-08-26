@@ -75,7 +75,7 @@ final class SelectMechanicTableViewController: UIViewController, StoryboardInsta
     
     private var hasFetchedMechanics = false {
         didSet {
-            let mechanicsCell = tableView.firstCell(of: SelectMechanicProfileCell.self)
+            let mechanicsCell = tableView.firstVisibleCell(of: SelectMechanicProfileCell.self)
             mechanicsCell?.hasFetchedMechanics = hasFetchedMechanics
         }
     }
@@ -258,29 +258,29 @@ extension SelectMechanicTableViewController: SelectMechanicProfileCellDelegate {
 
 
 
-
-extension UITableView {
-    
-    public func firstCell<T>(of type: T.Type) -> T? {
-        let cell = visibleCells.first { cell -> Bool in
-            return cell is T
-        } as? T
-        return cell
-    }
-    
-}
-
-extension UICollectionView {
-    
-    public func firstCell<T>(of type: T.Type) -> T? {
-        let cell = visibleCells.first { cell -> Bool in
-            return cell is T
-            } as? T
-        return cell
-    }
-    
-}
-
+//
+//extension UITableView {
+//
+//    public func firstCell<T>(of type: T.Type) -> T? {
+//        let cell = visibleCells.first { cell -> Bool in
+//            return cell is T
+//        } as? T
+//        return cell
+//    }
+//
+//}
+//
+//extension UICollectionView {
+//
+//    public func firstCell<T>(of type: T.Type) -> T? {
+//        let cell = visibleCells.first { cell -> Bool in
+//            return cell is T
+//            } as? T
+//        return cell
+//    }
+//
+//}
+//
 
 
 extension CLLocationCoordinate2D {

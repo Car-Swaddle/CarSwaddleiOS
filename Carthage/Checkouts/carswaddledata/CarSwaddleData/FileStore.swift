@@ -40,7 +40,7 @@ public class FileStore {
         if let dataHolder = fileCache.object(forKey: name as NSString) {
             return dataHolder.data
         }
-        let datedData: DatedData = try Disk.retrieve(folderName + "/" + name, from: directory)
+        let datedData: DatedData = try Disk.retrieve(folder(with: name), from: directory)
         guard allowExpired == false, datedData.dateFirstStored.timeIntervalSince(Date()) < defaultExpirationTimeInterval else {
             return nil
         }
@@ -65,6 +65,11 @@ public class FileStore {
     
     private func folder(with fileName: String) -> String {
         return folderName + "/" + fileName
+    }
+    
+    public func getFilePathForFile(withName name: String) -> URL? {
+        guard let url = URL(string: folder(with: name)) else { return nil }
+        return url
     }
     
 //    private func directory() throws -> URL {

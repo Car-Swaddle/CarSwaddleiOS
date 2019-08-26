@@ -22,6 +22,7 @@ class AddVehicleViewController: UIViewController, StoryboardInstantiating {
     private enum Row: CaseIterable {
         case name
         case licensePlate
+        case state
     }
     
     private var rows: [Row] = Row.allCases
@@ -33,6 +34,7 @@ class AddVehicleViewController: UIViewController, StoryboardInstantiating {
     
     private var vehicleName: String?
     private var licensePlate: String?
+    private var state: USState = .utah
     
     private var licensePlateTextField: UITextField?
     private var vehicleNameTextField: UITextField?
@@ -53,18 +55,22 @@ class AddVehicleViewController: UIViewController, StoryboardInstantiating {
     
     private func setupTableView() {
         tableView.register(TextInputCell.self)
+        tableView.register(StatePickerCell.self)
         tableView.tableFooterView = UIView()
     }
     
     @IBAction private func didTapSave() {
-        guard let name = vehicleName, let licensePlate = licensePlate else {
+        guard let name = vehicleName,
+            let licensePlate = licensePlate else {
             return
         }
+        
+        let state = self.state
         
         actionButton.isLoading = true
         
         store.privateContext { [weak self] privateContext in
-            self?.vehicleNetwork.createVehicle(name: name, licensePlate: licensePlate, in: privateContext) { newVehicleObjectID, error in
+            self?.vehicleNetwork.createVehicle(name: name, licensePlate: licensePlate, state: state.rawValue, in: privateContext) { newVehicleObjectID, error in
                 store.mainContext { mainContext in
                     guard let self = self else { return }
                     self.actionButton.isLoading = false
@@ -84,7 +90,6 @@ class AddVehicleViewController: UIViewController, StoryboardInstantiating {
     @IBAction func didTapCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
 
 }
 
@@ -96,30 +101,63 @@ extension AddVehicleViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: TextInputCell = tableView.dequeueCell()
         switch rows[indexPath.row] {
         case .name:
+            let cell: TextInputCell = tableView.dequeueCell()
             cell.labeledTextField.textField.placeholder = NSLocalizedString("e.g., Ford Explorer 1996", comment: "Example of a ame of the vehicle")
             cell.labeledTextField.labelText = NSLocalizedString("Vehicle name", comment: "Name of the vehicle")
             cell.labeledTextField.textField.autocapitalizationType = .words
             cell.textDidChange = { [weak self] in
                 self?.vehicleName = cell.labeledTextField.textField.text
             }
+            cell.beginEditing = {
+                tableView.firstVisibleCell(of: StatePickerCell.self)?.hidePicker()
+            }
+            configure(cell: cell)
+            return cell
         case .licensePlate:
+            let cell: TextInputCell = tableView.dequeueCell()
             cell.labeledTextField.textField.placeholder = NSLocalizedString("e.g., 2GAT123", comment: "Example of a license plate")
             cell.labeledTextField.labelText = NSLocalizedString("License plate", comment: "License plate of a vehicle")
             cell.labeledTextField.textField.autocapitalizationType = .allCharacters
             cell.textDidChange = { [weak self] in
                 self?.licensePlate = cell.labeledTextField.textField.text
             }
+            cell.beginEditing = {
+                tableView.firstVisibleCell(of: StatePickerCell.self)?.hidePicker()
+            }
+            configure(cell: cell)
+            return cell
+        case .state:
+            let cell: StatePickerCell = tableView.dequeueCell()
+            cell.selectedState = state
+            cell.didChangeSelection = { [weak self] state in
+                self?.state = state
+            }
+            cell.willUpdateHeight = { [weak self] in
+                self?.tableView.beginUpdates()
+            }
+            cell.didUpdateHeight = { [weak self] in
+                self?.tableView.endUpdates()
+            }
+            cell.didShowPicker = { [weak self] in
+                self?.dismissKeyboard()
+            }
+            return cell
         }
-        
+    }
+    
+    private func configure(cell: TextInputCell) {
         cell.labeledTextField.labelTextExistsFont = UIFont.appFont(type: .regular, size: 15)
         cell.labeledTextField.labelTextNotExistsFont = UIFont.appFont(type: .semiBold, size: 15)
         cell.labeledTextField.textField.autocorrectionType = .no
         cell.labeledTextField.textField.spellCheckingType = .no
-        
-        return cell
+    }
+    
+    private func dismissKeyboard() {
+        tableView.allVisibleCells(of: TextInputCell.self).forEach {
+            $0.labeledTextField.textField.resignFirstResponder()
+        }
     }
     
     @objc private func textDidChange(_ textField: UITextField) {

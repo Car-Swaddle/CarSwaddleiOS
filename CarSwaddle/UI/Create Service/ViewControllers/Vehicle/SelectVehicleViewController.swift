@@ -260,11 +260,11 @@ extension SelectVehicleViewController: NSFetchedResultsControllerDelegate {
 extension SelectVehicleViewController: AddVehicleCellDelegate {
     
     func didSelectAdd(name: String, licensePlate: String, cell: AddVehicleCell) {
-        store.privateContext { [weak self] context in
-            self?.vehicleNetwork.createVehicle(name: name, licensePlate: licensePlate, in: context) { [weak self] objectID, error in
-                DispatchQueue.main.async {
-                    self?.tableView.reloadSections(IndexSet(integer: 0), with: .none)
-                }
+//        store.privateContext { [weak self] context in
+//            self?.vehicleNetwork.createVehicle(name: name, licensePlate: licensePlate, state: , in: context) { [weak self] objectID, error in
+//                DispatchQueue.main.async {
+//                    self?.tableView.reloadSections(IndexSet(integer: 0), with: .none)
+//                }
 //                store.mainContext{ mainContext in
 //                    guard let objectID = objectID,
 //                        let vehicle = mainContext.object(with: objectID) as? Vehicle else { return }
@@ -273,8 +273,8 @@ extension SelectVehicleViewController: AddVehicleCellDelegate {
 //                    let indexPath = IndexPath(row: index, section: 0)
 //                    self?.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
 //                }
-            }
-        }
+//            }
+//        }
     }
     
 }

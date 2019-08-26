@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9905FF4A230C7FC500DFBCB9 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9905FF49230C7FC500DFBCB9 /* GoogleDataTransport.framework */; };
+		9905FF752313AD3400DFBCB9 /* StatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9905FF732313AD3400DFBCB9 /* StatePickerCell.swift */; };
+		9905FF762313AD3400DFBCB9 /* StatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9905FF742313AD3400DFBCB9 /* StatePickerCell.xib */; };
 		990F436E214252C600E65FC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F436D214252C600E65FC1 /* AppDelegate.swift */; };
 		990F4370214252C600E65FC1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F436F214252C600E65FC1 /* ViewController.swift */; };
 		990F4373214252C600E65FC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 990F4371214252C600E65FC1 /* Main.storyboard */; };
@@ -121,6 +124,15 @@
 		9998600F227F6E9D00113536 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9998600E227F6E9D00113536 /* CircleButton.swift */; };
 		999861432289270C00113536 /* CancelAutoServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999861422289270C00113536 /* CancelAutoServiceCell.swift */; };
 		999861442289271D00113536 /* CancelAutoServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999861412289270B00113536 /* CancelAutoServiceCell.xib */; };
+		999C71F6230BC43C00F605C0 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED22261CA750007F6F8 /* FirebaseCoreDiagnostics.framework */; };
+		999C71F7230BC43C00F605C0 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED02261CA750007F6F8 /* FirebaseInstanceID.framework */; };
+		999C71F8230BC43C00F605C0 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED12261CA750007F6F8 /* FIRAnalyticsConnector.framework */; };
+		999C71F9230BC43C00F605C0 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED32261CA750007F6F8 /* nanopb.framework */; };
+		999C71FA230BC43C00F605C0 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED82261CA760007F6F8 /* GoogleUtilities.framework */; };
+		999C71FB230BC43C00F605C0 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED52261CA760007F6F8 /* FirebaseAnalytics.framework */; };
+		999C71FC230BC43C00F605C0 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED72261CA760007F6F8 /* FirebaseCore.framework */; };
+		999C71FD230BC43C00F605C0 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED42261CA760007F6F8 /* GoogleAppMeasurement.framework */; };
+		999C71FE230BC43C00F605C0 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED62261CA760007F6F8 /* Firebase.framework */; };
 		99A0AEF4224EC1D40001FDC6 /* SelectMechanicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0AEF3224EC1D40001FDC6 /* SelectMechanicTableViewController.swift */; };
 		99A0AEF6224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A0AEF5224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard */; };
 		99A0AEF9224EC24D0001FDC6 /* SelectMechanicProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0AEF7224EC24D0001FDC6 /* SelectMechanicProfileCell.swift */; };
@@ -206,15 +218,6 @@
 		99E48168227AC5880040B882 /* AutoServiceVehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E48165227AC5770040B882 /* AutoServiceVehicleCell.xib */; };
 		99E4816A227BFB1E0040B882 /* ServiceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E48169227BFB1E0040B882 /* ServiceHeaderView.swift */; };
 		99E4816C227BFB390040B882 /* ServiceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E4816B227BFB390040B882 /* ServiceHeaderView.xib */; };
-		99E4CED92261CA760007F6F8 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED02261CA750007F6F8 /* FirebaseInstanceID.framework */; };
-		99E4CEDA2261CA760007F6F8 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED12261CA750007F6F8 /* FIRAnalyticsConnector.framework */; };
-		99E4CEDB2261CA760007F6F8 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED22261CA750007F6F8 /* FirebaseCoreDiagnostics.framework */; };
-		99E4CEDC2261CA760007F6F8 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED32261CA750007F6F8 /* nanopb.framework */; };
-		99E4CEDD2261CA760007F6F8 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED42261CA760007F6F8 /* GoogleAppMeasurement.framework */; };
-		99E4CEDE2261CA760007F6F8 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED52261CA760007F6F8 /* FirebaseAnalytics.framework */; };
-		99E4CEDF2261CA760007F6F8 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED62261CA760007F6F8 /* Firebase.framework */; };
-		99E4CEE02261CA760007F6F8 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED72261CA760007F6F8 /* FirebaseCore.framework */; };
-		99E4CEE12261CA760007F6F8 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E4CED82261CA760007F6F8 /* GoogleUtilities.framework */; };
 		99E66DA421E294A600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */; };
 		99E66DA621E294AE00C6E3E1 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */; };
 		99E66DA821E2963A00C6E3E1 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA721E2963A00C6E3E1 /* UserImageView.swift */; };
@@ -249,6 +252,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9905FF49230C7FC500DFBCB9 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
+		9905FF732313AD3400DFBCB9 /* StatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatePickerCell.swift; sourceTree = "<group>"; };
+		9905FF742313AD3400DFBCB9 /* StatePickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatePickerCell.xib; sourceTree = "<group>"; };
 		990F436A214252C600E65FC1 /* CarSwaddle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarSwaddle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		990F436D214252C600E65FC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		990F436F214252C600E65FC1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -485,23 +491,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				999C71F6230BC43C00F605C0 /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				999C71F7230BC43C00F605C0 /* FirebaseInstanceID.framework in Frameworks */,
+				999C71F8230BC43C00F605C0 /* FIRAnalyticsConnector.framework in Frameworks */,
+				999C71F9230BC43C00F605C0 /* nanopb.framework in Frameworks */,
+				999C71FA230BC43C00F605C0 /* GoogleUtilities.framework in Frameworks */,
+				999C71FB230BC43C00F605C0 /* FirebaseAnalytics.framework in Frameworks */,
+				999C71FC230BC43C00F605C0 /* FirebaseCore.framework in Frameworks */,
+				9905FF4A230C7FC500DFBCB9 /* GoogleDataTransport.framework in Frameworks */,
+				999C71FD230BC43C00F605C0 /* GoogleAppMeasurement.framework in Frameworks */,
+				999C71FE230BC43C00F605C0 /* Firebase.framework in Frameworks */,
 				99D5D99121F43C1600E6A511 /* Authentication.framework in Frameworks */,
-				99E4CEDD2261CA760007F6F8 /* GoogleAppMeasurement.framework in Frameworks */,
-				99E4CEDE2261CA760007F6F8 /* FirebaseAnalytics.framework in Frameworks */,
 				99D5D9E121F5CD9700E6A511 /* CarSwaddleData.framework in Frameworks */,
 				99D5D9DF21F5CD9700E6A511 /* Stripe.framework in Frameworks */,
 				99D5D9DB21F5CD9700E6A511 /* NetworkRequest.framework in Frameworks */,
-				99E4CEE12261CA760007F6F8 /* GoogleUtilities.framework in Frameworks */,
-				99E4CED92261CA760007F6F8 /* FirebaseInstanceID.framework in Frameworks */,
 				99D5D9E721F5CD9700E6A511 /* KeychainAccess.framework in Frameworks */,
 				99D5D99321F43C1600E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */,
-				99E4CEDF2261CA760007F6F8 /* Firebase.framework in Frameworks */,
 				99D5D9E521F5CD9700E6A511 /* Store.framework in Frameworks */,
-				99E4CEDC2261CA760007F6F8 /* nanopb.framework in Frameworks */,
 				99D5D9DD21F5CD9700E6A511 /* Cosmos.framework in Frameworks */,
-				99E4CEDA2261CA760007F6F8 /* FIRAnalyticsConnector.framework in Frameworks */,
-				99E4CEE02261CA760007F6F8 /* FirebaseCore.framework in Frameworks */,
-				99E4CEDB2261CA760007F6F8 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				99A0AF17224F53DE0001FDC6 /* FSCalendar.framework in Frameworks */,
 				99D5D99421F43C1600E6A511 /* CarSwaddleUI.framework in Frameworks */,
 			);
@@ -598,6 +605,8 @@
 				991AFCA62250B2BC00AD6614 /* VehicleCollectionViewCell.xib */,
 				991AFCB32251452700AD6614 /* AddVehicleViewController.swift */,
 				991AFCB52251453100AD6614 /* AddVehicleViewController.storyboard */,
+				9905FF732313AD3400DFBCB9 /* StatePickerCell.swift */,
+				9905FF742313AD3400DFBCB9 /* StatePickerCell.xib */,
 				991AFCB72251D7C800AD6614 /* TextInputCell.swift */,
 				991AFCB82251D7C900AD6614 /* TextInputCell.xib */,
 			);
@@ -1016,6 +1025,7 @@
 		99F78F24214BA4E400D1BD28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9905FF49230C7FC500DFBCB9 /* GoogleDataTransport.framework */,
 				99E4CED12261CA750007F6F8 /* FIRAnalyticsConnector.framework */,
 				99E4CED62261CA760007F6F8 /* Firebase.framework */,
 				99E4CED52261CA760007F6F8 /* FirebaseAnalytics.framework */,
@@ -1272,6 +1282,7 @@
 				99DC26452246ECC2009E0A15 /* MontserratAlternates-MediumItalic.otf in Resources */,
 				99DC26482246ECC2009E0A15 /* MontserratAlternates-SemiBoldItalic.otf in Resources */,
 				99FEB004215DE4770009BC07 /* SelectOilTypeViewController.storyboard in Resources */,
+				9905FF762313AD3400DFBCB9 /* StatePickerCell.xib in Resources */,
 				99A0AF02224EC2A30001FDC6 /* SelectMechanicHourCell.xib in Resources */,
 				991AFC9C2250AE0B00AD6614 /* SelectAutoServiceDetailsViewController.storyboard in Resources */,
 			);
@@ -1383,6 +1394,7 @@
 				99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */,
 				99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */,
 				99116905215B76B6001E039E /* AddVehicleCell.swift in Sources */,
+				9905FF752313AD3400DFBCB9 /* StatePickerCell.swift in Sources */,
 				9942547121577B730075EDCA /* SelectLocationViewController.swift in Sources */,
 				991C9FC52213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift in Sources */,
 				997DBC72219965E80080F42C /* HourCollectionViewCell.swift in Sources */,
@@ -1639,7 +1651,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(SRCROOT)/Carthage/Build/iOS/",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CarSwaddle/Support/Info.plist;
@@ -1649,6 +1660,8 @@
 					"@executable_path/Frameworks",
 					"$(SRCROOT)/Carthage/Build/iOS",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1672,7 +1685,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(SRCROOT)/Carthage/Build/iOS/",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CarSwaddle/Support/Info.plist;
@@ -1682,6 +1694,7 @@
 					"@executable_path/Frameworks",
 					"$(SRCROOT)/Carthage/Build/iOS",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddle;
 				PRODUCT_NAME = "$(TARGET_NAME)";

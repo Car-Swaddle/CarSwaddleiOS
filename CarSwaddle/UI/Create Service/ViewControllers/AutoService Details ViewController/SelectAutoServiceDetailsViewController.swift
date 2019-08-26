@@ -35,13 +35,13 @@ final class SelectAutoServiceDetailsViewController: UIViewController, Storyboard
     
     var isRedeemingCoupon: Bool = false {
         didSet {
-            tableView.firstCell(of: RedeemCouponCell.self)?.isRedeemingCoupon = isRedeemingCoupon
+            tableView.firstVisibleCell(of: RedeemCouponCell.self)?.isRedeemingCoupon = isRedeemingCoupon
         }
     }
     
     var couponRedemptionState: RedeemCouponCell.CouponRedemptionState = .none {
         didSet {
-            tableView.firstCell(of: RedeemCouponCell.self)?.couponRedemptionState = couponRedemptionState
+            tableView.firstVisibleCell(of: RedeemCouponCell.self)?.couponRedemptionState = couponRedemptionState
         }
     }
     
@@ -64,7 +64,7 @@ final class SelectAutoServiceDetailsViewController: UIViewController, Storyboard
     
     private var selectedVehicle: Vehicle? {
         didSet {
-            let cell = tableView.firstCell(of: SelectVehicleCell.self)
+            let cell = tableView.firstVisibleCell(of: SelectVehicleCell.self)
             cell?.selectedVehicle = selectedVehicle
         }
     }
@@ -119,7 +119,7 @@ final class SelectAutoServiceDetailsViewController: UIViewController, Storyboard
     }
     
     private var selectVehicleCell: SelectVehicleCell? {
-        return tableView.firstCell(of: SelectVehicleCell.self)
+        return tableView.firstVisibleCell(of: SelectVehicleCell.self)
     }
     
     private func setupTableView() {

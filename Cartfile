@@ -5,4 +5,3 @@ github "evgenyneu/Cosmos" ~> 18.0
 github "airbnb/lottie-ios" "master"
 github "WenchaoD/FSCalendar"
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
-

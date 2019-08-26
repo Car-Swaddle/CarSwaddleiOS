@@ -306,6 +306,8 @@ SWIFT_CLASS_NAMED("AutoService")
 
 
 
+
+
 @class Location;
 @class Price;
 @class Vehicle;
@@ -413,16 +415,8 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSSet;
-
-@interface Mechanic (SWIFT_EXTENSION(Store))
-- (void)addServicesObject:(AutoService * _Nonnull)value;
-- (void)removeServicesObject:(AutoService * _Nonnull)value;
-- (void)addServices:(NSSet * _Nonnull)values;
-- (void)removeServices:(NSSet * _Nonnull)values;
-@end
-
 @class Transaction;
+@class NSSet;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 - (void)addTransactionsObject:(Transaction * _Nonnull)value;
@@ -440,11 +434,20 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (void)removeScheduleTimeSpans:(NSSet * _Nonnull)values;
 @end
 
+
+@interface Mechanic (SWIFT_EXTENSION(Store))
+- (void)addServicesObject:(AutoService * _Nonnull)value;
+- (void)removeServicesObject:(AutoService * _Nonnull)value;
+- (void)addServices:(NSSet * _Nonnull)values;
+- (void)removeServices:(NSSet * _Nonnull)values;
+@end
+
 @class Region;
 @class Stats;
 @class Payout;
 @class Verification;
 @class TaxInfo;
+@class OilChangePricing;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
@@ -471,6 +474,7 @@ SWIFT_CLASS_NAMED("Mechanic")
 @property (nonatomic) BOOL hasSetAvailability;
 @property (nonatomic) BOOL hasSetServiceRegion;
 @property (nonatomic, copy) NSDate * _Nonnull creationDate;
+@property (nonatomic, strong) OilChangePricing * _Nullable oilChangePricing;
 @end
 
 
@@ -488,6 +492,24 @@ SWIFT_CLASS_NAMED("OilChange")
 @interface OilChange (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
 @property (nonatomic, strong) ServiceEntity * _Nonnull serviceEntity;
+@end
+
+
+SWIFT_CLASS_NAMED("OilChangePricing")
+@interface OilChangePricing : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface OilChangePricing (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nonnull identifier;
+@property (nonatomic) int64_t conventional;
+@property (nonatomic) int64_t blend;
+@property (nonatomic) int64_t synthetic;
+@property (nonatomic) int64_t highMileage;
+@property (nonatomic) int64_t centsPerMile;
+@property (nonatomic, copy) NSString * _Nonnull mechanicID;
+@property (nonatomic, strong) Mechanic * _Nullable mechanic;
 @end
 
 
@@ -712,18 +734,18 @@ SWIFT_CLASS_NAMED("User")
 
 
 @interface User (SWIFT_EXTENSION(Store))
-- (void)addServicesObject:(AutoService * _Nonnull)value;
-- (void)removeServicesObject:(AutoService * _Nonnull)value;
-- (void)addServices:(NSSet * _Nonnull)values;
-- (void)removeServices:(NSSet * _Nonnull)values;
-@end
-
-
-@interface User (SWIFT_EXTENSION(Store))
 - (void)addVehiclesObject:(Vehicle * _Nonnull)value;
 - (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
 - (void)addVehicles:(NSSet * _Nonnull)values;
 - (void)removeVehicles:(NSSet * _Nonnull)values;
+@end
+
+
+@interface User (SWIFT_EXTENSION(Store))
+- (void)addServicesObject:(AutoService * _Nonnull)value;
+- (void)removeServicesObject:(AutoService * _Nonnull)value;
+- (void)addServices:(NSSet * _Nonnull)values;
+- (void)removeServices:(NSSet * _Nonnull)values;
 @end
 
 
@@ -768,6 +790,7 @@ SWIFT_CLASS_NAMED("Vehicle")
 /// At least one of licensePlate or vin or vehicleDescription must not be nil.
 @property (nonatomic, copy) NSString * _Nullable vin;
 @property (nonatomic, copy) NSString * _Nullable licensePlate;
+@property (nonatomic, copy) NSString * _Nullable state;
 @property (nonatomic, strong) VehicleDescription * _Nullable vehicleDescription;
 @end
 
@@ -1134,6 +1157,8 @@ SWIFT_CLASS_NAMED("AutoService")
 
 
 
+
+
 @class Location;
 @class Price;
 @class Vehicle;
@@ -1241,16 +1266,8 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSSet;
-
-@interface Mechanic (SWIFT_EXTENSION(Store))
-- (void)addServicesObject:(AutoService * _Nonnull)value;
-- (void)removeServicesObject:(AutoService * _Nonnull)value;
-- (void)addServices:(NSSet * _Nonnull)values;
-- (void)removeServices:(NSSet * _Nonnull)values;
-@end
-
 @class Transaction;
+@class NSSet;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 - (void)addTransactionsObject:(Transaction * _Nonnull)value;
@@ -1268,11 +1285,20 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (void)removeScheduleTimeSpans:(NSSet * _Nonnull)values;
 @end
 
+
+@interface Mechanic (SWIFT_EXTENSION(Store))
+- (void)addServicesObject:(AutoService * _Nonnull)value;
+- (void)removeServicesObject:(AutoService * _Nonnull)value;
+- (void)addServices:(NSSet * _Nonnull)values;
+- (void)removeServices:(NSSet * _Nonnull)values;
+@end
+
 @class Region;
 @class Stats;
 @class Payout;
 @class Verification;
 @class TaxInfo;
+@class OilChangePricing;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
@@ -1299,6 +1325,7 @@ SWIFT_CLASS_NAMED("Mechanic")
 @property (nonatomic) BOOL hasSetAvailability;
 @property (nonatomic) BOOL hasSetServiceRegion;
 @property (nonatomic, copy) NSDate * _Nonnull creationDate;
+@property (nonatomic, strong) OilChangePricing * _Nullable oilChangePricing;
 @end
 
 
@@ -1316,6 +1343,24 @@ SWIFT_CLASS_NAMED("OilChange")
 @interface OilChange (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
 @property (nonatomic, strong) ServiceEntity * _Nonnull serviceEntity;
+@end
+
+
+SWIFT_CLASS_NAMED("OilChangePricing")
+@interface OilChangePricing : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface OilChangePricing (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nonnull identifier;
+@property (nonatomic) int64_t conventional;
+@property (nonatomic) int64_t blend;
+@property (nonatomic) int64_t synthetic;
+@property (nonatomic) int64_t highMileage;
+@property (nonatomic) int64_t centsPerMile;
+@property (nonatomic, copy) NSString * _Nonnull mechanicID;
+@property (nonatomic, strong) Mechanic * _Nullable mechanic;
 @end
 
 
@@ -1540,18 +1585,18 @@ SWIFT_CLASS_NAMED("User")
 
 
 @interface User (SWIFT_EXTENSION(Store))
-- (void)addServicesObject:(AutoService * _Nonnull)value;
-- (void)removeServicesObject:(AutoService * _Nonnull)value;
-- (void)addServices:(NSSet * _Nonnull)values;
-- (void)removeServices:(NSSet * _Nonnull)values;
-@end
-
-
-@interface User (SWIFT_EXTENSION(Store))
 - (void)addVehiclesObject:(Vehicle * _Nonnull)value;
 - (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
 - (void)addVehicles:(NSSet * _Nonnull)values;
 - (void)removeVehicles:(NSSet * _Nonnull)values;
+@end
+
+
+@interface User (SWIFT_EXTENSION(Store))
+- (void)addServicesObject:(AutoService * _Nonnull)value;
+- (void)removeServicesObject:(AutoService * _Nonnull)value;
+- (void)addServices:(NSSet * _Nonnull)values;
+- (void)removeServices:(NSSet * _Nonnull)values;
 @end
 
 
@@ -1596,6 +1641,7 @@ SWIFT_CLASS_NAMED("Vehicle")
 /// At least one of licensePlate or vin or vehicleDescription must not be nil.
 @property (nonatomic, copy) NSString * _Nullable vin;
 @property (nonatomic, copy) NSString * _Nullable licensePlate;
+@property (nonatomic, copy) NSString * _Nullable state;
 @property (nonatomic, strong) VehicleDescription * _Nullable vehicleDescription;
 @end
 

@@ -14,6 +14,7 @@ class TextInputCell: UITableViewCell, NibRegisterable {
     @IBOutlet weak var labeledTextField: LabeledTextField!
     
     var textDidChange: () -> Void = {}
+    var beginEditing: () -> Void = {}
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +23,12 @@ class TextInputCell: UITableViewCell, NibRegisterable {
         
         selectionStyle = .none
         
+        labeledTextField.textField.addTarget(self, action: #selector((TextInputCell.didBeginEditing)), for: .editingDidBegin)
         labeledTextField.textField.addTarget(self, action: #selector((TextInputCell.textChanged)), for: .editingChanged)
+    }
+    
+    @objc private func didBeginEditing() {
+        beginEditing()
     }
     
     @objc private func textChanged() {

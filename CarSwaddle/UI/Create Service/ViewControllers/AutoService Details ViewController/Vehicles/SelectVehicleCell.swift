@@ -23,7 +23,7 @@ class SelectVehicleCell: UITableViewCell, NibRegisterable {
     weak var delegate: SelectVehicleCellDelegate?
     
     var addVehicleCell: AddCollectionViewCell? {
-        return collectionView.firstCell(of: AddCollectionViewCell.self)
+        return collectionView.firstVisibleCell(of: AddCollectionViewCell.self)
     }
     
     @IBOutlet private weak var headerLabel: UILabel!

@@ -411,7 +411,7 @@ extension CLLocationCoordinate2D {
 
 extension UIView {
     
-    public func firstView<T>(of type: T.Type) -> T? {
+    public func firstSubview<T>(of type: T.Type) -> T? {
         let subviews = self.subviews.flatMap { $0.subviews }
         guard let element = (subviews.filter { $0 is T }).first as? T else { return nil }
         return element
@@ -424,11 +424,11 @@ extension UIView {
 extension UISearchBar {
     
     public var textField: UITextField? {
-        return firstView(of: UITextField.self)
+        return firstSubview(of: UITextField.self)
     }
     
     public func setTextFieldBackgroundColor(color: UIColor) {
-        guard let textField = firstView(of: UITextField.self) else { return }
+        guard let textField = firstSubview(of: UITextField.self) else { return }
         switch searchBarStyle {
         case .minimal:
             textField.layer.backgroundColor = color.cgColor
