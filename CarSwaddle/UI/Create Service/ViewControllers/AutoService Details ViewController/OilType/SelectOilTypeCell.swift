@@ -12,6 +12,7 @@ import Store
 
 protocol SelectOilTypeDelegate: AnyObject {
     func didSelectOilType(oilType: OilType, cell: SelectOilTypeCell)
+    func didTapMoreInfo(cell: SelectOilTypeCell)
 }
 
 class SelectOilTypeCell: UITableViewCell, NibRegisterable {
@@ -61,6 +62,11 @@ class SelectOilTypeCell: UITableViewCell, NibRegisterable {
         collectionView.focusedFlowLayout?.shrinkFactor = 0.3
         collectionView.focusedFlowLayout?.minimumLineSpacing = 5
         collectionView.clipsToBounds = false
+    }
+    
+    
+    @IBAction func didTapInfo() {
+        delegate?.didTapMoreInfo(cell: self)
     }
     
 }

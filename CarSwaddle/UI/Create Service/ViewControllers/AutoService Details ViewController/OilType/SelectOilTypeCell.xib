@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,12 +24,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="342" height="183.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" verticalCompressionResistancePriority="800" text="Select Oil Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqV-4A-aqh">
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OCc-6s-Fnz">
                         <rect key="frame" x="16" y="24" width="310" height="36.5"/>
-                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" verticalCompressionResistancePriority="800" text="Select Oil Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqV-4A-aqh">
+                                <rect key="frame" x="0.0" y="0.0" width="129.5" height="36.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="243" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ayo-gn-7lW">
+                                <rect key="frame" x="137.5" y="0.0" width="22" height="36.5"/>
+                                <color key="tintColor" name="secondary"/>
+                                <connections>
+                                    <action selector="didTapInfo" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7ju-jt-j7g"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7zg-7p-K3H">
+                                <rect key="frame" x="167.5" y="0.0" width="142.5" height="36.5"/>
+                            </view>
+                        </subviews>
+                    </stackView>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Q3H-Wi-cXy" customClass="FocusedCollectionView" customModule="CarSwaddle" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="76.5" width="342" height="91"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -39,12 +55,12 @@
                     </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="LqV-4A-aqh" secondAttribute="trailing" constant="16" id="2Kx-oK-lZ5"/>
-                    <constraint firstItem="LqV-4A-aqh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="6Zn-o0-6N3"/>
                     <constraint firstAttribute="bottom" secondItem="Q3H-Wi-cXy" secondAttribute="bottom" constant="16" id="6io-tc-a54"/>
-                    <constraint firstItem="Q3H-Wi-cXy" firstAttribute="top" secondItem="LqV-4A-aqh" secondAttribute="bottom" constant="16" id="Guw-J3-wz6"/>
-                    <constraint firstItem="LqV-4A-aqh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Wzm-YN-Rvs"/>
+                    <constraint firstAttribute="trailing" secondItem="OCc-6s-Fnz" secondAttribute="trailing" constant="16" id="AqJ-9A-oy7"/>
+                    <constraint firstItem="OCc-6s-Fnz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Igz-Td-ApM"/>
+                    <constraint firstItem="OCc-6s-Fnz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="S4m-Y8-UEd"/>
                     <constraint firstAttribute="trailing" secondItem="Q3H-Wi-cXy" secondAttribute="trailing" id="enD-ta-4JZ"/>
+                    <constraint firstItem="Q3H-Wi-cXy" firstAttribute="top" secondItem="OCc-6s-Fnz" secondAttribute="bottom" constant="16" id="eyv-vD-jqx"/>
                     <constraint firstItem="Q3H-Wi-cXy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kOR-3j-I5A"/>
                 </constraints>
             </tableViewCellContentView>
@@ -56,4 +72,9 @@
             <point key="canvasLocation" x="150.72463768115944" y="233.70535714285714"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="secondary">
+            <color red="0.30196078431372547" green="0.4823529411764706" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

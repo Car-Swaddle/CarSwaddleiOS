@@ -12,7 +12,9 @@ import CarSwaddleData
 import Store
 import Stripe
 import Firebase
+import SafariServices
 
+private let oilTypesURL = URL(string: "https://carswaddle.com/oil-types/")!
 
 protocol SelectAutoServiceDetailsViewControllerDelegate: class {
     func didSelect(vehicle: Vehicle, oilType: OilType, viewController: SelectAutoServiceDetailsViewController)
@@ -245,6 +247,15 @@ extension SelectAutoServiceDetailsViewController: SelectVehicleCellDelegate, Add
         Analytics.logEvent("createdNewVehicle", parameters: [
             "vehicleName": vehicle.name
         ])
+    }
+    
+    func didTapMoreInfo(cell: SelectOilTypeCell) {
+        let viewController = infoWebViewController()
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    private func infoWebViewController() -> SFSafariViewController {
+        return SFSafariViewController(url: oilTypesURL)
     }
     
 }
