@@ -13,6 +13,7 @@ import Stripe
 import CoreData
 import Firebase
 import CarSwaddleNetworkRequest
+import StoreKit
 
 private let errorWithPaymentTitle = NSLocalizedString("Car Swaddle was unable to process your payment", comment: "")
 private let errorWithPaymentMessage = NSLocalizedString("Please try again with another payment method", comment: "")
@@ -180,12 +181,16 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
                 completion(error)
             } else {
                 self?.pocketController.dismiss(animated: true) {
-                    self?.pocketController.dismiss(animated: true, completion: nil)
+                    self?.pocketController.dismiss(animated: true) {
+                        SKStoreReviewController.requestReview()
+                    }
                 }
                 completion(nil)
             }
         }
     }
+    
+    
     
     func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
         print("finished UI")
