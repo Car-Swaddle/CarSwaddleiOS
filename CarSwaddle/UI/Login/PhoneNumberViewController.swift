@@ -21,6 +21,13 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
     
     private var userNetwork: UserNetwork = UserNetwork(serviceRequest: serviceRequest)
     
+    var isOnSignUp: Bool = false {
+        didSet {
+            guard viewIfLoaded != nil else { return }
+            contentAdjuster.includeTabBarInKeyboardCalculation = !isOnSignUp
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,11 +44,36 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
         
         phoneNumberLabeledTextField.textField.becomeFirstResponder()
         
+        phoneNumberLabeledTextField.textField.addTarget(self, action: #selector(PhoneNumberViewController.didChangeText(textField:)), for: .editingChanged)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView))
+        view.addGestureRecognizer(tap)
+        
         contentAdjuster.showActionButtonAboveKeyboard = true
-        contentAdjuster.includeTabBarInKeyboardCalculation = true
+        contentAdjuster.includeTabBarInKeyboardCalculation = !isOnSignUp
         contentAdjuster.positionActionButton()
+        
+        updateActionButtonEnabled()
     }
     
+    private var actionButtonIsEnabled: Bool {
+        guard let phone = phoneNumberLabeledTextField.textField.text else {
+                return false
+        }
+        return phone.count > 3 && !phone.isEmpty 
+    }
+    
+    private func updateActionButtonEnabled() {
+        saveButton.isEnabled = actionButtonIsEnabled
+    }
+    
+    @objc private func didTapView() {
+        phoneNumberLabeledTextField.textField.resignFirstResponder()
+    }
+    
+    @objc private func didChangeText(textField: UITextField) {
+        updateActionButtonEnabled()
+    }
     
     @IBAction private func didTapSave() {
         saveButton.isLoading = true
@@ -57,7 +89,6 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
                     if error == nil {
                         self.navigationDelegate?.didFinish(navigationDelegatingViewController: self)
                     }
-//                    self.navigationItem.rightBarButtonItem = previousButton
                     self.saveButton.isLoading = false
                 }
             }
@@ -69,7 +100,7 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
 extension PhoneNumberViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        phoneNumberLabeledTextField.updateLabelFontForCurrentText()
+//        phoneNumberLabeledTextField.updateLabelFontForCurrentText()
         return true
     }
     

@@ -259,11 +259,13 @@ final class Navigator: NSObject {
         
         if currentUser?.firstName == nil || currentUser?.lastName == nil {
             let name = UserNameViewController.viewControllerFromStoryboard()
+            name.isOnSignUp = true
             viewControllers.append(name)
         }
         
         if currentUser?.phoneNumber == nil {
             let phoneNumber = PhoneNumberViewController.viewControllerFromStoryboard()
+            phoneNumber.isOnSignUp = true
             viewControllers.append(phoneNumber)
         }
         

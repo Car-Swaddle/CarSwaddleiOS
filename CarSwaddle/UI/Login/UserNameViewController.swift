@@ -11,6 +11,9 @@ import CarSwaddleData
 import CarSwaddleUI
 import Store
 
+private let editNameTitle = NSLocalizedString("Edit Name", comment: "Title for a screen that allows the user to edit their name in our system")
+private let yourNameTitle = NSLocalizedString("Enter your Name", comment: "Title for a screen that allows the user to edit their name in our system")
+
 struct UserInfoError: Error {
     let rawValue: String
     
@@ -18,9 +21,6 @@ struct UserInfoError: Error {
 }
 
 final class UserNameViewController: UIViewController, StoryboardInstantiating, NavigationDelegating {
-    
-    static let editNameTitle = NSLocalizedString("Edit Name", comment: "Title for a screen that allows the user to edit their name in our system")
-    static let yourNameTitle = NSLocalizedString("Your Name", comment: "Title for a screen that allows the user to edit their name in our system")
     
     weak var navigationDelegate: NavigationDelegate?
     
@@ -32,10 +32,18 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
     
     private let userNetwork = UserNetwork(serviceRequest: serviceRequest)
     
+    var isOnSignUp: Bool = false {
+        didSet {
+            guard viewIfLoaded != nil else { return }
+            contentAdjuster.includeTabBarInKeyboardCalculation = !isOnSignUp
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let currentUser = User.currentUser(context: store.mainContext)
+        
         firstNameLabeledTextField.textField.text = currentUser?.firstName
         lastNameLabeledTextField.textField.text = currentUser?.lastName
         
@@ -53,8 +61,35 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
         configureTextField(lastNameLabeledTextField.textField)
         lastNameLabeledTextField.textField.textContentType = .familyName
         
+        firstNameLabeledTextField.textField.returnKeyType = .next
+        lastNameLabeledTextField.textField.returnKeyType = .done
+        
+        firstNameLabeledTextField.textField.addTarget(self, action: #selector(UserNameViewController.didChangeText(textField:)), for: .editingChanged)
+        lastNameLabeledTextField.textField.addTarget(self, action: #selector(UserNameViewController.didChangeText(textField:)), for: .editingChanged)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView))
+        view.addGestureRecognizer(tap)
+        
+        contentAdjuster.includeTabBarInKeyboardCalculation = !isOnSignUp
         contentAdjuster.showActionButtonAboveKeyboard = true
         contentAdjuster.positionActionButton()
+        
+        updateActionButtonEnabled()
+        
+        title = titleForContext
+    }
+    
+    @objc private func didTapView() {
+        firstNameLabeledTextField.textField.resignFirstResponder()
+        lastNameLabeledTextField.textField.resignFirstResponder()
+    }
+    
+    @objc private func didChangeText(textField: UITextField) {
+        updateActionButtonEnabled()
+    }
+    
+    private var titleForContext: String {
+        return isOnSignUp ? yourNameTitle : editNameTitle
     }
     
     private func configureTextField(_ textField: UITextField) {
@@ -64,14 +99,31 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
         textField.spellCheckingType = .no
     }
     
+    private var actionButtonIsEnabled: Bool {
+        guard let first = firstNameLabeledTextField.textField.text,
+            let last = lastNameLabeledTextField.textField.text else {
+            return false
+        }
+        return !first.isEmpty && !last.isEmpty
+    }
+    
+    private func updateActionButtonEnabled() {
+        saveButton.isEnabled = actionButtonIsEnabled
+    }
+    
     @IBAction private func didTapSave() {
+        saveName()
+    }
+    
+    private func saveName() {
         saveButton.isLoading = true
         
         updateUser { [weak self] error in
             DispatchQueue.main.async {
-                self?.saveButton.isLoading = false
-                if let _self = self {
-                    self?.navigationDelegate?.didFinish(navigationDelegatingViewController: _self)
+                guard let self = self else { return }
+                self.saveButton.isLoading = false
+                if error == nil {
+                    self.navigationDelegate?.didFinish(navigationDelegatingViewController: self)
                 }
             }
         }
@@ -79,9 +131,10 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
     
     private func updateUser(completion: @escaping (_ error: Error?) -> Void) {
         guard let firstName = firstNameLabeledTextField.textField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            let lastName = lastNameLabeledTextField.textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
-                completion(UserInfoError.noInput)
-                return
+            let lastName = lastNameLabeledTextField.textField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            !firstName.isEmpty, !lastName.isEmpty else {
+            completion(UserInfoError.noInput)
+            return
         }
         
         store.privateContext { [weak self] context in
@@ -95,9 +148,18 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
 
 extension UserNameViewController: UITextFieldDelegate {
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        firstNameLabeledTextField.updateLabelFontForCurrentText()
-        lastNameLabeledTextField.updateLabelFontForCurrentText()
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//
+//        return true
+//    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstNameLabeledTextField.textField {
+            lastNameLabeledTextField.textField.becomeFirstResponder()
+        }
+        if textField == lastNameLabeledTextField.textField {
+            saveName()
+        }
         return true
     }
     

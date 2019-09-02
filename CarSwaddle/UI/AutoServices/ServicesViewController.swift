@@ -48,10 +48,6 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
     lazy private var adjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: tableView, actionButton: actionButton)
     private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     
-//    private var autoServices: [AutoService] = [] {
-//        didSet { tableView.reloadData() }
-//    }
-    
     private var autoServiceIDs: [String] = [] {
         didSet {
             resetData()
@@ -87,13 +83,16 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
     
     private func requestAutoServices(completion: @escaping () -> Void = {}) {
         store.privateContext { [weak self] privateContext in
-            self?.autoServiceNetwork.getAutoServices(limit: 30, offset: 0, sortStatus: [], in: privateContext) { autoServiceIDs, error in
+            let allAutoServices = AutoService.fetchAllObjects(with: [AutoService.scheduledDateAscendingSortDescriptor], in: privateContext)
+            for autoService in allAutoServices {
+                privateContext.delete(autoService)
+            }
+            
+            self?.autoServiceNetwork.getAutoServices(limit: 100, offset: 0, sortStatus: [], in: privateContext) { autoServiceIDs, error in
                 DispatchQueue.main.async {
-                    store.mainContext { mainContext in
-                        let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: mainContext)
-                        self?.autoServiceIDs = autoServices.map { $0.identifier }
-                        completion()
-                    }
+                    let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: store.mainContext)
+                    self?.autoServiceIDs = autoServices.map { $0.identifier }
+                    completion()
                 }
             }
         }
