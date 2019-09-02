@@ -94,14 +94,3 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
     }
     
 }
-
-
-
-public extension Vehicle {
-    
-    var localizedDescription: String {
-        let vehicleFormatString = NSLocalizedString("%@ • %@", comment: "Vehicle format string: 'vehicle name' • 'license plate number'")
-        return String(format: vehicleFormatString, name, licensePlate ?? "")
-    }
-    
-}

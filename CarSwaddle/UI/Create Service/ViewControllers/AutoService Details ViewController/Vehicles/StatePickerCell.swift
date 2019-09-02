@@ -77,6 +77,7 @@ class StatePickerCell: UITableViewCell, NibRegisterable, StatePickerDelegate {
     
     private func updatePickerWithSelection() {
         selectionLabel.text = selectedState.localizedString
+        picker.setUSState(state: selectedState, animated: false)
 //        dateLabel.text = monthDayYearTimeDateFormatter.string(from: selectedDate)
     }
     
@@ -265,9 +266,9 @@ public class StatePicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDele
         dataSource = self
     }
     
-    public func setUSState(state: USState) {
+    public func setUSState(state: USState, animated: Bool) {
         guard let index = usStates.firstIndex(of: state) else { return }
-        selectedRow(inComponent: index)
+        selectRow(index, inComponent: 0, animated: animated)
     }
     
     private var usStates: [USState] = USState.allCases
