@@ -11,40 +11,40 @@
   "commitish" : "6.7.0",
   "iOS" : [
     {
-      "name" : "Firebase",
-      "hash" : "a8669248da9519e9955e00448e518e1ca6becb32689eedddde237e19ad1136ae"
-    },
-    {
       "name" : "nanopb",
       "hash" : "9e8309e7f49514fb9a38e8b243cc9bbdfd49d4081f3e82a1de76fcb20c0e8087"
-    },
-    {
-      "name" : "GoogleDataTransportCCTSupport",
-      "hash" : "b622ef7596826a4b941118d42e229bd1ccbe6a39b028ecc0e1720ea3eb89c1ef"
     },
     {
       "name" : "FirebaseAnalytics",
       "hash" : "48edb4e473eaeee2fa818dba9b9afb7b5f027d8cee18c71394896783521529c2"
     },
     {
-      "name" : "FIRAnalyticsConnector",
-      "hash" : "66093ccc9722cf00aeb9161b8154d51aaceac797624d6bdbd9ea65f031985692"
+      "name" : "Firebase",
+      "hash" : "a8669248da9519e9955e00448e518e1ca6becb32689eedddde237e19ad1136ae"
     },
     {
-      "name" : "GoogleDataTransport",
-      "hash" : "18e92f57229ee3669a7d96d04dc62053d8d20e78f8ce416e52574e11055bf568"
+      "name" : "GoogleDataTransportCCTSupport",
+      "hash" : "b622ef7596826a4b941118d42e229bd1ccbe6a39b028ecc0e1720ea3eb89c1ef"
     },
     {
       "name" : "FirebaseCoreDiagnostics",
       "hash" : "79b718db0e6750bb54185e3aa0c7153ea16077437523fce20947424783863ba5"
     },
     {
-      "name" : "GoogleUtilities",
-      "hash" : "a092f1290f431e5bc1862a086ae988e422f72df94ccd2b2151f3154fdc6a5ee2"
+      "name" : "FIRAnalyticsConnector",
+      "hash" : "66093ccc9722cf00aeb9161b8154d51aaceac797624d6bdbd9ea65f031985692"
     },
     {
       "name" : "FirebaseCore",
       "hash" : "f429be65ad2dd5c9483d4a87c162255cdd1af357318eb73b0be02a821da29be4"
+    },
+    {
+      "name" : "GoogleDataTransport",
+      "hash" : "18e92f57229ee3669a7d96d04dc62053d8d20e78f8ce416e52574e11055bf568"
+    },
+    {
+      "name" : "GoogleUtilities",
+      "hash" : "a092f1290f431e5bc1862a086ae988e422f72df94ccd2b2151f3154fdc6a5ee2"
     },
     {
       "name" : "FirebaseInstanceID",
