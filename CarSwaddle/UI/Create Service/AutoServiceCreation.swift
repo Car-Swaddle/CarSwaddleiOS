@@ -140,16 +140,71 @@ final class AutoServiceCreation: NSObject {
             let price = autoService.price else { return }
         
         paymentContext.paymentSummaryItems = price.summaryItems
+        
+        if paymentContext.isApplePayMinimumPaymentRequired {
+            showApplePayMinimumPaymentAlert()
+        } else {
+            paymentContext.addApplePay0PaymentIfNeeded()
+            requestPayment()
+        }
+    }
+    
+    private func showApplePayMinimumPaymentAlert() {
+        let content = CustomAlertContentView.view(withTitle: NSLocalizedString("Would you like to change your payment method and pay $0.00 or continue with Apple Pay and pay the minimum payment of $0.01?", comment: ""), message: NSLocalizedString("Apple Pay requires a minimum payment of $0.01. You may continue with your payment and pay $0.01 with Apple Pay or you may switch your payment method to a card and pay $0.00", comment: ""))
+        
+        let applePayAction = CustomAlertAction(title: NSLocalizedString("Pay with Apple Pay", comment: "")) { action in
+            self.paymentContext.addApplePay0PaymentIfNeeded()
+            self.requestPayment()
+        }
+        let cancelAction = CustomAlertAction(title: NSLocalizedString("Cancel", comment: ""))
+        
+        content.addAction(applePayAction)
+        content.addAction(cancelAction)
+        content.preferredAction = applePayAction
+        
+        let alert = CustomAlertController.viewController(contentView: content)
+        pocketController.present(alert, animated: true, completion: nil)
+    }
+    
+    private func requestPayment() {
         paymentContext.requestPayment()
-//        paymentContext.presentPaymentOptionsViewController()
         
         Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [
-            AnalyticsParameterPrice: price.totalDollarValue,
+            AnalyticsParameterPrice: paymentContext.paymentAmount,
             AnalyticsParameterStartDate: autoService.scheduledDate ?? Date(),
             AnalyticsParameterCurrency: "USD",
             AnalyticsParameterContentType: "oilChange",
             AnalyticsParameterCheckoutOption: "requestPayment"
-        ])
+            ])
+    }
+    
+}
+
+extension STPPaymentContext {
+    
+    public var isApplePayMinimumPaymentRequired: Bool {
+        guard let paymentOption = selectedPaymentOption,
+            paymentOption is STPApplePayPaymentOption,
+            paymentAmount == 0 else {
+                return false
+        }
+        return true
+    }
+    
+    public func addApplePay0PaymentIfNeeded() {
+        guard isApplePayMinimumPaymentRequired else {
+            return
+        }
+        if paymentSummaryItems.count > 0 {
+            paymentSummaryItems.insert(zeroApplePaymentSummaryItem, at: paymentSummaryItems.count-1)
+            paymentSummaryItems.last?.amount = NSDecimalNumber(decimal: 0.01)
+        } else {
+            paymentSummaryItems.append(zeroApplePaymentSummaryItem)
+        }
+    }
+    
+    public var zeroApplePaymentSummaryItem: PKPaymentSummaryItem {
+        return PKPaymentSummaryItem(label: NSLocalizedString("Minimum Apple Pay payment", comment: "Summary item string"), amount: NSDecimalNumber(decimal: 0.01), type: .final)
     }
     
 }
@@ -321,17 +376,6 @@ extension Price {
     
     var summaryItems: [PKPaymentSummaryItem] {
         var items: [PKPaymentSummaryItem] = []
-        
-//        {
-//            "oilChange": 5600,
-//            "distance": 196,
-//            "bookingFee": 580,
-//            "processingFee": 226,
-//            "subtotal": 5796,
-//            "taxes": 471,
-//            "total": 7073,
-//            "id": "b75f2150-9ef2-11e9-9729-e1444a210d28"
-//        }
         
         items.append(PKPaymentSummaryItem(label: NSLocalizedString("Subtotal", comment: "Line item of subtotal"), amount: subtotal.centsToDollars))
         items.append(PKPaymentSummaryItem(label: NSLocalizedString("Sales tax", comment: "Line item of sales tax"), amount: taxes.centsToDollars))
