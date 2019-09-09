@@ -24,7 +24,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6WY-gt-1wC" customClass="ActionButton" customModule="CarSwaddleUI">
                                 <rect key="frame" x="118" y="603" width="140" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Request oil change"/>
+                                <state key="normal" title="Schedule oil change"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.88303257040000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

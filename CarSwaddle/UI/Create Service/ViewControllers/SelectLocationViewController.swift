@@ -53,16 +53,35 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     
     private var didUpdateToUserLocation: Bool = false
     
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.delegate = self
-        searchBar.showsCancelButton = false
+//    private lazy var searchBar: UISearchBar = {
+//        let searchBar = UISearchBar()
+//        searchBar.delegate = self
+//        searchBar.showsCancelButton = false
+//        let placeholder = NSLocalizedString("Search Location", comment: "Placeholder text")
+//        searchBar.placeholder = placeholder
+//        searchBar.textField?.borderColor = .viewBackgroundColor1
+//        searchBar.textField?.borderWidth = UIView.hairlineLength
+//        searchBar.textField?.cornerRadius = 7
+//        return searchBar
+//    }()
+    
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+//        _ = locationSearchResultsViewController.view
+        searchController.delegate = self
+        searchController.definesPresentationContext = false
+        searchController.hidesNavigationBarDuringPresentation = false
+//        let searchBar = UISearchBar()
+        searchController.searchBar.delegate = self
+        searchController.searchBar.showsCancelButton = false
         let placeholder = NSLocalizedString("Search Location", comment: "Placeholder text")
-        searchBar.placeholder = placeholder
-        searchBar.textField?.borderColor = .viewBackgroundColor1
-        searchBar.textField?.borderWidth = UIView.hairlineLength
-        searchBar.textField?.cornerRadius = 7
-        return searchBar
+        searchController.searchBar.placeholder = placeholder
+        searchController.searchBar.textField?.borderColor = .viewBackgroundColor1
+        searchController.searchBar.textField?.borderWidth = UIView.hairlineLength
+        searchController.searchBar.textField?.cornerRadius = 7
+        searchController.dimsBackgroundDuringPresentation = false
+//        return searchBar
+        return searchController
     }()
     
     override func viewDidLoad() {
@@ -70,7 +89,13 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         
         locationManager.promptUserForLocationAccess()
         
-//        centerOnUserCurrentLocation()
+//        searchController.searchBar = self.searchBar
+        
+//        let searchController = UISearchController(searchResultsController: locationSearchResultsViewController)
+//        searchController.delegate = self
+//        searchController.definesPresentationContext = false
+        
+        locationSearchResultsViewController.delegate = self
         
         setupBarButtons()
         
@@ -92,7 +117,10 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
             }
         }
         
-        navigationItem.titleView = searchBar
+        navigationItem.searchController = searchController
+        title = NSLocalizedString("Location of oil change", comment: "")
+        
+        confirmButton.titleLabel?.numberOfLines = 0
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -141,7 +169,6 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     }
     
     @IBAction private func didSelectConfirm() {
-        
         confirmButton.isLoading = true
         
         let center = mapView.centerCoordinate
@@ -254,7 +281,8 @@ extension SelectLocationViewController: UISearchControllerDelegate, UISearchResu
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        navigationItem.setLeftBarButton(nil, animated: true)
+//        navigationItem.setLeftBarButton(nil, animated: true)
+        navigationItem.leftBarButtonItem?.isEnabled = false
         searchBar.setShowsCancelButton(true, animated: true)
         if locationSearchResultsViewController.parent == nil {
             addLocationSearchResultsViewController()
@@ -275,7 +303,10 @@ extension SelectLocationViewController: UISearchControllerDelegate, UISearchResu
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
-        navigationItem.setLeftBarButton(dismissBarButton, animated: true)
+        navigationItem.leftBarButtonItem?.isEnabled = true
+//        navigationItem.setLeftBarButton(dismissBarButton, animated: true)
+//        searchController.isActive = false
+        searchController.dismiss(animated: true, completion: nil)
         removeLocationSearchResultsViewController()
     }
     
@@ -298,8 +329,10 @@ extension SelectLocationViewController: UISearchControllerDelegate, UISearchResu
     }
     
     func didSelect(result: MKLocalSearchCompletion, viewController: LocationSearchResultsViewController) {
-        searchBar.text = result.title
-        searchBar.resignFirstResponder()
+        searchController.searchBar.text = result.title
+        searchController.searchBar.resignFirstResponder()
+//        searchController.isActive = false
+//        searchController.dismiss(animated: true, completion: nil)
         removeLocationSearchResultsViewController()
         requestLocationSearchCoordinates(address: result.addressDescription) { [weak self] finalCoordinate in
             guard let self = self else { return }
@@ -325,7 +358,7 @@ extension SelectLocationViewController: UISearchControllerDelegate, UISearchResu
     }
     
     func didTapView(_ viewController: LocationSearchResultsViewController) {
-        searchBar.resignFirstResponder()
+        searchController.searchBar.resignFirstResponder()
     }
     
     private func requestLocationSearchCoordinates(address: String, completion: @escaping (_ coordinate: CLLocationCoordinate2D?) -> Void) {

@@ -42,12 +42,8 @@ final class LocationSearchResultsViewController: UIViewController, StoryboardIns
         insetAdjuster = ContentInsetAdjuster(tableView: tableView, actionButton: nil)
 
         view.backgroundColor = .clear
-//        view.alpha = 0.2
         tableView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-//        tableView.
         setupTableView()
-//        view.isUserInteractionEnabled = false
-//        tableView.isUserInteractionEnabled = true
         
         tableView.addGestureRecognizer(tap)
     }
