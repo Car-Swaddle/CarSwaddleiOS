@@ -11,6 +11,7 @@ import CarSwaddleNetworkRequest
 import CarSwaddleData
 import Authentication
 import SafariServices
+import Firebase
 
 
 private let stripeAgreementURLString = "https://stripe.com/us/connect-account/legal"
@@ -41,7 +42,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var agreementTextView: UITextView!
+    @IBOutlet private weak var agreementTextView: UITextView!
     
     @IBOutlet weak var agreementTextViewHeightConstraint: NSLayoutConstraint!
     
@@ -196,6 +197,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
                     return
                 }
                 DispatchQueue.main.async {
+                    self?.trackSignUp()
                     navigator.navigateToLoggedInViewController()
                 }
             }
@@ -205,6 +207,12 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     private var backgroundImage: UIImage? {
         let gradientPoints = SignUpViewController.gradientPoints
         return UIImage(size: view.bounds.size, gradientPoints: gradientPoints)
+    }
+    
+    private func trackSignUp() {
+        Analytics.logEvent(AnalyticsEventSignUp, parameters: [
+            AnalyticsParameterMethod: "email"
+        ])
     }
 
 }

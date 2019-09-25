@@ -14,24 +14,12 @@ private let inset: CGFloat = 10
 @IBDesignable
 class CircleButton: UIButton {
     
-//    @IBInspectable var buttonImage: UIImage? {
-//        didSet {
-//            setImage(buttonImage, for: .normal)
-//        }
-//    }
-    
-    @IBInspectable var buttonColor: UIColor = UIColor.gray4 {
+    @IBInspectable dynamic var buttonColor: UIColor = .black {
         didSet {
             updateBorderColor()
             tintColor = buttonColor
         }
     }
-    
-//    @IBInspectable var borderWidth: CGFloat = 1.0 {
-//        didSet {
-//            updateBorderWidth()
-//        }
-//    }
     
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
@@ -58,8 +46,19 @@ class CircleButton: UIButton {
         updateBorderColor()
         updateBorderWidth()
         
-        
         contentEdgeInsets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        
+        buttonColor = .titleTextColor
+        
+        updateBorderColor()
+        tintColor = buttonColor
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        updateBorderColor()
+        tintColor = buttonColor
     }
     
     private func updateBorderColor() {

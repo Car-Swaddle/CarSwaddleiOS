@@ -28,13 +28,7 @@ final class MechanicProfileCell: FocusedCollectionViewCell, NibRegisterable {
         addSubview(mechanicProfileView)
         mechanicProfileView.pinFrameToSuperViewBounds()
         mechanicProfileView.layer.cornerRadius = defaultCornerRadius
-//
-//        layer.shadowOpacity = 0.3
-//        layer.shadowOffset = CGSize(width: 2, height: 2)
-//        layer.shadowRadius = 4
-//
-//        clipsToBounds = false
-//        layer.masksToBounds = false
+        backgroundColor = .clear
     }
 
 }

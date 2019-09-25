@@ -79,7 +79,9 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        starRatingView?.backgroundColor = .clear
+        
         setupTableView()
         _ = contentInsetAdjuster
         

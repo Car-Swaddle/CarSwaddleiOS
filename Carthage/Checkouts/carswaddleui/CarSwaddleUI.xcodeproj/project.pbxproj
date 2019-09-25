@@ -34,6 +34,8 @@
 		997012202154B14200D547C5 /* CarSwaddleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */; };
 		997012222154B14200D547C5 /* CarSwaddleUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 997012142154B14200D547C5 /* CarSwaddleUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		99A2CDAC218D9D6B003ED903 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2CDAB218D9D6B003ED903 /* UIBarButtonItem.swift */; };
+		99A87F4C2323A45D00FF1563 /* TableButtonPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A87F4B2323A45D00FF1563 /* TableButtonPagingViewController.swift */; };
+		99A87F4E2323A75900FF1563 /* PagingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A87F4D2323A75900FF1563 /* PagingTableViewController.swift */; };
 		99BC8D282245F47A00B732E7 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC8D262245F47A00B732E7 /* ActionButton.swift */; };
 		99BC8D292245F47A00B732E7 /* ContentInsetAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC8D272245F47A00B732E7 /* ContentInsetAdjuster.swift */; };
 		99BC8D2B2245F49C00B732E7 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC8D2A2245F49C00B732E7 /* LoadingButton.swift */; };
@@ -106,6 +108,8 @@
 		9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleUITests.swift; sourceTree = "<group>"; };
 		997012212154B14200D547C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99A2CDAB218D9D6B003ED903 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
+		99A87F4B2323A45D00FF1563 /* TableButtonPagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableButtonPagingViewController.swift; sourceTree = "<group>"; };
+		99A87F4D2323A75900FF1563 /* PagingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTableViewController.swift; sourceTree = "<group>"; };
 		99BC8D262245F47A00B732E7 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		99BC8D272245F47A00B732E7 /* ContentInsetAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentInsetAdjuster.swift; sourceTree = "<group>"; };
 		99BC8D2A2245F49C00B732E7 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
@@ -301,7 +305,9 @@
 				9905FF6723130CDC00DFBCB9 /* TableViewSchemaViewController.swift */,
 				9905FF6D2313188900DFBCB9 /* TableViewSchemaButtonViewController.swift */,
 				9905FF63231266BB00DFBCB9 /* TableViewController.swift */,
+				99A87F4D2323A75900FF1563 /* PagingTableViewController.swift */,
 				9905FF652312677700DFBCB9 /* TableButtonViewController.swift */,
+				99A87F4B2323A45D00FF1563 /* TableButtonPagingViewController.swift */,
 				9905FF6F2313694E00DFBCB9 /* UITableViewExtension.swift */,
 			);
 			path = "Generic UI";
@@ -491,11 +497,13 @@
 				9912CD8F216C6F3A0006FDDF /* HorizontalSlideTransition.swift in Sources */,
 				9905FF702313694F00DFBCB9 /* UITableViewExtension.swift in Sources */,
 				99E66CB321DDDFD100C6E3E1 /* ArrayExtension.swift in Sources */,
+				99A87F4E2323A75900FF1563 /* PagingTableViewController.swift in Sources */,
 				99E66CAF21DDDDB700C6E3E1 /* UIFontExtension.swift in Sources */,
 				9905FF662312677700DFBCB9 /* TableButtonViewController.swift in Sources */,
 				99675CA221E8546E003C9D70 /* NavigationDelegateViewController.swift in Sources */,
 				992BFDCC220567AF006B64CC /* TweakViewController.swift in Sources */,
 				9905FF6823130CDC00DFBCB9 /* TableViewSchemaViewController.swift in Sources */,
+				99A87F4C2323A45D00FF1563 /* TableButtonPagingViewController.swift in Sources */,
 				992BFDC5220567AF006B64CC /* TweakStringValueCell.swift in Sources */,
 				99F69689220BD38E0021A719 /* LottieAnimation.swift in Sources */,
 				99E66CC021DDE4B100C6E3E1 /* TranslucentAnimatedTransition.swift in Sources */,

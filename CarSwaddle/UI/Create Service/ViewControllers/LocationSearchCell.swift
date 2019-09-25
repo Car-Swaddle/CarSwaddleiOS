@@ -12,26 +12,28 @@ import CarSwaddleUI
 
 private let titleAttributes: [NSAttributedString.Key: Any] = [
     .font: UIFont.appFont(type: .regular, size: 15) as Any,
-    .foregroundColor: UIColor.black
+    .foregroundColor: UIColor.titleTextColor
 ]
 private let subtitleAttributes: [NSAttributedString.Key: Any] = [
     .font: UIFont.appFont(type: .regular, size: 15) as Any,
-    .foregroundColor: UIColor.gray4
+    .foregroundColor: UIColor.detailTextColor
 ]
 
 private let titleHighlightAttributes: [NSAttributedString.Key: Any] = [
     .font: UIFont.appFont(type: .semiBold, size: 15) as Any,
-    .foregroundColor: UIColor.black
+    .foregroundColor: UIColor.titleTextColor
 ]
 private let subtitleHighlightAttributes: [NSAttributedString.Key: Any] = [
     .font: UIFont.appFont(type: .semiBold, size: 15) as Any,
-    .foregroundColor: UIColor.black
+    .foregroundColor: UIColor.detailTextColor
 ]
 
 final class LocationSearchCell: UITableViewCell, NibRegisterable {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subtitleLabel: UILabel!
+    
+    
     
     func configure(with searchItem: MKLocalSearchCompletion) {
         titleLabel.attributedText = attributedTitle(from: searchItem)

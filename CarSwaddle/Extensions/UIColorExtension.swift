@@ -28,6 +28,16 @@ extension UIColor {
     static let complementary = UIColor(named: "complementary")!
     static let secondary = UIColor(named: "secondary")!
     
+    static let disabledTextColor = UIColor(named: "disabledTextColor")!
+    
+    static let alternateSelectionColor = UIColor(named: "alternateSelectionColor")!
+    
+    static let primaryBackgroundColor = UIColor(named: "primaryBackgroundColor")!
+    static let secondaryBackgroundColor = UIColor(named: "secondaryBackgroundColor")!
+    static let tertiaryBackgroundColor = UIColor(named: "tertiaryBackgroundColor")!
+    static let quaternaryBackgroundColor = UIColor(named: "quaternaryBackgroundColor")!
+    
+    
     // rgb(66, 134, 136) Seattle Mariners Green
     
     

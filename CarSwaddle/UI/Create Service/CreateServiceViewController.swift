@@ -306,6 +306,10 @@ extension CreateServiceViewController: SelectVehicleViewControllerDelegate {
 }
 
 extension CreateServiceViewController: STPPaymentContextDelegate {
+//    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPPaymentStatusBlock) {
+//        <#code#>
+//    }
+//
     
     func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
         print("context changed")
@@ -315,19 +319,19 @@ extension CreateServiceViewController: STPPaymentContextDelegate {
         print("failed to load: \(error)")
     }
     
-    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
+    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPPaymentStatusBlock) {
         print("create paymet result")
         print("paymentResult: \(paymentResult)")
         print("paymentContext: \(paymentContext)")
         let sourceID = paymentResult.paymentMethod.stripeId
         createAutoService(sourceID: sourceID) { [weak self] autoServiceObjectID, error in
             if let error = error {
-                completion(error)
+                completion(.error, error)
             } else {
                 self?.dismiss(animated: true) {
                     self?.dismiss(animated: true, completion: nil)
                 }
-                completion(nil)
+                completion(.success, nil)
             }
         }
     }

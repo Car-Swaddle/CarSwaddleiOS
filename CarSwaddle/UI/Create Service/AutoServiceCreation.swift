@@ -224,7 +224,7 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
         ])
     }
     
-    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
+    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPPaymentStatusBlock) {
         print("create paymet result")
         print("paymentResult: \(paymentResult)")
         print("paymentContext: \(paymentContext)")
@@ -233,14 +233,14 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
         createAutoService(sourceID: sourceID) { [weak self] autoServiceObjectID, error in
             self?.payViewController?.isUpdatingPrice = false
             if let error = error {
-                completion(error)
+                completion(.error, error)
             } else {
                 self?.pocketController.dismiss(animated: true) {
                     self?.pocketController.dismiss(animated: true) {
                         SKStoreReviewController.requestReview()
                     }
                 }
-                completion(nil)
+                completion(.success, nil)
             }
         }
     }

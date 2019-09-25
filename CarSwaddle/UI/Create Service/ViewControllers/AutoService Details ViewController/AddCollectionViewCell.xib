@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,14 +26,14 @@
                         <rect key="frame" x="76" y="61" width="82" height="93"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add vehicle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvy-7D-tNT">
-                                <rect key="frame" x="0.0" y="0.0" width="99.5" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="89" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="titleTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="U42-s9-fFD">
-                                <rect key="frame" x="34.5" y="29" width="30" height="30"/>
-                                <color key="tintColor" red="0.63072183100000001" green="0.58877090669999999" blue="0.52068661969999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="29.5" y="28" width="30" height="30"/>
+                                <color key="tintColor" name="titleTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="MNS-6d-oFp"/>
                                     <constraint firstAttribute="width" secondItem="U42-s9-fFD" secondAttribute="height" multiplier="1:1" id="yhl-Yd-A4g"/>
@@ -43,7 +43,7 @@
                     </stackView>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="0.93688027119972339" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" name="secondaryBackgroundColor"/>
             <constraints>
                 <constraint firstItem="qac-My-4eh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="IC5-lB-reD"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qac-My-4eh" secondAttribute="trailing" constant="8" id="Qnh-FQ-Bo7"/>
@@ -61,5 +61,11 @@
     </objects>
     <resources>
         <image name="plus" width="22.5" height="22.5"/>
+        <namedColor name="secondaryBackgroundColor">
+            <color white="0.9779999852180481" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="titleTextColor">
+            <color white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
     </resources>
 </document>

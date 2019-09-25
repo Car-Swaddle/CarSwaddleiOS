@@ -68,6 +68,11 @@ final class SelectMechanicDayCell: UITableViewCell, NibRegisterable {
         // Configure the view for the selected state
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        weekView.reloadData()
+    }
+    
 }
 
 extension SelectMechanicDayCell: FSCalendarDelegate {
@@ -116,16 +121,16 @@ extension SelectMechanicDayCell: FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         if Calendar.current.isDateInToday(date) {
-            return .appRed
+            return .alternateSelectionColor
         } else if !isAvailableDate(date) {
-            return .gray3
+            return .disabledTextColor
         } else {
-            return .black
+            return .titleTextColor
         }
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
-        return .textColor1
+        return .white
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {

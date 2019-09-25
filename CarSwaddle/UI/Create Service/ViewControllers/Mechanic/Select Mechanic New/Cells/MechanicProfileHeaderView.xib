@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +26,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c9V-mf-iJU">
                     <rect key="frame" x="16" y="16" width="300" height="271"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ayR-xx-LJI" customClass="MechanicImageView" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ayR-xx-LJI" customClass="MechanicImageView" customModule="CarSwaddle" customModuleProvider="target">
                             <rect key="frame" x="77" y="0.0" width="146" height="146"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="146" id="BTV-At-BOE"/>
@@ -35,23 +34,22 @@
                             </constraints>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="vzY-dw-UtP">
-                            <rect key="frame" x="7" y="154" width="286.5" height="117"/>
+                            <rect key="frame" x="25.5" y="154" width="249.5" height="117"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a double lined name that works" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ex6-Ef-GAZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="286.5" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="249.5" height="47"/>
                                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" name="titleTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VmZ-fp-DW0">
-                                    <rect key="frame" x="85.5" y="51" width="115" height="20"/>
+                                    <rect key="frame" x="67" y="49" width="115" height="24"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="anf-Rp-cI5">
-                                            <rect key="frame" x="0.0" y="0.0" width="115" height="20"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="115" height="24"/>
                                             <subviews>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCa-bG-UBE" customClass="CosmosView" customModule="Cosmos">
-                                                    <rect key="frame" x="0.0" y="0.5" width="115" height="19"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="0.0" y="2.5" width="115" height="19"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
                                                             <color key="value" red="0.42943789770000002" green="0.42943789770000002" blue="0.42943789770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -77,15 +75,15 @@
                                     </subviews>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.8 of 28 ratings" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKi-tf-Baq">
-                                    <rect key="frame" x="76" y="73" width="134.5" height="21"/>
+                                    <rect key="frame" x="63" y="75" width="123.5" height="20"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                    <color key="textColor" red="0.42943789770000002" green="0.42943789770000002" blue="0.42943789770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="detailTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="49 services provided" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ub-ST-Ebb">
-                                    <rect key="frame" x="56.5" y="96" width="173.5" height="21"/>
+                                    <rect key="frame" x="46" y="97" width="157.5" height="20"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                    <color key="textColor" red="0.42943789770000002" green="0.42943789770000002" blue="0.42943789770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="detailTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -93,7 +91,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gc8-Jl-t99">
-                    <rect key="frame" x="208" y="133" width="35" height="33"/>
+                    <rect key="frame" x="213" y="134" width="30" height="32"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                     <state key="normal" title="Edit">
                         <color key="titleColor" name="viewBackgroundColor1"/>
@@ -103,7 +101,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iox-DY-1sM" customClass="AnimationView" customModule="Lottie">
-                    <rect key="frame" x="232" y="122" width="22" height="22"/>
+                    <rect key="frame" x="232" y="123" width="22" height="22"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="GMV-7I-RcM"/>
@@ -111,7 +109,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" name="secondaryBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="c9V-mf-iJU" secondAttribute="bottom" constant="16" id="Bms-dl-ila"/>
                 <constraint firstItem="c9V-mf-iJU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="FW8-aE-Zrn"/>
@@ -141,6 +139,15 @@
     <resources>
         <image name="star_filled_same_color_border" width="19" height="18"/>
         <image name="star_inactive_gray_border" width="19" height="18"/>
+        <namedColor name="detailTextColor">
+            <color white="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="secondaryBackgroundColor">
+            <color white="0.9779999852180481" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="titleTextColor">
+            <color white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
         <namedColor name="viewBackgroundColor1">
             <color red="0.27058823529411763" green="0.38039215686274508" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

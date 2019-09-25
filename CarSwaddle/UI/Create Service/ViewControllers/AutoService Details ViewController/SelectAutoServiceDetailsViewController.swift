@@ -236,6 +236,7 @@ extension SelectAutoServiceDetailsViewController: SelectVehicleCellDelegate, Add
         let addVehicleViewController = AddVehicleViewController.viewControllerFromStoryboard()
         let navigationController = addVehicleViewController.inNavigationController()
         addVehicleViewController.delegate = self
+        navigationController.modalPresentationStyle = .overFullScreen
         present(navigationController, animated: true, completion: nil)
         
         Analytics.logEvent("didSelectCreateVehicle", parameters: nil)

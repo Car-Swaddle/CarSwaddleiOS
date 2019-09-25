@@ -10,6 +10,7 @@ import UIKit
 import CarSwaddleNetworkRequest
 import CarSwaddleData
 import Authentication
+import Firebase
 
 class LoginViewController: UIViewController, StoryboardInstantiating {
     
@@ -105,6 +106,9 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
                 return
             }
             DispatchQueue.main.async {
+                Analytics.logEvent(AnalyticsEventLogin, parameters: [
+                    AnalyticsParameterMethod: "email"
+                ])
                 navigator.navigateToLoggedInViewController()
             }
         }

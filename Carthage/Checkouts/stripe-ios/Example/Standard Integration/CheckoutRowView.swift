@@ -44,7 +44,7 @@ class CheckoutRowView: UIView {
 
     fileprivate let titleLabel = UILabel()
     fileprivate let detailLabel = UILabel()
-    fileprivate let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    fileprivate let activityIndicator = UIActivityIndicatorView(style: .gray)
     fileprivate let backgroundView = HighlightingButton()
 
     convenience init(title: String, detail: String, tappable: Bool = true) {
@@ -52,7 +52,6 @@ class CheckoutRowView: UIView {
         self.title = title
         self.detail = detail
 
-        self.backgroundColor = .white
         self.backgroundView.addTarget(self, action: #selector(didTap), for: .touchUpInside)
         self.addSubview(self.backgroundView)
         self.titleLabel.text = title
@@ -64,16 +63,32 @@ class CheckoutRowView: UIView {
         self.detailLabel.backgroundColor = UIColor.clear
         self.detailLabel.textAlignment = .right;
         self.detailLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        self.backgroundColor = .white
+
         self.detailLabel.textColor = .gray
+        self.activityIndicator.style = .gray
+        #if canImport(CryptoKit)
+        if #available(iOS 13.0, *) {
+            self.backgroundColor = .systemBackground
+            self.detailLabel.textColor = .secondaryLabel
+            self.activityIndicator.style = .medium
+        }
+        #endif
+
         self.addSubview(self.detailLabel)
-        self.activityIndicator.activityIndicatorViewStyle = .gray
         self.addSubview(self.activityIndicator)
+
         installConstraints()
         if !tappable {
             self.backgroundView.isUserInteractionEnabled = false
             self.titleLabel.font = .systemFont(ofSize: 22, weight: .medium)
             self.detailLabel.font = .systemFont(ofSize: 22, weight: .bold)
             self.detailLabel.textColor = .black
+            #if canImport(CryptoKit)
+            if #available(iOS 13.0, *) {
+                self.detailLabel.textColor = .label
+            }
+            #endif
         }
     }
 

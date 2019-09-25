@@ -93,7 +93,7 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
     _shippingAddress = nil;
     _hasUsedShippingAddress = NO;
     _apiClient = [[STPAPIClient alloc] initWithConfiguration:configuration];
-    _addressViewModel = [[STPAddressViewModel alloc] initWithRequiredBillingFields:configuration.requiredBillingAddressFields];
+    _addressViewModel = [[STPAddressViewModel alloc] initWithRequiredBillingFields:configuration.requiredBillingAddressFields availableCountries:configuration._availableCountries];
     _addressViewModel.delegate = self;
 
     self.title = STPLocalizedString(@"Add a Card", @"Title for Add a Card view");
@@ -200,12 +200,6 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
     [self.cardIOProxy presentCardIOFromViewController:self];
 }
 
-- (void)cardIOProxy:(__unused STPCardIOProxy *)proxy didFinishWithCardParams:(STPPaymentMethodCardParams *)cardParams {
-    if (cardParams) {
-        self.paymentCell.paymentField.cardParams = cardParams;
-    }
-}
-
 - (void)endEditing {
     [self.view endEditing:NO];
 }
@@ -242,8 +236,10 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
         [self.tableView endEditing:YES];
         UIBarButtonItem *loadingItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
         [self.stp_navigationItemProxy setRightBarButtonItem:loadingItem animated:YES];
+        self.cardHeaderView.buttonHidden = YES;
     } else {
         [self.stp_navigationItemProxy setRightBarButtonItem:self.doneItem animated:YES];
+        self.cardHeaderView.buttonHidden = NO;
     }
     NSArray *cells = self.addressViewModel.addressCells;
     for (UITableViewCell *cell in [cells arrayByAddingObject:self.paymentCell]) {
@@ -517,5 +513,14 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
     }];
     [self.tableView endUpdates];
 }
+
+#pragma mark - STPCardIOProxyDelegate
+
+- (void)cardIOProxy:(__unused STPCardIOProxy *)proxy didFinishWithCardParams:(STPPaymentMethodCardParams *)cardParams {
+    if (cardParams) {
+        self.paymentCell.paymentField.cardParams = cardParams;
+    }
+}
+
 
 @end

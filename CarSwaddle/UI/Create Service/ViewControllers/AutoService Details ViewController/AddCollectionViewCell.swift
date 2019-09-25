@@ -9,7 +9,7 @@
 import UIKit
 import CarSwaddleUI
 
-class AddCollectionViewCell: UICollectionViewCell, NibRegisterable {
+class AddCollectionViewCell: FocusedCollectionViewCell, NibRegisterable {
     
     var showGuideLabel: Bool = false {
         didSet { updateGuideLabelDisplay() }

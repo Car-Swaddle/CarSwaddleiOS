@@ -43,10 +43,14 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
     @IBOutlet private weak var mechanicCircle: AutoServiceProgressCircleView!
     @IBOutlet private weak var detailsCircle: AutoServiceProgressCircleView!
     
+    @IBOutlet private weak var lineView: UIView!
+    
+    private lazy var stateViews: [UIView] = [locationLabel, mechanicLabel, detailsLabel, locationCircle, mechanicCircle, detailsCircle]
+    
     private lazy var priceView: PriceView = {
         let priceView = PriceView.viewFromNib()
         priceView.translatesAutoresizingMaskIntoConstraints = false
-        priceView.backgroundColor = .white
+        priceView.backgroundColor = .clear
         return priceView
     }()
     
@@ -88,11 +92,11 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
     private func updatePriceViewForCurrentState() {
         switch currentState {
         case .location, .mechanic:
-//            priceView.removeConstraints(priceView.constraints)
-//            priceView.removeFromSuperview()
             priceView.isHiddenInStackView = true
+            stateViewsAreHidden = false
         case .payment, .details:
             priceView.isHiddenInStackView = false
+            stateViewsAreHidden = true
             if priceView.superview == nil {
                 view.addSubview(priceView)
                 priceView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
@@ -100,6 +104,12 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
                 priceView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
                 priceView.bottomAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16).isActive = true
             }
+        }
+    }
+    
+    private var stateViewsAreHidden: Bool = false {
+        didSet {
+            stateViews.forEach { $0.isHiddenInStackView = stateViewsAreHidden }
         }
     }
     

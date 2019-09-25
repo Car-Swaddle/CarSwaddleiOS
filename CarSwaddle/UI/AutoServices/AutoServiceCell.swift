@@ -15,9 +15,9 @@ private let dateFormatter: DateFormatter = {
     formatter.dateFormat = "EEE MMM d h:mm a"
     return formatter
 }()
-
-private let selectedColor: UIColor = .gray2
-private let unselectedColor: UIColor = .white
+//
+//private let selectedColor: UIColor = .tertiaryBackgroundColor
+//private let unselectedColor: UIColor = UIColor.tertiaryBackgroundColor.color(adjustedBy255Points: -15)
 
 final class AutoServiceCell: UITableViewCell, NibRegisterable {
     
@@ -38,13 +38,19 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
     
     @IBOutlet private var dateCardViewHeightConstraint: NSLayoutConstraint!
     
+    
+    private var selectedColor: UIColor { UIColor.secondaryBackgroundColor.color(adjustedBy255Points: -15) }
+    private var unselectedColor: UIColor { .secondaryBackgroundColor }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         serviceTypeStackView.isHiddenInStackView = true
         notesStackView.isHiddenInStackView = true
-        backgroundColor = ServicesViewController.tableBackgroundColor
-        contentView.backgroundColor = ServicesViewController.tableBackgroundColor
+        backgroundColor = .primaryBackgroundColor
+        contentView.backgroundColor = .primaryBackgroundColor
+        
+        serviceContentView.backgroundColor = .secondaryBackgroundColor
         
         selectionStyle = .none
     }
@@ -79,6 +85,11 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         updateHighlight(animated: animated)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateHighlight(animated: false)
     }
     
     private func updateHighlight(animated: Bool) {

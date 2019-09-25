@@ -14,6 +14,12 @@ class HourDisplayView: UIView, NibInstantiating {
     @IBOutlet private weak var hourLabel: UILabel!
     @IBOutlet private weak var hourContentView: UIView!
     
+    public var isSelected: Bool = false {
+        didSet {
+            updateForSelectionState()
+        }
+    }
+    
     var didSelectHour: () -> Void = { }
     
     override func awakeFromNib() {
@@ -51,16 +57,51 @@ class HourDisplayView: UIView, NibInstantiating {
         hourLabel.text = hourMinutesPeriodDateFormatter.string(from: date)
     }
     
-    func styleAsSelected() {
+    private func styleAsSelected() {
         hourContentView.backgroundColor = .secondary
         hourLabel.textColor = .white
+        hourContentView.borderColor = selectedBorderColor
+        hourContentView.borderWidth = 1
     }
     
-    func styleAsUnselected() {
-        hourContentView.backgroundColor = .white
-//        hourContentView.layer.borderColor = UIColor.viewBackgroundColor1.withAlphaComponent(0.6).cgColor
-//        hourContentView.layer.borderWidth = UIView.hairlineLength
-        hourLabel.textColor = .black
+    private func updateForSelectionState() {
+        isSelected ? styleAsSelected() : styleAsUnselected()
+    }
+    
+    private var selectedBorderColor: UIColor {
+        if #available(iOS 13, *) {
+            return traitCollection.userInterfaceStyle == .dark ? .white : .clear
+        } else {
+            return .clear
+        }
+    }
+    
+    private var unselectedBorderColor: UIColor {
+        if #available(iOS 13, *) {
+            return traitCollection.userInterfaceStyle == .dark ? .white : .clear
+        } else {
+            return .clear
+        }
+    }
+    
+    private var unselectedBackgroundColor: UIColor {
+        if #available(iOS 13, *) {
+            return traitCollection.userInterfaceStyle == .dark ? .primaryBackgroundColor : .white
+        } else {
+            return .clear
+        }
+    }
+    
+    private func styleAsUnselected() {
+        hourContentView.backgroundColor = unselectedBackgroundColor
+        hourLabel.textColor = .titleTextColor
+        hourContentView.borderColor = unselectedBorderColor
+        hourContentView.borderWidth = 1
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateForSelectionState()
     }
     
 }

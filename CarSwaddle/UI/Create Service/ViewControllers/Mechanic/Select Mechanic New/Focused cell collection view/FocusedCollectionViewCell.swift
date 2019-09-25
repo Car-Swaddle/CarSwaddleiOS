@@ -47,7 +47,7 @@ class FocusedCollectionViewCell: UICollectionViewCell {
     }()
     
     private func setup() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .secondaryBackgroundColor
         
         contentView.layer.cornerRadius = defaultCornerRadius
         contentView.clipsToBounds = true

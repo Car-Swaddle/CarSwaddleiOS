@@ -18,7 +18,7 @@ import Firebase
 
 final class ServicesViewController: UIViewController, StoryboardInstantiating {
     
-    static let tableBackgroundColor: UIColor = .gray1
+    static let tableBackgroundColor: UIColor = .primaryBackgroundColor
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var actionButton: ActionButton!
@@ -56,13 +56,11 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .white
         
         setupTableView()
         adjuster.positionActionButton()
         actionButton.addTarget(self, action: #selector(ServicesViewController.didTapCreate), for: .touchUpInside)
-        view.backgroundColor = ServicesViewController.tableBackgroundColor
+        view.backgroundColor = .primaryBackgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,7 +75,7 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
         tableView.register(HeaderCell.self)
         tableView.tableFooterView = UIView()
         tableView.refreshControl = refreshControl
-        tableView.backgroundColor = ServicesViewController.tableBackgroundColor
+//        tableView.backgroundColor = .primaryBackgroundColor
         tableView.separatorStyle = .none
     }
     
@@ -102,6 +100,7 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
         let creator = AutoServiceCreation()
         self.creator = creator
         let pocketController = creator.pocketController!
+        pocketController.modalPresentationStyle = .overFullScreen
         present(pocketController, animated: true, completion: nil)
         Analytics.logEvent(AnalyticsEventBeginCheckout, parameters: nil)
     }

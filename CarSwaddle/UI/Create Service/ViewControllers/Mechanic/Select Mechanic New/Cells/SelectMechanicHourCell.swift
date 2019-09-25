@@ -252,10 +252,10 @@ class HourStackView: UIStackView {
     
     private func updateForSelectedStartTime() {
         for hourDisplayViewKey in hourDisplayViews.keys {
-            hourDisplayViews[hourDisplayViewKey]?.styleAsUnselected()
+            hourDisplayViews[hourDisplayViewKey]?.isSelected = false
         }
         if let selectedStartTime = selectedStartTime {
-            hourDisplayViews[selectedStartTime]?.styleAsSelected()
+            hourDisplayViews[selectedStartTime]?.isSelected = true
         }
     }
     

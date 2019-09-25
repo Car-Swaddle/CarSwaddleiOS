@@ -64,7 +64,11 @@ final class PriceView: UIView, NibInstantiating {
     private func separatorView() -> UIView {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: UIView.hairlineLength).isActive = true
-        view.backgroundColor = .gray3
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .opaqueSeparator
+        } else {
+            view.backgroundColor = .gray3
+        }
         return view
     }
     

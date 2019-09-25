@@ -12,6 +12,7 @@ import CarSwaddleNetworkRequest
 import Authentication
 import CarSwaddleUI
 import Store
+import Firebase
 
 final class ProfileViewController: UIViewController, StoryboardInstantiating {
 
@@ -56,7 +57,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = .primaryBackgroundColor
         setupTableView()
         requestData()
     }
@@ -94,6 +95,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         auth.logout(deviceToken: pushNotificationController.getDeviceToken()) { error in
             pushNotificationController.deleteDeviceToken()
             DispatchQueue.main.async {
+                Analytics.logEvent("logout", parameters: [:])
                 completion()
             }
         }

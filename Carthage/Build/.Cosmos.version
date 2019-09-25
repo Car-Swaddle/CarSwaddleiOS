@@ -3,8 +3,8 @@
   "iOS" : [
     {
       "name" : "Cosmos",
-      "hash" : "cabfa9d928f4ef669cd1c4be74e5e61103e5b3718f2828dedcee293773cd3aa7",
-      "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
+      "hash" : "158a20322201e3e6e3dc515250c86c499703b8f566c0e69f9d95e40be63f971f",
+      "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
     }
   ]
 }

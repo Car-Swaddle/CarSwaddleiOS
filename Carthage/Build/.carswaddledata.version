@@ -1,10 +1,10 @@
 {
-  "commitish" : "85c3908b190f34294aed99dddff0e56f5533bd2a",
+  "commitish" : "6ee647a1e97180d6d651651490b0120a29aec82d",
   "iOS" : [
     {
       "name" : "CarSwaddleData",
-      "hash" : "cb05c5d9976044ecbdd17b1a74a6f18a5a793f62199fc5dec51694c920523468",
-      "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
+      "hash" : "7dc8ef1b5e9a186fc73c90e57face5735b3f7c532a95955512e6d9e014447ded",
+      "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
     }
   ]
 }

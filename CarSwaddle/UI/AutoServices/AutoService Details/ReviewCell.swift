@@ -45,6 +45,7 @@ final class ReviewCell: UITableViewCell, NibRegisterable {
         super.awakeFromNib()
         
         starRatingView.isUserInteractionEnabled = false
+        starRatingView.backgroundColor = .clear
         selectionStyle = .none
     }
 
