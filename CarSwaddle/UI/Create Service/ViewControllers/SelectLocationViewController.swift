@@ -118,7 +118,7 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         }
         
         navigationItem.searchController = searchController
-        title = NSLocalizedString("Location of oil change", comment: "")
+        title = NSLocalizedString("Oil change location", comment: "")
         
         confirmButton.titleLabel?.numberOfLines = 0
     }

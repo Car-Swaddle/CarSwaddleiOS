@@ -143,7 +143,7 @@ final class Navigator: NSObject {
         UISwitch.appearance().onTintColor = .selectionColor
         UINavigationBar.appearance().tintColor = .selectionColor
         
-        let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.title as Any]
+        let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.action as Any]
         
         for state in [UIControl.State.normal, .highlighted, .selected, .disabled, .focused, .reserved] {
             UIBarButtonItem.appearance().setTitleTextAttributes(barButtonTextAttributes, for: state)
@@ -154,7 +154,7 @@ final class Navigator: NSObject {
 //        UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).tintColor = .secondary
         UISearchBar.appearance().tintColor = .selectionColor
         let textFieldAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-        textFieldAppearance.defaultTextAttributes = [.font: UIFont.title as Any]
+        textFieldAppearance.defaultTextAttributes = [.font: UIFont.title as Any, .foregroundColor: UIColor.selectionColor as Any]
         
         CustomAlertAction.cancelTitle = NSLocalizedString("Cancel", comment: "Cancel button title")
         
@@ -174,6 +174,19 @@ final class Navigator: NSObject {
         labeledTextFieldAppearance.textFieldTextColor = .titleTextColor
         
         CircleButton.appearance().buttonColor = .titleTextColor
+        
+        if #available(iOS 13, *) {
+            let style = UINavigationBarAppearance()
+            style.buttonAppearance.normal.titleTextAttributes = barButtonTextAttributes
+            style.doneButtonAppearance.normal.titleTextAttributes = [.font: UIFont.action as Any, .foregroundColor: UIColor.selectionColor as Any]
+            
+            style.titleTextAttributes = [.font: UIFont.extralarge as Any]
+            
+            let navigationBar = UINavigationBar.appearance()
+            navigationBar.standardAppearance = style
+            navigationBar.scrollEdgeAppearance = style
+            navigationBar.compactAppearance = style
+        }
     }
     
     public func initialViewController() -> UIViewController {

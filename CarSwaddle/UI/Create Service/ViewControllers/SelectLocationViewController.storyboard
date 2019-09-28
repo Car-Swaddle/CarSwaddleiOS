@@ -43,7 +43,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="primaryBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KC0-A9-beZ" firstAttribute="leading" secondItem="kJx-aR-gM7" secondAttribute="leading" id="P8u-IX-59j"/>
                             <constraint firstItem="KC0-A9-beZ" firstAttribute="trailing" secondItem="kJx-aR-gM7" secondAttribute="trailing" id="QjH-bO-14S"/>
@@ -67,6 +67,9 @@
     </scenes>
     <resources>
         <image name="pin" width="13" height="13"/>
+        <namedColor name="primaryBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="secondary">
             <color red="0.30196078431372547" green="0.4823529411764706" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

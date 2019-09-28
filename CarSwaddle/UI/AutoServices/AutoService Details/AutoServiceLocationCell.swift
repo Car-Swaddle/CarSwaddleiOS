@@ -45,10 +45,18 @@ final class AutoServiceLocationCell: UITableViewCell, NibRegisterable {
         mapView.layer.cornerRadius = defaultCornerRadius
         
         let insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: -16)
-        let view = addHairlineView(toSide: .bottom, color: .gray3, size: 1.0, insets: insets)
+        let view = addHairlineView(toSide: .bottom, color: hairlineColor, size: 1.0, insets: insets)
         view.layer.cornerRadius = 0.5
         
         selectionStyle = .none
+    }
+    
+    private var hairlineColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return .opaqueSeparator
+        } else {
+            return .gray3
+        }
     }
     
     private func requestRoute() {

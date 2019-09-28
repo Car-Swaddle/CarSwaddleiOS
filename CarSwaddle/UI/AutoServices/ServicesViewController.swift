@@ -225,22 +225,6 @@ extension ServicesViewController: UITableViewDataSource {
         }
     }
     
-//    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-//        let upcoming = NSLocalizedString("Upcoming Oil changes", comment: "Title of section for oil changes that haven't occurred yet")
-//        let past = NSLocalizedString("Finished Oil changes", comment: "Title of section for oil changes that haven't occurred yet")
-//        return [upcoming, past]
-//    }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        switch sections[section] {
-//        case .upcoming:
-//            return NSLocalizedString("Upcoming Oil changes", comment: "Title of section for oil changes that haven't occurred yet")
-//        case .finished:
-//            return NSLocalizedString("Finished Oil changes", comment: "Title of section for oil changes that haven't occurred yet")
-//        }
-//    }
-
-    
 }
 
 extension ServicesViewController: UITableViewDelegate {
@@ -253,16 +237,6 @@ extension ServicesViewController: UITableViewDelegate {
         let viewController = AutoServiceDetailsViewController.create(with: autoService)
         show(viewController, sender: self)
     }
-    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return ServiceHeaderView.height(for: self.title(for: section), width: view.frame.width)
-//    }
-//
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let view = ServiceHeaderView.viewFromNib()
-//        view.label.text = self.title(for: section)
-//        return view
-//    }
     
     private func title(forSection section: Int) -> String {
         switch sections[section] {
