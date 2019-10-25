@@ -29,6 +29,7 @@ final class MechanicProfileCell: FocusedCollectionViewCell, NibRegisterable {
         mechanicProfileView.pinFrameToSuperViewBounds()
         mechanicProfileView.layer.cornerRadius = defaultCornerRadius
         backgroundColor = .clear
+        contentView.backgroundColor = .content
     }
 
 }

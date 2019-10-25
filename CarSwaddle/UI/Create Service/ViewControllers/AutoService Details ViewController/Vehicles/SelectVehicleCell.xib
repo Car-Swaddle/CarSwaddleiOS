@@ -48,6 +48,7 @@
                     <constraint firstItem="UgL-4l-4AM" firstAttribute="top" secondItem="88Q-yh-heI" secondAttribute="bottom" constant="16" id="qM5-XB-xO7"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="contentBehindContent"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="UgL-4l-4AM" id="xqs-yb-1CJ"/>
@@ -57,8 +58,11 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="contentBehindContent">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
         <namedColor name="primaryBackgroundColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>

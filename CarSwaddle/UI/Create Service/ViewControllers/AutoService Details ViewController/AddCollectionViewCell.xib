@@ -28,12 +28,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add vehicle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvy-7D-tNT">
                                 <rect key="frame" x="0.0" y="0.0" width="89" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                <color key="textColor" name="titleTextColor"/>
+                                <color key="textColor" name="text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="U42-s9-fFD">
                                 <rect key="frame" x="29.5" y="28" width="30" height="30"/>
-                                <color key="tintColor" name="titleTextColor"/>
+                                <color key="tintColor" name="text"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="MNS-6d-oFp"/>
                                     <constraint firstAttribute="width" secondItem="U42-s9-fFD" secondAttribute="height" multiplier="1:1" id="yhl-Yd-A4g"/>
@@ -43,7 +43,7 @@
                     </stackView>
                 </subviews>
             </view>
-            <color key="backgroundColor" name="secondaryBackgroundColor"/>
+            <color key="backgroundColor" name="content"/>
             <constraints>
                 <constraint firstItem="qac-My-4eh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="IC5-lB-reD"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qac-My-4eh" secondAttribute="trailing" constant="8" id="Qnh-FQ-Bo7"/>
@@ -61,10 +61,10 @@
     </objects>
     <resources>
         <image name="plus" width="22.5" height="22.5"/>
-        <namedColor name="secondaryBackgroundColor">
-            <color white="0.9779999852180481" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="content">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
-        <namedColor name="titleTextColor">
+        <namedColor name="text">
             <color white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>

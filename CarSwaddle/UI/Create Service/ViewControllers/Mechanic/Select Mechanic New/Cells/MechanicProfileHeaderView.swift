@@ -82,7 +82,7 @@ final class MechanicProfileHeaderView: UIView, NibInstantiating {
         servicesProvidedLabel.font = UIFont.appFont(type: .regular, size: 17)
         
         pulseAnimationView.isHiddenInStackView = true
-        backgroundColor = .secondaryBackgroundColor
+        backgroundColor = .secondaryContent
     }
     
     @IBAction private func didSelectEditButton() {
@@ -145,7 +145,7 @@ final class MechanicProfileHeaderView: UIView, NibInstantiating {
     
     private var highlightAttributes: [NSAttributedString.Key: Any] {
         let font = UIFont.appFont(type: .semiBold, size: 17)!
-        return [.font: font, .foregroundColor: UIColor.titleTextColor]
+        return [.font: font, .foregroundColor: UIColor.text]
     }
     
     private func attributedString(forNumberOfServices numberOfServices: Int) -> NSAttributedString {

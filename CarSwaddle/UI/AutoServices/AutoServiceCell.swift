@@ -15,9 +15,7 @@ private let dateFormatter: DateFormatter = {
     formatter.dateFormat = "EEE MMM d h:mm a"
     return formatter
 }()
-//
-//private let selectedColor: UIColor = .tertiaryBackgroundColor
-//private let unselectedColor: UIColor = UIColor.tertiaryBackgroundColor.color(adjustedBy255Points: -15)
+
 
 final class AutoServiceCell: UITableViewCell, NibRegisterable {
     
@@ -38,21 +36,26 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
     
     @IBOutlet private var dateCardViewHeightConstraint: NSLayoutConstraint!
     
+    private let contentColor: UIColor = .content
     
-    private var selectedColor: UIColor { UIColor.secondaryBackgroundColor.color(adjustedBy255Points: -15) }
-    private var unselectedColor: UIColor { .secondaryBackgroundColor }
+    
+    private var selectedColor: UIColor { contentColor.color(adjustedBy255Points: -15) }
+    private var unselectedColor: UIColor { contentColor }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         serviceTypeStackView.isHiddenInStackView = true
         notesStackView.isHiddenInStackView = true
-        backgroundColor = .primaryBackgroundColor
-        contentView.backgroundColor = .primaryBackgroundColor
+        backgroundColor = ServicesViewController.tableBackgroundColor
         
-        serviceContentView.backgroundColor = .secondaryBackgroundColor
+        contentView.backgroundColor = ServicesViewController.tableBackgroundColor
+        
+        serviceContentView.backgroundColor = contentColor
         
         selectionStyle = .none
+        
+        dateCardViewWrapper.view.backgroundColor = .secondaryContent
     }
     
     override func prepareForReuse() {

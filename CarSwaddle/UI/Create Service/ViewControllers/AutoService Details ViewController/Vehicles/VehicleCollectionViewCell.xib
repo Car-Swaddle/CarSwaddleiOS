@@ -49,6 +49,7 @@
                     </stackView>
                 </subviews>
             </view>
+            <color key="backgroundColor" name="content"/>
             <constraints>
                 <constraint firstItem="VUt-8o-Vth" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="5BK-yQ-g4u"/>
                 <constraint firstAttribute="trailing" secondItem="VUt-8o-Vth" secondAttribute="trailing" constant="16" id="aJX-oO-CSV"/>
@@ -66,8 +67,11 @@
     </objects>
     <resources>
         <image name="car" width="25" height="25"/>
+        <namedColor name="content">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
         <namedColor name="titleTextColor">
-            <color white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>

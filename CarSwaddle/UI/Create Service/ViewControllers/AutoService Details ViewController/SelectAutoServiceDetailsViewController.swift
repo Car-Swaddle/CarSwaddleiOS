@@ -187,10 +187,6 @@ extension SelectAutoServiceDetailsViewController: UITableViewDataSource {
                 self?.tableView.beginUpdates()
                 self?.tableView.endUpdates()
             }
-//            cell.didSelectReturn = { [weak self] in
-//                guard let self = self else { return }
-//                self.delegate?.didSetCouponCode(couponCode: coupon, viewController: self)
-//            }
             return cell
         }
     }
@@ -224,11 +220,11 @@ extension SelectAutoServiceDetailsViewController: SelectVehicleCellDelegate, Add
         ])
     }
     
-    func didSelectVehicle(vehicle: Vehicle, cell: SelectVehicleCell) {
+    func didSelectVehicle(vehicle: Vehicle?, cell: SelectVehicleCell) {
         selectedVehicle = vehicle
         Analytics.logEvent(AnalyticsEventSetCheckoutOption, parameters: [
             AnalyticsParameterContentType: "vehicle",
-            "vehicle": vehicle.name
+            "vehicle": vehicle?.name ?? "removed"
         ])
     }
     

@@ -33,7 +33,7 @@ final class AutoServiceCreation: NSObject {
         super.init()
         
         let pocketController = PocketController(rootViewController: selectLocationViewController, bottomViewController: progressViewController)
-        pocketController.view.backgroundColor = .primaryBackgroundColor //  UIColor(red255: 249, green255: 245, blue255: 237)
+        pocketController.view.backgroundColor = .background 
         pocketController.bottomViewControllerHeight = 120
         
         paymentContext.hostViewController = pocketController
@@ -175,7 +175,7 @@ final class AutoServiceCreation: NSObject {
             AnalyticsParameterCurrency: "USD",
             AnalyticsParameterContentType: "oilChange",
             AnalyticsParameterCheckoutOption: "requestPayment"
-            ])
+        ])
     }
     
 }
@@ -225,10 +225,10 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPPaymentStatusBlock) {
+        guard let sourceID = paymentResult.paymentMethod?.stripeId else { return }
         print("create paymet result")
         print("paymentResult: \(paymentResult)")
         print("paymentContext: \(paymentContext)")
-        let sourceID = paymentResult.paymentMethod.stripeId
         payViewController?.isUpdatingPrice = true
         createAutoService(sourceID: sourceID) { [weak self] autoServiceObjectID, error in
             self?.payViewController?.isUpdatingPrice = false

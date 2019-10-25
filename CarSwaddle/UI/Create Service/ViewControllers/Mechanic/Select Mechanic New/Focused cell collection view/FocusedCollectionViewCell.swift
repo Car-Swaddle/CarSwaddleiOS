@@ -27,7 +27,7 @@ class FocusedCollectionViewCell: UICollectionViewCell {
     private lazy var selectedView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .secondary
+        view.backgroundColor = .action
         
         let selectedImageView = UIImageView()
         selectedImageView.image = #imageLiteral(resourceName: "checkmark").withRenderingMode(.alwaysTemplate)
@@ -47,7 +47,7 @@ class FocusedCollectionViewCell: UICollectionViewCell {
     }()
     
     private func setup() {
-        contentView.backgroundColor = .secondaryBackgroundColor
+        contentView.backgroundColor = .content
         
         contentView.layer.cornerRadius = defaultCornerRadius
         contentView.clipsToBounds = true
@@ -96,7 +96,7 @@ class FocusedCollectionViewCell: UICollectionViewCell {
 
     private func configureForSelected() {
         contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.secondary.cgColor
+        contentView.layer.borderColor = UIColor.action.cgColor
         selectedView.isHiddenInStackView = false
     }
     

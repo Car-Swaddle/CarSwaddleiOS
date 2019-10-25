@@ -28,7 +28,7 @@
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8Y-BB-9vD">
                         <rect key="frame" x="0.0" y="72" width="354" height="336"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="contentBehindContent"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="336" id="Jkk-Wj-fXo"/>
                         </constraints>
@@ -46,18 +46,20 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bummer! There are no mechanics in your area" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2h-KF-qtI">
                                 <rect key="frame" x="0.0" y="0.0" width="322" height="47"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
-                                <color key="textColor" name="titleTextColor"/>
+                                <color key="textColor" name="text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are working on getting mechanics to your area and we have been alerted of this." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Byq-aX-XxP">
                                 <rect key="frame" x="0.0" y="55" width="322" height="59.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                <color key="textColor" name="detailTextColor"/>
+                                <color key="textColor" name="secondaryText"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <color key="backgroundColor" name="content"/>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" name="contentBehindContent"/>
                 <constraints>
                     <constraint firstItem="beH-Gi-AsG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="150-th-iNJ"/>
                     <constraint firstAttribute="trailing" secondItem="89z-RI-hkY" secondAttribute="trailing" constant="16" id="3T6-db-5NA"/>
@@ -72,6 +74,7 @@
                     <constraint firstAttribute="trailing" secondItem="I8Y-BB-9vD" secondAttribute="trailing" id="qyA-Qe-wEb"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="contentBehindContent"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="I8Y-BB-9vD" id="U6n-Eq-MLt"/>
@@ -84,10 +87,16 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="detailTextColor">
-            <color white="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="content">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
-        <namedColor name="titleTextColor">
+        <namedColor name="contentBehindContent">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="secondaryText">
+            <color white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="text">
             <color white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>

@@ -58,7 +58,7 @@ class HourDisplayView: UIView, NibInstantiating {
     }
     
     private func styleAsSelected() {
-        hourContentView.backgroundColor = .secondary
+        hourContentView.backgroundColor = .action
         hourLabel.textColor = .white
         hourContentView.borderColor = selectedBorderColor
         hourContentView.borderWidth = 1
@@ -70,6 +70,7 @@ class HourDisplayView: UIView, NibInstantiating {
     
     private var selectedBorderColor: UIColor {
         if #available(iOS 13, *) {
+//            return .clear
             return traitCollection.userInterfaceStyle == .dark ? .white : .clear
         } else {
             return .clear
@@ -78,23 +79,26 @@ class HourDisplayView: UIView, NibInstantiating {
     
     private var unselectedBorderColor: UIColor {
         if #available(iOS 13, *) {
-            return traitCollection.userInterfaceStyle == .dark ? .white : .clear
+            return .clear
+//            return traitCollection.userInterfaceStyle == .dark ? .white : .clear
         } else {
             return .clear
         }
     }
     
     private var unselectedBackgroundColor: UIColor {
-        if #available(iOS 13, *) {
-            return traitCollection.userInterfaceStyle == .dark ? .primaryBackgroundColor : .white
-        } else {
-            return .clear
-        }
+        return .content
+//        if #available(iOS 13, *) {
+////            return .clear
+////            return traitCollection.userInterfaceStyle == .dark ? .background : .white
+//        } else {
+////            return .clear
+//        }
     }
     
     private func styleAsUnselected() {
         hourContentView.backgroundColor = unselectedBackgroundColor
-        hourLabel.textColor = .titleTextColor
+        hourLabel.textColor = .text
         hourContentView.borderColor = unselectedBorderColor
         hourContentView.borderWidth = 1
     }

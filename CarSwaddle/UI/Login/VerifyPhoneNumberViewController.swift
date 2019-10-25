@@ -31,13 +31,18 @@ final class VerifyPhoneNumberViewController: UIViewController, NavigationDelegat
         _ = oneTimeViewController.oneTimeCodeEntryView.becomeFirstResponder()
         
         oneTimeViewController.resendCodeButton.titleLabel?.font = UIFont.appFont(type: .semiBold, size: 17)
-        oneTimeViewController.resendCodeButton.tintColor = .viewBackgroundColor1
+        oneTimeViewController.resendCodeButton.tintColor = .secondaryBackground
         
         oneTimeViewController.updatePhoneNumberButton.titleLabel?.font = UIFont.appFont(type: .semiBold, size: 17)
-        oneTimeViewController.updatePhoneNumberButton.tintColor = .viewBackgroundColor1
+        oneTimeViewController.updatePhoneNumberButton.tintColor = .secondaryBackground
         
         oneTimeViewController.verifyPhoneNumberTitleLabel.font = UIFont.appFont(type: .semiBold, size: 17)
         oneTimeViewController.verifyPhoneNumberDescriptionLabel.font = UIFont.appFont(type: .regular, size: 15)
+        
+        oneTimeViewController.resendCodeButton.tintColor = .selectionColor
+        oneTimeViewController.updatePhoneNumberButton.tintColor = .selectionColor
+        
+        oneTimeViewController.oneTimeCodeEntryView.textFieldBackgroundColor = .secondaryBackground
         
         sendSMSVerification()
         
@@ -49,6 +54,7 @@ final class VerifyPhoneNumberViewController: UIViewController, NavigationDelegat
         viewController.delegate = self
         viewController.numberOfDigits = codeNumberOfDigits
         viewController.phoneNumber = User.currentUser(context: store.mainContext)?.phoneNumber ?? ""
+        viewController.view.backgroundColor = .primaryBackgroundColor
         return viewController
     }()
     

@@ -10,6 +10,15 @@ import UIKit
 
 protocol FocusedCollectionViewDelegate: AnyObject {
     func didSelectItem(at indexPath: IndexPath, collectionView: FocusedCollectionView)
+    func shouldSelectItem(at indexPath: IndexPath, collectionView: FocusedCollectionView) -> Bool
+}
+
+extension FocusedCollectionViewDelegate {
+    
+    func shouldSelectItem(at indexPath: IndexPath, collectionView: FocusedCollectionView) -> Bool {
+        return true
+    }
+    
 }
 
 final class FocusedCollectionView: UICollectionView {
@@ -41,6 +50,10 @@ extension FocusedCollectionView: UICollectionViewDelegate {
         let generator = UISelectionFeedbackGenerator()
         generator.selectionChanged()
         focusedDelegate?.didSelectItem(at: indexPath, collectionView: self)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return focusedDelegate?.shouldSelectItem(at: indexPath, collectionView: self) ?? true
     }
     
 }

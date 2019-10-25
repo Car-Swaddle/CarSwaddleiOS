@@ -45,6 +45,10 @@
 		991C9FC92215486A004B9C15 /* PhoneNumberViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 991C9FC82215486A004B9C15 /* PhoneNumberViewController.storyboard */; };
 		992BFDCF22056B10006B64CC /* TweakValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992BFDCE22056B10006B64CC /* TweakValues.swift */; };
 		992BFDD122056B8B006B64CC /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992BFDD022056B8B006B64CC /* Logout.swift */; };
+		9935529023581EB4009DB141 /* ShareCouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9935528F23581EB4009DB141 /* ShareCouponView.swift */; };
+		9935529223581EBD009DB141 /* ShareCouponView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9935529123581EBD009DB141 /* ShareCouponView.xib */; };
+		9935529423582F2E009DB141 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9935529323582F2E009DB141 /* CouponView.swift */; };
+		9935529623582F40009DB141 /* CouponView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9935529523582F40009DB141 /* CouponView.xib */; };
 		993BA12621585ACA00DB95EF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993BA12521585ACA00DB95EF /* LocationManager.swift */; };
 		99425447215762750075EDCA /* CreateServiceVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99425446215762750075EDCA /* CreateServiceVehicleCell.swift */; };
 		9942544A215762A10075EDCA /* CreateServiceMechanicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99425449215762A10075EDCA /* CreateServiceMechanicCell.swift */; };
@@ -69,7 +73,6 @@
 		9955BC1A2154E8DC008DAF8E /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC192154E8DC008DAF8E /* UsersViewController.swift */; };
 		9955BC2421555D62008DAF8E /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC2321555D62008DAF8E /* Navigator.swift */; };
 		9955BC2B2155650C008DAF8E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC2A2155650C008DAF8E /* ProfileViewController.swift */; };
-		9955BC2D21556527008DAF8E /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9955BC2C21556527008DAF8E /* ProfileViewController.storyboard */; };
 		9955BC2F21556554008DAF8E /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC2E21556554008DAF8E /* ServicesViewController.swift */; };
 		9955BC3121556566008DAF8E /* ServicesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9955BC3021556566008DAF8E /* ServicesViewController.storyboard */; };
 		9955BC3521557305008DAF8E /* CreateServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC3421557305008DAF8E /* CreateServiceViewController.swift */; };
@@ -80,6 +83,10 @@
 		997714C321CCE2C700E54F5B /* PricePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714C221CCE2C700E54F5B /* PricePartView.swift */; };
 		997714C521CCE35800E54F5B /* PricePartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997714C421CCE35800E54F5B /* PricePartView.xib */; };
 		997714C721CCF5BC00E54F5B /* Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714C621CCF5BC00E54F5B /* Stripe.swift */; };
+		997896BC2359837200492110 /* CouponCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997896BA2359837200492110 /* CouponCodeCell.swift */; };
+		997896BD2359837200492110 /* CouponCodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997896BB2359837200492110 /* CouponCodeCell.xib */; };
+		997896BF2359A2FA00492110 /* LabeledHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997896BE2359A2FA00492110 /* LabeledHeaderView.swift */; };
+		997896C12359A30300492110 /* LabeledHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997896C02359A30300492110 /* LabeledHeaderView.xib */; };
 		997BFC0522F950EF0023F445 /* RemoteNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BFC0422F950EF0023F445 /* RemoteNotification.swift */; };
 		997BFC0722F963330023F445 /* RateAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BFC0622F963330023F445 /* RateAlertController.swift */; };
 		997DBC42218EBD210080F42C /* MechanicSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC40218EBD210080F42C /* MechanicSelectCell.swift */; };
@@ -226,6 +233,9 @@
 		99F08C6522D9A76A00317EEA /* RedeemCouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F08C6322D9A76A00317EEA /* RedeemCouponCell.swift */; };
 		99F08C6622D9A76A00317EEA /* RedeemCouponCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F08C6422D9A76A00317EEA /* RedeemCouponCell.xib */; };
 		99F220262246933500020024 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F220252246933500020024 /* FontExtension.swift */; };
+		99FE2917235BC28B00C7DB34 /* SemanticColors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99FE2916235BC28B00C7DB34 /* SemanticColors.xcassets */; };
+		99FE2919235BC29700C7DB34 /* SemanticColors+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FE2918235BC29700C7DB34 /* SemanticColors+UIColor.swift */; };
+		99FE291B235CD92C00C7DB34 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FE291A235CD92C00C7DB34 /* Links.swift */; };
 		99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FEAFF6215DE3C00009BC07 /* CreateServiceOilTypeCell.swift */; };
 		99FEAFF9215DE3C00009BC07 /* CreateServiceOilTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99FEAFF7215DE3C00009BC07 /* CreateServiceOilTypeCell.xib */; };
 		99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FEB001215DE46A0009BC07 /* SelectOilTypeViewController.swift */; };
@@ -298,6 +308,10 @@
 		991C9FC82215486A004B9C15 /* PhoneNumberViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhoneNumberViewController.storyboard; sourceTree = "<group>"; };
 		992BFDCE22056B10006B64CC /* TweakValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakValues.swift; sourceTree = "<group>"; };
 		992BFDD022056B8B006B64CC /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
+		9935528F23581EB4009DB141 /* ShareCouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCouponView.swift; sourceTree = "<group>"; };
+		9935529123581EBD009DB141 /* ShareCouponView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareCouponView.xib; sourceTree = "<group>"; };
+		9935529323582F2E009DB141 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
+		9935529523582F40009DB141 /* CouponView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CouponView.xib; sourceTree = "<group>"; };
 		993BA12521585ACA00DB95EF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9942543E215762750075EDCA /* CreateServiceVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServiceVehicleCell.xib; sourceTree = "<group>"; };
 		99425446215762750075EDCA /* CreateServiceVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceVehicleCell.swift; sourceTree = "<group>"; };
@@ -322,7 +336,6 @@
 		9955BC192154E8DC008DAF8E /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		9955BC2321555D62008DAF8E /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		9955BC2A2155650C008DAF8E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		9955BC2C21556527008DAF8E /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		9955BC2E21556554008DAF8E /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 		9955BC3021556566008DAF8E /* ServicesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesViewController.storyboard; sourceTree = "<group>"; };
 		9955BC3421557305008DAF8E /* CreateServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceViewController.swift; sourceTree = "<group>"; };
@@ -335,6 +348,10 @@
 		997714C421CCE35800E54F5B /* PricePartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PricePartView.xib; sourceTree = "<group>"; };
 		997714C621CCF5BC00E54F5B /* Stripe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stripe.swift; sourceTree = "<group>"; };
 		997714CC21CE435F00E54F5B /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
+		997896BA2359837200492110 /* CouponCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCodeCell.swift; sourceTree = "<group>"; };
+		997896BB2359837200492110 /* CouponCodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CouponCodeCell.xib; sourceTree = "<group>"; };
+		997896BE2359A2FA00492110 /* LabeledHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledHeaderView.swift; sourceTree = "<group>"; };
+		997896C02359A30300492110 /* LabeledHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledHeaderView.xib; sourceTree = "<group>"; };
 		997BFC0422F950EF0023F445 /* RemoteNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotification.swift; sourceTree = "<group>"; };
 		997BFC0622F963330023F445 /* RateAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateAlertController.swift; sourceTree = "<group>"; };
 		997DBC40218EBD210080F42C /* MechanicSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicSelectCell.swift; sourceTree = "<group>"; };
@@ -478,6 +495,9 @@
 		99F08C6322D9A76A00317EEA /* RedeemCouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemCouponCell.swift; sourceTree = "<group>"; };
 		99F08C6422D9A76A00317EEA /* RedeemCouponCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedeemCouponCell.xib; sourceTree = "<group>"; };
 		99F220252246933500020024 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		99FE2916235BC28B00C7DB34 /* SemanticColors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SemanticColors.xcassets; sourceTree = "<group>"; };
+		99FE2918235BC29700C7DB34 /* SemanticColors+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SemanticColors+UIColor.swift"; sourceTree = "<group>"; };
+		99FE291A235CD92C00C7DB34 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		99FEAFF6215DE3C00009BC07 /* CreateServiceOilTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOilTypeCell.swift; sourceTree = "<group>"; };
 		99FEAFF7215DE3C00009BC07 /* CreateServiceOilTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServiceOilTypeCell.xib; sourceTree = "<group>"; };
 		99FEB001215DE46A0009BC07 /* SelectOilTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOilTypeViewController.swift; sourceTree = "<group>"; };
@@ -558,6 +578,7 @@
 				997714C621CCF5BC00E54F5B /* Stripe.swift */,
 				992BFDD022056B8B006B64CC /* Logout.swift */,
 				99AEE1C92274154C00938462 /* LabeledTextField.swift */,
+				99FE291A235CD92C00C7DB34 /* Links.swift */,
 				998984D5229D0E5100E4B25A /* User Activity Handler */,
 				998984D4229D0E4400E4B25A /* Push Notifications */,
 				9955BC2521556302008DAF8E /* Extensions */,
@@ -687,6 +708,8 @@
 			children = (
 				99DC264B22474A74009E0A15 /* Colors.xcassets */,
 				99DC264C22474A75009E0A15 /* UIColorExtension.swift */,
+				99FE2916235BC28B00C7DB34 /* SemanticColors.xcassets */,
+				99FE2918235BC29700C7DB34 /* SemanticColors+UIColor.swift */,
 				997DBC7321997E020080F42C /* TimeIntervalExtension.swift */,
 				997DBC7521997E370080F42C /* DateExtension.swift */,
 				99F220252246933500020024 /* FontExtension.swift */,
@@ -725,7 +748,14 @@
 			isa = PBXGroup;
 			children = (
 				9955BC2A2155650C008DAF8E /* ProfileViewController.swift */,
-				9955BC2C21556527008DAF8E /* ProfileViewController.storyboard */,
+				997896BA2359837200492110 /* CouponCodeCell.swift */,
+				997896BB2359837200492110 /* CouponCodeCell.xib */,
+				9935528F23581EB4009DB141 /* ShareCouponView.swift */,
+				9935529123581EBD009DB141 /* ShareCouponView.xib */,
+				997896BE2359A2FA00492110 /* LabeledHeaderView.swift */,
+				997896C02359A30300492110 /* LabeledHeaderView.xib */,
+				9935529323582F2E009DB141 /* CouponView.swift */,
+				9935529523582F40009DB141 /* CouponView.xib */,
 				99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */,
 				99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */,
 				99E66DA721E2963A00C6E3E1 /* UserImageView.swift */,
@@ -1179,6 +1209,7 @@
 			files = (
 				99DC262B2246ECC2009E0A15 /* Montserrat-ExtraBold.otf in Resources */,
 				99F08C6122D98E9100317EEA /* PaymentMethodCell.xib in Resources */,
+				997896C12359A30300492110 /* LabeledHeaderView.xib in Resources */,
 				991AFC9722506AE100AD6614 /* HourDisplayView.xib in Resources */,
 				998984E0229D153F00E4B25A /* ForgotPasswordViewController.storyboard in Resources */,
 				991AFCB22250B38400AD6614 /* AddCollectionViewCell.xib in Resources */,
@@ -1193,6 +1224,7 @@
 				997DBCA221B79E620080F42C /* AutoServiceCell.xib in Resources */,
 				99DC26272246ECC2009E0A15 /* Montserrat-Black.otf in Resources */,
 				991AFCBE2259299A00AD6614 /* PriceView.xib in Resources */,
+				997896BD2359837200492110 /* CouponCodeCell.xib in Resources */,
 				99E48168227AC5880040B882 /* AutoServiceVehicleCell.xib in Resources */,
 				991AFCA02250AFCA00AD6614 /* SelectVehicleCell.xib in Resources */,
 				99DC26462246ECC2009E0A15 /* MontserratAlternates-Regular.otf in Resources */,
@@ -1226,6 +1258,7 @@
 				99DC263A2246ECC2009E0A15 /* MontserratAlternates-BlackItalic.otf in Resources */,
 				99985FF5227C0B1E00113536 /* HeaderCell.xib in Resources */,
 				99DC26282246ECC2009E0A15 /* Montserrat-BlackItalic.otf in Resources */,
+				9935529223581EBD009DB141 /* ShareCouponView.xib in Resources */,
 				998D3AED21DDCF5C003DD717 /* ReviewCell.xib in Resources */,
 				9942547D2157F8290075EDCA /* SelectMechanicViewController.storyboard in Resources */,
 				9955BC3121556566008DAF8E /* ServicesViewController.storyboard in Resources */,
@@ -1252,12 +1285,12 @@
 				99DC26372246ECC2009E0A15 /* Montserrat-Thin.otf in Resources */,
 				99E66DA621E294AE00C6E3E1 /* ProfileHeaderView.xib in Resources */,
 				991AFCA82250B2BC00AD6614 /* VehicleCollectionViewCell.xib in Resources */,
+				9935529623582F40009DB141 /* CouponView.xib in Resources */,
 				991AFC93224FF01500AD6614 /* TimeSlotCollectionViewCell.xib in Resources */,
 				99DC26342246ECC2009E0A15 /* Montserrat-Regular.otf in Resources */,
 				99DC26312246ECC2009E0A15 /* Montserrat-LightItalic.otf in Resources */,
 				99DC26362246ECC2009E0A15 /* Montserrat-SemiBoldItalic.otf in Resources */,
 				99A0AF0F224EE07B0001FDC6 /* MechanicProfileHeaderView.xib in Resources */,
-				9955BC2D21556527008DAF8E /* ProfileViewController.storyboard in Resources */,
 				991AFCBA2251D7C900AD6614 /* TextInputCell.xib in Resources */,
 				99F08C6622D9A76A00317EEA /* RedeemCouponCell.xib in Resources */,
 				997DBC622198FBC90080F42C /* lehi.gpx in Resources */,
@@ -1279,6 +1312,7 @@
 				991C9FC92215486A004B9C15 /* PhoneNumberViewController.storyboard in Resources */,
 				99DC264A2246ECC2009E0A15 /* MontserratAlternates-ThinItalic.otf in Resources */,
 				997DBC562197580B0080F42C /* UserNameViewController.storyboard in Resources */,
+				99FE2917235BC28B00C7DB34 /* SemanticColors.xcassets in Resources */,
 				99DC26452246ECC2009E0A15 /* MontserratAlternates-MediumItalic.otf in Resources */,
 				99DC26482246ECC2009E0A15 /* MontserratAlternates-SemiBoldItalic.otf in Resources */,
 				99FEB004215DE4770009BC07 /* SelectOilTypeViewController.storyboard in Resources */,
@@ -1360,9 +1394,11 @@
 				99DC264D22474A75009E0A15 /* UIColorExtension.swift in Sources */,
 				992BFDD122056B8B006B64CC /* Logout.swift in Sources */,
 				995B9F242154B4380030A7CA /* GlobalImports.swift in Sources */,
+				997896BF2359A2FA00492110 /* LabeledHeaderView.swift in Sources */,
 				99E2E7DF224D36C3006DC577 /* LocationSearchResultsViewController.swift in Sources */,
 				991AFCB12250B38400AD6614 /* AddCollectionViewCell.swift in Sources */,
 				9942546B21577B6C0075EDCA /* SelectMechanicViewController.swift in Sources */,
+				9935529023581EB4009DB141 /* ShareCouponView.swift in Sources */,
 				998D3AE721DDCC49003DD717 /* AutoServiceDetailsViewController.swift in Sources */,
 				99AEE1CA2274154C00938462 /* LabeledTextField.swift in Sources */,
 				9955BC2F21556554008DAF8E /* ServicesViewController.swift in Sources */,
@@ -1384,6 +1420,8 @@
 				997BFC0722F963330023F445 /* RateAlertController.swift in Sources */,
 				9942544A215762A10075EDCA /* CreateServiceMechanicCell.swift in Sources */,
 				998D3AEC21DDCF5C003DD717 /* ReviewCell.swift in Sources */,
+				99FE2919235BC29700C7DB34 /* SemanticColors+UIColor.swift in Sources */,
+				9935529423582F2E009DB141 /* CouponView.swift in Sources */,
 				991AFCA72250B2BC00AD6614 /* VehicleCollectionViewCell.swift in Sources */,
 				99DC25FC2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift in Sources */,
 				99FEB006215DEECB0009BC07 /* OilTypeCell.swift in Sources */,
@@ -1397,6 +1435,7 @@
 				9905FF752313AD3400DFBCB9 /* StatePickerCell.swift in Sources */,
 				9942547121577B730075EDCA /* SelectLocationViewController.swift in Sources */,
 				991C9FC52213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift in Sources */,
+				997896BC2359837200492110 /* CouponCodeCell.swift in Sources */,
 				997DBC72219965E80080F42C /* HourCollectionViewCell.swift in Sources */,
 				991AFCAB2250B2C700AD6614 /* OilTypeCollectionViewCell.swift in Sources */,
 				991AFCA32250AFDE00AD6614 /* SelectOilTypeCell.swift in Sources */,
@@ -1445,6 +1484,7 @@
 				99DC26002246DA17009E0A15 /* RoundView.swift in Sources */,
 				993BA12621585ACA00DB95EF /* LocationManager.swift in Sources */,
 				99986003227E2A0900113536 /* CLLocationDistanceExtension.swift in Sources */,
+				99FE291B235CD92C00C7DB34 /* Links.swift in Sources */,
 				998984DE229D0FBD00E4B25A /* ForgotPasswordViewController.swift in Sources */,
 				991AFC92224FF01500AD6614 /* TimeSlotCollectionViewCell.swift in Sources */,
 				997DBC6621995B320080F42C /* MechanicViewController.swift in Sources */,
@@ -1571,7 +1611,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1628,7 +1668,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

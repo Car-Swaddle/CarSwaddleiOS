@@ -94,7 +94,7 @@
                     <rect key="frame" x="213" y="134" width="30" height="32"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                     <state key="normal" title="Edit">
-                        <color key="titleColor" name="viewBackgroundColor1"/>
+                        <color key="titleColor" name="action"/>
                     </state>
                     <connections>
                         <action selector="didSelectEditButton" destination="iN0-l3-epB" eventType="touchUpInside" id="Kwg-tI-MP2"/>
@@ -109,7 +109,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" name="secondaryBackgroundColor"/>
+            <color key="backgroundColor" name="secondaryContent"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="c9V-mf-iJU" secondAttribute="bottom" constant="16" id="Bms-dl-ila"/>
                 <constraint firstItem="c9V-mf-iJU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="FW8-aE-Zrn"/>
@@ -139,17 +139,17 @@
     <resources>
         <image name="star_filled_same_color_border" width="19" height="18"/>
         <image name="star_inactive_gray_border" width="19" height="18"/>
+        <namedColor name="action">
+            <color red="0.30199999999999999" green="0.48199999999999998" blue="0.996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="detailTextColor">
             <color white="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
-        <namedColor name="secondaryBackgroundColor">
-            <color white="0.9779999852180481" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="secondaryContent">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="titleTextColor">
-            <color white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </namedColor>
-        <namedColor name="viewBackgroundColor1">
-            <color red="0.27058823529411763" green="0.38039215686274508" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>

@@ -47,11 +47,6 @@
 #import "STPToken.h"
 #import "UIImage+Stripe.h"
 
-#if __has_include("Fabric.h")
-#import "Fabric+FABKits.h"
-#import "FABKitProtocol.h"
-#endif
-
 #ifdef STP_STATIC_LIBRARY_BUILD
 #import "STPCategoryLoader.h"
 #endif
@@ -74,6 +69,7 @@ static NSString * const APIEndpoint3DS2 = @"3ds2";
 static NSArray<PKPaymentNetwork> *_additionalEnabledApplePayNetworks;
 
 + (void)setDefaultPublishableKey:(NSString *)publishableKey {
+    [STPAPIClient validateKey:publishableKey];
     [STPPaymentConfiguration sharedConfiguration].publishableKey = publishableKey;
 }
 
@@ -85,11 +81,7 @@ static NSArray<PKPaymentNetwork> *_additionalEnabledApplePayNetworks;
 
 #pragma mark - STPAPIClient
 
-#if __has_include("Fabric.h")
-@interface STPAPIClient ()<FABKit>
-#else
 @interface STPAPIClient()
-#endif
 
 @property (nonatomic, strong, readwrite) NSMutableDictionary<NSString *,NSObject *> *sourcePollers;
 @property (nonatomic, strong, readwrite) dispatch_queue_t sourcePollersQueue;
@@ -175,6 +167,7 @@ static NSArray<PKPaymentNetwork> *_additionalEnabledApplePayNetworks;
 }
 
 - (void)setPublishableKey:(NSString *)publishableKey {
+    [self.class validateKey:publishableKey];
     self.configuration.publishableKey = [publishableKey copy];
     self.apiKey = [publishableKey copy];
 }
@@ -205,10 +198,10 @@ static NSArray<PKPaymentNetwork> *_additionalEnabledApplePayNetworks;
 #pragma clang diagnostic ignored "-Wunused-variable"
 + (void)validateKey:(NSString *)publishableKey {
     NSCAssert(publishableKey != nil && ![publishableKey isEqualToString:@""],
-              @"You must use a valid publishable key to create a token. For more info, see https://stripe.com/docs/stripe.js");
+              @"You must use a valid publishable key. For more info, see https://stripe.com/docs/keys");
     BOOL secretKey = [publishableKey hasPrefix:@"sk_"];
     NSCAssert(!secretKey,
-              @"You are using a secret key to create a token, instead of the publishable one. For more info, see https://stripe.com/docs/stripe.js");
+              @"You are using a secret key. Use a publishable key instead. For more info, see https://stripe.com/docs/keys");
 #ifndef DEBUG
     if ([publishableKey.lowercaseString hasPrefix:@"pk_test"]) {
         FAUXPAS_IGNORED_IN_METHOD(NSLogUsed);
@@ -257,37 +250,6 @@ static NSArray<PKPaymentNetwork> *_additionalEnabledApplePayNetworks;
     }
     return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:[details copy] options:(NSJSONWritingOptions)kNilOptions error:NULL] encoding:NSUTF8StringEncoding];
 }
-
-#pragma mark Fabric
-
-#if __has_include("Fabric.h")
-
-+ (NSString *)bundleIdentifier {
-    return @"com.stripe.stripe-ios";
-}
-
-+ (NSString *)kitDisplayVersion {
-    return STPSDKVersion;
-}
-
-+ (void)initializeIfNeeded {
-    Class fabric = NSClassFromString(@"Fabric");
-    if (fabric) {
-        // The app must be using Fabric, as it exists at runtime. We fetch our default publishable key from Fabric.
-        NSDictionary *fabricConfiguration = [fabric configurationDictionaryForKitClass:[STPAPIClient class]];
-        NSString *publishableKey = fabricConfiguration[@"publishable"];
-        if (!publishableKey) {
-            NSLog(@"Configuration dictionary returned by Fabric was nil, or doesn't have publishableKey. Can't initialize Stripe.");
-            return;
-        }
-        [self validateKey:publishableKey];
-        [Stripe setDefaultPublishableKey:publishableKey];
-    } else {
-        NSCAssert(fabric, @"initializeIfNeeded method called from a project that doesn't have Fabric.");
-    }
-}
-
-#endif
 
 @end
 

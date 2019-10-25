@@ -19,7 +19,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vnc-oc-k6a">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" name="primaryBackgroundColor"/>
+                                <color key="backgroundColor" name="background"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6WY-gt-1wC" customClass="ActionButton" customModule="CarSwaddleUI">
                                 <rect key="frame" x="118" y="603" width="140" height="44"/>
@@ -27,7 +27,7 @@
                                 <state key="normal" title="Schedule oil change"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.88303257040000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="vnc-oc-k6a" secondAttribute="trailing" id="7cY-we-jAD"/>
                             <constraint firstItem="vnc-oc-k6a" firstAttribute="leading" secondItem="MzW-wa-qbe" secondAttribute="leading" id="IV7-6d-FLo"/>
@@ -66,8 +66,8 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="primaryBackgroundColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        <namedColor name="background">
+            <color white="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>

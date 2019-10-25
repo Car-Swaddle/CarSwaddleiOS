@@ -1,9 +1,9 @@
 {
-  "commitish" : "4000709bb3b9349a8ecb89719299359800bea590",
+  "commitish" : "fd4817bee31e62ee23931ded2ef75a8c02bf194b",
   "iOS" : [
     {
       "name" : "NetworkRequest",
-      "hash" : "63c7ef2addc3af862939f5fcb5584f3ade565fd3c0128cfca7f08ce0b9fabf29",
+      "hash" : "9971bcb1928c673356844965d3994464093f5eb4871b8a4200e999f1ccefd466",
       "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
     }
   ]

@@ -9,14 +9,14 @@
 import UIKit
 import Stripe
 
-class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
+class CheckoutViewController: UIViewController {
 
     // 1) To get started with this demo, first head to https://dashboard.stripe.com/account/apikeys
     // and copy your "Test Publishable Key" (it looks like pk_test_abcdef) into the line below.
     var stripePublishableKey = ""
 
     // 2) Next, optionally, to have this demo save your user's payment details, head to
-    // https://github.com/stripe/example-ios-backend/tree/v16.0.0, click "Deploy to Heroku", and follow
+    // https://github.com/stripe/example-ios-backend/tree/v18.0.0, click "Deploy to Heroku", and follow
     // the instructions (don't worry, it's free). Replace nil on the line below with your
     // Heroku URL (it looks like https://blazing-sunrise-1234.herokuapp.com ).
     var backendBaseURL: String? = nil
@@ -27,10 +27,10 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
 
     // These values will be shown to the user when they purchase with Apple Pay.
     let companyName = "Emoji Apparel"
-    let paymentCurrency = "usd"
+    let paymentCurrency: String
 
     let paymentContext: STPPaymentContext
-
+    
     let theme: STPTheme
     let tableView: UITableView
     let paymentRow: CheckoutRowView
@@ -40,6 +40,7 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
     let rowHeight: CGFloat = 52
     let activityIndicator = UIActivityIndicatorView(style: .gray)
     let numberFormatter: NumberFormatter
+    let country: String
     var products: [Product]
     var paymentInProgress: Bool = false {
         didSet {
@@ -48,8 +49,7 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
                     self.activityIndicator.startAnimating()
                     self.activityIndicator.alpha = 1
                     self.buyButton.alpha = 0
-                }
-                else {
+                } else {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.alpha = 0
                     self.buyButton.alpha = 1
@@ -84,7 +84,9 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
         config.requiredShippingAddressFields = settings.requiredShippingAddressFields
         config.shippingType = settings.shippingType
         config.additionalPaymentOptions = settings.additionalPaymentOptions
-
+        self.country = settings.country
+        self.paymentCurrency = settings.currency
+        
         let customerContext = STPCustomerContext(keyProvider: MyAPIClient.sharedClient)
         let paymentContext = STPPaymentContext(customerContext: customerContext,
                                                configuration: config,
@@ -132,13 +134,8 @@ See https://stripe.com/docs/testing.
         }
         self.totalRow = CheckoutRowView(title: "Total", detail: "", tappable: false)
         self.buyButton = BuyButton(enabled: false, title: "Buy")
-        var localeComponents: [String: String] = [
-            NSLocale.Key.currencyCode.rawValue: self.paymentCurrency,
-        ]
-        localeComponents[NSLocale.Key.languageCode.rawValue] = NSLocale.preferredLanguages.first
-        let localeID = NSLocale.localeIdentifier(fromComponents: localeComponents)
         let numberFormatter = NumberFormatter()
-        numberFormatter.locale = Locale(identifier: localeID)
+        numberFormatter.locale = settings.currencyLocale
         numberFormatter.numberStyle = .currency
         numberFormatter.usesGroupingSeparator = true
         self.numberFormatter = numberFormatter
@@ -247,61 +244,50 @@ See https://stripe.com/docs/testing.
         self.paymentInProgress = true
         self.paymentContext.requestPayment()
     }
+}
 
-    // MARK: STPPaymentContextDelegate
+// MARK: STPPaymentContextDelegate
+extension CheckoutViewController: STPPaymentContextDelegate {
+    enum CheckoutError: Error {
+        case unknown
 
+        var localizedDescription: String {
+            switch self {
+            case .unknown:
+                return "Unknown error"
+            }
+        }
+    }
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPPaymentStatusBlock) {
-        MyAPIClient.sharedClient.createAndConfirmPaymentIntent(paymentResult,
-                                                               amount: self.paymentContext.paymentAmount,
-                                                               returnURL: "payments-example://stripe-redirect",
-                                                               shippingAddress: self.paymentContext.shippingAddress,
-                                                               shippingMethod: self.paymentContext.selectedShippingMethod) { (clientSecret, error) in
-                                                                guard let clientSecret = clientSecret else {
-                                                                    completion(.error, error ?? NSError(domain: StripeDomain, code: 123, userInfo: [NSLocalizedDescriptionKey: "Unable to parse clientSecret from response"]))
-                                                                    return
-                                                                }
-                                                                STPPaymentHandler.shared().handleNextAction(forPayment: clientSecret, authenticationContext: paymentContext, returnURL: "payments-example://stripe-redirect") { (status, handledPaymentIntent, actionError) in
-                                                                    switch (status) {
-                                                                    case .succeeded:
-                                                                        guard let handledPaymentIntent = handledPaymentIntent else {
-                                                                            completion(.error, actionError ?? NSError(domain: StripeDomain, code: 123, userInfo: [NSLocalizedDescriptionKey: "Unknown failure"]))
-                                                                            return
-                                                                        }
-                                                                        if (handledPaymentIntent.status == .requiresConfirmation) {
-                                                                            // Confirm again on the backend
-                                                                            MyAPIClient.sharedClient.confirmPaymentIntent(handledPaymentIntent) { clientSecret, error in
-                                                                                guard let clientSecret = clientSecret else {
-                                                                                    completion(.error, error ?? NSError(domain: StripeDomain, code: 123, userInfo: [NSLocalizedDescriptionKey: "Unable to parse clientSecret from response"]))
-                                                                                    return
-                                                                                }
-                                                                                
-                                                                                // Retrieve the Payment Intent and check the status for success
-                                                                                STPAPIClient.shared().retrievePaymentIntent(withClientSecret: clientSecret) { (paymentIntent, retrieveError) in
-                                                                                    guard let paymentIntent = paymentIntent else {
-                                                                                        completion(.error, retrieveError ?? NSError(domain: StripeDomain, code: 123, userInfo: [NSLocalizedDescriptionKey: "Unable to parse payment intent from response"]))
-                                                                                        return
-                                                                                    }
-                                                                                    
-                                                                                    if paymentIntent.status == .succeeded {
-                                                                                        completion(.success, nil)
-                                                                                    }
-                                                                                    else {
-                                                                                        completion(.error, NSError(domain: StripeDomain, code: 123, userInfo: [NSLocalizedDescriptionKey: "Authentication failed."]))
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        } else {
-                                                                            // Success
-                                                                            completion(.success, nil)
-                                                                        }
-                                                                    case .failed:
-                                                                        completion(.error, actionError)
-                                                                    case .canceled:
-                                                                        completion(.userCancellation, nil)
-                                                                    @unknown default:
-                                                                        completion(.error, nil)
-                                                                    }
-                                                                }
+        // Create the PaymentIntent on the backend
+        // To speed this up, create the PaymentIntent earlier in the checkout flow and update it as necessary (e.g. when the cart subtotal updates or when shipping fees and taxes are calculated, instead of re-creating a PaymentIntent for every payment attempt.
+        MyAPIClient.sharedClient.createPaymentIntent(products: self.products, shippingMethod: paymentContext.selectedShippingMethod, country: self.country) { result in
+            switch result {
+            case .success(let clientSecret):
+                // Confirm the PaymentIntent
+                let paymentIntentParams = STPPaymentIntentParams(clientSecret: clientSecret)
+                paymentIntentParams.configure(with: paymentResult)
+                paymentIntentParams.returnURL = "payments-example://stripe-redirect"
+                STPPaymentHandler.shared().confirmPayment(withParams: paymentIntentParams, authenticationContext: paymentContext) { status, paymentIntent, error in
+                    switch status {
+                    case .succeeded:
+                        // Our example backend asynchronously fulfills the customer's order via webhook
+                        // See https://stripe.com/docs/payments/payment-intents/ios#fulfillment
+                        completion(.success, nil)
+                    case .failed:
+                        completion(.error, error)
+                    case .canceled:
+                        completion(.userCancellation, nil)
+                    @unknown default:
+                        completion(.error, nil)
+                    }
+                }
+            case .failure(let error):
+                // A real app should retry this request if it was a network error.
+                print("Failed to create a Payment Intent: \(error)")
+                completion(.error, error)
+                break
+            }
         }
     }
 
@@ -331,14 +317,12 @@ See https://stripe.com/docs/testing.
         self.paymentRow.loading = paymentContext.loading
         if let paymentOption = paymentContext.selectedPaymentOption {
             self.paymentRow.detail = paymentOption.label
-        }
-        else {
+        } else {
             self.paymentRow.detail = "Select Payment"
         }
         if let shippingMethod = paymentContext.selectedShippingMethod {
             self.shippingRow?.detail = shippingMethod.label
-        }
-        else {
+        } else {
             self.shippingRow?.detail = "Select address"
         }
         self.totalRow.detail = self.numberFormatter.string(from: NSNumber(value: Float(self.paymentContext.paymentAmount)/100))!
@@ -386,14 +370,13 @@ See https://stripe.com/docs/testing.
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             if address.country == nil || address.country == "US" {
                 completion(.valid, nil, [upsGround, fedEx], fedEx)
-            }
-            else if address.country == "AQ" {
+            } else if address.country == "AQ" {
                 let error = NSError(domain: "ShippingError", code: 123, userInfo: [NSLocalizedDescriptionKey: "Invalid Shipping Address",
                                                                                    NSLocalizedFailureReasonErrorKey: "We can't ship to this country."])
                 completion(.invalid, error, nil, nil)
-            }
-            else {
+            } else {
                 fedEx.amount = 20.99
+                fedEx.identifier = "fedex_world"
                 completion(.valid, nil, [upsWorldwide, fedEx], fedEx)
             }
         }
@@ -413,7 +396,7 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let product = self.products[indexPath.item]
-        cell.configure(with: product)
+        cell.configure(with: product, numberFormatter: self.numberFormatter)
         cell.selectionStyle = .none
         return cell
     }

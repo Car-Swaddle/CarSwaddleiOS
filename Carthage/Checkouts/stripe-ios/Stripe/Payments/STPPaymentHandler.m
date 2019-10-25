@@ -16,6 +16,7 @@
 #import "STPAnalyticsClient.h"
 #import "STPAPIClient+Private.h"
 #import "STPAuthenticationContext.h"
+#import "STPLocalizationUtils.h"
 #import "STPPaymentIntent.h"
 #import "STPPaymentIntentLastPaymentError.h"
 #import "STPPaymentIntentParams.h"
@@ -483,7 +484,7 @@ withAuthenticationContext:(id<STPAuthenticationContext>)authenticationContext
                                                                 return;
                                                             }
 
-                                                            if (!aRes.isChallengeMandated) {
+                                                            if (!aRes.isChallengeRequired) {
                                                                 // Challenge not required, finish the flow.
                                                                 [transaction close];
                                                                 [[STPAnalyticsClient sharedClient] log3DS2FrictionlessFlowWithConfiguration:self->_currentAction.apiClient.configuration
@@ -614,23 +615,19 @@ withAuthenticationContext:(id<STPAuthenticationContext>)authenticationContext
         }
     };
 
-    if (@available(iOS 10, *)) {
-        [[UIApplication sharedApplication] openURL:url
-                                           options:@{UIApplicationOpenURLOptionUniversalLinksOnly: @(YES)}
-                                 completionHandler:^(BOOL success){
-                                     if (!success) {
-                                         // no app installed, launch safari view controller
-                                         presentSFViewControllerBlock();
-                                     } else {
-                                         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                                                  selector:@selector(_handleWillForegroundNotification)
-                                                                                      name:UIApplicationWillEnterForegroundNotification
-                                                                                    object:nil];
-                                     }
-                                 }];
-    } else {
-        presentSFViewControllerBlock();
-    }
+    [[UIApplication sharedApplication] openURL:url
+                                       options:@{UIApplicationOpenURLOptionUniversalLinksOnly: @(YES)}
+                             completionHandler:^(BOOL success){
+                                 if (!success) {
+                                     // no app installed, launch safari view controller
+                                     presentSFViewControllerBlock();
+                                 } else {
+                                     [[NSNotificationCenter defaultCenter] addObserver:self
+                                                                              selector:@selector(_handleWillForegroundNotification)
+                                                                                  name:UIApplicationWillEnterForegroundNotification
+                                                                                object:nil];
+                                 }
+                             }];
 }
 
 /**
@@ -657,9 +654,9 @@ withAuthenticationContext:(id<STPAuthenticationContext>)authenticationContext
     
     // Is it the Apple Pay VC?
     if ([presentingViewController isKindOfClass:[PKPaymentAuthorizationViewController class]]) {
-        // We can't present over Apple Pay, user must implement prepareAuthenticationContextForPresentation: to dismiss it.
+        // Trying to present over the Apple Pay sheet silently fails. Authentication should never happen if you're paying with Apple Pay.
         canPresent = NO;
-        errorMessage = @"authenticationPresentingViewController is a PKPaymentAuthorizationViewController, which cannot be presented over. Dismiss it in `prepareAuthenticationContextForPresentation:`. You should probably return the UIViewController that presented the PKPaymentAuthorizationViewController in `authenticationPresentingViewController` instead.";
+        errorMessage = @"authenticationPresentingViewController is a PKPaymentAuthorizationViewController, which cannot be presented over.";
     }
     
     // Is it already presenting something?
@@ -677,6 +674,10 @@ withAuthenticationContext:(id<STPAuthenticationContext>)authenticationContext
 #pragma mark - SFSafariViewControllerDelegate
 
 - (void)safariViewControllerDidFinish:(SFSafariViewController * __unused)controller {
+    id<STPAuthenticationContext> context = self->_currentAction.authenticationContext;
+    if ([context respondsToSelector:@selector(authenticationContextWillDismissViewController:)]) {
+        [context authenticationContextWillDismissViewController:self.safariViewController];
+    }
     self.safariViewController = nil;
     [[STPURLCallbackHandler shared] unregisterListener:self];
     [self _retrieveAndCheckIntentForCurrentAction];
@@ -685,6 +686,11 @@ withAuthenticationContext:(id<STPAuthenticationContext>)authenticationContext
 #pragma mark - STPURLCallbackListener
 
 - (BOOL)handleURLCallback:(NSURL * __unused)url {
+    id<STPAuthenticationContext> context = self->_currentAction.authenticationContext;
+    if ([context respondsToSelector:@selector(authenticationContextWillDismissViewController:)]) {
+        [context authenticationContextWillDismissViewController:self.safariViewController];
+    }
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
     [[STPURLCallbackHandler shared] unregisterListener:self];
     [self.safariViewController dismissViewControllerAnimated:YES completion:^{
@@ -818,10 +824,10 @@ withAuthenticationContext:(id<STPAuthenticationContext>)authenticationContext
     switch (errorCode) {
         // 3DS(2) flow expected user errors
         case STPPaymentHandlerNotAuthenticatedErrorCode:
-            userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(@"We are unable to authenticate your payment method. Please choose a different payment method and try again.", @"Error when 3DS2 authentication failed (e.g. customer entered the wrong code)");
+            userInfo[NSLocalizedDescriptionKey] = STPLocalizedString(@"We are unable to authenticate your payment method. Please choose a different payment method and try again.", @"Error when 3DS2 authentication failed (e.g. customer entered the wrong code)");
             break;
         case STPPaymentHandlerTimedOutErrorCode:
-            userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(@"Timed out authenticating your payment method -- try again", @"Error when 3DS2 authentication timed out.");
+            userInfo[NSLocalizedDescriptionKey] = STPLocalizedString(@"Timed out authenticating your payment method -- try again", @"Error when 3DS2 authentication timed out.");
             break;
 
         // PaymentIntent has an unexpected/unknown status

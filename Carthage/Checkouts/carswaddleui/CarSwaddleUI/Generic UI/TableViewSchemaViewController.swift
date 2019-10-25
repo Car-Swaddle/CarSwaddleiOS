@@ -27,7 +27,7 @@ open class TableViewSchemaController: TableViewController {
     }
     
     public struct Section {
-        let rows: [TableViewControllerRow]
+        public let rows: [TableViewControllerRow]
         
         public init(rows: [TableViewControllerRow]) {
             self.rows = rows

@@ -29,7 +29,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" verticalCompressionResistancePriority="800" text="Select a Time Slot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jb3-xh-0kA">
                         <rect key="frame" x="16" y="24" width="341" height="20"/>
                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" name="text"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TXa-9v-NCN">
@@ -41,12 +41,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No times available, please select another day" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7U-v1-zVF">
                                 <rect key="frame" x="0.0" y="164" width="357" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                <color key="textColor" name="textColor3"/>
+                                <color key="textColor" name="secondaryText"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" name="contentBehindContent"/>
                 <constraints>
                     <constraint firstItem="TXa-9v-NCN" firstAttribute="top" secondItem="Jb3-xh-0kA" secondAttribute="bottom" constant="16" id="8cm-mz-Xui"/>
                     <constraint firstItem="TXa-9v-NCN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="91K-Vj-mb9"/>
@@ -57,6 +58,7 @@
                     <constraint firstAttribute="bottom" secondItem="TXa-9v-NCN" secondAttribute="bottom" constant="16" id="v0X-jV-82S"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="contentBehindContent"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="headerLabel" destination="Jb3-xh-0kA" id="nP3-Ng-nlH"/>
@@ -67,8 +69,14 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="textColor3">
-            <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="contentBehindContent">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="secondaryText">
+            <color white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="text">
+            <color white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>

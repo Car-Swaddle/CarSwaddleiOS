@@ -31,6 +31,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="WTG-dM-C24">
                                         <rect key="frame" x="0.0" y="52.5" width="18" height="18"/>
+                                        <color key="tintColor" name="titleTextColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="GaL-on-34Q"/>
                                             <constraint firstAttribute="width" constant="18" id="Q82-Rk-pz6"/>
@@ -117,6 +118,9 @@
     </objects>
     <resources>
         <image name="map" width="11" height="11"/>
+        <namedColor name="titleTextColor">
+            <color white="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
         <namedColor name="veryLightGray">
             <color white="0.9779999852180481" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>

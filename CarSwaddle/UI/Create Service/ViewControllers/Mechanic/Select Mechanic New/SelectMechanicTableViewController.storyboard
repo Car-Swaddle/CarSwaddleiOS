@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +19,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q7y-aI-l5n">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="background"/>
                                 <connections>
                                     <outlet property="dataSource" destination="bu6-u9-KTX" id="qFG-lg-si2"/>
                                     <outlet property="delegate" destination="bu6-u9-KTX" id="KGn-gH-Cuo"/>
@@ -30,7 +31,7 @@
                                 <state key="normal" title="Confirm mechanic and time"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="q7y-aI-l5n" firstAttribute="top" secondItem="bcO-Ri-VSE" secondAttribute="top" id="PI6-QQ-rsX"/>
                             <constraint firstItem="q7y-aI-l5n" firstAttribute="leading" secondItem="bcO-Ri-VSE" secondAttribute="leading" id="VgM-W9-r8N"/>
@@ -49,4 +50,9 @@
             <point key="canvasLocation" x="127.53623188405798" y="156.69642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="background">
+            <color white="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
 </document>

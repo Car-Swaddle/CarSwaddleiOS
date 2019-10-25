@@ -9,6 +9,8 @@
 		<string>webcredentials:api.carswaddle.com</string>
 		<string>applinks:api.carswaddle.com</string>
 		<string>applinks:go.carswaddle.com</string>
+		<string>applinks:api.staging.carswaddle.com</string>
+		<string>webcredentials:api.staging.carswaddle.com</string>
 	</array>
 	<key>com.apple.developer.in-app-payments</key>
 	<array>

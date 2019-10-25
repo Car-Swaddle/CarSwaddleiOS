@@ -95,7 +95,7 @@ open class AutoServiceProgressCircleView: RoundLabeledView {
     
     private func configureForComplete() {
         label.textColor = .white
-        backgroundColor = .secondary
+        backgroundColor = .action
         layer.borderColor = UIColor.clear.cgColor
         layer.borderWidth = 0
     }

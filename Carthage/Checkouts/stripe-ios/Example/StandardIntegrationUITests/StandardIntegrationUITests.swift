@@ -17,7 +17,7 @@ class StandardIntegrationUITests: XCTestCase {
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         let app = XCUIApplication()
         let stripePublishableKey = "pk_test_6Q7qTzl8OkUj5K5ArgayVsFD00Sa5AHMj3"
-        let backendBaseURL = "https://stripe-mobile-test-backend.herokuapp.com/"
+        let backendBaseURL = "https://stripe-mobile-test-backend-17.herokuapp.com/"
         app.launchArguments.append(contentsOf: ["-StripePublishableKey", stripePublishableKey, "-StripeBackendBaseURL", backendBaseURL])
         app.launch()
     }
@@ -28,7 +28,7 @@ class StandardIntegrationUITests: XCTestCase {
     
     func disableAddressEntry(_ app: XCUIApplication) {
         app.navigationBars["Emoji Apparel"].buttons["Settings"].tap()
-        app.tables.children(matching: .cell).element(boundBy: 8).staticTexts["None"].tap()
+        app.tables.children(matching: .cell).element(boundBy: 10).staticTexts["None"].tap()
         app.navigationBars["Settings"].buttons["Done"].tap()
     }
     

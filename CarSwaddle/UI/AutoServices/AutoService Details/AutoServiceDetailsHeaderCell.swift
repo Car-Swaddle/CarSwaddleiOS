@@ -102,7 +102,7 @@ private extension PillView {
             backgroundColor = .blue
             text = NSLocalizedString("In Progress", comment: "Status")
         case .scheduled:
-            backgroundColor = .secondary
+            backgroundColor = .action
             text = NSLocalizedString("Scheduled", comment: "Status")
         }
     }

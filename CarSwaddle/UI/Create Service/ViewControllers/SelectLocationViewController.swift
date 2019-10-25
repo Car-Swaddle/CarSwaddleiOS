@@ -34,9 +34,7 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     static func create(delegate: SelectLocationViewControllerDelegate, autoService: AutoService) -> SelectLocationViewController {
         let viewController = SelectLocationViewController.viewControllerFromStoryboard()
         viewController.autoService = autoService
-//        viewController.location = location
         viewController.delegate = delegate
-//        viewController.updateLocation()
         return viewController
     }
     
@@ -49,38 +47,20 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     @IBOutlet private weak var centerView: UIImageView!
     
     private lazy var contentAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: confirmButton)
-    private lazy var locationSearchResultsViewController = LocationSearchResultsViewController.viewControllerFromStoryboard()
+    private var locationSearchResultsViewController = LocationSearchResultsViewController.viewControllerFromStoryboard()
     
     private var didUpdateToUserLocation: Bool = false
     
-//    private lazy var searchBar: UISearchBar = {
-//        let searchBar = UISearchBar()
-//        searchBar.delegate = self
-//        searchBar.showsCancelButton = false
-//        let placeholder = NSLocalizedString("Search Location", comment: "Placeholder text")
-//        searchBar.placeholder = placeholder
-//        searchBar.textField?.borderColor = .viewBackgroundColor1
-//        searchBar.textField?.borderWidth = UIView.hairlineLength
-//        searchBar.textField?.cornerRadius = 7
-//        return searchBar
-//    }()
-    
     private lazy var searchController: UISearchController = {
-        let searchController = UISearchController(searchResultsController: nil)
-//        _ = locationSearchResultsViewController.view
+        let searchController = UISearchController(searchResultsController: locationSearchResultsViewController)
         searchController.delegate = self
-        searchController.definesPresentationContext = false
-        searchController.hidesNavigationBarDuringPresentation = false
-//        let searchBar = UISearchBar()
         searchController.searchBar.delegate = self
         searchController.searchBar.showsCancelButton = false
         let placeholder = NSLocalizedString("Search Location", comment: "Placeholder text")
         searchController.searchBar.placeholder = placeholder
-        searchController.searchBar.textField?.borderColor = .viewBackgroundColor1
-        searchController.searchBar.textField?.borderWidth = UIView.hairlineLength
-        searchController.searchBar.textField?.cornerRadius = 7
-        searchController.dimsBackgroundDuringPresentation = false
-//        return searchBar
+        searchController.searchBar.searchTextField.borderColor = .secondaryBackground
+        searchController.searchBar.searchTextField.borderWidth = UIView.hairlineLength
+        searchController.searchBar.searchTextField.cornerRadius = 7
         return searchController
     }()
     
@@ -88,12 +68,6 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         super.viewDidLoad()
         
         locationManager.promptUserForLocationAccess()
-        
-//        searchController.searchBar = self.searchBar
-        
-//        let searchController = UISearchController(searchResultsController: locationSearchResultsViewController)
-//        searchController.delegate = self
-//        searchController.definesPresentationContext = false
         
         locationSearchResultsViewController.delegate = self
         
@@ -121,27 +95,19 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         title = NSLocalizedString("Oil change location", comment: "")
         
         confirmButton.titleLabel?.numberOfLines = 0
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
         
-        navigationController?.view.setNeedsLayout()
-        navigationController?.view.layoutIfNeeded()
+        pocketController?.bottomViewControllerHeight = 120
     }
     
-    private var prev: NSLayoutConstraint? {
-        didSet {
-//            if let prev = prev {
-//                centerView.removeConstraint(prev)
-//            }
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        styleView()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        navigationController?.view.setNeedsLayout()
+//        navigationController?.view.layoutIfNeeded()
+//
+//        pocketController?.bottomViewController?.view.setNeedsLayout()
+//        pocketController?.bottomViewController?.view.layoutIfNeeded()
+//    }
     
     override func willMove(toParent parent: UIViewController?) {
         super.willMove(toParent: parent)
@@ -155,17 +121,11 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
     }
     
     private var dismissBarButton: UIBarButtonItem {
-        return UIBarButtonItem(title: NSLocalizedString("Dismiss", comment: "Title of cancel button"), style: .plain, target: self, action: #selector(SelectLocationViewController.didSelectCancel))
+        return UIBarButtonItem(title: NSLocalizedString("Dismiss", comment: "Title of cancel button"), style: .plain, target: self, action: #selector(SelectLocationViewController.didSelectDismiss))
     }
     
-    @objc private func didSelectCancel() {
+    @objc private func didSelectDismiss() {
         dismiss(animated: true, completion: nil)
-    }
-    
-    private func styleView() {
-//        confirmButton.layer.borderColor = UIColor.gray.cgColor
-//        confirmButton.layer.borderWidth = UIView.hairlineLength // 1/UIScreen.main.scale
-//        confirmButton.layer.cornerRadius = confirmButton.frame.height/2
     }
     
     @IBAction private func didSelectConfirm() {
@@ -199,15 +159,6 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
             logParameters[userLocationKey] = false
         }
         Analytics.logEvent(AnalyticsEventSetCheckoutOption, parameters: logParameters)
-    }
-    
-    private func updateLocation() {
-//        guard location == nil else { return }
-//        let newLocation = Location(context: store.mainContext)
-//        newLocation.autoService = self.autoService
-//        newLocation.latitude = defaultCoordinates.latitude
-//        newLocation.longitude = defaultCoordinates.longitude
-//        self.location = newLocation
     }
     
     private func setLocation(with placemark: CLPlacemark) {
@@ -269,11 +220,11 @@ extension SelectLocationViewController: MKLocalSearchCompleterDelegate {
 extension SelectLocationViewController: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, LocationSearchResultsDelegate {
     
     func willPresentSearchController(_ searchController: UISearchController) {
-//        navigationItem.setLeftBarButton(nil, animated: true)
+        
     }
     
     func willDismissSearchController(_ searchController: UISearchController) {
-//        navigationItem.setLeftBarButton(dismissBarButton, animated: true)
+        
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -281,20 +232,12 @@ extension SelectLocationViewController: UISearchControllerDelegate, UISearchResu
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        navigationItem.setLeftBarButton(nil, animated: true)
-        navigationItem.leftBarButtonItem?.isEnabled = false
         searchBar.setShowsCancelButton(true, animated: true)
-        if locationSearchResultsViewController.parent == nil {
-            addLocationSearchResultsViewController()
-        }
         
         locationSearchResultsViewController.results = []
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if locationSearchResultsViewController.parent == nil {
-            addLocationSearchResultsViewController()
-        }
         searchCompleter.queryFragment = searchBar.text ?? ""
         if searchBar.text?.isEmpty == true {
             locationSearchResultsViewController.results = []
@@ -303,37 +246,15 @@ extension SelectLocationViewController: UISearchControllerDelegate, UISearchResu
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
-        navigationItem.leftBarButtonItem?.isEnabled = true
-//        navigationItem.setLeftBarButton(dismissBarButton, animated: true)
-//        searchController.isActive = false
-        searchController.dismiss(animated: true, completion: nil)
-        removeLocationSearchResultsViewController()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    private func addLocationSearchResultsViewController() {
-        addChild(locationSearchResultsViewController)
-        view.addSubview(locationSearchResultsViewController.view)
-        locationSearchResultsViewController.view.pinFrameToSuperViewBounds()
-        locationSearchResultsViewController.didMove(toParent: self)
-        locationSearchResultsViewController.delegate = self
-    }
-    
-    private func removeLocationSearchResultsViewController() {
-        locationSearchResultsViewController.willMove(toParent: nil)
-        locationSearchResultsViewController.view.removeFromSuperview()
-        locationSearchResultsViewController.removeFromParent()
+        
     }
     
     func didSelect(result: MKLocalSearchCompletion, viewController: LocationSearchResultsViewController) {
         searchController.searchBar.text = result.title
-        searchController.searchBar.resignFirstResponder()
-//        searchController.isActive = false
-//        searchController.dismiss(animated: true, completion: nil)
-        removeLocationSearchResultsViewController()
+        searchController.isActive = false
         requestLocationSearchCoordinates(address: result.addressDescription) { [weak self] finalCoordinate in
             guard let self = self else { return }
             if let finalCoordinate = finalCoordinate {
@@ -358,7 +279,7 @@ extension SelectLocationViewController: UISearchControllerDelegate, UISearchResu
     }
     
     func didTapView(_ viewController: LocationSearchResultsViewController) {
-        searchController.searchBar.resignFirstResponder()
+        searchController.isActive = false
     }
     
     private func requestLocationSearchCoordinates(address: String, completion: @escaping (_ coordinate: CLLocationCoordinate2D?) -> Void) {
@@ -456,19 +377,28 @@ extension UIView {
 
 extension UISearchBar {
     
-    public var textField: UITextField? {
-        return firstSubview(of: UITextField.self)
-    }
+//    public var textField: UITextField? {
+//        return firstSubview(of: UITextField.self)
+//    }
+//
+//    public func setTextFieldBackgroundColor(color: UIColor) {
+//        guard let textField = firstSubview(of: UITextField.self) else { return }
+//        switch searchBarStyle {
+//        case .minimal:
+//            textField.layer.backgroundColor = color.cgColor
+//        case .prominent, .default:
+//            textField.backgroundColor = color
+//        @unknown default: break
+//        }
+//    }
     
-    public func setTextFieldBackgroundColor(color: UIColor) {
-        guard let textField = firstSubview(of: UITextField.self) else { return }
-        switch searchBarStyle {
-        case .minimal:
-            textField.layer.backgroundColor = color.cgColor
-        case .prominent, .default:
-            textField.backgroundColor = color
-        @unknown default: break
-        }
+}
+
+
+extension UIViewController {
+    
+    public var pocketController: PocketController? {
+        return navigationController as? PocketController
     }
     
 }

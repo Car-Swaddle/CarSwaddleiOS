@@ -20,7 +20,7 @@ final class LocationSearchResultsViewController: UIViewController, StoryboardIns
     var results: [MKLocalSearchCompletion] = [] {
         didSet {
             assert(Thread.isMainThread, "Must be on main thread to set results")
-            tableView.reloadData()
+            tableView?.reloadData()
         }
     }
     

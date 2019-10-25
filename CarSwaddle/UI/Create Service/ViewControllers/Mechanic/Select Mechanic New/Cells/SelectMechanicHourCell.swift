@@ -323,7 +323,6 @@ class HourCollectionView: DynamicCollectionView, UICollectionViewDelegate, UICol
 
 
 
-
 open class DynamicCollectionView: UICollectionView {
     
     open override func layoutSubviews() {

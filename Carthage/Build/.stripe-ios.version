@@ -8,11 +8,11 @@
   "tvOS" : [
 
   ],
-  "commitish" : "v17.0.1",
+  "commitish" : "v18.0.0",
   "iOS" : [
     {
       "name" : "Stripe",
-      "hash" : "3d832dcb161c925ff9dc84cf210845856ce0572c3c11ffbd0b5ae2edc7b50d0d"
+      "hash" : "9567e6222927fdaa9bece858db425e9963590cb10ae76d2d0e3eb5d524cbcf3f"
     }
   ]
 }

@@ -123,9 +123,9 @@ extension SelectMechanicDayCell: FSCalendarDelegateAppearance {
         if Calendar.current.isDateInToday(date) {
             return .alternateSelectionColor
         } else if !isAvailableDate(date) {
-            return .disabledTextColor
+            return .disabledText
         } else {
-            return .titleTextColor
+            return .text
         }
     }
     

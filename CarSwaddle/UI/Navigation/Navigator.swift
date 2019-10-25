@@ -99,49 +99,37 @@ final class Navigator: NSObject {
     private func setupAppearance() {
         let actionButton = ActionButton.appearance()
         
-        actionButton.defaultBackgroundColor = .selectionColor
-        actionButton.disabledBackgroundColor = UIColor.selectionColor.color(adjustedBy255Points: -70).withAlphaComponent(0.9)
-        actionButton.defaultTitleFont = UIFont.large
-        actionButton.setTitleColor(.gray3, for: .disabled)
+        actionButton.defaultBackgroundColor = .action
+        actionButton.disabledBackgroundColor = UIColor.action.color(adjustedBy255Points: -70).withAlphaComponent(0.9)
+        actionButton.defaultTitleFont = .large
+        actionButton.setTitleColor(.disabledText, for: .disabled)
         
         let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.large as Any]
         let navBarAppearance = UINavigationBar.appearance()
         navBarAppearance.titleTextAttributes = attributes
-        navBarAppearance.barTintColor = .secondaryBackgroundColor
-        navBarAppearance.isTranslucent = false
+        navBarAppearance.barTintColor = .background
+//        navBarAppearance.isTranslucent = false
         
-        if #available(iOS 13.0, *) {
-//            let standardNavBarAppearance = navBarAppearance.standardAppearance
-//
-//            let barButton = standardNavBarAppearance.doneButtonAppearance
-//            let itemState = barButton.normal
-//            let itemStateTitleAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.action as Any]
-//            itemState.titleTextAttributes = itemStateTitleAttributes
-//
-//            standardNavBarAppearance.doneButtonAppearance = barButton
-//            navBarAppearance.standardAppearance = standardNavBarAppearance
-        }
-        
-        UITextField.appearance().tintColor = .selectionColor
+        UITextField.appearance().tintColor = .action
         
         let selectedTabBarAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.appFont(type: .semiBold, size: 10) as Any,
-            .foregroundColor: UIColor.selectionColor
+            .foregroundColor: UIColor.action
         ]
         UITabBarItem.appearance().setTitleTextAttributes(selectedTabBarAttributes, for: .selected)
         
-        UITabBar.appearance().barTintColor = .secondaryBackgroundColor
+        UITabBar.appearance().barTintColor = .content
         
         let normalTabBarAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.appFont(type: .regular, size: 10) as Any,
-            .foregroundColor: UIColor.detailTextColor
+            .foregroundColor: UIColor.secondaryText
         ]
         UITabBarItem.appearance().setTitleTextAttributes(normalTabBarAttributes, for: .normal)
-        UITabBar.appearance().tintColor = .selectionColor
+        UITabBar.appearance().tintColor = .action
         
-        UISwitch.appearance().tintColor = .selectionColor
-        UISwitch.appearance().onTintColor = .selectionColor
-        UINavigationBar.appearance().tintColor = .selectionColor
+        UISwitch.appearance().tintColor = .action
+        UISwitch.appearance().onTintColor = .action
+        UINavigationBar.appearance().tintColor = .action
         
         let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.action as Any]
         
@@ -152,33 +140,33 @@ final class Navigator: NSObject {
         UITableViewCell.appearance().textLabel?.font = .title
         
 //        UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).tintColor = .secondary
-        UISearchBar.appearance().tintColor = .selectionColor
+        UISearchBar.appearance().tintColor = .action
         let textFieldAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-        textFieldAppearance.defaultTextAttributes = [.font: UIFont.title as Any, .foregroundColor: UIColor.selectionColor as Any]
+        textFieldAppearance.defaultTextAttributes = [.font: UIFont.title as Any, .foregroundColor: UIColor.text as Any]
         
         CustomAlertAction.cancelTitle = NSLocalizedString("Cancel", comment: "Cancel button title")
         
-        defaultLabeledTextFieldTextFieldFont = UIFont.detail
-        defaultLabeledTextFieldLabelNotExistsFont = UIFont.detail
-        defaultLabeledTextFieldLabelFont = UIFont.detail
+        defaultLabeledTextFieldTextFieldFont = .title
+        defaultLabeledTextFieldLabelNotExistsFont = .detail
+        defaultLabeledTextFieldLabelFont = .detail
         
-        STPTheme.default().font = UIFont.large
-        STPTheme.default().emphasisFont = UIFont.large
+        STPTheme.default().font = .large
+        STPTheme.default().emphasisFont = .large
         
         ContentInsetAdjuster.defaultBottomOffset = tabBarController.tabBar.bounds.height
         
         let labeledTextFieldAppearance = LabeledTextField.appearance()
-        labeledTextFieldAppearance.underlineColor = .selectionColor
-        labeledTextFieldAppearance.textFieldBackgroundColor = .secondaryBackgroundColor
-        labeledTextFieldAppearance.labelTextColor = .titleTextColor
-        labeledTextFieldAppearance.textFieldTextColor = .titleTextColor
+        labeledTextFieldAppearance.underlineColor = .action
+        labeledTextFieldAppearance.textFieldBackgroundColor = .secondaryBackground
+        labeledTextFieldAppearance.labelTextColor = .detailTextColor
+        labeledTextFieldAppearance.textFieldTextColor = .text
         
-        CircleButton.appearance().buttonColor = .titleTextColor
+        CircleButton.appearance().buttonColor = .text
         
         if #available(iOS 13, *) {
             let style = UINavigationBarAppearance()
             style.buttonAppearance.normal.titleTextAttributes = barButtonTextAttributes
-            style.doneButtonAppearance.normal.titleTextAttributes = [.font: UIFont.action as Any, .foregroundColor: UIColor.selectionColor as Any]
+            style.doneButtonAppearance.normal.titleTextAttributes = [.font: UIFont.action as Any, .foregroundColor: UIColor.action as Any]
             
             style.titleTextAttributes = [.font: UIFont.extralarge as Any]
             
@@ -224,7 +212,7 @@ final class Navigator: NSObject {
         let tabController = UITabBarController()
         tabController.viewControllers = viewControllers
         tabController.delegate = self
-        tabController.view.backgroundColor = .primaryBackgroundColor
+        tabController.view.backgroundColor = .background
         
         self._tabBarController = tabController
         
@@ -278,6 +266,7 @@ final class Navigator: NSObject {
         
         let navigationDelegateViewController = NavigationDelegateViewController(navigationDelegatingViewControllers: viewControllers)
         navigationDelegateViewController.externalDelegate = self
+        navigationDelegateViewController.modalPresentationStyle = .fullScreen
         presentAtRoot(viewController: navigationDelegateViewController)
 //        appDelegate.window?.rootViewController?.present(navigationDelegateViewController, animated: true, completion: nil)
     }
@@ -337,7 +326,7 @@ final class Navigator: NSObject {
             return _profileViewController
         }
         
-        let profileViewController = ProfileViewController.viewControllerFromStoryboard()
+        let profileViewController = ProfileViewController()
         let title = NSLocalizedString("Profile", comment: "Title of tab item.")
         let image = #imageLiteral(resourceName: "user")
         let selectedImage = #imageLiteral(resourceName: "user")

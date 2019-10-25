@@ -54,7 +54,7 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
         return priceView
     }()
     
-    private let completedColor: UIColor = .secondary
+    private let completedColor: UIColor = .action
     private let currentlySelectedColor: UIColor = .appRed
     private let notCompletedColor: UIColor = .gray3
     

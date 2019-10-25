@@ -1,9 +1,9 @@
 {
-  "commitish" : "860124f1e8fe2163a87c225a931132fc57324b26",
+  "commitish" : "41ddfb81cc4c96b9379b0da96a3e1ecb110a4ff8",
   "iOS" : [
     {
       "name" : "Lottie",
-      "hash" : "d0bbdd3444361f4073761c8bac75f03249cf4d795f07df212f4e57437150a02e",
+      "hash" : "6a814b60fae3851a9d991502a6ef4e54890c72178c693d67291600d88dd349c8",
       "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
     }
   ]

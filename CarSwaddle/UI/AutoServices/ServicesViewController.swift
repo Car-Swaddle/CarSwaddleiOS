@@ -18,7 +18,7 @@ import Firebase
 
 final class ServicesViewController: UIViewController, StoryboardInstantiating {
     
-    static let tableBackgroundColor: UIColor = .primaryBackgroundColor
+    static let tableBackgroundColor: UIColor = .background
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var actionButton: ActionButton!
@@ -60,7 +60,7 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
         setupTableView()
         adjuster.positionActionButton()
         actionButton.addTarget(self, action: #selector(ServicesViewController.didTapCreate), for: .touchUpInside)
-        view.backgroundColor = .primaryBackgroundColor
+        view.backgroundColor = ServicesViewController.tableBackgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,7 +100,7 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
         let creator = AutoServiceCreation()
         self.creator = creator
         let pocketController = creator.pocketController!
-        pocketController.modalPresentationStyle = .overFullScreen
+        pocketController.modalPresentationStyle = .fullScreen
         present(pocketController, animated: true, completion: nil)
         Analytics.logEvent(AnalyticsEventBeginCheckout, parameters: nil)
     }
@@ -174,11 +174,6 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
             return fetchedResultsController
         }
     }
-    
-//    private func indexPathWith0Section(_ indexPath: IndexPath) -> IndexPath {
-//        let adjustedIndexPath = IndexPath(item: indexPath.item, section: 0)
-//        return adjustedIndexPath
-//    }
     
     private func resetData() {
         fetchedResultsController = createFetchedResultsController()

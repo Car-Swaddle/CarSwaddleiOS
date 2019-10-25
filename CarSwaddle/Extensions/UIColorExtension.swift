@@ -14,7 +14,7 @@ extension UIColor {
     static let appGreen = #colorLiteral(red: 0.1490196078, green: 0.537254902, blue: 0.2274509804, alpha: 1)
     static let appRed = #colorLiteral(red: 0.9921568627, green: 0.5411764706, blue: 0.4509803922, alpha: 1)
     
-    static let scheduledColor = UIColor.secondary
+    static let scheduledColor = UIColor.background
     static let inProgressColor = #colorLiteral(red: 0.3843137255, green: 0.5843137255, blue: 0.968627451, alpha: 1)
     static let completedColor = UIColor(hexString: "459650")
     // greens ABEDC6, B9FFB7, 90D086, 5EFC8D, 37FF8B too sharp, 749C75 too dark, B2BD7E too yellow, 415D43 too dark, 2A9638, 004F2D *, 0A8754 *, 459650
@@ -31,6 +31,9 @@ extension UIColor {
     static let disabledTextColor = UIColor(named: "disabledTextColor")!
     
     static let alternateSelectionColor = UIColor(named: "alternateSelectionColor")!
+    
+    static let contrastContentColor = UIColor(named: "contrastContentColor")!
+    static let contrastBackgroundColor = UIColor(named: "contrastBackgroundColor")!
     
     static let primaryBackgroundColor = UIColor(named: "primaryBackgroundColor")!
     static let secondaryBackgroundColor = UIColor(named: "secondaryBackgroundColor")!

@@ -9,7 +9,7 @@
       "color" : {
         "color-space" : "gray-gamma-22",
         "components" : {
-          "white" : "0.978",
+          "white" : "1.000",
           "alpha" : "1.000"
         }
       }
@@ -23,12 +23,10 @@
         }
       ],
       "color" : {
-        "color-space" : "display-p3",
+        "color-space" : "extended-gray",
         "components" : {
-          "red" : "255",
-          "alpha" : "1.000",
-          "blue" : "255",
-          "green" : "255"
+          "white" : "1.000",
+          "alpha" : "1.000"
         }
       }
     },

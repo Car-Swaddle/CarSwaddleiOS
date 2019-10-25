@@ -23,22 +23,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6cE-Ud-mcn">
-                                <rect key="frame" x="16" y="62" width="343" height="20"/>
+                                <rect key="frame" x="16" y="62" width="343" height="21"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwC-Fj-RCE">
-                                        <rect key="frame" x="0.0" y="0.0" width="114.5" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="114.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mechanic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0D-Nq-pAh">
-                                        <rect key="frame" x="114.5" y="0.0" width="114" height="20"/>
+                                        <rect key="frame" x="114.5" y="0.0" width="114" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaS-KC-fYj">
-                                        <rect key="frame" x="228.5" y="0.0" width="114.5" height="20"/>
+                                        <rect key="frame" x="228.5" y="0.0" width="114.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -130,7 +130,7 @@
                             <constraint firstItem="AaL-Fc-mWE" firstAttribute="centerX" secondItem="L0D-Nq-pAh" secondAttribute="centerX" id="DZ3-km-9gU"/>
                             <constraint firstItem="6cE-Ud-mcn" firstAttribute="top" secondItem="Fw9-cd-tLw" secondAttribute="bottom" constant="16" id="F1S-Us-ySG"/>
                             <constraint firstItem="JEz-Bv-09V" firstAttribute="trailing" secondItem="EOC-8b-OwI" secondAttribute="centerX" id="FLL-kj-IXZ"/>
-                            <constraint firstItem="Fw9-cd-tLw" firstAttribute="top" secondItem="aEa-TK-BAS" secondAttribute="top" constant="20" id="L7L-Fg-QXb"/>
+                            <constraint firstItem="Fw9-cd-tLw" firstAttribute="top" secondItem="uct-HR-Oxk" secondAttribute="top" constant="20" id="L7L-Fg-QXb"/>
                             <constraint firstItem="EOC-8b-OwI" firstAttribute="centerX" secondItem="eaS-KC-fYj" secondAttribute="centerX" id="LZ0-sO-RXK"/>
                             <constraint firstItem="AaL-Fc-mWE" firstAttribute="top" secondItem="Fw9-cd-tLw" secondAttribute="top" id="c0V-R9-kf6"/>
                             <constraint firstItem="6cE-Ud-mcn" firstAttribute="leading" secondItem="uct-HR-Oxk" secondAttribute="leading" constant="16" id="elC-I2-VeE"/>

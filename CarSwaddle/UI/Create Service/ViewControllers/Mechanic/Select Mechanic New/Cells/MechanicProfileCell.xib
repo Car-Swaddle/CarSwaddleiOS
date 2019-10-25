@@ -18,15 +18,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="213" height="203"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             </view>
-            <color key="backgroundColor" name="secondaryBackgroundColor"/>
+            <color key="backgroundColor" name="content"/>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="213" height="203"/>
             <point key="canvasLocation" x="255.79710144927537" y="187.83482142857142"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <namedColor name="secondaryBackgroundColor">
-            <color white="0.9779999852180481" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="content">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>

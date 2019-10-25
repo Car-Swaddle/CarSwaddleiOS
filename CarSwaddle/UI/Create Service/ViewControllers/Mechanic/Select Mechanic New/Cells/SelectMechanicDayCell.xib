@@ -29,17 +29,18 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" verticalCompressionResistancePriority="800" text="Select a Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbE-MO-KAN">
                         <rect key="frame" x="16" y="24" width="361" height="20"/>
                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" name="text"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 2019" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qg7-Kj-IKN">
                         <rect key="frame" x="16" y="60" width="361" height="25.5"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                        <color key="textColor" name="textColor3"/>
+                        <color key="textColor" name="secondaryText"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFa-oR-BTs" customClass="FSCalendar">
                         <rect key="frame" x="0.0" y="93.5" width="393" height="290"/>
+                        <color key="backgroundColor" name="contentBehindContent"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="290" id="RXw-3y-S7a"/>
                         </constraints>
@@ -61,23 +62,24 @@
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="NO"/>
                             <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
-                                <color key="value" name="secondary"/>
+                                <color key="value" name="action"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="todaySelectionColor">
-                                <color key="value" name="red1"/>
+                                <color key="value" name="secondaryAction"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="titleTodayColor">
-                                <color key="value" name="titleTextColor"/>
+                                <color key="value" name="text"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                <color key="value" name="primaryBackgroundColor"/>
+                                <color key="value" name="background"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="titleSelectionColor">
-                                <color key="value" name="red1"/>
+                                <color key="value" name="secondaryAction"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" name="contentBehindContent"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="qg7-Kj-IKN" secondAttribute="trailing" constant="16" id="065-tO-PlI"/>
                     <constraint firstItem="YbE-MO-KAN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="0hZ-QB-Z9I"/>
@@ -102,19 +104,22 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="primaryBackgroundColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        <namedColor name="action">
+            <color red="0.30199999999999999" green="0.48199999999999998" blue="0.996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="red1">
-            <color red="1" green="0.50588235294117645" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="background">
+            <color white="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
-        <namedColor name="secondary">
-            <color red="0.30196078431372547" green="0.4823529411764706" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="contentBehindContent">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
-        <namedColor name="textColor3">
-            <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="secondaryAction">
+            <color red="1" green="0.50588235294117645" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="titleTextColor">
+        <namedColor name="secondaryText">
+            <color white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="text">
             <color white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>

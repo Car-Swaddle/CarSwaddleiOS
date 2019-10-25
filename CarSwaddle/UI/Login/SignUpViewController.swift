@@ -32,9 +32,9 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     public static let carSwaddlePrivacyURL: URL! = URL(string: carSwaddlePrivacyPolicyURLString)!
     
     public static let gradientPoints: [GradientPoint] = [
-        GradientPoint(location: 1.0, color: UIColor.secondary.color(adjustedBy255Points: -45)),
-        GradientPoint(location: 0.6, color: UIColor.secondary.color(adjustedBy255Points: -30)),
-        GradientPoint(location: 0.0, color: UIColor.secondary.color(adjustedBy255Points: -15))
+        GradientPoint(location: 1.0, color: UIColor.action.color(adjustedBy255Points: -45)),
+        GradientPoint(location: 0.6, color: UIColor.action.color(adjustedBy255Points: -30)),
+        GradientPoint(location: 0.0, color: UIColor.action.color(adjustedBy255Points: -15))
     ]
 
     @IBOutlet private weak var signupButton: UIButton!

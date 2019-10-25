@@ -13,19 +13,22 @@ import Authentication
 import CarSwaddleUI
 import Store
 import Firebase
+import SwiftUI
 
-final class ProfileViewController: UIViewController, StoryboardInstantiating {
+private let numberOfCoupons: Int = 3
 
-    enum Row: CaseIterable {
+final class ProfileViewController: TableViewSchemaController {
+
+    enum Row: String, CaseIterable, TableViewControllerRow {
+        var identifier: String { return self.rawValue }
         case name
         case phoneNumber
+        case coupon
     }
     
-    private var rows: [Row] = Row.allCases
-    
-    @IBOutlet private weak var tableView: UITableView!
     private let auth = Auth(serviceRequest: serviceRequest)
     private let userNetwork = UserNetwork(serviceRequest: serviceRequest)
+    private let couponNetwork = CouponNetwork(serviceRequest: serviceRequest)
     private var imagePicker: UIImagePickerController?
     
     private var user: User? = User.currentUser(context: store.mainContext) {
@@ -33,6 +36,10 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
             reloadData()
         }
     }
+    
+    private lazy var coupons: [Coupon] = {
+         return Coupon.fetchCurrentUserShareableCoupons(fetchLimit: numberOfCoupons, in: store.mainContext)
+    }()
     
     private lazy var headerView: ProfileHeaderView = {
         let view = ProfileHeaderView.viewFromNib()
@@ -42,34 +49,57 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         return view
     }()
     
-    lazy private var refreshControl: UIRefreshControl = {
-        let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(ProfileViewController.didRefresh), for: .valueChanged)
-        return refresh
-    }()
     
-    @objc private func didRefresh() {
+    override func didPullToRefresh() {
         requestData { [weak self] in
-            self?.refreshControl.endRefreshing()
+            self?.refreshControl?.endRefreshing()
         }
+    }
+    
+    override var cellTypes: [NibRegisterable.Type] {
+        return [LabeledInfoCell.self, CouponCodeCell.self]
+    }
+    
+    public init() {
+        super.init(schema: [Section(rows: [Row.name, Row.phoneNumber]), Section(rows: [Row.coupon, Row.coupon, Row.coupon])])
+        title = NSLocalizedString("Coupon Creation", comment: "")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .primaryBackgroundColor
-        setupTableView()
+        view.backgroundColor = .background
         requestData()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Options", comment: ""), style: .plain, target: self, action: #selector(didSelectOptions))
+        
+        tableView.delegate = self
+        tableView.sectionHeaderHeight = 30
+        tableView.backgroundColor = .background
     }
     
-    private func setupTableView() {
-        tableView.register(TextCell.self)
-        tableView.register(LabeledInfoCell.self)
-        tableView.refreshControl = refreshControl
-        tableView.tableFooterView = UIView()
+    private func updateCouponsFromNetwork() {
+        importCoupons { [weak self] error in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.reloadData()
+            }
+        }
     }
     
-    @IBAction private func didSelectOptions() {
+    private func importCoupons(completion: @escaping (_ error: Error?) -> Void) {
+        store.privateContext { [weak self] privateContext in
+            self?.couponNetwork.getSharableCoupons(limit: 3, offset: 0, in: privateContext) { couponIDs, error in
+                completion(error)
+            }
+        }
+    }
+    
+    @objc private func didSelectOptions() {
         let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let logoutAction = self.logoutAction()
         
@@ -114,30 +144,46 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     
     private func requestData(completion: @escaping () -> Void = {  }) {
         store.privateContext { [weak self] privateContext in
+            
+            let group = DispatchGroup()
+            
+            group.enter()
             self?.userNetwork.requestCurrentUser(in: privateContext) { userObjectID, error in
                 DispatchQueue.main.async {
                     self?.user = User.currentUser(context: store.mainContext)
-                    completion()
+                    group.leave()
                 }
             }
+            
+            group.enter()
+            self?.couponNetwork.getSharableCoupons(limit: numberOfCoupons, offset: 0, in: privateContext) { couponIDs, error in
+                print("couponIDs: \(couponIDs)")
+                DispatchQueue.main.async {
+                    self?.coupons = Coupon.fetchCurrentUserShareableCoupons(fetchLimit: numberOfCoupons, in: store.mainContext)
+                    group.leave()
+                }
+            }
+            
+            group.notify(queue: .main) {
+                self?.reloadData()
+                completion()
+            }
         }
+    }
+    
+    private func activityViewController(with code: String) -> UIActivityViewController {
+        let formatString = NSLocalizedString("I'm giving you %%10 off a mobile oil change from Car Swaddle. To accept, use the code %@ on checkout. Download the app at %@", comment: "")
+        let shareCopy = String(format: formatString, code, urlNavigation.carSwaddleAppStoreURL.absoluteString)
+        let activity = UIActivityViewController(activityItems: [shareCopy], applicationActivities: nil)
+        return activity
     }
     
     private func reloadData() {
         tableView.reloadData()
     }
     
-}
-
-
-extension ProfileViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rows.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = rows[indexPath.row]
+    override func cell(for viewRow: TableViewControllerRow, indexPath: IndexPath) -> UITableViewCell {
+        guard let row = viewRow as? Row else { fatalError("Not correct row") }
         switch row {
         case .name:
             let cell: LabeledInfoCell = tableView.dequeueCell()
@@ -149,16 +195,24 @@ extension ProfileViewController: UITableViewDataSource {
             cell.valueText = user?.phoneNumber
             cell.descriptionText = NSLocalizedString("Phone number", comment: "Phone number of user")
             return cell
+        case .coupon:
+            let cell: CouponCodeCell = tableView.dequeueCell()
+            if let coupon = coupons.safeObject(at: indexPath.row) {
+                cell.configure(with: coupon)
+                cell.didSelectShare = { [weak self] code in
+                    self?.showActivity(forCoupon: code)
+                }
+            } else {
+                cell.configureForNoCoupon()
+                cell.didSelectShare = { _ in }
+            }
+            return cell
         }
     }
     
-}
-
-extension ProfileViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let row = rows[indexPath.row]
+        guard let row = schema[indexPath.section].rows[indexPath.row] as? Row else { return }
         switch row {
         case .name:
             let viewController = UserNameViewController.viewControllerFromStoryboard()
@@ -168,6 +222,33 @@ extension ProfileViewController: UITableViewDelegate {
             let viewController = PhoneNumberViewController.viewControllerFromStoryboard()
             viewController.navigationDelegate = self
             show(viewController, sender: self)
+        case .coupon:
+            if let coupon = coupons.safeObject(at: indexPath.row), coupon.canBeRedeemed {
+                showActivity(forCoupon: coupon.identifier)
+            }
+        }
+    }
+    
+    private func showActivity(forCoupon coupon: String) {
+        let activity = self.activityViewController(with: coupon)
+        present(activity, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return UITableView.automaticDimension
+        } else {
+            return 0
+        }
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            let view = LabeledHeaderView.viewFromNib()
+            view.label.text = NSLocalizedString("Do you have a friend that could use an oil change? We've generated three 10% off coupon codes for you to share:", comment: "")
+            return view
+        } else {
+            return nil
         }
     }
     

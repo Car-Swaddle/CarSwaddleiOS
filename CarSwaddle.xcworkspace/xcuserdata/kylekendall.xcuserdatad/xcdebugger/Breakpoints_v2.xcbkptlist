@@ -18,23 +18,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F516D36C-34C0-4DCC-819C-7DDDEA4628AD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CarSwaddle/User Activity Handler/UserActivityHandler.swift"
-            timestampString = "583139214.2219419"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "handle(userActivity:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "63826212-A766-4E66-A1B8-C1661892CB60"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -46,6 +29,22 @@
             startingLineNumber = "111"
             endingLineNumber = "111"
             landmarkName = "didTapRequest()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DA802A67-08BE-4A64-BCF8-37A347BD1FAB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarSwaddle/UI/Create Service/ViewControllers/LocationSearchResultsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "didTapView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

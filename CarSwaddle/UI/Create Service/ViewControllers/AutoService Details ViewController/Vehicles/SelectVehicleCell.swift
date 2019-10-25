@@ -15,7 +15,7 @@ import CoreData
 
 protocol SelectVehicleCellDelegate: AnyObject {
     func didSelectAdd(cell: SelectVehicleCell)
-    func didSelectVehicle(vehicle: Vehicle, cell: SelectVehicleCell)
+    func didSelectVehicle(vehicle: Vehicle?, cell: SelectVehicleCell)
 }
 
 class SelectVehicleCell: UITableViewCell, NibRegisterable {
@@ -122,14 +122,18 @@ extension SelectVehicleCell: FocusedCollectionViewDelegate {
     
     func didSelectItem(at indexPath: IndexPath, collectionView: FocusedCollectionView) {
         if isAddIndexPath(indexPath) {
-            print("add vehicle")
+            collectionView.deselectItem(at: indexPath, animated: false)
+            delegate?.didSelectVehicle(vehicle: nil, cell: self)
             delegate?.didSelectAdd(cell: self)
         } else {
-            print("selected vehicle")
             delegate?.didSelectVehicle(vehicle: vehicles[indexPath.item], cell: self)
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
+    
+//    func shouldSelectItem(at indexPath: IndexPath, collectionView: FocusedCollectionView) -> Bool {
+//        return !isAddIndexPath(indexPath)
+//    }
     
 }
 
