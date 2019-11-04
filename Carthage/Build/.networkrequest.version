@@ -3,7 +3,7 @@
   "iOS" : [
     {
       "name" : "NetworkRequest",
-      "hash" : "9971bcb1928c673356844965d3994464093f5eb4871b8a4200e999f1ccefd466",
+      "hash" : "c80e29fb4e18f20c6afa43724e2d9e8999127d94f18d116b30408a9ee3b15aef",
       "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
     }
   ]

@@ -257,13 +257,30 @@ SWIFT_CLASS("_TtC12CarSwaddleUI17CustomAlertAction")
 
 
 
+@class UITraitCollection;
 
 /// The display of one piece of content on a <code>CustomAlertController</code>.
 /// This holds the image, lottie, title, message and any buttons.
 SWIFT_CLASS("_TtC12CarSwaddleUI22CustomAlertContentView")
 @interface CustomAlertContentView : UIView
+@property (nonatomic, strong) UIColor * _Nonnull titleTextColor;
+@property (nonatomic, strong) UIColor * _Nonnull messageTextColor;
+@property (nonatomic, strong) UIColor * _Nonnull normalButtonColor;
+@property (nonatomic, strong) UIColor * _Nonnull preferredButtonColor;
+@property (nonatomic, strong) UIColor * _Nonnull normalButtonTitleColor;
+@property (nonatomic, strong) UIColor * _Nonnull preferredButtonTitleColor;
+@property (nonatomic, strong) UIColor * _Nonnull textFieldUnderlineColor;
+@property (nonatomic, strong) UIFont * _Nonnull buttonTitleFont;
+@property (nonatomic, strong) UIColor * _Nonnull buttonBorderColor;
+@property (nonatomic, strong) UIFont * _Nonnull titleFont;
+@property (nonatomic, strong) UIFont * _Nonnull messageFont;
+@property (nonatomic, strong) UIFont * _Nonnull textFieldFont;
+@property (nonatomic, strong) UIFont * _Nonnull switchLabelFont;
+@property (nonatomic, strong) UIColor * _Nonnull switchLabelTextColor;
+@property (nonatomic, strong) UIColor * _Nonnull textFieldBorderColor;
 - (void)awakeFromNib;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(UITraitCollection * _Nullable)previousTraitCollection;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -939,13 +956,30 @@ SWIFT_CLASS("_TtC12CarSwaddleUI17CustomAlertAction")
 
 
 
+@class UITraitCollection;
 
 /// The display of one piece of content on a <code>CustomAlertController</code>.
 /// This holds the image, lottie, title, message and any buttons.
 SWIFT_CLASS("_TtC12CarSwaddleUI22CustomAlertContentView")
 @interface CustomAlertContentView : UIView
+@property (nonatomic, strong) UIColor * _Nonnull titleTextColor;
+@property (nonatomic, strong) UIColor * _Nonnull messageTextColor;
+@property (nonatomic, strong) UIColor * _Nonnull normalButtonColor;
+@property (nonatomic, strong) UIColor * _Nonnull preferredButtonColor;
+@property (nonatomic, strong) UIColor * _Nonnull normalButtonTitleColor;
+@property (nonatomic, strong) UIColor * _Nonnull preferredButtonTitleColor;
+@property (nonatomic, strong) UIColor * _Nonnull textFieldUnderlineColor;
+@property (nonatomic, strong) UIFont * _Nonnull buttonTitleFont;
+@property (nonatomic, strong) UIColor * _Nonnull buttonBorderColor;
+@property (nonatomic, strong) UIFont * _Nonnull titleFont;
+@property (nonatomic, strong) UIFont * _Nonnull messageFont;
+@property (nonatomic, strong) UIFont * _Nonnull textFieldFont;
+@property (nonatomic, strong) UIFont * _Nonnull switchLabelFont;
+@property (nonatomic, strong) UIColor * _Nonnull switchLabelTextColor;
+@property (nonatomic, strong) UIColor * _Nonnull textFieldBorderColor;
 - (void)awakeFromNib;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(UITraitCollection * _Nullable)previousTraitCollection;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end

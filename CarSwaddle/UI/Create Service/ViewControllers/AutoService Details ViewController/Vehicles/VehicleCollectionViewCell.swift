@@ -18,6 +18,8 @@ class VehicleCollectionViewCell: FocusedCollectionViewCell, NibRegisterable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        contentView.backgroundColor = .content
+        
         vehicleNameLabel.font = UIFont.appFont(type: .regular, size: 17)
         licensePlateLabel.font = UIFont.appFont(type: .regular, size: 17)
     }

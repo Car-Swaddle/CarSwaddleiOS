@@ -35,6 +35,16 @@ extension UIColor {
     static let success = UIColor(named: "success")!
     static let warning = UIColor(named: "warning")!
     
+    // MARK: - Neutral
+    
+    static let neutral1 = UIColor(named: "neutral1")!
+    static let neutral2 = UIColor(named: "neutral2")!
+    static let neutral3 = UIColor(named: "neutral3")!
+    static let neutral4 = UIColor(named: "neutral4")!
+    static let neutral5 = UIColor(named: "neutral5")!
+    static let neutral6 = UIColor(named: "neutral6")!
+    static let neutral7 = UIColor(named: "neutral7")!
+    
     // MARK: - Text
     
     static let disabledText = UIColor(named: "disabledText")!

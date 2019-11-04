@@ -25,7 +25,7 @@ class RatingController {
     public func createRatingAlert(forAutoServiceID autoServiceID: String) -> CustomAlertController {
         let title = NSLocalizedString("Rate your mechanic", comment: "Title of alert when user is rating their mechanic")
         let content = CustomAlertContentView.view(withTitle: title, message: nil)
-        content.attributedTitleText = NSAttributedString(string: title, attributes: [.foregroundColor: UIColor.gray5, .font: UIFont.appFont(type: .semiBold, size: 17) as UIFont])
+//        content.attributedTitleText = NSAttributedString(string: title, attributes: [.foregroundColor: UIColor.neutral5, .font: UIFont.title as UIFont])
         
         content.addCustomView { customView in
             customView.heightAnchor.constraint(equalToConstant: 35).isActive = true
@@ -59,12 +59,12 @@ class RatingController {
             textView.bottomAnchor.constraint(equalTo: customView.bottomAnchor).isActive = true
             textView.leadingAnchor.constraint(equalTo: customView.leadingAnchor).isActive = true
             textView.trailingAnchor.constraint(equalTo: customView.trailingAnchor).isActive = true
-            textView.layer.borderColor = UIColor.gray2.cgColor
+            textView.layer.borderColor = UIColor(white: 0.5, alpha: 0.2).cgColor
             textView.layer.borderWidth = 1
             textView.layer.cornerRadius = 8.0
             
-            textView.font = UIFont.appFont(type: .regular, size: 17)
-            textView.tintColor = .viewBackgroundColor1
+            textView.font = .title
+            textView.tintColor = .action
             
             textView.becomeFirstResponder()
             
@@ -77,42 +77,42 @@ class RatingController {
         
         content.preferredAction = rateAction
         
-        if let button = content.preferredButton {
-            button.titleLabel?.font = UIFont.appFont(type: .regular, size: 17)
-            
-            button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-            button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .highlighted)
-            
-            button.layer.borderWidth = 1
-            button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
-            
-            let background: UIColor = .secondary
-            
-            button.setBackgroundImage(UIImage.from(color: background), for: .normal)
-            button.setBackgroundImage(UIImage.from(color: background.color(adjustedBy255Points: -40)), for: .highlighted)
-        }
+//        if let button = content.preferredButton {
+//            button.titleLabel?.font = UIFont.appFont(type: .regular, size: 17)
+//
+//            button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+//            button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .highlighted)
+//
+//            button.layer.borderWidth = 1
+//            button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
+//
+//            let background: UIColor = .secondary
+//
+//            button.setBackgroundImage(UIImage.from(color: background), for: .normal)
+//            button.setBackgroundImage(UIImage.from(color: background.color(adjustedBy255Points: -40)), for: .highlighted)
+//        }
         
-        content.normalButtons.forEach {
-            configureNormalActionButton($0)
-        }
+//        content.normalButtons.forEach {
+//            configureNormalActionButton($0)
+//        }
         
         let alert = CustomAlertController.viewController(contentView: content)
         return alert
     }
     
-    private func configureNormalActionButton(_ button: UIButton) {
-        button.titleLabel?.font = UIFont.appFont(type: .regular, size: 17)
-        button.setTitleColor(.secondary, for: .normal)
-        button.setTitleColor(.viewBackgroundColor1, for: .highlighted)
-        
-        button.layer.borderWidth = 1
-        button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
-        
-        let background = UIColor(white255: 244)
-        
-        button.setBackgroundImage(UIImage.from(color: background), for: .normal)
-        button.setBackgroundImage(UIImage.from(color: background.color(adjustedBy255Points: -40)), for: .highlighted)
-    }
+//    private func configureNormalActionButton(_ button: UIButton) {
+//        button.titleLabel?.font = UIFont.appFont(type: .regular, size: 17)
+//        button.setTitleColor(.secondary, for: .normal)
+//        button.setTitleColor(.viewBackgroundColor1, for: .highlighted)
+//
+//        button.layer.borderWidth = 1
+//        button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
+//
+//        let background = UIColor(white255: 244)
+//
+//        button.setBackgroundImage(UIImage.from(color: background), for: .normal)
+//        button.setBackgroundImage(UIImage.from(color: background.color(adjustedBy255Points: -40)), for: .highlighted)
+//    }
     
     private func rateAction(autoServiceID: String) -> CustomAlertAction {
         let rateTitle = NSLocalizedString("Rate", comment: "Button title when selected confirms rate of user to mechanic")

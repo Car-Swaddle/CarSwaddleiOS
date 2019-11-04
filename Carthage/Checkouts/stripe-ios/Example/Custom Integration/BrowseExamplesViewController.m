@@ -7,6 +7,7 @@
 //
 
 #import <Stripe/Stripe.h>
+#import "Custom_Integration-Swift.h"
 
 #import "BrowseExamplesViewController.h"
 
@@ -15,8 +16,10 @@
 #import "CardManualConfirmationExampleViewController.h"
 #import "CardSetupIntentBackendExampleViewController.h"
 #import "CardSetupIntentExampleViewController.h"
+#import "iDEALExampleViewController.h"
 #import "SofortExampleViewController.h"
 #import "FPXExampleViewController.h"
+#import "SEPADebitExampleViewController.h"
 #import "WeChatPayExampleViewController.h"
 
 /**
@@ -39,7 +42,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 8;
+    return 11;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -68,6 +71,15 @@
             break;
         case 7:
             cell.textLabel.text = @"FPX";
+            break;
+        case 8:
+            cell.textLabel.text = @"SEPA Debit";
+            break;
+        case 9:
+            cell.textLabel.text = @"iDEAL";
+            break;
+        case 10:
+            cell.textLabel.text = @"Alipay";
             break;
     }
     return cell;
@@ -120,6 +132,24 @@
         }
         case 7: {
             FPXExampleViewController *exampleVC = [FPXExampleViewController new];
+            exampleVC.delegate = self;
+            viewController = exampleVC;
+            break;
+        }
+        case 8: {
+            SEPADebitExampleViewController *exampleVC = [SEPADebitExampleViewController new];
+            exampleVC.delegate = self;
+            viewController = exampleVC;
+            break;
+        }
+        case 9: {
+            iDEALExampleViewController *exampleVC = [iDEALExampleViewController new];
+            exampleVC.delegate = self;
+            viewController = exampleVC;
+            break;
+        }
+        case 10: {
+            AlipayExampleViewController *exampleVC = [AlipayExampleViewController new];
             exampleVC.delegate = self;
             viewController = exampleVC;
             break;

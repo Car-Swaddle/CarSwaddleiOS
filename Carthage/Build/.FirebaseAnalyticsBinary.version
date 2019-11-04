@@ -8,47 +8,47 @@
   "tvOS" : [
 
   ],
-  "commitish" : "6.10.0",
+  "commitish" : "6.11.0",
   "iOS" : [
     {
-      "name" : "nanopb",
-      "hash" : "ad9087eb1518324f5a1a0fa15550bc2d4086728772885f7dcfa4a9e220715361"
+      "name" : "Firebase",
+      "hash" : "a8669248da9519e9955e00448e518e1ca6becb32689eedddde237e19ad1136ae"
     },
     {
-      "name" : "FirebaseCoreDiagnostics",
-      "hash" : "51571a8eb36072c386b8205f765e155db1a2f318541cdb5953f8465b4e6386cf"
-    },
-    {
-      "name" : "FIRAnalyticsConnector",
-      "hash" : "8d4cea6ee0a75d09eac9055c8d0e8c502415dad7b184b13e4df147d38c05aa7d"
+      "name" : "GoogleDataTransportCCTSupport",
+      "hash" : "e794d13464c6898695924d68c7148f35d65a67a6ef909b09689285035da207fe"
     },
     {
       "name" : "FirebaseAnalytics",
       "hash" : "5f75c88d4acf6f5bf3e91594cc1825e752209ef2857b55442c717d003f3d56e0"
     },
     {
-      "name" : "Firebase",
-      "hash" : "a8669248da9519e9955e00448e518e1ca6becb32689eedddde237e19ad1136ae"
-    },
-    {
-      "name" : "FirebaseCore",
-      "hash" : "604b92962f152dedaf78af65f2517b02daae2773dbefc94307babff2d55039dc"
+      "name" : "nanopb",
+      "hash" : "8fc4904ea7e219b2b7067b9e88fa69b4c40e5bf300fbbb89a1add120bb8c6478"
     },
     {
       "name" : "GoogleDataTransport",
-      "hash" : "40d5d5f51d657391f955c18a6e9a134b3bdbb12e6dba5ffe2b32f771db39ad22"
+      "hash" : "ac8f94b7419acd9cf4b8ca4c3ad5b53dc1687262211c4af9218a1acb082f6381"
+    },
+    {
+      "name" : "FirebaseCore",
+      "hash" : "f5b43fe121ce52c5e6ce3d7718717436a233b468f78ef893abda431379dad0fe"
+    },
+    {
+      "name" : "FIRAnalyticsConnector",
+      "hash" : "8d4cea6ee0a75d09eac9055c8d0e8c502415dad7b184b13e4df147d38c05aa7d"
+    },
+    {
+      "name" : "FirebaseCoreDiagnostics",
+      "hash" : "bb8b35f1802cef196f8a6456b666c54a6fdaf473c35e430151c3047f0b2b5f9e"
     },
     {
       "name" : "GoogleUtilities",
-      "hash" : "5c21e2ec177a1b203b93fcb4de3e5d28e89bb42e9e5f3c6e60d56a25406b7a3a"
-    },
-    {
-      "name" : "GoogleDataTransportCCTSupport",
-      "hash" : "65abb6b2065b4fc2b2bab48c9e5537dbab8c5a33c0dbbcbb98c5de61b712e0ff"
+      "hash" : "153e6e133b083b25908de191393062df609986f68938ffdcf46cf83ee1b198af"
     },
     {
       "name" : "FirebaseInstanceID",
-      "hash" : "b4f4f86be7843da3950ac49735eabbf5c29ab5e9014585b6e7cb4ea5804aeeb2"
+      "hash" : "826b1333235713d7f7899f19e88473c831f4680f79c93d6f30a373cae9238ed1"
     },
     {
       "name" : "GoogleAppMeasurement",

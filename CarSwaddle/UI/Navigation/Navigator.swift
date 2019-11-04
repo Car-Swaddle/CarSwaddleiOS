@@ -168,13 +168,44 @@ final class Navigator: NSObject {
             style.buttonAppearance.normal.titleTextAttributes = barButtonTextAttributes
             style.doneButtonAppearance.normal.titleTextAttributes = [.font: UIFont.action as Any, .foregroundColor: UIColor.action as Any]
             
-            style.titleTextAttributes = [.font: UIFont.extralarge as Any]
+            style.titleTextAttributes = [.font: UIFont.extralarge]
             
             let navigationBar = UINavigationBar.appearance()
             navigationBar.standardAppearance = style
             navigationBar.scrollEdgeAppearance = style
             navigationBar.compactAppearance = style
         }
+        
+        let alertAppearance = CustomAlertContentView.appearance()
+        alertAppearance.backgroundColor = .background
+        alertAppearance.titleTextColor = .text
+        alertAppearance.messageTextColor = .secondaryText
+
+        alertAppearance.normalButtonColor = .secondaryBackground
+        alertAppearance.normalButtonTitleColor = .text
+        alertAppearance.buttonBorderColor = .clear
+
+        alertAppearance.preferredButtonColor = .action
+        alertAppearance.preferredButtonTitleColor = .inverseText
+
+//        alertAppearance.textFieldUnderlineColor = .purple
+
+        alertAppearance.buttonTitleFont = .title
+
+        alertAppearance.titleFont = .extralarge
+        alertAppearance.buttonTitleFont = .title
+        alertAppearance.messageFont = .title
+
+        alertAppearance.textFieldFont = .title
+
+        alertAppearance.switchLabelFont = .detail
+        alertAppearance.switchLabelTextColor = .text
+
+        alertAppearance.textFieldBorderColor = .secondaryContent
+        
+        CustomAlertController.alertBackgroundColor = .background
+        CustomAlertController.transparentBackgroundColor = UIColor.neutral3.withAlphaComponent(0.5)
+        
     }
     
     public func initialViewController() -> UIViewController {

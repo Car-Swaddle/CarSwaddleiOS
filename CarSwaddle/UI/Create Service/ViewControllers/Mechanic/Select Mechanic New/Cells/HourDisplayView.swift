@@ -70,31 +70,15 @@ class HourDisplayView: UIView, NibInstantiating {
     
     private var selectedBorderColor: UIColor {
         if #available(iOS 13, *) {
-//            return .clear
             return traitCollection.userInterfaceStyle == .dark ? .white : .clear
         } else {
             return .clear
         }
     }
     
-    private var unselectedBorderColor: UIColor {
-        if #available(iOS 13, *) {
-            return .clear
-//            return traitCollection.userInterfaceStyle == .dark ? .white : .clear
-        } else {
-            return .clear
-        }
-    }
+    private let unselectedBorderColor: UIColor = .clear
     
-    private var unselectedBackgroundColor: UIColor {
-        return .content
-//        if #available(iOS 13, *) {
-////            return .clear
-////            return traitCollection.userInterfaceStyle == .dark ? .background : .white
-//        } else {
-////            return .clear
-//        }
-    }
+    private let unselectedBackgroundColor: UIColor = .content
     
     private func styleAsUnselected() {
         hourContentView.backgroundColor = unselectedBackgroundColor
