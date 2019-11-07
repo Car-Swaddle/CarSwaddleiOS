@@ -12,6 +12,7 @@ import CarSwaddleUI
 
 
 public let blankText = NSLocalizedString("--", comment: "")
+private let removeBookingFeeString = NSLocalizedString("10% off", comment: "")
 
 let percentFormatter: NumberFormatter = {
     let numberFormatter = NumberFormatter()
@@ -54,7 +55,12 @@ class CouponView: UIView, NibInstantiating {
     }
     
     private func couponDetailsText(for coupon: Coupon) -> String? {
-        return coupon.appliedReduction?.localizedString
+        if let appliedReduction = coupon.appliedReduction {
+            return appliedReduction.localizedString
+        } else if coupon.discountBookingFee {
+            return removeBookingFeeString
+        }
+        return nil
     }
     
     private var coupon: Coupon?
@@ -113,7 +119,7 @@ extension Coupon {
                 }
                 return String(format: formatString, currency)
             case .percentOff(let percent):
-                let formatString = NSLocalizedString("%.1f%% off", comment: "")
+                let formatString = NSLocalizedString(".1f%% off", comment: "")
                 return String(format: formatString, (percent * 100.0))
             }
         }

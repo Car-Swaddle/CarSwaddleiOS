@@ -157,7 +157,6 @@ final class ProfileViewController: TableViewSchemaController {
             
             group.enter()
             self?.couponNetwork.getSharableCoupons(limit: numberOfCoupons, offset: 0, in: privateContext) { couponIDs, error in
-                print("couponIDs: \(couponIDs)")
                 DispatchQueue.main.async {
                     self?.coupons = Coupon.fetchCurrentUserShareableCoupons(fetchLimit: numberOfCoupons, in: store.mainContext)
                     group.leave()
