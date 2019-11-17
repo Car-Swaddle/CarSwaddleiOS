@@ -19,8 +19,8 @@ final class PricePartView: UIView, NibInstantiating {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        partDescriptionLabel.font = UIFont.appFont(type: .regular, size: 15)
-        partPriceLabel.font = UIFont.appFont(type: .semiBold, size: 17)
+        partDescriptionLabel.font = UIFont.appFont(type: .regular, size: 15, scaleFont: false)
+        partPriceLabel.font = UIFont.appFont(type: .semiBold, size: 17, scaleFont: false)
         backgroundColor = .clear
     }
     
