@@ -16,6 +16,10 @@
 		990F4378214252C700E65FC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 990F4377214252C700E65FC1 /* Assets.xcassets */; };
 		990F437B214252C700E65FC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 990F4379214252C700E65FC1 /* LaunchScreen.storyboard */; };
 		990F4386214252C700E65FC1 /* CarSwaddleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F4385214252C700E65FC1 /* CarSwaddleTests.swift */; };
+		990F7D82238B438E00B88F0B /* LoginExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F7D81238B438E00B88F0B /* LoginExperience.swift */; };
+		990F7D84238B819600B88F0B /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F7D83238B819600B88F0B /* IntroViewController.swift */; };
+		990F7D86238B81C100B88F0B /* IntroViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 990F7D85238B81C100B88F0B /* IntroViewController.storyboard */; };
+		990F7D88238BBA4E00B88F0B /* BackingViewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F7D87238BBA4E00B88F0B /* BackingViewNavigationController.swift */; };
 		99116905215B76B6001E039E /* AddVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99116903215B76B6001E039E /* AddVehicleCell.swift */; };
 		99116906215B76B6001E039E /* AddVehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99116904215B76B6001E039E /* AddVehicleCell.xib */; };
 		991AFC92224FF01500AD6614 /* TimeSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AFC90224FF01500AD6614 /* TimeSlotCollectionViewCell.swift */; };
@@ -276,6 +280,10 @@
 		990F4385214252C700E65FC1 /* CarSwaddleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleTests.swift; sourceTree = "<group>"; };
 		990F4387214252C700E65FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		990F438C214252C700E65FC1 /* CarSwaddleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarSwaddleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		990F7D81238B438E00B88F0B /* LoginExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginExperience.swift; sourceTree = "<group>"; };
+		990F7D83238B819600B88F0B /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		990F7D85238B81C100B88F0B /* IntroViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IntroViewController.storyboard; sourceTree = "<group>"; };
+		990F7D87238BBA4E00B88F0B /* BackingViewNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackingViewNavigationController.swift; sourceTree = "<group>"; };
 		99116903215B76B6001E039E /* AddVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleCell.swift; sourceTree = "<group>"; };
 		99116904215B76B6001E039E /* AddVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVehicleCell.xib; sourceTree = "<group>"; };
 		9912CD9D216C7B010006FDDF /* CarSwaddle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CarSwaddle.entitlements; sourceTree = "<group>"; };
@@ -690,9 +698,13 @@
 				998984DB229D0FBD00E4B25A /* EnterNewPasswordViewController.swift */,
 				998984D9229D0FBC00E4B25A /* ForgotPasswordViewController.storyboard */,
 				998984DA229D0FBD00E4B25A /* ForgotPasswordViewController.swift */,
+				990F7D83238B819600B88F0B /* IntroViewController.swift */,
+				990F7D85238B81C100B88F0B /* IntroViewController.storyboard */,
+				990F7D87238BBA4E00B88F0B /* BackingViewNavigationController.swift */,
 				994CA9F6215206CD00D41F6C /* LoginViewController.swift */,
 				994CA9FB215208BD00D41F6C /* SignUpViewController.swift */,
 				994CA9F8215206E600D41F6C /* LoginViewController.storyboard */,
+				990F7D81238B438E00B88F0B /* LoginExperience.swift */,
 				9955BC192154E8DC008DAF8E /* UsersViewController.swift */,
 				997DBC502197575A0080F42C /* UserNameViewController.swift */,
 				997DBC552197580B0080F42C /* UserNameViewController.storyboard */,
@@ -1256,6 +1268,7 @@
 				9955BC3F215588DB008DAF8E /* CreateServiceLocationCell.xib in Resources */,
 				99DC26432246ECC2009E0A15 /* MontserratAlternates-LightItalic.otf in Resources */,
 				99DC263A2246ECC2009E0A15 /* MontserratAlternates-BlackItalic.otf in Resources */,
+				990F7D86238B81C100B88F0B /* IntroViewController.storyboard in Resources */,
 				99985FF5227C0B1E00113536 /* HeaderCell.xib in Resources */,
 				99DC26282246ECC2009E0A15 /* Montserrat-BlackItalic.otf in Resources */,
 				9935529223581EBD009DB141 /* ShareCouponView.xib in Resources */,
@@ -1407,6 +1420,7 @@
 				9955BC2421555D62008DAF8E /* Navigator.swift in Sources */,
 				997DBC7621997E370080F42C /* DateExtension.swift in Sources */,
 				997714C721CCF5BC00E54F5B /* Stripe.swift in Sources */,
+				990F7D82238B438E00B88F0B /* LoginExperience.swift in Sources */,
 				998984D7229D0E6700E4B25A /* UserActivityHandler.swift in Sources */,
 				990F4370214252C600E65FC1 /* ViewController.swift in Sources */,
 				99E66DA821E2963A00C6E3E1 /* UserImageView.swift in Sources */,
@@ -1465,10 +1479,12 @@
 				99986000227E29BB00113536 /* AutoServiceLocationCell.swift in Sources */,
 				99A0AF01224EC2A30001FDC6 /* SelectMechanicHourCell.swift in Sources */,
 				9943C173215B6C69003C2BE9 /* VehicleCell.swift in Sources */,
+				990F7D84238B819600B88F0B /* IntroViewController.swift in Sources */,
 				9955BC1A2154E8DC008DAF8E /* UsersViewController.swift in Sources */,
 				991C9FC72215485D004B9C15 /* PhoneNumberViewController.swift in Sources */,
 				991AFC9F2250AFCA00AD6614 /* SelectVehicleCell.swift in Sources */,
 				9942546D21577B6E0075EDCA /* SelectVehicleViewController.swift in Sources */,
+				990F7D88238BBA4E00B88F0B /* BackingViewNavigationController.swift in Sources */,
 				99DED710214B7EBC0061CFE0 /* Store.swift in Sources */,
 				99A0AEF9224EC24D0001FDC6 /* SelectMechanicProfileCell.swift in Sources */,
 				99986006227E314900113536 /* AutoServiceDetailsHeaderCell.swift in Sources */,
@@ -1702,7 +1718,7 @@
 					"$(SRCROOT)/Carthage/Build/iOS",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.1.01;
+				MARKETING_VERSION = 1.100.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddle;
@@ -1738,7 +1754,7 @@
 					"$(SRCROOT)/Carthage/Build/iOS",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.1.01;
+				MARKETING_VERSION = 1.100.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddle;
 				PRODUCT_NAME = "$(TARGET_NAME)";

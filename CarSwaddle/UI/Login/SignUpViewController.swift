@@ -15,7 +15,6 @@ import Firebase
 
 
 private let stripeAgreementURLString = "https://stripe.com/us/connect-account/legal"
-// TODO: Change this to CarSwaddle's service agreement
 private let carSwaddleAgreementURLString = "https://carswaddle.net/terms-of-use/"
 private let carSwaddlePrivacyPolicyURLString = "https://carswaddle.net/privacy-policy/"
 
@@ -25,28 +24,38 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         return "LoginViewController"
     }
     
+    var makeTextFieldFirstResponderOnLoad: Bool = false
+    
+    private lazy var fadeTransitionDelegate: FadeTransitionDelegate = FadeTransitionDelegate()
+    
+    static func create() -> SignUpViewController {
+        let signUp = SignUpViewController.viewControllerFromStoryboard()
+        signUp.transitioningDelegate = signUp.fadeTransitionDelegate
+        signUp.modalPresentationStyle = .custom
+        return signUp
+    }
+    
     private let auth = Auth(serviceRequest: serviceRequest)
     
     public static let stripeAgreementURL: URL! = URL(string: stripeAgreementURLString)!
     public static let carSwaddleAgreementURL: URL! = URL(string: carSwaddleAgreementURLString)!
     public static let carSwaddlePrivacyURL: URL! = URL(string: carSwaddlePrivacyPolicyURLString)!
-    
-    public static let gradientPoints: [GradientPoint] = [
-        GradientPoint(location: 1.0, color: UIColor.action.color(adjustedBy255Points: -45)),
-        GradientPoint(location: 0.6, color: UIColor.action.color(adjustedBy255Points: -30)),
-        GradientPoint(location: 0.0, color: UIColor.action.color(adjustedBy255Points: -15))
-    ]
 
     @IBOutlet private weak var signupButton: UIButton!
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
-    @IBOutlet private weak var backgroundImageView: UIImageView!
     @IBOutlet private weak var agreementTextView: UITextView!
-    
-    @IBOutlet weak var agreementTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var logoImageView: UIImageView!
+    @IBOutlet private weak var agreementTextViewHeightConstraint: NSLayoutConstraint!
     
     private var signUpTask: URLSessionDataTask?
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let login = segue.destination as? LoginViewController else { return }
+        login.transitioningDelegate = login.fadeTransitionDelegate
+        login.modalPresentationStyle = .custom
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,14 +82,22 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         passwordTextField.tintColor = .white
         emailTextField.tintColor = .white
         
-        backgroundImageView.image = backgroundImage
-        
         emailTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
         passwordTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
         
         agreementTextViewHeightConstraint.constant = agreementTextView.contentSize.height
         
         setupAgreementTextView()
+        
+        signupButton.configureForClear()
+        
+        if makeTextFieldFirstResponderOnLoad {
+            emailTextField.becomeFirstResponder()
+        }
+    }
+    
+    @IBAction private func didTapBack() {
+        navigationController?.popViewController(animated: true)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -100,7 +117,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         let privacyPolicyRange = (text as NSString).range(of: privacyPolicyText)
         let connectAgreementRange = (text as NSString).range(of: stripeText)
         
-        let attributedText = NSMutableAttributedString(string: text, attributes: [.foregroundColor: tintColor, .font: UIFont.appFont(type: .regular, size: 13) as Any])
+        let attributedText = NSMutableAttributedString(string: text, attributes: [.foregroundColor: tintColor, .font: UIFont.appFont(type: .regular, size: 11) as Any])
         
         attributedText.addAttributes(linkAttributes(with: SignUpViewController.stripeAgreementURL), range: connectAgreementRange)
         attributedText.addAttributes(linkAttributes(with: SignUpViewController.carSwaddleAgreementURL), range: carSwaddleAgreementRange)
@@ -110,7 +127,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
             .foregroundColor: UIColor.textColor2,
             .underlineColor: UIColor.textColor2,
             .underlineStyle: NSUnderlineStyle.single.rawValue,
-            .font: UIFont.appFont(type: .regular, size: 13) as Any
+            .font: UIFont.appFont(type: .regular, size: 11, scaleFont: false) as Any
         ]
         
         agreementTextView.textAlignment = .center
@@ -166,7 +183,8 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     }
     
     @IBAction private func didTapGoToLogin() {
-        
+        let login = LoginViewController.create()
+        show(login, sender: self)
     }
     
     private func signUpIfAllowed() {
@@ -202,11 +220,6 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
                 }
             }
         }
-    }
-    
-    private var backgroundImage: UIImage? {
-        let gradientPoints = SignUpViewController.gradientPoints
-        return UIImage(size: view.bounds.size, gradientPoints: gradientPoints)
     }
     
     private func trackSignUp() {
@@ -266,6 +279,21 @@ public extension String {
     
     var isValidPassword: Bool {
         return self.count > 3
+    }
+    
+}
+
+
+
+extension SignUpViewController: FadeAnimationControllerFrameSpecifying {
+    
+    var newFrameOfViewToBeTransitioned: CGRect {
+        let f = logoImageView.frame
+        return CGRect(x: f.origin.x + view.safeAreaInsets.left, y: f.origin.y + view.safeAreaInsets.top, width: f.width, height: f.height)
+    }
+    
+    var viewBeingTransitionedTo: UIView {
+        return logoImageView
     }
     
 }

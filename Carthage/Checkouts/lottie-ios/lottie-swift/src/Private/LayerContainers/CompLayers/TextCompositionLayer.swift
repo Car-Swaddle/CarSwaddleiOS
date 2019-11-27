@@ -48,7 +48,7 @@ extension TextJustification {
   
 }
 
-class TextCompositionLayer: CompositionLayer {
+final class TextCompositionLayer: CompositionLayer {
   
   let rootNode: TextAnimatorNode?
   let textDocument: KeyframeInterpolator<TextDocument>?
@@ -115,7 +115,8 @@ class TextCompositionLayer: CompositionLayer {
     
     let text = textDocument.value(frame: frame) as! TextDocument
     let anchorPoint = interpolatableAnchorPoint?.value(frame: frame) as! Vector3D
-    let scale = interpolatableScale?.value(frame: frame) as! Vector3D
+    
+    interpolatableScale?.value(frame: frame)
     rootNode?.rebuildOutputs(frame: frame)
     
     let fillColor = rootNode?.textOutputNode.fillColor ?? text.fillColorData.cgColorValue
@@ -205,5 +206,10 @@ class TextCompositionLayer: CompositionLayer {
     textLayer.transform = matrix
     textLayer.string = baseAttributedString
     textLayer.alignmentMode = text.justification.caTextAlignement
+  }
+  
+  override func updateRenderScale() {
+    super.updateRenderScale()
+    textLayer.contentsScale = self.renderScale
   }
 }

@@ -12,17 +12,29 @@ import CarSwaddleData
 import Authentication
 import Firebase
 
-class LoginViewController: UIViewController, StoryboardInstantiating {
+class LoginViewController: UIViewController, StoryboardInstantiating, UIGestureRecognizerDelegate {
+    
+    var makeTextFieldFirstResponderOnLoad: Bool = false
     
     private let auth: Auth = Auth(serviceRequest: serviceRequest)
     private var userNetwork: UserNetwork = UserNetwork(serviceRequest: serviceRequest)
 
+    @IBOutlet private weak var logoImageView: UIImageView!
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
-    @IBOutlet private weak var backgroundImageView: UIImageView!
+    
     private var loginTask: URLSessionDataTask?
+    
+    lazy var fadeTransitionDelegate: FadeTransitionDelegate = FadeTransitionDelegate()
+    
+    static func create() -> LoginViewController {
+        let login = LoginViewController.viewControllerFromStoryboard()
+        login.transitioningDelegate = login.fadeTransitionDelegate
+        login.modalPresentationStyle = .custom
+        return login
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +64,16 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
         spinner.isHiddenInStackView = true
         
         updateLoginEnabledness()
-        backgroundImageView.image = backgroundImage
+        
+        if makeTextFieldFirstResponderOnLoad {
+            emailTextField.becomeFirstResponder()
+        }
+        
+        loginButton.configureForFilledIn()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     @objc private func didChangeTextField(_ textField: UITextField) {
@@ -134,13 +155,6 @@ class LoginViewController: UIViewController, StoryboardInstantiating {
         present(forgotPassword.inNavigationController(), animated: true, completion: nil)
     }
     
-    
-    
-    private var backgroundImage: UIImage? {
-        let gradientPoints = SignUpViewController.gradientPoints
-        return UIImage(size: view.bounds.size, gradientPoints: gradientPoints)
-    }
-    
 }
 
 
@@ -158,6 +172,20 @@ extension LoginViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         updateLoginEnabledness()
         return true
+    }
+    
+}
+
+
+extension LoginViewController: FadeAnimationControllerFrameSpecifying {
+    
+    var newFrameOfViewToBeTransitioned: CGRect {
+        let f = logoImageView.frame
+        return CGRect(x: f.origin.x + view.safeAreaInsets.left, y: f.origin.y + view.safeAreaInsets.top, width: f.width, height: f.height)
+    }
+    
+    var viewBeingTransitionedTo: UIView {
+        return logoImageView
     }
     
 }

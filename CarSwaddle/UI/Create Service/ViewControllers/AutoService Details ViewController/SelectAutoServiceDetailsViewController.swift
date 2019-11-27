@@ -105,6 +105,7 @@ final class SelectAutoServiceDetailsViewController: UIViewController, Storyboard
     @objc private func didSelectPay() {
         guard let vehicle = selectedVehicle,
             let oilType = selectedOilType else {
+                tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 higlightAddVehicleCell()
                 return
         }

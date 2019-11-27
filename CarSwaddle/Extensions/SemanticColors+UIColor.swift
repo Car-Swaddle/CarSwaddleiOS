@@ -31,6 +31,9 @@ extension UIColor {
     static let contentBehindContent = UIColor(named: "contentBehindContent")!
     
     static let brand = UIColor(named: "brand")!
+    static let secondaryBrand = UIColor(named: "secondaryBrand")!
+    static let tertiaryBrand = UIColor(named: "tertiaryBrand")!
+    static let alternateBrand = UIColor(named: "alternateBrand")!
     static let danger = UIColor(named: "danger")!
     static let success = UIColor(named: "success")!
     static let warning = UIColor(named: "warning")!

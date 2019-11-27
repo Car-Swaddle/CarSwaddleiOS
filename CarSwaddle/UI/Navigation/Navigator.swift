@@ -212,11 +212,7 @@ final class Navigator: NSObject {
         if isLoggedIn {
             return loggedInViewController
         } else {
-            let signUp = SignUpViewController.viewControllerFromStoryboard()
-            let navigationController = signUp.inNavigationController()
-            navigationController.navigationBar.barStyle = .black
-            navigationController.navigationBar.isHidden = true
-            return navigationController
+            return LoginExperience.initialViewController()
         }
     }
     
@@ -271,15 +267,12 @@ final class Navigator: NSObject {
     public func navigateToLoggedOutViewController() {
         guard let window = appDelegate.window,
             let rootViewController = window.rootViewController else { return }
-        let signUp = SignUpViewController.viewControllerFromStoryboard()
-        let newViewController = signUp.inNavigationController()
-        newViewController.navigationBar.barStyle = .black
-        newViewController.navigationBar.isHidden = true
-        newViewController.view.frame = rootViewController.view.frame
-        newViewController.view.layoutIfNeeded()
+        let login = LoginExperience.initialViewController()
+        login.view.frame = rootViewController.view.frame
+        login.view.layoutIfNeeded()
         
         UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            window.rootViewController = newViewController
+            window.rootViewController = login
         }) { [weak self] completed in
             self?.removeUI()
         }
@@ -515,4 +508,24 @@ public extension UIViewController {
         }
     }
     
+}
+
+
+class InteractivePopRecognizer: NSObject, UIGestureRecognizerDelegate {
+
+    var navigationController: UINavigationController
+
+    init(controller: UINavigationController) {
+        self.navigationController = controller
+    }
+
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return navigationController.viewControllers.count > 1
+    }
+
+    // This is necessary because without it, subviews of your top controller can
+    // cancel out your gesture recognizer on the edge.
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }

@@ -8,7 +8,7 @@
   "tvOS" : [
 
   ],
-  "commitish" : "6.11.0",
+  "commitish" : "6.13.0",
   "iOS" : [
     {
       "name" : "Firebase",
@@ -16,43 +16,43 @@
     },
     {
       "name" : "GoogleDataTransportCCTSupport",
-      "hash" : "e794d13464c6898695924d68c7148f35d65a67a6ef909b09689285035da207fe"
+      "hash" : "60ebd2a75a3a178f031dd9f280a62817cab233368223caa71aa5aff4018ef21a"
     },
     {
       "name" : "FirebaseAnalytics",
-      "hash" : "5f75c88d4acf6f5bf3e91594cc1825e752209ef2857b55442c717d003f3d56e0"
-    },
-    {
-      "name" : "nanopb",
-      "hash" : "8fc4904ea7e219b2b7067b9e88fa69b4c40e5bf300fbbb89a1add120bb8c6478"
+      "hash" : "6d32b4d051b8c9998494e37b7f0f1d7d87dfccd16faea0178654798c317842a4"
     },
     {
       "name" : "GoogleDataTransport",
-      "hash" : "ac8f94b7419acd9cf4b8ca4c3ad5b53dc1687262211c4af9218a1acb082f6381"
+      "hash" : "6c0d5fc7aa3be725fc81893eddd17f8b536035bb74f42b336ec598b637bf2dcb"
+    },
+    {
+      "name" : "nanopb",
+      "hash" : "9adf65d4801ea235dc29420dc1991b7a91cf8d5a708383d276fdaa13b0a60377"
     },
     {
       "name" : "FirebaseCore",
-      "hash" : "f5b43fe121ce52c5e6ce3d7718717436a233b468f78ef893abda431379dad0fe"
+      "hash" : "70a9963d90211cb0a8fcdeaa828649b6ade80ddd8e2ece9af348a0d1c4a058a7"
     },
     {
       "name" : "FIRAnalyticsConnector",
-      "hash" : "8d4cea6ee0a75d09eac9055c8d0e8c502415dad7b184b13e4df147d38c05aa7d"
+      "hash" : "63d9e0a0ab2b52d4d8d79d6333f760a6f9b6193cf95b847b0feda2720a3ee188"
     },
     {
       "name" : "FirebaseCoreDiagnostics",
-      "hash" : "bb8b35f1802cef196f8a6456b666c54a6fdaf473c35e430151c3047f0b2b5f9e"
+      "hash" : "55a347dbeae23687c88db1cacbd7213509dc4762f5db0b093b269f4eed4fca4a"
     },
     {
       "name" : "GoogleUtilities",
-      "hash" : "153e6e133b083b25908de191393062df609986f68938ffdcf46cf83ee1b198af"
+      "hash" : "9923b1fefee740b864f9069a36156849334eb1c1feac52f96ea8a97df54dfe19"
     },
     {
       "name" : "FirebaseInstanceID",
-      "hash" : "826b1333235713d7f7899f19e88473c831f4680f79c93d6f30a373cae9238ed1"
+      "hash" : "ae11a8349e34088137256bf59347b44ef0afecb3e587c8a59aa97a6d0d66e653"
     },
     {
       "name" : "GoogleAppMeasurement",
-      "hash" : "42558f9100562328b4e137a5f28466bc8a2c2c2e5af802ea21ca5b6319990cef"
+      "hash" : "414e7505ded94ec1b8cb85615be88f22486916a12a5de4725b1277b00c805f6b"
     }
   ]
 }

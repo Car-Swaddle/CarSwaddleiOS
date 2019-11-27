@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dod-og-GBe">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Intro View Controller-->
+        <scene sceneID="6oi-vF-TYZ">
+            <objects>
+                <viewController id="Dod-og-GBe" customClass="IntroViewController" customModule="CarSwaddle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QFp-43-XvY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7mL-Nj-KNj">
+                                <rect key="frame" x="144" y="784" width="126" height="30"/>
+                                <state key="normal" title="Create an account"/>
+                                <connections>
+                                    <action selector="didTapCreateAnAccount" destination="Dod-og-GBe" eventType="touchUpInside" id="Ac7-TY-URg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hu-EJ-ac6">
+                                <rect key="frame" x="188" y="678" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="didTapLogin" destination="Dod-og-GBe" eventType="touchUpInside" id="d49-en-30J"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="iEd-WD-ZF0">
+                                <rect key="frame" x="164" y="138" width="86" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iEd-WD-ZF0" secondAttribute="height" multiplier="1:1" id="Tlt-CW-7TN"/>
+                                    <constraint firstAttribute="height" constant="86" id="qhS-NQ-LjM"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctQ-wA-clg">
+                                <rect key="frame" x="198" y="739" width="18.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1mW-Tm-xlj">
+                                <rect key="frame" x="60" y="746.5" width="126" height="1"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="126" id="Mxc-JZ-brJ"/>
+                                    <constraint firstAttribute="height" constant="1" id="T8U-9S-mHZ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGj-od-ZjX">
+                                <rect key="frame" x="228.5" y="746.5" width="125" height="1"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="fvk-V9-EFL"/>
+                                    <constraint firstAttribute="width" constant="125" id="wLn-6z-TmG"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car-swaddle-white-one-line" translatesAutoresizingMaskIntoConstraints="NO" id="sTJ-qY-2Nd">
+                                <rect key="frame" x="107" y="250" width="200" height="24"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="7BG-Xo-vBB"/>
+                                    <constraint firstAttribute="width" constant="200" id="YLw-nQ-gje"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="9"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGb-Db-KP0">
+                                <rect key="frame" x="181.5" y="300" width="51" height="5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="51" id="BeJ-gT-3fT"/>
+                                    <constraint firstAttribute="height" constant="5" id="ohg-bn-g79"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ctQ-wA-clg" firstAttribute="top" secondItem="5hu-EJ-ac6" secondAttribute="bottom" constant="31" id="3Ua-Lf-k7W"/>
+                            <constraint firstItem="5hu-EJ-ac6" firstAttribute="centerX" secondItem="WXv-8j-eNU" secondAttribute="centerX" id="4ky-36-8OF"/>
+                            <constraint firstItem="FGj-od-ZjX" firstAttribute="leading" secondItem="ctQ-wA-clg" secondAttribute="trailing" constant="12" id="E4M-eH-lmw"/>
+                            <constraint firstItem="1mW-Tm-xlj" firstAttribute="centerY" secondItem="ctQ-wA-clg" secondAttribute="centerY" id="IBa-yn-CHc"/>
+                            <constraint firstItem="DGb-Db-KP0" firstAttribute="top" secondItem="sTJ-qY-2Nd" secondAttribute="bottom" constant="26" id="Iew-wh-Vl2"/>
+                            <constraint firstItem="sTJ-qY-2Nd" firstAttribute="top" secondItem="iEd-WD-ZF0" secondAttribute="bottom" constant="26" id="Ltj-Ew-Jsu"/>
+                            <constraint firstItem="sTJ-qY-2Nd" firstAttribute="centerX" secondItem="WXv-8j-eNU" secondAttribute="centerX" id="Qj7-2Z-zJn"/>
+                            <constraint firstItem="7mL-Nj-KNj" firstAttribute="centerX" secondItem="WXv-8j-eNU" secondAttribute="centerX" id="aKh-fc-xsZ"/>
+                            <constraint firstItem="iEd-WD-ZF0" firstAttribute="top" secondItem="WXv-8j-eNU" secondAttribute="top" constant="94" id="bFG-lJ-Oys"/>
+                            <constraint firstItem="WXv-8j-eNU" firstAttribute="bottom" secondItem="7mL-Nj-KNj" secondAttribute="bottom" constant="48" id="cT1-B0-1UZ"/>
+                            <constraint firstItem="iEd-WD-ZF0" firstAttribute="centerX" secondItem="WXv-8j-eNU" secondAttribute="centerX" id="rzc-J7-ZW1"/>
+                            <constraint firstItem="FGj-od-ZjX" firstAttribute="centerY" secondItem="ctQ-wA-clg" secondAttribute="centerY" id="t3k-Ju-huL"/>
+                            <constraint firstItem="ctQ-wA-clg" firstAttribute="leading" secondItem="1mW-Tm-xlj" secondAttribute="trailing" constant="12" id="ufC-aw-1a6"/>
+                            <constraint firstItem="7mL-Nj-KNj" firstAttribute="top" secondItem="ctQ-wA-clg" secondAttribute="bottom" constant="29" id="wmH-EZ-pnZ"/>
+                            <constraint firstItem="ctQ-wA-clg" firstAttribute="centerX" secondItem="WXv-8j-eNU" secondAttribute="centerX" id="xni-iJ-B5i"/>
+                            <constraint firstItem="DGb-Db-KP0" firstAttribute="centerX" secondItem="WXv-8j-eNU" secondAttribute="centerX" id="zb6-aP-H9G"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WXv-8j-eNU"/>
+                    </view>
+                    <connections>
+                        <outlet property="createAnAccountButton" destination="7mL-Nj-KNj" id="XBk-HA-OLT"/>
+                        <outlet property="iconImageView" destination="iEd-WD-ZF0" id="wfx-7H-V7S"/>
+                        <outlet property="leftOrSeparatorView" destination="1mW-Tm-xlj" id="AoG-Vm-aVQ"/>
+                        <outlet property="lineAccentView" destination="DGb-Db-KP0" id="BB3-b4-aWx"/>
+                        <outlet property="loginButton" destination="5hu-EJ-ac6" id="9Fg-tJ-uxg"/>
+                        <outlet property="logoImageView" destination="sTJ-qY-2Nd" id="t4D-J2-gcp"/>
+                        <outlet property="orLabel" destination="ctQ-wA-clg" id="aYa-0p-Yxg"/>
+                        <outlet property="rightOrSeparatorView" destination="FGj-od-ZjX" id="fHi-el-h5F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d1q-R6-Kbi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4.3478260869565224" y="154.6875"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AppLogo" width="60" height="60"/>
+        <image name="car-swaddle-white-one-line" width="1401" height="168"/>
+    </resources>
+</document>

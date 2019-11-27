@@ -53,7 +53,7 @@ final class SelectMechanicTableViewController: UIViewController, StoryboardInsta
     }
     
     private var isActionButtonEnabled: Bool {
-        return selectedStartTime != nil
+        return true
     }
     
     private enum Row: CaseIterable {

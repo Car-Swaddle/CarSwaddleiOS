@@ -39,18 +39,21 @@ extension UIFont {
     public static let largeFontSize: CGFloat = 19
     public static let extraLargeFontSize: CGFloat = 22
     public static let actionFontSize: CGFloat = 17
+    public static let headerFontSize: CGFloat = 12
     
     public static let detailFontType: FontType = .regular
     public static let titleFontType: FontType = .regular
     public static let largeFontType: FontType = .semiBold
     public static let extraLargeFontType: FontType = .semiBold
-    public static let actionFontType: FontType = .semiBold
+    public static let actionFontType: FontType = .bold
+    public static let headerFontType: FontType = .semiBold
     
     public static let detail: UIFont = UIFont.appFont(type: detailFontType, size: detailFontSize)
     public static let title: UIFont = UIFont.appFont(type: titleFontType, size: titleFontSize)
     public static let large: UIFont = UIFont.appFont(type: largeFontType, size: largeFontSize)
     public static let action: UIFont = UIFont.appFont(type: actionFontType, size: actionFontSize)
     public static let extralarge: UIFont = UIFont.appFont(type: extraLargeFontType, size: extraLargeFontSize)
+    public static let header: UIFont = UIFont.appFont(type: headerFontType, size: headerFontSize)
     
 }
 
