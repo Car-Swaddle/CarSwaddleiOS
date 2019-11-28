@@ -26,12 +26,12 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     
     var makeTextFieldFirstResponderOnLoad: Bool = false
     
-    private lazy var fadeTransitionDelegate: FadeTransitionDelegate = FadeTransitionDelegate()
+//    private lazy var fadeTransitionDelegate: FadeTransitionDelegate = FadeTransitionDelegate()
     
     static func create() -> SignUpViewController {
         let signUp = SignUpViewController.viewControllerFromStoryboard()
-        signUp.transitioningDelegate = signUp.fadeTransitionDelegate
-        signUp.modalPresentationStyle = .custom
+//        signUp.transitioningDelegate = signUp.fadeTransitionDelegate
+//        signUp.modalPresentationStyle = .custom
         return signUp
     }
     
@@ -51,11 +51,11 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     
     private var signUpTask: URLSessionDataTask?
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let login = segue.destination as? LoginViewController else { return }
-        login.transitioningDelegate = login.fadeTransitionDelegate
-        login.modalPresentationStyle = .custom
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let login = segue.destination as? LoginViewController else { return }
+////        login.transitioningDelegate = login.fadeTransitionDelegate
+//        login.modalPresentationStyle = .custom
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -286,14 +286,11 @@ public extension String {
 
 
 extension SignUpViewController: FadeAnimationControllerFrameSpecifying {
-    
-    var newFrameOfViewToBeTransitioned: CGRect {
-        let f = logoImageView.frame
-        return CGRect(x: f.origin.x + view.safeAreaInsets.left, y: f.origin.y + view.safeAreaInsets.top, width: f.width, height: f.height)
-    }
-    
-    var viewBeingTransitionedTo: UIView {
-        return logoImageView
-    }
-    
+    var newFrameOfViewToBeTransitioned: CGRect { return logoImageView.frame }
+    var viewBeingTransitionedTo: UIView { return logoImageView }
+}
+
+extension SignUpViewController: FadeAnimationControllerViewMovable {
+    var viewToBeTransitioned: UIView { return logoImageView }
+    var frameOfViewToBeMoved: CGRect { return logoImageView.frame }
 }

@@ -167,6 +167,7 @@
 		99AEE1CA2274154C00938462 /* LabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1C92274154C00938462 /* LabeledTextField.swift */; };
 		99AEE1CC2277D7CB00938462 /* DateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1CB2277D7CB00938462 /* DateCardView.swift */; };
 		99AEE1CE2277D7E400938462 /* DateCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99AEE1CD2277D7E400938462 /* DateCardView.xib */; };
+		99B4CADC23907C7D00C1E501 /* FadeAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4CADB23907C7D00C1E501 /* FadeAnimationController.swift */; };
 		99D5D99121F43C1600E6A511 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03D821F429BA00546C58 /* Authentication.framework */; };
 		99D5D99321F43C1600E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375AA2171D81900F15BEC /* CarSwaddleNetworkRequest.framework */; };
 		99D5D99421F43C1600E6A511 /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03D921F429BA00546C58 /* CarSwaddleUI.framework */; };
@@ -431,6 +432,7 @@
 		99AEE1C92274154C00938462 /* LabeledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextField.swift; sourceTree = "<group>"; };
 		99AEE1CB2277D7CB00938462 /* DateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateCardView.swift; path = CarSwaddle/UI/DateCardView.swift; sourceTree = SOURCE_ROOT; };
 		99AEE1CD2277D7E400938462 /* DateCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCardView.xib; sourceTree = "<group>"; };
+		99B4CADB23907C7D00C1E501 /* FadeAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeAnimationController.swift; sourceTree = "<group>"; };
 		99BC8D022245F3A000B732E7 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
 		99BC8D032245F3A200B732E7 /* Montserrat-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.otf"; sourceTree = "<group>"; };
 		99BC8D042245F3A300B732E7 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 				990F7D83238B819600B88F0B /* IntroViewController.swift */,
 				990F7D85238B81C100B88F0B /* IntroViewController.storyboard */,
 				990F7D87238BBA4E00B88F0B /* BackingViewNavigationController.swift */,
+				99B4CADB23907C7D00C1E501 /* FadeAnimationController.swift */,
 				994CA9F6215206CD00D41F6C /* LoginViewController.swift */,
 				994CA9FB215208BD00D41F6C /* SignUpViewController.swift */,
 				994CA9F8215206E600D41F6C /* LoginViewController.storyboard */,
@@ -1440,6 +1443,7 @@
 				99DC25FC2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift in Sources */,
 				99FEB006215DEECB0009BC07 /* OilTypeCell.swift in Sources */,
 				997DBC42218EBD210080F42C /* MechanicSelectCell.swift in Sources */,
+				99B4CADC23907C7D00C1E501 /* FadeAnimationController.swift in Sources */,
 				99E66DA421E294A600C6E3E1 /* ProfileHeaderView.swift in Sources */,
 				99E48167227AC5780040B882 /* AutoServiceVehicleCell.swift in Sources */,
 				991AFCBC2259297300AD6614 /* PriceView.swift in Sources */,
@@ -1718,7 +1722,7 @@
 					"$(SRCROOT)/Carthage/Build/iOS",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.100.1;
+				MARKETING_VERSION = 1.101.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddle;
@@ -1754,7 +1758,7 @@
 					"$(SRCROOT)/Carthage/Build/iOS",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.100.1;
+				MARKETING_VERSION = 1.101.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddle;
 				PRODUCT_NAME = "$(TARGET_NAME)";

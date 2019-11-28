@@ -69,6 +69,20 @@ extension IntroViewController: FadeAnimationControllerViewMovable {
     
 }
 
+extension IntroViewController: FadeAnimationControllerFrameSpecifying {
+    
+    var newFrameOfViewToBeTransitioned: CGRect {
+        let f = logoImageView.frame
+        return f
+//        return CGRect(x: f.origin.x + view.safeAreaInsets.left, y: f.origin.y + view.safeAreaInsets.top, width: f.width, height: f.height)
+    }
+    
+    var viewBeingTransitionedTo: UIView {
+        return logoImageView
+    }
+    
+}
+
 
 extension UIButton {
     

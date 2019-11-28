@@ -13,6 +13,7 @@ class LoginExperience {
     static func initialViewController() -> UIViewController {
         let signUp = IntroViewController.viewControllerFromStoryboard()
         let navigationController = signUp.inBackingViewNavigationController()
+        navigationController.overlayColor = .tertiaryBrand
         navigationController.navigationBar.barStyle = .black
         navigationController.isNavigationBarHidden = true
         return navigationController

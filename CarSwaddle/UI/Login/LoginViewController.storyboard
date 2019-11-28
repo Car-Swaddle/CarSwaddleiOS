@@ -167,7 +167,6 @@
                                 <state key="normal" image="back-button"/>
                                 <connections>
                                     <action selector="didTapBack" destination="fl6-Bj-bHG" eventType="touchUpInside" id="a5t-pQ-01R"/>
-                                    <action selector="didTapBack" destination="aHk-nT-EjF" eventType="touchUpInside" id="mlU-Yw-r1g"/>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vl3-sA-U2c">

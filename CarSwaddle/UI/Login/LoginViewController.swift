@@ -27,12 +27,12 @@ class LoginViewController: UIViewController, StoryboardInstantiating, UIGestureR
     
     private var loginTask: URLSessionDataTask?
     
-    lazy var fadeTransitionDelegate: FadeTransitionDelegate = FadeTransitionDelegate()
+//    lazy var fadeTransitionDelegate: FadeTransitionDelegate = FadeTransitionDelegate()
     
     static func create() -> LoginViewController {
         let login = LoginViewController.viewControllerFromStoryboard()
-        login.transitioningDelegate = login.fadeTransitionDelegate
-        login.modalPresentationStyle = .custom
+//        login.transitioningDelegate = login.fadeTransitionDelegate
+//        login.modalPresentationStyle = .custom
         return login
     }
     
@@ -178,14 +178,11 @@ extension LoginViewController: UITextFieldDelegate {
 
 
 extension LoginViewController: FadeAnimationControllerFrameSpecifying {
-    
-    var newFrameOfViewToBeTransitioned: CGRect {
-        let f = logoImageView.frame
-        return CGRect(x: f.origin.x + view.safeAreaInsets.left, y: f.origin.y + view.safeAreaInsets.top, width: f.width, height: f.height)
-    }
-    
-    var viewBeingTransitionedTo: UIView {
-        return logoImageView
-    }
-    
+    var newFrameOfViewToBeTransitioned: CGRect { return logoImageView.frame }
+    var viewBeingTransitionedTo: UIView { return logoImageView }
+}
+
+extension LoginViewController: FadeAnimationControllerViewMovable {
+    var viewToBeTransitioned: UIView { return logoImageView }
+    var frameOfViewToBeMoved: CGRect { return logoImageView.frame }
 }
