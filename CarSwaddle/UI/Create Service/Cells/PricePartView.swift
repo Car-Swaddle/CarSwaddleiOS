@@ -31,7 +31,7 @@ final class PricePartView: UIView, NibInstantiating {
     
     func configure(with price: Price) {
         partDescriptionLabel.text = NSLocalizedString("Total", comment: "total price")
-        partPriceLabel.text = currencyFormatter.string(from: price.totalDollarValue)
+        partPriceLabel.text = currencyFormatterWithDollarSign.string(from: price.totalDollarValue)
     }
     
 }

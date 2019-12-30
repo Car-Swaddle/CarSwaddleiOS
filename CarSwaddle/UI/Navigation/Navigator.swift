@@ -205,7 +205,6 @@ final class Navigator: NSObject {
         
         CustomAlertController.alertBackgroundColor = .background
         CustomAlertController.transparentBackgroundColor = UIColor.neutral3.withAlphaComponent(0.5)
-        
     }
     
     public func initialViewController() -> UIViewController {

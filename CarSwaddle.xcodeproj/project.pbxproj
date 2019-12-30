@@ -18,7 +18,6 @@
 		990F4386214252C700E65FC1 /* CarSwaddleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F4385214252C700E65FC1 /* CarSwaddleTests.swift */; };
 		990F7D82238B438E00B88F0B /* LoginExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F7D81238B438E00B88F0B /* LoginExperience.swift */; };
 		990F7D84238B819600B88F0B /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F7D83238B819600B88F0B /* IntroViewController.swift */; };
-		990F7D86238B81C100B88F0B /* IntroViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 990F7D85238B81C100B88F0B /* IntroViewController.storyboard */; };
 		990F7D88238BBA4E00B88F0B /* BackingViewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F7D87238BBA4E00B88F0B /* BackingViewNavigationController.swift */; };
 		99116905215B76B6001E039E /* AddVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99116903215B76B6001E039E /* AddVehicleCell.swift */; };
 		99116906215B76B6001E039E /* AddVehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99116904215B76B6001E039E /* AddVehicleCell.xib */; };
@@ -168,6 +167,7 @@
 		99AEE1CC2277D7CB00938462 /* DateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1CB2277D7CB00938462 /* DateCardView.swift */; };
 		99AEE1CE2277D7E400938462 /* DateCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99AEE1CD2277D7E400938462 /* DateCardView.xib */; };
 		99B4CADC23907C7D00C1E501 /* FadeAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4CADB23907C7D00C1E501 /* FadeAnimationController.swift */; };
+		99B967A923A4A062007C7C06 /* IntroViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99B967AB23A4A062007C7C06 /* IntroViewController.storyboard */; };
 		99D5D99121F43C1600E6A511 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03D821F429BA00546C58 /* Authentication.framework */; };
 		99D5D99321F43C1600E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375AA2171D81900F15BEC /* CarSwaddleNetworkRequest.framework */; };
 		99D5D99421F43C1600E6A511 /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03D921F429BA00546C58 /* CarSwaddleUI.framework */; };
@@ -283,7 +283,6 @@
 		990F438C214252C700E65FC1 /* CarSwaddleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarSwaddleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		990F7D81238B438E00B88F0B /* LoginExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginExperience.swift; sourceTree = "<group>"; };
 		990F7D83238B819600B88F0B /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
-		990F7D85238B81C100B88F0B /* IntroViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IntroViewController.storyboard; sourceTree = "<group>"; };
 		990F7D87238BBA4E00B88F0B /* BackingViewNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackingViewNavigationController.swift; sourceTree = "<group>"; };
 		99116903215B76B6001E039E /* AddVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleCell.swift; sourceTree = "<group>"; };
 		99116904215B76B6001E039E /* AddVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVehicleCell.xib; sourceTree = "<group>"; };
@@ -433,6 +432,7 @@
 		99AEE1CB2277D7CB00938462 /* DateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateCardView.swift; path = CarSwaddle/UI/DateCardView.swift; sourceTree = SOURCE_ROOT; };
 		99AEE1CD2277D7E400938462 /* DateCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCardView.xib; sourceTree = "<group>"; };
 		99B4CADB23907C7D00C1E501 /* FadeAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeAnimationController.swift; sourceTree = "<group>"; };
+		99B967AA23A4A062007C7C06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/IntroViewController.storyboard; sourceTree = "<group>"; };
 		99BC8D022245F3A000B732E7 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
 		99BC8D032245F3A200B732E7 /* Montserrat-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.otf"; sourceTree = "<group>"; };
 		99BC8D042245F3A300B732E7 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -701,7 +701,7 @@
 				998984D9229D0FBC00E4B25A /* ForgotPasswordViewController.storyboard */,
 				998984DA229D0FBD00E4B25A /* ForgotPasswordViewController.swift */,
 				990F7D83238B819600B88F0B /* IntroViewController.swift */,
-				990F7D85238B81C100B88F0B /* IntroViewController.storyboard */,
+				99B967AB23A4A062007C7C06 /* IntroViewController.storyboard */,
 				990F7D87238BBA4E00B88F0B /* BackingViewNavigationController.swift */,
 				99B4CADB23907C7D00C1E501 /* FadeAnimationController.swift */,
 				994CA9F6215206CD00D41F6C /* LoginViewController.swift */,
@@ -1271,7 +1271,7 @@
 				9955BC3F215588DB008DAF8E /* CreateServiceLocationCell.xib in Resources */,
 				99DC26432246ECC2009E0A15 /* MontserratAlternates-LightItalic.otf in Resources */,
 				99DC263A2246ECC2009E0A15 /* MontserratAlternates-BlackItalic.otf in Resources */,
-				990F7D86238B81C100B88F0B /* IntroViewController.storyboard in Resources */,
+				99B967A923A4A062007C7C06 /* IntroViewController.storyboard in Resources */,
 				99985FF5227C0B1E00113536 /* HeaderCell.xib in Resources */,
 				99DC26282246ECC2009E0A15 /* Montserrat-BlackItalic.otf in Resources */,
 				9935529223581EBD009DB141 /* ShareCouponView.xib in Resources */,
@@ -1575,6 +1575,14 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		99B967AB23A4A062007C7C06 /* IntroViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99B967AA23A4A062007C7C06 /* Base */,
+			);
+			name = IntroViewController.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1705,7 +1713,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddle/Support/CarSwaddle.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 977533WLK8;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1722,7 +1730,7 @@
 					"$(SRCROOT)/Carthage/Build/iOS",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.101.0;
+				MARKETING_VERSION = 1.101.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddle;
@@ -1741,7 +1749,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddle/Support/CarSwaddle.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 977533WLK8;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1758,7 +1766,7 @@
 					"$(SRCROOT)/Carthage/Build/iOS",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.101.0;
+				MARKETING_VERSION = 1.101.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddle;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -94,6 +94,20 @@ class BackingViewNavigationController: UINavigationController, UINavigationContr
         view.sendSubviewToBack(backgroundImageScrollView)
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        addBackgroundScrollAnimation()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { context in
+        }) { context in
+            self.addBackgroundScrollAnimation()
+        }
+    }
+    
     private let animationName: String = "viewAnimation"
     private var interactionController: UIPercentDrivenInteractiveTransition?
     
@@ -110,9 +124,10 @@ class BackingViewNavigationController: UINavigationController, UINavigationContr
     private func addBackgroundScrollAnimation() {
         backgroundImageScrollView.bounds = CGRect(origin: scrollViewStartingPoint, size: view.frame.size)
         
+        backgroundImageScrollView.layer.removeAnimation(forKey: animationName)
+        
         let animation = self.createAnimation()
         self.animation = animation
-        backgroundImageScrollView.layer.removeAnimation(forKey: animationName)
         backgroundImageScrollView.layer.add(animation, forKey: animationName)
         backgroundImageScrollView.bounds = CGRect(origin: scrollViewEndPoint, size: view.frame.size)
     }

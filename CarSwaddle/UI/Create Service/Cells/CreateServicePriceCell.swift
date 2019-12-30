@@ -14,6 +14,14 @@ let currencyFormatter: NumberFormatter = {
     let formatter = NumberFormatter()
     formatter.numberStyle = .currency
     formatter.locale = Locale(identifier: "en_US")
+    formatter.currencySymbol = ""
+    return formatter
+}()
+
+let currencyFormatterWithDollarSign: NumberFormatter = {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currency
+    formatter.locale = Locale(identifier: "en_US")
     return formatter
 }()
 
