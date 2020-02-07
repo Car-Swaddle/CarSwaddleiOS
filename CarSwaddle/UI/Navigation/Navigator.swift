@@ -187,12 +187,10 @@ final class Navigator: NSObject {
 
         alertAppearance.preferredButtonColor = .action
         alertAppearance.preferredButtonTitleColor = .inverseText
-
-//        alertAppearance.textFieldUnderlineColor = .purple
-
+        
         alertAppearance.buttonTitleFont = .title
 
-        alertAppearance.titleFont = .extralarge
+        alertAppearance.titleFont = .large
         alertAppearance.buttonTitleFont = .title
         alertAppearance.messageFont = .title
 

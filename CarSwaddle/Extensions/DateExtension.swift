@@ -19,6 +19,10 @@ extension Date {
         return Calendar.current.date(byAdding: .day, value: -1, to: self, wrappingComponents: false)!
     }
     
+    func dateByAdding(minutes: Int) -> Date {
+        return Calendar.current.date(byAdding: .minute, value: minutes, to: self, wrappingComponents: false)!
+    }
+    
     func dateByAdding(hours: Int) -> Date {
         return Calendar.current.date(byAdding: .hour, value: hours, to: self, wrappingComponents: false)!
     }

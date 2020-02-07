@@ -13,7 +13,7 @@ import CoreData
 import CarSwaddleNetworkRequest
 import Store
 import Firebase
-
+import EventKit
 
 
 final class ServicesViewController: UIViewController, StoryboardInstantiating {
@@ -98,6 +98,7 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
     
     @IBAction private func didTapCreate() {
         let creator = AutoServiceCreation()
+        creator.delegate = self
         self.creator = creator
         let pocketController = creator.pocketController!
         pocketController.modalPresentationStyle = .fullScreen
@@ -242,6 +243,111 @@ extension ServicesViewController: UITableViewDelegate {
             return String(format: appointments, name, upcomingAppointments)
         case .finished:
             return NSLocalizedString("Completed appointments", comment: "How many appointments are finished")
+        }
+    }
+    
+}
+
+extension ServicesViewController: AutoServiceCreationDelegate {
+    
+    func didCompletePayment(creation: AutoServiceCreation, autoService: AutoService) {
+        let confirmAlert = self.confirmationAlert(autoService: autoService)
+        present(confirmAlert, animated: true, completion: nil)
+    }
+    
+    private func confirmationAlert(autoService: AutoService) -> CustomAlertController {
+        let title = NSLocalizedString("Congratulations on scheduling your oil change! Would you like to add it to your calendar?", comment: "Title of alert after user created an auto service")
+        let message = NSLocalizedString("Add it to your calendar to receive reminders.", comment: "Title of alert after user created an auto service")
+        let alertView = CustomAlertContentView.view(withTitle: title, message: message)
+        
+        let dismissAction = CustomAlertAction(title: NSLocalizedString("Dismiss", comment: "Dismisses an alert"))
+        alertView.addAction(dismissAction)
+        let addAction = CustomAlertAction(title: NSLocalizedString("Add event", comment: "Adds an event to the users calendar")) { action in
+            autoService.createEvent { event in
+                DispatchQueue.main.async {
+                    if event != nil {
+                        let addedAlert = self.didAddEventAlert()
+                        self.present(addedAlert, animated: true, completion: nil)
+                    } else {
+                        let allowAlert = self.allowCalendarUseAlert()
+                        self.present(allowAlert, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+        alertView.addAction(addAction)
+        
+        alertView.preferredAction = addAction
+        
+        let alert = CustomAlertController.viewController(contentView: alertView)
+        return alert
+    }
+    
+    private func allowCalendarUseAlert() -> CustomAlertController {
+        let title = NSLocalizedString("Allow Car Swaddle calendar access", comment: "Title of alert after user created an auto service")
+        let message = NSLocalizedString("In order for Car Swaddle to add events to your calendar, you must allow so in settings.", comment: "Title of alert after user created an auto service")
+        let alertView = CustomAlertContentView.view(withTitle: title, message: message)
+        
+        alertView.addCancelAction()
+        let openSettingsAction = CustomAlertAction(title: NSLocalizedString("Open settings", comment: "Title of button that opens the users settings")) { action in
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        alertView.addAction(openSettingsAction)
+        alertView.preferredAction = openSettingsAction
+        
+        let alert = CustomAlertController.viewController(contentView: alertView)
+        return alert
+    }
+    
+    private func didAddEventAlert() -> CustomAlertController {
+        let title = NSLocalizedString("Car Swaddle added an event to your calendar", comment: "Title of alert after user created an auto service")
+        let message = NSLocalizedString("You'll get a reminder the day before and 30 minutes before the service.", comment: "Title of alert after user created an auto service")
+        let alertView = CustomAlertContentView.view(withTitle: title, message: message)
+        
+        alertView.addOkayAction()
+        
+        let alert = CustomAlertController.viewController(contentView: alertView)
+        alert.tapBackgroundToDismiss = true
+        return alert
+    }
+    
+}
+
+
+extension AutoService {
+    
+    func createEvent(completion: @escaping (_ event: EKEvent?) -> Void) {
+        let store = EKEventStore()
+        
+        store.requestAccess(to: .event) { isAllowed, error in
+            guard isAllowed else {
+                completion(nil)
+                return
+            }
+            let event = EKEvent(eventStore: store)
+            if let date = self.scheduledDate {
+                event.startDate = date
+                event.endDate = date.dateByAdding(minutes: 45)
+            }
+            
+            event.title = NSLocalizedString("Car Swaddle oil change", comment: "Title of an event")
+            
+            event.location = self.location?.streetAddress
+            event.availability = .busy
+            
+            event.addAlarm(EKAlarm(relativeOffset: .minute * 30))
+            event.addAlarm(EKAlarm(relativeOffset: .day))
+            
+            event.calendar = store.defaultCalendarForNewEvents
+            
+            do {
+                try store.save(event, span: .thisEvent)
+                completion(event)
+            } catch {
+                completion(nil)
+            }
         }
     }
     

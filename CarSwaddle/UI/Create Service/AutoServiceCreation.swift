@@ -18,11 +18,17 @@ import StoreKit
 private let errorWithPaymentTitle = NSLocalizedString("Car Swaddle was unable to process your payment", comment: "")
 private let errorWithPaymentMessage = NSLocalizedString("Please try again with another payment method", comment: "")
 
+protocol AutoServiceCreationDelegate: AnyObject {
+    func didCompletePayment(creation: AutoServiceCreation, autoService: AutoService)
+}
+
 final class AutoServiceCreation: NSObject {
     
     public var pocketController: PocketController!
     
     private var autoService: AutoService
+    
+    weak var delegate: AutoServiceCreationDelegate?
     
     override init() {
         assert(Thread.isMainThread, "Must be on main")
@@ -238,6 +244,8 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
                 self?.pocketController.dismiss(animated: true) {
                     self?.pocketController.dismiss(animated: true) {
                         SKStoreReviewController.requestReview()
+                        guard let self = self else { return }
+                        self.delegate?.didCompletePayment(creation: self, autoService: self.autoService)
                     }
                 }
                 completion(.success, nil)

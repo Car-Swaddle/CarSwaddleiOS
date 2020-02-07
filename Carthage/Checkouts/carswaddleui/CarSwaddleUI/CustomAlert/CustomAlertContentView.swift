@@ -438,6 +438,10 @@ public final class CustomAlertContentView: UIView, NibInstantiating {
     
     override public func layoutSubviews() {
         super.layoutSubviews()
+        
+        labelStackView.layoutIfNeeded()
+        buttonStackView.layoutIfNeeded()
+        
         labelScrollViewHeightConstraint.constant = labelStackView.frame.height + 5
         buttonScrollViewHeightConstraint.constant = buttonStackView.frame.height
         

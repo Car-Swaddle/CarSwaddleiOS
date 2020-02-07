@@ -58,9 +58,15 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
         searchController.searchBar.showsCancelButton = false
         let placeholder = NSLocalizedString("Search Location", comment: "Placeholder text")
         searchController.searchBar.placeholder = placeholder
-        searchController.searchBar.searchTextField.borderColor = .secondaryBackground
-        searchController.searchBar.searchTextField.borderWidth = UIView.hairlineLength
-        searchController.searchBar.searchTextField.cornerRadius = 7
+        if #available(iOS 13, *) {
+            searchController.searchBar.searchTextField.borderColor = .secondaryBackground
+            searchController.searchBar.searchTextField.borderWidth = UIView.hairlineLength
+            searchController.searchBar.searchTextField.cornerRadius = 7
+        } else {
+            searchController.searchBar.textField?.borderColor = .secondaryBackground
+            searchController.searchBar.textField?.borderWidth = UIView.hairlineLength
+            searchController.searchBar.textField?.cornerRadius = 7
+        }
         return searchController
     }()
     
@@ -377,10 +383,10 @@ extension UIView {
 
 extension UISearchBar {
     
-//    public var textField: UITextField? {
-//        return firstSubview(of: UITextField.self)
-//    }
-//
+    public var textField: UITextField? {
+        return firstSubview(of: UITextField.self)
+    }
+
 //    public func setTextFieldBackgroundColor(color: UIColor) {
 //        guard let textField = firstSubview(of: UITextField.self) else { return }
 //        switch searchBarStyle {
