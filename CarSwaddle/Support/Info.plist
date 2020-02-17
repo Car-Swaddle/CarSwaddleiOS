@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Car Swaddle will use your calendar to add events for your auto services</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -44,6 +42,8 @@
 			<true/>
 		</dict>
 	</dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Car Swaddle will use your calendar to add events for your auto services</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow Car Swaddle to use your camera so you can upload a profile picture</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

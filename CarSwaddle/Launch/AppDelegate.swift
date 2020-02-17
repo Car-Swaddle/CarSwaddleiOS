@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         _ = pushNotificationController
         store.mainContext.persist()
-                
+        
         navigator.setupWindow()
         
         return true
