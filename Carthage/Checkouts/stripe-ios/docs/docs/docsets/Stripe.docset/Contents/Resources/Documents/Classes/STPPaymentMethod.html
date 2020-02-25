@@ -98,6 +98,12 @@
                 <a class="nav-group-task-link" href="../Classes/STPCardValidator.html">STPCardValidator</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPConfirmCardOptions.html">STPConfirmCardOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPConfirmPaymentMethodOptions.html">STPConfirmPaymentMethodOptions</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPConnectAccountAddress.html">STPConnectAccountAddress</a>
               </li>
               <li class="nav-group-task">
@@ -153,6 +159,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPIssuingCardPin.html">STPIssuingCardPin</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPKlarnaLineItem.html">STPKlarnaLineItem</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPMandateCustomerAcceptanceParams.html">STPMandateCustomerAcceptanceParams</a>
@@ -276,6 +285,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPSourceCardDetails.html">STPSourceCardDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPSourceKlarnaDetails.html">STPSourceKlarnaDetails</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPSourceOwner.html">STPSourceOwner</a>
@@ -454,6 +466,12 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/STPIntentActionType.html">STPIntentActionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/STPKlarnaLineItemType.html">STPKlarnaLineItemType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/STPKlarnaPaymentMethods.html">STPKlarnaPaymentMethods</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/STPMandateCustomerAcceptanceType.html">STPMandateCustomerAcceptanceType</a>
@@ -732,7 +750,7 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>STPPaymentMethod</h1>
               <div class="declaration">
                 <div class="language">
@@ -778,9 +796,14 @@
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">stripeId</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">stripeId</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentMethod.h#L34">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentMethod.h#L34">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -808,9 +831,14 @@
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSDate</span> <span class="o">*</span><span class="n">created</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">created</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentMethod.h#L39">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentMethod.h#L39">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -838,9 +866,14 @@
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">liveMode</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">liveMode</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentMethod.h#L44">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentMethod.h#L44">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -869,9 +902,14 @@ e.g. if the type is <code>STPPaymentMethodTypeCard</code>, the <code><a href="..
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Enums/STPPaymentMethodType.html">STPPaymentMethodType</a></span> <span class="n">type</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/STPPaymentMethodType.html">STPPaymentMethodType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentMethod.h#L50">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentMethod.h#L50">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -900,9 +938,14 @@ e.g. if the type is <code>STPPaymentMethodTypeCard</code>, the <code><a href="..
     <span class="n"><a href="../Classes/STPPaymentMethodBillingDetails.html">STPPaymentMethodBillingDetails</a></span> <span class="o">*</span><span class="n">billingDetails</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">billingDetails</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPPaymentMethodBillingDetails.html">STPPaymentMethodBillingDetails</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentMethod.h#L55">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentMethod.h#L55">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -930,9 +973,14 @@ e.g. if the type is <code>STPPaymentMethodTypeCard</code>, the <code><a href="..
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n"><a href="../Classes/STPPaymentMethodCard.html">STPPaymentMethodCard</a></span> <span class="o">*</span><span class="n">card</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">card</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPPaymentMethodCard.html">STPPaymentMethodCard</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentMethod.h#L60">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentMethod.h#L60">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -960,9 +1008,14 @@ e.g. if the type is <code>STPPaymentMethodTypeCard</code>, the <code><a href="..
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n"><a href="../Classes/STPPaymentMethodiDEAL.html">STPPaymentMethodiDEAL</a></span> <span class="o">*</span><span class="n">iDEAL</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">iDEAL</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPPaymentMethodiDEAL.html">STPPaymentMethodiDEAL</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentMethod.h#L65">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentMethod.h#L65">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -990,9 +1043,14 @@ e.g. if the type is <code>STPPaymentMethodTypeCard</code>, the <code><a href="..
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n"><a href="../Classes/STPPaymentMethodFPX.html">STPPaymentMethodFPX</a></span> <span class="o">*</span><span class="n">fpx</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">fpx</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPPaymentMethodFPX.html">STPPaymentMethodFPX</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentMethod.h#L70">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentMethod.h#L70">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1021,9 +1079,14 @@ e.g. if the type is <code>STPPaymentMethodTypeCard</code>, the <code><a href="..
     <span class="n"><a href="../Classes.html#/c:objc(cs)STPPaymentMethodCardPresent">STPPaymentMethodCardPresent</a></span> <span class="o">*</span><span class="n">cardPresent</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">cardPresent</span><span class="p">:</span> <span class="kt"><a href="../Classes.html#/c:objc(cs)STPPaymentMethodCardPresent">STPPaymentMethodCardPresent</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentMethod.h#L75">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentMethod.h#L75">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1051,9 +1114,14 @@ e.g. if the type is <code>STPPaymentMethodTypeCard</code>, the <code><a href="..
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n"><a href="../Classes/STPPaymentMethodSEPADebit.html">STPPaymentMethodSEPADebit</a></span> <span class="o">*</span><span class="n">sepaDebit</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">sepaDebit</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPPaymentMethodSEPADebit.html">STPPaymentMethodSEPADebit</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentMethod.h#L80">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentMethod.h#L80">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1081,9 +1149,14 @@ e.g. if the type is <code>STPPaymentMethodTypeCard</code>, the <code><a href="..
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">customerId</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">customerId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentMethod.h#L85">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentMethod.h#L85">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1117,9 +1190,14 @@ e.g. if the type is <code>STPPaymentMethodTypeCard</code>, the <code><a href="..
     <span class="n">NSDictionary</span><span class="o">&lt;</span><span class="n">NSString</span> <span class="o">*</span><span class="p">,</span> <span class="n">NSString</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">metadata</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">metadata</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentMethod.h#L92">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentMethod.h#L92">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1132,8 +1210,8 @@ e.g. if the type is <code>STPPaymentMethodTypeCard</code>, the <code><a href="..
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://stripe.com" target="_blank" rel="external">Stripe</a>. All rights reserved. (Last updated: 2019-10-31)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://stripe.com" target="_blank" rel="external">Stripe</a>. All rights reserved. (Last updated: 2020-02-12)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

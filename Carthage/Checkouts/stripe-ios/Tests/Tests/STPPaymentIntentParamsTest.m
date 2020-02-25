@@ -8,7 +8,9 @@
 
 #import <XCTest/XCTest.h>
 #import "STPPaymentIntentParams.h"
+#import "STPPaymentIntentParams+Utilities.h"
 
+#import "STPConfirmPaymentMethodOptions.h"
 #import "STPMandateCustomerAcceptanceParams.h"
 #import "STPMandateDataParams.h"
 #import "STPMandateOnlineParams+Private.h"
@@ -44,6 +46,7 @@
         XCTAssertNil(params.useStripeSDK);
         XCTAssertNil(params.mandateData);
         XCTAssertNil(params.mandate);
+        XCTAssertNil(params.paymentMethodOptions);
     }
 }
 
@@ -147,6 +150,7 @@
     params.useStripeSDK = @YES;
     params.mandate = @"test_mandate";
     params.mandateData = [[STPMandateDataParams alloc] init];
+    params.paymentMethodOptions = [[STPConfirmPaymentMethodOptions alloc] init];
     params.additionalAPIParameters = @{@"other_param" : @"other_value"};
 
     STPPaymentIntentParams *paramsCopy = [params copy];
@@ -161,9 +165,20 @@
     XCTAssertEqualObjects(params.returnURL, paramsCopy.returnURL);
     XCTAssertEqualObjects(params.useStripeSDK, paramsCopy.useStripeSDK);
     XCTAssertEqualObjects(params.mandate, paramsCopy.mandate);
+    XCTAssertEqualObjects(params.paymentMethodOptions, paramsCopy.paymentMethodOptions);
     XCTAssertEqualObjects(params.additionalAPIParameters, paramsCopy.additionalAPIParameters);
 
+}
 
+- (void)testClientSecretValidation {
+    XCTAssertFalse([STPPaymentIntentParams isClientSecretValid:@"pi_12345"], @"'pi_12345' is not a valid client secret.");
+    XCTAssertFalse([STPPaymentIntentParams isClientSecretValid:@"pi_12345_secret_"], @"'pi_12345_secret_' is not a valid client secret.");
+    XCTAssertFalse([STPPaymentIntentParams isClientSecretValid:@"pi_a1b2c3_secret_x7y8z9pi_a1b2c3_secret_x7y8z9"], @"'pi_a1b2c3_secret_x7y8z9pi_a1b2c3_secret_x7y8z9' is not a valid client secret.");
+    XCTAssertFalse([STPPaymentIntentParams isClientSecretValid:@"seti_a1b2c3_secret_x7y8z9"], @"'seti_a1b2c3_secret_x7y8z9' is not a valid client secret.");
+
+
+    XCTAssertTrue([STPPaymentIntentParams isClientSecretValid:@"pi_a1b2c3_secret_x7y8z9"], @"'pi_a1b2c3_secret_x7y8z9' is a valid client secret.");
+    XCTAssertTrue([STPPaymentIntentParams isClientSecretValid:@"pi_1CkiBMLENEVhOs7YMtUehLau_secret_s4O8SDh7s6spSmHDw1VaYPGZA"], @"'pi_1CkiBMLENEVhOs7YMtUehLau_secret_s4O8SDh7s6spSmHDw1VaYPGZA' is a valid client secret.");
 }
 
 @end

@@ -98,6 +98,12 @@
                 <a class="nav-group-task-link" href="../Classes/STPCardValidator.html">STPCardValidator</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPConfirmCardOptions.html">STPConfirmCardOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPConfirmPaymentMethodOptions.html">STPConfirmPaymentMethodOptions</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPConnectAccountAddress.html">STPConnectAccountAddress</a>
               </li>
               <li class="nav-group-task">
@@ -153,6 +159,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPIssuingCardPin.html">STPIssuingCardPin</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPKlarnaLineItem.html">STPKlarnaLineItem</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPMandateCustomerAcceptanceParams.html">STPMandateCustomerAcceptanceParams</a>
@@ -276,6 +285,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPSourceCardDetails.html">STPSourceCardDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPSourceKlarnaDetails.html">STPSourceKlarnaDetails</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPSourceOwner.html">STPSourceOwner</a>
@@ -454,6 +466,12 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/STPIntentActionType.html">STPIntentActionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/STPKlarnaLineItemType.html">STPKlarnaLineItemType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/STPKlarnaPaymentMethods.html">STPKlarnaPaymentMethods</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/STPMandateCustomerAcceptanceType.html">STPMandateCustomerAcceptanceType</a>
@@ -732,7 +750,7 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>STPPaymentContextDelegate</h1>
               <div class="declaration">
                 <div class="language">
@@ -740,7 +758,7 @@
 
                 </div>
               </div>
-            <p>Implement <code>STPPaymentContextDelegate</code> to get notified when a payment context changes, finishes, encounters errors, etc. In practice, if your app has a <q>checkout screen view controller</q>, that is a good candidate to implement this protocol.</p>
+            <p>Implement <code>STPPaymentContextDelegate</code> to get notified when a payment context changes, finishes, encounters errors, etc. In practice, if your app has a &ldquo;checkout screen view controller&rdquo;, that is a good candidate to implement this protocol.</p>
 
           </div>
         </section>
@@ -780,6 +798,11 @@
     <span class="nf">didFailToLoadWithError</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">paymentContext</span><span class="p">(</span><span class="n">_</span> <span class="nv">paymentContext</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPPaymentContext.html">STPPaymentContext</a></span><span class="p">,</span> <span class="n">didFailToLoadWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
                       </div>
                       <div>
                         <h4>Parameters</h4>
@@ -813,7 +836,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentContext.h#L364">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentContext.h#L371">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -831,7 +854,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This is called every time the contents of the payment context change. When this is called, you should update your app&rsquo;s UI to reflect the current state of the payment context. For example, if you have a checkout page with a <q>selected payment method</q> row, you should update its payment method with <code>paymentContext.selectedPaymentOption.label</code>. If that checkout page has a <q>buy</q> button, you should enable/disable it depending on the result of <code>[paymentContext isReadyForPayment]</code>.</p>
+                        <p>This is called every time the contents of the payment context change. When this is called, you should update your app&rsquo;s UI to reflect the current state of the payment context. For example, if you have a checkout page with a &ldquo;selected payment method&rdquo; row, you should update its payment method with <code>paymentContext.selectedPaymentOption.label</code>. If that checkout page has a &ldquo;buy&rdquo; button, you should enable/disable it depending on the result of <code>[paymentContext isReadyForPayment]</code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -839,6 +862,11 @@
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
                           <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">paymentContextDidChange</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/STPPaymentContext.html">STPPaymentContext</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">paymentContext</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">paymentContextDidChange</span><span class="p">(</span><span class="n">_</span> <span class="nv">paymentContext</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPPaymentContext.html">STPPaymentContext</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -862,7 +890,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentContext.h#L371">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentContext.h#L378">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -890,6 +918,11 @@
                           <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">paymentContext</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/STPPaymentContext.html">STPPaymentContext</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">paymentContext</span>
     <span class="nf">didCreatePaymentResult</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/STPPaymentResult.html">STPPaymentResult</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">paymentResult</span>
                 <span class="nf">completion</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type%20Definitions.html#/c:STPBlocks.h@T@STPPaymentStatusBlock">STPPaymentStatusBlock</a></span><span class="p">)</span><span class="nv">completion</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">paymentContext</span><span class="p">(</span><span class="n">_</span> <span class="nv">paymentContext</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPPaymentContext.html">STPPaymentContext</a></span><span class="p">,</span> <span class="n">didCreatePaymentResult</span> <span class="nv">paymentResult</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPPaymentResult.html">STPPaymentResult</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Type%20Definitions.html#/c:STPBlocks.h@T@STPPaymentStatusBlock">STPPaymentStatusBlock</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -937,7 +970,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentContext.h#L380-L382">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentContext.h#L387-L389">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -965,6 +998,11 @@
                           <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">paymentContext</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/STPPaymentContext.html">STPPaymentContext</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">paymentContext</span>
     <span class="nf">didFinishWithStatus</span><span class="p">:(</span><span class="n"><a href="../Enums/STPPaymentStatus.html">STPPaymentStatus</a></span><span class="p">)</span><span class="nv">status</span>
                   <span class="nf">error</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">paymentContext</span><span class="p">(</span><span class="n">_</span> <span class="nv">paymentContext</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPPaymentContext.html">STPPaymentContext</a></span><span class="p">,</span> <span class="n">didFinishWith</span> <span class="nv">status</span><span class="p">:</span> <span class="kt"><a href="../Enums/STPPaymentStatus.html">STPPaymentStatus</a></span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -1012,7 +1050,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentContext.h#L391-L393">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentContext.h#L398-L400">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1056,6 +1094,11 @@ called.</p>
     <span class="nf">didUpdateShippingAddress</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/STPAddress.html">STPAddress</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">address</span>
                   <span class="nf">completion</span><span class="p">:</span>
                       <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Type%20Definitions.html#/c:STPBlocks.h@T@STPShippingMethodsCompletionBlock">STPShippingMethodsCompletionBlock</a></span><span class="p">)</span><span class="nv">completion</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">paymentContext</span><span class="p">(</span><span class="n">_</span> <span class="nv">paymentContext</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPPaymentContext.html">STPPaymentContext</a></span><span class="p">,</span> <span class="n">didUpdateShippingAddress</span> <span class="nv">address</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPAddress.html">STPAddress</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Type%20Definitions.html#/c:STPBlocks.h@T@STPShippingMethodsCompletionBlock">STPShippingMethodsCompletionBlock</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1106,7 +1149,7 @@ to select a shipping method.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentContext.h#L419-L421">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentContext.h#L426-L428">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1119,8 +1162,8 @@ to select a shipping method.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://stripe.com" target="_blank" rel="external">Stripe</a>. All rights reserved. (Last updated: 2019-10-31)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://stripe.com" target="_blank" rel="external">Stripe</a>. All rights reserved. (Last updated: 2020-02-12)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

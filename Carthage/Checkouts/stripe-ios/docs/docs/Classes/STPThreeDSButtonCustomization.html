@@ -98,6 +98,12 @@
                 <a class="nav-group-task-link" href="../Classes/STPCardValidator.html">STPCardValidator</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPConfirmCardOptions.html">STPConfirmCardOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPConfirmPaymentMethodOptions.html">STPConfirmPaymentMethodOptions</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPConnectAccountAddress.html">STPConnectAccountAddress</a>
               </li>
               <li class="nav-group-task">
@@ -153,6 +159,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPIssuingCardPin.html">STPIssuingCardPin</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPKlarnaLineItem.html">STPKlarnaLineItem</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPMandateCustomerAcceptanceParams.html">STPMandateCustomerAcceptanceParams</a>
@@ -276,6 +285,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPSourceCardDetails.html">STPSourceCardDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPSourceKlarnaDetails.html">STPSourceKlarnaDetails</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPSourceOwner.html">STPSourceOwner</a>
@@ -454,6 +466,12 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/STPIntentActionType.html">STPIntentActionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/STPKlarnaLineItemType.html">STPKlarnaLineItemType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/STPKlarnaPaymentMethods.html">STPKlarnaPaymentMethods</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/STPMandateCustomerAcceptanceType.html">STPMandateCustomerAcceptanceType</a>
@@ -732,7 +750,7 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>STPThreeDSButtonCustomization</h1>
               <div class="declaration">
                 <div class="language">
@@ -773,9 +791,14 @@
     <span class="p">(</span><span class="n"><a href="../Enums/STPThreeDSCustomizationButtonType.html">STPThreeDSCustomizationButtonType</a></span><span class="p">)</span><span class="nv">type</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">defaultSettings</span><span class="p">(</span><span class="k">for</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/STPThreeDSCustomizationButtonType.html">STPThreeDSCustomizationButtonType</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L52">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L52">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -805,9 +828,14 @@
                                    <span class="nf">cornerRadius</span><span class="p">:(</span><span class="n">CGFloat</span><span class="p">)</span><span class="nv">cornerRadius</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">backgroundColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">,</span> <span class="nv">cornerRadius</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L57">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L57">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -842,7 +870,7 @@ Use <code>defaultSettingsForButtonType:</code> or <code>initWithBackgroundColor:
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L63">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L63">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -872,9 +900,14 @@ The default for .submit, .continue, and .next is blue.</p>
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">backgroundColor</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">backgroundColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L70">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L70">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -902,9 +935,14 @@ The default for .submit, .continue, and .next is blue.</p>
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">CGFloat</span> <span class="n">cornerRadius</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">cornerRadius</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L73">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L73">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -932,9 +970,14 @@ The default for .submit, .continue, and .next is blue.</p>
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Enums/STPThreeDSButtonTitleStyle.html">STPThreeDSButtonTitleStyle</a></span> <span class="n">titleStyle</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">titleStyle</span><span class="p">:</span> <span class="kt"><a href="../Enums/STPThreeDSButtonTitleStyle.html">STPThreeDSButtonTitleStyle</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L78">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L78">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -962,9 +1005,14 @@ The default for .submit, .continue, and .next is blue.</p>
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">UIFont</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">font</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">font</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L81">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L81">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -992,9 +1040,14 @@ The default for .submit, .continue, and .next is blue.</p>
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">textColor</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">textColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L84">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPThreeDSButtonCustomization.h#L84">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1007,8 +1060,8 @@ The default for .submit, .continue, and .next is blue.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://stripe.com" target="_blank" rel="external">Stripe</a>. All rights reserved. (Last updated: 2019-10-31)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://stripe.com" target="_blank" rel="external">Stripe</a>. All rights reserved. (Last updated: 2020-02-12)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

@@ -98,6 +98,12 @@
                 <a class="nav-group-task-link" href="../Classes/STPCardValidator.html">STPCardValidator</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPConfirmCardOptions.html">STPConfirmCardOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPConfirmPaymentMethodOptions.html">STPConfirmPaymentMethodOptions</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPConnectAccountAddress.html">STPConnectAccountAddress</a>
               </li>
               <li class="nav-group-task">
@@ -153,6 +159,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPIssuingCardPin.html">STPIssuingCardPin</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPKlarnaLineItem.html">STPKlarnaLineItem</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPMandateCustomerAcceptanceParams.html">STPMandateCustomerAcceptanceParams</a>
@@ -276,6 +285,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPSourceCardDetails.html">STPSourceCardDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPSourceKlarnaDetails.html">STPSourceKlarnaDetails</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPSourceOwner.html">STPSourceOwner</a>
@@ -454,6 +466,12 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/STPIntentActionType.html">STPIntentActionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/STPKlarnaLineItemType.html">STPKlarnaLineItemType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/STPKlarnaPaymentMethods.html">STPKlarnaPaymentMethods</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/STPMandateCustomerAcceptanceType.html">STPMandateCustomerAcceptanceType</a>
@@ -732,7 +750,7 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>STPPaymentConfiguration</h1>
               <div class="declaration">
                 <div class="language">
@@ -779,44 +797,14 @@ every property</p>
                           <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="n">sharedConfiguration</span><span class="p">;</span></code></pre>
 
                         </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L31">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)STPPaymentConfiguration(py)publishableKey"></a>
-                    <a name="//apple_ref/objc/Property/publishableKey" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)STPPaymentConfiguration(py)publishableKey">publishableKey</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Your Stripe publishable key</p>
-<div class="aside aside-see">
-    <p class="aside-title">See</p>
-    <a href="https://dashboard.stripe.com/account/apikeys">https://dashboard.stripe.com/account/apikeys</a>
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
                         <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">publishableKey</span><span class="p">;</span></code></pre>
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">shared</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L38">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L31">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -848,9 +836,14 @@ in addition to credit cards.</p>
     <span class="n"><a href="../Enums/STPPaymentOptionType.html">STPPaymentOptionType</a></span> <span class="n">additionalPaymentOptions</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">additionalPaymentOptions</span><span class="p">:</span> <span class="kt"><a href="../Enums/STPPaymentOptionType.html">STPPaymentOptionType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L46">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L39">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -871,6 +864,8 @@ in addition to credit cards.</p>
                         <p>The billing address fields the user must fill out when prompted for their 
 payment details. These fields will all be present on the returned PaymentMethod from
 Stripe.</p>
+
+<p>The default value is <code>STPBillingAddressFieldsPostalCode</code>.</p>
 <div class="aside aside-see">
     <p class="aside-title">See</p>
     <a href="https://stripe.com/docs/api/payment_methods/create#create_payment_method-billing_details">https://stripe.com/docs/api/payment_methods/create#create_payment_method-billing_details</a>
@@ -886,9 +881,14 @@ Stripe.</p>
     <span class="n"><a href="../Enums/STPBillingAddressFields.html">STPBillingAddressFields</a></span> <span class="n">requiredBillingAddressFields</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">requiredBillingAddressFields</span><span class="p">:</span> <span class="kt"><a href="../Enums/STPBillingAddressFields.html">STPBillingAddressFields</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L55">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L50">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -920,9 +920,14 @@ shipping info. Set to nil if shipping address is not required.</p>
     <span class="n">NSSet</span><span class="o">&lt;</span><span class="n"><a href="../Type%20Definitions.html#/c:STPAddress.h@T@STPContactField">STPContactField</a></span><span class="o">&gt;</span> <span class="o">*</span><span class="n">requiredShippingAddressFields</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">requiredShippingAddressFields</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt"><a href="../Type%20Definitions.html#/c:STPAddress.h@T@STPContactField">STPContactField</a></span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L63">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L58">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -952,9 +957,14 @@ shipping info. Set to nil if shipping address is not required.</p>
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">verifyPrefilledShippingAddress</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">verifyPrefilledShippingAddress</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L70">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L65">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -986,9 +996,14 @@ asked to select a shipping method.</p>
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Enums/STPShippingType.html">STPShippingType</a></span> <span class="n">shippingType</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">shippingType</span><span class="p">:</span> <span class="kt"><a href="../Enums/STPShippingType.html">STPShippingType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L79">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L74">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1021,9 +1036,14 @@ the available countries to your selected set.</p>
     <span class="n">NSSet</span><span class="o">&lt;</span><span class="n">NSString</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">availableCountries</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">availableCountries</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L88">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L83">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1043,7 +1063,7 @@ the available countries to your selected set.</p>
                       <div class="abstract">
                         <p>The name of your company, for displaying to the user during payment flows. For 
 example, when using Apple Pay, the payment sheet&rsquo;s final line item will read
-<q>PAY {companyName}</q>. </p>
+&ldquo;PAY {companyName}&rdquo;. </p>
 
 <p>The default value is the name of your iOS application which is derived from the
 <code>kCFBundleNameKey</code> of <code>[NSBundle mainBundle]</code>.</p>
@@ -1056,9 +1076,14 @@ example, when using Apple Pay, the payment sheet&rsquo;s final line item will re
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">companyName</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">companyName</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L98">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L93">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1089,9 +1114,14 @@ must set this to a valid identifier in order to automatically enable Apple Pay.<
     <span class="n">NSString</span> <span class="o">*</span><span class="n">appleMerchantIdentifier</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">appleMerchantIdentifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L105">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L100">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1112,9 +1142,9 @@ must set this to a valid identifier in order to automatically enable Apple Pay.<
                         <p>Determines whether or not the user is able to delete payment options</p>
 
 <p>This is only relevant to the <code><a href="../Classes/STPPaymentOptionsViewController.html">STPPaymentOptionsViewController</a></code> which, if 
-enabled, will allow the user to delete payment options by tapping the <q>Edit</q> 
+enabled, will allow the user to delete payment options by tapping the &ldquo;Edit&rdquo; 
 button in the navigation bar or by swiping left on a payment option and tapping
-<q>Delete</q>. Currently, the user is not allowed to delete the selected payment 
+&ldquo;Delete&rdquo;. Currently, the user is not allowed to delete the selected payment 
 option but this may change in the future.</p>
 
 <p>Default value is YES but will only work if <code><a href="../Classes/STPPaymentOptionsViewController.html">STPPaymentOptionsViewController</a></code> is
@@ -1129,9 +1159,74 @@ or directly as an init parameter.</p>
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">canDeletePaymentOptions</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">canDeletePaymentOptions</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L120">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L115">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Deprecated"></a>
+                <a name="//apple_ref/objc/Section/Deprecated" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Deprecated"></a>
+                  <h3 class="section-name"><p>Deprecated</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)STPPaymentConfiguration(py)publishableKey"></a>
+                    <a name="//apple_ref/objc/Property/publishableKey" class="dashAnchor"></a>
+                    <a class="token discouraged" href="#/c:objc(cs)STPPaymentConfiguration(py)publishableKey">publishableKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="aside aside-deprecated">
+                        <p class="aside-title">Deprecated</p>
+                        <p>If you used [STPPaymentConfiguration sharedConfiguration].publishableKey, use [STPAPIClient sharedClient].publishableKey instead. If you passed a STPPaymentConfiguration instance to an SDK component, create an STPAPIClient, set publishableKey on it, and set the SDK component&rsquo;s APIClient property.</p>
+
+                      </div>
+                      <div class="abstract">
+                        <p>If you used [STPPaymentConfiguration sharedConfiguration].publishableKey, use [STPAPIClient sharedClient].publishableKey instead.  The SDK uses [STPAPIClient sharedClient] to make API requests by default.</p>
+
+<p>Your Stripe publishable key</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <a href="https://dashboard.stripe.com/account/apikeys">https://dashboard.stripe.com/account/apikeys</a>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">publishableKey</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">publishableKey</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L126">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1141,15 +1236,22 @@ or directly as an init parameter.</p>
                     <code>
                     <a name="/c:objc(cs)STPPaymentConfiguration(py)stripeAccount"></a>
                     <a name="//apple_ref/objc/Property/stripeAccount" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)STPPaymentConfiguration(py)stripeAccount">stripeAccount</a>
+                    <a class="token discouraged" href="#/c:objc(cs)STPPaymentConfiguration(py)stripeAccount">stripeAccount</a>
                     </code>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
+                      <div class="aside aside-deprecated">
+                        <p class="aside-title">Deprecated</p>
+                        <p>If you used [STPPaymentConfiguration sharedConfiguration].stripeAccount, use [STPAPIClient sharedClient].stripeAccount instead. If you passed a STPPaymentConfiguration instance to an SDK component, create an STPAPIClient, set stripeAccount on it, and set the SDK component&rsquo;s APIClient property.</p>
+
+                      </div>
                       <div class="abstract">
-                        <p>In order to perform API requests on behalf of a connected account, e.g. to
+                        <p>If you used [STPPaymentConfiguration sharedConfiguration].stripeAccount, use [STPAPIClient sharedClient].stripeAccount instead.  The SDK uses [STPAPIClient sharedClient] to make API requests by default.</p>
+
+<p>In order to perform API requests on behalf of a connected account, e.g. to
 create charges for a connected account, set this property to the ID of the
 account for which this request is being made.</p>
 <div class="aside aside-see">
@@ -1166,9 +1268,14 @@ account for which this request is being made.</p>
                           <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">stripeAccount</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">stripeAccount</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/v18.2.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L129">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/v19.0.0/Stripe/PublicHeaders/STPPaymentConfiguration.h#L137">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1181,8 +1288,8 @@ account for which this request is being made.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://stripe.com" target="_blank" rel="external">Stripe</a>. All rights reserved. (Last updated: 2019-10-31)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://stripe.com" target="_blank" rel="external">Stripe</a>. All rights reserved. (Last updated: 2020-02-12)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

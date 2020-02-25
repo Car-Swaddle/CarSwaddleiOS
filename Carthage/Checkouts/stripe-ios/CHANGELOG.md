@@ -1,3 +1,22 @@
+## 19.0.0 2020-02-12
+* Deprecates the `STPAPIClient` `initWithConfiguration:` method. Set the `configuration` property on the `STPAPIClient` instance instead. [#1474](https://github.com/stripe/stripe-ios/pull/1474)
+* Deprecates `publishableKey` and `stripeAccount` properties of `STPPaymentConfiguration`. See [MIGRATING.md](https://github.com/stripe/stripe-ios/blob/master/MIGRATING.md) for more details. [#1474](https://github.com/stripe/stripe-ios/pull/1474)
+* Adds explicit STPAPIClient properties on all SDK components that make API requests. These default to `[STPAPIClient sharedClient]`. This is a breaking change for some users of `stripeAccount`. See [MIGRATING.md](https://github.com/stripe/stripe-ios/blob/master/MIGRATING.md) for more details. [#1469](https://github.com/stripe/stripe-ios/pull/1469)
+* The user's postal code is now collected by default in countries that support postal codes. We always recommend collecting a postal code to increase card acceptance rates and reduce fraud. See [MIGRATING.md](https://github.com/stripe/stripe-ios/blob/master/MIGRATING.md) for more details. [#1479](https://github.com/stripe/stripe-ios/pull/1479)
+
+## 18.4.0 2020-01-15
+* Adds support for Klarna Pay on Sources API [#1444](https://github.com/stripe/stripe-ios/pull/1444)
+* Compresses images using `pngcrush` to reduce SDK size [#1471](https://github.com/stripe/stripe-ios/pull/1471)
+* Adds support for CVC recollection in PaymentIntent confirm [#1473](https://github.com/stripe/stripe-ios/pull/1473)
+* Fixes a race condition when setting `defaultPaymentMethod` on `STPPaymentOptionsViewController` [#1476](https://github.com/stripe/stripe-ios/pull/1476)
+
+## 18.3.0 2019-12-3
+* STPAddCardViewControllerDelegate methods previously removed in v16.0.0 are now marked as deprecated, to help migrating users [#1439](https://github.com/stripe/stripe-ios/pull/1439)
+* Fixes an issue where canceling 3DS authentication could leave PaymentIntents in an inaccurate `requires_action` state [#1443](https://github.com/stripe/stripe-ios/pull/1443)
+* Fixes text color for large titles [#1446](https://github.com/stripe/stripe-ios/pull/1446) 
+* Re-adds support for pre-selecting the last selected payment method in STPPaymentContext and STPPaymentOptionsViewController. [#1445](https://github.com/stripe/stripe-ios/pull/1445)
+* Fix crash when adding/removing postal code cells [#1450](https://github.com/stripe/stripe-ios/pull/1450)
+
 ## 18.2.0 2019-10-31
 * Adds support for creating tokens with the last 4 digits of an SSN [#1432](https://github.com/stripe/stripe-ios/pull/1432)
 * Renames Standard Integration to Basic Integration
