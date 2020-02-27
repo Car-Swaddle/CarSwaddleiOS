@@ -11,42 +11,60 @@ import Foundation
 
 class Fastfile: LaneFile {
     
-    func updateCarSwaddleFrameworksLane() {
-        desc("Update first party frameworks")
-        sh(command: "carthage boostrap --platform iOS --no-build carswaddleui carswaddledata")
-    }
+    //        sh(command: "carthage bootsrap --platform iOS Cosmos stripe-ios FSCalendar FirebaseAnalyticsBinary")
+    //        sh(command: "carthage bootsrap --platform iOS --no-use-binaries lottie-ios")
+    //        sh(command: "carthage bootsrap --platform iOS --no-build carswaddleui carswaddledata")
+            
+    //        sh(command: "carthage bootsrap --platform iOS Cosmos stripe-ios FSCalendar FirebaseAnalyticsBinary")
+    //        sh(command: "carthage bootsrap --platform iOS --no-use-binaries lottie-ios")
+    //        sh(command: "carthage bootsrap --platform iOS --no-build carswaddleui carswaddledata")
     
-    func updateThirdPartyFrameworksLane() {
-        desc("Update first party frameworks")
-        sh(command: "carthage boostrap --platform iOS Cosmos stripe-ios FSCalendar FirebaseAnalyticsBinary")
-        sh(command: "carthage boostrap --platform iOS --no-use-binaries lottie-ios")
-    }
+    // MARK: - Full updates
     
     func bootstrapFrameworksLane() {
-        desc("Update all frameworks")
-//        sh(command: "carthage bootsrap --platform iOS Cosmos stripe-ios FSCalendar FirebaseAnalyticsBinary")
-//        sh(command: "carthage bootsrap --platform iOS --no-use-binaries lottie-ios")
-//        sh(command: "carthage bootsrap --platform iOS --no-build carswaddleui carswaddledata")
-        
+        desc("Bootstrap all frameworks")
         sh(command: Command.Carthage.bootstrapThirdParty.command)
         sh(command: Command.Carthage.bootstrapNoBinaries.command)
         sh(command: Command.Carthage.bootstrapFirstParty.command)
-        
     }
     
     func updateFrameworksLane() {
         desc("Update all frameworks")
-//        sh(command: "carthage bootsrap --platform iOS Cosmos stripe-ios FSCalendar FirebaseAnalyticsBinary")
-//        sh(command: "carthage bootsrap --platform iOS --no-use-binaries lottie-ios")
-//        sh(command: "carthage bootsrap --platform iOS --no-build carswaddleui carswaddledata")
-        
         sh(command: Command.Carthage.updateThirdParty.command)
         sh(command: Command.Carthage.updateNoBinaries.command)
         sh(command: Command.Carthage.updateFirstParty.command)
-        
+    }
+    
+    // MARK: - Bootstrap portions
+    
+    func bootstrapCarSwaddleFrameworksLane() {
+        desc("Bootstrap first party frameworks")
+        sh(command: Command.Carthage.bootstrapFirstParty.command)
+    }
+    
+    func bootstrapThirdPartyFrameworksLane() {
+        desc("Bootstrap first party frameworks")
+        sh(command: Command.Carthage.bootstrapThirdParty.command)
+        sh(command: Command.Carthage.bootstrapNoBinaries.command)
+    }
+    
+    // MARK: - Update portions
+    
+    func updateCarSwaddleFrameworksLane() {
+        desc("Update Car Swaddle party frameworks")
+        sh(command: Command.Carthage.updateFirstParty.command)
+    }
+    
+    func updateThirdPartyFrameworksLane() {
+        desc("Update third party frameworks")
+        sh(command: Command.Carthage.updateThirdParty.command)
+        sh(command: Command.Carthage.updateNoBinaries.command)
     }
     
 }
+
+
+// MARK: - Custom
 
 struct Command {
     
