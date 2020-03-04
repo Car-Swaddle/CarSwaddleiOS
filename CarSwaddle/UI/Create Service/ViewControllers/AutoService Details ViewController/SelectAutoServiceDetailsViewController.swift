@@ -54,7 +54,7 @@ final class SelectAutoServiceDetailsViewController: UIViewController, Storyboard
     
     private lazy var insetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: tableView, actionButton: actionButton)
     
-    private var selectedOilType: OilType? {
+    private var selectedOilType: OilType? = .synthetic {
         didSet {
 //            tableView.reloadData()
         }
@@ -97,7 +97,7 @@ final class SelectAutoServiceDetailsViewController: UIViewController, Storyboard
         
         actionButton.addTarget(self, action: #selector(SelectAutoServiceDetailsViewController.didSelectPay), for: .touchUpInside)
         
-        selectedOilType = .conventional
+        selectedOilType = .synthetic
         
         actionButton.isLoading = isUpdatingPrice
     }
@@ -171,7 +171,8 @@ extension SelectAutoServiceDetailsViewController: UITableViewDataSource {
         case .oilType:
             let cell: SelectOilTypeCell = tableView.dequeueCell()
             cell.delegate = self
-            cell.selectedOilType = selectedOilType
+//            cell.selectedOilType = selectedOilType
+            cell.updateSelectedOilType(oilType: selectedOilType ?? .synthetic, animated: false)
             return cell
         case .paymentMethod:
             let cell: PaymentMethodCell = tableView.dequeueCell()
