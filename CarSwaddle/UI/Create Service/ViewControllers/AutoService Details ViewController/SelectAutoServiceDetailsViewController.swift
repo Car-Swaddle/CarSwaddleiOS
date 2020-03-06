@@ -84,6 +84,9 @@ final class SelectAutoServiceDetailsViewController: UIViewController, Storyboard
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        selectedOilType = .synthetic
+        
         setupTableView()
         insetAdjuster.positionActionButton()
         
@@ -96,8 +99,6 @@ final class SelectAutoServiceDetailsViewController: UIViewController, Storyboard
         }
         
         actionButton.addTarget(self, action: #selector(SelectAutoServiceDetailsViewController.didSelectPay), for: .touchUpInside)
-        
-        selectedOilType = .synthetic
         
         actionButton.isLoading = isUpdatingPrice
     }
