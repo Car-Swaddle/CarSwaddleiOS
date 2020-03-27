@@ -16,7 +16,7 @@ protocol AutoServiceCreationProgressDelegate: AnyObject {
 }
 
 private let normalHeight: CGFloat = 120
-private let priceHeight: CGFloat = 210
+private let priceHeight: CGFloat = 120
 
 class AutoServiceCreationProgressViewController: UIViewController, StoryboardInstantiating {
     
@@ -101,8 +101,11 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
                 view.addSubview(priceView)
                 priceView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
                 priceView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16).isActive = true
-                priceView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
-                priceView.bottomAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16).isActive = true
+                let topConstraint = priceView.topAnchor.constraint(equalTo: view.topAnchor, constant: 8)
+                topConstraint.isActive = true
+//                let bottomConstraint = priceView.bottomAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16)
+//                bottomConstraint.priority = .defaultLow
+//                bottomConstraint.isActive = true
             }
         }
     }

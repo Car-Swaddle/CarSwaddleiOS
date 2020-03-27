@@ -329,7 +329,7 @@ extension AutoServiceCreation: SelectMechanicDelegate {
         
         autoService.mechanic = mechanic
         autoService.scheduledDate = date
-        autoService.firstOilChange?.oilType = .conventional
+        autoService.firstOilChange?.oilType = .synthetic
         
         updatePrice()
         

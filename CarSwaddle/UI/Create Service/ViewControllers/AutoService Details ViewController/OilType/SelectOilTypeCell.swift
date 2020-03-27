@@ -19,20 +19,24 @@ class SelectOilTypeCell: UITableViewCell, NibRegisterable {
 
     weak var delegate: SelectOilTypeDelegate?
     
-    var selectedOilType: OilType? {
-        didSet {
-            if let oilType = selectedOilType {
-                var index = 0
-                for (i, value) in oilTypes.enumerated() {
-                    if oilType == value {
-                        index = i
-                        break
-                    }
-                }
-                
-                let indexPath = IndexPath(row: index, section: 0)
-                collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            }
+    func updateSelectedOilType(oilType: OilType, animated: Bool) {
+        selectedOilType = oilType
+        updateForCurrentSelectedOilType(animated: animated)
+    }
+    
+    private var selectedOilType: OilType?
+    
+    private func updateForCurrentSelectedOilType(animated: Bool) {
+        guard let oilType = selectedOilType else { return }
+        
+        let index = oilTypes.firstIndex(of: oilType) ?? 0
+        let indexPath = IndexPath(row: index, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: animated)
+        
+        if collectionView.indexPathsForSelectedItems?.contains(indexPath) == false {
+            let index = oilTypes.firstIndex(of: selectedOilType ?? .synthetic) ?? 0
+            let selectedIndexPath = IndexPath(row: index, section: 0)
+            collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .centeredHorizontally)
         }
     }
     
@@ -48,7 +52,8 @@ class SelectOilTypeCell: UITableViewCell, NibRegisterable {
         
         setupCollectionView()
         
-        let selectedIndexPath = IndexPath(item: 0, section: 0)
+        let index = oilTypes.firstIndex(of: selectedOilType ?? .synthetic) ?? 0
+        let selectedIndexPath = IndexPath(row: index, section: 0)
         collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .centeredHorizontally)
     }
     
@@ -89,7 +94,8 @@ extension SelectOilTypeCell: FocusedCollectionViewDelegate {
     
     func didSelectItem(at indexPath: IndexPath, collectionView: FocusedCollectionView) {
         let newOilType = oilTypes[indexPath.row]
-        selectedOilType = newOilType
+//        selectedOilType = newOilType
+        updateSelectedOilType(oilType: newOilType, animated: true)
         delegate?.didSelectOilType(oilType: newOilType, cell: self)
     }
     

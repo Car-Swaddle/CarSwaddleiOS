@@ -44,11 +44,12 @@ final class PriceView: UIView, NibInstantiating {
         
         guard let price = service.price else { return }
         
-        addPricePartView(label: oilChangeLabel, cents: price.oilChangeCost)
-        addPricePartView(label: travelLabel, cents: price.distanceCost)
-        addSeparatorView()
-        addPricePartView(label: subtotalLabel, cents: price.subtotal)
-        addPricePartView(label: processingFeeLabel, cents: price.processingFee + price.bookingFee)
+//        addPricePartView(label: oilChangeLabel, cents: price.oilChangeCost)
+//        addPricePartView(label: travelLabel, cents: price.distanceCost)
+//        addSeparatorView()
+//        addPricePartView(label: subtotalLabel, cents: price.subtotal)
+//        addPricePartView(label: processingFeeLabel, cents: price.processingFee + price.bookingFee)
+        addPricePartView(label: oilChangeLabel, cents: price.subtotalAndFees)
         addPricePartView(label: taxesLabel, cents: price.taxes)
         
         if let discount = price.totalDiscount {
@@ -102,6 +103,14 @@ extension Price {
         }
         
         return discount
+    }
+    
+}
+
+extension Price {
+    
+    var subtotalAndFees: Int {
+        return subtotal + processingFee + bookingFee
     }
     
 }

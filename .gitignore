@@ -1,0 +1,5 @@
+.DS_Store
+Carthage/
+CarSwaddle.xcworkspace/xcuserdata/
+CarSwaddle.xcodeproj/xcuserdata/
+fastlane/report.xml

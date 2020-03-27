@@ -29,16 +29,20 @@ class SelectOilTypeViewController: UIViewController, StoryboardInstantiating {
     
     private var selectedOilType: OilType! {
         didSet {
-            var indexPaths: [IndexPath] = []
-            if let oldValue = oldValue {
-                let oldIndex = oilTypes.firstIndex(of: oldValue) ?? 0
-                let oldIndexPath = IndexPath(row: oldIndex, section: 0)
-                indexPaths.append(oldIndexPath)
-            }
-            let indexPath = IndexPath(row: selectedIndex, section: 0)
-            indexPaths.append(indexPath)
-            tableView?.reloadRows(at: indexPaths, with: .automatic)
+            updateForCurrentSelectedOilType(oldValue: oldValue)
         }
+    }
+    
+    private func updateForCurrentSelectedOilType(oldValue: OilType?) {
+        var indexPaths: [IndexPath] = []
+        if let oldValue = oldValue {
+            let oldIndex = oilTypes.firstIndex(of: oldValue) ?? 0
+            let oldIndexPath = IndexPath(row: oldIndex, section: 0)
+            indexPaths.append(oldIndexPath)
+        }
+        let indexPath = IndexPath(row: selectedIndex, section: 0)
+        indexPaths.append(indexPath)
+        tableView?.reloadRows(at: indexPaths, with: .automatic)
     }
     
     private var selectedIndex: Int {
@@ -50,6 +54,7 @@ class SelectOilTypeViewController: UIViewController, StoryboardInstantiating {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        updateForCurrentSelectedOilType(oldValue: nil)
     }
     
     override func willMove(toParent parent: UIViewController?) {
