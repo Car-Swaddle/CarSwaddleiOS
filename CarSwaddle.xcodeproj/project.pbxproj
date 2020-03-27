@@ -90,7 +90,6 @@
 		995611B82404F0FD005E7AFD /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995611AB2404F0FC005E7AFD /* nanopb.framework */; };
 		995611B92404F0FD005E7AFD /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995611AC2404F0FD005E7AFD /* GoogleUtilities.framework */; };
 		995611BA2404F0FD005E7AFD /* PromisesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995611AD2404F0FD005E7AFD /* PromisesObjC.framework */; };
-		995611BB2404F0FD005E7AFD /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995611AE2404F0FD005E7AFD /* FirebaseInstanceID.framework */; };
 		995B9F242154B4380030A7CA /* GlobalImports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F232154B4380030A7CA /* GlobalImports.swift */; };
 		997714C321CCE2C700E54F5B /* PricePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714C221CCE2C700E54F5B /* PricePartView.swift */; };
 		997714C521CCE35800E54F5B /* PricePartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997714C421CCE35800E54F5B /* PricePartView.xib */; };
@@ -540,7 +539,6 @@
 		995611AB2404F0FC005E7AFD /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
 		995611AC2404F0FD005E7AFD /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Carthage/Build/iOS/GoogleUtilities.framework; sourceTree = "<group>"; };
 		995611AD2404F0FD005E7AFD /* PromisesObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromisesObjC.framework; path = Carthage/Build/iOS/PromisesObjC.framework; sourceTree = "<group>"; };
-		995611AE2404F0FD005E7AFD /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Carthage/Build/iOS/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		995611AF2404F0FD005E7AFD /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
 		995B9F232154B4380030A7CA /* GlobalImports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalImports.swift; sourceTree = "<group>"; };
 		997714C221CCE2C700E54F5B /* PricePartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricePartView.swift; sourceTree = "<group>"; };
@@ -726,7 +724,6 @@
 				995611B92404F0FD005E7AFD /* GoogleUtilities.framework in Frameworks */,
 				99D5D9DF21F5CD9700E6A511 /* Stripe.framework in Frameworks */,
 				99E131E82407BFFA00E085BC /* KeychainAccess.framework in Frameworks */,
-				995611BB2404F0FD005E7AFD /* FirebaseInstanceID.framework in Frameworks */,
 				995611B02404F0FD005E7AFD /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				99A0AF17224F53DE0001FDC6 /* FSCalendar.framework in Frameworks */,
 				995611B82404F0FD005E7AFD /* nanopb.framework in Frameworks */,
@@ -1356,7 +1353,6 @@
 				995611A62404F0FC005E7AFD /* FirebaseAnalytics.framework */,
 				995611A92404F0FC005E7AFD /* FirebaseCore.framework */,
 				995611AA2404F0FC005E7AFD /* FirebaseInstallations.framework */,
-				995611AE2404F0FD005E7AFD /* FirebaseInstanceID.framework */,
 				995611AC2404F0FD005E7AFD /* GoogleUtilities.framework */,
 				99C2174C24051B460005888E /* Store.xcodeproj */,
 				995611A32404F0FC005E7AFD /* FirebaseCoreDiagnostics.framework */,
