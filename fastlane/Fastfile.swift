@@ -23,42 +23,46 @@ class Fastfile: LaneFile {
     
     func bootstrapFrameworksLane() {
         desc("Bootstrap all frameworks")
-        sh(command: Command.Carthage.bootstrapThirdParty.command)
-        sh(command: Command.Carthage.bootstrapNoBinaries.command)
-        sh(command: Command.Carthage.bootstrapFirstParty.command)
+        run(command: .bootstrapThirdParty)
+        run(command: .bootstrapNoBinaries)
+        run(command: .bootstrapFirstParty)
     }
     
     func updateFrameworksLane() {
         desc("Update all frameworks")
-        sh(command: Command.Carthage.updateThirdParty.command)
-        sh(command: Command.Carthage.updateNoBinaries.command)
-        sh(command: Command.Carthage.updateFirstParty.command)
+        run(command: .updateThirdParty)
+        run(command: .updateNoBinaries)
+        run(command: .updateFirstParty)
     }
     
     // MARK: - Bootstrap portions
     
     func bootstrapCarSwaddleFrameworksLane() {
         desc("Bootstrap first party frameworks")
-        sh(command: Command.Carthage.bootstrapFirstParty.command)
+        run(command: .bootstrapFirstParty)
     }
     
     func bootstrapThirdPartyFrameworksLane() {
         desc("Bootstrap first party frameworks")
-        sh(command: Command.Carthage.bootstrapThirdParty.command)
-        sh(command: Command.Carthage.bootstrapNoBinaries.command)
+        run(command: .bootstrapThirdParty)
+        run(command: .bootstrapNoBinaries)
     }
     
     // MARK: - Update portions
     
     func updateCarSwaddleFrameworksLane() {
         desc("Update Car Swaddle party frameworks")
-        sh(command: Command.Carthage.updateFirstParty.command)
+        run(command: .updateFirstParty)
     }
     
     func updateThirdPartyFrameworksLane() {
         desc("Update third party frameworks")
-        sh(command: Command.Carthage.updateThirdParty.command)
-        sh(command: Command.Carthage.updateNoBinaries.command)
+        run(command: .updateThirdParty)
+        run(command: .updateNoBinaries)
+    }
+    
+    private func run(command: Command) {
+        sh(command: command.shString)
     }
     
 }
@@ -68,80 +72,67 @@ class Fastfile: LaneFile {
 
 struct Command {
     
-    struct Carthage {
+    let updateType: UpdateType
+    let parameters: [Parameter]
+    let frameworks: [Framework]
+    
+    public var shString: String {
+        return "carthage \(updateType.rawValue) \(parameterString) \(frameworkString)"
+    }
+    
+    private var parameterString: String {
+        return parameters.map{ "--\($0.value)" }.joined(separator: " ")
+    }
+    
+    private var frameworkString: String {
+        return frameworks.map{ $0.value }.joined(separator: " ")
+    }
+    
+    enum UpdateType: String {
+        case bootstrap
+        case update
+    }
+    
+    struct Framework {
+        public let value: String
+    }
+    
+    enum Parameter {
+        case platformiOS
+        case noBuild
+        case noBinaries
         
-        let updateType: UpdateType
-        let parameters: [Parameter]
-        let frameworks: [Framework]
-        
-        public var command: String {
-            return "carthage \(updateType.rawValue) \(parameterString) \(frameworkString)"
-        }
-        
-        private var parameterString: String {
-            var parameterString = ""
-            for (index, parameter) in parameters.enumerated() {
-                if index != 0 {
-                    parameterString += " "
-                }
-                parameterString += "--\(parameter.value)"
-            }
-            return parameterString
-        }
-        
-        private var frameworkString: String {
-            var frameworkString = ""
-            for (index, framework) in frameworks.enumerated() {
-                if index != 0 {
-                    frameworkString += " "
-                }
-                frameworkString += framework.rawValue
-            }
-            return frameworkString
-        }
-        
-        enum UpdateType: String {
-            case bootstrap
-            case update
-        }
-        
-        enum Framework: String {
-            case lottie = "lottie-ios"
-            case stripe = "stripe-ios"
-            case cosmos = "Cosmos"
-            case fsCalendar = "FSCalendar"
-            case firebaseAnalyticsBinary = "FirebaseAnalyticsBinary"
-            case carswaddleUI = "carswaddleui"
-            case carswaddleData = "carswaddledata"
-        }
-        
-        enum Parameter {
-            case platformiOS
-            case noBuild
-            case noBinaries
-            
-            var value: String {
-                switch self {
-                case .platformiOS: return "platform iOS"
-                case .noBuild: return "no-build"
-                case .noBinaries: return "no-use-binaries"
-                }
+        var value: String {
+            switch self {
+            case .platformiOS: return "platform iOS"
+            case .noBuild: return "no-build"
+            case .noBinaries: return "no-use-binaries"
             }
         }
-        
     }
     
 }
 
 
-extension Command.Carthage {
+
+extension Command.Framework {
+    static let lottie = Command.Framework(value: "lottie-ios")
+    static let stripe = Command.Framework(value: "stripe-ios")
+    static let cosmos = Command.Framework(value: "Cosmos")
+    static let fsCalendar = Command.Framework(value: "FSCalendar")
+    static let firebaseAnalyticsBinary = Command.Framework(value: "FirebaseAnalyticsBinary")
+    static let carswaddleUI = Command.Framework(value: "carswaddleui")
+    static let carswaddleData = Command.Framework(value: "carswaddledata")
+}
+
+
+extension Command {
     
-    static let bootstrapThirdParty: Command.Carthage = Command.Carthage(updateType: .bootstrap, parameters: [.platformiOS], frameworks: [.cosmos, .stripe, .fsCalendar, .firebaseAnalyticsBinary])
-    static let bootstrapNoBinaries: Command.Carthage = Command.Carthage(updateType: .bootstrap, parameters: [.platformiOS, .noBinaries], frameworks: [.lottie])
-    static let bootstrapFirstParty: Command.Carthage = Command.Carthage(updateType: .bootstrap, parameters: [.platformiOS, .noBuild], frameworks: [.carswaddleUI, .carswaddleData])
-    
-    static let updateThirdParty: Command.Carthage = Command.Carthage(updateType: .update, parameters: [.platformiOS], frameworks: [.cosmos, .stripe, .fsCalendar, .firebaseAnalyticsBinary])
-    static let updateNoBinaries: Command.Carthage = Command.Carthage(updateType: .update, parameters: [.platformiOS, .noBinaries], frameworks: [.lottie])
-    static let updateFirstParty: Command.Carthage = Command.Carthage(updateType: .update, parameters: [.platformiOS, .noBuild], frameworks: [.carswaddleUI, .carswaddleData])
+    static let bootstrapThirdParty: Command = Command(updateType: .bootstrap, parameters: [.platformiOS], frameworks: [.cosmos, .stripe, .fsCalendar, .firebaseAnalyticsBinary])
+    static let bootstrapNoBinaries: Command = Command(updateType: .bootstrap, parameters: [.platformiOS, .noBinaries], frameworks: [.lottie])
+    static let bootstrapFirstParty: Command = Command(updateType: .bootstrap, parameters: [.platformiOS, .noBuild], frameworks: [.carswaddleUI, .carswaddleData])
+    static let updateThirdParty: Command = Command(updateType: .update, parameters: [.platformiOS], frameworks: [.cosmos, .stripe, .fsCalendar, .firebaseAnalyticsBinary])
+    static let updateNoBinaries: Command = Command(updateType: .update, parameters: [.platformiOS, .noBinaries], frameworks: [.lottie])
+    static let updateFirstParty: Command = Command(updateType: .update, parameters: [.platformiOS, .noBuild], frameworks: [.carswaddleUI, .carswaddleData])
     
 }

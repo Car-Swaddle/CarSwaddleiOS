@@ -167,7 +167,6 @@
 		99AEE1CE2277D7E400938462 /* DateCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99AEE1CD2277D7E400938462 /* DateCardView.xib */; };
 		99B4CADC23907C7D00C1E501 /* FadeAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4CADB23907C7D00C1E501 /* FadeAnimationController.swift */; };
 		99B967A923A4A062007C7C06 /* IntroViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99B967AB23A4A062007C7C06 /* IntroViewController.storyboard */; };
-		99D5D9DF21F5CD9700E6A511 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 997714CC21CE435F00E54F5B /* Stripe.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		99DC25FA2246C2A0009E0A15 /* AutoServiceCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25F92246C2A0009E0A15 /* AutoServiceCreation.swift */; };
 		99DC25FC2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25FB2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift */; };
 		99DC25FE2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DC25FD2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard */; };
@@ -722,7 +721,6 @@
 				995611B42404F0FD005E7AFD /* GoogleDataTransportCCTSupport.framework in Frameworks */,
 				99E131DD2407BFBF00E085BC /* FirebaseAnalytics.framework in Frameworks */,
 				995611B92404F0FD005E7AFD /* GoogleUtilities.framework in Frameworks */,
-				99D5D9DF21F5CD9700E6A511 /* Stripe.framework in Frameworks */,
 				99E131E82407BFFA00E085BC /* KeychainAccess.framework in Frameworks */,
 				995611B02404F0FD005E7AFD /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				99A0AF17224F53DE0001FDC6 /* FSCalendar.framework in Frameworks */,
@@ -1379,7 +1377,7 @@
 				990F4366214252C600E65FC1 /* Sources */,
 				990F4367214252C600E65FC1 /* Frameworks */,
 				990F4368214252C600E65FC1 /* Resources */,
-				995AB47C216A902500EBD8C0 /* ShellScript */,
+				995AB47C216A902500EBD8C0 /* Run Script */,
 				99E131D62407BB5400E085BC /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -1815,7 +1813,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		995AB47C216A902500EBD8C0 /* ShellScript */ = {
+		995AB47C216A902500EBD8C0 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
 			files = (
@@ -1827,6 +1825,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Cosmos.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FSCalendar.framework",
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -2157,7 +2156,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 977533WLK8;
-				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -2193,7 +2191,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 977533WLK8;
-				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
