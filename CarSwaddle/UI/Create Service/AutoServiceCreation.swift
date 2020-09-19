@@ -7,7 +7,7 @@
 //
 
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 import CarSwaddleData
 import Stripe
 import CoreData

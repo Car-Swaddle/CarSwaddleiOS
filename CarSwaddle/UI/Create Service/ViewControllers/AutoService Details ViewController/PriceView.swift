@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Store
+import CarSwaddleStore
 
 
 //private let Label = NSLocalizedString("Labor", comment: "Price part key")

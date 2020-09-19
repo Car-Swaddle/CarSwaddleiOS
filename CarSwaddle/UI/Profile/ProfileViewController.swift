@@ -11,7 +11,7 @@ import CarSwaddleData
 import CarSwaddleNetworkRequest
 import Authentication
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 import Firebase
 import SwiftUI
 

@@ -10,7 +10,7 @@ import UIKit
 import Authentication
 import CarSwaddleUI
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 import Stripe
 
 extension Navigator {

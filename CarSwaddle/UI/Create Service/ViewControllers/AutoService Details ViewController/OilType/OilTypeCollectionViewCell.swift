@@ -8,7 +8,7 @@
 
 import UIKit
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 
 class OilTypeCollectionViewCell: FocusedCollectionViewCell, NibRegisterable {
 

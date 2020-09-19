@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Store
+import CarSwaddleStore
 import CarSwaddleUI
 
 let currencyFormatter: NumberFormatter = {

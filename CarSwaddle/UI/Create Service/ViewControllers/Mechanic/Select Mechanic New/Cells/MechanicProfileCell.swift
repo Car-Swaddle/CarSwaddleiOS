@@ -8,7 +8,7 @@
 
 import UIKit
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 
 final class MechanicProfileCell: FocusedCollectionViewCell, NibRegisterable {
 

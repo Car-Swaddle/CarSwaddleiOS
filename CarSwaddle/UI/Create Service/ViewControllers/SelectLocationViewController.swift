@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-import Store
+import CarSwaddleStore
 import CoreLocation
 import Contacts
 import AddressBook

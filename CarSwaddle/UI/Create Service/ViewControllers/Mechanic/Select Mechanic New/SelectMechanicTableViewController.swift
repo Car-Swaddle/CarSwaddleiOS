@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Store
+import CarSwaddleStore
 import MapKit
 import CarSwaddleData
 import CarSwaddleUI

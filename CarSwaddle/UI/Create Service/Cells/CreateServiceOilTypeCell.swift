@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Store
+import CarSwaddleStore
 //import CarSwaddleUI
 
 final class CreateServiceOilTypeCell: UITableViewCell, NibRegisterable, AutoServiceConfigurable {

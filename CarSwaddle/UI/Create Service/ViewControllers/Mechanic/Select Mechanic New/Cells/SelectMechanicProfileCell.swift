@@ -7,7 +7,7 @@
 //
 
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 
 
 protocol SelectMechanicProfileCellDelegate: AnyObject {

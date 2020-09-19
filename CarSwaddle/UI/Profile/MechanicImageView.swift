@@ -7,7 +7,8 @@
 //
 
 import CarSwaddleData
-import Store
+import CarSwaddleStore
+import UIKit
 
 final class MechanicImageView: UIImageView {
     

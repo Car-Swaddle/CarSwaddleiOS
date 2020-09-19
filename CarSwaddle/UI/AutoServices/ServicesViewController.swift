@@ -11,7 +11,7 @@ import CarSwaddleUI
 import CarSwaddleData
 import CoreData
 import CarSwaddleNetworkRequest
-import Store
+import CarSwaddleStore
 import Firebase
 import EventKit
 

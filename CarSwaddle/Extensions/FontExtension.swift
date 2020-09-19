@@ -6,7 +6,7 @@
 //  Copyright © 2019 CarSwaddle. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UIFont.FontType {
     

@@ -9,7 +9,7 @@
 import UIKit
 import CarSwaddleData
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 
 private let editNameTitle = NSLocalizedString("Edit Name", comment: "Title for a screen that allows the user to edit their name in our system")
 private let yourNameTitle = NSLocalizedString("Enter your Name", comment: "Title for a screen that allows the user to edit their name in our system")

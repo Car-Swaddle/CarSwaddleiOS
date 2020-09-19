@@ -9,7 +9,7 @@
 import CarSwaddleData
 import CarSwaddleUI
 import Cosmos
-import Store
+import CarSwaddleStore
 
 
 class RatingController {
