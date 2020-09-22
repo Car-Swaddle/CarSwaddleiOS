@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import Stripe
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,8 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     private func setupLibraries() {
-        FirebaseConfiguration.shared.setLoggerLevel(.max)
-        FirebaseApp.configure()
+        tracker.configure()
         STPPaymentConfiguration.shared().publishableKey = stripePublishableKey
         STPPaymentConfiguration.shared().appleMerchantIdentifier = appleMerchantIdentifier
     }

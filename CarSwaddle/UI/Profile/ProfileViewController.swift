@@ -12,7 +12,6 @@ import CarSwaddleNetworkRequest
 import Authentication
 import CarSwaddleUI
 import CarSwaddleStore
-import Firebase
 import SwiftUI
 
 private let numberOfCoupons: Int = 3
@@ -125,7 +124,7 @@ final class ProfileViewController: TableViewSchemaController {
         auth.logout(deviceToken: pushNotificationController.getDeviceToken()) { error in
             pushNotificationController.deleteDeviceToken()
             DispatchQueue.main.async {
-                Analytics.logEvent("logout", parameters: [:])
+                tracker.logEvent(name: "logout", parameters: nil)
                 completion()
             }
         }

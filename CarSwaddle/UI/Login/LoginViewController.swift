@@ -10,7 +10,6 @@ import UIKit
 import CarSwaddleNetworkRequest
 import CarSwaddleData
 import Authentication
-import Firebase
 
 class LoginViewController: UIViewController, StoryboardInstantiating, UIGestureRecognizerDelegate {
     
@@ -127,8 +126,8 @@ class LoginViewController: UIViewController, StoryboardInstantiating, UIGestureR
                 return
             }
             DispatchQueue.main.async {
-                Analytics.logEvent(AnalyticsEventLogin, parameters: [
-                    AnalyticsParameterMethod: "email"
+                tracker.logEvent(trackerName: .login, trackerParameters: [
+                    .method: "email"
                 ])
                 navigator.navigateToLoggedInViewController()
             }

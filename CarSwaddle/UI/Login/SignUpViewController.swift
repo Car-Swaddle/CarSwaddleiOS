@@ -11,7 +11,6 @@ import CarSwaddleNetworkRequest
 import CarSwaddleData
 import Authentication
 import SafariServices
-import Firebase
 
 
 private let stripeAgreementURLString = "https://stripe.com/us/connect-account/legal"
@@ -223,8 +222,8 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     }
     
     private func trackSignUp() {
-        Analytics.logEvent(AnalyticsEventSignUp, parameters: [
-            AnalyticsParameterMethod: "email"
+        tracker.logEvent(trackerName: .signUp, trackerParameters: [
+            .method: "email"
         ])
     }
 

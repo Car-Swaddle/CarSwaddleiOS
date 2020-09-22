@@ -2,29 +2,11 @@
   "object": {
     "pins": [
       {
-        "package": "abseil",
-        "repositoryURL": "https://github.com/firebase/abseil-cpp.git",
-        "state": {
-          "branch": null,
-          "revision": "8ddf129163673642a339d7980327bcb2c117a28e",
-          "version": null
-        }
-      },
-      {
         "package": "Authentication",
-        "repositoryURL": "https://github.com/Car-Swaddle/Authentication.git",
+        "repositoryURL": "https://github.com/Car-Swaddle/Authentication",
         "state": {
           "branch": "master",
           "revision": "12cdc44a572272cac00c490189ccffc07e08508c",
-          "version": null
-        }
-      },
-      {
-        "package": "BoringSSL-GRPC",
-        "repositoryURL": "https://github.com/firebase/boringssl.git",
-        "state": {
-          "branch": null,
-          "revision": "d3275d3c77a63746f869a092a1a2a014cf0e5b9a",
           "version": null
         }
       },
@@ -51,7 +33,7 @@
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleStore",
         "state": {
           "branch": "master",
-          "revision": "fa66d29bbcbf8fcd4dbd387ef4940a31751cca6b",
+          "revision": "d4e1a670f6b829476b73513408d37d6bf4683d8d",
           "version": null
         }
       },
@@ -83,57 +65,12 @@
         }
       },
       {
-        "package": "Firebase",
-        "repositoryURL": "https://github.com/firebase/firebase-ios-sdk.git",
-        "state": {
-          "branch": "6.33-spm-beta",
-          "revision": "8cfe3b411f6a48ec6cc337ff41e7b2638000770b",
-          "version": null
-        }
-      },
-      {
-        "package": "FSCalendar",
-        "repositoryURL": "https://github.com/kkendall33/FSCalendar.git",
-        "state": {
-          "branch": "spm",
-          "revision": "b411c1c4614f877720f3bb930a85008b1a5ed867",
-          "version": null
-        }
-      },
-      {
-        "package": "gRPC",
-        "repositoryURL": "https://github.com/firebase/grpc.git",
-        "state": {
-          "branch": null,
-          "revision": "b22bc5256665ff2f1763505631df0ee60378b083",
-          "version": null
-        }
-      },
-      {
-        "package": "GTMSessionFetcher",
-        "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
-        "state": {
-          "branch": null,
-          "revision": "1d4ef59335abfccee6150ca5c9b436c17c801fa9",
-          "version": "1.4.0"
-        }
-      },
-      {
         "package": "KeychainAccess",
         "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
         "state": {
           "branch": null,
           "revision": "654d52d30f3dd4592e944c3e0bccb53178c992f6",
           "version": "4.2.1"
-        }
-      },
-      {
-        "package": "leveldb",
-        "repositoryURL": "https://github.com/firebase/leveldb.git",
-        "state": {
-          "branch": null,
-          "revision": "fa1f25f296a766e5a789c4dacd4798dea798b2c2",
-          "version": null
         }
       },
       {
@@ -146,30 +83,12 @@
         }
       },
       {
-        "package": "nanopb",
-        "repositoryURL": "https://github.com/nanopb/nanopb.git",
-        "state": {
-          "branch": null,
-          "revision": "8119dfe5631f2616d11e50ead95448d12e816062",
-          "version": null
-        }
-      },
-      {
         "package": "NetworkRequest",
         "repositoryURL": "https://github.com/Car-Swaddle/NetworkRequest.git",
         "state": {
           "branch": "master",
           "revision": "00c42808c910b82c61709aad948af933c6434626",
           "version": null
-        }
-      },
-      {
-        "package": "Promises",
-        "repositoryURL": "https://github.com/google/promises.git",
-        "state": {
-          "branch": null,
-          "revision": "c5cdb6bdc2d3db8ef81e3bc71d55d31baf638837",
-          "version": "1.2.10"
         }
       },
       {

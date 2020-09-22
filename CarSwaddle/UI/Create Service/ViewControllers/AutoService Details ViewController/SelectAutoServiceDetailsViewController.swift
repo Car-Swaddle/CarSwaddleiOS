@@ -11,7 +11,6 @@ import CarSwaddleUI
 import CarSwaddleData
 import CarSwaddleStore
 import Stripe
-import Firebase
 import SafariServices
 
 private let oilTypesURL = URL(string: "https://carswaddle.com/oil-types/")!
@@ -112,9 +111,9 @@ final class SelectAutoServiceDetailsViewController: UIViewController, Storyboard
         }
         delegate?.didSelect(vehicle: vehicle, oilType: oilType, viewController: self)
         
-        Analytics.logEvent(AnalyticsEventSetCheckoutOption, parameters: [
-            AnalyticsParameterCheckoutOption: "selectVehicleAndOilChange",
-            AnalyticsParameterCheckoutStep: "3",
+        tracker.logEvent(trackerName: .checkoutOption, trackerParameters: [
+            .checkoutOption: "selectVehicleAndOilChange",
+            .checkoutStep: "3",
         ])
     }
     
@@ -217,17 +216,17 @@ extension SelectAutoServiceDetailsViewController: SelectVehicleCellDelegate, Add
     func didSelectOilType(oilType: OilType, cell: SelectOilTypeCell) {
         selectedOilType = oilType
         delegate?.didChangeOilType(oilType: oilType, viewController: self)
-        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterContentType: "oilType",
-            "oilType": oilType.localizedString
+        tracker.logEvent(trackerName: .selectContent, trackerParameters: [
+            .contentType: "oilType",
+            .oilType: oilType.localizedString
         ])
     }
     
     func didSelectVehicle(vehicle: Vehicle?, cell: SelectVehicleCell) {
         selectedVehicle = vehicle
-        Analytics.logEvent(AnalyticsEventSetCheckoutOption, parameters: [
-            AnalyticsParameterContentType: "vehicle",
-            "vehicle": vehicle?.name ?? "removed"
+        tracker.logEvent(trackerName: .checkoutOption, trackerParameters: [
+            .contentType: "vehicle",
+            .vehicle: vehicle?.name ?? "removed"
         ])
     }
     
@@ -238,13 +237,13 @@ extension SelectAutoServiceDetailsViewController: SelectVehicleCellDelegate, Add
         navigationController.modalPresentationStyle = .overFullScreen
         present(navigationController, animated: true, completion: nil)
         
-        Analytics.logEvent("didSelectCreateVehicle", parameters: nil)
+        tracker.logEvent(name: "didSelectCreateVehicle", parameters: nil)
     }
     
     func didCreateVehicle(vehicle: Vehicle, viewController: AddVehicleViewController) {
         selectedVehicle = vehicle
         
-        Analytics.logEvent("createdNewVehicle", parameters: [
+        tracker.logEvent(name: "createdNewVehicle", parameters: [
             "vehicleName": vehicle.name
         ])
     }

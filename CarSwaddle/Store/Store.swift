@@ -10,4 +10,5 @@ import CoreData
 import CarSwaddleStore
 
 
-let store = PersistentStore(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
+let store = PersistentStore(containerName: "StoreContainer")
+

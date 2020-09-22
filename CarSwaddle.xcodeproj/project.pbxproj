@@ -66,15 +66,30 @@
 		9942547B2157F7B30075EDCA /* CreateServicePriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9942544B215762C50075EDCA /* CreateServicePriceCell.xib */; };
 		9942547D2157F8290075EDCA /* SelectMechanicViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99425476215782060075EDCA /* SelectMechanicViewController.storyboard */; };
 		9942547E2157F8300075EDCA /* SelectVehicleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99425477215782080075EDCA /* SelectVehicleViewController.storyboard */; };
+		99438E2825160EAD00389585 /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 99438E2725160EAD00389585 /* Authentication */; };
+		99438E512516104500389585 /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E362516104300389585 /* FSCalendarAppearance.m */; };
+		99438E522516104500389585 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E392516104300389585 /* FSCalendarTransitionCoordinator.m */; };
+		99438E532516104500389585 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E3D2516104300389585 /* FSCalendar.m */; };
+		99438E542516104500389585 /* FSCalendarDelegationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E3E2516104300389585 /* FSCalendarDelegationFactory.m */; };
+		99438E552516104500389585 /* FSCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E442516104400389585 /* FSCalendarCollectionViewLayout.m */; };
+		99438E562516104500389585 /* FSCalendarDelegationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E462516104400389585 /* FSCalendarDelegationProxy.m */; };
+		99438E572516104500389585 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E472516104400389585 /* FSCalendarWeekdayView.m */; };
+		99438E582516104500389585 /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E492516104400389585 /* FSCalendarStickyHeader.m */; };
+		99438E592516104500389585 /* FSCalendarSeparatorDecorationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E4A2516104400389585 /* FSCalendarSeparatorDecorationView.m */; };
+		99438E5A2516104500389585 /* FSCalendarConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E4B2516104500389585 /* FSCalendarConstants.m */; };
+		99438E5B2516104500389585 /* FSCalendarCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E4C2516104500389585 /* FSCalendarCalculator.m */; };
+		99438E5C2516104500389585 /* FSCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E4D2516104500389585 /* FSCalendarCollectionView.m */; };
+		99438E5D2516104500389585 /* FSCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E4E2516104500389585 /* FSCalendarCell.m */; };
+		99438E5E2516104500389585 /* FSCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E4F2516104500389585 /* FSCalendarExtensions.m */; };
+		99438E5F2516104500389585 /* FSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99438E502516104500389585 /* FSCalendarHeaderView.m */; };
 		9943BCE521EF226400D553F6 /* MechanicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9943BCE421EF226400D553F6 /* MechanicImageView.swift */; };
 		9943C173215B6C69003C2BE9 /* VehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9943C171215B6C69003C2BE9 /* VehicleCell.swift */; };
 		9943C174215B6C69003C2BE9 /* VehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9943C172215B6C69003C2BE9 /* VehicleCell.xib */; };
 		994CA9F7215206CD00D41F6C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994CA9F6215206CD00D41F6C /* LoginViewController.swift */; };
 		994CA9F9215206E600D41F6C /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 994CA9F8215206E600D41F6C /* LoginViewController.storyboard */; };
 		994CA9FC215208BD00D41F6C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994CA9FB215208BD00D41F6C /* SignUpViewController.swift */; };
+		994D5F0A25171401000D7D61 /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994D5F0925171401000D7D61 /* Tracker.swift */; };
 		99515A882515F9720018965D /* CarSwaddleData in Frameworks */ = {isa = PBXBuildFile; productRef = 99515A872515F9720018965D /* CarSwaddleData */; };
-		99515A992515FE7D0018965D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 99515A982515FE7D0018965D /* FirebaseAnalytics */; };
-		99515AB5251604020018965D /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 99515AB4251604020018965D /* FSCalendar */; };
 		9955BC1A2154E8DC008DAF8E /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC192154E8DC008DAF8E /* UsersViewController.swift */; };
 		9955BC2421555D62008DAF8E /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC2321555D62008DAF8E /* Navigator.swift */; };
 		9955BC2B2155650C008DAF8E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC2A2155650C008DAF8E /* ProfileViewController.swift */; };
@@ -85,7 +100,6 @@
 		9955BC3E215588DB008DAF8E /* CreateServiceLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC3C215588DB008DAF8E /* CreateServiceLocationCell.swift */; };
 		9955BC3F215588DB008DAF8E /* CreateServiceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9955BC3D215588DB008DAF8E /* CreateServiceLocationCell.xib */; };
 		995B9F242154B4380030A7CA /* GlobalImports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F232154B4380030A7CA /* GlobalImports.swift */; };
-		9967FB922514BC5F003FBFD0 /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 9967FB912514BC5F003FBFD0 /* Authentication */; };
 		9967FB972514BC7B003FBFD0 /* NetworkRequest in Frameworks */ = {isa = PBXBuildFile; productRef = 9967FB962514BC7B003FBFD0 /* NetworkRequest */; };
 		9967FBA12514BCC1003FBFD0 /* CarSwaddleNetworkRequest in Frameworks */ = {isa = PBXBuildFile; productRef = 9967FBA02514BCC1003FBFD0 /* CarSwaddleNetworkRequest */; };
 		997714C321CCE2C700E54F5B /* PricePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714C221CCE2C700E54F5B /* PricePartView.swift */; };
@@ -113,6 +127,10 @@
 		997DBCA121B79E620080F42C /* AutoServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9F21B79E620080F42C /* AutoServiceCell.swift */; };
 		997DBCA221B79E620080F42C /* AutoServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBCA021B79E620080F42C /* AutoServiceCell.xib */; };
 		997DBCA821BA605A0080F42C /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBCA721BA605A0080F42C /* PushNotificationController.swift */; };
+		99823A9725174B6A003B3EDE /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 99823A9625174B6A003B3EDE /* Stripe */; };
+		99823A9825174B6A003B3EDE /* Stripe in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 99823A9625174B6A003B3EDE /* Stripe */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		99823AE92519DA63003B3EDE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99823AE82519DA63003B3EDE /* UIKit.framework */; };
+		99823AEB2519DA6B003B3EDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99823AEA2519DA6B003B3EDE /* Foundation.framework */; };
 		998984D7229D0E6700E4B25A /* UserActivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984D6229D0E6700E4B25A /* UserActivityHandler.swift */; };
 		998984DC229D0FBD00E4B25A /* EnterNewPasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998984D8229D0FBC00E4B25A /* EnterNewPasswordViewController.storyboard */; };
 		998984DE229D0FBD00E4B25A /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984DA229D0FBD00E4B25A /* ForgotPasswordViewController.swift */; };
@@ -157,8 +175,6 @@
 		99A0AF15224EEA760001FDC6 /* FocusedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A0AF13224EEA760001FDC6 /* FocusedCollectionViewCell.xib */; };
 		99A2CDAE218DA179003ED903 /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2CDAD218DA179003ED903 /* ServiceRequest.swift */; };
 		99AE29BC2513546100272957 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 99AE29BB2513546100272957 /* Cosmos */; };
-		99AE29C62513594200272957 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 99AE29C52513594200272957 /* Stripe */; };
-		99AE29C72513594200272957 /* Stripe in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 99AE29C52513594200272957 /* Stripe */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		99AEE1C722740D2500938462 /* LabeledInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1C522740D2400938462 /* LabeledInfoCell.swift */; };
 		99AEE1C822740D2500938462 /* LabeledInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99AEE1C622740D2400938462 /* LabeledInfoCell.xib */; };
 		99AEE1CA2274154C00938462 /* LabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1C92274154C00938462 /* LabeledTextField.swift */; };
@@ -263,7 +279,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				99AE29C72513594200272957 /* Stripe in Embed Frameworks */,
+				99823A9825174B6A003B3EDE /* Stripe in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,12 +352,44 @@
 		99425474215781F80075EDCA /* SelectLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectLocationViewController.storyboard; sourceTree = "<group>"; };
 		99425476215782060075EDCA /* SelectMechanicViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectMechanicViewController.storyboard; sourceTree = "<group>"; };
 		99425477215782080075EDCA /* SelectVehicleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectVehicleViewController.storyboard; sourceTree = "<group>"; };
+		99438E322516104200389585 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
+		99438E332516104200389585 /* FSCalendarDelegationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationProxy.h; sourceTree = "<group>"; };
+		99438E342516104300389585 /* FSCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarAppearance.h; sourceTree = "<group>"; };
+		99438E352516104300389585 /* FSCalendarSeparatorDecorationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarSeparatorDecorationView.h; sourceTree = "<group>"; };
+		99438E362516104300389585 /* FSCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarAppearance.m; sourceTree = "<group>"; };
+		99438E372516104300389585 /* FSCalendarCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionViewLayout.h; sourceTree = "<group>"; };
+		99438E382516104300389585 /* FSCalendarDelegationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationFactory.h; sourceTree = "<group>"; };
+		99438E392516104300389585 /* FSCalendarTransitionCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarTransitionCoordinator.m; sourceTree = "<group>"; };
+		99438E3A2516104300389585 /* FSCalendarExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarExtensions.h; sourceTree = "<group>"; };
+		99438E3B2516104300389585 /* FSCalendarConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarConstants.h; sourceTree = "<group>"; };
+		99438E3C2516104300389585 /* FSCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarHeaderView.h; sourceTree = "<group>"; };
+		99438E3D2516104300389585 /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendar.m; sourceTree = "<group>"; };
+		99438E3E2516104300389585 /* FSCalendarDelegationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationFactory.m; sourceTree = "<group>"; };
+		99438E3F2516104400389585 /* FSCalendarCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionView.h; sourceTree = "<group>"; };
+		99438E402516104400389585 /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarStickyHeader.h; sourceTree = "<group>"; };
+		99438E412516104400389585 /* FSCalendarDynamicHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDynamicHeader.h; sourceTree = "<group>"; };
+		99438E422516104400389585 /* FSCalendarTransitionCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarTransitionCoordinator.h; sourceTree = "<group>"; };
+		99438E432516104400389585 /* FSCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCell.h; sourceTree = "<group>"; };
+		99438E442516104400389585 /* FSCalendarCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionViewLayout.m; sourceTree = "<group>"; };
+		99438E452516104400389585 /* FSCalendarCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCalculator.h; sourceTree = "<group>"; };
+		99438E462516104400389585 /* FSCalendarDelegationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationProxy.m; sourceTree = "<group>"; };
+		99438E472516104400389585 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
+		99438E482516104400389585 /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
+		99438E492516104400389585 /* FSCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarStickyHeader.m; sourceTree = "<group>"; };
+		99438E4A2516104400389585 /* FSCalendarSeparatorDecorationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarSeparatorDecorationView.m; sourceTree = "<group>"; };
+		99438E4B2516104500389585 /* FSCalendarConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarConstants.m; sourceTree = "<group>"; };
+		99438E4C2516104500389585 /* FSCalendarCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCalculator.m; sourceTree = "<group>"; };
+		99438E4D2516104500389585 /* FSCalendarCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionView.m; sourceTree = "<group>"; };
+		99438E4E2516104500389585 /* FSCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCell.m; sourceTree = "<group>"; };
+		99438E4F2516104500389585 /* FSCalendarExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarExtensions.m; sourceTree = "<group>"; };
+		99438E502516104500389585 /* FSCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarHeaderView.m; sourceTree = "<group>"; };
 		9943BCE421EF226400D553F6 /* MechanicImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicImageView.swift; sourceTree = "<group>"; };
 		9943C171215B6C69003C2BE9 /* VehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCell.swift; sourceTree = "<group>"; };
 		9943C172215B6C69003C2BE9 /* VehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleCell.xib; sourceTree = "<group>"; };
 		994CA9F6215206CD00D41F6C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		994CA9F8215206E600D41F6C /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		994CA9FB215208BD00D41F6C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		994D5F0925171401000D7D61 /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		9955BC192154E8DC008DAF8E /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		9955BC2321555D62008DAF8E /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		9955BC2A2155650C008DAF8E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -377,6 +425,8 @@
 		997DBC9F21B79E620080F42C /* AutoServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCell.swift; sourceTree = "<group>"; };
 		997DBCA021B79E620080F42C /* AutoServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceCell.xib; sourceTree = "<group>"; };
 		997DBCA721BA605A0080F42C /* PushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
+		99823AE82519DA63003B3EDE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		99823AEA2519DA6B003B3EDE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		998984D6229D0E6700E4B25A /* UserActivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityHandler.swift; sourceTree = "<group>"; };
 		998984D8229D0FBC00E4B25A /* EnterNewPasswordViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EnterNewPasswordViewController.storyboard; sourceTree = "<group>"; };
 		998984D9229D0FBC00E4B25A /* ForgotPasswordViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ForgotPasswordViewController.storyboard; sourceTree = "<group>"; };
@@ -508,15 +558,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99823AEB2519DA6B003B3EDE /* Foundation.framework in Frameworks */,
+				99823AE92519DA63003B3EDE /* UIKit.framework in Frameworks */,
 				9967FBA12514BCC1003FBFD0 /* CarSwaddleNetworkRequest in Frameworks */,
 				9967FB972514BC7B003FBFD0 /* NetworkRequest in Frameworks */,
-				99AE29C62513594200272957 /* Stripe in Frameworks */,
-				9967FB922514BC5F003FBFD0 /* Authentication in Frameworks */,
-				99515AB5251604020018965D /* FSCalendar in Frameworks */,
 				99515A882515F9720018965D /* CarSwaddleData in Frameworks */,
+				99823A9725174B6A003B3EDE /* Stripe in Frameworks */,
 				99B2D6DB2515F1940085A2DF /* CarSwaddleUI in Frameworks */,
-				99515A992515FE7D0018965D /* FirebaseAnalytics in Frameworks */,
 				99AE29BC2513546100272957 /* Cosmos in Frameworks */,
+				99438E2825160EAD00389585 /* Authentication in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +615,8 @@
 				992BFDD022056B8B006B64CC /* Logout.swift */,
 				99AEE1C92274154C00938462 /* LabeledTextField.swift */,
 				99FE291A235CD92C00C7DB34 /* Links.swift */,
+				994D5F08251713E9000D7D61 /* Analytics */,
+				99438E2D2516103100389585 /* FSCalendar */,
 				998984D5229D0E5100E4B25A /* User Activity Handler */,
 				998984D4229D0E4400E4B25A /* Push Notifications */,
 				9955BC2521556302008DAF8E /* Extensions */,
@@ -656,6 +708,44 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		99438E2D2516103100389585 /* FSCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				99438E482516104400389585 /* FSCalendar.h */,
+				99438E3D2516104300389585 /* FSCalendar.m */,
+				99438E342516104300389585 /* FSCalendarAppearance.h */,
+				99438E362516104300389585 /* FSCalendarAppearance.m */,
+				99438E452516104400389585 /* FSCalendarCalculator.h */,
+				99438E4C2516104500389585 /* FSCalendarCalculator.m */,
+				99438E432516104400389585 /* FSCalendarCell.h */,
+				99438E4E2516104500389585 /* FSCalendarCell.m */,
+				99438E3F2516104400389585 /* FSCalendarCollectionView.h */,
+				99438E4D2516104500389585 /* FSCalendarCollectionView.m */,
+				99438E372516104300389585 /* FSCalendarCollectionViewLayout.h */,
+				99438E442516104400389585 /* FSCalendarCollectionViewLayout.m */,
+				99438E3B2516104300389585 /* FSCalendarConstants.h */,
+				99438E4B2516104500389585 /* FSCalendarConstants.m */,
+				99438E382516104300389585 /* FSCalendarDelegationFactory.h */,
+				99438E3E2516104300389585 /* FSCalendarDelegationFactory.m */,
+				99438E332516104200389585 /* FSCalendarDelegationProxy.h */,
+				99438E462516104400389585 /* FSCalendarDelegationProxy.m */,
+				99438E412516104400389585 /* FSCalendarDynamicHeader.h */,
+				99438E3A2516104300389585 /* FSCalendarExtensions.h */,
+				99438E4F2516104500389585 /* FSCalendarExtensions.m */,
+				99438E3C2516104300389585 /* FSCalendarHeaderView.h */,
+				99438E502516104500389585 /* FSCalendarHeaderView.m */,
+				99438E352516104300389585 /* FSCalendarSeparatorDecorationView.h */,
+				99438E4A2516104400389585 /* FSCalendarSeparatorDecorationView.m */,
+				99438E402516104400389585 /* FSCalendarStickyHeader.h */,
+				99438E492516104400389585 /* FSCalendarStickyHeader.m */,
+				99438E422516104400389585 /* FSCalendarTransitionCoordinator.h */,
+				99438E392516104300389585 /* FSCalendarTransitionCoordinator.m */,
+				99438E322516104200389585 /* FSCalendarWeekdayView.h */,
+				99438E472516104400389585 /* FSCalendarWeekdayView.m */,
+			);
+			path = FSCalendar;
+			sourceTree = "<group>";
+		};
 		9943C169215B61F4003C2BE9 /* Vehicle */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +782,14 @@
 				991C9FC42213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		994D5F08251713E9000D7D61 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				994D5F0925171401000D7D61 /* Tracker.swift */,
+			);
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 		9955BC2521556302008DAF8E /* Extensions */ = {
@@ -1046,6 +1144,8 @@
 		99F78F24214BA4E400D1BD28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99823AEA2519DA6B003B3EDE /* Foundation.framework */,
+				99823AE82519DA63003B3EDE /* UIKit.framework */,
 				99C5BDF32403087500754F77 /* libc++.tbd */,
 				99C5BDF22403086D00754F77 /* libz.tbd */,
 				99C5BDF12403086300754F77 /* libsqlite3.tbd */,
@@ -1063,7 +1163,6 @@
 				990F4366214252C600E65FC1 /* Sources */,
 				990F4367214252C600E65FC1 /* Frameworks */,
 				990F4368214252C600E65FC1 /* Resources */,
-				995AB47C216A902500EBD8C0 /* ShellScript */,
 				99E131D62407BB5400E085BC /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -1073,14 +1172,12 @@
 			name = CarSwaddle;
 			packageProductDependencies = (
 				99AE29BB2513546100272957 /* Cosmos */,
-				99AE29C52513594200272957 /* Stripe */,
-				9967FB912514BC5F003FBFD0 /* Authentication */,
 				9967FB962514BC7B003FBFD0 /* NetworkRequest */,
 				9967FBA02514BCC1003FBFD0 /* CarSwaddleNetworkRequest */,
 				99B2D6DA2515F1940085A2DF /* CarSwaddleUI */,
 				99515A872515F9720018965D /* CarSwaddleData */,
-				99515A982515FE7D0018965D /* FirebaseAnalytics */,
-				99515AB4251604020018965D /* FSCalendar */,
+				99438E2725160EAD00389585 /* Authentication */,
+				99823A9625174B6A003B3EDE /* Stripe */,
 			);
 			productName = CarSwaddle;
 			productReference = 990F436A214252C600E65FC1 /* CarSwaddle.app */;
@@ -1179,14 +1276,12 @@
 			mainGroup = 990F4361214252C600E65FC1;
 			packageReferences = (
 				99AE29BA2513546100272957 /* XCRemoteSwiftPackageReference "Cosmos" */,
-				99AE29C42513594200272957 /* XCRemoteSwiftPackageReference "stripe-ios" */,
-				9967FB902514BC5F003FBFD0 /* XCRemoteSwiftPackageReference "Authentication" */,
 				9967FB952514BC7B003FBFD0 /* XCRemoteSwiftPackageReference "NetworkRequest" */,
 				9967FB9F2514BCC1003FBFD0 /* XCRemoteSwiftPackageReference "CarSwaddleNetworkRequest" */,
 				99B2D6D92515F1940085A2DF /* XCRemoteSwiftPackageReference "CarSwaddleUI" */,
 				99515A862515F9720018965D /* XCRemoteSwiftPackageReference "CarSwaddleData" */,
-				99515A972515FE7D0018965D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				99515AB3251604010018965D /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				99438E2625160EAD00389585 /* XCRemoteSwiftPackageReference "Authentication" */,
+				994D5F1C25172DC4000D7D61 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 			);
 			productRefGroup = 990F436B214252C600E65FC1 /* Products */;
 			projectDirPath = "";
@@ -1336,26 +1431,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		995AB47C216A902500EBD8C0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		990F4366214252C600E65FC1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1374,11 +1449,16 @@
 				9942546B21577B6C0075EDCA /* SelectMechanicViewController.swift in Sources */,
 				9935529023581EB4009DB141 /* ShareCouponView.swift in Sources */,
 				998D3AE721DDCC49003DD717 /* AutoServiceDetailsViewController.swift in Sources */,
+				99438E542516104500389585 /* FSCalendarDelegationFactory.m in Sources */,
+				994D5F0A25171401000D7D61 /* Tracker.swift in Sources */,
 				99AEE1CA2274154C00938462 /* LabeledTextField.swift in Sources */,
+				99438E5D2516104500389585 /* FSCalendarCell.m in Sources */,
 				9955BC2F21556554008DAF8E /* ServicesViewController.swift in Sources */,
 				991AFC9522506AD200AD6614 /* HourDisplayView.swift in Sources */,
 				99A0AF0E224EE06E0001FDC6 /* MechanicProfileHeaderView.swift in Sources */,
+				99438E552516104500389585 /* FSCalendarCollectionViewLayout.m in Sources */,
 				9955BC2421555D62008DAF8E /* Navigator.swift in Sources */,
+				99438E5B2516104500389585 /* FSCalendarCalculator.m in Sources */,
 				997DBC7621997E370080F42C /* DateExtension.swift in Sources */,
 				997714C721CCF5BC00E54F5B /* Stripe.swift in Sources */,
 				990F7D82238B438E00B88F0B /* LoginExperience.swift in Sources */,
@@ -1395,6 +1475,7 @@
 				997BFC0722F963330023F445 /* RateAlertController.swift in Sources */,
 				9942544A215762A10075EDCA /* CreateServiceMechanicCell.swift in Sources */,
 				998D3AEC21DDCF5C003DD717 /* ReviewCell.swift in Sources */,
+				99438E5C2516104500389585 /* FSCalendarCollectionView.m in Sources */,
 				99FE2919235BC29700C7DB34 /* SemanticColors+UIColor.swift in Sources */,
 				9935529423582F2E009DB141 /* CouponView.swift in Sources */,
 				991AFCA72250B2BC00AD6614 /* VehicleCollectionViewCell.swift in Sources */,
@@ -1403,14 +1484,17 @@
 				997DBC42218EBD210080F42C /* MechanicSelectCell.swift in Sources */,
 				99B4CADC23907C7D00C1E501 /* FadeAnimationController.swift in Sources */,
 				99E66DA421E294A600C6E3E1 /* ProfileHeaderView.swift in Sources */,
+				99438E5A2516104500389585 /* FSCalendarConstants.m in Sources */,
 				99E48167227AC5780040B882 /* AutoServiceVehicleCell.swift in Sources */,
 				991AFCBC2259297300AD6614 /* PriceView.swift in Sources */,
 				99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */,
+				99438E5F2516104500389585 /* FSCalendarHeaderView.m in Sources */,
 				99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */,
 				99116905215B76B6001E039E /* AddVehicleCell.swift in Sources */,
 				9905FF752313AD3400DFBCB9 /* StatePickerCell.swift in Sources */,
 				9942547121577B730075EDCA /* SelectLocationViewController.swift in Sources */,
 				991C9FC52213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift in Sources */,
+				99438E582516104500389585 /* FSCalendarStickyHeader.m in Sources */,
 				997896BC2359837200492110 /* CouponCodeCell.swift in Sources */,
 				997DBC72219965E80080F42C /* HourCollectionViewCell.swift in Sources */,
 				991AFCAB2250B2C700AD6614 /* OilTypeCollectionViewCell.swift in Sources */,
@@ -1430,17 +1514,22 @@
 				999861432289270C00113536 /* CancelAutoServiceCell.swift in Sources */,
 				9955BC2B2155650C008DAF8E /* ProfileViewController.swift in Sources */,
 				992BFDCF22056B10006B64CC /* TweakValues.swift in Sources */,
+				99438E562516104500389585 /* FSCalendarDelegationProxy.m in Sources */,
 				991AFCB92251D7C900AD6614 /* TextInputCell.swift in Sources */,
 				99A0AF14224EEA760001FDC6 /* FocusedCollectionViewCell.swift in Sources */,
 				9955BC3E215588DB008DAF8E /* CreateServiceLocationCell.swift in Sources */,
+				99438E512516104500389585 /* FSCalendarAppearance.m in Sources */,
 				994254522157691A0075EDCA /* CreateServiceCell.swift in Sources */,
 				9955BC3521557305008DAF8E /* CreateServiceViewController.swift in Sources */,
+				99438E572516104500389585 /* FSCalendarWeekdayView.m in Sources */,
+				99438E5E2516104500389585 /* FSCalendarExtensions.m in Sources */,
 				99A0AF0A224ECDC50001FDC6 /* MechanicProfileCell.swift in Sources */,
 				997BFC0522F950EF0023F445 /* RemoteNotification.swift in Sources */,
 				997DBCA821BA605A0080F42C /* PushNotificationController.swift in Sources */,
 				99986000227E29BB00113536 /* AutoServiceLocationCell.swift in Sources */,
 				99A0AF01224EC2A30001FDC6 /* SelectMechanicHourCell.swift in Sources */,
 				9943C173215B6C69003C2BE9 /* VehicleCell.swift in Sources */,
+				99438E592516104500389585 /* FSCalendarSeparatorDecorationView.m in Sources */,
 				990F7D84238B819600B88F0B /* IntroViewController.swift in Sources */,
 				9955BC1A2154E8DC008DAF8E /* UsersViewController.swift in Sources */,
 				991C9FC72215485D004B9C15 /* PhoneNumberViewController.swift in Sources */,
@@ -1454,6 +1543,8 @@
 				994CA9FC215208BD00D41F6C /* SignUpViewController.swift in Sources */,
 				998984DF229D0FBD00E4B25A /* EnterNewPasswordViewController.swift in Sources */,
 				99986009227E39E200113536 /* PillView.swift in Sources */,
+				99438E532516104500389585 /* FSCalendar.m in Sources */,
+				99438E522516104500389585 /* FSCalendarTransitionCoordinator.m in Sources */,
 				99425466215778DD0075EDCA /* Defaults.swift in Sources */,
 				99A0AF07224EC4880001FDC6 /* FocusedCellCollectionViewLayout.swift in Sources */,
 				9998600F227F6E9D00113536 /* CircleButton.swift in Sources */,
@@ -1581,6 +1672,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -1602,6 +1694,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1645,6 +1738,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -1659,6 +1753,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1676,24 +1771,17 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 977533WLK8;
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(SRCROOT)/Carthage/Build/iOS/",
-					"$(PROJECT_DIR)",
-				);
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = CarSwaddle/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"$(SRCROOT)/Carthage/Build/iOS",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.104.0;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1713,23 +1801,16 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 977533WLK8;
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(SRCROOT)/Carthage/Build/iOS/",
-					"$(PROJECT_DIR)",
-				);
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = CarSwaddle/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"$(SRCROOT)/Carthage/Build/iOS",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.104.0;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1863,33 +1944,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		99515A862515F9720018965D /* XCRemoteSwiftPackageReference "CarSwaddleData" */ = {
+		99438E2625160EAD00389585 /* XCRemoteSwiftPackageReference "Authentication" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleData";
+			repositoryURL = "https://github.com/Car-Swaddle/Authentication";
 			requirement = {
 				branch = master;
 				kind = branch;
 			};
 		};
-		99515A972515FE7D0018965D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		994D5F1C25172DC4000D7D61 /* XCRemoteSwiftPackageReference "stripe-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			repositoryURL = "https://github.com/stripe/stripe-ios.git";
 			requirement = {
-				branch = "6.33-spm-beta";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.0;
 			};
 		};
-		99515AB3251604010018965D /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+		99515A862515F9720018965D /* XCRemoteSwiftPackageReference "CarSwaddleData" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kkendall33/FSCalendar.git";
-			requirement = {
-				branch = spm;
-				kind = branch;
-			};
-		};
-		9967FB902514BC5F003FBFD0 /* XCRemoteSwiftPackageReference "Authentication" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Car-Swaddle/Authentication.git";
+			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleData";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -1919,14 +1992,6 @@
 				minimumVersion = 22.1.0;
 			};
 		};
-		99AE29C42513594200272957 /* XCRemoteSwiftPackageReference "stripe-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stripe/stripe-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 20.0.0;
-			};
-		};
 		99B2D6D92515F1940085A2DF /* XCRemoteSwiftPackageReference "CarSwaddleUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleUI.git";
@@ -1938,25 +2003,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		99438E2725160EAD00389585 /* Authentication */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99438E2625160EAD00389585 /* XCRemoteSwiftPackageReference "Authentication" */;
+			productName = Authentication;
+		};
 		99515A872515F9720018965D /* CarSwaddleData */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 99515A862515F9720018965D /* XCRemoteSwiftPackageReference "CarSwaddleData" */;
 			productName = CarSwaddleData;
-		};
-		99515A982515FE7D0018965D /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 99515A972515FE7D0018965D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		99515AB4251604020018965D /* FSCalendar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 99515AB3251604010018965D /* XCRemoteSwiftPackageReference "FSCalendar" */;
-			productName = FSCalendar;
-		};
-		9967FB912514BC5F003FBFD0 /* Authentication */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9967FB902514BC5F003FBFD0 /* XCRemoteSwiftPackageReference "Authentication" */;
-			productName = Authentication;
 		};
 		9967FB962514BC7B003FBFD0 /* NetworkRequest */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1968,15 +2023,15 @@
 			package = 9967FB9F2514BCC1003FBFD0 /* XCRemoteSwiftPackageReference "CarSwaddleNetworkRequest" */;
 			productName = CarSwaddleNetworkRequest;
 		};
+		99823A9625174B6A003B3EDE /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 994D5F1C25172DC4000D7D61 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = Stripe;
+		};
 		99AE29BB2513546100272957 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 99AE29BA2513546100272957 /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
-		};
-		99AE29C52513594200272957 /* Stripe */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 99AE29C42513594200272957 /* XCRemoteSwiftPackageReference "stripe-ios" */;
-			productName = Stripe;
 		};
 		99B2D6DA2515F1940085A2DF /* CarSwaddleUI */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -11,7 +11,6 @@ import CarSwaddleStore
 import CarSwaddleData
 import Stripe
 import CoreData
-import Firebase
 import CarSwaddleNetworkRequest
 import StoreKit
 
@@ -175,12 +174,12 @@ final class AutoServiceCreation: NSObject {
     private func requestPayment() {
         paymentContext.requestPayment()
         
-        Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [
-            AnalyticsParameterPrice: paymentContext.paymentAmount,
-            AnalyticsParameterStartDate: autoService.scheduledDate ?? Date(),
-            AnalyticsParameterCurrency: "USD",
-            AnalyticsParameterContentType: "oilChange",
-            AnalyticsParameterCheckoutOption: "requestPayment"
+        tracker.logEvent(trackerName: .ecommercePurchase, trackerParameters: [
+            .price: paymentContext.paymentAmount,
+            .startDate: autoService.scheduledDate ?? Date(),
+            .currency: "USD",
+            .contentType: "oilChange",
+            .checkoutOption: "requestPayment"
         ])
     }
     
@@ -225,8 +224,8 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
     
     func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
         print("failed to load: \(error)")
-        Analytics.logEvent(AnalyticsEventCheckoutProgress, parameters: [
-            AnalyticsParameterCheckoutOption: "failedPayment"
+        tracker.logEvent(trackerName: .checkoutProgress, trackerParameters: [
+            .checkoutOption: "failedPayment"
         ])
     }
     
@@ -263,21 +262,21 @@ extension AutoServiceCreation: STPPaymentContextDelegate {
             print("error: \(String(describing: error))")
             let alert = errorAlertController(title: errorWithPaymentTitle, message: errorWithPaymentMessage)
             paymentContext.hostViewController?.present(alert, animated: true, completion: nil)
-            var params: [String: Any] = [AnalyticsParameterCheckoutOption: "systemErrorPayment"]
+            var params: [Tracker.Parameter: Any] = [.checkoutOption: "systemErrorPayment"]
             if let error = error {
                 print("\(error)")
-                params["errorMessage"] = error.localizedDescription
+                params[.errorMessage] = error.localizedDescription
             }
-            Analytics.logEvent(AnalyticsEventCheckoutProgress, parameters: params)
+            tracker.logEvent(trackerName: .checkoutProgress, trackerParameters: params)
         case .success:
             print("success")
-            Analytics.logEvent(AnalyticsEventCheckoutProgress, parameters: [
-                AnalyticsParameterCheckoutOption: "successfullyPaid"
+            tracker.logEvent(trackerName: .checkoutProgress, trackerParameters: [
+                .checkoutOption: "successfullyPaid"
             ])
         case .userCancellation:
             print("user cancelled")
-            Analytics.logEvent(AnalyticsEventCheckoutProgress, parameters: [
-                AnalyticsParameterCheckoutOption: "userCanceledPayment"
+            tracker.logEvent(trackerName: .checkoutProgress, trackerParameters: [
+                .checkoutOption: "userCanceledPayment"
             ])
         @unknown default:
             fatalError("unkown case")
