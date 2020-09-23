@@ -129,8 +129,6 @@
 		997DBCA821BA605A0080F42C /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBCA721BA605A0080F42C /* PushNotificationController.swift */; };
 		99823A9725174B6A003B3EDE /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 99823A9625174B6A003B3EDE /* Stripe */; };
 		99823A9825174B6A003B3EDE /* Stripe in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 99823A9625174B6A003B3EDE /* Stripe */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		99823AE92519DA63003B3EDE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99823AE82519DA63003B3EDE /* UIKit.framework */; };
-		99823AEB2519DA6B003B3EDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99823AEA2519DA6B003B3EDE /* Foundation.framework */; };
 		998984D7229D0E6700E4B25A /* UserActivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984D6229D0E6700E4B25A /* UserActivityHandler.swift */; };
 		998984DC229D0FBD00E4B25A /* EnterNewPasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998984D8229D0FBC00E4B25A /* EnterNewPasswordViewController.storyboard */; };
 		998984DE229D0FBD00E4B25A /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984DA229D0FBD00E4B25A /* ForgotPasswordViewController.swift */; };
@@ -177,12 +175,12 @@
 		99AE29BC2513546100272957 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 99AE29BB2513546100272957 /* Cosmos */; };
 		99AEE1C722740D2500938462 /* LabeledInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1C522740D2400938462 /* LabeledInfoCell.swift */; };
 		99AEE1C822740D2500938462 /* LabeledInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99AEE1C622740D2400938462 /* LabeledInfoCell.xib */; };
-		99AEE1CA2274154C00938462 /* LabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1C92274154C00938462 /* LabeledTextField.swift */; };
 		99AEE1CC2277D7CB00938462 /* DateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1CB2277D7CB00938462 /* DateCardView.swift */; };
 		99AEE1CE2277D7E400938462 /* DateCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99AEE1CD2277D7E400938462 /* DateCardView.xib */; };
 		99B2D6DB2515F1940085A2DF /* CarSwaddleUI in Frameworks */ = {isa = PBXBuildFile; productRef = 99B2D6DA2515F1940085A2DF /* CarSwaddleUI */; };
 		99B4CADC23907C7D00C1E501 /* FadeAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4CADB23907C7D00C1E501 /* FadeAnimationController.swift */; };
 		99B967A923A4A062007C7C06 /* IntroViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99B967AB23A4A062007C7C06 /* IntroViewController.storyboard */; };
+		99CB2A80251AEF2600DAB286 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 99CB2A7F251AEF2600DAB286 /* FirebaseAnalytics */; };
 		99DC25FA2246C2A0009E0A15 /* AutoServiceCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25F92246C2A0009E0A15 /* AutoServiceCreation.swift */; };
 		99DC25FC2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25FB2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift */; };
 		99DC25FE2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DC25FD2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard */; };
@@ -275,7 +273,7 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		99E131D62407BB5400E085BC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
@@ -425,8 +423,6 @@
 		997DBC9F21B79E620080F42C /* AutoServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCell.swift; sourceTree = "<group>"; };
 		997DBCA021B79E620080F42C /* AutoServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceCell.xib; sourceTree = "<group>"; };
 		997DBCA721BA605A0080F42C /* PushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
-		99823AE82519DA63003B3EDE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		99823AEA2519DA6B003B3EDE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		998984D6229D0E6700E4B25A /* UserActivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityHandler.swift; sourceTree = "<group>"; };
 		998984D8229D0FBC00E4B25A /* EnterNewPasswordViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EnterNewPasswordViewController.storyboard; sourceTree = "<group>"; };
 		998984D9229D0FBC00E4B25A /* ForgotPasswordViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ForgotPasswordViewController.storyboard; sourceTree = "<group>"; };
@@ -472,7 +468,6 @@
 		99A2CDAD218DA179003ED903 /* ServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
 		99AEE1C522740D2400938462 /* LabeledInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledInfoCell.swift; sourceTree = "<group>"; };
 		99AEE1C622740D2400938462 /* LabeledInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledInfoCell.xib; sourceTree = "<group>"; };
-		99AEE1C92274154C00938462 /* LabeledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextField.swift; sourceTree = "<group>"; };
 		99AEE1CB2277D7CB00938462 /* DateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateCardView.swift; path = CarSwaddle/UI/DateCardView.swift; sourceTree = SOURCE_ROOT; };
 		99AEE1CD2277D7E400938462 /* DateCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCardView.xib; sourceTree = "<group>"; };
 		99B4CADB23907C7D00C1E501 /* FadeAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeAnimationController.swift; sourceTree = "<group>"; };
@@ -513,9 +508,6 @@
 		99BC8D232245F3D600B732E7 /* Montserrat-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.otf"; sourceTree = "<group>"; };
 		99BC8D242245F3D700B732E7 /* Montserrat-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.otf"; sourceTree = "<group>"; };
 		99BC8D252245F3D900B732E7 /* Montserrat-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.otf"; sourceTree = "<group>"; };
-		99C5BDF12403086300754F77 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		99C5BDF22403086D00754F77 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		99C5BDF32403087500754F77 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		99C791C32150C8A8000167CB /* CarSwaddle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarSwaddle-Bridging-Header.h"; sourceTree = "<group>"; };
 		99DC25F92246C2A0009E0A15 /* AutoServiceCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCreation.swift; sourceTree = "<group>"; };
 		99DC25FB2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCreationProgressViewController.swift; sourceTree = "<group>"; };
@@ -558,10 +550,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99823AEB2519DA6B003B3EDE /* Foundation.framework in Frameworks */,
-				99823AE92519DA63003B3EDE /* UIKit.framework in Frameworks */,
 				9967FBA12514BCC1003FBFD0 /* CarSwaddleNetworkRequest in Frameworks */,
 				9967FB972514BC7B003FBFD0 /* NetworkRequest in Frameworks */,
+				99CB2A80251AEF2600DAB286 /* FirebaseAnalytics in Frameworks */,
 				99515A882515F9720018965D /* CarSwaddleData in Frameworks */,
 				99823A9725174B6A003B3EDE /* Stripe in Frameworks */,
 				99B2D6DB2515F1940085A2DF /* CarSwaddleUI in Frameworks */,
@@ -593,7 +584,6 @@
 				990F436C214252C600E65FC1 /* CarSwaddle */,
 				990F4384214252C700E65FC1 /* CarSwaddleTests */,
 				990F436B214252C600E65FC1 /* Products */,
-				99F78F24214BA4E400D1BD28 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -613,7 +603,6 @@
 				99A2CDAD218DA179003ED903 /* ServiceRequest.swift */,
 				997714C621CCF5BC00E54F5B /* Stripe.swift */,
 				992BFDD022056B8B006B64CC /* Logout.swift */,
-				99AEE1C92274154C00938462 /* LabeledTextField.swift */,
 				99FE291A235CD92C00C7DB34 /* Links.swift */,
 				994D5F08251713E9000D7D61 /* Analytics */,
 				99438E2D2516103100389585 /* FSCalendar */,
@@ -623,7 +612,7 @@
 				99F78F1A214B9F1D00D1BD28 /* UI */,
 				9991FE1A214B86F900F58F42 /* Launch */,
 				99F78F19214B9F1700D1BD28 /* Store */,
-				9991FE17214B86D600F58F42 /* Resources */,
+				9991FE17214B86D600F58F42 /* CarSwaddleSupport */,
 				9991FE18214B86DE00F58F42 /* Support */,
 			);
 			path = CarSwaddle;
@@ -950,7 +939,7 @@
 			path = "AutoService Details";
 			sourceTree = "<group>";
 		};
-		9991FE17214B86D600F58F42 /* Resources */ = {
+		9991FE17214B86D600F58F42 /* CarSwaddleSupport */ = {
 			isa = PBXGroup;
 			children = (
 				9998600A227F5A6200113536 /* GoogleService-Info-3.plist */,
@@ -961,7 +950,7 @@
 				99985FF8227C158F00113536 /* Localizable.stringsdict */,
 				99985FFB227C159200113536 /* Localizable.strings */,
 			);
-			path = Resources;
+			path = CarSwaddleSupport;
 			sourceTree = "<group>";
 		};
 		9991FE18214B86DE00F58F42 /* Support */ = {
@@ -1141,18 +1130,6 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		99F78F24214BA4E400D1BD28 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				99823AEA2519DA6B003B3EDE /* Foundation.framework */,
-				99823AE82519DA63003B3EDE /* UIKit.framework */,
-				99C5BDF32403087500754F77 /* libc++.tbd */,
-				99C5BDF22403086D00754F77 /* libz.tbd */,
-				99C5BDF12403086300754F77 /* libsqlite3.tbd */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1178,6 +1155,7 @@
 				99515A872515F9720018965D /* CarSwaddleData */,
 				99438E2725160EAD00389585 /* Authentication */,
 				99823A9625174B6A003B3EDE /* Stripe */,
+				99CB2A7F251AEF2600DAB286 /* FirebaseAnalytics */,
 			);
 			productName = CarSwaddle;
 			productReference = 990F436A214252C600E65FC1 /* CarSwaddle.app */;
@@ -1282,6 +1260,7 @@
 				99515A862515F9720018965D /* XCRemoteSwiftPackageReference "CarSwaddleData" */,
 				99438E2625160EAD00389585 /* XCRemoteSwiftPackageReference "Authentication" */,
 				994D5F1C25172DC4000D7D61 /* XCRemoteSwiftPackageReference "stripe-ios" */,
+				99CB2A7E251AEF2600DAB286 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 990F436B214252C600E65FC1 /* Products */;
 			projectDirPath = "";
@@ -1451,7 +1430,6 @@
 				998D3AE721DDCC49003DD717 /* AutoServiceDetailsViewController.swift in Sources */,
 				99438E542516104500389585 /* FSCalendarDelegationFactory.m in Sources */,
 				994D5F0A25171401000D7D61 /* Tracker.swift in Sources */,
-				99AEE1CA2274154C00938462 /* LabeledTextField.swift in Sources */,
 				99438E5D2516104500389585 /* FSCalendarCell.m in Sources */,
 				9955BC2F21556554008DAF8E /* ServicesViewController.swift in Sources */,
 				991AFC9522506AD200AD6614 /* HourDisplayView.swift in Sources */,
@@ -2000,6 +1978,14 @@
 				kind = branch;
 			};
 		};
+		99CB2A7E251AEF2600DAB286 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = "6.31-spm-beta";
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2037,6 +2023,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 99B2D6D92515F1940085A2DF /* XCRemoteSwiftPackageReference "CarSwaddleUI" */;
 			productName = CarSwaddleUI;
+		};
+		99CB2A7F251AEF2600DAB286 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99CB2A7E251AEF2600DAB286 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
