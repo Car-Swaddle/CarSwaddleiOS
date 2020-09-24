@@ -57,10 +57,10 @@
       },
       {
         "package": "CarSwaddleUI",
-        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleUI.git",
+        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleUI",
         "state": {
           "branch": "master",
-          "revision": "5f7da29ebe02104cbe80048c57e33ccfb7cbcbcf",
+          "revision": "1269ea6ebd34e0dbd0a68cf5ddda464ed3c3e0bc",
           "version": null
         }
       },

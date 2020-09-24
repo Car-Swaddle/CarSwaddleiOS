@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -69,7 +69,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1T-rL-jjJ">
                                 <rect key="frame" x="156" y="283" width="63" height="20"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjR-UW-Yqw">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjR-UW-Yqw">
                                         <rect key="frame" x="0.0" y="0.0" width="43" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                         <state key="normal" title="Login">
@@ -103,7 +103,7 @@
                                     <outlet property="delegate" destination="aHk-nT-EjF" id="Gwy-qa-B5J"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRT-xV-M0r">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRT-xV-M0r">
                                 <rect key="frame" x="130.5" y="321" width="114" height="29"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                 <state key="normal" title="Forgot password?">
@@ -114,6 +114,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="y1f-Ro-vw0"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nZt-c4-pxi" firstAttribute="centerX" secondItem="Fzl-49-fzJ" secondAttribute="centerX" id="5GP-6Q-4lr"/>
@@ -134,7 +135,6 @@
                             <constraint firstItem="YOc-Rv-Lxj" firstAttribute="centerX" secondItem="Fzl-49-fzJ" secondAttribute="centerX" id="giu-dg-31W"/>
                             <constraint firstItem="YOc-Rv-Lxj" firstAttribute="leading" secondItem="qbq-CQ-Aym" secondAttribute="trailing" constant="8" id="p9m-Fz-am4"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="y1f-Ro-vw0"/>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="gLd-z1-USp" id="28q-Zi-Ixa"/>
@@ -213,23 +213,24 @@
                                     <outlet property="delegate" destination="fl6-Bj-bHG" id="0hS-eh-cfK"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bB7-Bq-Sfa">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="center" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="bB7-Bq-Sfa">
                                 <rect key="frame" x="32.5" y="218" width="310" height="30"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ALg-fv-vzY"/>
+                                    <constraint firstAttribute="height" constant="30" id="8Dg-0W-hvV"/>
                                 </constraints>
                                 <color key="textColor" white="0.99059156879999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
                                 <connections>
+                                    <action selector="textFieldEditingChanged:" destination="fl6-Bj-bHG" eventType="editingChanged" id="vlM-Xa-ofY"/>
                                     <outlet property="delegate" destination="fl6-Bj-bHG" id="Kn4-OC-kxk"/>
                                 </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="GXu-Hq-vXG">
                                 <rect key="frame" x="148" y="285" width="79" height="20"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39Q-7l-kip">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39Q-7l-kip">
                                         <rect key="frame" x="0.0" y="0.0" width="59" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                         <state key="normal" title="Sign up">
@@ -250,7 +251,7 @@
                                     <constraint firstAttribute="height" constant="20" placeholder="YES" id="iqW-Lr-Gdj"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhy-d5-z0b">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhy-d5-z0b">
                                 <rect key="frame" x="145.5" y="523" width="84" height="32"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                 <state key="normal" title="Go to login">
@@ -261,6 +262,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="33s-Kb-Wji"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PVd-tD-bF0" firstAttribute="top" secondItem="33s-Kb-Wji" secondAttribute="top" constant="16" id="8JV-8Q-ZJD"/>
@@ -285,7 +287,6 @@
                             <constraint firstItem="bB7-Bq-Sfa" firstAttribute="width" secondItem="PRk-Bh-iWE" secondAttribute="width" id="rGE-rB-cpk"/>
                             <constraint firstItem="Lhy-d5-z0b" firstAttribute="top" secondItem="ILY-dU-HU4" secondAttribute="bottom" id="zdD-y6-Tkv"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="33s-Kb-Wji"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="8JV-8Q-ZJD"/>

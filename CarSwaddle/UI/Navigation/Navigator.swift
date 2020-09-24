@@ -38,7 +38,7 @@ extension Navigator {
 
 let navigator = Navigator()
 
-final class Navigator: NSObject {
+final class Navigator: NSObject, StartViewControllerDelegate {
     
     private var appDelegate: AppDelegate
     
@@ -57,11 +57,6 @@ final class Navigator: NSObject {
         tripleTap.numberOfTouchesRequired = 2
         appDelegate.window?.addGestureRecognizer(tripleTap)
         #endif
-        
-        if isLoggedIn {
-            pushNotificationController.requestPermission()
-            showRequiredScreensIfNeeded()
-        }
         
         setupAppearance()
     }
@@ -205,9 +200,27 @@ final class Navigator: NSObject {
         CustomAlertController.transparentBackgroundColor = UIColor.neutral3.withAlphaComponent(0.5)
     }
     
+    private lazy var startViewController: StartViewController = {
+        let s = StartViewController.viewControllerFromStoryboard()
+        s.delegate = self
+        return s
+    }()
+    
+    func didDetermineStartPath(startPath: StartViewController.StartPath) {
+        DispatchQueue.main.async {
+            switch startPath {
+            case .loggedIn:
+                self.appDelegate.window?.rootViewController = self.loggedInViewController
+            case .loggedOut:
+                self.appDelegate.window?.rootViewController = LoginExperience.initialViewController()
+            }
+        }
+    }
+    
     public func initialViewController() -> UIViewController {
-        if isLoggedIn {
-            return loggedInViewController
+        if AuthController().token != nil && User.currentUser(context: store.mainContext) != nil {
+            AuthController().removeToken()
+            return self.loggedInViewController
         } else {
             return LoginExperience.initialViewController()
         }
@@ -256,7 +269,7 @@ final class Navigator: NSObject {
         UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
             window.rootViewController = newViewController
         }) { completed in
-            pushNotificationController.requestPermission()
+//            pushNotificationController.requestPermission()
             self.showRequiredScreensIfNeeded()
         }
     }

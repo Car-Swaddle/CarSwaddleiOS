@@ -134,6 +134,8 @@
 		998984DE229D0FBD00E4B25A /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984DA229D0FBD00E4B25A /* ForgotPasswordViewController.swift */; };
 		998984DF229D0FBD00E4B25A /* EnterNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984DB229D0FBD00E4B25A /* EnterNewPasswordViewController.swift */; };
 		998984E0229D153F00E4B25A /* ForgotPasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998984D9229D0FBC00E4B25A /* ForgotPasswordViewController.storyboard */; };
+		998A6203251B51D600EB066C /* CarSwaddleUI in Frameworks */ = {isa = PBXBuildFile; productRef = 998A6202251B51D600EB066C /* CarSwaddleUI */; };
+		998A6213251C49F500EB066C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998A6212251C49F500EB066C /* AuthenticationServices.framework */; };
 		998D3AE721DDCC49003DD717 /* AutoServiceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AE621DDCC48003DD717 /* AutoServiceDetailsViewController.swift */; };
 		998D3AE921DDCC52003DD717 /* AutoServiceDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998D3AE821DDCC52003DD717 /* AutoServiceDetailsViewController.storyboard */; };
 		998D3AEC21DDCF5C003DD717 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AEA21DDCF5C003DD717 /* ReviewCell.swift */; };
@@ -177,10 +179,11 @@
 		99AEE1C822740D2500938462 /* LabeledInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99AEE1C622740D2400938462 /* LabeledInfoCell.xib */; };
 		99AEE1CC2277D7CB00938462 /* DateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1CB2277D7CB00938462 /* DateCardView.swift */; };
 		99AEE1CE2277D7E400938462 /* DateCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99AEE1CD2277D7E400938462 /* DateCardView.xib */; };
-		99B2D6DB2515F1940085A2DF /* CarSwaddleUI in Frameworks */ = {isa = PBXBuildFile; productRef = 99B2D6DA2515F1940085A2DF /* CarSwaddleUI */; };
 		99B4CADC23907C7D00C1E501 /* FadeAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4CADB23907C7D00C1E501 /* FadeAnimationController.swift */; };
 		99B967A923A4A062007C7C06 /* IntroViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99B967AB23A4A062007C7C06 /* IntroViewController.storyboard */; };
 		99CB2A80251AEF2600DAB286 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 99CB2A7F251AEF2600DAB286 /* FirebaseAnalytics */; };
+		99CB2A84251AF7BD00DAB286 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB2A83251AF7BD00DAB286 /* StartViewController.swift */; };
+		99CB2A88251AF7E400DAB286 /* StartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99CB2A87251AF7E400DAB286 /* StartViewController.storyboard */; };
 		99DC25FA2246C2A0009E0A15 /* AutoServiceCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25F92246C2A0009E0A15 /* AutoServiceCreation.swift */; };
 		99DC25FC2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25FB2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift */; };
 		99DC25FE2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DC25FD2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard */; };
@@ -428,6 +431,7 @@
 		998984D9229D0FBC00E4B25A /* ForgotPasswordViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ForgotPasswordViewController.storyboard; sourceTree = "<group>"; };
 		998984DA229D0FBD00E4B25A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		998984DB229D0FBD00E4B25A /* EnterNewPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterNewPasswordViewController.swift; sourceTree = "<group>"; };
+		998A6212251C49F500EB066C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		998D3AE621DDCC48003DD717 /* AutoServiceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceDetailsViewController.swift; sourceTree = "<group>"; };
 		998D3AE821DDCC52003DD717 /* AutoServiceDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoServiceDetailsViewController.storyboard; sourceTree = "<group>"; };
 		998D3AEA21DDCF5C003DD717 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
@@ -509,6 +513,8 @@
 		99BC8D242245F3D700B732E7 /* Montserrat-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.otf"; sourceTree = "<group>"; };
 		99BC8D252245F3D900B732E7 /* Montserrat-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.otf"; sourceTree = "<group>"; };
 		99C791C32150C8A8000167CB /* CarSwaddle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarSwaddle-Bridging-Header.h"; sourceTree = "<group>"; };
+		99CB2A83251AF7BD00DAB286 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		99CB2A87251AF7E400DAB286 /* StartViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StartViewController.storyboard; sourceTree = "<group>"; };
 		99DC25F92246C2A0009E0A15 /* AutoServiceCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCreation.swift; sourceTree = "<group>"; };
 		99DC25FB2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCreationProgressViewController.swift; sourceTree = "<group>"; };
 		99DC25FD2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoServiceCreationProgressViewController.storyboard; sourceTree = "<group>"; };
@@ -550,12 +556,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				998A6213251C49F500EB066C /* AuthenticationServices.framework in Frameworks */,
 				9967FBA12514BCC1003FBFD0 /* CarSwaddleNetworkRequest in Frameworks */,
 				9967FB972514BC7B003FBFD0 /* NetworkRequest in Frameworks */,
 				99CB2A80251AEF2600DAB286 /* FirebaseAnalytics in Frameworks */,
 				99515A882515F9720018965D /* CarSwaddleData in Frameworks */,
+				998A6203251B51D600EB066C /* CarSwaddleUI in Frameworks */,
 				99823A9725174B6A003B3EDE /* Stripe in Frameworks */,
-				99B2D6DB2515F1940085A2DF /* CarSwaddleUI in Frameworks */,
 				99AE29BC2513546100272957 /* Cosmos in Frameworks */,
 				99438E2825160EAD00389585 /* Authentication in Frameworks */,
 			);
@@ -584,6 +591,7 @@
 				990F436C214252C600E65FC1 /* CarSwaddle */,
 				990F4384214252C700E65FC1 /* CarSwaddleTests */,
 				990F436B214252C600E65FC1 /* Products */,
+				998A6211251C49F500EB066C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -769,6 +777,8 @@
 				991C9FC62215485D004B9C15 /* PhoneNumberViewController.swift */,
 				991C9FC82215486A004B9C15 /* PhoneNumberViewController.storyboard */,
 				991C9FC42213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift */,
+				99CB2A83251AF7BD00DAB286 /* StartViewController.swift */,
+				99CB2A87251AF7E400DAB286 /* StartViewController.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -912,6 +922,14 @@
 				998984D6229D0E6700E4B25A /* UserActivityHandler.swift */,
 			);
 			path = "User Activity Handler";
+			sourceTree = "<group>";
+		};
+		998A6211251C49F500EB066C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				998A6212251C49F500EB066C /* AuthenticationServices.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		998D3AF221DDCFA6003DD717 /* AutoService Details */ = {
@@ -1151,11 +1169,11 @@
 				99AE29BB2513546100272957 /* Cosmos */,
 				9967FB962514BC7B003FBFD0 /* NetworkRequest */,
 				9967FBA02514BCC1003FBFD0 /* CarSwaddleNetworkRequest */,
-				99B2D6DA2515F1940085A2DF /* CarSwaddleUI */,
 				99515A872515F9720018965D /* CarSwaddleData */,
 				99438E2725160EAD00389585 /* Authentication */,
 				99823A9625174B6A003B3EDE /* Stripe */,
 				99CB2A7F251AEF2600DAB286 /* FirebaseAnalytics */,
+				998A6202251B51D600EB066C /* CarSwaddleUI */,
 			);
 			productName = CarSwaddle;
 			productReference = 990F436A214252C600E65FC1 /* CarSwaddle.app */;
@@ -1256,11 +1274,11 @@
 				99AE29BA2513546100272957 /* XCRemoteSwiftPackageReference "Cosmos" */,
 				9967FB952514BC7B003FBFD0 /* XCRemoteSwiftPackageReference "NetworkRequest" */,
 				9967FB9F2514BCC1003FBFD0 /* XCRemoteSwiftPackageReference "CarSwaddleNetworkRequest" */,
-				99B2D6D92515F1940085A2DF /* XCRemoteSwiftPackageReference "CarSwaddleUI" */,
 				99515A862515F9720018965D /* XCRemoteSwiftPackageReference "CarSwaddleData" */,
 				99438E2625160EAD00389585 /* XCRemoteSwiftPackageReference "Authentication" */,
 				994D5F1C25172DC4000D7D61 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 				99CB2A7E251AEF2600DAB286 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				998A6201251B51D600EB066C /* XCRemoteSwiftPackageReference "CarSwaddleUI" */,
 			);
 			productRefGroup = 990F436B214252C600E65FC1 /* Products */;
 			projectDirPath = "";
@@ -1304,6 +1322,7 @@
 				99DC26442246ECC2009E0A15 /* MontserratAlternates-Medium.otf in Resources */,
 				990F437B214252C700E65FC1 /* LaunchScreen.storyboard in Resources */,
 				991AFCA42250AFDE00AD6614 /* SelectOilTypeCell.xib in Resources */,
+				99CB2A88251AF7E400DAB286 /* StartViewController.storyboard in Resources */,
 				997DBC6C21995EDA0080F42C /* MechanicDayAvailabilityView.xib in Resources */,
 				994CA9F9215206E600D41F6C /* LoginViewController.storyboard in Resources */,
 				990F4378214252C700E65FC1 /* Assets.xcassets in Resources */,
@@ -1504,6 +1523,7 @@
 				99A0AF0A224ECDC50001FDC6 /* MechanicProfileCell.swift in Sources */,
 				997BFC0522F950EF0023F445 /* RemoteNotification.swift in Sources */,
 				997DBCA821BA605A0080F42C /* PushNotificationController.swift in Sources */,
+				99CB2A84251AF7BD00DAB286 /* StartViewController.swift in Sources */,
 				99986000227E29BB00113536 /* AutoServiceLocationCell.swift in Sources */,
 				99A0AF01224EC2A30001FDC6 /* SelectMechanicHourCell.swift in Sources */,
 				9943C173215B6C69003C2BE9 /* VehicleCell.swift in Sources */,
@@ -1962,20 +1982,20 @@
 				kind = branch;
 			};
 		};
+		998A6201251B51D600EB066C /* XCRemoteSwiftPackageReference "CarSwaddleUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleUI";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		99AE29BA2513546100272957 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 22.1.0;
-			};
-		};
-		99B2D6D92515F1940085A2DF /* XCRemoteSwiftPackageReference "CarSwaddleUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleUI.git";
-			requirement = {
-				branch = master;
-				kind = branch;
 			};
 		};
 		99CB2A7E251AEF2600DAB286 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -2014,15 +2034,15 @@
 			package = 994D5F1C25172DC4000D7D61 /* XCRemoteSwiftPackageReference "stripe-ios" */;
 			productName = Stripe;
 		};
+		998A6202251B51D600EB066C /* CarSwaddleUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 998A6201251B51D600EB066C /* XCRemoteSwiftPackageReference "CarSwaddleUI" */;
+			productName = CarSwaddleUI;
+		};
 		99AE29BB2513546100272957 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 99AE29BA2513546100272957 /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
-		};
-		99B2D6DA2515F1940085A2DF /* CarSwaddleUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 99B2D6D92515F1940085A2DF /* XCRemoteSwiftPackageReference "CarSwaddleUI" */;
-			productName = CarSwaddleUI;
 		};
 		99CB2A7F251AEF2600DAB286 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -39,7 +39,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     public static let stripeAgreementURL: URL! = URL(string: stripeAgreementURLString)!
     public static let carSwaddleAgreementURL: URL! = URL(string: carSwaddleAgreementURLString)!
     public static let carSwaddlePrivacyURL: URL! = URL(string: carSwaddlePrivacyPolicyURLString)!
-
+    
     @IBOutlet private weak var signupButton: UIButton!
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     @IBOutlet private weak var emailTextField: UITextField!
@@ -55,6 +55,8 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
 ////        login.transitioningDelegate = login.fadeTransitionDelegate
 //        login.modalPresentationStyle = .custom
 //    }
+    
+    private var didSignUp: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -214,10 +216,20 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
                     return
                 }
                 DispatchQueue.main.async {
+                    self?.didSignUp = true
                     self?.trackSignUp()
                     navigator.navigateToLoggedInViewController()
                 }
             }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if !didSignUp {
+            emailTextField.text = nil
+            passwordTextField.text = nil
         }
     }
     
@@ -243,6 +255,10 @@ extension SignUpViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         updateSignUpEnabledness()
         return true
+    }
+    
+    @IBAction func textFieldEditingChanged(_ textField: UITextField) {
+        updateSignUpEnabledness()
     }
     
 }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//import Firebase
+//import FirebaseAnalytics
 
 let tracker = Tracker()
 

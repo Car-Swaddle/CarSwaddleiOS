@@ -99,6 +99,8 @@ final class SelectAutoServiceDetailsViewController: UIViewController, Storyboard
         
         actionButton.addTarget(self, action: #selector(SelectAutoServiceDetailsViewController.didSelectPay), for: .touchUpInside)
         
+        pushNotificationController.requestPermission()
+        
         actionButton.isLoading = isUpdatingPrice
     }
     
