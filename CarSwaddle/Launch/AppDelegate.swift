@@ -30,7 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupLibraries() {
         tracker.configure()
-        STPPaymentConfiguration.shared().publishableKey = stripePublishableKey
+        STPAPIClient.shared().publishableKey = stripePublishableKey
+//        STPPaymentConfiguration.shared().publishableKey = stripePublishableKey
         STPPaymentConfiguration.shared().appleMerchantIdentifier = appleMerchantIdentifier
     }
     
