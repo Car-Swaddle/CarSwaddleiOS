@@ -1253,6 +1253,7 @@
 					};
 					990F4380214252C700E65FC1 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1200;
 						TestTargetID = 990F4369214252C600E65FC1;
 					};
 					990F438B214252C700E65FC1 = {
@@ -1697,6 +1698,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1757,6 +1759,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1835,7 +1838,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CarSwaddle.app/CarSwaddle";
 			};
@@ -1856,7 +1859,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CarSwaddle.app/CarSwaddle";
 			};
@@ -1876,7 +1879,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CarSwaddle;
 			};
@@ -1896,7 +1899,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CarSwaddle;
 			};
