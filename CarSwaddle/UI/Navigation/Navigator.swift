@@ -219,9 +219,9 @@ final class Navigator: NSObject, StartViewControllerDelegate {
     
     public func initialViewController() -> UIViewController {
         if AuthController().token != nil && User.currentUser(context: store.mainContext) != nil {
-            AuthController().removeToken()
             return self.loggedInViewController
         } else {
+            AuthController().removeToken()
             return LoginExperience.initialViewController()
         }
     }
