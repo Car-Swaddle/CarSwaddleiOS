@@ -158,18 +158,16 @@ final class Navigator: NSObject, StartViewControllerDelegate {
         
         CircleButton.appearance().buttonColor = .text
         
-        if #available(iOS 13, *) {
-            let style = UINavigationBarAppearance()
-            style.buttonAppearance.normal.titleTextAttributes = barButtonTextAttributes
-            style.doneButtonAppearance.normal.titleTextAttributes = [.font: UIFont.action as Any, .foregroundColor: UIColor.action as Any]
-            
-            style.titleTextAttributes = [.font: UIFont.extralarge]
-            
-            let navigationBar = UINavigationBar.appearance()
-            navigationBar.standardAppearance = style
-            navigationBar.scrollEdgeAppearance = style
-            navigationBar.compactAppearance = style
-        }
+        let style = UINavigationBarAppearance()
+        style.buttonAppearance.normal.titleTextAttributes = barButtonTextAttributes
+        style.doneButtonAppearance.normal.titleTextAttributes = [.font: UIFont.action as Any, .foregroundColor: UIColor.action as Any]
+        
+        style.titleTextAttributes = [.font: UIFont.extralarge]
+        
+        let navigationBar = UINavigationBar.appearance()
+        navigationBar.standardAppearance = style
+        navigationBar.scrollEdgeAppearance = style
+        navigationBar.compactAppearance = style
         
         let alertAppearance = CustomAlertContentView.appearance()
         alertAppearance.backgroundColor = .background

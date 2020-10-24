@@ -86,7 +86,7 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "NO">
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -108,7 +108,7 @@
          </CommandLineArgument>
       </CommandLineArguments>
       <LocationScenarioReference
-         identifier = "../CarSwaddle/Resources/lehi.gpx"
+         identifier = "../CarSwaddle/CarSwaddleSupport/lehi.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>
