@@ -21,7 +21,7 @@ final class MechanicImageView: UIImageView {
         layer.masksToBounds = true
         contentMode = .scaleAspectFill
     }
-    
+     
     public func configure(withMechanicID mechanicID: String) {
         self.mechanicID = mechanicID
         

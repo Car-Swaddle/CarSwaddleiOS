@@ -106,6 +106,8 @@ final class ProfileViewController: TableViewSchemaController {
         actionController.addAction(logoutAction)
         actionController.addCancelAction()
         
+        actionController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        
         present(actionController, animated: true, completion: nil)
     }
     

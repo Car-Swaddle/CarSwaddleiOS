@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -155,7 +155,7 @@
                                                 </subviews>
                                             </stackView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="y78-p2-vLT">
-                                                <rect key="frame" x="187" y="62" width="16" height="17"/>
+                                                <rect key="frame" x="187" y="62" width="16" height="16.5"/>
                                                 <color key="tintColor" name="detailTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="wXo-qa-2cH"/>
@@ -202,8 +202,8 @@
                     <constraint firstAttribute="trailing" secondItem="V89-ld-2Yl" secondAttribute="trailing" constant="16" id="sjO-aj-9fs"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.88303257040000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.88303257040000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="dateCardViewHeightConstraint" destination="vyG-5Z-hkz" id="EAi-fA-qlY"/>
                 <outlet property="dateCardViewWrapper" destination="M1Q-wy-bTY" id="TAQ-fd-Zge"/>
@@ -224,7 +224,7 @@
     </objects>
     <resources>
         <image name="car" width="25" height="25"/>
-        <image name="chevron.right" catalog="system" width="46" height="64"/>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="engine-oil" width="25" height="25"/>
         <image name="note" width="50" height="67"/>
         <image name="pin" width="13" height="13"/>
@@ -233,7 +233,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="detailTextColor">
-            <color white="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.53333336114883423" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="titleTextColor">
             <color white="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
