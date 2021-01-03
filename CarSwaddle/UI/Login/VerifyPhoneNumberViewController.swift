@@ -6,10 +6,11 @@
 //  Copyright © 2019 CarSwaddle. All rights reserved.
 //
 
+import UIKit
 import CarSwaddleUI
 import CarSwaddleData
 import CarSwaddleNetworkRequest
-import Store
+import CarSwaddleStore
 
 private let codeNumberOfDigits = 5
 

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Store
+import CarSwaddleStore
 import CarSwaddleUI
 
 
@@ -84,8 +84,7 @@ class CouponView: UIView, NibInstantiating {
     
     @objc private func didTapLabel() {
         let menu = UIMenuController.shared
-        menu.setTargetRect(couponCodeLabel.frame, in: self)
-        menu.setMenuVisible(true, animated: true)
+        menu.showMenu(from: self, rect: couponCodeLabel.frame)
     }
     
     @IBAction private func didTapShareButton() {

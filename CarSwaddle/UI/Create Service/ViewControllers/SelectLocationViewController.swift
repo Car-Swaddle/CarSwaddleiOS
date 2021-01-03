@@ -8,12 +8,11 @@
 
 import UIKit
 import MapKit
-import Store
+import CarSwaddleStore
 import CoreLocation
 import Contacts
 import AddressBook
 import CarSwaddleUI
-import Firebase
 
 private let losAngeleseCoordinates = CLLocationCoordinate2D(latitude: 34.052235, longitude: -118.243683)
 private let defaultCoordinates = losAngeleseCoordinates
@@ -153,18 +152,18 @@ final class SelectLocationViewController: UIViewController, StoryboardInstantiat
             }
         }
         
-        var logParameters: [String: Any] = [AnalyticsParameterCheckoutOption:"selectLocation", AnalyticsParameterCheckoutStep: "1"]
-        let userLocationKey = "userLocation"
+        var logParameters: [Tracker.Parameter: Any] = [.checkoutOption:"selectLocation", .checkoutStep: "1"]
+//        let userLocationKey = "userLocation"
         
         if let userLocation = mapView.userLocation.location {
             let oilChangeLocation = CLLocation(latitude: center.latitude, longitude: center.longitude)
             let distanceDiff = userLocation.distance(from: oilChangeLocation)
-            logParameters["oilChangeDistanceToCurrentUserLocation"] = distanceDiff
-            logParameters[userLocationKey] = true
+            logParameters[.distanceTo] = distanceDiff
+            logParameters[.userLocation] = true
         } else {
-            logParameters[userLocationKey] = false
+            logParameters[.userLocation] = false
         }
-        Analytics.logEvent(AnalyticsEventSetCheckoutOption, parameters: logParameters)
+        tracker.logEvent(trackerName: .checkoutOption, trackerParameters: logParameters)
     }
     
     private func setLocation(with placemark: CLPlacemark) {
@@ -279,8 +278,8 @@ extension SelectLocationViewController: UISearchControllerDelegate, UISearchResu
             }
         }
         
-        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterCheckoutStep: "location"
+        tracker.logEvent(trackerName: .selectContent, trackerParameters: [
+            .checkoutStep: "location"
         ])
     }
     

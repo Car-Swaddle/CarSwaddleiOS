@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Store
+import CarSwaddleStore
 
 
 //private let Label = NSLocalizedString("Labor", comment: "Price part key")
@@ -49,7 +49,7 @@ final class PriceView: UIView, NibInstantiating {
 //        addSeparatorView()
 //        addPricePartView(label: subtotalLabel, cents: price.subtotal)
 //        addPricePartView(label: processingFeeLabel, cents: price.processingFee + price.bookingFee)
-        addPricePartView(label: oilChangeLabel, cents: price.subtotalAndTaxes)
+        addPricePartView(label: oilChangeLabel, cents: price.subtotalAndFees)
         addPricePartView(label: taxesLabel, cents: price.taxes)
         
         if let discount = price.totalDiscount {
@@ -109,8 +109,8 @@ extension Price {
 
 extension Price {
     
-    var subtotalAndTaxes: Int {
-        return subtotal + processingFee
+    var subtotalAndFees: Int {
+        return subtotal + processingFee + bookingFee
     }
     
 }

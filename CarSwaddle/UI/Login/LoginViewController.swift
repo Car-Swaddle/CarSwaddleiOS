@@ -10,7 +10,6 @@ import UIKit
 import CarSwaddleNetworkRequest
 import CarSwaddleData
 import Authentication
-import Firebase
 
 class LoginViewController: UIViewController, StoryboardInstantiating, UIGestureRecognizerDelegate {
     
@@ -28,6 +27,8 @@ class LoginViewController: UIViewController, StoryboardInstantiating, UIGestureR
     private var loginTask: URLSessionDataTask?
     
 //    lazy var fadeTransitionDelegate: FadeTransitionDelegate = FadeTransitionDelegate()
+    
+    private var didLogin: Bool = false
     
     static func create() -> LoginViewController {
         let login = LoginViewController.viewControllerFromStoryboard()
@@ -126,12 +127,22 @@ class LoginViewController: UIViewController, StoryboardInstantiating, UIGestureR
                 }
                 return
             }
-            DispatchQueue.main.async {
-                Analytics.logEvent(AnalyticsEventLogin, parameters: [
-                    AnalyticsParameterMethod: "email"
+            DispatchQueue.main.async { [weak self] in
+                self?.didLogin = true
+                tracker.logEvent(trackerName: .login, trackerParameters: [
+                    .method: "email"
                 ])
                 navigator.navigateToLoggedInViewController()
             }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if !didLogin {
+            emailTextField.text = nil
+            passwordTextField.text = nil
         }
     }
     

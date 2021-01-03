@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import Store
+import CarSwaddleStore
 import MapKit
 import CarSwaddleData
 import CarSwaddleUI
-import Firebase
+
 
 //
 //protocol SelectMechanicTableViewControllerDelegate: class {
@@ -143,7 +143,7 @@ final class SelectMechanicTableViewController: UIViewController, StoryboardInsta
                     self?.mechanics = Mechanic.fetchObjects(with: mechanicIDs, in: mainContext)
                     self?.hasFetchedMechanics = true
                     if let mechanics = self?.mechanics, mechanics.count == 0 {
-                        Analytics.logEvent("noMechanicsInArea", parameters: [
+                        tracker.logEvent(name: "noMechanicsInArea", parameters: [
                             "locationString": location.localizedString,
                         ])
                     }

@@ -1,7 +1,0 @@
-git "git@bitbucket.org:kkendall33/carswaddleui.git" "master"
-git "git@bitbucket.org:kkendall33/carswaddledata.git" "master"
-github "stripe/stripe-ios"
-github "evgenyneu/Cosmos" ~> 18.0
-github "airbnb/lottie-ios" "master"
-github "WenchaoD/FSCalendar"
-binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"

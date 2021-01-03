@@ -9,7 +9,7 @@
 import UIKit
 import CarSwaddleUI
 import Cosmos
-import Store
+import CarSwaddleStore
 import CarSwaddleData
 
 protocol ReviewCellProtocol: AnyObject {

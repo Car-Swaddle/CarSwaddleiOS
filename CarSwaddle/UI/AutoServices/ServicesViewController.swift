@@ -11,8 +11,7 @@ import CarSwaddleUI
 import CarSwaddleData
 import CoreData
 import CarSwaddleNetworkRequest
-import Store
-import Firebase
+import CarSwaddleStore
 import EventKit
 
 
@@ -103,7 +102,7 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
         let pocketController = creator.pocketController!
         pocketController.modalPresentationStyle = .fullScreen
         present(pocketController, animated: true, completion: nil)
-        Analytics.logEvent(AnalyticsEventBeginCheckout, parameters: nil)
+        tracker.logEvent(trackerName: .beginCheckout, parameters: nil)
     }
     
     private var creator: AutoServiceCreation?

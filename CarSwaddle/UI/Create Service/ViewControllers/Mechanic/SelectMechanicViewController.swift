@@ -8,9 +8,8 @@
 
 import UIKit
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 import CoreLocation
-import Firebase
 
 let yearMonthDayDateFormatter: DateFormatter = {
     let yearMonthDayDateFormatter = DateFormatter()
@@ -93,8 +92,8 @@ final class SelectMechanicViewController: UIViewController, StoryboardInstantiat
                     self?.mechanics = mechanics
                     let mechanicIDs = mechanics.map { $0.identifier }
                     self?.updateSaveEnabledness()
-                    Analytics.logEvent(AnalyticsEventViewItem, parameters: [
-                        AnalyticsParameterItemList: mechanicIDs,
+                    tracker.logEvent(trackerName: .viewItem, parameters: [
+                        Tracker.Parameter.itemList.rawValue: mechanicIDs,
                         "numberOfItems": mechanicIDs.count
                     ])
                 }
@@ -106,10 +105,10 @@ final class SelectMechanicViewController: UIViewController, StoryboardInstantiat
         guard let mechanic = currentSelectedMechanic, let scheduledDate = scheduledDate else { return }
         delegate?.didSaveMechanic(mechanic: mechanic, date: scheduledDate, viewController: self)
         
-        Analytics.logEvent(AnalyticsEventSetCheckoutOption, parameters: [
-            AnalyticsParameterCheckoutOption: "selectMechanicDayAndTime",
-            AnalyticsParameterCheckoutStep: "2",
-            AnalyticsParameterStartDate: yearMonthDayDateFormatter.string(from: scheduledDate),
+        tracker.logEvent(trackerName: .checkoutOption, parameters: [
+            Tracker.Parameter.checkoutOption.rawValue: "selectMechanicDayAndTime",
+            Tracker.Parameter.checkoutStep.rawValue: "2",
+            Tracker.Parameter.startDate.rawValue: yearMonthDayDateFormatter.string(from: scheduledDate),
             "daysFromCurrentDate": scheduledDate.timeIntervalSinceNow.days
         ])
     }

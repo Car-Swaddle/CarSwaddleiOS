@@ -9,7 +9,7 @@
 import UIKit
 import CarSwaddleData
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 
 final class UserImageView: UIImageView {
     

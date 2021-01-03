@@ -9,7 +9,7 @@
 import UIKit
 import CarSwaddleUI
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 
 protocol AddVehicleViewControllerDelegate: AnyObject {
     func didCreateVehicle(vehicle: Vehicle, viewController: AddVehicleViewController)

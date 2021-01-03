@@ -1,0 +1,178 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "abseil",
+        "repositoryURL": "https://github.com/firebase/abseil-cpp.git",
+        "state": {
+          "branch": null,
+          "revision": "d30bd7751ce343a05fca6413de0dec062163e5e9",
+          "version": null
+        }
+      },
+      {
+        "package": "Authentication",
+        "repositoryURL": "https://github.com/Car-Swaddle/Authentication",
+        "state": {
+          "branch": "master",
+          "revision": "12cdc44a572272cac00c490189ccffc07e08508c",
+          "version": null
+        }
+      },
+      {
+        "package": "BoringSSL-GRPC",
+        "repositoryURL": "https://github.com/firebase/boringssl.git",
+        "state": {
+          "branch": null,
+          "revision": "897ffb6fbb5a5ea149216d664ce8b04d77e3df22",
+          "version": null
+        }
+      },
+      {
+        "package": "CarSwaddleData",
+        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleData",
+        "state": {
+          "branch": "master",
+          "revision": "431146775164d3d463301471a71ccb3479f51385",
+          "version": null
+        }
+      },
+      {
+        "package": "CarSwaddleNetworkRequest",
+        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleNetworkRequest.git",
+        "state": {
+          "branch": "master",
+          "revision": "bb725021af2f061de0e4731a9f57f3e1cd756a36",
+          "version": null
+        }
+      },
+      {
+        "package": "CarSwaddleStore",
+        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleStore",
+        "state": {
+          "branch": "master",
+          "revision": "d4e1a670f6b829476b73513408d37d6bf4683d8d",
+          "version": null
+        }
+      },
+      {
+        "package": "CarSwaddleUI",
+        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleUI",
+        "state": {
+          "branch": "master",
+          "revision": "1269ea6ebd34e0dbd0a68cf5ddda464ed3c3e0bc",
+          "version": null
+        }
+      },
+      {
+        "package": "Cosmos",
+        "repositoryURL": "https://github.com/evgenyneu/Cosmos.git",
+        "state": {
+          "branch": null,
+          "revision": "9295433932eb3fc3620e620f103de5de1f2e0f23",
+          "version": "22.1.0"
+        }
+      },
+      {
+        "package": "Disk",
+        "repositoryURL": "https://github.com/saoudrizwan/Disk.git",
+        "state": {
+          "branch": null,
+          "revision": "b0cb4fdf23e51849cc2460bdc6de795c3bcca99d",
+          "version": "0.6.4"
+        }
+      },
+      {
+        "package": "Firebase",
+        "repositoryURL": "https://github.com/firebase/firebase-ios-sdk.git",
+        "state": {
+          "branch": "6.31-spm-beta",
+          "revision": "a4020c5dfc447183aebd9daac2708db266aa2929",
+          "version": null
+        }
+      },
+      {
+        "package": "gRPC",
+        "repositoryURL": "https://github.com/firebase/grpc.git",
+        "state": {
+          "branch": null,
+          "revision": "cae939a8823bbc39912aa2990cf95e29ace381b3",
+          "version": null
+        }
+      },
+      {
+        "package": "GTMSessionFetcher",
+        "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
+        "state": {
+          "branch": null,
+          "revision": "1d4ef59335abfccee6150ca5c9b436c17c801fa9",
+          "version": "1.4.0"
+        }
+      },
+      {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
+        "state": {
+          "branch": null,
+          "revision": "654d52d30f3dd4592e944c3e0bccb53178c992f6",
+          "version": "4.2.1"
+        }
+      },
+      {
+        "package": "leveldb",
+        "repositoryURL": "https://github.com/firebase/leveldb.git",
+        "state": {
+          "branch": null,
+          "revision": "3f046978ecffd57ea6eb9a0897cc8a3b45b44df8",
+          "version": null
+        }
+      },
+      {
+        "package": "Lottie",
+        "repositoryURL": "https://github.com/airbnb/lottie-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "4e5877425dae5c10792fc9d22d53dc6bf6824dc1",
+          "version": "3.1.8"
+        }
+      },
+      {
+        "package": "nanopb",
+        "repositoryURL": "https://github.com/nanopb/nanopb.git",
+        "state": {
+          "branch": null,
+          "revision": "3cfa21200eea012d8765239ad4c50d8a36c283f1",
+          "version": null
+        }
+      },
+      {
+        "package": "NetworkRequest",
+        "repositoryURL": "https://github.com/Car-Swaddle/NetworkRequest.git",
+        "state": {
+          "branch": "master",
+          "revision": "00c42808c910b82c61709aad948af933c6434626",
+          "version": null
+        }
+      },
+      {
+        "package": "Promises",
+        "repositoryURL": "https://github.com/google/promises.git",
+        "state": {
+          "branch": null,
+          "revision": "c5cdb6bdc2d3db8ef81e3bc71d55d31baf638837",
+          "version": "1.2.10"
+        }
+      },
+      {
+        "package": "Stripe",
+        "repositoryURL": "https://github.com/stripe/stripe-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "93255bc66c5b5ee554712be8b25db659237109c9",
+          "version": "20.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

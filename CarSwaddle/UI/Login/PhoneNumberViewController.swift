@@ -8,7 +8,8 @@
 
 import CarSwaddleUI
 import CarSwaddleData
-import Store
+import CarSwaddleStore
+import UIKit
 
 final class PhoneNumberViewController: UIViewController, StoryboardInstantiating, NavigationDelegating {
 

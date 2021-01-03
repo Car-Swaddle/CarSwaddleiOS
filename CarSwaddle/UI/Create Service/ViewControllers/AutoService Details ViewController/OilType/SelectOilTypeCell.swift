@@ -8,7 +8,7 @@
 
 import UIKit
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 
 protocol SelectOilTypeDelegate: AnyObject {
     func didSelectOilType(oilType: OilType, cell: SelectOilTypeCell)

@@ -6,9 +6,9 @@
 //  Copyright © 2019 CarSwaddle. All rights reserved.
 //
 
+import UIKit
 import CarSwaddleUI
-import Store
-import FSCalendar
+import CarSwaddleStore
 
 
 let monthYearDateFormatter: DateFormatter = {

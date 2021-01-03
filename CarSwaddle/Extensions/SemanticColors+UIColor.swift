@@ -6,7 +6,7 @@
 //  Copyright © 2019 CarSwaddle. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// Semantic Colors. Developer should default to these colors, if they don't exist, look at the color scales, then hex/255
 extension UIColor {
