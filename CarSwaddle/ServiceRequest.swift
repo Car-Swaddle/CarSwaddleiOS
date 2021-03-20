@@ -40,6 +40,11 @@ extension Tweak {
         }
     }
     
+    public static func currentDomain() -> String? {
+        guard let domainString = domain.value as? String else { return nil }
+        return domainString
+    }
+    
     private static let domainOptions = Tweak.Options.string(values: [localDomain, marksLocalDomain, productionDomain, stagingDomain])
     static let domain: Tweak = {
         let valueDidChange: (_ tweak: Tweak) -> Void = { tweak in

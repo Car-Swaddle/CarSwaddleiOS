@@ -28,7 +28,7 @@ public class PushNotificationController: NSObject {
         let deviceTokenString = self.deviceTokenString(fromDeviceTokenData: deviceToken)
         storeDeviceToken(deviceToken: deviceTokenString)
         store.privateContext { [weak self] context in
-            self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: nil, token: deviceTokenString, timeZone: nil, in: context) { user, error in
+            self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: nil, token: deviceTokenString, timeZone: nil, referrerID: nil, in: context) { user, error in
                 print("user updated")
             }
         }

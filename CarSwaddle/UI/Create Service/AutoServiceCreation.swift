@@ -18,14 +18,14 @@ private let errorWithPaymentTitle = NSLocalizedString("Car Swaddle was unable to
 private let errorWithPaymentMessage = NSLocalizedString("Please try again with another payment method", comment: "")
 
 protocol AutoServiceCreationDelegate: AnyObject {
-    func didCompletePayment(creation: AutoServiceCreation, autoService: AutoService)
+    func didCompletePayment(creation: AutoServiceCreation, autoService: CarSwaddleStore.AutoService)
 }
 
 final class AutoServiceCreation: NSObject {
     
     public var pocketController: PocketController!
     
-    private var autoService: AutoService
+    private var autoService: CarSwaddleStore.AutoService
     
     weak var delegate: AutoServiceCreationDelegate?
     
@@ -131,7 +131,7 @@ final class AutoServiceCreation: NSObject {
         autoService.managedObjectContext?.persist()
         let objectID = autoService.objectID
         store.privateContext { [weak self] context in
-            guard let privateAutoService = context.object(with: objectID) as? AutoService else { return }
+            guard let privateAutoService = context.object(with: objectID) as? CarSwaddleStore.AutoService else { return }
             self?.autoServiceNetwork.createAutoService(autoService: privateAutoService, sourceID: sourceID, in: context) { newAutoService, error in
                 DispatchQueue.main.async {
                     completion(newAutoService, error)
@@ -321,7 +321,7 @@ extension AutoServiceCreation: AutoServiceCreationProgressDelegate {
 
 extension AutoServiceCreation: SelectMechanicDelegate {
     
-    func didSaveMechanic(mechanic: Mechanic, date: Date, viewController: UIViewController) {
+    func didSaveMechanic(mechanic: CarSwaddleStore.Mechanic, date: Date, viewController: UIViewController) {
         print("mechanic")
         
         progressViewController.currentState = .details
@@ -348,13 +348,13 @@ extension AutoServiceCreation: SelectMechanicDelegate {
 
 extension AutoServiceCreation: SelectAutoServiceDetailsViewControllerDelegate {
     
-    func didChangeOilType(oilType: OilType, viewController: SelectAutoServiceDetailsViewController) {
+    func didChangeOilType(oilType: CarSwaddleStore.OilType, viewController: SelectAutoServiceDetailsViewController) {
         autoService.firstOilChange?.oilType = oilType
         autoService.managedObjectContext?.persist()
         updatePrice()
     }
     
-    func didSelect(vehicle: Vehicle, oilType: OilType, viewController: SelectAutoServiceDetailsViewController) {
+    func didSelect(vehicle: CarSwaddleStore.Vehicle, oilType: CarSwaddleStore.OilType, viewController: SelectAutoServiceDetailsViewController) {
         print("didSelect")
         progressViewController.currentState = .payment
         self.autoService.vehicle = vehicle

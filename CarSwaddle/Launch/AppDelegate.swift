@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import Stripe
+import Firebase
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     private func setupLibraries() {
+//        Intercom.createSharedInstance()
+        FirebaseApp.configure()
         tracker.configure()
         STPAPIClient.shared().publishableKey = stripePublishableKey
 //        STPPaymentConfiguration.shared().publishableKey = stripePublishableKey
@@ -47,8 +51,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pushNotificationController.didReceiveRemoteNotification(userInfo: userInfo, fetchCompletionHandler: completionHandler)
     }
     
+    open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return intercom.handleOpenURL(url: url)
+    }
+    
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        return UserActivityHandler.shared.handle(userActivity: userActivity)
+        return intercom.handle(userActivity: userActivity)
     }
 
 }
