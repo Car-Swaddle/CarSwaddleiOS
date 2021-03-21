@@ -11,12 +11,48 @@
         }
       },
       {
+        "package": "Authentication",
+        "repositoryURL": "https://github.com/Car-Swaddle/Authentication",
+        "state": {
+          "branch": "master",
+          "revision": "97d02cf8334ae4d3a61c717d2acd802cc5df8cdf",
+          "version": null
+        }
+      },
+      {
         "package": "BoringSSL-GRPC",
         "repositoryURL": "https://github.com/firebase/boringssl-SwiftPM.git",
         "state": {
           "branch": null,
           "revision": "7bcafa2660bc58715c39637494550d1ed7cd7229",
           "version": "0.0.7"
+        }
+      },
+      {
+        "package": "CarSwaddleData",
+        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleData",
+        "state": {
+          "branch": "master",
+          "revision": "50051fafc34080c6ef6305ee069198cbe103a26f",
+          "version": null
+        }
+      },
+      {
+        "package": "CarSwaddleNetworkRequest",
+        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleNetworkRequest.git",
+        "state": {
+          "branch": "master",
+          "revision": "e3313ca9ec09ac4f01483f060e3ea6535d6f2f9d",
+          "version": null
+        }
+      },
+      {
+        "package": "CarSwaddleStore",
+        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleStore",
+        "state": {
+          "branch": "master",
+          "revision": "54fd207c5e641fa08655b8f7dbe7e75fd555b883",
+          "version": null
         }
       },
       {
