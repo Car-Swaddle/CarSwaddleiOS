@@ -24,6 +24,7 @@ private let resetTokenQueryItemName = "resetToken"
 
 private let affiliateDomain = "affiliate.carswaddle.com"
 private let goDomain = "go.carswaddle.com"
+private let appDomain = "app.carswaddle.com"
 
 /// Inter app communications
 /// This should handle all communications in and out of the app
@@ -44,9 +45,6 @@ public class Intercom {
     
     @UserDefault(key: "referrerID")
     public var referrerID: String?
-    
-    @UserDefault(key: "vanityID")
-    public var vanityID: String?
     
     // MARK: - Dynamic Links
     
@@ -89,18 +87,11 @@ public class Intercom {
     
     @discardableResult
     private func handleDynamicLink(url: URL) -> Bool {
-        guard let host = url.host else { return false }
-        switch host {
-        case affiliateDomain:
-            return handleAffilateLink(url: url)
-        default:
-            return false
-        }
+        handleAffilateLink(url: url)
     }
     
     private func handleAffilateLink(url: URL) -> Bool {
-        guard let referrerID = url.queryParameters?["referrerID"],
-              let vanityID = url.queryParameters?["vanityID"] else { return false }
+        guard let referrerID = url.queryParameters?["referrerId"] else { return false }
         
         if AuthController().isLoggedIn {
             // update referrer for current user
@@ -113,7 +104,6 @@ public class Intercom {
         } else {
             // store on disk and on sign up check if a referrer is stored to be sent up
             self.referrerID = referrerID
-            self.vanityID = vanityID
         }
         return true
     }
