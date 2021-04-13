@@ -100,6 +100,7 @@
 		9955BC3E215588DB008DAF8E /* CreateServiceLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC3C215588DB008DAF8E /* CreateServiceLocationCell.swift */; };
 		9955BC3F215588DB008DAF8E /* CreateServiceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9955BC3D215588DB008DAF8E /* CreateServiceLocationCell.xib */; };
 		995B9F242154B4380030A7CA /* GlobalImports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F232154B4380030A7CA /* GlobalImports.swift */; };
+		995BF1B8260EFFA50078CF3A /* Branch in Frameworks */ = {isa = PBXBuildFile; productRef = 995BF1B7260EFFA50078CF3A /* Branch */; };
 		9967FB972514BC7B003FBFD0 /* NetworkRequest in Frameworks */ = {isa = PBXBuildFile; productRef = 9967FB962514BC7B003FBFD0 /* NetworkRequest */; };
 		9967FBA12514BCC1003FBFD0 /* CarSwaddleNetworkRequest in Frameworks */ = {isa = PBXBuildFile; productRef = 9967FBA02514BCC1003FBFD0 /* CarSwaddleNetworkRequest */; };
 		997714C321CCE2C700E54F5B /* PricePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714C221CCE2C700E54F5B /* PricePartView.swift */; };
@@ -568,6 +569,7 @@
 				99AE29BC2513546100272957 /* Cosmos in Frameworks */,
 				99438E2825160EAD00389585 /* Authentication in Frameworks */,
 				99B6DB4F260064E000D8734B /* FirebaseAnalytics in Frameworks */,
+				995BF1B8260EFFA50078CF3A /* Branch in Frameworks */,
 				99B6DB51260064E000D8734B /* FirebaseDynamicLinks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1189,6 +1191,7 @@
 				99B6DB4E260064E000D8734B /* FirebaseAnalytics */,
 				99B6DB50260064E000D8734B /* FirebaseDynamicLinks */,
 				99F48DD22601E99500FEDBB3 /* Stripe */,
+				995BF1B7260EFFA50078CF3A /* Branch */,
 			);
 			productName = CarSwaddle;
 			productReference = 990F436A214252C600E65FC1 /* CarSwaddle.app */;
@@ -1295,6 +1298,7 @@
 				994D5F1C25172DC4000D7D61 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 				998A6201251B51D600EB066C /* XCRemoteSwiftPackageReference "CarSwaddleUI" */,
 				99B6DB4D260064E000D8734B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				995BF1B6260EFFA50078CF3A /* XCRemoteSwiftPackageReference "ios-branch-deep-linking-attribution" */,
 			);
 			productRefGroup = 990F436B214252C600E65FC1 /* Products */;
 			projectDirPath = "";
@@ -1988,6 +1992,14 @@
 				kind = branch;
 			};
 		};
+		995BF1B6260EFFA50078CF3A /* XCRemoteSwiftPackageReference "ios-branch-deep-linking-attribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:BranchMetrics/ios-branch-deep-linking-attribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.39.2;
+			};
+		};
 		9967FB952514BC7B003FBFD0 /* XCRemoteSwiftPackageReference "NetworkRequest" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Car-Swaddle/NetworkRequest.git";
@@ -2040,6 +2052,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 99515A862515F9720018965D /* XCRemoteSwiftPackageReference "CarSwaddleData" */;
 			productName = CarSwaddleData;
+		};
+		995BF1B7260EFFA50078CF3A /* Branch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995BF1B6260EFFA50078CF3A /* XCRemoteSwiftPackageReference "ios-branch-deep-linking-attribution" */;
+			productName = Branch;
 		};
 		9967FB962514BC7B003FBFD0 /* NetworkRequest */ = {
 			isa = XCSwiftPackageProductDependency;

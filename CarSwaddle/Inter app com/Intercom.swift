@@ -13,6 +13,7 @@ import CarSwaddleData
 import CarSwaddleStore
 import CoreData
 import CarSwaddleNetworkRequest
+import Branch
 
 
 /// Short access to shared Intercom instance
@@ -48,51 +49,18 @@ public class Intercom {
     
     // MARK: - Dynamic Links
     
-    private func dynamicLink(fromCustomSchemeURL url: URL) -> URL? {
-        return DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)?.url
-    }
-    
-    private func dynamicLink(fromUniversalLink url: URL, completion: @escaping (_ dynamicLink: URL?) -> Void) {
-        DynamicLinks.dynamicLinks().handleUniversalLink(url) { dynamiclink, error in
-            completion(dynamiclink?.url)
-        }
-    }
-    
-    public func handleOpenURL(url: URL) -> Bool {
-        if let dynamicLink = self.dynamicLink(fromCustomSchemeURL: url) {
-            return handleDynamicLink(url: dynamicLink)
-        } else {
-            return false
-        }
-    }
-    
-    public func handle(userActivity: NSUserActivity) -> Bool {
-        guard let url = userActivity.webpageURL,
-            let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
-                return false
-        }
-        
-        if let firstQueryItem = components.queryItems?.first, components.path == resetPasswordPath && firstQueryItem.name == resetTokenQueryItemName,
-            let resetToken = firstQueryItem.value {
-            navigator.showEnterNewPasswordScreen(resetToken: resetToken)
-            return true
-        } else {
-            dynamicLink(fromUniversalLink: url) { [weak self] dynamiclink in
-                guard let link = dynamiclink else { return }
-                self?.handleDynamicLink(url: link)
+    func setup() {
+        if let serverType = Tweak.currentDomainServerType() {
+            switch serverType {
+            case .local, .staging:
+                Branch.setUseTestBranchKey(true)
+            case .production:
+                Branch.setUseTestBranchKey(false)
             }
-            return false
         }
     }
     
-    @discardableResult
-    private func handleDynamicLink(url: URL) -> Bool {
-        handleAffilateLink(url: url)
-    }
-    
-    private func handleAffilateLink(url: URL) -> Bool {
-        guard let referrerID = url.queryParameters?["referrerId"] else { return false }
-        
+    private func handleReferrerIDFromDeepLink(referrerID: String) {
         if AuthController().isLoggedIn {
             // update referrer for current user
             store.privateContext { context in
@@ -105,7 +73,27 @@ public class Intercom {
             // store on disk and on sign up check if a referrer is stored to be sent up
             self.referrerID = referrerID
         }
-        return true
+    }
+    
+    func registerForDynamicLinks(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        Branch.getInstance().initSession(launchOptions: launchOptions) { [weak self] parameters, error in
+            guard let self = self else { return }
+            if let referrerID = parameters?["referrerId"] as? String {
+                self.handleReferrerIDFromDeepLink(referrerID: referrerID)
+            }
+        }
+    }
+    
+    func didReceiveRemoteNotification(userInfo: [AnyHashable: Any]) {
+        Branch.getInstance().handlePushNotification(userInfo)
+    }
+    
+    func handleOpenURL(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        Branch.getInstance().application(app, open: url, options: options)
+    }
+    
+    func handleUserActivity(_ userActivity: NSUserActivity) -> Bool {
+        Branch.getInstance().continue(userActivity)
     }
     
 }

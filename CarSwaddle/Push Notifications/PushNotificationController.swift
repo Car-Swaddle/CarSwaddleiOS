@@ -9,6 +9,7 @@
 import UserNotifications
 import UIKit
 import CarSwaddleData
+import Branch
 
 
 public let pushNotificationController = PushNotificationController()

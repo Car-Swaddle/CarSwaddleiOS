@@ -2,13 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>FirebaseDynamicLinksCustomDomains</key>
+	<key>branch_universal_link_domains</key>
 	<array>
-		<string>https://affiliate.carswaddle.com</string>
-		<string>https://go.carswaddle.com</string>
+		<string>carswaddle.app.link</string>
+		<string>carswaddle-alternate.app.link</string>
+		<string>carswaddle-alternate.test-app.link</string>
+		<string>carswaddle.test-app.link</string>
 	</array>
-	<key>FirebaseDeepLinkPasteboardRetrievalEnabled</key>
-	<false/>
+	<key>branch_key</key>
+	<string>key_test_gmPgHCvQlmYytFwzpINsnefhFuiysbC9</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

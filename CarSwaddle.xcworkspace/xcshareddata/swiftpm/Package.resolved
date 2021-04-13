@@ -137,6 +137,15 @@
         }
       },
       {
+        "package": "Branch",
+        "repositoryURL": "git@github.com:BranchMetrics/ios-branch-deep-linking-attribution.git",
+        "state": {
+          "branch": null,
+          "revision": "e2e17636f542b243d2feba74394f353c8a35b78b",
+          "version": "1.39.2"
+        }
+      },
+      {
         "package": "KeychainAccess",
         "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
         "state": {
