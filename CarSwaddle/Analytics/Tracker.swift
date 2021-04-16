@@ -47,7 +47,7 @@ class Tracker {
     }
     
     func configure() {
-        FirebaseConfiguration.shared.setLoggerLevel(.max)
+//        FirebaseConfiguration.shared.setLoggerLevel(.max)
     }
     
     func logEvent(name: String, parameters: [String: Any]?) {
