@@ -100,6 +100,7 @@
 		9955BC3E215588DB008DAF8E /* CreateServiceLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC3C215588DB008DAF8E /* CreateServiceLocationCell.swift */; };
 		9955BC3F215588DB008DAF8E /* CreateServiceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9955BC3D215588DB008DAF8E /* CreateServiceLocationCell.xib */; };
 		995B9F242154B4380030A7CA /* GlobalImports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F232154B4380030A7CA /* GlobalImports.swift */; };
+		995BF1B8260EFFA50078CF3A /* Branch in Frameworks */ = {isa = PBXBuildFile; productRef = 995BF1B7260EFFA50078CF3A /* Branch */; };
 		9967FB972514BC7B003FBFD0 /* NetworkRequest in Frameworks */ = {isa = PBXBuildFile; productRef = 9967FB962514BC7B003FBFD0 /* NetworkRequest */; };
 		9967FBA12514BCC1003FBFD0 /* CarSwaddleNetworkRequest in Frameworks */ = {isa = PBXBuildFile; productRef = 9967FBA02514BCC1003FBFD0 /* CarSwaddleNetworkRequest */; };
 		997714C321CCE2C700E54F5B /* PricePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714C221CCE2C700E54F5B /* PricePartView.swift */; };
@@ -127,9 +128,6 @@
 		997DBCA121B79E620080F42C /* AutoServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9F21B79E620080F42C /* AutoServiceCell.swift */; };
 		997DBCA221B79E620080F42C /* AutoServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBCA021B79E620080F42C /* AutoServiceCell.xib */; };
 		997DBCA821BA605A0080F42C /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBCA721BA605A0080F42C /* PushNotificationController.swift */; };
-		99823A9725174B6A003B3EDE /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 99823A9625174B6A003B3EDE /* Stripe */; };
-		99823A9825174B6A003B3EDE /* Stripe in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 99823A9625174B6A003B3EDE /* Stripe */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		998984D7229D0E6700E4B25A /* UserActivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984D6229D0E6700E4B25A /* UserActivityHandler.swift */; };
 		998984DC229D0FBD00E4B25A /* EnterNewPasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998984D8229D0FBC00E4B25A /* EnterNewPasswordViewController.storyboard */; };
 		998984DE229D0FBD00E4B25A /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984DA229D0FBD00E4B25A /* ForgotPasswordViewController.swift */; };
 		998984DF229D0FBD00E4B25A /* EnterNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984DB229D0FBD00E4B25A /* EnterNewPasswordViewController.swift */; };
@@ -180,10 +178,12 @@
 		99AEE1CC2277D7CB00938462 /* DateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEE1CB2277D7CB00938462 /* DateCardView.swift */; };
 		99AEE1CE2277D7E400938462 /* DateCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99AEE1CD2277D7E400938462 /* DateCardView.xib */; };
 		99B4CADC23907C7D00C1E501 /* FadeAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4CADB23907C7D00C1E501 /* FadeAnimationController.swift */; };
+		99B6DB4F260064E000D8734B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 99B6DB4E260064E000D8734B /* FirebaseAnalytics */; };
+		99B6DB51260064E000D8734B /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = 99B6DB50260064E000D8734B /* FirebaseDynamicLinks */; };
 		99B967A923A4A062007C7C06 /* IntroViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99B967AB23A4A062007C7C06 /* IntroViewController.storyboard */; };
-		99CB2A80251AEF2600DAB286 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 99CB2A7F251AEF2600DAB286 /* FirebaseAnalytics */; };
 		99CB2A84251AF7BD00DAB286 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB2A83251AF7BD00DAB286 /* StartViewController.swift */; };
 		99CB2A88251AF7E400DAB286 /* StartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99CB2A87251AF7E400DAB286 /* StartViewController.storyboard */; };
+		99CF4D3E2601CDFA0063779B /* Intercom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CF4D3D2601CDFA0063779B /* Intercom.swift */; };
 		99DC25FA2246C2A0009E0A15 /* AutoServiceCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25F92246C2A0009E0A15 /* AutoServiceCreation.swift */; };
 		99DC25FC2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25FB2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift */; };
 		99DC25FE2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DC25FD2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard */; };
@@ -245,9 +245,12 @@
 		99F08C6522D9A76A00317EEA /* RedeemCouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F08C6322D9A76A00317EEA /* RedeemCouponCell.swift */; };
 		99F08C6622D9A76A00317EEA /* RedeemCouponCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F08C6422D9A76A00317EEA /* RedeemCouponCell.xib */; };
 		99F220262246933500020024 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F220252246933500020024 /* FontExtension.swift */; };
+		99F48DD32601E99500FEDBB3 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 99F48DD22601E99500FEDBB3 /* Stripe */; };
+		99F48DDF2605E48F00FEDBB3 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F48DDE2605E48F00FEDBB3 /* URLExtension.swift */; };
+		99F48DE42605E4C700FEDBB3 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F48DE32605E4C700FEDBB3 /* UserDefaultWrapper.swift */; };
+		99F48DE82605E4F700FEDBB3 /* URLNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F48DE72605E4F700FEDBB3 /* URLNavigation.swift */; };
 		99FE2917235BC28B00C7DB34 /* SemanticColors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99FE2916235BC28B00C7DB34 /* SemanticColors.xcassets */; };
 		99FE2919235BC29700C7DB34 /* SemanticColors+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FE2918235BC29700C7DB34 /* SemanticColors+UIColor.swift */; };
-		99FE291B235CD92C00C7DB34 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FE291A235CD92C00C7DB34 /* Links.swift */; };
 		99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FEAFF6215DE3C00009BC07 /* CreateServiceOilTypeCell.swift */; };
 		99FEAFF9215DE3C00009BC07 /* CreateServiceOilTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99FEAFF7215DE3C00009BC07 /* CreateServiceOilTypeCell.xib */; };
 		99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FEB001215DE46A0009BC07 /* SelectOilTypeViewController.swift */; };
@@ -280,7 +283,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				99823A9825174B6A003B3EDE /* Stripe in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,7 +428,6 @@
 		997DBC9F21B79E620080F42C /* AutoServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCell.swift; sourceTree = "<group>"; };
 		997DBCA021B79E620080F42C /* AutoServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceCell.xib; sourceTree = "<group>"; };
 		997DBCA721BA605A0080F42C /* PushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
-		998984D6229D0E6700E4B25A /* UserActivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityHandler.swift; sourceTree = "<group>"; };
 		998984D8229D0FBC00E4B25A /* EnterNewPasswordViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EnterNewPasswordViewController.storyboard; sourceTree = "<group>"; };
 		998984D9229D0FBC00E4B25A /* ForgotPasswordViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ForgotPasswordViewController.storyboard; sourceTree = "<group>"; };
 		998984DA229D0FBD00E4B25A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -515,6 +516,7 @@
 		99C791C32150C8A8000167CB /* CarSwaddle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarSwaddle-Bridging-Header.h"; sourceTree = "<group>"; };
 		99CB2A83251AF7BD00DAB286 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		99CB2A87251AF7E400DAB286 /* StartViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StartViewController.storyboard; sourceTree = "<group>"; };
+		99CF4D3D2601CDFA0063779B /* Intercom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intercom.swift; sourceTree = "<group>"; };
 		99DC25F92246C2A0009E0A15 /* AutoServiceCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCreation.swift; sourceTree = "<group>"; };
 		99DC25FB2246C359009E0A15 /* AutoServiceCreationProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCreationProgressViewController.swift; sourceTree = "<group>"; };
 		99DC25FD2246C5F8009E0A15 /* AutoServiceCreationProgressViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoServiceCreationProgressViewController.storyboard; sourceTree = "<group>"; };
@@ -540,9 +542,11 @@
 		99F08C6322D9A76A00317EEA /* RedeemCouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemCouponCell.swift; sourceTree = "<group>"; };
 		99F08C6422D9A76A00317EEA /* RedeemCouponCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedeemCouponCell.xib; sourceTree = "<group>"; };
 		99F220252246933500020024 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		99F48DDE2605E48F00FEDBB3 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
+		99F48DE32605E4C700FEDBB3 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
+		99F48DE72605E4F700FEDBB3 /* URLNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLNavigation.swift; sourceTree = "<group>"; };
 		99FE2916235BC28B00C7DB34 /* SemanticColors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SemanticColors.xcassets; sourceTree = "<group>"; };
 		99FE2918235BC29700C7DB34 /* SemanticColors+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SemanticColors+UIColor.swift"; sourceTree = "<group>"; };
-		99FE291A235CD92C00C7DB34 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		99FEAFF6215DE3C00009BC07 /* CreateServiceOilTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOilTypeCell.swift; sourceTree = "<group>"; };
 		99FEAFF7215DE3C00009BC07 /* CreateServiceOilTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateServiceOilTypeCell.xib; sourceTree = "<group>"; };
 		99FEB001215DE46A0009BC07 /* SelectOilTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOilTypeViewController.swift; sourceTree = "<group>"; };
@@ -559,12 +563,14 @@
 				998A6213251C49F500EB066C /* AuthenticationServices.framework in Frameworks */,
 				9967FBA12514BCC1003FBFD0 /* CarSwaddleNetworkRequest in Frameworks */,
 				9967FB972514BC7B003FBFD0 /* NetworkRequest in Frameworks */,
-				99CB2A80251AEF2600DAB286 /* FirebaseAnalytics in Frameworks */,
 				99515A882515F9720018965D /* CarSwaddleData in Frameworks */,
 				998A6203251B51D600EB066C /* CarSwaddleUI in Frameworks */,
-				99823A9725174B6A003B3EDE /* Stripe in Frameworks */,
+				99F48DD32601E99500FEDBB3 /* Stripe in Frameworks */,
 				99AE29BC2513546100272957 /* Cosmos in Frameworks */,
 				99438E2825160EAD00389585 /* Authentication in Frameworks */,
+				99B6DB4F260064E000D8734B /* FirebaseAnalytics in Frameworks */,
+				995BF1B8260EFFA50078CF3A /* Branch in Frameworks */,
+				99B6DB51260064E000D8734B /* FirebaseDynamicLinks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,10 +617,10 @@
 				99A2CDAD218DA179003ED903 /* ServiceRequest.swift */,
 				997714C621CCF5BC00E54F5B /* Stripe.swift */,
 				992BFDD022056B8B006B64CC /* Logout.swift */,
-				99FE291A235CD92C00C7DB34 /* Links.swift */,
+				99F48DE22605E4AE00FEDBB3 /* PropertyWrappers */,
+				99CF4D412601CE750063779B /* Inter app com */,
 				994D5F08251713E9000D7D61 /* Analytics */,
 				99438E2D2516103100389585 /* FSCalendar */,
-				998984D5229D0E5100E4B25A /* User Activity Handler */,
 				998984D4229D0E4400E4B25A /* Push Notifications */,
 				9955BC2521556302008DAF8E /* Extensions */,
 				99F78F1A214B9F1D00D1BD28 /* UI */,
@@ -802,6 +808,7 @@
 				997DBC7521997E370080F42C /* DateExtension.swift */,
 				99F220252246933500020024 /* FontExtension.swift */,
 				99986002227E2A0900113536 /* CLLocationDistanceExtension.swift */,
+				99F48DDE2605E48F00FEDBB3 /* URLExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -914,14 +921,6 @@
 				997BFC0422F950EF0023F445 /* RemoteNotification.swift */,
 			);
 			path = "Push Notifications";
-			sourceTree = "<group>";
-		};
-		998984D5229D0E5100E4B25A /* User Activity Handler */ = {
-			isa = PBXGroup;
-			children = (
-				998984D6229D0E6700E4B25A /* UserActivityHandler.swift */,
-			);
-			path = "User Activity Handler";
 			sourceTree = "<group>";
 		};
 		998A6211251C49F500EB066C /* Frameworks */ = {
@@ -1102,6 +1101,15 @@
 			path = Montserrat;
 			sourceTree = "<group>";
 		};
+		99CF4D412601CE750063779B /* Inter app com */ = {
+			isa = PBXGroup;
+			children = (
+				99CF4D3D2601CDFA0063779B /* Intercom.swift */,
+				99F48DE72605E4F700FEDBB3 /* URLNavigation.swift */,
+			);
+			path = "Inter app com";
+			sourceTree = "<group>";
+		};
 		99F08C5D22D98E3F00317EEA /* PaymentMethod */ = {
 			isa = PBXGroup;
 			children = (
@@ -1118,6 +1126,14 @@
 				99F08C6422D9A76A00317EEA /* RedeemCouponCell.xib */,
 			);
 			path = Coupon;
+			sourceTree = "<group>";
+		};
+		99F48DE22605E4AE00FEDBB3 /* PropertyWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				99F48DE32605E4C700FEDBB3 /* UserDefaultWrapper.swift */,
+			);
+			path = PropertyWrappers;
 			sourceTree = "<group>";
 		};
 		99F78F19214B9F1700D1BD28 /* Store */ = {
@@ -1171,9 +1187,11 @@
 				9967FBA02514BCC1003FBFD0 /* CarSwaddleNetworkRequest */,
 				99515A872515F9720018965D /* CarSwaddleData */,
 				99438E2725160EAD00389585 /* Authentication */,
-				99823A9625174B6A003B3EDE /* Stripe */,
-				99CB2A7F251AEF2600DAB286 /* FirebaseAnalytics */,
 				998A6202251B51D600EB066C /* CarSwaddleUI */,
+				99B6DB4E260064E000D8734B /* FirebaseAnalytics */,
+				99B6DB50260064E000D8734B /* FirebaseDynamicLinks */,
+				99F48DD22601E99500FEDBB3 /* Stripe */,
+				995BF1B7260EFFA50078CF3A /* Branch */,
 			);
 			productName = CarSwaddle;
 			productReference = 990F436A214252C600E65FC1 /* CarSwaddle.app */;
@@ -1278,8 +1296,9 @@
 				99515A862515F9720018965D /* XCRemoteSwiftPackageReference "CarSwaddleData" */,
 				99438E2625160EAD00389585 /* XCRemoteSwiftPackageReference "Authentication" */,
 				994D5F1C25172DC4000D7D61 /* XCRemoteSwiftPackageReference "stripe-ios" */,
-				99CB2A7E251AEF2600DAB286 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				998A6201251B51D600EB066C /* XCRemoteSwiftPackageReference "CarSwaddleUI" */,
+				99B6DB4D260064E000D8734B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				995BF1B6260EFFA50078CF3A /* XCRemoteSwiftPackageReference "ios-branch-deep-linking-attribution" */,
 			);
 			productRefGroup = 990F436B214252C600E65FC1 /* Products */;
 			projectDirPath = "";
@@ -1429,6 +1448,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		990F4366214252C600E65FC1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1459,7 +1479,6 @@
 				997DBC7621997E370080F42C /* DateExtension.swift in Sources */,
 				997714C721CCF5BC00E54F5B /* Stripe.swift in Sources */,
 				990F7D82238B438E00B88F0B /* LoginExperience.swift in Sources */,
-				998984D7229D0E6700E4B25A /* UserActivityHandler.swift in Sources */,
 				990F4370214252C600E65FC1 /* ViewController.swift in Sources */,
 				99E66DA821E2963A00C6E3E1 /* UserImageView.swift in Sources */,
 				990F436E214252C600E65FC1 /* AppDelegate.swift in Sources */,
@@ -1470,8 +1489,10 @@
 				99A0AF11224EE9390001FDC6 /* FocusedCollectionView.swift in Sources */,
 				99AEE1CC2277D7CB00938462 /* DateCardView.swift in Sources */,
 				997BFC0722F963330023F445 /* RateAlertController.swift in Sources */,
+				99F48DDF2605E48F00FEDBB3 /* URLExtension.swift in Sources */,
 				9942544A215762A10075EDCA /* CreateServiceMechanicCell.swift in Sources */,
 				998D3AEC21DDCF5C003DD717 /* ReviewCell.swift in Sources */,
+				99CF4D3E2601CDFA0063779B /* Intercom.swift in Sources */,
 				99438E5C2516104500389585 /* FSCalendarCollectionView.m in Sources */,
 				99FE2919235BC29700C7DB34 /* SemanticColors+UIColor.swift in Sources */,
 				9935529423582F2E009DB141 /* CouponView.swift in Sources */,
@@ -1481,10 +1502,12 @@
 				997DBC42218EBD210080F42C /* MechanicSelectCell.swift in Sources */,
 				99B4CADC23907C7D00C1E501 /* FadeAnimationController.swift in Sources */,
 				99E66DA421E294A600C6E3E1 /* ProfileHeaderView.swift in Sources */,
+				99F48DE42605E4C700FEDBB3 /* UserDefaultWrapper.swift in Sources */,
 				99438E5A2516104500389585 /* FSCalendarConstants.m in Sources */,
 				99E48167227AC5780040B882 /* AutoServiceVehicleCell.swift in Sources */,
 				991AFCBC2259297300AD6614 /* PriceView.swift in Sources */,
 				99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */,
+				99F48DE82605E4F700FEDBB3 /* URLNavigation.swift in Sources */,
 				99438E5F2516104500389585 /* FSCalendarHeaderView.m in Sources */,
 				99FEAFF8215DE3C00009BC07 /* CreateServiceOilTypeCell.swift in Sources */,
 				99116905215B76B6001E039E /* AddVehicleCell.swift in Sources */,
@@ -1551,7 +1574,6 @@
 				99DC26002246DA17009E0A15 /* RoundView.swift in Sources */,
 				993BA12621585ACA00DB95EF /* LocationManager.swift in Sources */,
 				99986003227E2A0900113536 /* CLLocationDistanceExtension.swift in Sources */,
-				99FE291B235CD92C00C7DB34 /* Links.swift in Sources */,
 				998984DE229D0FBD00E4B25A /* ForgotPasswordViewController.swift in Sources */,
 				991AFC92224FF01500AD6614 /* TimeSlotCollectionViewCell.swift in Sources */,
 				997DBC6621995B320080F42C /* MechanicViewController.swift in Sources */,
@@ -1970,6 +1992,14 @@
 				kind = branch;
 			};
 		};
+		995BF1B6260EFFA50078CF3A /* XCRemoteSwiftPackageReference "ios-branch-deep-linking-attribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:BranchMetrics/ios-branch-deep-linking-attribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.39.2;
+			};
+		};
 		9967FB952514BC7B003FBFD0 /* XCRemoteSwiftPackageReference "NetworkRequest" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Car-Swaddle/NetworkRequest.git";
@@ -2002,12 +2032,12 @@
 				minimumVersion = 22.1.0;
 			};
 		};
-		99CB2A7E251AEF2600DAB286 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		99B6DB4D260064E000D8734B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
-				branch = "6.31-spm-beta";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.8.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2023,6 +2053,11 @@
 			package = 99515A862515F9720018965D /* XCRemoteSwiftPackageReference "CarSwaddleData" */;
 			productName = CarSwaddleData;
 		};
+		995BF1B7260EFFA50078CF3A /* Branch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995BF1B6260EFFA50078CF3A /* XCRemoteSwiftPackageReference "ios-branch-deep-linking-attribution" */;
+			productName = Branch;
+		};
 		9967FB962514BC7B003FBFD0 /* NetworkRequest */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9967FB952514BC7B003FBFD0 /* XCRemoteSwiftPackageReference "NetworkRequest" */;
@@ -2032,11 +2067,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9967FB9F2514BCC1003FBFD0 /* XCRemoteSwiftPackageReference "CarSwaddleNetworkRequest" */;
 			productName = CarSwaddleNetworkRequest;
-		};
-		99823A9625174B6A003B3EDE /* Stripe */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 994D5F1C25172DC4000D7D61 /* XCRemoteSwiftPackageReference "stripe-ios" */;
-			productName = Stripe;
 		};
 		998A6202251B51D600EB066C /* CarSwaddleUI */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2048,10 +2078,20 @@
 			package = 99AE29BA2513546100272957 /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
 		};
-		99CB2A7F251AEF2600DAB286 /* FirebaseAnalytics */ = {
+		99B6DB4E260064E000D8734B /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 99CB2A7E251AEF2600DAB286 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 99B6DB4D260064E000D8734B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		99B6DB50260064E000D8734B /* FirebaseDynamicLinks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99B6DB4D260064E000D8734B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDynamicLinks;
+		};
+		99F48DD22601E99500FEDBB3 /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 994D5F1C25172DC4000D7D61 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = Stripe;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

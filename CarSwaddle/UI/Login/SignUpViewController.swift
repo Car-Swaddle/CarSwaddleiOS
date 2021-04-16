@@ -201,8 +201,10 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         
         signupButton.isHiddenInStackView = true
         
+        let referrerID = intercom.referrerID
+        
         store.privateContext { [weak self] context in
-            self?.signUpTask = self?.auth.signUp(email: email, password: password, context: context) { error in
+            self?.signUpTask = self?.auth.signUp(email: email, password: password, referrerID: referrerID, context: context) { error in
                 guard error == nil && AuthController().token != nil else {
                     if let networkError = error as? NetworkRequestError {
                         print("login error: \(networkError)")
@@ -219,6 +221,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
                     self?.didSignUp = true
                     self?.trackSignUp()
                     navigator.navigateToLoggedInViewController()
+                    intercom.wipeReferrerID()
                 }
             }
         }

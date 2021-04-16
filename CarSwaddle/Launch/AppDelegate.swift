@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 import Stripe
+import Firebase
+import Branch
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         setupLibraries()
+        
+        intercom.registerForDynamicLinks(launchOptions: launchOptions)
         
         _ = pushNotificationController
         store.mainContext.persist()
@@ -29,9 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     private func setupLibraries() {
+        intercom.setup()
+        FirebaseApp.configure()
         tracker.configure()
         STPAPIClient.shared().publishableKey = stripePublishableKey
-//        STPPaymentConfiguration.shared().publishableKey = stripePublishableKey
         STPPaymentConfiguration.shared().appleMerchantIdentifier = appleMerchantIdentifier
     }
     
@@ -44,12 +51,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        intercom.didReceiveRemoteNotification(userInfo: userInfo)
         pushNotificationController.didReceiveRemoteNotification(userInfo: userInfo, fetchCompletionHandler: completionHandler)
     }
     
+    open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return intercom.handleOpenURL(app, open: url, options: options)
+    }
+    
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        return UserActivityHandler.shared.handle(userActivity: userActivity)
+        return intercom.handleUserActivity(userActivity)
     }
 
 }
-

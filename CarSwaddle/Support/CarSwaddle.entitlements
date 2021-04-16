@@ -11,6 +11,12 @@
 		<string>applinks:go.carswaddle.com</string>
 		<string>applinks:api.staging.carswaddle.com</string>
 		<string>webcredentials:api.staging.carswaddle.com</string>
+		<string>applinks:carswaddle.page.link</string>
+		<string>applinks:affiliate.carswaddle.com</string>
+		<string>applinks:carswaddle.test-app.link</string>
+		<string>applinks:carswaddle-alternate.test-app.link</string>
+		<string>applinks:carswaddle.app.link</string>
+		<string>applinks:carswaddle-alternate.app.link</string>
 	</array>
 	<key>com.apple.developer.in-app-payments</key>
 	<array>

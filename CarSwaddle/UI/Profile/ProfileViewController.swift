@@ -30,7 +30,7 @@ final class ProfileViewController: TableViewSchemaController {
     private let couponNetwork = CouponNetwork(serviceRequest: serviceRequest)
     private var imagePicker: UIImagePickerController?
     
-    private var user: User? = User.currentUser(context: store.mainContext) {
+    private var user: CarSwaddleStore.User? = User.currentUser(context: store.mainContext) {
         didSet {
             reloadData()
         }
@@ -171,7 +171,7 @@ final class ProfileViewController: TableViewSchemaController {
     
     private func activityViewController(with code: String) -> UIActivityViewController {
         let formatString = NSLocalizedString("I'm giving you %%10 off a mobile oil change from Car Swaddle. To accept, use the code %@ on checkout. Download the app at %@", comment: "")
-        let shareCopy = String(format: formatString, code, urlNavigation.carSwaddleAppStoreURL.absoluteString)
+        let shareCopy = String(format: formatString, code, intercom.goCarSwaddleNavigation.carSwaddleAppStorePath)
         let activity = UIActivityViewController(activityItems: [shareCopy], applicationActivities: nil)
         return activity
     }
@@ -306,7 +306,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             self?.userNetwork.setProfileImage(fileURL: url, in: privateContext) { userObjectID, error in
                 store.mainContext { mainContext in
                     guard let userObjectID = userObjectID else { return }
-                    guard let user = mainContext.object(with: userObjectID) as? User else { return }
+                    guard let user = mainContext.object(with: userObjectID) as? CarSwaddleStore.User else { return }
                     self?.headerView.configure(with: user)
                 }
             }
