@@ -138,7 +138,7 @@ final class UserNameViewController: UIViewController, StoryboardInstantiating, N
         }
         
         store.privateContext { [weak self] context in
-            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, timeZone: nil, in: context) { userObjectID, error in
+            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, timeZone: nil, referrerID: nil, in: context) { userObjectID, error in
                 completion(error)
             }
         }

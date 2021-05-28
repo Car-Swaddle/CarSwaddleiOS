@@ -66,6 +66,9 @@ final class MechanicProfileHeaderView: UIView, NibInstantiating {
     @IBOutlet private weak var editImageButton: UIButton!
     @IBOutlet private weak var pulseAnimationView: AnimationView!
     
+    
+    @IBOutlet weak var priceLabel: UILabel!
+    
 //    @IBOutlet weak var allReviewsButton: UIButton!
     
     

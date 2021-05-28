@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/Car-Swaddle/Authentication",
         "state": {
           "branch": "master",
-          "revision": "12cdc44a572272cac00c490189ccffc07e08508c",
+          "revision": "97d02cf8334ae4d3a61c717d2acd802cc5df8cdf",
           "version": null
         }
       },
@@ -29,29 +29,11 @@
         }
       },
       {
-        "package": "CarSwaddleData",
-        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleData",
-        "state": {
-          "branch": "master",
-          "revision": "431146775164d3d463301471a71ccb3479f51385",
-          "version": null
-        }
-      },
-      {
-        "package": "CarSwaddleNetworkRequest",
-        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleNetworkRequest.git",
-        "state": {
-          "branch": "master",
-          "revision": "bb725021af2f061de0e4731a9f57f3e1cd756a36",
-          "version": null
-        }
-      },
-      {
         "package": "CarSwaddleStore",
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleStore",
         "state": {
           "branch": "master",
-          "revision": "d4e1a670f6b829476b73513408d37d6bf4683d8d",
+          "revision": "54fd207c5e641fa08655b8f7dbe7e75fd555b883",
           "version": null
         }
       },
@@ -105,8 +87,8 @@
         "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
         "state": {
           "branch": null,
-          "revision": "1d4ef59335abfccee6150ca5c9b436c17c801fa9",
-          "version": "1.4.0"
+          "revision": "91ed3d188eb95705fef3c249453b81f32dc557d1",
+          "version": "1.5.0"
         }
       },
       {
@@ -114,8 +96,8 @@
         "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
         "state": {
           "branch": null,
-          "revision": "654d52d30f3dd4592e944c3e0bccb53178c992f6",
-          "version": "4.2.1"
+          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
+          "version": "4.2.2"
         }
       },
       {
@@ -132,8 +114,8 @@
         "repositoryURL": "https://github.com/airbnb/lottie-ios.git",
         "state": {
           "branch": null,
-          "revision": "4e5877425dae5c10792fc9d22d53dc6bf6824dc1",
-          "version": "3.1.8"
+          "revision": "b3c60ba1716baab6faeeb217d8ce1da336f92718",
+          "version": "3.2.1"
         }
       },
       {
@@ -150,7 +132,7 @@
         "repositoryURL": "https://github.com/Car-Swaddle/NetworkRequest.git",
         "state": {
           "branch": "master",
-          "revision": "00c42808c910b82c61709aad948af933c6434626",
+          "revision": "f146efcf6d0b6b877806b4cd8c04d58f53b3161b",
           "version": null
         }
       },
@@ -159,8 +141,8 @@
         "repositoryURL": "https://github.com/google/promises.git",
         "state": {
           "branch": null,
-          "revision": "c5cdb6bdc2d3db8ef81e3bc71d55d31baf638837",
-          "version": "1.2.10"
+          "revision": "afa9a1ace74e116848d4f743599ab83e584ff8cb",
+          "version": "1.2.12"
         }
       },
       {
@@ -168,8 +150,8 @@
         "repositoryURL": "https://github.com/stripe/stripe-ios.git",
         "state": {
           "branch": null,
-          "revision": "93255bc66c5b5ee554712be8b25db659237109c9",
-          "version": "20.0.0"
+          "revision": "8ca9931984949fbce44c342d5cecdada03cda18f",
+          "version": "21.6.0"
         }
       }
     ]

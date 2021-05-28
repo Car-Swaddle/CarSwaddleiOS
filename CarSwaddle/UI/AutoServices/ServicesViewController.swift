@@ -111,10 +111,10 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
         dismiss(animated: true, completion: nil)
     }
     
-    private lazy var fetchedResultsController: NSFetchedResultsController<AutoService> = createFetchedResultsController()
+    private lazy var fetchedResultsController: NSFetchedResultsController<CarSwaddleStore.AutoService> = createFetchedResultsController()
     
-    private func createFetchedResultsController() -> NSFetchedResultsController<AutoService> {
-        let fetchRequest: NSFetchRequest<AutoService> = AutoService.fetchRequest()
+    private func createFetchedResultsController() -> NSFetchedResultsController<CarSwaddleStore.AutoService> {
+        let fetchRequest: NSFetchRequest<CarSwaddleStore.AutoService> = AutoService.fetchRequest()
         fetchRequest.sortDescriptors = [AutoService.scheduledDateAscendingSortDescriptor]
         
         let inAutoServiceIDsPredicate = AutoService.predicate(includingAutoServiceIDs: autoServiceIDs)
@@ -137,10 +137,10 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
         return fetchedResultsController
     }
     
-    private lazy var upcomingFetchedResultsController: NSFetchedResultsController<AutoService> = createFetchedResultsController()
+    private lazy var upcomingFetchedResultsController: NSFetchedResultsController<CarSwaddleStore.AutoService> = createFetchedResultsController()
     
-    private func createUpcomingFetchedResultsController() -> NSFetchedResultsController<AutoService> {
-        let fetchRequest: NSFetchRequest<AutoService> = AutoService.fetchRequest()
+    private func createUpcomingFetchedResultsController() -> NSFetchedResultsController<CarSwaddleStore.AutoService> {
+        let fetchRequest: NSFetchRequest<CarSwaddleStore.AutoService> = AutoService.fetchRequest()
         fetchRequest.sortDescriptors = [AutoService.scheduledDateDescendingSortDescriptor]
         
         let inAutoServiceIDsPredicate = AutoService.predicate(includingAutoServiceIDs: autoServiceIDs)
@@ -161,12 +161,12 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
         return fetchedResultsController
     }
     
-    private func autoService(at indexPath: IndexPath) -> AutoService {
+    private func autoService(at indexPath: IndexPath) -> CarSwaddleStore.AutoService {
         let adjustedIndexPath = indexPath.with(section: 0).with(row: indexPath.row-1)
         return fetchedResultsController(for: indexPath.section).object(at: adjustedIndexPath)
     }
     
-    private func fetchedResultsController(for section: Int) -> NSFetchedResultsController<AutoService> {
+    private func fetchedResultsController(for section: Int) -> NSFetchedResultsController<CarSwaddleStore.AutoService> {
         switch sections[section] {
         case .upcoming:
             return upcomingFetchedResultsController
@@ -249,12 +249,12 @@ extension ServicesViewController: UITableViewDelegate {
 
 extension ServicesViewController: AutoServiceCreationDelegate {
     
-    func didCompletePayment(creation: AutoServiceCreation, autoService: AutoService) {
+    func didCompletePayment(creation: AutoServiceCreation, autoService: CarSwaddleStore.AutoService) {
         let confirmAlert = self.confirmationAlert(autoService: autoService)
         present(confirmAlert, animated: true, completion: nil)
     }
     
-    private func confirmationAlert(autoService: AutoService) -> CustomAlertController {
+    private func confirmationAlert(autoService: CarSwaddleStore.AutoService) -> CustomAlertController {
         let title = NSLocalizedString("Congratulations on scheduling your oil change! Would you like to add it to your calendar?", comment: "Title of alert after user created an auto service")
         let message = NSLocalizedString("Add it to your calendar to receive reminders.", comment: "Title of alert after user created an auto service")
         let alertView = CustomAlertContentView.view(withTitle: title, message: message)
@@ -315,7 +315,7 @@ extension ServicesViewController: AutoServiceCreationDelegate {
 }
 
 
-extension AutoService {
+extension CarSwaddleStore.AutoService {
     
     func createEvent(completion: @escaping (_ event: EKEvent?) -> Void) {
         let store = EKEventStore()
@@ -355,35 +355,35 @@ extension AutoService {
 
 
 
-public extension AutoService {
+public extension CarSwaddleStore.AutoService {
     
     static var scheduledDateAscendingSortDescriptor: NSSortDescriptor {
-        return NSSortDescriptor(key: #keyPath(AutoService.scheduledDate), ascending: false)
+        return NSSortDescriptor(key: #keyPath(CarSwaddleStore.AutoService.scheduledDate), ascending: false)
     }
     
     static var scheduledDateDescendingSortDescriptor: NSSortDescriptor {
-        return NSSortDescriptor(key: #keyPath(AutoService.scheduledDate), ascending: true)
+        return NSSortDescriptor(key: #keyPath(CarSwaddleStore.AutoService.scheduledDate), ascending: true)
     }
     
     static func predicate(includingAutoServiceIDs autoServiceIDs: [String]) -> NSPredicate {
-        return NSPredicate(format: "%K in %@", #keyPath(AutoService.identifier), autoServiceIDs)
+        return NSPredicate(format: "%K in %@", #keyPath(CarSwaddleStore.AutoService.identifier), autoServiceIDs)
     }
     
     static func predicateScheduled(before date: Date) -> NSPredicate {
-        return NSPredicate(format: "%K < %@", #keyPath(AutoService.scheduledDate), date as NSDate)
+        return NSPredicate(format: "%K < %@", #keyPath(CarSwaddleStore.AutoService.scheduledDate), date as NSDate)
     }
     
     static func predicateIsCancelled() -> NSPredicate {
-        return NSPredicate(format: "%K == %@", #keyPath(AutoService.isCanceled), NSNumber(value: true))
+        return NSPredicate(format: "%K == %@", #keyPath(CarSwaddleStore.AutoService.isCanceled), NSNumber(value: true))
     }
     
     static func predicateIsNotCancelled() -> NSPredicate {
-        return NSPredicate(format: "%K == %@", #keyPath(AutoService.isCanceled), NSNumber(value: false))
+        return NSPredicate(format: "%K == %@", #keyPath(CarSwaddleStore.AutoService.isCanceled), NSNumber(value: false))
     }
     
     
     static func predicateScheduled(after date: Date) -> NSPredicate {
-        return NSPredicate(format: "%K > %@", #keyPath(AutoService.scheduledDate), date as NSDate)
+        return NSPredicate(format: "%K > %@", #keyPath(CarSwaddleStore.AutoService.scheduledDate), date as NSDate)
     }
     
     static func predicateFinishedBeforeNow() -> NSPredicate {

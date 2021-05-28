@@ -30,7 +30,7 @@ final class ProfileViewController: TableViewSchemaController {
     private let couponNetwork = CouponNetwork(serviceRequest: serviceRequest)
     private var imagePicker: UIImagePickerController?
     
-    private var user: User? = User.currentUser(context: store.mainContext) {
+    private var user: CarSwaddleStore.User? = User.currentUser(context: store.mainContext) {
         didSet {
             reloadData()
         }
@@ -306,7 +306,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             self?.userNetwork.setProfileImage(fileURL: url, in: privateContext) { userObjectID, error in
                 store.mainContext { mainContext in
                     guard let userObjectID = userObjectID else { return }
-                    guard let user = mainContext.object(with: userObjectID) as? User else { return }
+                    guard let user = mainContext.object(with: userObjectID) as? CarSwaddleStore.User else { return }
                     self?.headerView.configure(with: user)
                 }
             }

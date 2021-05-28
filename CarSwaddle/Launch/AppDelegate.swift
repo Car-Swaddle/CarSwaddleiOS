@@ -30,9 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupLibraries() {
         tracker.configure()
-        STPAPIClient.shared().publishableKey = stripePublishableKey
+        STPAPIClient.shared.publishableKey = stripePublishableKey
 //        STPPaymentConfiguration.shared().publishableKey = stripePublishableKey
-        STPPaymentConfiguration.shared().appleMerchantIdentifier = appleMerchantIdentifier
+        STPPaymentConfiguration.shared.appleMerchantIdentifier = appleMerchantIdentifier
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
