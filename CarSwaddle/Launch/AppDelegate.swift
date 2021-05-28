@@ -38,8 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         intercom.setup()
         FirebaseApp.configure()
         tracker.configure()
-        STPAPIClient.shared().publishableKey = stripePublishableKey
-        STPPaymentConfiguration.shared().appleMerchantIdentifier = appleMerchantIdentifier
+        STPAPIClient.shared.publishableKey = stripePublishableKey
+        STPPaymentConfiguration.shared.appleMerchantIdentifier = appleMerchantIdentifier
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

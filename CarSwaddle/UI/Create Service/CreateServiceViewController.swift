@@ -11,6 +11,7 @@ import CarSwaddleStore
 import CoreData
 import CarSwaddleData
 import Stripe
+import PassKit
 
 extension CreateServiceViewController {
     

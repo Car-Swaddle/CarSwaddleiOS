@@ -152,6 +152,16 @@ final class SelectMechanicTableViewController: UIViewController, StoryboardInsta
         }
     }
     
+    private func importMechanicPricing(mechanicIDs: [String]) {
+        store.privateContext { [weak self] context in
+            self?.mechanicNetwork.getOilChangePricingForMechanics(mechanicIDs: mechanicIDs, in: context) { mechanicObjectIDs, error in
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
     @objc private func didSelectConfirmMechanic() {
         guard let selectedMechanic = selectedMechanic else {
             scroll(to: .selectMechanic)
