@@ -29,15 +29,6 @@
         }
       },
       {
-        "package": "CarSwaddleStore",
-        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleStore",
-        "state": {
-          "branch": "master",
-          "revision": "54fd207c5e641fa08655b8f7dbe7e75fd555b883",
-          "version": null
-        }
-      },
-      {
         "package": "CarSwaddleUI",
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleUI",
         "state": {
@@ -53,15 +44,6 @@
           "branch": null,
           "revision": "9295433932eb3fc3620e620f103de5de1f2e0f23",
           "version": "22.1.0"
-        }
-      },
-      {
-        "package": "Disk",
-        "repositoryURL": "https://github.com/saoudrizwan/Disk.git",
-        "state": {
-          "branch": null,
-          "revision": "b0cb4fdf23e51849cc2460bdc6de795c3bcca99d",
-          "version": "0.6.4"
         }
       },
       {
