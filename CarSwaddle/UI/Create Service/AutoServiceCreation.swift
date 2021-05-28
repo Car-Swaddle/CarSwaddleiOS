@@ -13,6 +13,7 @@ import Stripe
 import CoreData
 import CarSwaddleNetworkRequest
 import StoreKit
+import PassKit
 
 private let errorWithPaymentTitle = NSLocalizedString("Car Swaddle was unable to process your payment", comment: "")
 private let errorWithPaymentMessage = NSLocalizedString("Please try again with another payment method", comment: "")

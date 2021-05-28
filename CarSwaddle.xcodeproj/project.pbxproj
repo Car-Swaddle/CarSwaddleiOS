@@ -1981,7 +1981,7 @@
 			repositoryURL = "https://github.com/stripe/stripe-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 20.0.0;
+				minimumVersion = 21.0.0;
 			};
 		};
 		99515A862515F9720018965D /* XCRemoteSwiftPackageReference "CarSwaddleData" */ = {
