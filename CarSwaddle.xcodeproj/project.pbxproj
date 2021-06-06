@@ -101,8 +101,6 @@
 		9955BC3F215588DB008DAF8E /* CreateServiceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9955BC3D215588DB008DAF8E /* CreateServiceLocationCell.xib */; };
 		995B9F242154B4380030A7CA /* GlobalImports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F232154B4380030A7CA /* GlobalImports.swift */; };
 		995BF1B8260EFFA50078CF3A /* Branch in Frameworks */ = {isa = PBXBuildFile; productRef = 995BF1B7260EFFA50078CF3A /* Branch */; };
-		9967FB972514BC7B003FBFD0 /* NetworkRequest in Frameworks */ = {isa = PBXBuildFile; productRef = 9967FB962514BC7B003FBFD0 /* NetworkRequest */; };
-		9967FBA12514BCC1003FBFD0 /* CarSwaddleNetworkRequest in Frameworks */ = {isa = PBXBuildFile; productRef = 9967FBA02514BCC1003FBFD0 /* CarSwaddleNetworkRequest */; };
 		997714C321CCE2C700E54F5B /* PricePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714C221CCE2C700E54F5B /* PricePartView.swift */; };
 		997714C521CCE35800E54F5B /* PricePartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997714C421CCE35800E54F5B /* PricePartView.xib */; };
 		997714C721CCF5BC00E54F5B /* Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714C621CCF5BC00E54F5B /* Stripe.swift */; };
@@ -561,8 +559,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				998A6213251C49F500EB066C /* AuthenticationServices.framework in Frameworks */,
-				9967FBA12514BCC1003FBFD0 /* CarSwaddleNetworkRequest in Frameworks */,
-				9967FB972514BC7B003FBFD0 /* NetworkRequest in Frameworks */,
 				99515A882515F9720018965D /* CarSwaddleData in Frameworks */,
 				998A6203251B51D600EB066C /* CarSwaddleUI in Frameworks */,
 				99AE29BC2513546100272957 /* Cosmos in Frameworks */,
@@ -1183,8 +1179,6 @@
 			name = CarSwaddle;
 			packageProductDependencies = (
 				99AE29BB2513546100272957 /* Cosmos */,
-				9967FB962514BC7B003FBFD0 /* NetworkRequest */,
-				9967FBA02514BCC1003FBFD0 /* CarSwaddleNetworkRequest */,
 				99515A872515F9720018965D /* CarSwaddleData */,
 				99438E2725160EAD00389585 /* Authentication */,
 				998A6202251B51D600EB066C /* CarSwaddleUI */,
@@ -1291,8 +1285,6 @@
 			mainGroup = 990F4361214252C600E65FC1;
 			packageReferences = (
 				99AE29BA2513546100272957 /* XCRemoteSwiftPackageReference "Cosmos" */,
-				9967FB952514BC7B003FBFD0 /* XCRemoteSwiftPackageReference "NetworkRequest" */,
-				9967FB9F2514BCC1003FBFD0 /* XCRemoteSwiftPackageReference "CarSwaddleNetworkRequest" */,
 				99515A862515F9720018965D /* XCRemoteSwiftPackageReference "CarSwaddleData" */,
 				99438E2625160EAD00389585 /* XCRemoteSwiftPackageReference "Authentication" */,
 				998A6201251B51D600EB066C /* XCRemoteSwiftPackageReference "CarSwaddleUI" */,
@@ -1981,7 +1973,7 @@
 			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleData";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 3.0.0;
 			};
 		};
 		995BF1B6260EFFA50078CF3A /* XCRemoteSwiftPackageReference "ios-branch-deep-linking-attribution" */ = {
@@ -1990,22 +1982,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.39.2;
-			};
-		};
-		9967FB952514BC7B003FBFD0 /* XCRemoteSwiftPackageReference "NetworkRequest" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Car-Swaddle/NetworkRequest.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		9967FB9F2514BCC1003FBFD0 /* XCRemoteSwiftPackageReference "CarSwaddleNetworkRequest" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleNetworkRequest.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
 			};
 		};
 		997AF50E26615D230022159D /* XCRemoteSwiftPackageReference "stripe-ios" */ = {
@@ -2057,16 +2033,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 995BF1B6260EFFA50078CF3A /* XCRemoteSwiftPackageReference "ios-branch-deep-linking-attribution" */;
 			productName = Branch;
-		};
-		9967FB962514BC7B003FBFD0 /* NetworkRequest */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9967FB952514BC7B003FBFD0 /* XCRemoteSwiftPackageReference "NetworkRequest" */;
-			productName = NetworkRequest;
-		};
-		9967FBA02514BCC1003FBFD0 /* CarSwaddleNetworkRequest */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9967FB9F2514BCC1003FBFD0 /* XCRemoteSwiftPackageReference "CarSwaddleNetworkRequest" */;
-			productName = CarSwaddleNetworkRequest;
 		};
 		997AF50F26615D230022159D /* Stripe */ = {
 			isa = XCSwiftPackageProductDependency;
