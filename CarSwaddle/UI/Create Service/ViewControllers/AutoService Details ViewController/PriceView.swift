@@ -19,6 +19,7 @@ private let bookingFeeLabel = NSLocalizedString("Booking fee", comment: "Price p
 private let processingFeeLabel = NSLocalizedString("Processing fee", comment: "Price part key")
 //private let Label = NSLocalizedString("Oil change high mileage", comment: "Price part key")
 private let oilChangeLabel = NSLocalizedString("Oil change", comment: "Price part key")
+private let feeLabel = NSLocalizedString("Fees", comment: "Price part key")
 private let taxesLabel = NSLocalizedString("Sales tax", comment: "Price part key")
 private let discountLabel = NSLocalizedString("Coupon", comment: "Price part key")
 //private let bookingFeeDiscountLabel = NSLocalizedString("Booking fee discount", comment: "Price part key")
@@ -49,7 +50,9 @@ final class PriceView: UIView, NibInstantiating {
 //        addSeparatorView()
 //        addPricePartView(label: subtotalLabel, cents: price.subtotal)
 //        addPricePartView(label: processingFeeLabel, cents: price.processingFee + price.bookingFee)
-        addPricePartView(label: oilChangeLabel, cents: price.subtotalAndFees)
+        
+        addPricePartView(label: oilChangeLabel, cents: price.subtotal)
+        addPricePartView(label: feeLabel, cents: price.fees)
         addPricePartView(label: taxesLabel, cents: price.taxes)
         
         if let discount = price.totalDiscount {
@@ -111,6 +114,10 @@ extension Price {
     
     var subtotalAndFees: Int {
         return subtotal + processingFee + bookingFee
+    }
+    
+    var fees: Int {
+        return processingFee + bookingFee
     }
     
 }

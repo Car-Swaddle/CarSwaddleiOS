@@ -43,15 +43,60 @@ final class MechanicProfileHeaderView: UIView, NibInstantiating {
         self.nameLabel.text = mechanic.user?.displayName
         let mechanicID = mechanic.identifier
         configure(with: mechanic.stats)
+        
+        importMechanicMeta(mechanicID: mechanicID) { [weak self] hadError in
+            guard let self = self,
+                  let mechanic = Mechanic.fetch(with: mechanicID, in: store.mainContext) else { return }
+            
+            if let stats = mechanic.stats {
+                self.configure(with: stats)
+            }
+            if let pricing = mechanic.oilChangePricing {
+                self.configure(with: pricing)
+            }
+        }
+    }
+    
+    /// Imports metat data and calls completion on main
+    private func importMechanicMeta(mechanicID: String, completion: @escaping (_ hadError: Bool) -> Void) {
+        let group = DispatchGroup()
+        
+        var hadError: Bool = false
+        
+        group.enter()
+        importStats(mechanicID: mechanicID) { error in
+            if error != nil {
+                hadError = true
+            }
+            group.leave()
+        }
+        
+        group.enter()
+        importOilChangePricing(mechanicID: mechanicID) { error in
+            if error != nil {
+                hadError = true
+            }
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            completion(hadError)
+        }
+        
+    }
+    
+    private func importStats(mechanicID: String, completion: @escaping (_ error: Error?) -> Void) {
         store.privateContext { [weak self] privateContext in
             self?.mechanicNetwork.getStats(mechanicID: mechanicID, in: privateContext) { mechanicObjectID, error in
-                store.mainContext { mainContext in
-                    guard let self = self,
-                        let mechanicObjectID = mechanicObjectID,
-                        let mechanic = mainContext.object(with: mechanicObjectID) as? Mechanic,
-                        let stats = mechanic.stats else { return }
-                    self.configure(with: stats)
-                }
+                completion(error)
+            }
+        }
+    }
+    
+    private func importOilChangePricing(mechanicID: String, completion: @escaping (_ error: Error?) -> Void) {
+        store.privateContext { [weak self] privateContext in
+            self?.mechanicNetwork.getOilChangePricingForMechanic(mechanicID: mechanicID, in: privateContext) { pricingObjectID, error in
+                completion(error)
             }
         }
     }
@@ -65,6 +110,9 @@ final class MechanicProfileHeaderView: UIView, NibInstantiating {
     @IBOutlet private weak var servicesProvidedLabel: UILabel!
     @IBOutlet private weak var editImageButton: UIButton!
     @IBOutlet private weak var pulseAnimationView: AnimationView!
+    
+    
+    @IBOutlet weak var priceLabel: UILabel!
     
 //    @IBOutlet weak var allReviewsButton: UIButton!
     
@@ -127,6 +175,10 @@ final class MechanicProfileHeaderView: UIView, NibInstantiating {
         
         servicesProvidedLabel.attributedText = self.attributedString(forNumberOfServices: stats.autoServicesProvided)
         // String(format: formatServicesString, stats.autoServicesProvided)
+    }
+    
+    private func configure(with pricing: OilChangePricing) {
+        self.priceLabel.text = pricing.synthetic.int.centsToDollars.localizedDollars
     }
     
     private func starRatingAttributedString(withAverage averageRating: Double, numberOfRatings: Int) -> NSAttributedString {
@@ -202,6 +254,24 @@ final class MechanicProfileHeaderView: UIView, NibInstantiating {
     
     @IBAction private func didTapAllReviews() {
         delegate?.didTapReviews(headerView: self)
+    }
+    
+}
+
+extension NSDecimalNumber {
+    
+    private static let localizedDollarFormatString = NSLocalizedString("$%@", comment: "Dollar sign in front of the decimal number")
+    
+    var localizedDollars: String {
+        return currencyFormatterWithDollarSign.string(from: self) ?? ""
+    }
+    
+}
+
+extension Int64 {
+    
+    var int: Int {
+        return Int(self)
     }
     
 }
