@@ -239,6 +239,9 @@
 		99E66DA421E294A600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */; };
 		99E66DA621E294AE00C6E3E1 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */; };
 		99E66DA821E2963A00C6E3E1 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DA721E2963A00C6E3E1 /* UserImageView.swift */; };
+		99EDDC532675B9F700046F11 /* ServicesEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EDDC522675B9F600046F11 /* ServicesEmptyStateView.swift */; };
+		99EDDC552675BA1000046F11 /* ServicesEmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99EDDC542675BA1000046F11 /* ServicesEmptyStateView.xib */; };
+		99EDDC582675BDD400046F11 /* arrow-down.json in Resources */ = {isa = PBXBuildFile; fileRef = 99EDDC572675BDD300046F11 /* arrow-down.json */; };
 		99F08C6022D98E9100317EEA /* PaymentMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F08C5E22D98E9100317EEA /* PaymentMethodCell.swift */; };
 		99F08C6122D98E9100317EEA /* PaymentMethodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F08C5F22D98E9100317EEA /* PaymentMethodCell.xib */; };
 		99F08C6522D9A76A00317EEA /* RedeemCouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F08C6322D9A76A00317EEA /* RedeemCouponCell.swift */; };
@@ -535,6 +538,9 @@
 		99E66DA321E294A600C6E3E1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		99E66DA521E294AE00C6E3E1 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		99E66DA721E2963A00C6E3E1 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
+		99EDDC522675B9F600046F11 /* ServicesEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesEmptyStateView.swift; sourceTree = "<group>"; };
+		99EDDC542675BA1000046F11 /* ServicesEmptyStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesEmptyStateView.xib; sourceTree = "<group>"; };
+		99EDDC572675BDD300046F11 /* arrow-down.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "arrow-down.json"; sourceTree = "<group>"; };
 		99F08C5E22D98E9100317EEA /* PaymentMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCell.swift; sourceTree = "<group>"; };
 		99F08C5F22D98E9100317EEA /* PaymentMethodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentMethodCell.xib; sourceTree = "<group>"; };
 		99F08C6322D9A76A00317EEA /* RedeemCouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemCouponCell.swift; sourceTree = "<group>"; };
@@ -826,6 +832,8 @@
 				997DBCA021B79E620080F42C /* AutoServiceCell.xib */,
 				99AEE1CB2277D7CB00938462 /* DateCardView.swift */,
 				99AEE1CD2277D7E400938462 /* DateCardView.xib */,
+				99EDDC522675B9F600046F11 /* ServicesEmptyStateView.swift */,
+				99EDDC542675BA1000046F11 /* ServicesEmptyStateView.xib */,
 				99E48169227BFB1E0040B882 /* ServiceHeaderView.swift */,
 				99E4816B227BFB390040B882 /* ServiceHeaderView.xib */,
 				99985FF2227C0B1E00113536 /* HeaderCell.swift */,
@@ -955,6 +963,7 @@
 		9991FE17214B86D600F58F42 /* CarSwaddleSupport */ = {
 			isa = PBXGroup;
 			children = (
+				99EDDC562675BDBF00046F11 /* Lottie Animations */,
 				9998600A227F5A6200113536 /* GoogleService-Info-3.plist */,
 				9998600C227F5F6100113536 /* GoogleService-Info.plist */,
 				99BC8D002245F37E00B732E7 /* Fonts */,
@@ -1104,6 +1113,14 @@
 				99F48DE72605E4F700FEDBB3 /* URLNavigation.swift */,
 			);
 			path = "Inter app com";
+			sourceTree = "<group>";
+		};
+		99EDDC562675BDBF00046F11 /* Lottie Animations */ = {
+			isa = PBXGroup;
+			children = (
+				99EDDC572675BDD300046F11 /* arrow-down.json */,
+			);
+			path = "Lottie Animations";
 			sourceTree = "<group>";
 		};
 		99F08C5D22D98E3F00317EEA /* PaymentMethod */ = {
@@ -1311,6 +1328,7 @@
 				99DC262B2246ECC2009E0A15 /* Montserrat-ExtraBold.otf in Resources */,
 				99F08C6122D98E9100317EEA /* PaymentMethodCell.xib in Resources */,
 				997896C12359A30300492110 /* LabeledHeaderView.xib in Resources */,
+				99EDDC582675BDD400046F11 /* arrow-down.json in Resources */,
 				991AFC9722506AE100AD6614 /* HourDisplayView.xib in Resources */,
 				998984E0229D153F00E4B25A /* ForgotPasswordViewController.storyboard in Resources */,
 				991AFCB22250B38400AD6614 /* AddCollectionViewCell.xib in Resources */,
@@ -1369,6 +1387,7 @@
 				997714C521CCE35800E54F5B /* PricePartView.xib in Resources */,
 				99986007227E314900113536 /* AutoServiceDetailsHeaderCell.xib in Resources */,
 				99DC262E2246ECC2009E0A15 /* Montserrat-ExtraLightItalic.otf in Resources */,
+				99EDDC552675BA1000046F11 /* ServicesEmptyStateView.xib in Resources */,
 				99A0AEF6224EC1DE0001FDC6 /* SelectMechanicTableViewController.storyboard in Resources */,
 				99DC26402246ECC2009E0A15 /* MontserratAlternates-ExtraLightItalic.otf in Resources */,
 				99DC263D2246ECC2009E0A15 /* MontserratAlternates-ExtraBold.otf in Resources */,
@@ -1506,6 +1525,7 @@
 				9905FF752313AD3400DFBCB9 /* StatePickerCell.swift in Sources */,
 				9942547121577B730075EDCA /* SelectLocationViewController.swift in Sources */,
 				991C9FC52213E3E2004B9C15 /* VerifyPhoneNumberViewController.swift in Sources */,
+				99EDDC532675B9F700046F11 /* ServicesEmptyStateView.swift in Sources */,
 				99438E582516104500389585 /* FSCalendarStickyHeader.m in Sources */,
 				997896BC2359837200492110 /* CouponCodeCell.swift in Sources */,
 				997DBC72219965E80080F42C /* HourCollectionViewCell.swift in Sources */,

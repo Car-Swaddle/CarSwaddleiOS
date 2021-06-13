@@ -21,7 +21,7 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var actionButton: ActionButton!
-    
+    @IBOutlet private weak var emptyStateView: ServicesEmptyStateViewWrapper!
     
     enum Section: CaseIterable {
         case upcoming
@@ -60,11 +60,19 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
         adjuster.positionActionButton()
         actionButton.addTarget(self, action: #selector(ServicesViewController.didTapCreate), for: .touchUpInside)
         view.backgroundColor = ServicesViewController.tableBackgroundColor
+        
+        updateEmptyStateDisplayState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         requestAutoServices()
+    }
+    
+    private var hasImportedAutoServices: Bool = false {
+        didSet {
+            updateEmptyStateDisplayState()
+        }
     }
     
     private func setupTableView() {
@@ -89,6 +97,7 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
                 DispatchQueue.main.async {
                     let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: store.mainContext)
                     self?.autoServiceIDs = autoServices.map { $0.identifier }
+                    self?.hasImportedAutoServices = true
                     completion()
                 }
             }
@@ -109,6 +118,17 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
     
     @objc private func didTapDone() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func updateEmptyStateDisplayState() {
+        let firstSectionIsEmpty = numberOfObjects(inSection: 0) == 0
+        let secondSectionIsEmpty = numberOfObjects(inSection: 1) == 0
+        let itemsExist = !(firstSectionIsEmpty && secondSectionIsEmpty)
+        if itemsExist {
+            emptyStateView.isHiddenInStackView = true
+        } else {
+            emptyStateView.isHiddenInStackView = !hasImportedAutoServices
+        }
     }
     
     private lazy var fetchedResultsController: NSFetchedResultsController<CarSwaddleStore.AutoService> = createFetchedResultsController()
@@ -179,6 +199,7 @@ final class ServicesViewController: UIViewController, StoryboardInstantiating {
         fetchedResultsController = createFetchedResultsController()
         upcomingFetchedResultsController = createUpcomingFetchedResultsController()
         tableView.reloadData()
+        updateEmptyStateDisplayState()
     }
     
     private func numberOfObjects(inSection section: Int) -> Int {
