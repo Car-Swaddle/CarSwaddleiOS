@@ -55,7 +55,7 @@ final class PriceView: UIView, NibInstantiating {
         addPricePartView(label: feeLabel, cents: price.fees)
         addPricePartView(label: taxesLabel, cents: price.taxes)
         
-        if let discount = price.totalDiscount {
+        if let discount = price.totalDiscount, discount != 0 {
             addPricePartView(label: discountLabel, cents: discount)
         }
         addSeparatorView()
