@@ -43,6 +43,10 @@ public extension Price {
         return total.centsToDollars
     }
     
+    var feesAndTaxes: Int {
+        return fees + taxes
+    }
+    
 }
 
 public extension Int {
