@@ -145,8 +145,8 @@ final class Navigator: NSObject, StartViewControllerDelegate {
         defaultLabeledTextFieldLabelNotExistsFont = .detail
         defaultLabeledTextFieldLabelFont = .detail
         
-        STPTheme.default().font = .large
-        STPTheme.default().emphasisFont = .large
+        STPTheme.defaultTheme.font = .large
+        STPTheme.defaultTheme.emphasisFont = .large
         
         ContentInsetAdjuster.defaultBottomOffset = tabBarController.tabBar.bounds.height
         

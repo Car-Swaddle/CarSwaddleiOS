@@ -20,7 +20,7 @@ private let processingFeeLabel = NSLocalizedString("Processing fee", comment: "P
 //private let Label = NSLocalizedString("Oil change high mileage", comment: "Price part key")
 private let oilChangeLabel = NSLocalizedString("Oil change", comment: "Price part key")
 private let feeLabel = NSLocalizedString("Fees", comment: "Price part key")
-private let taxesLabel = NSLocalizedString("Sales tax", comment: "Price part key")
+private let feesAndTaxesLabel = NSLocalizedString("Fees and tax", comment: "Price part key")
 private let discountLabel = NSLocalizedString("Coupon", comment: "Price part key")
 //private let bookingFeeDiscountLabel = NSLocalizedString("Booking fee discount", comment: "Price part key")
 //private let Label = NSLocalizedString("Synthetic oil change", comment: "Price part key")
@@ -52,8 +52,8 @@ final class PriceView: UIView, NibInstantiating {
 //        addPricePartView(label: processingFeeLabel, cents: price.processingFee + price.bookingFee)
         
         addPricePartView(label: oilChangeLabel, cents: price.subtotal)
-        addPricePartView(label: feeLabel, cents: price.fees)
-        addPricePartView(label: taxesLabel, cents: price.taxes)
+//        addPricePartView(label: feeLabel, cents: price.fees)
+        addPricePartView(label: feesAndTaxesLabel, cents: price.feesAndTaxes)
         
         if let discount = price.totalDiscount, discount != 0 {
             addPricePartView(label: discountLabel, cents: discount)
@@ -68,11 +68,7 @@ final class PriceView: UIView, NibInstantiating {
     private func separatorView() -> UIView {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: UIView.hairlineLength).isActive = true
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .opaqueSeparator
-        } else {
-            view.backgroundColor = .gray3
-        }
+        view.backgroundColor = .opaqueSeparator
         return view
     }
     
