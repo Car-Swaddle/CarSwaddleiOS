@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/firebase/abseil-cpp-SwiftPM.git",
         "state": {
           "branch": null,
-          "revision": "ff5f5f0a3d3266836b9d722bb73cabdf7057482e",
-          "version": "0.20200225.3"
+          "revision": "fffc3c2729be5747390ad02d5100291a0d9ad26a",
+          "version": "0.20200225.4"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/firebase/boringssl-SwiftPM.git",
         "state": {
           "branch": null,
-          "revision": "15889fadef7078dfa1392b0e2b08f3d0e9797104",
-          "version": "0.7.1"
+          "revision": "734a8247442fde37df4364c21f6a0085b6a36728",
+          "version": "0.7.2"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleStore",
         "state": {
           "branch": null,
-          "revision": "2c2882e23a19852a7a2363ead18cd3679afadc82",
-          "version": "2.0.0"
+          "revision": "b0f80f5dcc412c19b0da7b0fc4a09952bb47c822",
+          "version": "2.0.1"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleUI",
         "state": {
           "branch": null,
-          "revision": "1269ea6ebd34e0dbd0a68cf5ddda464ed3c3e0bc",
-          "version": "2.0.0"
+          "revision": "b55dc1fb652a66f3c6b6264cad509b19a81cbdd7",
+          "version": "2.0.1"
         }
       },
       {
@@ -114,8 +114,8 @@
         "repositoryURL": "https://github.com/google/GoogleUtilities.git",
         "state": {
           "branch": null,
-          "revision": "58359415d4ea29ebdc8fa5b41ce96c434d76d901",
-          "version": "7.4.1"
+          "revision": "5b9fc55628b94740b9666a558570f3a89a626c3d",
+          "version": "7.4.2"
         }
       },
       {
