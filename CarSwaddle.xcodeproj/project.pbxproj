@@ -47,6 +47,7 @@
 		991C9FC92215486A004B9C15 /* PhoneNumberViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 991C9FC82215486A004B9C15 /* PhoneNumberViewController.storyboard */; };
 		992BFDCF22056B10006B64CC /* TweakValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992BFDCE22056B10006B64CC /* TweakValues.swift */; };
 		992BFDD122056B8B006B64CC /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992BFDD022056B8B006B64CC /* Logout.swift */; };
+		9932F38A2683142F00721A34 /* LocalDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9932F3892683142F00721A34 /* LocalDomain.swift */; };
 		9935529023581EB4009DB141 /* ShareCouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9935528F23581EB4009DB141 /* ShareCouponView.swift */; };
 		9935529223581EBD009DB141 /* ShareCouponView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9935529123581EBD009DB141 /* ShareCouponView.xib */; };
 		9935529423582F2E009DB141 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9935529323582F2E009DB141 /* CouponView.swift */; };
@@ -337,6 +338,7 @@
 		991C9FC82215486A004B9C15 /* PhoneNumberViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhoneNumberViewController.storyboard; sourceTree = "<group>"; };
 		992BFDCE22056B10006B64CC /* TweakValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakValues.swift; sourceTree = "<group>"; };
 		992BFDD022056B8B006B64CC /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
+		9932F3892683142F00721A34 /* LocalDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDomain.swift; sourceTree = "<group>"; };
 		9935528F23581EB4009DB141 /* ShareCouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCouponView.swift; sourceTree = "<group>"; };
 		9935529123581EBD009DB141 /* ShareCouponView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareCouponView.xib; sourceTree = "<group>"; };
 		9935529323582F2E009DB141 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
@@ -617,6 +619,7 @@
 			isa = PBXGroup;
 			children = (
 				99A2CDAD218DA179003ED903 /* ServiceRequest.swift */,
+				9932F3892683142F00721A34 /* LocalDomain.swift */,
 				997714C621CCF5BC00E54F5B /* Stripe.swift */,
 				992BFDD022056B8B006B64CC /* Logout.swift */,
 				99F48DE22605E4AE00FEDBB3 /* PropertyWrappers */,
@@ -1516,6 +1519,7 @@
 				99F48DE42605E4C700FEDBB3 /* UserDefaultWrapper.swift in Sources */,
 				99438E5A2516104500389585 /* FSCalendarConstants.m in Sources */,
 				99E48167227AC5780040B882 /* AutoServiceVehicleCell.swift in Sources */,
+				9932F38A2683142F00721A34 /* LocalDomain.swift in Sources */,
 				991AFCBC2259297300AD6614 /* PriceView.swift in Sources */,
 				99FEB002215DE46A0009BC07 /* SelectOilTypeViewController.swift in Sources */,
 				99F48DE82605E4F700FEDBB3 /* URLNavigation.swift in Sources */,
