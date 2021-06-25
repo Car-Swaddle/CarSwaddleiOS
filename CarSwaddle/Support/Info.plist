@@ -104,7 +104,12 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>branch_key</key>
-	<string>key_test_gmPgHCvQlmYytFwzpINsnefhFuiysbC9</string>
+	<dict>
+		<key>live</key>
+		<string>key_live_ggRnLsxMeh9vtBDzlHB9EifbAtlqriAR</string>
+		<key>test</key>
+		<string>key_test_gmPgHCvQlmYytFwzpINsnefhFuiysbC9</string>
+	</dict>
 	<key>branch_universal_link_domains</key>
 	<array>
 		<string>carswaddle.app.link</string>
