@@ -47,6 +47,10 @@ public class Intercom {
     @UserDefault(key: "referrerID")
     public var referrerID: String?
     
+    private var branch: Branch {
+        return Branch.getInstance()
+    }
+    
     // MARK: - Dynamic Links
     
     func setup() {
@@ -76,7 +80,7 @@ public class Intercom {
     }
     
     func registerForDynamicLinks(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        Branch.getInstance().initSession(launchOptions: launchOptions) { [weak self] parameters, error in
+        branch.initSession(launchOptions: launchOptions) { [weak self] parameters, error in
             guard let self = self else { return }
             if let referrerID = parameters?["referrerId"] as? String {
                 self.handleReferrerIDFromDeepLink(referrerID: referrerID)
@@ -85,15 +89,51 @@ public class Intercom {
     }
     
     func didReceiveRemoteNotification(userInfo: [AnyHashable: Any]) {
-        Branch.getInstance().handlePushNotification(userInfo)
+        branch.handlePushNotification(userInfo)
     }
     
     func handleOpenURL(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        Branch.getInstance().application(app, open: url, options: options)
+        branch.application(app, open: url, options: options)
     }
     
     func handleUserActivity(_ userActivity: NSUserActivity) -> Bool {
-        Branch.getInstance().continue(userActivity)
+        let branchActivity = branch.continue(userActivity)
+        let carSwaddleActivity = handleCarSwaddleUserActivity(userActivity)
+        return branchActivity && carSwaddleActivity
+    }
+    
+}
+
+extension Intercom {
+    
+    private func handleCarSwaddleUserActivity(_ userActivity: NSUserActivity) -> Bool {
+        if let url = userActivity.webpageURL,
+           let userInteraction = UserInteraction(url: url) {
+            switch userInteraction {
+                case .resetPassword(let resetToken):
+                    navigator.showEnterNewPasswordScreen(resetToken: resetToken)
+            }
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private enum UserInteraction {
+        case resetPassword(resetToken: String)
+        
+        init?(url: URL) {
+            switch url.path {
+            case resetPasswordPath:
+                guard let resetToken = url.queryParameters?["resetToken"] else {
+                    print("Couldn't find resetToken in query \(String(describing: url.queryParameters))")
+                    return nil
+                }
+                self = .resetPassword(resetToken: resetToken)
+            default:
+                return nil
+            }
+        }
     }
     
 }

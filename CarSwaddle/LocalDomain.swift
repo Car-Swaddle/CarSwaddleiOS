@@ -11,7 +11,7 @@ import Foundation
 #if targetEnvironment(simulator)
 let localDomain = "127.0.0.1"
 #else
-let localDomain = "<Find your macbook local domain>.local"
+let localDomain = "Kyles-MacBook-Pro.local"
 #endif
 
 /*

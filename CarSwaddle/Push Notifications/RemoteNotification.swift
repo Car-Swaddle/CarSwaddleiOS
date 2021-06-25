@@ -129,4 +129,3 @@ public extension RemoteNotification {
     }
     
 }
-
