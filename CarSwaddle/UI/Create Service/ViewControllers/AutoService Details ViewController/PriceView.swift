@@ -37,22 +37,18 @@ final class PriceView: UIView, NibInstantiating {
         backgroundColor = .clear
     }
     
-    func configure(with service: AutoService) {
+    func resetUI() {
         for arrangedSubview in priceStackView.arrangedSubviews {
             priceStackView.removeArrangedSubview(arrangedSubview)
             arrangedSubview.removeFromSuperview()
         }
+    }
+    
+    func configure(with service: AutoService) {
+        resetUI()
         
         guard let price = service.price else { return }
-        
-//        addPricePartView(label: oilChangeLabel, cents: price.oilChangeCost)
-//        addPricePartView(label: travelLabel, cents: price.distanceCost)
-//        addSeparatorView()
-//        addPricePartView(label: subtotalLabel, cents: price.subtotal)
-//        addPricePartView(label: processingFeeLabel, cents: price.processingFee + price.bookingFee)
-        
         addPricePartView(label: oilChangeLabel, cents: price.subtotal)
-//        addPricePartView(label: feeLabel, cents: price.fees)
         addPricePartView(label: feesAndTaxesLabel, cents: price.feesAndTaxes)
         
         if let discount = price.totalDiscount, discount != 0 {

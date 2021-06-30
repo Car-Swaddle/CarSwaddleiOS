@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleData",
         "state": {
           "branch": null,
-          "revision": "e7bbe4393c55462c534667449a39e48444ce7254",
-          "version": "3.0.2"
+          "revision": "c8857e9fa1c8354a16e40019a0751e250a8f2918",
+          "version": "3.1.0"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleNetworkRequest",
         "state": {
           "branch": null,
-          "revision": "3c5bf9835d71a2eb420b4df08dc860c240f579a3",
-          "version": "3.0.0"
+          "revision": "6293e15ee5b44c87b46d64ce27e3825bfdc4c59a",
+          "version": "4.0.0"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleStore",
         "state": {
           "branch": null,
-          "revision": "b0f80f5dcc412c19b0da7b0fc4a09952bb47c822",
-          "version": "2.0.1"
+          "revision": "0746cf90301f078e5632a050b3448aaa81422a76",
+          "version": "2.1.0"
         }
       },
       {
@@ -186,8 +186,8 @@
         "repositoryURL": "https://github.com/Car-Swaddle/NetworkRequest",
         "state": {
           "branch": null,
-          "revision": "f146efcf6d0b6b877806b4cd8c04d58f53b3161b",
-          "version": "2.0.0"
+          "revision": "801fd5d2882335628a955481dd87b616bbaaa883",
+          "version": "2.1.0"
         }
       },
       {

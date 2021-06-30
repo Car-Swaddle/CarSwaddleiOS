@@ -367,6 +367,7 @@ extension AutoServiceCreation: SelectAutoServiceDetailsViewControllerDelegate {
     
     func willBeDismissed(viewController: SelectAutoServiceDetailsViewController) {
         progressViewController.currentState = .mechanic
+        progressViewController.resetUI()
     }
     
     func didSetCouponCode(couponCode: String?, viewController: SelectAutoServiceDetailsViewController) {

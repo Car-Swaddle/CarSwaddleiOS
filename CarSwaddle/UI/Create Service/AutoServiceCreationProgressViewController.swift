@@ -75,6 +75,10 @@ class AutoServiceCreationProgressViewController: UIViewController, StoryboardIns
         delegate?.updateHeight(newHeight: heightForCurrentState)
     }
     
+    func resetUI() {
+        priceView.resetUI()
+    }
+    
     func configure(with autoService: AutoService) {
         priceView.configure(with: autoService)
     }
