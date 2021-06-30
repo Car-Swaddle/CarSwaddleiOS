@@ -150,10 +150,14 @@ class LoginViewController: UIViewController, StoryboardInstantiating, UIGestureR
         let referrerID = intercom.referrerID
         store.privateContext { [weak self] context in
             self?.loginTask = self?.auth.login(email: email, password: password, context: context) { error in
-                self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: nil, token: nil, timeZone: TimeZone.current.identifier, referrerID: referrerID, in: context) { userObjectID, userError in
-                    if error == nil && referrerID != nil {
-                        intercom.wipeReferrerID()
+                if referrerID != nil {
+                    self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: nil, token: nil, timeZone: TimeZone.current.identifier, referrerID: referrerID, in: context) { userObjectID, userError in
+                        if error == nil && referrerID != nil {
+                            intercom.wipeReferrerID()
+                        }
+                        completion(error)
                     }
+                } else {
                     completion(error)
                 }
             }
