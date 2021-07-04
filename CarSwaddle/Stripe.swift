@@ -37,4 +37,8 @@ final class StripeClient: NSObject, STPCustomerEphemeralKeyProvider {
         }
     }
     
+    func updateStripePublishableKey() {
+        STPAPIClient.shared.publishableKey = stripePublishableKey
+    }
+    
 }

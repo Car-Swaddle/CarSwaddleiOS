@@ -413,6 +413,7 @@ extension Navigator: TweakViewControllerDelegate {
     
     func didDismiss(requiresAppReset: Bool, tweakViewController: TweakViewController) {
         if requiresAppReset {
+            stripe.updateStripePublishableKey()
             logout.logout()
         }
     }
