@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         intercom.setup()
         FirebaseApp.configure()
         tracker.configure()
-        STPAPIClient.shared.publishableKey = stripePublishableKey
+        stripe.updateStripePublishableKey()
         STPPaymentConfiguration.shared.appleMerchantIdentifier = appleMerchantIdentifier
     }
     
