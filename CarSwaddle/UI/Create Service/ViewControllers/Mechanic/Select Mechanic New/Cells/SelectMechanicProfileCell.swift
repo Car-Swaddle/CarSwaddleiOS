@@ -85,7 +85,7 @@ final class SelectMechanicProfileCell: UITableViewCell, NibRegisterable {
         collectionView.register(MechanicProfileCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.focusedFlowLayout?.itemSize = CGSize(width: 230, height: 303)
+        collectionView.focusedFlowLayout?.itemSize = CGSize(width: 230, height: 323)
         collectionView.focusedFlowLayout?.shrinkFactor = 0.3
         collectionView.focusedFlowLayout?.minimumLineSpacing = 0
         collectionView.clipsToBounds = false
