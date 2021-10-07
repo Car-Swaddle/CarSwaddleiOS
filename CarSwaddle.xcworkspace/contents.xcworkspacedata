@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../CarSwaddleStore">
+   </FileRef>
+   <FileRef
+      location = "group:../CarSwaddleData">
+   </FileRef>
+   <FileRef
+      location = "group:../CarSwaddleNetworkRequest">
+   </FileRef>
+   <FileRef
       location = "group:CarSwaddle.xcodeproj">
    </FileRef>
 </Workspace>
